@@ -1,0 +1,17 @@
+{
+	"root": "/Users/jessicahenry/.forever",
+	"pidPath": "/Users/jessicahenry/.forever/pids",
+	"sockPath": "/Users/jessicahenry/.forever/sock",
+	"loglength": 100,
+	"logstream": false,
+	"columns": [
+		"uid",
+		"command",
+		"script",
+		"forever",
+		"pid",
+		"id",
+		"logfile",
+		"uptime"
+	]
+}
