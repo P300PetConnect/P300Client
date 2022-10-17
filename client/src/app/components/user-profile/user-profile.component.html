@@ -1,1 +1,79 @@
-<p>user-profile works!</p>
+<div class="container-fluid p-0">
+  <div class="row p-0 m-0">
+    <div class="col-2 bg">menu bar</div>
+    <div class="col-6 bg2">
+      <div class="main-content">
+        <!-- Table -->
+        <div class="col-xl-12 m-auto order-xl-4 mb-xl-4 mt-xl-4">
+          <div class="card card-profile shadow">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="#"> </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-4">
+                  <img
+                    src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
+                    class="rounded-circle w-75"
+                  />
+                </div>
+                <div class="col-8">
+                    <h4>{{petsitter.name}}</h4>
+                  <div class="card-profile-stats d-flex ">
+                    <div>
+                      <span class="heading">22</span>
+                      <span class="description">Friends</span>
+                    </div>
+                    <div>
+                      <span class="heading p-3">10</span>
+                      <span class="description">Photos</span>
+                    </div>
+                  </div>
+                  <p>{{petsitter.description}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                <div class="row">
+                  <div class="col-3"></div>
+                  <div class="col-6">
+                    <a href="#" type="button" class="btn btn-success"
+                      >Contact Me</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 bg3 ">
+        <div class="card mt-xl-4" style="width: 27rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+           <div class="skills pt-3">
+                    <h3>Skills</h3>
+                    <ul>
+                        <li *ngFor="let sk of  skills" class="">
+                        <i href="">{{sk}}</i>
+                      </li>
+                    </ul>
+                  </div>
+    </div>
+  </div>
+</div>
+
+<body></body>
