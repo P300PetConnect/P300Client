@@ -10,7 +10,13 @@ const client =  new Client({
 
 client.connect(); 
 
-client.query(`select * from public."PetOwnerTBL"`, (err, res)=>{
+client.query(`SELECT u."UserID", u."Name", u."Surname" , p."PetID",  p."Name"
+FROM public."PetTBL" AS p
+INNER JOIN public."PetOwnerTBL" AS o
+ON o."PetID" = p."PetID"
+INNER JOIN public."UserTBL" as u
+ON u."UserID" = o."UserID"`, 
+ (err, res)=>{
     if(!err){
         console.log(res.rows);
     }else{
@@ -18,6 +24,10 @@ client.query(`select * from public."PetOwnerTBL"`, (err, res)=>{
     }
     client.end; 
 })
+
+
+
+
 
 // client.query(`insert into public.pet values('Rex')`, (err, res)=>{
 //     if(!err){
