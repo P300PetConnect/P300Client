@@ -13,7 +13,11 @@ export class UserProfileComponent implements OnInit {
       name:'Anne Smith', 
       title:"Dog care", 
       location:"Sligo Town",
-      description:"Hi we are looking for a dog walker to walk our lovely dog Frankie during the day and to keep her company for a few hours while we are at work. Require..."
+      description:"Hi we are looking for a dog walker to walk our lovely dog Frankie during the day and to keep her company for a few hours while we are at work. Require...",
+      imageUrl:"https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg", 
+      Location:"Sligo, Town", 
+      CreatedDate:"14/10/2022"
+    
     } ; //initialization
 
   
