@@ -11,13 +11,17 @@ import { NavComponent } from './components/nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
+import { AddPostComponent } from './forum-components/add-post/add-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     FooterComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ForumWallComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
