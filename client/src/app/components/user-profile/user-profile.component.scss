@@ -1,11 +1,11 @@
 .bg{
-    background:#482A5F; 
+    background:#ccc5d2; 
 }
 .bg2{
     background-color: #e2dde6;
 }
 .bg3{
-    background-color: #7d7781; 
+    background-color: #e2dde6; 
 }
 
 li{
@@ -46,4 +46,21 @@ li{
 
 .text-description{
     font-size: 0.9rem;
+}
+
+.skills{
+    background: white;
+    width: 27rem;
+    padding: 1.3rem;
+    margin-top: 1rem;
+    border-radius: 0.3rem;
+
+    h1{
+        font-size:1.25rem
+    }
+}
+@media (min-width: 1200px) {
+    .container-fluid{
+        max-width: 1550px;
+    }
 }
