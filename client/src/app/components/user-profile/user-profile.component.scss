@@ -1,0 +1,66 @@
+.bg{
+    background:#ccc5d2; 
+}
+.bg2{
+    background-color: #e2dde6;
+}
+.bg3{
+    background-color: #e2dde6; 
+}
+
+li{
+    display: inline; 
+}
+.skills li i {
+    color: #62646a;
+    display: inline-block;
+    border-radius: 15px;
+    min-width: 40px;
+    text-align: center;
+    padding: 5px 12px;
+    margin: 0 10px 10px 0;
+    border: 1px solid #e4e5e7;
+    cursor: pointer;
+    -webkit-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+    text-decoration: none;
+    text-decoration-line:none; 
+}
+ ul {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+
+// ul{
+//     display: block;
+//     list-style-type: disc;
+//     margin-block-start: 1em;
+//     margin-block-end: 1em;
+//     margin-inline-start: 0px;
+//     margin-inline-end: 0px;
+//     padding-inline-start: 40px;
+// }
+
+.text-description{
+    font-size: 0.9rem;
+}
+
+.skills{
+    background: white;
+    width: 27rem;
+    padding: 1.3rem;
+    margin-top: 1rem;
+    border-radius: 0.3rem;
+
+    h1{
+        font-size:1.25rem
+    }
+}
+@media (min-width: 1200px) {
+    .container-fluid{
+        max-width: 1550px;
+    }
+}
