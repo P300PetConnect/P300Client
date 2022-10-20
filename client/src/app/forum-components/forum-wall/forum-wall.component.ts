@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForumWallComponent implements OnInit {
 
+  showAddPost = false;
+  postData = [] as any;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  toggleAddPost(){
+    this.showAddPost = ! this.showAddPost;
   }
 
 }

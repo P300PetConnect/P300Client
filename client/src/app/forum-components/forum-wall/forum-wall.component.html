@@ -1,1 +1,25 @@
-<p>forum-wall works!</p>
+
+
+<div style="padding: 0 6%;">
+    <div class = "introContain">
+      <h5>Welcome to the Pet Connect forum </h5>
+      <p>Intro</p>
+      <div style="text-align: center;">
+        <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="addPost" *ngIf = "showAddPost">
+    <app-add-post [boardID] = "boardID" [boardName] = "boardName"></app-add-post>
+  </div>
+  
+  <div class = "wallContainer">
+      <hr>
+      <div *ngFor="let d of postData">
+        <app-post [post]="d"></app-post>
+      </div>
+        <hr>
+   </div>
+  
+  

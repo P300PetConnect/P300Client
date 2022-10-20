@@ -9,7 +9,13 @@ export class AddPostComponent implements OnInit {
 
   constructor() { }
 
+  addMedia = false;
+  
   ngOnInit(): void {
+  }
+
+  ToggleAddMedia(){
+    this.addMedia = ! this.addMedia;
   }
 
 }
