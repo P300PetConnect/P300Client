@@ -7,14 +7,17 @@
         </div>
         
           <div class = "row">
-           <h6>b/{{post.boardName}}</h6>
+           <h6>{{post.Date.S}}</h6>
           </div>
           <div class = "row">
-              <h5>{{post.title}}</h5>
+              <h5>{{post.PostTitle.S}}</h5>
           </div>
           <div class = "col">
-              <p>{{post.content}}</p> 
+              <p>{{post.Content.S}}</p> 
           </div>
+          <div class = "col">
+            <p>Vote Count: {{post.VoteCount.N}}</p> 
+        </div>
 
         </div>
 

@@ -14,10 +14,12 @@
     <app-add-post [boardID] = "boardID" [boardName] = "boardName"></app-add-post>
   </div>
   
+
   <div class = "wallContainer">
       <hr>
-      <div *ngFor="let d of postData">
-        <app-post [post]="d"></app-post>
+      <div *ngFor="let d of test[0].Items">
+     
+       <app-post [post]="d"></app-post>
       </div>
         <hr>
    </div>
