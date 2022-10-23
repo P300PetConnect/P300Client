@@ -10,6 +10,7 @@ import { PostItem, PostInterface } from '../../forum-interfaces/post-interface';
 })
 export class ForumWallComponent implements OnInit {
 
+  // https://bobbyhadz.com/blog/aws-apigateway-pass-query-parameters-lambda maybe not query string
   showAddPost = false;
   postData = [] as any;
   test?: any;
