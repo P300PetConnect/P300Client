@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth } from 'aws-amplify'; 
+import Amplify, { Auth } from 'aws-amplify'; 
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
+import awsExports from 'src/aws-exports';
+
 
 @Component({
   selector: 'app-login',
@@ -8,13 +11,18 @@ import { Auth } from 'aws-amplify';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+formFields: any;
 
   // email: string = '';
   // password: string = ''; 
-  constructor( private router: Router) { }
+  constructor(public authenticator: AuthenticatorService) {
+    Amplify.configure(awsExports);
+  }
 
   ngOnInit(): void {
   }
+
+
 
   // async loginWithCognito(){
   //   // try{
