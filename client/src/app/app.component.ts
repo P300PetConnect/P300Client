@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
+import Amplify from 'aws-amplify';
+import awsExports from 'src/aws-exports';
+
 
 @Component({
   selector: 'app-root',
@@ -7,5 +11,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+  constructor(public authenticator: AuthenticatorService) {
+    Amplify.configure(awsExports);
+  }
 }
 

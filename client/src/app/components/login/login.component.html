@@ -1,0 +1,14 @@
+<div class="container pt-5">
+    <amplify-authenticator [loginMechanisms]="['given_name','email']"
+    [socialProviders]="['google']">
+      <ng-template
+        amplifySlot="authenticated"
+        let-user="user"
+        let-signOut="signOut"
+      >
+        <h2>Welcome, {{ user.username }}!</h2>
+        <button (click)="signOut()">Sign Out</button>
+      </ng-template>
+    </amplify-authenticator>
+</div>
+
