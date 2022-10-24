@@ -42,8 +42,8 @@
           </div>
   
           <div style="text-align: center;" >
-            <button class="btn btn-secondary" *ngIf="selectedFiles"  (click)="AddPostWithImage(title.value, content.value, video.value, form, image)">Upload</button>
-            <button class="btn btn-secondary" *ngIf="!selectedFiles"  (click)="AddPostNoImage(title.value, content.value, video.value, form)">Upload</button>
+         
+            <button class="btn btn-secondary"  (click)="AddPostNoImage(title.value, content.value, video.value, form)">Upload</button>
         
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
@@ -21,4 +22,14 @@ export class DataService {
   
     );
 }
+
+    PushPost(item : PostItem)
+    {
+     console.log(JSON.stringify(item));
+      this.http.post('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', JSON.stringify(item))
+      .subscribe((res) =>{
+        console.log(res);
+      });
+
+    }
 }

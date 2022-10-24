@@ -3,7 +3,7 @@ export interface PostInterface
     //docType: string;
     // boardID: string;
     // boardName: string;
-    UserID: string,
+    PostID: string,
     PostTitle: string,
      VoteCount: number;
      Date: Date;
@@ -17,33 +17,39 @@ export interface PostInterface
 
     export class PostItem
 {
-    docType: string;
+   // docType: string;
    // boardID: string;
    // boardName: string;
-    voteCount: number;
-    date: Date;
-    title: string;
-    content: string;
+   
+   PostID: string;
+    PostTitle: string;
+    Content: string;
+    Date: string;
     //Comments: string;
     //imageLocation: string;
    // videoLocation: string;
-    displayComments: boolean;
+    VoteCount: number;
+    DisplayComments: boolean;
 
-    constructor(docType:string, boardID:string, boardName: string, voteCount: number, date: Date ,title:string, 
-        content: string, comments: string, imageLocation: string, videoLocation: string, displayComments: boolean)
+    constructor(PostID: string, PostTitle:string, Content: string, Date: string,DisplayComments: boolean, VoteCount: number )
     {
-        this.docType = docType;
+       // this.docType = docType;
       //  this.boardID = boardID;
       //  this.boardName = boardName
-        this.voteCount = voteCount;
-        this.date = date
-        this.title = title;
-        this.content = content;
+     
+       this.PostID = PostID;
+        this.PostTitle = PostTitle;
+        this.Content = Content;
+        this.Date = Date
+       
       //  this.Comments = comments;
        // this.imageLocation = imageLocation;
       //  this.videoLocation = videoLocation;
-        this.displayComments = displayComments;
+        this.DisplayComments = DisplayComments;
+        this.VoteCount = VoteCount;
     }
 
 }
 
+//constructor(docType:string, boardID:string, boardName: string, voteCount: number, date: Date ,title:string, 
+//content: string, comments: string, imageLocation: string, videoLocation: string, displayComments: boolean)
