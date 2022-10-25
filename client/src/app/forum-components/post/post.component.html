@@ -15,12 +15,25 @@
           <div class = "col">
               <p>{{post.Content.S}}</p> 
           </div>
-          <div class = "col">
-            <p>Vote Count: {{post.VoteCount.N}}</p> 
-        </div>
+          
 
         </div>
-
+        <div class = "row postFooter" >
+          <div class = "like col">
+              <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(post)">
+              <p class = "beside" style="margin-right: 10px;">{{post.VoteCount.N}}</p>
+              <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(post)">
+         </div>
+          <div class = "like col">
+          <img src="../../../assets/images/comment.png" alt="" (click)="DisplayComments(post)">
+          </div>
+          <div class = "like col">
+              <img src="../../../assets/images/share.png" alt="">
+              </div>
+        </div>
+        <div class = "row" *ngIf="post.displayComments">
+          <app-comment-section [docID]="post.id" [postData]="postData"></app-comment-section>
+        </div> 
 
     </div>
   </div>

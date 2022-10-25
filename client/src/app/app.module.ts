@@ -14,6 +14,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
 import { AddPostComponent } from './forum-components/add-post/add-post.component';
 import { PostComponent } from './forum-components/post/post.component';
+import { CommentSectionComponent } from './forum-components/comment-section/comment-section.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PostComponent } from './forum-components/post/post.component';
     UserProfileComponent,
     ForumWallComponent,
     AddPostComponent,
-    PostComponent
+    PostComponent,
+    CommentSectionComponent
   ],
   imports: [
     BrowserModule,

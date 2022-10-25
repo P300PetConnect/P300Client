@@ -11,7 +11,7 @@
   </div>
   
   <div class="addPost" *ngIf = "showAddPost">
-    <app-add-post [boardID] = "boardID" [boardName] = "boardName"></app-add-post>
+    <app-add-post ></app-add-post>
   </div>
   
 
@@ -19,7 +19,7 @@
       <hr>
       <div *ngFor="let d of test[0].Items">
      
-       <app-post [post]="d"></app-post>
+       <app-post [post]="d" ></app-post>
       </div>
         <hr>
    </div>

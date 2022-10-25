@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostItem } from 'src/app/forum-interfaces/post-interface';
 import { DataService } from 'src/app/forum-services/data.service';
 //   <button class="btn btn-secondary" *ngIf="selectedFiles"  (click)="AddPostWithImage(title.value, content.value, video.value, form, image)">Upload</button>
@@ -11,6 +11,7 @@ export class AddPostComponent implements OnInit {
 
   constructor(private _forumPosts : DataService) { }
 
+  @Input() parent: any;
   selectedFiles!: any;
   tempPostItem!: PostItem;
   addMedia = false;
@@ -28,9 +29,12 @@ export class AddPostComponent implements OnInit {
      this.tempPostItem = new PostItem("12134324234234",title, content, now.toString(),false ,0 );
      this._forumPosts.PushPost(this.tempPostItem);
     
+    // this.ngOnInit();
+     //form.reset();
+
      
-   //  form.reset();
      return false;
+     
   }
 
   ToggleAddMedia(){
