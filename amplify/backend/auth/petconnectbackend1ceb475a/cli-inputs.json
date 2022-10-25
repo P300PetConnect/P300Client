@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "client194825ed_identitypool_194825ed",
+    "identityPoolName": "petconnectbackend1ceb475a_identitypool_1ceb475a",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "client194825ed",
-    "userPoolName": "client194825ed_userpool_194825ed",
+    "resourceNameTruncated": "petcon1ceb475a",
+    "userPoolName": "petconnectbackend1ceb475a_userpool_1ceb475a",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "client194825ed_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "petcon1ceb475a_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "194825ed",
-    "resourceName": "client194825ed",
+    "sharedId": "1ceb475a",
+    "resourceName": "petconnectbackend1ceb475a",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [

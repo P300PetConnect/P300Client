@@ -22,19 +22,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 
-Amplify.configure({
-  Auth:{
-    mandatorySignIn:true, 
-    region:'eu-west-1', 
-    userPoolId:'eu-west-1_uSZwFf0nS', 
-    userPoolWebCliendId:'33q3kt844n42c59b9vqnkj27kv', 
-    AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
+// Amplify.configure({
+//   Auth:{
+//     mandatorySignIn:true, 
+//     region:'eu-west-1', 
+//     userPoolId:'eu-west-eu-west-1_dkqFlijuX', 
+//     userPoolWebCliendId:'1kvja59f1tthl9chrrjn59pgou', 
+//     AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
 
-  }
-})
+//   }
+// })
 
 
 
@@ -45,7 +44,6 @@ Amplify.configure({
     FooterComponent,
     UserProfileComponent,
     LoginComponent,
-    SignUpComponent,
     HomeComponent, 
   ],
   imports: [

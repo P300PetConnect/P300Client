@@ -1,6 +1,6 @@
 {
   "auth": {
-    "client194825ed": {
+    "petconnectbackend1ceb475a": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

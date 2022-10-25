@@ -13,6 +13,7 @@ import 'zone.js';
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
   
+
 // Import ends here
 
 

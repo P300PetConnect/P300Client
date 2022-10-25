@@ -5,6 +5,8 @@ import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import awsExports from 'src/aws-exports';
 
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +22,15 @@ formFields: any;
   }
 
   ngOnInit(): void {
-  }
+
+}
+
+userData(){
+console.log(this.authenticator?.user?.attributes?.email)
+}
+
+  
+
 
 
 

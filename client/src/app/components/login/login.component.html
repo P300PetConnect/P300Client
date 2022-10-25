@@ -1,18 +1,22 @@
-<!-- <div class="container pt-5 mt-5">
+<div class="container pt-5 mt-5 cognitoform">
     <amplify-authenticator [loginMechanisms]="['email']"
     [socialProviders]="['google']">
       <ng-template
         amplifySlot="authenticated"
         let-user="user"
-        let-signOut="signOut"
-      >
-        <h2>Welcome, {{ user.username }}!</h2>
-        <button (click)="signOut()">Sign Out</button>
+        let-signOut="signOut">
+        <h2>Welcome, {{ user?.attributes?.email }}!</h2>
+        <button type="submit" (click)="signOut()">Sign Out</button>
       </ng-template>
     </amplify-authenticator>
-</div> -->
+    <div *ngIf="authenticator?.user?.attributes?.email">
+      {{userData()}}
+  </div>
+</div>
 
-<amplify-authenticator [formFields]="formFields"
+
+
+<!-- <amplify-authenticator [formFields]="formFields"
 [socialProviders]="['google']">
   <ng-template amplifySlot="header">
     <div style="padding: var(--amplify-space-large); text-align: center">
@@ -22,16 +26,16 @@
         src="https://www.pngkey.com/png/full/697-6975794_pet-logo-png.png"
       />
     </div>
-  </ng-template>
+  </ng-template> -->
 
-  <ng-template amplifySlot="sign-in-header">
+  <!-- <ng-template amplifySlot="sign-in-header">
     <h3
       class="amplify-heading"
       style="padding: var(--amplify-space-xl) 0 0 var(--amplify-space-xl)"
     >
       Sign in to your account
     </h3>
-  </ng-template>
+  </ng-template> -->
 
   <!-- <ng-template amplifySlot="sign-in-footer">
     <div style="text-align: center">
@@ -48,7 +52,7 @@
       </button>
     </div>
   </ng-template> -->
-
+<!-- 
   <ng-template amplifySlot="sign-up-header">
     <h3
       class="amplify-heading"
@@ -56,7 +60,7 @@
     >
       Create a new account
     </h3>
-  </ng-template>
+  </ng-template> -->
 
   <!-- <ng-template amplifySlot="sign-up-footer">
     <div style="text-align: center">
@@ -74,7 +78,7 @@
     </div>
   </ng-template> -->
 
-  <ng-template amplifySlot="footer">
+  <!-- <ng-template amplifySlot="footer">
     <div style="padding: var(--amplify-space-large); text-align: center">
       <p class="amplify-text" style="color: var(--amplify-colors-neutral-80)">
         © All Rights Reserved
@@ -156,4 +160,4 @@
     <button (click)="signOut()">Sign Out</button>
   </ng-template>
 </amplify-authenticator>
-
+ -->

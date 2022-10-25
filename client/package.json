@@ -24,6 +24,7 @@
     "@aws-amplify/storage": "^4.5.10",
     "@aws-amplify/ui": "^4.0.0",
     "@aws-amplify/ui-angular": "^2.4.24",
+    "@fontsource/inter": "^4.5.14",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "aws-amplify": "^4.3.39",

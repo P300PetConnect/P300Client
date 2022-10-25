@@ -1,0 +1,16 @@
+
+.mainbg{
+    background:#235390;
+    min-height: calc(100vh - var(--onetrust-banner-height, 0px) - 50px);
+    background-image: url(https://d35aaqx5ub95lt.cloudfront.net/images/4986531ca822d48e57b4a18f40ff5172.svg);
+}
+.bg{
+    background:#082243;
+    padding: 1.8rem;
+}
+
+.images-secondary{
+    width: 10rem;
+    height: 10rem;
+    margin-top: 3rem;
+}
