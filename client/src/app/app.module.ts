@@ -22,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
+import { InitialPageComponent } from './components/initial-page/initial-page.component';
 
 // Amplify.configure({
 //   Auth:{
@@ -44,7 +44,7 @@ import { HomeComponent } from './components/home/home.component';
     FooterComponent,
     UserProfileComponent,
     LoginComponent,
-    HomeComponent, 
+    InitialPageComponent, 
   ],
   imports: [
     BrowserModule,

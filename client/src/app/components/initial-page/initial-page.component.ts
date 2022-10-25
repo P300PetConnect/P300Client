@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-initial-page',
+  templateUrl: './initial-page.component.html',
+  styleUrls: ['./initial-page.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class InitialPageComponent implements OnInit {
 formFields: any;
 @Input() event?: any; 
 
