@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http"
 import { catchError, Observable, tap, throwError } from 'rxjs'
 import { IUser } from "../interfaces/users";
 
-
 @Injectable()
 
 export class UserService{

@@ -26,6 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertmsgComponent } from './components/alertmsg/alertmsg.component';  
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {   environment} from '../environments/environment'; 
 
 // Amplify.configure({
 //   Auth:{
@@ -57,10 +58,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule,
     MatGoogleMapsAutocompleteModule,
     FlexLayoutModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'gme-xxxxxxxxxxxxxx',
-      libraries: ['places']
-    }),
     MatGoogleMapsAutocompleteModule,
     TranslateModule.forRoot({
         loader: {
@@ -68,14 +65,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
         }, 
-        
-
     }),
     AppRoutingModule,
     BrowserAnimationsModule, 
     FormsModule,
     AmplifyAuthenticatorModule,
-    NgbModule,
+    NgbModule, 
+
+    AgmCoreModule.forRoot({
+      apiKey: environment.GOOGLE_MAPS_API_KEY,
+      libraries: ['places']
+    }),
+
   ],
   providers: [AuthenticatorService, CognitoGuard, UserService],
   bootstrap: [AppComponent]
