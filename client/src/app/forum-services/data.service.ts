@@ -47,33 +47,36 @@ export class DataService {
 
     }
 
-    ChangeVotes(Item : PostItem)
+    // temp workaround dynamo type issue // 
+    ChangeValue(Item : PostItem, value: number, com:boolean)
     {
-      
-      //Item.VoteCount = 10;
-
       let id = JSON.stringify(Item.PostID);
-      id = id.slice(6, id.length-2)
+      id = id.slice(6, id.length-2);
 
       let title = JSON.stringify(Item.PostTitle);
-      title = title.slice(6, title.length-2)
+      title = title.slice(6, title.length-2);
 
       let content = JSON.stringify(Item.Content);
-      content = content.slice(6, content.length-2)
+      content = content.slice(6, content.length-2);
 
       let date = JSON.stringify(Item.Date);
-      date = date.slice(6, date.length-2)
+      date = date.slice(6, date.length-2);
 
-     
+      let vote = JSON.stringify(Item.VoteCount);
+      vote = vote.slice(6, vote.length-2);
+
+      
+
+      let num = parseInt(vote) + value; 
       var params = {
         
             "PostID": id,
             "PostTitle": title,
             "Content": content,
             "Date": date,
-            "DisplayComments": true,
-            "VoteCount": 30
-  
+            "DisplayComments": com,
+            "VoteCount": num
+  //
         }
         
       const bodyj = (JSON.stringify(Item));
@@ -81,14 +84,8 @@ export class DataService {
       this.postId = data.id;
      })
     }
-    DisplayCommentsSection(Item : PostItem)
-    {      alert(JSON.stringify(Item));
-      const bodyj = (JSON.stringify(Item));
-      this.http.put<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/update', bodyj).subscribe(data => {
-      this.postId = data.id;
-     })
-
-    }
+    
+   
 }
 
 
@@ -96,3 +93,13 @@ export class DataService {
     //   this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', { PostID: '23123123', PostTitle : 'Testing', Content: 'Is this working', Date: "25/10/22", DisplayComments: false, VoteCount: 0}).subscribe(data => {
     //     this.postId = data.id;
     // })
+
+    /*
+     DisplayCommentsSection(Item : PostItem)
+    {      alert(JSON.stringify(Item));
+      const bodyj = (JSON.stringify(Item));
+      this.http.put<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/update', bodyj).subscribe(data => {
+      this.postId = data.id;
+     })
+    }
+     */
