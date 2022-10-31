@@ -16,35 +16,34 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public AddVote(item: PostItem)
+  public AddVote(item: PostItem, com:boolean)
   {
-  //let n = JSON.stringify(item.VoteCount);
-
-  //  item.VoteCount = {"N":"5" };
-  item.VoteCount +=1;
-    this._forumPosts.ChangeVotes(item);
+    let value = 1;
+    this._forumPosts.ChangeValue(item, value, com);
+  
 
   }
-  public RemoveVote(item: PostItem)
+  public RemoveVote(item: PostItem, com:boolean)
   {
-    item.VoteCount -=1;
-    this._forumPosts.ChangeVotes(item);
+    let value = -1;
+    this._forumPosts.ChangeValue(item, value, com);
   }
-  DisplayComments( item: PostItem)
+  DisplayComments( item: PostItem, com:boolean)
   {
+    let value = 0;
     var placeHolder = false;
-    if(item.DisplayComments== true)
+    if(com == true)
     {
-      item.DisplayComments= false
+      placeHolder= false
 
     }
     else
     {
-      item.DisplayComments= true
+      placeHolder= true
 
     }
 
-    this._forumPosts.DisplayCommentsSection(item);
+    this._forumPosts.ChangeValue(item, value, placeHolder);
     
   }
 

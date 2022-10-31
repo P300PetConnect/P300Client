@@ -27,9 +27,6 @@ export class ForumWallComponent implements OnInit {
     this._forumPosts.getForumData().subscribe(
       (      results: PostInterface) => {
         this.test= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-        // console.log(this.test);
-        // console.log(this.test[0] + "here")
-        // console.log(this.test[0].length)
         console.log(this.test)
         
       },

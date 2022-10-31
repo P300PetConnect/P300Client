@@ -20,18 +20,18 @@
         </div>
         <div class = "row postFooter" >
           <div class = "like col">
-              <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(post)">
+              <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(post, post.DisplayComments.BOOL)">
               <p class = "beside" style="margin-right: 10px;">{{post.VoteCount.N}}</p>
-              <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(post)">
+              <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(post, post.DisplayComments.BOOL)">
          </div>
           <div class = "like col">
-          <img src="../../../assets/images/comment.png" alt="" (click)="DisplayComments(post)">
+          <img src="../../../assets/images/comment.png" alt="" (click)="DisplayComments(post, post.DisplayComments.BOOL)">
           </div>
           <div class = "like col">
               <img src="../../../assets/images/share.png" alt="">
               </div>
         </div>
-        <div class = "row" *ngIf="post.displayComments">
+        <div class = "row" *ngIf="post.DisplayComments.BOOL">
           <app-comment-section [docID]="post.id" [postData]="postData"></app-comment-section>
         </div> 
 

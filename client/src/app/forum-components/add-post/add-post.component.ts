@@ -26,13 +26,11 @@ export class AddPostComponent implements OnInit {
     const now = new Date();
    // const link = this.FormatVideoLink(video);
 
-     this.tempPostItem = new PostItem("12134324234234",title, content, now.toString(),false ,0 );
+     this.tempPostItem = new PostItem("12134324234234",title, content, now.toString(),true ,0 );
      this._forumPosts.PushPost(this.tempPostItem);
     
     // this.ngOnInit();
      //form.reset();
-
-     
      return false;
      
   }
