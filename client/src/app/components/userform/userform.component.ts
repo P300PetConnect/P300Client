@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-userform',
@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class UserformComponent implements OnInit {
 
   constructor() { }
-form: FormGroup; 
+form: UntypedFormGroup; 
 private formSubmitAttemp:boolean; 
 
   ngOnInit(): void { }
