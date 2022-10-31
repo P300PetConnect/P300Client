@@ -1,4 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { IUser } from '../interfaces/users';
+import { UserService } from '../service/data.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-initial-page',
@@ -7,12 +11,37 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class InitialPageComponent implements OnInit {
 formFields: any;
-@Input() event?: any; 
+@Input() userEmail?: any; 
+user?: any; 
 
-  constructor() { }
+  constructor(private _userService: UserService) { }
+
+  displayAlert: boolean = false; 
 
   ngOnInit(): void {
-    console.log(this.event); 
+    // this.userData()
+  
   }
 
+  getStarted(){
+    if(this.displayAlert){
+      this.displayAlert = false;
+    }
+    else{
+      this.displayAlert = true; 
+    }
+  }
+  // userData():boolean{
+  //     this?._userService.get_user(this?.userEmail).subscribe(
+  //       user=>{
+  //         this.user=user; 
+  //         console.log('we did it bitch',this?.user); 
+  //       },
+  //     // error => this.errorMessage = <any>error
+  //     );
+  //   return false; 
+  //   }
+
+
+  
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2.js';  
 
 @Component({
@@ -10,17 +10,59 @@ export class AlertmsgComponent implements OnInit {
 
   constructor() { }
 
+  @Input() alertSelected: string = ""; 
+
   ngOnInit(): void {
+    this.callTheMethod();
+    console.log(this.alertSelected); 
+    console.log('is here')
   }
   simpleAlert(){  
     Swal.fire('Hello Angular');  
   }  
+
+
+  callTheMethod(){
+    switch (this.alertSelected) {
+      case "alertPersonalised":{
+        this.alertPersonalised();
+        break;
+      }
+      case "alertWithSuccess":{
+        this.alertWithSuccess();
+        break;
+      }
+      case "topend":{
+        this.topend();
+        break;
+      }
+  }
+
+
+ } 
+  alertPersonalised(){
+    Swal.fire({
+      title: 'Custom width, padding, color, background.',
+      width: 600,
+      padding: '3em',
+      color: '#716add',
+      background: '#fff url(/images/trees.png)',
+      buttons: ["Stop", "Do it!"],
+      // confirmButtonText: 'Yes, delete it!',  
+      // cancelButtonText: 'No, keep it' , 
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("https://sweetalert2.github.io/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `
+    })
+  }
     
   alertWithSuccess(){  
     Swal.fire('Thank you...', 'You submitted succesfully!', 'success')  
   }  
-  erroalert()  
-  {  
+  erroalert(){  
     Swal.fire({  
       icon: 'error',  
       title: 'Oops...',  

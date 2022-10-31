@@ -1,4 +1,4 @@
-<div class="container pt-5 mt-5 cognitoform">
+<div *ngIf="isOpen" class="container pt-5 mt-5 cognitoform">
     <amplify-authenticator [loginMechanisms]="['email']"
     [socialProviders]="['google']">
       <ng-template
@@ -9,13 +9,12 @@
         <button type="submit" (click)="signOut()">Sign Out</button>
       </ng-template>
     </amplify-authenticator>
-    <div *ngIf="authenticator?.user?.attributes?.email">
-      {{userData()}}
-  </div>
-</div>
+ </div>   
 
-
-
+    <!-- <div *ngIf="authenticator?.user?.attributes?.email">
+          <div ></div> -->
+          <!-- <app-initial-page [userEmail]="authenticator?.user?.attributes?.email"></app-initial-page> -->
+  <!-- </div> -->
 <!-- <amplify-authenticator [formFields]="formFields"
 [socialProviders]="['google']">
   <ng-template amplifySlot="header">

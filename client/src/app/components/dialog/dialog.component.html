@@ -1,0 +1,21 @@
+<button class="btn btn-lg {{class}}" (click)="open(mymodal)">{{modalbtntitle}}</button>
+<ng-template #mymodal let-modal >
+  <div class="modal-header text-center">
+    <h4 class="modal-title"  id="modal-basic-title">Register to Pet Connect</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <h6>Who are you?</h6>
+    <button type="button" class="btn btn-outline-dark" routerLink="login/petowner" (click)="modal.close('Save click')">PET OWNER</button>    
+ </div>
+ <div class="modal-body text-center">
+    <button type="button" class="btn btn-outline-dark" routerLink="login/petminder" (click)="modal.close('Save click')">PET MINDER</button>
+ </div>
+
+  <div class="modal-footer">
+    <p>Already a member?</p><a href="login">Sign In</a>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import Amplify, { Auth } from 'aws-amplify'; 
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import awsExports from 'src/aws-exports';
-
-
+import { UserService } from '../service/data.service';
+import { IUser } from '../interfaces/users';
 
 
 @Component({
@@ -14,9 +14,9 @@ import awsExports from 'src/aws-exports';
 })
 export class LoginComponent implements OnInit {
 formFields: any;
+isOpen: boolean = true; 
 
-  // email: string = '';
-  // password: string = ''; 
+
   constructor(public authenticator: AuthenticatorService) {
     Amplify.configure(awsExports);
   }
@@ -25,9 +25,13 @@ formFields: any;
 
 }
 
-userData(){
-console.log(this.authenticator?.user?.attributes?.email)
+btnClick= function () {
+  this.router.navigateByUrl('inital');
+};
+
+
 }
+
 
   
 
@@ -44,9 +48,8 @@ console.log(this.authenticator?.user?.attributes?.email)
   //   //     this.router.navigate(['home']); 
   //   //     alert('Youre logged in successfully !')
   //   //   }
-
   //   // }catch(error){
   //   //   console.log(error); 
   //   // }
   //   // }
-  }
+

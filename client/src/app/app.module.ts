@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-// import Amplify, { Auth } from '@aws-amplify/core';
-import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
-
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import {AgmCoreModule} from '@agm/core';
+import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
 import  Amplify, {Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports'
-
 Amplify.configure(awsconfig); 
-
+import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
 import {FormsModule} from '@angular/forms'
-
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -23,6 +19,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
+import { UserformComponent } from './components/userform/userform.component';
+import { CognitoGuard } from './cognito.guard';
+import { UserService } from './components/service/data.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertmsgComponent } from './components/alertmsg/alertmsg.component';  
+import { DialogComponent } from './components/dialog/dialog.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Amplify.configure({
 //   Auth:{
@@ -34,9 +37,6 @@ import { InitialPageComponent } from './components/initial-page/initial-page.com
 
 //   }
 // })
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,26 +44,40 @@ import { InitialPageComponent } from './components/initial-page/initial-page.com
     FooterComponent,
     UserProfileComponent,
     LoginComponent,
-    InitialPageComponent, 
+    InitialPageComponent,
+    UserformComponent, 
+    AlertmsgComponent, 
+    DialogComponent,
+    
   ],
   imports: [
     BrowserModule,
-    // ngx-translate and the loader module
+    NgbPaginationModule, 
+    NgbAlertModule,
     HttpClientModule,
+    MatGoogleMapsAutocompleteModule,
+    FlexLayoutModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'gme-xxxxxxxxxxxxxx',
+      libraries: ['places']
+    }),
+    MatGoogleMapsAutocompleteModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
             useFactory: HttpLoaderFactory,
             deps: [HttpClient]
         }, 
+        
 
     }),
     AppRoutingModule,
     BrowserAnimationsModule, 
     FormsModule,
     AmplifyAuthenticatorModule,
+    NgbModule,
   ],
-  providers: [],
+  providers: [AuthenticatorService, CognitoGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
