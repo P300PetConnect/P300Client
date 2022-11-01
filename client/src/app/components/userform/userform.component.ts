@@ -6,6 +6,7 @@ import {Title} from '@angular/platform-browser';
 import {Location, Appearance, GermanAddress} from '@angular-material-extensions/google-maps-autocomplete';
 import {} from "googlemaps";
 
+
 import PlaceResult = google.maps.places.PlaceResult;
 
 @Component({
