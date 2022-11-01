@@ -29,10 +29,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {   environment} from '../environments/environment'; 
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
-import { ButtonBasicComponent } from './components/button-basic/button-basic.component';
-
-
-
 // Amplify.configure({
 //   Auth:{
 //     mandatorySignIn:true, 
@@ -53,7 +49,7 @@ import { ButtonBasicComponent } from './components/button-basic/button-basic.com
     InitialPageComponent,
     UserformComponent, 
     AlertmsgComponent, 
-    DialogComponent, ButtonBasicComponent,
+    DialogComponent,
     
   ],
   imports: [
