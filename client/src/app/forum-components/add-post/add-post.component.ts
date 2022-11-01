@@ -12,6 +12,7 @@ export class AddPostComponent implements OnInit {
   constructor(private _forumPosts : DataService) { }
 
   @Input() parent: any;
+  @Input()  boards?: any;
   selectedFiles!: any;
   tempPostItem!: PostItem;
   addMedia = false;
@@ -21,11 +22,14 @@ export class AddPostComponent implements OnInit {
 
   public AddPostNoImage(title: string, content: string,  form: HTMLFormElement)
   {
+  
+    // need board id here, passed back from wall as input
+    let id = this.boards[0][0].boardID;
+    
    
     const now = new Date().toDateString();
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,./;'[]\=-)(*&^%$#@!~`";
-
-     this.tempPostItem = new PostItem(this.makeRandom(10,possible),title, content, now ,true ,0 );
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+     this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 );
      this._forumPosts.PushPost(this.tempPostItem);
     
     // this.ngOnInit();

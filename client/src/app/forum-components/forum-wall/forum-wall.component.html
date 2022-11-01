@@ -9,9 +9,10 @@
   
   <div style="padding: 0 6%;">
     <div class = "boardIntro">
-      <div *ngFor="let b of boards">
+      <div *ngFor="let b of boards;">
         <h5>{{b[0].boardTitle}}</h5>
-        <p>{{b[0].Description}}</p>
+        <p>{{b[0].description}}</p>
+        <p class = "invis" #id>{{b[0].boardID}}</p>
       </div>
       <div style="text-align: center;">
         <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
@@ -20,7 +21,7 @@
     </div>
   </div>
   <div class="addPost" *ngIf = "showAddPost">
-    <app-add-post ></app-add-post>
+    <app-add-post [boards] = "boards"></app-add-post>
   </div>
 
 

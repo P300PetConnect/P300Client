@@ -41,10 +41,10 @@ export class CommentSectionComponent implements OnInit {
 
   PushComment(comment:string, form: HTMLFormElement)
   {
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*&^%$#@!";
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     const now = new Date().toDateString();
     //issue with the date string here, not showing in db
-    const commentItem = new CommentItem(this.docID, this.makeRandom(10,possible), "N/A",comment,0,now)
+    const commentItem = new CommentItem(this.docID, this.makeRandom(12,possible), "N/A",comment,0,now)
     
     this._forumPosts.PushCommentsToDB(commentItem);
     return false;

@@ -7,6 +7,7 @@ import { catchError, retry,tap,map } from 'rxjs/operators';
 import { CommentInterface, CommentItem } from '../forum-interfaces/comment-interface';
 import { PostItem, PostInterface } from '../forum-interfaces/post-interface';
 import { BoardInterface } from '../forum-interfaces/board-interface';
+
 /*
 Number passed back to get method to be used as query string to get board posts.
 board numbers: 
@@ -47,10 +48,10 @@ export class DataService {
     );
 }
 
-   
     PushPost(Item : PostItem)
     {
       const bodyj = (JSON.stringify(Item));
+      alert(bodyj);
       this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', bodyj).subscribe(data => {
       this.postId = data.id;
      })
@@ -98,6 +99,12 @@ export class DataService {
       let vote = JSON.stringify(Item.VoteCount);
       vote = vote.slice(6, vote.length-2);
 
+      let boardID = JSON.stringify(Item.BoardID);
+      boardID = boardID.slice(6, boardID.length-2);
+
+      let user = JSON.stringify(Item.User);
+      user = user.slice(6, user.length-2);
+
       
 
       let num = parseInt(vote) + value; 
@@ -105,6 +112,8 @@ export class DataService {
         
             "PostID": id,
             "PostTitle": title,
+            "BoardID": boardID,
+            "User": user,
             "Content": content,
             "Date": date,
             "DisplayComments": com,

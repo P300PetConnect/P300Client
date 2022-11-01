@@ -1,53 +1,37 @@
 export interface PostInterface 
 {
-    //docType: string;
-    // boardID: string;
-    // boardName: string;
-    PostID: string,
-    BoardID: string,
-    PostTitle: string,
-    VoteCount: number;
-    Date: Date;
- 
-    Content: string;
-     //Comments: string;
-     //imageLocation: string;
-    // videoLocation: string;
-     DisplayComments: boolean;
+  PostID: string;
+  PostTitle: string;
+  BoardID: string;
+  User: string
+  Content: string;
+  Date: string;
+  VoteCount: number;
+  DisplayComments: boolean;
 }
 
     export class PostItem
 {
-   // docType: string;
-   // boardID: string;
-   // boardName: string;
-   
-   PostID: string;
+  
+    PostID: string;
     PostTitle: string;
-    //BoardID: string;
+    BoardID: string;
+    User: string
     Content: string;
     Date: string;
-    //Comments: string;
-    //imageLocation: string;
-   // videoLocation: string;
     VoteCount: number;
     DisplayComments: boolean;
 
-    constructor(PostID: string, PostTitle:string, Content: string, Date: string,DisplayComments: boolean, VoteCount: number )
+    constructor(PostID: string, PostTitle:string, BoardID: string, 
+                User: string, Content: string, Date: string,
+                DisplayComments: boolean, VoteCount: number )
     {
-       // this.docType = docType;
-      //  this.boardID = boardID;
-      //  this.boardName = boardName
-     
-       this.PostID = PostID;
-      // this.BoardID = BoardID;
+        this.PostID = PostID;
         this.PostTitle = PostTitle;
+        this.BoardID = BoardID;
+        this.User = User;
         this.Content = Content;
         this.Date = Date
-       
-      //  this.Comments = comments;
-       // this.imageLocation = imageLocation;
-      //  this.videoLocation = videoLocation;
         this.DisplayComments = DisplayComments;
         this.VoteCount = VoteCount;
     }
