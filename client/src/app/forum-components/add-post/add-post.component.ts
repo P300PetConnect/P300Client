@@ -22,17 +22,24 @@ export class AddPostComponent implements OnInit {
   public AddPostNoImage(title: string, content: string,  form: HTMLFormElement)
   {
    
-    //video:string,
-    const now = new Date();
-   // const link = this.FormatVideoLink(video);
+    const now = new Date().toDateString();
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,./;'[]\=-)(*&^%$#@!~`";
 
-     this.tempPostItem = new PostItem("12134324234234",title, content, now.toString(),true ,0 );
+     this.tempPostItem = new PostItem(this.makeRandom(10,possible),title, content, now ,true ,0 );
      this._forumPosts.PushPost(this.tempPostItem);
     
     // this.ngOnInit();
-     //form.reset();
+ 
      return false;
      
+  }
+
+  public makeRandom(lengthOfCode: number, possible: string) {
+    let text = "";
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
   }
 
   ToggleAddMedia(){

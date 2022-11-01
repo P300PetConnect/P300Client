@@ -1,1 +1,40 @@
-<p>comment-section works!</p>
+<div>
+    <div class = "row">
+        <hr>
+        
+        <div class = "col commentBox" *ngIf="comments.length > 0" >
+            <div *ngFor="let c of comments"> 
+                <div class ="comment">
+                    <Button class = "btn btn-danger close">&#10005;</Button>
+                    <h5>{{c.user}}</h5>
+                    <h6>{{c.date}}</h6>
+                    <p>{{c.comment}}</p>
+               
+                <div class = "row commentFooter" >
+                    <div class = "like col">
+                        <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(c)">
+                        <p class = "beside" style="margin-right: 10px;">{{c.voteCount}}</p>
+                        <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(c)">
+                    </div>
+                   </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <form #form class="commentFooter">
+        <div class = "row" class = "commentForm">
+            <div class = "col">
+                <div class="form-group">
+                    <textarea type="content" class="form-control"  placeholder="Comment" #comment></textarea>
+                </div>
+        </div>
+        </div>
+        <div class = "row">
+            <div class="form-group">
+                <button class = "btn btn-secondary" (click)="PushComment(comment.value, form)">Post</button>
+            </div>
+        </div>
+</form>
+</div>

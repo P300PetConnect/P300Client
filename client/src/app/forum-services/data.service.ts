@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { from, Observable, throwError } from 'rxjs';
 import { catchError, retry,tap,map } from 'rxjs/operators';
+import { CommentInterface, CommentItem } from '../forum-interfaces/comment-interface';
 import { PostItem, PostInterface } from '../forum-interfaces/post-interface';
 
 @Injectable({
@@ -11,11 +12,9 @@ import { PostItem, PostInterface } from '../forum-interfaces/post-interface';
 })
 export class DataService {
   postId;
-//  <app-post [post]="d"></app-post>
-  constructor(private http: HttpClient) 
-  {
+
   
-   }
+  constructor(private http: HttpClient){}
 
 
   getForumData() : Observable<PostInterface> {
@@ -46,6 +45,41 @@ export class DataService {
      })
 
     }
+  
+    
+    
+    //   getComments(postID: string) : Observable<CommentInterface> {
+    //     return this.http.get<CommentInterface>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/comment'+"?postID=" + postID)
+    //     .pipe(
+    //       tap(data => console.log('Forum/error' + JSON.stringify(data))
+    //     ),
+    //     // catchError(this.handleError)
+      
+    //     );
+    // }
+
+    
+    PushCommentsToDB(commentItem : CommentItem)
+    {
+     
+      const bodyj = (JSON.stringify(commentItem));
+      alert(JSON.stringify(bodyj));
+      this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/comment', bodyj).subscribe(data => {
+      this.postId = data.id;
+     })
+
+    }
+
+    getComments(postID: string) : Observable<CommentInterface> {
+ 
+      return this.http.get<CommentInterface>('https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/Forum-GetComments'+"?postID=" + postID)
+      .pipe(
+        tap(data => console.log('Forum/error' + JSON.stringify(data))
+      ),
+      // catchError(this.handleError)
+    
+      );
+  }
 
     // temp workaround dynamo type issue // 
     ChangeValue(Item : PostItem, value: number, com:boolean)
@@ -83,6 +117,27 @@ export class DataService {
       this.http.put<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/update', params).subscribe(data => {
       this.postId = data.id;
      })
+    }
+
+    public ChangeComValue(item: CommentItem)
+    {
+      var params = {
+        
+        "postID": item.postID,
+        "commentID": item.commentID,
+        "user": item.user,
+        "comment": item.comment,
+       // "DisplayComments": com,
+        "voteCount": item.voteCount
+//
+    }
+    
+      const bodyj = (JSON.stringify(item));
+      this.http.put<any>(' https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/com/comment', params).subscribe(data => {
+      this.postId = data.id;
+     })
+      
+
     }
     
    

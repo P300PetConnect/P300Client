@@ -32,7 +32,8 @@
               </div>
         </div>
         <div class = "row" *ngIf="post.DisplayComments.BOOL">
-          <app-comment-section [docID]="post.id" [postData]="postData"></app-comment-section>
+          
+          <app-comment-section [docID]="post.PostID.S" [postData]="postData"></app-comment-section>
         </div> 
 
     </div>
