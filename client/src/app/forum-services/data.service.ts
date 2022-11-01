@@ -6,6 +6,20 @@ import { from, Observable, throwError } from 'rxjs';
 import { catchError, retry,tap,map } from 'rxjs/operators';
 import { CommentInterface, CommentItem } from '../forum-interfaces/comment-interface';
 import { PostItem, PostInterface } from '../forum-interfaces/post-interface';
+import { BoardInterface } from '../forum-interfaces/board-interface';
+/*
+Number passed back to get method to be used as query string to get board posts.
+board numbers: 
+
+0: All Posts 
+1: General
+2: Pet Help
+3: Walking Routes,
+4: Questions for Pet Connect
+5: Customer Reviews 
+
+*/
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,29 +27,26 @@ import { PostItem, PostInterface } from '../forum-interfaces/post-interface';
 export class DataService {
   postId;
 
-  
   constructor(private http: HttpClient){}
 
-
-  getForumData() : Observable<PostInterface> {
+  getBoardDetails(r: string) : Observable<BoardInterface> {
+    return this.http.get<BoardInterface>('https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/board'+ "?boardID="+ r)
+    .pipe(
+      tap(data => console.log('Forum/error' + JSON.stringify(data))
+    )
+   
+    );
+}
+  getForumData(r: string) : Observable<PostInterface> {
     return this.http.get<PostInterface>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/Test')
     .pipe(
       tap(data => console.log('Forum/error' + JSON.stringify(data))
-    ),
-    // catchError(this.handleError)
+    )
+   
   
     );
 }
-/**
-{
-  "PostID": "345345555555",
-  "PostTitle": "Please wordsdds",
-  "Content": "asdasdasdasd",
-  "Date": "213123123",
-  "DisplayComments": false,
-  "VoteCount": 0
-}
- */
+
    
     PushPost(Item : PostItem)
     {
@@ -45,18 +56,6 @@ export class DataService {
      })
 
     }
-  
-    
-    
-    //   getComments(postID: string) : Observable<CommentInterface> {
-    //     return this.http.get<CommentInterface>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/comment'+"?postID=" + postID)
-    //     .pipe(
-    //       tap(data => console.log('Forum/error' + JSON.stringify(data))
-    //     ),
-    //     // catchError(this.handleError)
-      
-    //     );
-    // }
 
     
     PushCommentsToDB(commentItem : CommentItem)
@@ -158,3 +157,17 @@ export class DataService {
      })
     }
      */
+
+
+    //works before adding boards 
+    /*
+    getForumData(r: number) : Observable<PostInterface> {
+    return this.http.get<PostInterface>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/Test')
+    .pipe(
+      tap(data => console.log('Forum/error' + JSON.stringify(data))
+    ),
+    // catchError(this.handleError)
+  
+    );
+}
+    */

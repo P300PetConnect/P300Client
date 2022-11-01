@@ -4,11 +4,12 @@ export interface PostInterface
     // boardID: string;
     // boardName: string;
     PostID: string,
+    BoardID: string,
     PostTitle: string,
-     VoteCount: number;
-     Date: Date;
+    VoteCount: number;
+    Date: Date;
  
-     Content: string;
+    Content: string;
      //Comments: string;
      //imageLocation: string;
     // videoLocation: string;
@@ -23,6 +24,7 @@ export interface PostInterface
    
    PostID: string;
     PostTitle: string;
+    //BoardID: string;
     Content: string;
     Date: string;
     //Comments: string;
@@ -38,6 +40,7 @@ export interface PostInterface
       //  this.boardName = boardName
      
        this.PostID = PostID;
+      // this.BoardID = BoardID;
         this.PostTitle = PostTitle;
         this.Content = Content;
         this.Date = Date
