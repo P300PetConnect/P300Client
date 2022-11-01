@@ -1,110 +1,194 @@
-<div class="container-fluid ">
-    <div class="row">
+<div class="container-fluid">
+  <div class="row">
     <div class="col-3">
-        <div class="row align-items-center text-light mainbg">
-            <div class="col-12">
-                <div class="row p-3">
-                    <div class="col-1">
-                        <span><i class="bi bi-circle"></i></span>
-                        <div class="line">
-                            
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h6>Complete your profile</h6>
-                        <p>Help tailor your Pet Connect experience</p>
-                      
-                    </div>
-                </div>
-                <div class="row p-3">
-                    <div class="col-1">
-                        <i class="bi bi-circle"></i>
-                    </div>
-                    <div class="col">
-                        <h6>Add extra details</h6>
-                        <p>Fill out some quick details</p>
-                    </div>
-                </div>
-                <div class="row p-3">
-                    <div class="col-1">
-                        <i class="bi bi-circle"></i>
-                    </div>
-                    <div class="col">
-                        <h6>Add your Pet details</h6>
-                        <p>We are almost there! </p>
-                    </div>
-                </div>
+      <div class="row align-items-center text-light mainbg">
+        <div class="col-12">
+          <div class="row p-3">
+            <div class="col-1">
+              <span><i class="{{iconStage1}}"></i></span>
+            
             </div>
+            <div class="col">
+              <h6>Complete your profile</h6>
+              <p>Help tailor your Pet Connect experience</p>
+            </div>
+          </div>
+          <div class="row p-3">
+            <div class="col-1">
+              <i class="{{iconStage2}}"></i>
+            </div>
+            <div class="col">
+              <h6>Add extra details</h6>
+              <p>Fill out some quick details</p>
+            </div>
+          </div>
+          <div class="row p-3">
+            <div class="col-1">
+              <i class="{{iconStage3}}"></i>
+            </div>
+            <div class="col">
+              <h6>Add your Pet details</h6>
+              <p>We are almost there!</p>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="line2"></div>
         </div>
+      </div>
     </div>
     <div class="col-9">
-        <div class="row align-items-center">
+    <div class="container">
+        <div *ngIf="isDisplayed" @container>
+            <div @enterExitRight *ngIf="!isDisplay">
+              <div class="form-card row">
+                <h4>
+                  Hi {{ userData?.name }},<br />
+                  Welcome back to Pet Connect
+                </h4>
+                <p>Let's get started by complet your profile</p>
+                <div>
+                  <form action="">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Surname"
+                    />
+                    <div
+                      class="container"
+                      fxLayout="column"
+                      fxLayoutAlign="center"
+                    >
+                      <div fxFlex>
+                        <agm-map
+                          [latitude]="latitude"
+                          [longitude]="longitude"
+                          [scrollwheel]="false"
+                          [zoom]="zoom"
+                        >
+                          <agm-marker
+                            [latitude]="latitude"
+                            [longitude]="longitude"
+                          ></agm-marker>
+                        </agm-map>
+                      </div>
+  
+                      <div
+                        fxFlex
+                        fxFlexAlign="center"
+                        class="autocomplete-container"
+                        [ngStyle.xs]="{ 'min-width.%': 100 }"
+                        [ngStyle.sm]="{ 'width.%': 70 }"
+                      >
+                        <mat-google-maps-autocomplete
+                          class="test"
+                          (onAutocompleteSelected)="
+                            onAutocompleteSelected($event)
+                          "
+                          (onLocationSelected)="onLocationSelected($event)"
+                          (onGermanAddressMapped)="onGermanAddressMapped($event)"
+                        >
+                        </mat-google-maps-autocomplete>
+                      </div>
+                    </div>
+                  </form>
+                  <form id="theImageForm">
+                    <label for="theImageField" id="theImageContainer">
+                      <input
+                        type="file"
+                        id="theImageField"
+                        accept="image/png, image/jpeg"
+                      />
+                      Click here to upload or <b>drag-and-drop</b> an image...
+                    </label>
+                    <p id="errorMessage" class="hide"></p>
+                    <p id="successMessage" class="hide"></p>
+                    <!-- <button class="btn btn-lg btn-primary" type="submit">Upload</button> -->
+                    <span href="" id="clearImage">or</span>
+                    <button
+                      class="text-decoration btn"
+                      type="button"
+                      (click)="skipImage()"
+                    >
+                      skip
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+                <div @enterExitRight *ngIf="isDisplay">
                 <div class="form-card row">
-                    <h4>Hi {{userData?.name}},<br> Welcome back to Pet Connect</h4>
+                    <h4>
+                      Hi {{ userData?.name}} {{userData?.name}}
+                      Welcome back to Pet Connect
+                    </h4>
                     <p>Let's get started by complet your profile</p>
-                    <form action="">
-                                    <input type="text" class="form-control" placeholder="Surname" />
-                                    <!-- <input type="text" class="form-control mt-3" placeholder="Location" /> -->
-                                    <div class="container" fxLayout="column" fxLayoutAlign="center">
-                                        <div fxFlex>
-                                          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-                                            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-                                          </agm-map>
-                                        </div>
-                                      
-
-                                        <div fxFlex fxFlexAlign="center"
-                                             class="autocomplete-container"
-                                             [ngStyle.xs]="{'min-width.%': 100}"
-                                             [ngStyle.sm]="{'width.%': 70}">
-                                          <mat-google-maps-autocomplete class="test" (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                                                                        (onLocationSelected)="onLocationSelected($event)"
-                                                                        (onGermanAddressMapped)="onGermanAddressMapped($event)">
-                                          </mat-google-maps-autocomplete>
-                                        </div>
-                                      </div>
-                    </form>
-                    <form id="theImageForm">
+                    <div>
+                      <form action="">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Phone Number"/>
+                        <div
+                          class="container"
+                          fxLayout="column"
+                          fxLayoutAlign="center">
+                          <div fxFlex>
+                            <agm-map
+                              [latitude]="latitude"
+                              [longitude]="longitude"
+                              [scrollwheel]="false"
+                              [zoom]="zoom">
+                              <agm-marker
+                                [latitude]="latitude"
+                                [longitude]="longitude"></agm-marker>
+                            </agm-map>
+                          </div>
+      
+                          <div
+                            fxFlex
+                            fxFlexAlign="center"
+                            class="autocomplete-container"
+                            [ngStyle.xs]="{ 'min-width.%': 100 }"
+                            [ngStyle.sm]="{ 'width.%': 70 }">
+                            <mat-google-maps-autocomplete
+                              class="test"
+                              (onAutocompleteSelected)="
+                                onAutocompleteSelected($event)
+                              "
+                              (onLocationSelected)="onLocationSelected($event)"
+                              (onGermanAddressMapped)="onGermanAddressMapped($event)">
+                            </mat-google-maps-autocomplete>
+                          </div>
+                        </div>
+                      </form>
+                      <form id="theImageForm">
                         <label for="theImageField" id="theImageContainer">
-                            <input type="file" id="theImageField" accept="image/png, image/jpeg">
-                            Click here to upload or <b>drag-and-drop</b> an image...
+                          <input
+                            type="file"
+                            id="theImageField"
+                            accept="image/png, image/jpeg"
+                          />
+                          Click here to upload or <b>drag-and-drop</b> an image...
                         </label>
                         <p id="errorMessage" class="hide"></p>
                         <p id="successMessage" class="hide"></p>
                         <!-- <button class="btn btn-lg btn-primary" type="submit">Upload</button> -->
                         <span href="" id="clearImage">or</span>
-                        <p class="text-decoration" >skip</p>
-                    </form>
-
-            </div>
-        </div>
+                        <button
+                          class="text-decoration btn"
+                          type="button"
+                          (click)="skipImage()">
+                          skip
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
+  </div>
 </div>
-
-<!-- <div class="container" fxLayout="column" fxLayoutAlign="center">
-
-    <div fxFlex>
-      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-      </agm-map>
-    </div>
-
-    <div fxFlex fxFlexAlign="center"
-         class="autocomplete-container"
-         [ngStyle.xs]="{'min-width.%': 100}"
-         [ngStyle.sm]="{'width.%': 70}">
-      <mat-google-maps-autocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                                    (onLocationSelected)="onLocationSelected($event)"
-                                    (onGermanAddressMapped)="onGermanAddressMapped($event)">
-      </mat-google-maps-autocomplete>
-    </div>
-
-  </div> -->
-
-
-
-
-
-</div>
-
-
+<div></div>

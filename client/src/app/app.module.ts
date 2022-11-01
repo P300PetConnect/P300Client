@@ -27,6 +27,11 @@ import { AlertmsgComponent } from './components/alertmsg/alertmsg.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {   environment} from '../environments/environment'; 
+import { MatSliderModule } from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs';
+import { ButtonBasicComponent } from './components/button-basic/button-basic.component';
+
+
 
 // Amplify.configure({
 //   Auth:{
@@ -48,7 +53,7 @@ import {   environment} from '../environments/environment';
     InitialPageComponent,
     UserformComponent, 
     AlertmsgComponent, 
-    DialogComponent,
+    DialogComponent, ButtonBasicComponent,
     
   ],
   imports: [
@@ -58,6 +63,8 @@ import {   environment} from '../environments/environment';
     HttpClientModule,
     MatGoogleMapsAutocompleteModule,
     FlexLayoutModule,
+    MatSliderModule,
+    MatTabsModule,
     MatGoogleMapsAutocompleteModule,
     TranslateModule.forRoot({
         loader: {

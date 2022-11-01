@@ -18,7 +18,10 @@ export class AppComponent {
   isAutenticated: boolean; 
   constructor(public _authenticator: AuthenticatorService,public router: Router) {
     if(_authenticator){
-
+      console.log(router); 
     }
   }
+
+
+
 }

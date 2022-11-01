@@ -1,6 +1,11 @@
 <div *ngIf="isOpen" class="container pt-5 mt-5 cognitoform">
     <amplify-authenticator [loginMechanisms]="['email']"
-    [socialProviders]="['google']">
+    [socialProviders]="['google']"
+    [signUpAttributes]="[
+    'name',
+    'email',
+    'family_name',
+    ]">
       <ng-template
         amplifySlot="authenticated"
         let-user="user"
@@ -10,6 +15,11 @@
       </ng-template>
     </amplify-authenticator>
  </div>   
+
+ <!-- 'locale', 
+ 'address', 
+ 'updated_at', 
+ 'picture' -->
 
     <!-- <div *ngIf="authenticator?.user?.attributes?.email">
           <div ></div> -->
