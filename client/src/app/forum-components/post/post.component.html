@@ -7,33 +7,32 @@
         </div>
         
           <div class = "row">
-           <h6>{{post.Date.S}}</h6>
           </div>
           <div class = "row">
-              <h5>{{post.PostTitle.S}}</h5>
+              <h5>{{post.PostTitle}}</h5>
           </div>
           <div class = "col">
-              <p>{{post.Content.S}}</p> 
+              <p>{{post.Content}}</p> 
           </div>
           
 
         </div>
         <div class = "row postFooter" >
           <div class = "like col">
-              <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(post, post.DisplayComments.BOOL)">
-              <p class = "beside" style="margin-right: 10px;">{{post.VoteCount.N}}</p>
-              <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(post, post.DisplayComments.BOOL)">
+              <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(post)">
+              <p class = "beside" style="margin-right: 10px;">{{post.VoteCount}}</p>
+              <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(post)">
          </div>
           <div class = "like col">
-          <img src="../../../assets/images/comment.png" alt="" (click)="DisplayComments(post, post.DisplayComments.BOOL)">
+          <img src="../../../assets/images/comment.png" alt="" (click)="DisplayComments(post)">
           </div>
           <div class = "like col">
               <img src="../../../assets/images/share.png" alt="">
               </div>
         </div>
-        <div class = "row" *ngIf="post.DisplayComments.BOOL">
+        <div class = "row" *ngIf="post.DisplayComments">
           
-          <app-comment-section [docID]="post.PostID.S" [postData]="postData"></app-comment-section>
+          <app-comment-section [docID]="post.PostID" [postData]="postData"></app-comment-section>
         </div> 
 
     </div>

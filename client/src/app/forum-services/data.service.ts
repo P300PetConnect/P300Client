@@ -29,7 +29,6 @@ export class DataService {
   postId;
 
   constructor(private http: HttpClient){}
-
   getBoardDetails(r: string) : Observable<BoardInterface> {
     return this.http.get<BoardInterface>('https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/board'+ "?boardID="+ r)
     .pipe(
@@ -38,8 +37,22 @@ export class DataService {
    
     );
 }
+
   getForumData(r: string) : Observable<PostInterface> {
-    return this.http.get<PostInterface>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/Test')
+    let url= '';
+    let urlAll = 'https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/Test'
+    let urlBoard = 'https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/boardposts' + '?BoardID='+ r;
+    
+          if(r == "0")
+          {
+          url = urlAll
+          }
+          else
+          {
+          url = urlBoard
+          }
+
+    return this.http.get<PostInterface>(url)
     .pipe(
       tap(data => console.log('Forum/error' + JSON.stringify(data))
     )
@@ -51,7 +64,7 @@ export class DataService {
     PushPost(Item : PostItem)
     {
       const bodyj = (JSON.stringify(Item));
-      alert(bodyj);
+     
       this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', bodyj).subscribe(data => {
       this.postId = data.id;
      })
@@ -63,7 +76,7 @@ export class DataService {
     {
      
       const bodyj = (JSON.stringify(commentItem));
-      alert(JSON.stringify(bodyj));
+    
       this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/comment', bodyj).subscribe(data => {
       this.postId = data.id;
      })
@@ -82,42 +95,41 @@ export class DataService {
   }
 
     // temp workaround dynamo type issue // 
-    ChangeValue(Item : PostItem, value: number, com:boolean)
+    ChangeValue(Item : PostItem)
     {
-      let id = JSON.stringify(Item.PostID);
-      id = id.slice(6, id.length-2);
+      // let id = JSON.stringify(Item.PostID);
+      // id = id.slice(6, id.length-2);
 
-      let title = JSON.stringify(Item.PostTitle);
-      title = title.slice(6, title.length-2);
+      // let title = JSON.stringify(Item.PostTitle);
+      // title = title.slice(6, title.length-2);
 
-      let content = JSON.stringify(Item.Content);
-      content = content.slice(6, content.length-2);
+      // let content = JSON.stringify(Item.Content);
+      // content = content.slice(6, content.length-2);
 
-      let date = JSON.stringify(Item.Date);
-      date = date.slice(6, date.length-2);
+      // let date = JSON.stringify(Item.Date);
+      // date = date.slice(6, date.length-2);
 
-      let vote = JSON.stringify(Item.VoteCount);
-      vote = vote.slice(6, vote.length-2);
+      // let vote = JSON.stringify(Item.VoteCount);
+      // vote = vote.slice(6, vote.length-2);
 
-      let boardID = JSON.stringify(Item.BoardID);
-      boardID = boardID.slice(6, boardID.length-2);
+      // let boardID = JSON.stringify(Item.BoardID);
+      // boardID = boardID.slice(6, boardID.length-2);
 
-      let user = JSON.stringify(Item.User);
-      user = user.slice(6, user.length-2);
+      // let user = JSON.stringify(Item.User);
+      // user = user.slice(6, user.length-2);
 
-      
+      //let num = parseInt(vote) + value; 
 
-      let num = parseInt(vote) + value; 
       var params = {
         
-            "PostID": id,
-            "PostTitle": title,
-            "BoardID": boardID,
-            "User": user,
-            "Content": content,
-            "Date": date,
-            "DisplayComments": com,
-            "VoteCount": num
+            "PostID": Item.PostID,
+            "PostTitle": Item.PostTitle,
+            "BoardID": Item.BoardID,
+            "User": Item.User,
+            "Content": Item.Content,
+            "Date": Item.Date,
+            "DisplayComments": Item.DisplayComments,
+            "VoteCount": Item.VoteCount,
   //
         }
         

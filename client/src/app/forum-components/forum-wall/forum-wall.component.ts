@@ -21,12 +21,13 @@ export class ForumWallComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.GetBoardDetails('0');
+    this.GetBoardDetails('1');
     
   }
 
   GetBoardDetails(r: string)
   {
+  
     this._forumPosts.getBoardDetails(r).subscribe(
       (      results: BoardInterface) => {
         this.boards= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
@@ -44,12 +45,12 @@ export class ForumWallComponent implements OnInit {
     this._forumPosts.getForumData(r).subscribe(
       (      results: PostInterface) => {
         this.posts= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-        console.log(this.posts)
+        console.log("Hereeeeeeeeeeeeee"+ this.posts)
         
       },
       (      error: any) => this.errorMessage = <any>error
     );
-    
+
     return false;
   }
   toggleAddPost(){

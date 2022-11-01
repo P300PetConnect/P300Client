@@ -14,36 +14,37 @@ export class PostComponent implements OnInit {
   constructor(private _forumPosts : DataService) { }
 
   ngOnInit(): void {
+   
   }
 
-  public AddVote(item: PostItem, com:boolean)
+  public AddVote(item: PostItem)
   {
-    let value = 1;
-    this._forumPosts.ChangeValue(item, value, com);
+   
+    item.VoteCount +=1;
+    this._forumPosts.ChangeValue(item);
   
 
   }
-  public RemoveVote(item: PostItem, com:boolean)
+  public RemoveVote(item: PostItem)
   {
-    let value = -1;
-    this._forumPosts.ChangeValue(item, value, com);
+    item.VoteCount -=1;
+    this._forumPosts.ChangeValue(item);
   }
-  DisplayComments( item: PostItem, com:boolean)
+  DisplayComments( item: PostItem)
   {
-    let value = 0;
-    var placeHolder = false;
-    if(com == true)
+
+    if(item.DisplayComments == true)
     {
-      placeHolder= false
+      item.DisplayComments= false
 
     }
     else
     {
-      placeHolder= true
+      item.DisplayComments= true
 
     }
 
-    this._forumPosts.ChangeValue(item, value, placeHolder);
+    this._forumPosts.ChangeValue(item);
     
   }
 
