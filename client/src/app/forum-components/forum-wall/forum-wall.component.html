@@ -7,22 +7,7 @@
     </div>
   </div>
   
-  <div style="padding: 0 6%;">
-    <div class = "boardIntro">
-      <div *ngFor="let b of boards;">
-        <h5>{{b[0].boardTitle}}</h5>
-        <p>{{b[0].description}}</p>
-        <p class = "invis" #id>{{b[0].boardID}}</p>
-      </div>
-      <div style="text-align: center;">
-        <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-      </div>
-     
-    </div>
-  </div>
-  <div class="addPost" *ngIf = "showAddPost">
-    <app-add-post [boards] = "boards"></app-add-post>
-  </div>
+
 
 
   
@@ -56,6 +41,22 @@
         </ul>
       </div>
     </nav>
+
+    <div style="padding: 0 6%;">
+      <div class = "boardIntro">
+        <div *ngFor="let b of boards;">
+          <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
+          <p>{{b[0].description}}</p>
+        </div>
+        <div style="text-align: center;">
+          <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
+        </div>
+       
+      </div>
+    </div>
+    <div class="addPost" *ngIf = "showAddPost">
+      <app-add-post [boards] = "boards"></app-add-post>
+    </div>
       <hr>
       <div *ngFor="let d of posts[0]">
        <app-post [post]="d" ></app-post>

@@ -19,6 +19,12 @@ board numbers:
 4: Questions for Pet Connect
 5: Customer Reviews 
 
+
+Notes for tomorrow
+- the get all method has to be changed to return the same data structure as the other method
+- update after post and comment
+- add images to S3 
+
 */
 
 
@@ -40,7 +46,7 @@ export class DataService {
 
   getForumData(r: string) : Observable<PostInterface> {
     let url= '';
-    let urlAll = 'https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/Test'
+    let urlAll = 'https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/all'
     let urlBoard = 'https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/boardposts' + '?BoardID='+ r;
     
           if(r == "0")

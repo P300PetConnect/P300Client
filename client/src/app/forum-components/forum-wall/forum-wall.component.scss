@@ -10,7 +10,12 @@
 .addPost
 {
     margin: 0 auto;
-    padding: 0 8%;
+    padding: 5%;
+    background-color: white;
+    box-shadow: 0 0 15px black;
+    margin-bottom: 5%;
+    position: relative;
+    text-align: left;
 }
 .introContain
 {
@@ -21,11 +26,19 @@
 }
 .boardIntro
 {
-    padding: 2% 10%;
-    border-bottom: 1px solid black;
    
-    margin: 0% 5% 5% 0;
+    border-bottom: 1px solid black;
+    margin: 5%;
+    background-color: white;
+    padding: 2% 7%;
+    box-shadow: 0 0 15px black;
+  
+    position: relative;
 
+}
+.boardTitle
+{
+    text-decoration: underline;
 }
 .forumNav li
 {
