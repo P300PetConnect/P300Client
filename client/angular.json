@@ -31,10 +31,14 @@
 							"node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
 							"node_modules/bootstrap/dist/css/bootstrap.min.css",
 							"node_modules/bootstrap-icons/font/bootstrap-icons.css",
-							"src/styles.scss"
+							"src/styles.scss", 
+							"node_modules/intl-tel-input/build/css/intlTelInput.css"
 						],
 						"scripts": [
-							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js", 
+							"node_modules/intl-tel-input/build/js/intlTelInput.min.js", 
+							"./node_modules/@popperjs/core/dist/umd/popper.min.js",
+							"./node_modules/bootstrap/dist/js/bootstrap.min.js"
 						]
 					},
 					"configurations": {
@@ -107,9 +111,12 @@
 						"styles": [
 							"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", 
 							"src/styles.scss",
-							"node_modules/sweetalert2/src/sweetalert2.scss"
+							"node_modules/sweetalert2/src/sweetalert2.scss", 
+							"node_modules/intl-tel-input/build/css/intlTelInput.css"
 						],
-						"scripts": []
+						"scripts": ["node_modules/intl-tel-input/build/js/intlTelInput.min.js", 
+						"./node_modules/@popperjs/core/dist/umd/popper.min.js",
+						"./node_modules/bootstrap/dist/js/bootstrap.min.js"]
 					}
 				}
 			}
