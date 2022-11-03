@@ -1,12 +1,46 @@
-<form id="theImageForm">
+<!-- <form id="theImageForm">
     <label for="theImageField" id="theImageContainer">
       <input
         type="file"
         id="theImageField"
-        accept="image/png, image/jpeg"
-      />
+        
+        accept="image/png, image/jpeg"/>
       Click here to upload or <b>drag-and-drop</b> an image...
     </label>
     <p id="errorMessage" class="hide"></p>
     <p id="successMessage" class="hide"></p>
-  </form>
+  </form> -->
+
+<div class="container pt-2 mt-2">
+  <div class="row">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-center" >
+                <div class="avatar-upload" style="width: auto;" >
+                  <div class="avatar-edit">
+                    <input
+                      type="file"
+                      id="imageUpload"
+                      accept=".png, .jpg, .jpeg"
+                      #fileInput
+                      (change)="uploadFile($event)"/>
+                  </div>
+                  <div class="avatar-preview">
+                    <div
+                      id="imagePreview"
+                      [style.backgroundImage]="'url(' + imageUrl + ')'"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+        <div class="row justify-content-center">
+            <button
+            type="submit"
+            class="btn btn btn-lg btn-block"
+            (click)="fileInput.click()">{{btnTitle}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+<!-- </div> -->
