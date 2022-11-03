@@ -29,6 +29,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {   environment} from '../environments/environment'; 
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {Ng2TelInputModule} from 'ng2-tel-input';
+import {MatSelectModule} from '@angular/material/select';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 // Amplify.configure({
 //   Auth:{
 //     mandatorySignIn:true, 
@@ -49,7 +60,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     InitialPageComponent,
     UserformComponent, 
     AlertmsgComponent, 
-    DialogComponent,
+    DialogComponent, UploadImageComponent,
     
   ],
   imports: [
@@ -58,10 +69,18 @@ import {MatTabsModule} from '@angular/material/tabs';
     NgbAlertModule,
     HttpClientModule,
     MatGoogleMapsAutocompleteModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
     FlexLayoutModule,
+    MatSelectModule,
     MatSliderModule,
     MatTabsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
+    MatListModule,
+    MatCardModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
