@@ -6,9 +6,8 @@
           <div class="row p-3">
             <div class="col-1">
               <span><i class="{{iconStage1}}"></i></span>
-            
             </div>
-            <div class="col">
+            <div class="col {{stepClass}}">
               <h6>Complete your profile</h6>
               <p>Help tailor your Pet Connect experience</p>
             </div>
@@ -17,7 +16,7 @@
             <div class="col-1">
               <i class="{{iconStage2}}"></i>
             </div>
-            <div class="col">
+            <div class="col {{stepClass2}}">
               <h6>Add extra details</h6>
               <p>Fill out some quick details</p>
             </div>
@@ -26,7 +25,7 @@
             <div class="col-1">
               <i class="{{iconStage3}}"></i>
             </div>
-            <div class="col">
+            <div class="col {{stepClass3}}">
               <h6>Add your Pet details</h6>
               <p>We are almost there!</p>
             </div>
@@ -37,8 +36,228 @@
       </div>
     </div>
     <div class="col-9">
-    <div class="container">
-        <div *ngIf="isDisplayed" @container>
+        <section class="vh-100" style="background-color: #fff;">
+          <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                  <div class="card-body p-md-5">
+                    <div class="row justify-content-center">
+                      <div class="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-12">
+                     <form class="mx-1 mx-md-4"> 
+                        <div *ngIf="isShowSection1">
+                          <div class="text-center">
+                            <h1 class="text-center fw-bold m-0 p-0">Hi Frank,</h1>
+                              <h1 class="m-0 p-0"> Welcome back to Pet Connect</h1>
+                            <h6>Let's get started by completing your profile</h6>
+                          </div>        
+                          <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                              <app-upload-image
+                               [btnTitle]="'Upload Profile Picture'"
+                               [standardImage]="profileImage"></app-upload-image>
+                               <div class="text-center mt-2 mb-4">
+                                <small>You can always change the profile picture later under Profile Settings</small>
+                               </div>
+                            </div>
+                          </div>
+                        </div>    
+                        <div *ngIf="!isShowSection1 && isShowSection2">
+                          <div class="row">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-6">
+                              <div
+                              class="container"
+                              appearance="outline"
+                              fxLayout="column"
+                              fxLayoutAlign="center">
+                              <h1>Set up your profile</h1>
+                              <div fxFlex>
+                                <agm-map
+                                  [latitude]="latitude"
+                                  [longitude]="longitude"
+                                  [scrollwheel]="false"
+                                  [zoom]="zoom">
+                                  <agm-marker
+                                    [latitude]="latitude"
+                                    [longitude]="longitude"></agm-marker>
+                                </agm-map>
+                              </div>
+                              <div
+                                fxFlex
+                                fxFlexAlign="center"
+                                class="autocomplete-container"
+                                [ngStyle.xs]="{ 'min-width.%': 100 }"
+                                [ngStyle.sm]="{ 'width.%': 70 }">
+                                <mat-google-maps-autocomplete
+                                  class="form-outline outline mb-0"
+                                  (onAutocompleteSelected)="
+                                    onAutocompleteSelected($event)"
+                                  (onLocationSelected)="onLocationSelected($event)"
+                                  (onGermanAddressMapped)="onGermanAddressMapped($event)">
+                                </mat-google-maps-autocomplete>
+                              </div>
+                            </div>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                              <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">Your Phone Number</label>
+                                <input type="phone" id="form3Example3c" class="form-control" />
+                              </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                              <div class="form-outline flex-fill mb-0">
+                                <label class="form-label" for="form3Example3c">Please check your phone</label>
+                                <input type="phone" id="form3Example3c" class="form-control" />
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div *ngIf="!isShowSection1 && !isShowSection2">
+                          <div class="text-center">
+                            <h1 class="text-center m-0 p-0">Yeah! We are Almost there </h1>
+                            <h6>We are so excied to know more about your little pet</h6>
+                          </div>        
+                          <form action="">
+                            <div class="row">
+                              <div class="form-outline col-lg-6 col-md-12 col-12">
+                                <label class="form-label"  for="petfirstname"></label>
+                                <input type="text" placeholder="Pet First Name"  id="firstname" class="form-control" />
+                                <label class="form-label" for="petsurname"></label>
+                                <input type="text" placeholder="Pet Surname" id="petsurname" class="form-control mb-2" />
+
+                                <div class="row">
+                                  <div class="col-6">
+                                    <div title="">
+                                      <label for=""></label>
+                                      <select placeholder="Pet Type" class="form-control form-control selectpicker" data-live-search="true" (change)="changeCountry($event.target.value)">
+                                            <option *ngFor ="let pettype of petList" data-live-search="true">{{pettype.name}} </option>
+                                        </select>
+                                        </div>
+                                  </div>
+                                  <div class="col-6">
+                                    <div title="">
+                                      <label for=""></label>
+                                      <select placeholder="Select" class="form-control form-control">
+                                            <option  *ngFor ="let breed of breeds"  placeholder="Breeds">{{breed}} </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row pt-4">
+                                  <div class="col-6">
+                                    <div class="row">
+                                      <div class="col-4">
+                                        <label class="form-label" for="weight">Weight</label>
+                                      </div>
+                                      <div class="col-8 text-end">
+                                        <a class="form-label" for="weight" (click)="isShow = !isShow">{{!isShow?'Switch to st,lb':'Switch to Kg'}}</a>
+                                      </div>
+                                    </div>
+                                    <div *ngIf="!isShow">
+                                      <input type="phone" id="weight" placeholder="Kilograms" class="form-control" />
+                                    </div>
+                                    <div>
+                                      <div *ngIf="isShow" class="row">
+                                        <div class="col-6">
+                                          <input type="phone" id="weight" placeholder="Stone" class="form-control" />
+                                        </div>
+                                        <div class="col-6">
+                                          <input type="phone" id="weight" placeholder="Paunds" class="form-control" />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <label></label>
+                              </div>
+                              <div class="form-outline col-lg-6 col-12">
+                                <div class="row">
+                                  <div class="col-12">
+                                  <app-upload-image [btnTitle]="'Insert Pet Image Profile'"
+                                  [standardImage]="petProfileImage"></app-upload-image>
+                                </div>
+                                <!-- <div class="col-12">
+                                  <div class="txtarea">
+                                    <textarea mdbInput class="form-control" id="textAreaExample" rows="3" placeholder="Description"></textarea>
+                                    <label mdbLabel class="form-label" for="textAreaExample"> </label>
+                                  </div>
+                                </div> -->
+                                </div>
+ 
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-6">
+                                
+                              </div>
+                              <div class="col-6">
+                             
+                              </div>
+                              <div class="row">
+                                <div class="col-6">
+                                  <mat-form-field appearance="outline">
+                                    <mat-label>Pet DOB</mat-label>
+                                    <input matInput [matDatepicker]="picker">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-6">
+                                 
+                                </div>
+                              </div>
+                            </div>
+                         </form>
+                       
+                                            <div class="text-center pt-2">
+                                              <a href="">Add pet profile later</a>
+                                            </div>
+
+                         <div class="form-check d-flex justify-content-center mb-4 mt-5 pt-3">
+                          <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                          <label class="form-check-label " for="form2Example3">
+                            I agree all statements in <a href="#!">Terms of service</a>
+                          </label>
+                        </div>
+                       </div>
+                            <div class="row">
+                              <div class="col-6" >
+                                <button *ngIf="!isShowSection1" type="button" class="btn btn-secondary btn-lg" (click)="backToPreview()"> Back to Preview Step</button>
+                              </div>
+                              <div class="col-6 d-flex justify-content-end">
+          
+                                <button type="button" class="btn btn-primary btn-lg" (click)="skipImage()">Continue to profile setup</button>
+                              </div>
+
+                          </div>
+                        </form>
+
+                      </div>
+
+                      <!-- <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-end order-1 order-lg-2">
+        
+                        <img src="https://img.freepik.com/free-vector/different-pets-concept_52683-37940.jpg?w=2000"
+                          class="img-fluid" alt="Sample image">
+        
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    <!-- <div class="container">
+        <div @container>
             <div @enterExitRight *ngIf="!isDisplay">
               <div class="form-card row">
                 <h4>
@@ -56,19 +275,16 @@
                     <div
                       class="container"
                       fxLayout="column"
-                      fxLayoutAlign="center"
-                    >
+                      fxLayoutAlign="center">
                       <div fxFlex>
                         <agm-map
                           [latitude]="latitude"
                           [longitude]="longitude"
                           [scrollwheel]="false"
-                          [zoom]="zoom"
-                        >
+                          [zoom]="zoom">
                           <agm-marker
                             [latitude]="latitude"
-                            [longitude]="longitude"
-                          ></agm-marker>
+                            [longitude]="longitude"></agm-marker>
                         </agm-map>
                       </div>
   
@@ -77,16 +293,13 @@
                         fxFlexAlign="center"
                         class="autocomplete-container"
                         [ngStyle.xs]="{ 'min-width.%': 100 }"
-                        [ngStyle.sm]="{ 'width.%': 70 }"
-                      >
+                        [ngStyle.sm]="{ 'width.%': 70 }">
                         <mat-google-maps-autocomplete
                           class="test"
                           (onAutocompleteSelected)="
-                            onAutocompleteSelected($event)
-                          "
+                            onAutocompleteSelected($event)"
                           (onLocationSelected)="onLocationSelected($event)"
-                          (onGermanAddressMapped)="onGermanAddressMapped($event)"
-                        >
+                          (onGermanAddressMapped)="onGermanAddressMapped($event)">
                         </mat-google-maps-autocomplete>
                       </div>
                     </div>
@@ -102,15 +315,11 @@
                     </label>
                     <p id="errorMessage" class="hide"></p>
                     <p id="successMessage" class="hide"></p>
-                    <!-- <button class="btn btn-lg btn-primary" type="submit">Upload</button> -->
                     <span href="" id="clearImage">or</span>
                     <button
                       class="text-decoration btn"
                       type="button"
-                      (click)="skipImage()"
-                    >
-                      skip
-                    </button>
+                      (click)="skipImage()">skip</button>
                   </form>
                 </div>
               </div>
@@ -123,72 +332,27 @@
                       Welcome back to Pet Connect
                     </h4>
                     <p>Let's get started by complet your profile</p>
-                    <div>
-                      <form action="">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Phone Number"/>
-                        <div
-                          class="container"
-                          fxLayout="column"
-                          fxLayoutAlign="center">
-                          <div fxFlex>
-                            <agm-map
-                              [latitude]="latitude"
-                              [longitude]="longitude"
-                              [scrollwheel]="false"
-                              [zoom]="zoom">
-                              <agm-marker
-                                [latitude]="latitude"
-                                [longitude]="longitude"></agm-marker>
-                            </agm-map>
-                          </div>
-      
-                          <div
-                            fxFlex
-                            fxFlexAlign="center"
-                            class="autocomplete-container"
-                            [ngStyle.xs]="{ 'min-width.%': 100 }"
-                            [ngStyle.sm]="{ 'width.%': 70 }">
-                            <mat-google-maps-autocomplete
-                              class="test"
-                              (onAutocompleteSelected)="
-                                onAutocompleteSelected($event)
-                              "
-                              (onLocationSelected)="onLocationSelected($event)"
-                              (onGermanAddressMapped)="onGermanAddressMapped($event)">
-                            </mat-google-maps-autocomplete>
-                          </div>
-                        </div>
-                      </form>
-                      <form id="theImageForm">
-                        <label for="theImageField" id="theImageContainer">
-                          <input
-                            type="file"
-                            id="theImageField"
-                            accept="image/png, image/jpeg"
-                          />
-                          Click here to upload or <b>drag-and-drop</b> an image...
-                        </label>
-                        <p id="errorMessage" class="hide"></p>
-                        <p id="successMessage" class="hide"></p>
-                        <!-- <button class="btn btn-lg btn-primary" type="submit">Upload</button> -->
-                        <span href="" id="clearImage">or</span>
-                        <button
-                          class="text-decoration btn"
-                          type="button"
-                          (click)="skipImage()">
-                          skip
-                        </button>
-                      </form>
+                    <form class="form-outline">
+                      <input type="tel" id="phone"> 
+                    </form>
+
+                    <div class="form-outline">
+                      <input type="text" id="formControlDefault" class="form-control" />
+                      <label class="form-label" for="formControlDefault">Form control default</label>
+                    </div>
+                    
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
+                      <label class="form-check-label">Receive product updates from Pet Connect </label>
+                    </div>              
+                    <div>                    
                     </div>
                   </div>
                   </div>
               </div>
           </div>
-      </div>
+      </div> -->
     </div>
   </div>
-</div>
-<div></div>
+
+  

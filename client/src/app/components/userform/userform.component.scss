@@ -74,6 +74,13 @@ h1 {
     display: none;
 }
 
+.txtarea{
+    padding: 2rem 5rem 0 5rem;
+}
+a{
+    cursor: pointer;
+}
+
 #errorMessage, #successMessage {
     font-family: "Calibri";
     font-size: 1rem;
@@ -106,15 +113,79 @@ h1 {
     opacity: .3;
 }
 
-.line{
-    display: block;
-    position: absolute;
-    left: 9.5px;
-    width: 1px;
-    top: 32px;
-    height: 52px;
-    background: #6b6b6b;
+// .line{
+//     display: block;
+//     position: absolute;
+//     padding-top: 4.5rem;
+//     margin-top: 22.2rem;
+//     margin-left: 1.7rem;
+//     left: 9.5px;
+//     width: 1px;
+//     top: 32px;
+//     height: 52px;
+//     background: #6b6b6b;
+// }
+// .line2 {
+//     display: block;
+//     position: absolute;
+//     padding-top: 4.5rem;
+//     margin-top: 27.9rem;
+//     margin-left: 1.7rem;
+//     left: 9.5px;
+//     width: 1px;
+//     top: 32px;
+//     height: 52px;
+//     background: #6b6b6b;
+// }
+h1{
+    margin: 0px 0px 20px;
+    font-size: 26px;
+    line-height: 56px;
+    font-weight: bold;
+    color: var(--headerTextColor);
+    align-self: center;
+    text-align: center;
 }
+h6{
+    margin: 0 0 16px 0;
+    font-size: 15px;
+    line-height: 23px;
+    font-weight: normal;
+    color: var(--fadedTextColor);
+}
+small{
+    color: gray;
+}
+
+    .btn-primary {
+        width: 15rem;
+        font-size: 1rem;
+        margin-top: 2rem;
+        background-color: #58cc02;
+        border: 2px solid #58a700;
+        box-shadow: #1899d6;
+        color: #fff;
+    }
+    .btn-secondary{
+        width: 15rem;
+        font-size: 1rem;
+        margin-top: 2rem;
+        background-color: #58cc0200;
+        border: 2px solid #003da7;
+        box-shadow: #1899d6;
+        color: #003da7;
+    }
+
+ .bi-check-circle-fill{
+    color:#58cc02;
+ }
+
+
+// .img-fluid{
+//     width: 25rem; 
+//     height: 25rem; 
+//     align-items: center;
+// }
 
 // agm-map {
 //     height: 300px;
@@ -144,3 +215,9 @@ mat-card {
     width: 100%;
   }
   
+  .stepNotCompleted{
+    color: #ffffff87;
+  }
+  .stepCompleted{
+    color:white
+  }

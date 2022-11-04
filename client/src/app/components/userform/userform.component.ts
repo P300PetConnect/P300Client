@@ -7,6 +7,7 @@ import {Location, Appearance, GermanAddress} from '@angular-material-extensions/
 import {} from "googlemaps";
 import { Container, EnterExitLeft, EnterExitRight } from './enterexitleft';
 import PlaceResult = google.maps.places.PlaceResult;
+import { PetService } from '../service/pet.service';
 
 @Component({
   selector: 'app-userform',
@@ -16,9 +17,7 @@ import PlaceResult = google.maps.places.PlaceResult;
 
 })
 export class UserformComponent implements OnInit {
-  
-  constructor(private _serviceGetUser: UserService, private titleService: Title) { }
-
+constructor(private _serviceGetUser: UserService, private titleService: Title, public _petService: PetService) { }
 userData?: IUser; 
 form: UntypedFormGroup; 
 public appearance = Appearance;
@@ -26,20 +25,41 @@ public zoom: number;
 public latitude: number;
 public longitude: number;
 public selectedAddress: PlaceResult;
+isShowSection1: boolean = true; 
+isShowSection2: boolean = true; 
+profileImage:string = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'; 
+petProfileImage:string = 'https://cdn4.vectorstock.com/i/1000x1000/33/03/akita-head-dog-profile-vector-24973303.jpg'; 
+
+petList: Array<any> = [
+  { name: 'Select Pet Type', breeds:['Select Breed']},
+  { name: 'Dog', breeds: ['Africanis', 'Aidi', 'Airedale Terrier','Akbash'] },
+  { name: 'Cat', breeds: ['Abyssinian Cat', 'Shorthair Cat', 'Birman'] },
+  { name: 'Bird', breeds: ['Piu'] },
+  { name: 'Fish', breeds: ['Gold'] },
+];
+breeds: Array<any>;
+changeCountry(pettype) {
+  this.breeds = this.petList.find(con => con.name == pettype).breeds;
+}
+
 
 isDisplay = false; 
 
 //ICONS
-iconChecked = "bi bi-check-circle";
+iconChecked = "bi bi-check-circle-fill";
 iconNotChecked = "bi bi-circle";
 
 iconStage1: string = this.iconNotChecked;
 iconStage2: string = this.iconNotChecked;
 iconStage3: string = this.iconNotChecked;
+stepClass:string="stepCompleted1"; 
+stepClass2:string="stepNotCompleted"; 
+stepClass3:string="stepNotCompleted"; 
+
 
   ngOnInit(): void { 
     this.getUser(); 
-
+    console.log(this._petService.getPets());
   }
 
   onAutocompleteSelected(result: PlaceResult) {
@@ -65,7 +85,25 @@ iconStage3: string = this.iconNotChecked;
       return false; 
     }
 
+    backToPreview(){
+      if(!this.isShowSection1 && this.isShowSection2){
+        this.isShowSection2 = false; 
+        this.isShowSection1 = true; 
+        if(this.iconStage2!=this.iconChecked){
+          this.stepClass2 = "stepCompleted"
+
+        }
+      }
+    }
+
  skipImage(){
+  this.stepClass2 = "stepCompleted"
+  if(!this.isShowSection1){
+    this.iconStage2 = this.iconChecked;
+    this.isShowSection2 = false; 
+    this.stepClass3="stepCompleted";
+  }
+  this.isShowSection1 = false; 
   this.isDisplay = true; 
   this.iconStage1 = this.iconChecked;
 
@@ -75,6 +113,22 @@ iconStage3: string = this.iconNotChecked;
  toggleIsDisplayed(): void {
    this.isDisplayed = !this.isDisplayed;
  }
+
+ selectedValue: string;
+ selectedCar: string;
+
+//  pettypes: PetType[] = [
+//    {value: 'cat', viewValue: 'cat'},
+//    {value: 'dog', viewValue: 'dog'},
+//    {value: 'bird', viewValue: 'bird'},
+//  ];
+
+//  breeds: Breed[] = [
+//    {value: 'volvo', viewValue: 'Volvo'},
+//    {value: 'saab', viewValue: 'Saab'},
+//    {value: 'mercedes', viewValue: 'Mercedes'},
+//  ];
+
 }
 
   
