@@ -38,6 +38,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SearchPetServiceComponent } from './components/search-pet-service/search-pet-service.component';
+// import {MatMomentDateModule} from '@angular/material/datepicker';
+import {MatMenuModule} from '@angular/material/menu';
+
+
+
 
 
 // Amplify.configure({
@@ -60,7 +68,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     InitialPageComponent,
     UserformComponent, 
     AlertmsgComponent, 
-    DialogComponent, UploadImageComponent,
+    DialogComponent, UploadImageComponent, SearchPetServiceComponent,
     
   ],
   imports: [
@@ -75,12 +83,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatSliderModule,
     MatTabsModule,
+    MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
     Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
     MatCardModule,
+    MatNativeDateModule,
+    MatMenuModule, 
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

@@ -40,6 +40,8 @@ export class UploadImageComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       reader.readAsDataURL(file);
 
+      console.log('fucker'); 
+      
       // When file uploads set it to file formcontrol
       reader.onload = () => {
         this.imageUrl = reader.result;
