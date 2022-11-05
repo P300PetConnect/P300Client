@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public authenticator: AuthenticatorService) {
+    // Amplify.configure(awsExports);
+  }
   ngOnInit(): void {
+    console.log(this.authenticator); 
+
+
   }
 
 }
