@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import Amplify, { Auth } from 'aws-amplify'; 
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import awsExports from 'src/aws-exports';
 import { UserService } from '../service/data.service';
 import { IUser } from '../interfaces/users';
+import { NavComponent } from '../nav/nav.component';
 
 
 @Component({
@@ -15,13 +16,23 @@ import { IUser } from '../interfaces/users';
 export class LoginComponent implements OnInit {
 formFields: any;
 isOpen: boolean = true; 
+@Input() isLogout: boolean; 
+@ViewChildren('field') allFields;
 
 
-  constructor(public authenticator: AuthenticatorService) {
+  constructor(private _router: Router, public authenticator: AuthenticatorService ) {
     Amplify.configure(awsExports);
   }
 
+
   ngOnInit(): void {
+    if(this.authenticator.user){
+      this._router.navigateByUrl('/user-form');
+    }
+    // if(this.isLogout){
+    //   this.authenticator.signOut(); 
+    //   console.log(this.authenticator.signOut()); 
+    // }
 
 }
 
