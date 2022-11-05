@@ -12,7 +12,7 @@ import { Data } from '@angular/router';
 export class UserProfileComponent implements OnInit {
 
   public user: IUser; 
-
+  isReadOnly?:boolean = false; 
 
   // constructor(private _userService: UserService) {
   //   this._userService.get_user().subscribe((res: IUser) => {
@@ -24,5 +24,4 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
