@@ -42,7 +42,6 @@ changeCountry(pettype) {
   this.breeds = this.petList.find(con => con.name == pettype).breeds;
 }
 
-
 isDisplay = false; 
 
 //ICONS
@@ -116,19 +115,6 @@ stepClass3:string="stepNotCompleted";
 
  selectedValue: string;
  selectedCar: string;
-
-//  pettypes: PetType[] = [
-//    {value: 'cat', viewValue: 'cat'},
-//    {value: 'dog', viewValue: 'dog'},
-//    {value: 'bird', viewValue: 'bird'},
-//  ];
-
-//  breeds: Breed[] = [
-//    {value: 'volvo', viewValue: 'Volvo'},
-//    {value: 'saab', viewValue: 'Saab'},
-//    {value: 'mercedes', viewValue: 'Mercedes'},
-//  ];
-
 }
 
   
