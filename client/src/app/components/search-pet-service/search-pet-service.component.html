@@ -13,7 +13,12 @@
 		<div class="navbar-nav ml-auto">
 			<a href="#" class="nav-item nav-link active"><i class="bi bi-house-heart-fill"></i><span>Home</span></a>
 			<a href="#" class="nav-item nav-link"><i class="bi bi-people-fill"></i><span>Forum</span></a>
-			<a mat-button [matMenuTriggerFor]="messageBox" data-toggle="dropdown" class="nav-item nav-link user-action"><i class="bi bi-chat-text-fill"></i><span>Messages</span></a>		
+			<a mat-button [matMenuTriggerFor]="messageBox" data-toggle="dropdown" 
+			   class="nav-item nav-link user-action">
+				<i class="bi bi-chat-text-fill"></i>
+				<span>Messages</span>
+				<!-- <span class="badge badge-danger badge-counter badge2">7</span> -->
+			</a>	
 			<mat-menu #messageBox="matMenu" xPosition="before">
 					 <h6 class="dropdown-header">
 						 Message Center
