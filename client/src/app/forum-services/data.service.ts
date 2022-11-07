@@ -8,6 +8,14 @@ import { CommentInterface, CommentItem } from '../forum-interfaces/comment-inter
 import { PostItem, PostInterface } from '../forum-interfaces/post-interface';
 import { BoardInterface } from '../forum-interfaces/board-interface';
 
+
+
+
+
+
+
+
+
 /*
 Number passed back to get method to be used as query string to get board posts.
 board numbers: 
@@ -77,6 +85,26 @@ export class DataService {
 
     }
 
+    public PushPostWithImage(item: PostItem, file: any)
+    {
+
+      
+      
+   
+    }
+    
+    
+
+  
+
+      
+     
+      // this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', bodyj).subscribe(data => {
+      // this.postId = data.id;
+   // })
+
+    
+
     
     PushCommentsToDB(commentItem : CommentItem)
     {
@@ -103,28 +131,6 @@ export class DataService {
     // temp workaround dynamo type issue // 
     ChangeValue(Item : PostItem)
     {
-      // let id = JSON.stringify(Item.PostID);
-      // id = id.slice(6, id.length-2);
-
-      // let title = JSON.stringify(Item.PostTitle);
-      // title = title.slice(6, title.length-2);
-
-      // let content = JSON.stringify(Item.Content);
-      // content = content.slice(6, content.length-2);
-
-      // let date = JSON.stringify(Item.Date);
-      // date = date.slice(6, date.length-2);
-
-      // let vote = JSON.stringify(Item.VoteCount);
-      // vote = vote.slice(6, vote.length-2);
-
-      // let boardID = JSON.stringify(Item.BoardID);
-      // boardID = boardID.slice(6, boardID.length-2);
-
-      // let user = JSON.stringify(Item.User);
-      // user = user.slice(6, user.length-2);
-
-      //let num = parseInt(vote) + value; 
 
       var params = {
         
@@ -158,8 +164,7 @@ export class DataService {
 //
     }
     
-      const bodyj = (JSON.stringify(item));
-      this.http.put<any>(' https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/com/comment', params).subscribe(data => {
+      this.http.put<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/com/comment', params).subscribe(data => {
       this.postId = data.id;
      })
       
@@ -184,7 +189,35 @@ export class DataService {
      })
     }
      */
+ /* 
+    public PushPostWithImage(item: PostItem, file: any)
+    {
+     // let test = environment
+      const contentType = file.type;
 
+      const params = {
+        Bucket: 'forum-images-petconnect',
+        Key:  file.name,
+        Body: file,
+        ACL: 'public-read',
+        ContentType: contentType
+    }
+    console.log(params);
+
+    this.http.post(`https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/com/image`, params)
+     .subscribe(   
+    res => {
+        // handle success            
+        //reset file input
+        console.log(res);
+    
+     },
+     err => {
+       console.log(err);
+     }        
+    );
+  }
+*/
 
     //works before adding boards 
     /*

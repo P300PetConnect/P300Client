@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { DataService } from 'src/app/forum-services/data.service';
 import { PostItem, PostInterface } from '../../forum-interfaces/post-interface';
 import { BoardInterface } from 'src/app/forum-interfaces/board-interface';
@@ -16,9 +16,12 @@ export class ForumWallComponent implements OnInit {
   postData = [] as any;
   posts?: any;
   boards?: any;
+ 
   errorMessage:any;
+
   constructor(private _forumPosts : DataService) { }
 
+  
   ngOnInit(): void 
   {
     this.GetBoardDetails('1');
@@ -45,7 +48,7 @@ export class ForumWallComponent implements OnInit {
     this._forumPosts.getForumData(r).subscribe(
       (      results: PostInterface) => {
         this.posts= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-        console.log("Hereeeeeeeeeeeeee"+ this.posts)
+       
         
       },
       (      error: any) => this.errorMessage = <any>error
@@ -56,5 +59,10 @@ export class ForumWallComponent implements OnInit {
   toggleAddPost(){
     this.showAddPost = ! this.showAddPost;
   }
+  
 
+  
+
+ 
 }
+

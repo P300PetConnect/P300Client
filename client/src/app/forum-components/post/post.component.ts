@@ -10,7 +10,7 @@ import { DataService } from 'src/app/forum-services/data.service';
 export class PostComponent implements OnInit {
 
   @Input() post: any;
-  newVoteCount?: number;
+
   constructor(private _forumPosts : DataService) { }
 
   ngOnInit(): void {

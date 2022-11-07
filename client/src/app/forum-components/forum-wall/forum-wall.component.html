@@ -55,8 +55,9 @@
       </div>
     </div>
     <div class="addPost" *ngIf = "showAddPost">
-      <app-add-post [boards] = "boards"></app-add-post>
+      <app-add-post [boards] = "boards" (GetForumPosts) = "GetForumPosts()"></app-add-post>
     </div>
+    
       <hr>
       <div *ngFor="let d of posts[0]">
        <app-post [post]="d" ></app-post>
