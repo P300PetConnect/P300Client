@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
+import { CognitoGuard } from './cognito.guard';
+import { InitialPageComponent } from './components/initial-page/initial-page.component';
+import { LoginComponent } from './components/login/login.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
 
 const routes: Routes = [
   {
@@ -10,9 +12,6 @@ const routes: Routes = [
   },
   {
     path:'home', component:AppComponent
-  },
-  {
-    path:'forum', component:ForumWallComponent
   }
  ];
 

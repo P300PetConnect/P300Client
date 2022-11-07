@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Observable } from 'rxjs';
+import { UserService } from 'src/app/components/service/data.service';
+import { IUser } from 'src/app/components/interfaces/users';
+import { Data } from '@angular/router';
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
+
 export class UserProfileComponent implements OnInit {
 
-   //initialization
-  petsitter = 
-    { id:"1",
-      name:'Anne Smith', 
-      title:"Dog care", 
-      location:"Sligo Town",
-      description:"Personalised and flexible pet care,I provide one-on-one love and attention in a cosy home space.",
-      imageUrl:"https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg", 
-      Location:"Sligo, Town", 
-      CreatedDate:"14/10/2022", 
-      skills:["Pet Walker", "Pet Minder", "Overnight", "Weekly", "Monthly"], 
-      pettype:["Dog", "Cat", "Fish"]
-    
-    } ; 
-  constructor() { }
+  public user: IUser; 
+  isReadOnly?:boolean = false; 
+
+  constructor(private _userService: UserService,  public authenticator: AuthenticatorService) {
+  //   this._userService.get_user().subscribe((res: IUser) => {
+  //     this.user= res; 
+
+  //     console.log(this.user.emailAddress)
+  //   })
+   }
+
 
   ngOnInit(): void {
+    console.log(this.authenticator.user);
   }
-
 }

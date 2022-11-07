@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@aws-amplify/ui-angular/theme.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+// @import "../node_modules/bootstrap/scss/variables";
+
+// html,
+// body {
+//   height: 100%;
+//   // padding-top: 60px;
+//   margin: 0;
+//   width: 100%;
+//   font-family: "CenturyGothic", Century Gothic, CenturyGothic, AppleGothic,
+//   sans-serif;
+// }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: default;
+}
+
+.btn-secondary{
+    background: #212529;
+    border: solid 1px #212529;
+    border-radius: 0px;
+}
+.btn-primary{
+    background: #d6dce2;
+    border: solid 1px #c7d0da;
+    border-radius: 0px;
+    color: #212529;
+    width: 10rem;
+}
+.wrapper{
+    min-height: 66vh;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
