@@ -55,6 +55,10 @@ import {MatMenuModule} from '@angular/material/menu';
 //     userPoolId:'eu-west-eu-west-1_dkqFlijuX', 
 //     userPoolWebCliendId:'1kvja59f1tthl9chrrjn59pgou', 
 //     AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
+import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
+import { AddPostComponent } from './forum-components/add-post/add-post.component';
+import { PostComponent } from './forum-components/post/post.component';
+import { CommentSectionComponent } from './forum-components/comment-section/comment-section.component';
 
 //   }
 // })
@@ -64,6 +68,10 @@ import {MatMenuModule} from '@angular/material/menu';
     NavComponent,
     FooterComponent,
     UserProfileComponent,
+    ForumWallComponent,
+    AddPostComponent,
+    PostComponent,
+    CommentSectionComponent,
     LoginComponent,
     InitialPageComponent,
     UserformComponent, 

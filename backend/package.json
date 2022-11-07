@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1234.0",
     "pg": "^8.8.0"
   },
-  "devDependencies": {},
   "description": ""
 }

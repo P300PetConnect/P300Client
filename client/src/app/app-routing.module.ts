@@ -5,19 +5,16 @@ import { CognitoGuard } from './cognito.guard';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { UserformComponent } from './components/userform/userform.component';
-import {SearchPetServiceComponent} from './components/search-pet-service/search-pet-service.component';
- authenticator: AuthenticatorService
+import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
 
 const routes: Routes = [
-  {path:'user-profile', component:UserProfileComponent},
-  {path:'', pathMatch: 'full', redirectTo:'search'},
-  { path:'initial', component:InitialPageComponent},
-  { path:'initial/login/petowner', component:LoginComponent},
-  { path:'initial/login/petminder', component:LoginComponent},
-  { path:'user-form', component:UserformComponent, },
-  { path:'login', component:LoginComponent }, 
-  {path:'search', component:SearchPetServiceComponent}
+  {
+    path:'users/:id', component:UserProfileComponent
+  },
+  {
+    //path:'home', component:AppComponent
+    path:'forum', component:ForumWallComponent
+  }
  ];
 
 @NgModule({

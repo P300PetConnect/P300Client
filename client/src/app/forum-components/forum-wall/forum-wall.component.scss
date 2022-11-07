@@ -1,0 +1,52 @@
+
+.wallContainer
+{
+    background-color: #f0f0ee;
+    text-align: center;
+    padding: 3% 8%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.addPost
+{
+    margin: 0 auto;
+    padding: 5%;
+    background-color: white;
+    box-shadow: 0 0 15px black;
+    margin-bottom: 5%;
+    position: relative;
+    text-align: left;
+}
+.introContain
+{
+    padding: 2% 10%;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin: 5% 5% 0% 0;
+}
+.boardIntro
+{
+   
+    border-bottom: 1px solid black;
+    margin: 5%;
+    background-color: white;
+    padding: 2% 7%;
+    box-shadow: 0 0 15px black;
+  
+    position: relative;
+
+}
+.boardTitle
+{
+    text-decoration: underline;
+}
+.forumNav li
+{
+    padding: 2% 0 2% 0;
+}
+.forumNav li a 
+{
+   
+    border-right: 1px solid black;
+ 
+}
