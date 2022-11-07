@@ -1,18 +1,20 @@
 <div  class = "">
-    <div class = "post row" >
+    <div class = "post row-12" >
       <div class = "col postHeader">
         <Button class = "btn btn-danger close">&#10005;</Button>
         <div *ngIf="post.imageLocation != 'N/A'" style="text-align: center;">
           <img src="{{post.imageLocation}}" class = "postImage" alt="">
         </div>
         
+        <div class = "row">
+          <h5>{{post.PostTitle}}</h5>
+        </div>
           <div class = "row">
+            <h6>{{post.Date}}</h6>
           </div>
-          <div class = "row">
-              <h5>{{post.PostTitle}}</h5>
-          </div>
-          <div class = "col">
-              <p>{{post.Content}}</p> 
+          
+          <div class = "col-12">
+           <p>{{post.Content}}</p> 
           </div>
           
 
@@ -31,7 +33,6 @@
               </div>
         </div>
         <div class = "row" *ngIf="post.DisplayComments">
-          
           <app-comment-section [docID]="post.PostID" [postData]="postData"></app-comment-section>
         </div> 
 
