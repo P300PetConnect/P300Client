@@ -75,7 +75,6 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
     LoginComponent,
     InitialPageComponent,
     UserformComponent, 
-    AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchPetServiceComponent,
     
   ],

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IUser } from '../interfaces/users';
 import { UserService } from '../service/data.service';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
