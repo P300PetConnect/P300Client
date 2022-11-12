@@ -6,6 +6,7 @@ import { InitialPageComponent } from './components/initial-page/initial-page.com
 import { LoginComponent } from './components/login/login.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
+import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path:'login', component:LoginComponent
+  },
+  {
+    path:'search', component:SearchContainerComponent
   }
  ];
 

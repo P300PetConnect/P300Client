@@ -59,6 +59,12 @@ import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.com
 import { AddPostComponent } from './forum-components/add-post/add-post.component';
 import { PostComponent } from './forum-components/post/post.component';
 import { CommentSectionComponent } from './forum-components/comment-section/comment-section.component';
+import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
+import { PopServiceCardComponent } from './search_service_components/pop-service-card/pop-service-card.component';
+import { BottomInfoComponent } from './search_service_components/bottom-info/bottom-info.component';
+import { SearchResultsComponent } from './search_service_components/search-results/search-results.component';
+
+
 
 //   }
 // })
@@ -76,7 +82,7 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
     InitialPageComponent,
     UserformComponent, 
     AlertmsgComponent, 
-    DialogComponent, UploadImageComponent, SearchPetServiceComponent,
+    DialogComponent, UploadImageComponent, SearchPetServiceComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent
     
   ],
   imports: [
