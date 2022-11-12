@@ -14,6 +14,9 @@ const routes: Routes = [
   {
     //path:'home', component:AppComponent
     path:'forum', component:ForumWallComponent
+  },
+  {
+    path:'login', component:LoginComponent
   }
  ];
 
