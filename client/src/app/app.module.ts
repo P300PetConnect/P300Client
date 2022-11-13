@@ -82,7 +82,7 @@ import { SearchResultsComponent } from './search_service_components/search-resul
     InitialPageComponent,
     UserformComponent, 
     AlertmsgComponent, 
-    DialogComponent, UploadImageComponent, SearchPetServiceComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent
+    DialogComponent, UploadImageComponent, SearchPetServiceComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent
     
   ],
   imports: [

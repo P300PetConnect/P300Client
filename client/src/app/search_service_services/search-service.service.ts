@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
+import { RdsUserServices } from '../search_service_interfaces/rds-user-services';
 import { ServiceInterface } from '../search_service_interfaces/service-interface';
 
 @Injectable({
@@ -24,5 +26,15 @@ export class SearchServiceService {
     
         return of(this.dummyBooksData);
       }
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+
+  getServiceData() : Observable<RdsUserServices> {
+    return this.http.get<RdsUserServices>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?county=Dublin&sel=c')
+    .pipe(
+      tap(data => console.log('Forum/error' + JSON.stringify(data))
+    )
+   
+    );
+}
 }

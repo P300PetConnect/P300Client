@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { RdsUserServices } from 'src/app/search_service_interfaces/rds-user-services';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-search-container',
@@ -11,6 +13,11 @@ export class SearchContainerComponent implements OnInit {
 
   services: ServiceInterface[] = [];
 
+  isSearching = false;
+  errorMessage : any;
+
+  userServices?: any;
+
   constructor(private search: SearchServiceService) { }
 
   ngOnInit(): void {
@@ -18,8 +25,28 @@ export class SearchContainerComponent implements OnInit {
       next: (value: ServiceInterface[]) => this.services = value,
       complete: () => console.log('book service finished'),
      // error: (message) => this.message = message
-
     }) 
+
+  }
+
+  GetUserServices(): boolean{
+    this.isSearching = ! this.isSearching;
+    
+    this.search.getServiceData().subscribe(
+      (      results: RdsUserServices) => {
+        this.userServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
+       
+        
+      },
+      (      error: any) => this.errorMessage = <any>error
+    );
+
+    return false;
+  }
+
+  public isSearch()
+  {
+    
 
   }
 
