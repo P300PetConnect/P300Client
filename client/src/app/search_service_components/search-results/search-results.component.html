@@ -1,1 +1,12 @@
-<p>search-results works!</p>
+<div *ngFor="let s of userServices[0]">
+    <div class = "row">
+
+        <div class = "col">
+            <p>{{s.Name}} {{s.Surname}}</p>
+        </div>
+        <div class = "col">
+            <p>{{s.Description}}</p>
+        </div>
+    </div>
+ 
+</div>

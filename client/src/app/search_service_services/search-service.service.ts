@@ -30,7 +30,7 @@ export class SearchServiceService {
 
 
   getServiceData() : Observable<RdsUserServices> {
-    return this.http.get<RdsUserServices>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?county=Dublin&sel=c')
+    return this.http.get<RdsUserServices>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?county=Dublin&sel=n')
     .pipe(
       tap(data => console.log('Forum/error' + JSON.stringify(data))
     )

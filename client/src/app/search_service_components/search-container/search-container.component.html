@@ -30,7 +30,7 @@
     </div>
 
     <div *ngIf="isSearching">
-      <app-search-results></app-search-results>
+        <app-search-results [userServices]="userServices"></app-search-results>
     </div>
    
 </div>
