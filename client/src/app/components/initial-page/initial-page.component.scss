@@ -1,109 +1,160 @@
 
 @import "../../../variables.scss";
 
-.mainbg{
-    background:$color-secondary;
-    min-height: calc(92vh - var(--onetrust-banner-height, 0px) - 50px);
-    background-image: url(https://d35aaqx5ub95lt.cloudfront.net/images/4986531ca822d48e57b4a18f40ff5172.svg);
+.main-container{
+    height: 300px;
+    // background: linear-gradient(90deg,rgba(47,45,65,.5),rgba(47,10,65,.3)),url('../../../assets/images/home/banner-home-desktop.webp');
+    background: linear-gradient(90deg,rgba(47,45,65,.5),rgba(47,10,65,.3)),url('https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    display: block;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 34rem;
+    opacity: 1;
+}
+.active{
+    background-color: #7c499d;
+    color: white !important;
+}
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+    padding-right: 0.3rem;
+}
+.nav-title{
+     color: rgba(0,0,0,.66);
+    //  font-size: 1.125rem;
+    margin-right: 5px;
+}
+.nav-host{
+    position: relative;
+    // display: flex;
+    // flex-direction: column;
+    // min-width: 10;
+    // word-wrap: break-word;
+    // background-color: #fff;
+
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+.home-search-box{
+    background-color: #fff;
+    border-radius: 0.25rem;
+    margin-bottom: 10px;
+    // position: relative;
+    z-index: 2;
+    padding: 20px 20px 8px 20px;
+}
+
+// .mainbg{
+//     background:$color-secondary;
+//     min-height: calc(92vh - var(--onetrust-banner-height, 0px) - 50px);
+//     background-image: url(https://d35aaqx5ub95lt.cloudfront.net/images/4986531ca822d48e57b4a18f40ff5172.svg);
  
-}
-.bg{
-    background:#082243;
-    padding: 1.8rem;
-}
-.images-secondary{
-    width: 10rem;
-    height: 10rem;
-    margin-top: 3rem;
-}
- .button-general {
-    align-items: center;
-    background: #fff;
-    border: 1px solid #e4e5e7;
-    border-radius: 4px;
-    justify-content: center;
-    padding: 12px 30px 12px 16px;
-    width: 100%;
-    fill: #fff;
-    color: #62646a;
-  }
-  h1{
-    color: $color-primary;
-    font-family: 3rem;
-  }
-  .sub-container {
-    padding-top: 8rem;
-  }
+// }
+// .bg{
+//     background:#082243;
+//     padding: 1.8rem;
+// }
+// .images-secondary{
+//     width: 10rem;
+//     height: 10rem;
+//     margin-top: 3rem;
+// }
+//  .button-general {
+//     align-items: center;
+//     background: #fff;
+//     border: 1px solid #e4e5e7;
+//     border-radius: 4px;
+//     justify-content: center;
+//     padding: 12px 30px 12px 16px;
+//     width: 100%;
+//     fill: #fff;
+//     color: #62646a;
+//   }
+//   h1{
+//     color: $color-primary;
+//     font-family: 3rem;
+//   }
+//   .sub-container {
+//     padding-top: 8rem;
+//   }
 
 
 
-  main{
-    background: #235390; 
-    height: 50rem;
-    background-image: url(https://d35aaqx5ub95lt.cloudfront.net/images/star-pattern.svg); 
-    text-align: center;
-    color: white;
-}
-.btn-login{
-    background-color: #58cc02;
-    border: 2px solid #58a700;
-    box-shadow: #1899d6;
-    color: #fff;
-    // padding: 10px 40px 10px 40px !important;
-    width: 18rem;
+//   main{
+//     background: #235390; 
+//     height: 50rem;
+//     background-image: url(https://d35aaqx5ub95lt.cloudfront.net/images/star-pattern.svg); 
+//     text-align: center;
+//     color: white;
+// }
+// .btn-login{
+//     background-color: #58cc02;
+//     border: 2px solid #58a700;
+//     box-shadow: #1899d6;
+//     color: #fff;
+//     // padding: 10px 40px 10px 40px !important;
+//     width: 18rem;
 
-}
-.btn-second{
-    background-color: #235390;
-    border: 2px solid #042c60;
-    box-shadow: #1899d6;
-    color: #fff;
-    width: 18rem;
-}
-// img{
-//     width: 30rem;
-//     height: 30rem;
-//     background: #547aaa;
-//     border-radius: 100px;
-//     padding: 16px;
-//     border: 6px solid #b3c5dc69;
+// }
+// .btn-second{
+//     background-color: #235390;
+//     border: 2px solid #042c60;
+//     box-shadow: #1899d6;
+//     color: #fff;
+//     width: 18rem;
+// }
+// // img{
+// //     width: 30rem;
+// //     height: 30rem;
+// //     background: #547aaa;
+// //     border-radius: 100px;
+// //     padding: 16px;
+// //     border: 6px solid #b3c5dc69;
+// // }
+
+// .form-separator {
+//   border-bottom: 1px solid #e4e5e7;
+//   height: 12px;
+//   margin: 20px 0 32px;
+//   text-align: center;
+
+//   span {
+//     background-color: #fff;
+//     color: #62646a;
+//     font-size: 14px;
+//     font-weight: 600;
+//     line-height: 24px;
+//     padding: 0 8px;
+//     text-transform: uppercase;
+//   }
 // }
 
-.form-separator {
-  border-bottom: 1px solid #e4e5e7;
-  height: 12px;
-  margin: 20px 0 32px;
-  text-align: center;
+//   .btn{
+//     padding: 10px 30px 10px 30px;
+//   }
 
-  span {
-    background-color: #fff;
-    color: #62646a;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 24px;
-    padding: 0 8px;
-    text-transform: uppercase;
-  }
-}
-
-  .btn{
-    padding: 10px 30px 10px 30px;
-  }
-
-.fill{
-    float: left;
-    height: 100%;
-    width: 100%;
-}
-input{
-    padding: 12px 30px 12px 16px;
-}
-.sm-message{
-    font-size: 0.9rem;
-    color: #62646a;
-}
-.confirm{
-    background-color: #1DBF73;
-    border: none;
-    color: #fff;
-}
+// .fill{
+//     float: left;
+//     height: 100%;
+//     width: 100%;
+// }
+// input{
+//     padding: 12px 30px 12px 16px;
+// }
+// .sm-message{
+//     font-size: 0.9rem;
+//     color: #62646a;
+// }
+// .confirm{
+//     background-color: #1DBF73;
+//     border: none;
+//     color: #fff;
+// }
