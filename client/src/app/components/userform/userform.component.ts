@@ -1,5 +1,5 @@
 import { UntypedFormGroup } from '@angular/forms';
-import { IUser } from '../interfaces/users';
+import { IUser } from '../interfaces/form';
 import { UserService } from '../service/data.service';
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Title} from '@angular/platform-browser';

@@ -26,7 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertmsgComponent } from './components/alertmsg/alertmsg.component';  
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {   environment} from '../environments/environment'; 
+import { environment} from '../environments/environment'; 
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
@@ -41,12 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SearchPetServiceComponent } from './components/search-pet-service/search-pet-service.component';
-// import {MatMomentDateModule} from '@angular/material/datepicker';
 import {MatMenuModule} from '@angular/material/menu';
-
-
-
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 // Amplify.configure({
 //   Auth:{
@@ -59,9 +55,8 @@ import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.com
 import { AddPostComponent } from './forum-components/add-post/add-post.component';
 import { PostComponent } from './forum-components/post/post.component';
 import { CommentSectionComponent } from './forum-components/comment-section/comment-section.component';
+import { SharedFormComponent } from './components/shared-form/shared-form.component';
 
-//   }
-// })
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +71,7 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
     InitialPageComponent,
     UserformComponent, 
     AlertmsgComponent, 
-    DialogComponent, UploadImageComponent, SearchPetServiceComponent,
+    DialogComponent, UploadImageComponent, SearchPetServiceComponent, SharedFormComponent,
     
   ],
   imports: [
@@ -100,6 +95,7 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
     MatCardModule,
     MatNativeDateModule,
     MatMenuModule, 
+    MatDialogModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -117,10 +113,10 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
       apiKey: environment.GOOGLE_MAPS_API_KEY,
       libraries: ['places']
     }),
-
   ],
   providers: [AuthenticatorService, CognitoGuard, UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
+  entryComponents:[SharedFormComponent], 
 })
 export class AppModule { }
 // required for AOT compilation
