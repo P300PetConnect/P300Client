@@ -1,21 +1,24 @@
-<div>
-    <div class = "row user">
-        <div class = "col">
-            <img src="{{service.Profile_Pic_URL}}" alt="">
+
+  
+<div class="result">
+    
+    <div>
+        <div class = "row">
+            <div class = "col">
+                <img  src="{{service.Profile_Pic_URL}}" alt="Card image cap">
+            </div>
+            <div class = "col">
+                <h6 style="text-decoration: underline;">{{service.Name}} {{service.Surname}}</h6>
+                
+                <hr>
+                <p>{{service.Line_2}}</p>
+                <p>{{service.County}}</p>
+            </div>
+
         </div>
 
         <div class = "col">
-            <p>{{service.Name}} {{service.Surname}}</p>
-        </div>
-       
-        <div class = "col">
-            <p>{{service.Line_1}}</p>
-            <p>{{service.Line_2}}</p>
-            <p>{{service.County}}</p>
-        </div>
-
-        <div class = "col">
-            <div class = "row">
+            <div class = "col">
                 <p>{{service.Description}}</p>
 
             </div>
@@ -29,7 +32,7 @@
                 </div>
             </div>
         </div>
-
     </div>
- 
-</div>
+  </div>
+
+

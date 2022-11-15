@@ -18,9 +18,11 @@
                     <option value="Walking">Walking</option>
                     <option value="Feeding">Feeding</option>
                     <option value="Sitting">Sitting</option>
+
                    
                   </select>
                 </div>
+              
                 <div class ="col">
                   <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
                     <input placeholder="Select date" type="date" id="example" class="form-control">
@@ -43,11 +45,7 @@
               </div>
             </div>
 
-           
-           
-
-           
-
+          
     </div>
     <div *ngIf="!isSearching">
       <h2>Popular Services</h2>
@@ -62,10 +60,10 @@
     </div>
 
     <div *ngIf="isSearching">
-      <div *ngFor="let s of userServices[0]">
-        <app-search-results [service]="s"></app-search-results>
+      <div  class = "row justify-content-md-center contain">
+        <div class = "col-3" *ngFor="let s of userServices[0]">
+            <app-search-results [service]="s"></app-search-results>
       </div>
-    
+      </div>
     </div>
-   
 </div>

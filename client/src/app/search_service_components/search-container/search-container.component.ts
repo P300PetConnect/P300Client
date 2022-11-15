@@ -16,16 +16,18 @@ export class SearchContainerComponent implements OnInit {
 
   isSearching = false;
   errorMessage : any;
-
+animal = "dog";
+service = "walking";
   userServices?: any;
 
 
   constructor(private search: SearchServiceService) { }
 
   ngOnInit(): void {
+   
     this.search.getServices().subscribe({
       next: (value: ServiceInterface[]) => this.services = value,
-      complete: () => console.log('book service finished'),
+      complete: () => console.log(''),
      // error: (message) => this.message = message
     }) 
 
@@ -33,9 +35,9 @@ export class SearchContainerComponent implements OnInit {
   }
 
   GetUserServices( animal: string, service: string): boolean{
-    this.isSearching = ! this.isSearching;
+    this.isSearching = true;
     
-  
+   
     this.search.getServiceData(animal, service).subscribe(
       (      results: RdsUserServices) => {
         this.userServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;

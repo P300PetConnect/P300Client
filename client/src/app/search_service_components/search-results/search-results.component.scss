@@ -1,20 +1,14 @@
-.user
+.result
 {
     border: 1px solid black;
-    padding: 2%;
+    margin: 2%;
+    padding: 5%;
+    box-shadow: 0 0 30px black;
+    background-color: whitesmoke;
+
 
 }
-.user .col
+.result img
 {
-    border-right: 1px solid black;
-    min-width: 200px;
-}
-.user img
-{
-    width : 60%;
-}
-.user button
-{
-    width: 50%;
-  
+  width: 100%;
 }
