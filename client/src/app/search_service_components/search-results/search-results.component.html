@@ -1,12 +1,35 @@
-<div *ngFor="let s of userServices[0]">
-    <div class = "row">
+<div>
+    <div class = "row user">
+        <div class = "col">
+            <img src="{{service.Profile_Pic_URL}}" alt="">
+        </div>
 
         <div class = "col">
-            <p>{{s.Name}} {{s.Surname}}</p>
+            <p>{{service.Name}} {{service.Surname}}</p>
         </div>
+       
         <div class = "col">
-            <p>{{s.Description}}</p>
+            <p>{{service.Line_1}}</p>
+            <p>{{service.Line_2}}</p>
+            <p>{{service.County}}</p>
         </div>
+
+        <div class = "col">
+            <div class = "row">
+                <p>{{service.Description}}</p>
+
+            </div>
+            <div class = "row justify-content-md-center">
+                <button class = "btn btn-info" (click)="getOtherServices(service.UserID)">Other services</button>
+            </div>
+
+            <div  *ngIf="service.ShowOther">
+                <div class = "row" *ngFor="let o of otherServices[0]">
+                    <app-other-services [service] = "o" [alreadyDisplayed] = "service.Description"></app-other-services>
+                </div>
+            </div>
+        </div>
+
     </div>
  
 </div>

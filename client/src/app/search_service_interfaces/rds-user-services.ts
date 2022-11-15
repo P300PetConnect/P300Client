@@ -5,8 +5,10 @@ export interface RdsUserServices
     Name: string,
     Surname: string, 
     UserID: number, 
-    Address1: string,
-    Address2: string,
+    Line_1: string,
+    Line_2: string,
     County: string,
+    Profile_Pic_URL: string,
+    ShowOther : boolean
 
 }

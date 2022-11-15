@@ -2,17 +2,49 @@
     <h2>Search by Pet Sitter Service</h2>
     <div>
         <div class = "searchBorder row ">
-            <div class = "col-8 md-10">
-              <input type="text" #SearchTerm>
-            </div>
-             
-              <div class = "buttonDiv col">
-                <button class=" btn btn-success" (click)="GetUserServices()">
-                  Search
-              </button>
+              <div class = "row">
+                <div class ="col">
+                  <select #animal class="form-select" aria-label="Default select example">
+                    <option selected disabled selected>Animal type</option>
+                  
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                  </select>
+
+                </div>
+                <div class ="col">
+                  <select #service class="form-select" aria-label="Default select example">
+                    <option selected disabled selected>Service type</option>
+                    <option value="Walking">Walking</option>
+                    <option value="Feeding">Feeding</option>
+                    <option value="Sitting">Sitting</option>
+                   
+                  </select>
+                </div>
+                <div class ="col">
+                  <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                    <input placeholder="Select date" type="date" id="example" class="form-control">
+                    <i class="fas fa-calendar input-prefix"></i>
+                  </div>
+                 
+                  
+                </div>
+
+              </div>
+              <div class = "buttonDiv row" style="margin-top: 2%;">
+                <div class = "col">
+                  <button class=" btn btn-success" (click)="GetUserServices(animal.value, service.value)">
+                    Search
+                </button>
+
+                </div>
+               
                 
               </div>
             </div>
+
+           
+           
 
            
 
@@ -30,7 +62,10 @@
     </div>
 
     <div *ngIf="isSearching">
-        <app-search-results [userServices]="userServices"></app-search-results>
+      <div *ngFor="let s of userServices[0]">
+        <app-search-results [service]="s"></app-search-results>
+      </div>
+    
     </div>
    
 </div>

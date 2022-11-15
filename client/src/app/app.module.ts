@@ -63,6 +63,7 @@ import { SearchContainerComponent } from './search_service_components/search-con
 import { PopServiceCardComponent } from './search_service_components/pop-service-card/pop-service-card.component';
 import { BottomInfoComponent } from './search_service_components/bottom-info/bottom-info.component';
 import { SearchResultsComponent } from './search_service_components/search-results/search-results.component';
+import { OtherServicesComponent } from './search_service_components/other-services/other-services.component';
 
 
 
@@ -82,7 +83,7 @@ import { SearchResultsComponent } from './search_service_components/search-resul
     InitialPageComponent,
     UserformComponent, 
     AlertmsgComponent, 
-    DialogComponent, UploadImageComponent, SearchPetServiceComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent
+    DialogComponent, UploadImageComponent, SearchPetServiceComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, OtherServicesComponent
     
   ],
   imports: [

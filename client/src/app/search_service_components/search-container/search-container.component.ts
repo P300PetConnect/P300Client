@@ -19,6 +19,7 @@ export class SearchContainerComponent implements OnInit {
 
   userServices?: any;
 
+
   constructor(private search: SearchServiceService) { }
 
   ngOnInit(): void {
@@ -31,10 +32,11 @@ export class SearchContainerComponent implements OnInit {
     console.log(this.services);
   }
 
-  GetUserServices(): boolean{
+  GetUserServices( animal: string, service: string): boolean{
     this.isSearching = ! this.isSearching;
     
-    this.search.getServiceData().subscribe(
+  
+    this.search.getServiceData(animal, service).subscribe(
       (      results: RdsUserServices) => {
         this.userServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
       },
