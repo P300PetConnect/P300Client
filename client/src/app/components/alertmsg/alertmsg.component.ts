@@ -7,19 +7,16 @@ import { Component, OnInit, Input} from '@angular/core';
   styleUrls: ['./alertmsg.component.scss']
 })
 export class AlertmsgComponent implements OnInit {
+
+  constructor() { }
+
+  @Input() alertSelected: string = ""; 
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // this.callTheMethod();
+    // console.log(this.alertSelected); 
+    // console.log('is here')
   }
-
-//   constructor() { }
-
-//   @Input() alertSelected: string = ""; 
-
-//   ngOnInit(): void {
-//     this.callTheMethod();
-//     console.log(this.alertSelected); 
-//     console.log('is here')
-//   }
 //   simpleAlert(){  
 //     Swal.fire('Hello Angular');  
 //   }  
