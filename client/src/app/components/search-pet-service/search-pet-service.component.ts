@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './search-pet-service.component.html',
   styleUrls: ['./search-pet-service.component.scss']
 })
-export class SearchPetServiceComponent implements OnInit {
+export class SearchpositivekeywordsComponent implements OnInit {
 
   constructor() { }
 
