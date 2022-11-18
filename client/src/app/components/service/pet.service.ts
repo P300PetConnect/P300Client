@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { catchError, Observable, tap, throwError } from 'rxjs'
+import { IPet } from '../interfaces/form';
 
 
 @Injectable({
@@ -7,22 +10,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class PetService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
+  private baseUriPet = `${environment.UriPet}/pet/`;
 
-  ngOnInit() {
-    this.getPets(); 
-  }
-  getPets(){
-    // API Call
-		let headers = new HttpHeaders({
-			'x-rapidapi-host': 'random-facts2.p.rapidapi.com',
-			'x-rapidapi-key': '6db1e5b532msh22c091f888769c3p1a770fjsn227e72dfcab3'
-		});
-		this.http.get<any>('dog-breeds2.p.rapidapi.com/dog_breeds', {
-				headers: headers
-			})
-			.subscribe(data => {
-				console.log('pet data',data);
-			});
+  get_petdetails(email): Observable<IPet[]> {
+    return this._http.get<IPet[]>(`${this.baseUriPet+email}`)
   }
 }
