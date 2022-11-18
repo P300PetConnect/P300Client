@@ -1,6 +1,6 @@
 import { UntypedFormGroup } from '@angular/forms';
-import { IUser } from '../interfaces/users';
-import { UserService } from '../service/data.service';
+import { IUser } from '../interfaces/form';
+import { UserService } from '../service/user.service';
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {Location, Appearance, GermanAddress} from '@angular-material-extensions/google-maps-autocomplete';
@@ -8,6 +8,7 @@ import {} from "googlemaps";
 import { Container, EnterExitLeft, EnterExitRight } from './enterexitleft';
 import PlaceResult = google.maps.places.PlaceResult;
 import { PetService } from '../service/pet.service';
+import { IPetOwner } from '../interfaces/users';
 
 @Component({
   selector: 'app-userform',
@@ -17,8 +18,8 @@ import { PetService } from '../service/pet.service';
 
 })
 export class UserformComponent implements OnInit {
-constructor(private _serviceGetUser: UserService, private titleService: Title, public _petService: PetService) { }
-userData?: IUser; 
+constructor(private _serviceGetUser: UserService, private titleService: Title, public _positivekeywords: PetService) { }
+userData?: IPetOwner; 
 form: UntypedFormGroup; 
 public appearance = Appearance;
 public zoom: number;
@@ -58,7 +59,7 @@ stepClass3:string="stepNotCompleted";
 
   ngOnInit(): void { 
     this.getUser(); 
-    console.log(this._petService.getPets());
+    // console.log(this._positivekeywords.getPets());
   }
 
   onAutocompleteSelected(result: PlaceResult) {
@@ -76,7 +77,7 @@ stepClass3:string="stepNotCompleted";
   }
 
   getUser(){
-    this._serviceGetUser.get_user("Frank@hotmail.com").subscribe(
+    this._serviceGetUser.get_petowner("frank@hotmail.com").subscribe(
       userData=>{
         this.userData = userData;
         console.log(userData)

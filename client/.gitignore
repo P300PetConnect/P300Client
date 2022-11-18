@@ -10,6 +10,8 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+node_modules
+client.zip 
 
 # IDEs and editors
 .idea/
@@ -62,3 +64,4 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
