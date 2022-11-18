@@ -21,12 +21,12 @@ import { LoginComponent } from './components/login/login.component';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { UserformComponent } from './components/userform/userform.component';
 import { CognitoGuard } from './cognito.guard';
-import { UserService } from './components/service/data.service';
+import { UserService } from './components/service/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertmsgComponent } from './components/alertmsg/alertmsg.component';  
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {   environment} from '../environments/environment'; 
+import { environment} from '../environments/environment'; 
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
@@ -40,12 +40,25 @@ import {MatListModule} from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { SearchPetServiceComponent } from './components/search-pet-service/search-pet-service.component';
-// import {MatMomentDateModule} from '@angular/material/datepicker';
+import { SearchpositivekeywordsComponent } from './components/search-pet-service/search-pet-service.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatIconModule} from '@angular/material/icon';
+import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
+import { AddPostComponent } from './forum-components/add-post/add-post.component';
+import { PostComponent } from './forum-components/post/post.component';
+import { CommentSectionComponent } from './forum-components/comment-section/comment-section.component';
+import { SharedFormComponent } from './components/shared-form/shared-form.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { PetComponent } from './components/pet/pet.component';
+import { PetSitterServiceComponent } from './components/pet-sitter-service/pet-sitter-service.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MessageAlertComponent } from './components/message-alert/message-alert.component';
 
-
-
+// import { MdInputModule } from '@angular/material';
 
 
 // Amplify.configure({
@@ -55,13 +68,9 @@ import {MatMenuModule} from '@angular/material/menu';
 //     userPoolId:'eu-west-eu-west-1_dkqFlijuX', 
 //     userPoolWebCliendId:'1kvja59f1tthl9chrrjn59pgou', 
 //     AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
-import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
-import { AddPostComponent } from './forum-components/add-post/add-post.component';
-import { PostComponent } from './forum-components/post/post.component';
-import { CommentSectionComponent } from './forum-components/comment-section/comment-section.component';
 
-//   }
-// })
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +84,9 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
     LoginComponent,
     InitialPageComponent,
     UserformComponent, 
-    DialogComponent, UploadImageComponent, SearchPetServiceComponent,
+    AlertmsgComponent, 
+    DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
+    PetSitterServiceComponent, MessageAlertComponent,
     
   ],
   imports: [
@@ -83,6 +94,7 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
     NgbPaginationModule, 
     NgbAlertModule,
     HttpClientModule,
+    MatChipsModule,
     MatGoogleMapsAutocompleteModule,
     ReactiveFormsModule,
     MatToolbarModule,
@@ -93,12 +105,17 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
+    MatExpansionModule,
     Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
+    MatIconModule,
+    MatAutocompleteModule,
     MatCardModule,
     MatNativeDateModule,
     MatMenuModule, 
+    MatDialogModule,
+    MatStepperModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -116,10 +133,10 @@ import { CommentSectionComponent } from './forum-components/comment-section/comm
       apiKey: environment.GOOGLE_MAPS_API_KEY,
       libraries: ['places']
     }),
-
   ],
   providers: [AuthenticatorService, CognitoGuard, UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
+  entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })
 export class AppModule { }
 // required for AOT compilation

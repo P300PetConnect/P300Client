@@ -5,6 +5,7 @@ import { CognitoGuard } from './cognito.guard';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserformComponent } from './components/userform/userform.component';
 import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
 
 const routes: Routes = [
@@ -12,8 +13,19 @@ const routes: Routes = [
     path:'users/:id', component:UserProfileComponent
   },
   {
-    //path:'home', component:AppComponent
-    path:'forum', component:ForumWallComponent
+        path:'forum', component:ForumWallComponent
+  }, 
+  {
+    path:'profile', component:UserProfileComponent
+  }, 
+  {
+    path:'form', component:UserformComponent
+  }, 
+  {
+    path:'initial', component:InitialPageComponent
+  }, 
+  {
+    path:'login', component:LoginComponent
   }
  ];
 
