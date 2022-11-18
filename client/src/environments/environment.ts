@@ -17,7 +17,10 @@ export const environment = {
   clientId: '1kvja59f1tthl9chrrjn59pgou',
   domainName: 'ui-61hb39v3652llcugcb7489b7e1',
   redirectDomain: 'http://localhost:4200',
-  sts_endpoint: ''
+  sts_endpoint: '',
+  UriPetSitter:'https://wwcwkeoqxa.execute-api.eu-west-1.amazonaws.com/dev', //petsitter, have to change it 
+  UriPetOwner:'https://xpsdh54gsd.execute-api.eu-west-1.amazonaws.com/dev', //petowner 
+  UriPet:'https://gl8g0i4oj1.execute-api.eu-west-1.amazonaws.com/' //Pet
 };
 
 
