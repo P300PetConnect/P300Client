@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import Amplify, { Auth } from 'aws-amplify'; 
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import awsExports from 'src/aws-exports';
-import { UserService } from '../service/data.service';
-import { IUser } from '../interfaces/users';
+import { UserService } from '../service/user.service';
+import { IUser } from '../interfaces/form';
 import { NavComponent } from '../nav/nav.component';
 
 
