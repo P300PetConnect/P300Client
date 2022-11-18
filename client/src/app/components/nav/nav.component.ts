@@ -1,5 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { UserService } from 'src/app/components/service/user.service';
+import { IUser, IPet} from 'src/app/components/interfaces/form';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { PetComponent } from '../pet/pet.component';
+import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 
 @Component({
   selector: 'app-nav',
@@ -8,20 +17,30 @@ import { AuthenticatorService } from '@aws-amplify/ui-angular';
 })
 export class NavComponent implements OnInit {
 
-  isLogout:boolean =false;  
-  constructor(public authenticator: AuthenticatorService) {
+  @Input() user: any; 
+  public pet: IPet; 
+  isLogout:boolean =false; 
+  userInfor:any; 
+
+  constructor( public authenticator: AuthenticatorService, private readonly  router: Router) {
     // Amplify.configure(awsExports);
   }
   ngOnInit(): void {
-    console.log(this.authenticator); 
 
+    console.log(this.authenticator.user); 
+    this.userInfor =this.authenticator.user;  
   }
+
+
   @Output()
   public myLogout = new EventEmitter<MouseEvent>();
 
- Logout() {
+  async Logout() {
     this.isLogout = true; 
-    console.log(this.isLogout); 
-  }
+    this.authenticator?.signOut()
+    this.router.navigate(['/login'])
+}
+
+
   
 }

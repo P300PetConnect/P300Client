@@ -16,7 +16,7 @@
 </div>
 </nav>
 
-<nav *ngIf="authenticator.user" class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav *ngIf="authenticator.user" class="navbar navbar-expand-xl navbar-dark bg-dark mb-4">
   <a href="#" class="navbar-brand"><i class="fa fa-circle"></i>Pet<b>Connect</b></a>
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
       <a href="#" class="nav-item nav-link"><i class="bi bi-people-fill"></i><span>Forum</span></a>
       <a mat-button [matMenuTriggerFor]="messageBox" data-toggle="dropdown" class="nav-item nav-link user-action">
         <i class="bi bi-chat-text-fill"></i>
-        <span>Messages</span>
+        <span>Chat</span>
         <!-- <span class="badge badge-danger badge-counter badge2">7</span> -->
       </a>
       <mat-menu #messageBox="matMenu" xPosition="before">
@@ -100,11 +100,13 @@
       </mat-menu>
       <a href="#" class="nav-item nav-link"><i class="bi bi-bell-fill"></i><span>Notifications</span></a>
       <a mat-button [matMenuTriggerFor]="beforeMenu" data-toggle="dropdown"
-        class="nav-item nav-link dropdown-toggle user-action pt-4"><img
-          src="https://i.guim.co.uk/img/media/831ce4428aa017e2d4c9f883be27baeef95ef894/312_237_6076_3644/master/6076.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=e0508d322f18a9230080d1edfd8a5315" class="avatar" alt="Avatar" />
-        Frank <b class="caret"></b></a>
+        class="nav-item nav-link dropdown-toggle user-action pt-4">
+        <!-- It is temporary  just to presentation - TO DO remove local variables  -->
+          <img *ngIf="authenticator?.user?.attributes?.name=='Father'" src="https://i.guim.co.uk/img/media/831ce4428aa017e2d4c9f883be27baeef95ef894/312_237_6076_3644/master/6076.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=e0508d322f18a9230080d1edfd8a5315" class="avatar" alt="Avatar" />
+          <img *ngIf="authenticator?.user?.attributes?.name=='Joanna'" src="https://qph.cf2.quoracdn.net/main-qimg-b0cdc0f7a6da0c3a05750b2431450e8b-lq" class="avatar" alt="Avatar" />
+          {{authenticator.user.attributes.name}}    {{authenticator.user.attributes.family_name}} <b class="caret"></b></a>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
-        <a  routerLink="user-profile" class="dropdown-item"><i class="bi bi-person pr-3 pt-2"></i>Profile</a>
+        <a  routerLink="profile" class="dropdown-item" ><i class="bi bi-person pr-3 pt-2"></i>Profile</a>
         <a href="#" class="dropdown-item"><i class="bi bi-receipt-cutoff pr-3 pt-2"></i> Billing</a>
         <a href="#" class="dropdown-item"><i class="bi bi-sliders2 pr-3 pt-2"></i>Settings</a>
         <div class="divider dropdown-divider"></div>
@@ -114,3 +116,5 @@
     </div>
   </div>
 </nav>
+
+<!-- (click)="signOut()" -->
