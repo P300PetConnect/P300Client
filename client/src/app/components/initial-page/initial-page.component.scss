@@ -49,7 +49,7 @@
     margin-bottom: 10px;
     // position: relative;
     z-index: 2;
-    margin-top: 16rem;
+    margin-top: 14rem;
     padding: 20px 20px 8px 20px;
 }
 .user-search{
@@ -70,6 +70,16 @@
         opacity: 0.75;
         font-size: 0.75em;
       }
+
+.search-btn{
+    width: 10rem;
+    height: 3.2rem;
+    margin-top: 0.3rem;
+}
+
+
+
+
 
 // .mainbg{
 //     background:$color-secondary;
@@ -177,3 +187,4 @@
 //     border: none;
 //     color: #fff;
 // }
+

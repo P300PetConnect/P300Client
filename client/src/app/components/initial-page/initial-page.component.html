@@ -42,8 +42,8 @@
                 </div>
               </div>
               <div class="row pt-4 user-search md-inline-form">
-                 <div class="example-container">
-                  <mat-form-field  appearance="outline">
+                 <div class="row">
+                  <mat-form-field  class="col-4" appearance="outline">
                     <mat-label>Insert your location</mat-label>
                     <input matInput  placeholder="N. Street ">
                   </mat-form-field>
@@ -61,7 +61,7 @@
                      </mat-datepicker>
                     </mat-form-field> -->
 
-                    <mat-form-field class="col-4 mt-1" appearance="outline">
+                    <mat-form-field class="col-3" appearance="outline">
                       <mat-label>Enter some input</mat-label>
                       <mat-date-range-input [rangePicker]="picker">
                         <input matStartDate matInput placeholder="Start date">
@@ -72,7 +72,7 @@
                     </mat-form-field>
 
                     
-                    <mat-form-field appearance="outline">
+                    <mat-form-field class="col-3" appearance="outline">
                       <mat-label>Size of your pet</mat-label>
                       <mat-select [formControl]="petsize" multiple>
                         <mat-select-trigger>
@@ -84,13 +84,16 @@
                         <mat-option *ngFor="let petsize of petsizeList" [value]="petsize">{{petsize}}</mat-option>
                       </mat-select>
                     </mat-form-field>
+                <div class="col-2">
+                     <button mat-flat-button color="primary" class="search-btn">Find a Service</button>
+                </div>
+       </div>
                     
-
                 </div>
                 </div>
               </div>
         </div>
-      </div>
+
     </div>
   </section>
 </div>

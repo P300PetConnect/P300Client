@@ -57,6 +57,7 @@ import { PetSitterServiceComponent } from './components/pet-sitter-service/pet-s
 import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MessageAlertComponent } from './components/message-alert/message-alert.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 // import { MdInputModule } from '@angular/material';
@@ -93,6 +94,7 @@ import { MessageAlertComponent } from './components/message-alert/message-alert.
   imports: [
     BrowserModule,
     NgbPaginationModule, 
+    MatButtonModule,
     NgbAlertModule,
     HttpClientModule,
     MatChipsModule,
