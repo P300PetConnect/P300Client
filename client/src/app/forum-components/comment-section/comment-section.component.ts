@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/forum-services/data.service';
 import { CommentItem, CommentInterface } from 'src/app/forum-interfaces/comment-interface';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-comment-section',
@@ -39,7 +40,7 @@ export class CommentSectionComponent implements OnInit {
     return false;
   }
 
-  PushComment(comment:string, form: HTMLFormElement)
+  PushComment(comment:string, form: NgForm)
   {
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     const now = new Date().toDateString();
@@ -47,6 +48,11 @@ export class CommentSectionComponent implements OnInit {
     const commentItem = new CommentItem(this.docID, this.makeRandom(12,possible), "N/A",comment,0,now)
     
     this._forumPosts.PushCommentsToDB(commentItem);
+
+    // refreshing comments after 200 miliseconds 
+    setTimeout(() => {
+      this.GetForumPosts()
+   }, 200);
     return false;
 
   }

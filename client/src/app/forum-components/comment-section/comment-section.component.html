@@ -7,7 +7,7 @@
                 <div class ="comment">
                     <Button class = "btn btn-danger close">&#10005;</Button>
                     <h6>{{c.date}}</h6>
-                    <h6>{{c.user}}</h6>
+                  
                     <p>{{c.comment}}</p>
                
                 <div class = "row commentFooter" >
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <form #form class="commentFooter">
+    <form #myForm = "ngForm" class="commentFooter">
         <div class = "row" class = "commentForm">
             <div class = "col">
                 <div class="form-group">
@@ -33,7 +33,7 @@
         </div>
         <div class = "row">
             <div class="form-group">
-                <button class = "btn btn-secondary" (click)="PushComment(comment.value, form)">Post</button>
+                <button class = "btn btn-secondary"  (click)="PushComment(comment.value, myForm); comment.value = '' ">Post</button>
             </div>
         </div>
 </form>

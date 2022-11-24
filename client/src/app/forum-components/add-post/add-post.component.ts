@@ -16,7 +16,8 @@ export class AddPostComponent implements OnInit {
   @Input() parent: any;
   @Input()  boards?: any;
   // tried to call get post method from child after new post created, did not work
-  //@Output() GetForumPosts = new EventEmitter();
+  @Output() GetForumPosts = new EventEmitter();
+
   selectedFiles!: any;
   tempPostItem!: PostItem;
   addMedia = false;
@@ -44,9 +45,9 @@ export class AddPostComponent implements OnInit {
     
      this._forumPosts.PushPost(this.tempPostItem);
     
-
-    // this.ngOnInit();
- 
+     setTimeout(() => {
+      this.RefreshPosts("1")
+   }, 100);
      return false;
      
   }
@@ -96,5 +97,11 @@ export class AddPostComponent implements OnInit {
     }
    
   }
+
+  public RefreshPosts(n : string)
+{
+  this.GetForumPosts.emit(n);
+
+}
 
 }

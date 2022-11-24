@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
+import { CalendarComponent } from './calendar-components/calendar/calendar.component';
 import { CognitoGuard } from './cognito.guard';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { LoginComponent } from './components/login/login.component';
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path:'search', component:SearchContainerComponent
+  },
+  {
+    path:'cal', component:CalendarComponent
   }
  ];
 
