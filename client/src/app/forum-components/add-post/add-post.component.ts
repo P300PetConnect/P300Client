@@ -16,7 +16,7 @@ export class AddPostComponent implements OnInit {
   @Input() parent: any;
   @Input()  boards?: any;
   // tried to call get post method from child after new post created, did not work
-  @Output() GetForumPosts = new EventEmitter();
+  @Output() GetForumPosts = new EventEmitter<string>();
 
   selectedFiles!: any;
   tempPostItem!: PostItem;
@@ -31,7 +31,7 @@ export class AddPostComponent implements OnInit {
    
   }
 
-  public AddPostNoImage(title: string, content: string,  form: HTMLFormElement)
+  public AddPostNoImage(title: string, content: string,  form: HTMLFormElement) : boolean
   {
   
     // need board id here, passed back from wall as input
@@ -45,10 +45,11 @@ export class AddPostComponent implements OnInit {
     
      this._forumPosts.PushPost(this.tempPostItem);
     
+     // refreshes post after post
      setTimeout(() => {
-      this.RefreshPosts("1")
+      this.RefreshPosts(id)
    }, 100);
-     return false;
+    return false;
      
   }
 
