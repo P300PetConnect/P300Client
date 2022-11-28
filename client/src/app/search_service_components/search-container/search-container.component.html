@@ -1,0 +1,67 @@
+<div class = "row justify-content-md-center" style="text-align: center;">
+    <h2>Search by Pet Sitter Service</h2>
+    <div>
+        <div class = "searchBorder row ">
+              <div class = "row">
+                <div class ="col">
+                  <select #animal class="form-select" aria-label="Default select example">
+                    <option selected disabled selected>Animal type</option>
+                  
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                  </select>
+
+                </div>
+                <div class ="col">
+                  <select #service class="form-select" aria-label="Default select example">
+                    <option selected disabled selected>Service type</option>
+                    <option value="Walking">Walking</option>
+                    <option value="Feeding">Feeding</option>
+                    <option value="Sitting">Sitting</option>
+                  </select>
+                </div>
+              
+                <div class ="col">
+                  <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                    <input placeholder="Select date" type="date" id="example" class="form-control">
+                    <i class="fas fa-calendar input-prefix"></i>
+                  </div>
+                 
+                  
+                </div>
+
+              </div>
+              <div class = "buttonDiv row" style="margin-top: 2%;">
+                <div class = "col">
+                  <button class=" btn btn-success" (click)="GetUserServices(animal.value, service.value)">
+                    Search
+                </button>
+
+                </div>
+               
+                
+              </div>
+            </div>
+
+          
+    </div>
+    <div *ngIf="!isSearching">
+      <h2>Popular Services</h2>
+      <div class = "row justify-content-md-center">
+        <div class = "col-3" *ngFor="let s of services">
+          <app-pop-service-card [service] = "s"></app-pop-service-card>
+      </div>
+      </div>
+        <div>
+          <app-bottom-info></app-bottom-info>
+        </div> 
+    </div>
+
+    <div *ngIf="isSearching">
+      <div  class = "row justify-content-md-center contain">
+        <div class = "col-3" *ngFor="let s of userServices[0]">
+            <app-search-results [service]="s"></app-search-results>
+      </div>
+      </div>
+    </div>
+</div>

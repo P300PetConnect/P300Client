@@ -70,6 +70,16 @@ import { MessageAlertComponent } from './components/message-alert/message-alert.
 //     AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
 
 
+import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
+import { PopServiceCardComponent } from './search_service_components/pop-service-card/pop-service-card.component';
+import { BottomInfoComponent } from './search_service_components/bottom-info/bottom-info.component';
+import { SearchResultsComponent } from './search_service_components/search-results/search-results.component';
+import { OtherServicesComponent } from './search_service_components/other-services/other-services.component';
+import { CalendarComponent } from './calendar-components/calendar/calendar.component';
+import { ChunkPipe } from './calender-pipe/chunk.pipe';
+
+
+
 
 @NgModule({
   declarations: [
@@ -86,7 +96,7 @@ import { MessageAlertComponent } from './components/message-alert/message-alert.
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent,
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, OtherServicesComponent, CalendarComponent, ChunkPipe
     
   ],
   imports: [

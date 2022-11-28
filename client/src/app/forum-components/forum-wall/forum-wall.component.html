@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="addPost" *ngIf = "showAddPost">
-      <app-add-post [boards] = "boards" (GetForumPosts) = "GetForumPosts()"></app-add-post>
+      <app-add-post [boards] = "boards" (GetForumPosts) = "GetForumPosts($event)"></app-add-post>
     </div>
     
       <hr>

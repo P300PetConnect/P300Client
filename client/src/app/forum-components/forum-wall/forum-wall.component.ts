@@ -43,6 +43,7 @@ export class ForumWallComponent implements OnInit {
     this.GetForumPosts(r);
   }
 
+
   GetForumPosts(r: string): boolean{
     
     this._forumPosts.getForumData(r).subscribe(
@@ -55,6 +56,12 @@ export class ForumWallComponent implements OnInit {
     );
 
     return false;
+  }
+
+  RefreshPosts(board: string)
+  {
+    this.GetForumPosts(board);
+
   }
   toggleAddPost(){
     this.showAddPost = ! this.showAddPost;
