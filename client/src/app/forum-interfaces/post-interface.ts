@@ -21,6 +21,7 @@ export interface PostInterface
     Date: string;
     VoteCount: number;
     DisplayComments: boolean;
+    
 
     constructor(PostID: string, PostTitle:string, BoardID: string, 
                 User: string, Content: string, Date: string,

@@ -52,7 +52,7 @@ export class CommentSectionComponent implements OnInit {
     // refreshing comments after 200 miliseconds 
     setTimeout(() => {
       this.GetForumPosts()
-   }, 100);
+   }, 200);
     return false;
 
   }

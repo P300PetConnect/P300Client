@@ -48,14 +48,14 @@ export class AddPostComponent implements OnInit {
      // refreshes post after post
      setTimeout(() => {
       this.RefreshPosts(id)
-   }, 100);
+   }, 200);
     return false;
      
   }
 
   AddPostWithImage(title: string, content: string, video:string, form: HTMLFormElement, image:HTMLImageElement) {
     
-  
+
     // need codition here for video link length
     let id = this.boards[0][0].boardID;
 

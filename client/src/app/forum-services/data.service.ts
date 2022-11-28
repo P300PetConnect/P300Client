@@ -35,7 +35,6 @@ Notes for tomorrow
 
 */
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -70,8 +69,6 @@ export class DataService {
     .pipe(
       tap(data => console.log('Forum/error' + JSON.stringify(data))
     )
-   
-  
     );
 }
 
@@ -85,27 +82,9 @@ export class DataService {
 
     }
 
-    public PushPostWithImage(item: PostItem, file: any)
-    {
-
-      
-      
-   
-    }
-    
-    
-
-  
-
-      
-     
       // this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', bodyj).subscribe(data => {
       // this.postId = data.id;
    // })
-
-    
-
-    
     PushCommentsToDB(commentItem : CommentItem)
     {
      
@@ -170,6 +149,37 @@ export class DataService {
       
 
     }
+
+    public PushPostWithImage(item: PostItem, file: any)
+    {
+     // let test = environment
+     // const contentType = ;
+
+     const formData = new FormData();
+    formData.append('image', file);
+
+      const params = {
+        Bucket: 'forum-images-petconnect',
+        Key:  file.name,
+        Body: formData,
+        ACL: 'public-read',
+        ContentType: file.type
+    }
+    console.log(params);
+
+    this.http.post('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/test_post/image', params)
+     .subscribe(   
+    res => {
+        // handle success            
+        //reset file input
+        console.log(res);
+    
+     },
+     err => {
+       console.log(err);
+     }        
+    );
+  }
     
    
 }
@@ -190,33 +200,7 @@ export class DataService {
     }
      */
  /* 
-    public PushPostWithImage(item: PostItem, file: any)
-    {
-     // let test = environment
-      const contentType = file.type;
-
-      const params = {
-        Bucket: 'forum-images-petconnect',
-        Key:  file.name,
-        Body: file,
-        ACL: 'public-read',
-        ContentType: contentType
-    }
-    console.log(params);
-
-    this.http.post(`https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/com/image`, params)
-     .subscribe(   
-    res => {
-        // handle success            
-        //reset file input
-        console.log(res);
-    
-     },
-     err => {
-       console.log(err);
-     }        
-    );
-  }
+   
 */
 
     //works before adding boards 
