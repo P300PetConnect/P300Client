@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarDay} from '../../calender-class/cal-class'
+import { CalendarDay, event} from '../../calender-class/cal-class'
 
 
 @Component({
@@ -16,9 +16,29 @@ export class CalendarComponent implements OnInit {
   public displayMonth: string;
   private monthIndex: number = 0;
 
+  displayEvent = false;
+
+  title = '';
+  desc = ''; 
+
+  events: event[];
+
   ngOnInit(): void {
+    this.events = [
+      new event(this.addDays(new Date, 1), "test"),
+      new event(this.addDays(new Date, 3), "Available"),
+      new event(this.addDays(new Date, 6), "Available")
+  ]
+
     this.generateCalendarDays(this.monthIndex);
+    
   }
+
+  addDays(date: Date, days: number): Date {
+    date.setDate(date.getDate() + days);
+    date.setHours(0,0,0,0);
+    return date;
+}
 
   private generateCalendarDays(monthIndex: number): void {
     // we reset our calendar
@@ -38,7 +58,31 @@ export class CalendarComponent implements OnInit {
       this.calendar.push(new CalendarDay(new Date(dateToAdd)));
       dateToAdd = new Date(dateToAdd.setDate(dateToAdd.getDate() + 1));
     }
+
+    // for (var i = 0; i < this.calendar.length; i++) {
+
+    //       for(let e = 0; e < this.events.length; e++)
+    //       {
+           
+    //         if(this.calendar[i].date == this.events[e].date)
+    //         {
+    //         this.calendar[i].hasEvent = true;
+    //         console.log('test');
+    //         }
+
+    //      }
+     
+    // }
+
+    this.calendar[41].hasEvent = true;
+    this.calendar[41].eventTitle = "Walking Jenny's Date 5km";
+    this.calendar[41].eventDescription = "Pick up: Sligo, Agreed payment £35"
+
+    this.calendar[32].hasEvent = true;
+    this.calendar[32].eventTitle = "feed Johns Dog";
+    this.calendar[32].eventDescription = "Location: Carrick, Agreed payment £15"
   }
+
 
   private getStartDateForCalendar(selectedDate: Date){
     // for the day we selected let's get the previous month last day
@@ -71,6 +115,21 @@ export class CalendarComponent implements OnInit {
   public setCurrentMonth() {
     this.monthIndex = 0;
     this.generateCalendarDays(this.monthIndex);
+  }
+
+  setValues(title: string, desc: string)
+  {
+    this.displayEvent = true;
+    this.title = title;
+    this.desc = desc;
+
+  }
+
+  test()
+  {
+    console.log(this.calendar);
+    console.log(this.events);
+
   }
 
 }

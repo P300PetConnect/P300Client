@@ -7,6 +7,9 @@ export class CalendarDay {
     public title: string;
     public isPastDate: boolean;
     public isToday: boolean;
+    public hasEvent: boolean;
+    public eventTitle: string;
+    public eventDescription : string;
   
     constructor(d: Date) {
       this.date = d;
@@ -15,4 +18,20 @@ export class CalendarDay {
     }
   
   }
+
+export class event
+{
+  public date: Date;
+  public title: string;
+
+  constructor(date: Date, title: string)
+  {
+    this.date = date;
+    this.title = title;
+
+  }
+
+}
+
+
 
