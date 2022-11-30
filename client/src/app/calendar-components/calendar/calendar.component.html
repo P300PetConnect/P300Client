@@ -1,34 +1,62 @@
+<button (click)="test()">test</button>
 <div class = "container">
 <div>
     <div>
-      {{displayMonth}}
+      <h4>{{displayMonth}}</h4>
     </div>
     <div>
-      <input type="button" (click)="setCurrentMonth()" value="today" />
-      <input type="button" (click)="decreaseMonth()" value="-" />
-      <input type="button" (click)="increaseMonth()" value="+" />
+      <input type="button" class="btn btn-success" (click)="setCurrentMonth()" value="today" style="margin-right: 2%;" />
+      <input type="button" class="btn btn-info"(click)="decreaseMonth()" value="-" style="margin-right: 0.5%;"/>
+      <input type="button" class="btn btn-info"(click)="increaseMonth()" value="+" />
     </div>
   </div>
   
-  <table class='calendar-table' *ngIf="calendar">
+  <table class='calendar-table table' *ngIf="calendar">
     <thead>
       <tr>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-        <th>Sunday</th>
+        <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th>
+        <th scope="col">Thursday</th>
+        <th scope="col">Friday</th>
+        <th scope="col">Saturday</th>
+        <th scope="col">Sunday</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of calendar | chunk: 7; let i = index">
-        <td class="calendar-day" [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}" *ngFor="let c of row; let j = index">
-          <div class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}"><strong>{{c.date.getDate()}}</strong> <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> {{monthNames[c.date.getMonth()]}}</strong></div>
-        </td>
+       
+          <td class="calendar-day"  [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}" *ngFor="let c of row; let j = index">
+            <div *ngIf="c.hasEvent" class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}">
+              <strong>
+                {{c.date.getDate()}}
+              </strong> 
+              <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
+                {{monthNames[c.date.getMonth()]}}
+              </strong>
+              <img src="../../../assets/images/brazil.png" (click)="setValues(c.eventTitle, c.eventDescription)" alt="">
+            </div>
+            
+            <div *ngIf="!c.hasEvent" class="calendar-day-header"  [ngClass]="{'blue-date': c.isToday}">
+              <strong>
+                {{c.date.getDate()}}
+              </strong> 
+              <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
+                {{monthNames[c.date.getMonth()]}}
+              </strong>
+            </div>
+          </td>
       </tr>
     </tbody>
   </table>
 
+  <div *ngIf="displayEvent" class = "modal-Background">
+    <div class="modal-content">
+        <Button class = "btn btn-danger close" (click)="displayEvent = false" >&#10005;</Button>
+        <div class = "content">
+          <h4>{{title}}</h4>
+          <p>{{desc}}</p>
+        </div>
+      </div>
+    </div>
 </div>
