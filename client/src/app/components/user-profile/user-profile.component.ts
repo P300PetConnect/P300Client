@@ -126,7 +126,7 @@ getPetDetails(){
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = false; 
     dialogConfig.width = "80%";
-    // dialogConfig.height = "94%";
+     dialogConfig.height = "93%";
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
 

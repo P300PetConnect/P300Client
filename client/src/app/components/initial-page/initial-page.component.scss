@@ -11,24 +11,72 @@
     right: 0;
     bottom: 0;
     left: 0;
+    color: white !important;
     background-position: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 34rem;
+    height: 44rem;
     opacity: 1;
+    color:black; 
+}
+
+.card-bullets-header{
+    background: #f0f1f1;
+    height: 56px;
+}
+.list-bullets{
+    border: 1px solid #f0f1f1;
+    border-radius: 0.25rem;
+    border-top: none;
+    list-style-type: none; /* Remove bullets */
+    color: rgba(0,0,0,.42);
 }
 .active{
     background-color: #7c499d;
     color: white !important;
 }
+.service{
+    color:#63656a; 
+}
+.service-description{
+        color: rgba(0,0,0,.42)
+
+}
+.container{
+    color:rgba(0,0,0,.66);
+}
+.card-strong{
+    font-size: 1.125rem;
+    color:rgba(0,0,0,.66);
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-top: 24px;
+}
+.link-more{
+        color: #028177;
+        cursor: pointer;
+        &:hover{
+            text-decoration: underline;
+            color: #028177;
+        }
+}
+.lazyloaded{
+    position: absolute;
+    top: 20px;
+    left: calc(50% - 22px);
+}
+
+.icon-sleepover{
+    width: 5rem;
+}
+
 .img-fluid{
     max-width: 100%;
     height: auto;
     padding-right: 0.3rem;
 }
 .nav-title{
-     color: rgba(0,0,0,.66);
-    //  font-size: 1.125rem;
     margin-right: 5px;
 }
 .nav-host{
@@ -51,6 +99,7 @@
     z-index: 2;
     margin-top: 14rem;
     padding: 20px 20px 8px 20px;
+    color: rgba(0,0,0,.66);
 }
 .user-search{
     color: rgba(0,0,0,.42);
@@ -75,8 +124,44 @@
     width: 10rem;
     height: 3.2rem;
     margin-top: 0.3rem;
+    background-color:#17a2b8 !important;
+    color:white; 
 }
 
+.active{
+    background-color: #7c499d !important;
+}
+
+.first-item {
+    &:hover{
+        border: 1px solid #7C489D;
+    }
+}
+.second-item {
+    &:hover{
+        border: 1px solid #F16A4A; 
+    }
+}
+.third-item {
+    &:hover{
+        border: 1px solid #0082C9; 
+    }
+}
+.fourth-item{
+    &:hover{
+        border: 1px solid #028177; 
+    }
+}
+
+.nav-item{
+    cursor: pointer;
+}
+.invitation{
+    margin-top: 3rem;
+    padding: 3rem;
+    background-color: #f0f1f1; 
+    text-align: center;
+}
 
 
 
