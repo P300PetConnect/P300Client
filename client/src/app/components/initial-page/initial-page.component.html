@@ -1,3 +1,200 @@
+<div class="home-section">
+  <section>
+    <div class="main-container">
+      <div class="home-searchbox">
+        <div class="row text-center">
+          <div class="col-2"></div>
+          <div class="col-8 pt-4 bg-white home-search-box">
+            <h1>Just the best for your pet</h1>
+            <h4>Find the service that best meets your needs</h4>
+            <h6 class="p-3 mt-3">We are + than 30.000 pet minders who facilitate the routine of those who have a pet
+            </h6>
+            <div class="row  text-left">
+              <div class="col-sm-3 col-md-3">
+                <a role="tab" class="nav-item nav-link first-item nav-host active" (click)="setSelected(1)">
+                  <picture class="align-initial">
+                    <img src="../../../assets/images/home/boarding-selected.svg" alt="Accommodation" class="img-fluid">
+                  </picture>
+                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Sleep
+                      Over</strong>
+                    <br></span>
+                </a>
+              </div>
+              <div class="col-sm-3 col-md-3">
+                <a role="tab" class="nav-item nav-link second-item nav-host" (click)="setSelected(2)">
+                  <picture class="align-initial">
+                    <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Creche</strong>
+                    <br></span>
+                </a>
+              </div>
+              <div class="col-sm-3 col-md-3">
+                <a role="tab" class="nav-item nav-link third-item nav-host">
+                  <picture class="align-initial">
+                    <img src="../../../assets/images/home/petsitting-selected.svg" alt="Home Sitter" class="img-fluid">
+                  </picture>
+                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">At my
+                      House</strong>
+                    <br></span>
+                </a>
+              </div>
+              <div class="col-sm-3 col-md-3">
+                <a role="tab" class="nav-item nav-link fourth-item nav-host">
+                  <picture class="align-initial">
+                    <img src="../../../assets/images/home/walk-selected.svg" alt="Walk" class="img-fluid"></picture>
+                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Walk</strong>
+                    <br></span>
+                </a>
+              </div>
+            </div>
+            <div class="row pt-4 user-search md-inline-form">
+              <div class="row" #sleepover>
+                <mat-form-field class="col-4" appearance="outline">
+                  <mat-label>Insert your location</mat-label>
+                  <input matInput placeholder="N. Street ">
+                </mat-form-field>
+                <mat-form-field class="col-3 col-sx-12" appearance="outline">
+                  <mat-label>Enter some input</mat-label>
+                  <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate matInput placeholder="Start date">
+                    <input matEndDate matInput placeholder="End date">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+
+                <mat-form-field class="col-3" appearance="outline">
+                  <mat-label>Size of your pet</mat-label>
+                  <mat-select [formControl]="petsize" multiple>
+                    <mat-select-trigger>
+                      {{petsize.value?.[0] || ''}}
+                      <span *ngIf="(petsize.value?.length || 0) > 1" class="example-additional-selection">
+                        (+{{(petsize.value?.length || 0) - 1}} {{petsize.value?.length === 2 ? 'other' : 'others'}})
+                      </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let petsize of petsizeList" [value]="petsize">{{petsize}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="col-2">
+                  <button mat-flat-button class="search-btn" (click)="SearchService()">Search Service</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="container mt-5">
+    <div class="row">
+      <h1 class="text-center mb-5 pb-3">See more details of our services</h1>
+      <div class="row">
+        <div class="col-6 mt-4 services">
+          <div class="row">
+            <div class="col-2">
+              <img class="icon-sleepover" src="../../../assets/images/home/boarding-selected.svg" alt="">
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <div class="col-12">
+                  <h6>Sleep Over &nbsp; <a class="link-more">see more ></a></h6>
+                </div>
+                <div class="col-12 service-description">
+                  <p>A trusted pet minder hosts your puppy for one night or more</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-2">
+              <img class="icon-sleepover" src="../../../assets/images/home/daycare-selected.svg" alt="">
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <div class="col-12">
+                  <h6>Creche &nbsp; <a class="link-more">see more ></a></h6>
+                </div>
+                <div class="col-12 service-description">
+                  <p>Fun and attention during the day at a Mindes's house </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-2">
+              <img class="icon-sleepover" src="../../../assets/images/home/petsitting-selected.svg" alt="">
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <div class="col-12">
+                  <h6>At my house<a class="link-more"> &nbsp;  see more ></a></h6>
+                </div>
+                <div class="col-12 service-description">
+                  <p>A Minder comes to your house to take care of your pet for 60 min.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-2">
+              <img class="icon-sleepover" src="../../../assets/images/home/walk-selected.svg" alt="">
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <div class="col-12">
+                  <h6>Walking &nbsp;<a class="link-more">see more ></a></h6>
+                </div>
+                <div class="col-12 service-description">
+                  <p>30 to 60 min or 2 to 5 km  walks for your dog to burn off energy</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-1">
+        </div>
+        <div class="col-md-5 xs-col-12">
+          <section class="card-bullets pt-5">
+            <div class="card-bullets-header">
+              <img data-src="../../../assets/images/home/medal-01.svg" alt="Icon Security" class="ls-is-cached lazyloaded"
+                src="../../../assets/images/home/medal-01.svg">
+              <p class="card-strong"><strong>98% of reviews are 5 stars</strong></p>
+            </div>
+            <ul class="list-bullets p-2">
+              <li>
+                <p><i class="bi bi-check-lg pr-2"></i><b> Tracking map</b> companion during your pete during the walk</p>
+              </li>
+              <li>
+                <p><i class="bi bi-check-lg pr-2"></i><b>Secure payment</b> by PetConnect<a href="/garantia-veterinaria" title="Garantia Veterinária"
+                    target="_blank"> see more details about our refund policies</a></p>
+              </li>
+              <li>
+                <p><i class="bi bi-check-lg pr-2"></i><b> Photos and news</b> for you to accompany your puppy wherever you are</p>
+              </li>
+            </ul>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-fluid invitation">
+      <div class="row">
+        <h3>+ than 1 million pets are already part of the PetConnect family</h3>
+        <h5>Create your account and bring your pet too! We can't wait to meet you
+        </h5>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
 <!-- <div id="carouselExampleIndicators"
 class="carousel slide"
 data-bs-ride="carousel">
@@ -90,7 +287,7 @@ data-bs-ride="carousel">
 
 <!-- <div class="main-container"> -->
 
-  <div class="container-fluid mainbg">
+<!-- <div class="container-fluid mainbg">
     <div class="container">
     <section class="sub-container text-center">
     </section>
@@ -100,11 +297,11 @@ data-bs-ride="carousel">
       </div>
       <div class="col-6 text-center">
         <h1>Just the best for your pet</h1>
-        <h5>Find the perfect care for your pet</h5>
-        <!-- <div class="form-separator"></div> -->
-        <div class="p-5">
-        <!-- <h3>Who are you?</h3> -->
-        <div>
+        <h5>Find the perfect care for your pet</h5> -->
+<!-- <div class="form-separator"></div> -->
+<!-- <div class="p-5"> -->
+<!-- <h3>Who are you?</h3> -->
+<!-- <div>
           <app-dialog [modalbtntitle] = "'GET STARTED'" [class] = "'loginBtn'"></app-dialog>
         </div>
         
@@ -119,8 +316,8 @@ data-bs-ride="carousel">
       </div>
     </div>
   </div>
-</div>
-<div class="container-fluid">
+</div> -->
+<!-- <div class="container-fluid">
   <div class="row bg"></div>
   <div class="container">
       <div class="row">
@@ -129,11 +326,9 @@ data-bs-ride="carousel">
       </div>
          <div class="col-8">
            <h2>The world’s #1 way to pet care</h2>
-           <p>Learning with Duolingo is fun, and research shows that it works! With quick, bite-sized lessons, you’ll earn points and unlock new levels while gaining real-world communication skills.</p>
         </div>
    </div>
 
 
   </div>
-</div>
-
+</div> -->
