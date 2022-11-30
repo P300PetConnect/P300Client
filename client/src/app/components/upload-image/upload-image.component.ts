@@ -71,7 +71,7 @@ export class UploadImageComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if(!this.registrationForm.valid) {
-      alert('Please fill all the required fields to create a super hero!')
+      alert('Please fill all the required fields to create a minder!')
       return false;
     } else {
       console.log(this.registrationForm.value)

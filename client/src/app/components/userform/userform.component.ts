@@ -77,7 +77,7 @@ stepClass3:string="stepNotCompleted";
   }
 
   getUser(){
-    this._serviceGetUser.get_petowner("frank@hotmail.com").subscribe(
+    this._serviceGetUser.get_petowner("fatherted@gmail.com").subscribe(
       userData=>{
         this.userData = userData;
         console.log(userData)
