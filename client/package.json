@@ -31,6 +31,7 @@
     "@aws-amplify/storage": "^4.5.10",
     "@aws-amplify/ui": "^4.0.0",
     "@aws-amplify/ui-angular": "^2.4.26",
+    "@aws-amplify/ui-components": "^1.9.40",
     "@fontsource/inter": "^4.5.14",
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@ngx-translate/core": "^14.0.0",
