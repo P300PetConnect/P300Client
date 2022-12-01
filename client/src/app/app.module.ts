@@ -76,7 +76,6 @@ import { SearchContainerComponent } from './search_service_components/search-con
 import { PopServiceCardComponent } from './search_service_components/pop-service-card/pop-service-card.component';
 import { BottomInfoComponent } from './search_service_components/bottom-info/bottom-info.component';
 import { SearchResultsComponent } from './search_service_components/search-results/search-results.component';
-import { OtherServicesComponent } from './search_service_components/other-services/other-services.component';
 import { CalendarComponent } from './calendar-components/calendar/calendar.component';
 import { ChunkPipe } from './calender-pipe/chunk.pipe';
 
@@ -98,7 +97,7 @@ import { ChunkPipe } from './calender-pipe/chunk.pipe';
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, OtherServicesComponent, CalendarComponent, ChunkPipe
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe
     
   ],
   imports: [

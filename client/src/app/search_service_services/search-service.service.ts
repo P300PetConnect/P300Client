@@ -29,18 +29,42 @@ export class SearchServiceService {
   constructor(private http: HttpClient) { }
 
 
-  getServiceData(animal: string, service: string) : Observable<RdsUserServices> {
+  getServiceData(animal: string, location: string, service: string) : Observable<RdsUserServices> {
 
+    //make sure first letter is capital to match DB. 
+    location = location.charAt(0).toUpperCase() + location.slice(1);
 
     let query = '';
-    if(animal == "Animal type" && service == "Service type")
+    // condition for empty //
+    if(animal == '' && service == '' && location == '')
     {
-      query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?&sel=n'
+      query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?sel=n'
 
     }
-    else
+    // condition for just animal //
+    else if(animal != '' && service == '' && location == '')
     {
-      query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?&sel=k&animal=' + animal + '&service=' + service
+      query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?sel=a&animal=' + animal
+
+    }
+
+    //condition for just location //
+    else if(location != '' && animal == '' && service == '')
+    {
+      query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?sel=l&location=' + location
+
+    }
+
+    else if(animal != '' && service != '' && location == '' )
+    {
+      query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?sel=k&animal=' + animal + '&service=' + service
+
+    }
+
+   // condition if all are selected// 
+    else if(animal != '' && service != '' && location != '' )
+    {
+      query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?sel=all&animal=' + animal + '&service=' + service + '&location=' + location
 
     }
 
