@@ -2,6 +2,7 @@
   <section>
     <div class="main-container">
       <div class="home-searchbox">
+
         <div class="row text-center">
           <div class="col-2"></div>
           <div class="col-8 pt-4 bg-white home-search-box">
@@ -11,7 +12,7 @@
             </h6>
             <div class="row  text-left">
               <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link first-item nav-host active" (click)="setSelected(1)">
+                <a role="tab" class="nav-item nav-link first-item nav-host nav nav-primary" [class.active]="isActive" (click)="setSelected(1)">
                   <picture class="align-initial">
                     <img src="../../../assets/images/home/boarding-selected.svg" alt="Accommodation" class="img-fluid">
                   </picture>
@@ -21,7 +22,7 @@
                 </a>
               </div>
               <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link second-item nav-host" (click)="setSelected(2)">
+                <a role="tab" class="nav-item nav-link second-item nav-host" [class.active]="secondIsActive" (click)="setSelected(2)">
                   <picture class="align-initial">
                     <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
                   </picture>
@@ -30,7 +31,7 @@
                 </a>
               </div>
               <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link third-item nav-host">
+                <a role="tab" class="nav-item nav-link third-item nav-host" [class.active]="thirdIsActive" (click)="setSelected(3)">
                   <picture class="align-initial">
                     <img src="../../../assets/images/home/petsitting-selected.svg" alt="Home Sitter" class="img-fluid">
                   </picture>
@@ -40,7 +41,7 @@
                 </a>
               </div>
               <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link fourth-item nav-host">
+                <a role="tab" class="nav-item nav-link fourth-item nav-host" [class.active]="fourthIsActive" (click)="setSelected(4)">
                   <picture class="align-initial">
                     <img src="../../../assets/images/home/walk-selected.svg" alt="Walk" class="img-fluid"></picture>
                   <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Walk</strong>
@@ -118,7 +119,7 @@
                   <h6>Creche &nbsp; <a class="link-more">see more ></a></h6>
                 </div>
                 <div class="col-12 service-description">
-                  <p>Fun and attention during the day at a Mindes's house </p>
+                  <p>Fun and attention during the day at a Minder's house </p>
                 </div>
               </div>
             </div>
