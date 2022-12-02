@@ -1,8 +1,11 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { FormControl } from '@angular/forms';
-
-
+import { Router } from '@angular/router';
+interface petCategory {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-initial-page',
   templateUrl: './initial-page.component.html',
@@ -24,10 +27,19 @@ petsizeList: string[] = ['up to 5 kg', '5-10 kg', '10-20 kg', '20-40 kg', '+40kg
 @ViewChild('sleepover') sleepover: ElementRef;
 @ViewChild('creche') creche: ElementRef;
 
+category= new FormControl('');
+
+petCategory: petCategory[] = [
+  {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Dog'},
+  {value: '../../../assets/images/home/walk-selected.svg', viewValue: 'Cat'},
+  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Bird'},
+  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Fish'},
+
+];
 
 images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService, private _router: Router) { }
 
   displayAlert: boolean = false; 
   selectedIndex: number = null;
@@ -66,6 +78,8 @@ else if(id==4){
 
 
   SearchService(){
+    console.log('find')
+    this._router.navigateByUrl('search2')
     this.sleepover.nativeElement.hidden; 
   }
   getStarted(){

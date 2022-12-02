@@ -44,10 +44,22 @@ export class SearchVersion2Component implements OnInit {
     {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Fish'},
 
   ];
+  lat = 54.2792;
+  lng = -8.471640;
+  isMapsDisplay: boolean = false; 
+
   constructor() { }
 
   ngOnInit(): void {
   }
+  changed(){
+    if(this.isMapsDisplay){
+      this.isMapsDisplay = false; 
+    }
+    else{
+      this.isMapsDisplay = true; 
+    }
 
+  }
   
 }

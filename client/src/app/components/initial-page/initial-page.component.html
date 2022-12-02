@@ -16,27 +16,7 @@
                   <picture class="align-initial">
                     <img src="../../../assets/images/home/boarding-selected.svg" alt="Accommodation" class="img-fluid">
                   </picture>
-                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Sleep
-                      Over</strong>
-                    <br></span>
-                </a>
-              </div>
-              <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link second-item nav-host" [class.active]="secondIsActive" (click)="setSelected(2)">
-                  <picture class="align-initial">
-                    <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                  </picture>
-                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Creche</strong>
-                    <br></span>
-                </a>
-              </div>
-              <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link third-item nav-host" [class.active]="thirdIsActive" (click)="setSelected(3)">
-                  <picture class="align-initial">
-                    <img src="../../../assets/images/home/petsitting-selected.svg" alt="Home Sitter" class="img-fluid">
-                  </picture>
-                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">At my
-                      House</strong>
+                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Accommodation</strong>
                     <br></span>
                 </a>
               </div>
@@ -48,6 +28,25 @@
                     <br></span>
                 </a>
               </div>
+              <div class="col-sm-3 col-md-3">
+                <a role="tab" class="nav-item nav-link second-item nav-host" [class.active]="secondIsActive" (click)="setSelected(2)">
+                  <picture class="align-initial">
+                    <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Mind Pet</strong>
+                    <br></span>
+                </a>
+              </div>
+              <div class="col-sm-3 col-md-3">
+                <a role="tab" class="nav-item nav-link third-item nav-host" [class.active]="thirdIsActive" (click)="setSelected(3)">
+                  <picture class="align-initial">
+                    <img src="../../../assets/images/home/petsitting-selected.svg" alt="Home Sitter" class="img-fluid">
+                  </picture>
+                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Just Feed</strong>
+                    <br></span>
+                </a>
+              </div>
+  
             </div>
             <div class="row pt-4 user-search md-inline-form">
               <div class="row">
@@ -69,8 +68,22 @@
 
 
                 
-                <mat-form-field class="col-3" appearance="outline">
-                  <mat-label>Size of your pet</mat-label>
+                <!-- <mat-form-field class="col-3" appearance="outline"> -->
+
+                  <mat-form-field class="col-3" appearance="outline">
+                    <mat-label>Pet Type</mat-label>
+                    <mat-select [formControl]="category" multiple>
+                      <mat-select-trigger>
+                        {{petCategory[0].viewValue || ''}}
+                        <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
+                          (+{{(category.value?.length || 0) - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option *ngFor="let category of petCategory" [value]="category">{{category.viewValue}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!-- <mat-label>Size of your pet</mat-label>
                   <mat-select [formControl]="petsize" multiple>
                     <mat-select-trigger>
                       {{petsize.value?.[0] || ''}}
@@ -79,8 +92,8 @@
                       </span>
                     </mat-select-trigger>
                     <mat-option *ngFor="let petsize of petsizeList" [value]="petsize">{{petsize}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
+                  </mat-select> -->
+                <!-- </mat-form-field> -->
                 <div class="col-2">
                   <button mat-flat-button class="search-btn" (click)="SearchService()">Search Service</button>
                 </div>
@@ -105,42 +118,13 @@
             <div class="col-10">
               <div class="row">
                 <div class="col-12">
-                  <h6>Sleep Over &nbsp; <a class="link-more">see more ></a></h6>
+                  <h6>Accommodation &nbsp; <a class="link-more">see more ></a></h6>
                 </div>
                 <div class="col-12 service-description">
                   <p>A trusted pet minder hosts your puppy for one night or more</p>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col-2">
-              <img class="icon-sleepover" src="../../../assets/images/home/daycare-selected.svg" alt="">
-            </div>
-            <div class="col-10">
-              <div class="row">
-                <div class="col-12">
-                  <h6>Creche &nbsp; <a class="link-more">see more ></a></h6>
-                </div>
-                <div class="col-12 service-description">
-                  <p>Fun and attention during the day at a Minder's house </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col-2">
-              <img class="icon-sleepover" src="../../../assets/images/home/petsitting-selected.svg" alt="">
-            </div>
-            <div class="col-10">
-              <div class="row">
-                <div class="col-12">
-                  <h6>At my house<a class="link-more"> &nbsp;  see more ></a></h6>
-                </div>
-                <div class="col-12 service-description">
-                  <p>A Minder comes to your house to take care of your pet for 60 min.</p>
-                </div>
-              </div>
+              
             </div>
           </div>
           <div class="row mt-4">
@@ -158,6 +142,37 @@
               </div>
             </div>
           </div>
+          <div class="row mt-4">
+            <div class="col-2">
+              <img class="icon-sleepover" src="../../../assets/images/home/daycare-selected.svg" alt="">
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <div class="col-12">
+                  <h6>Mind &nbsp; <a class="link-more">see more ></a></h6>
+                </div>
+                <div class="col-12 service-description">
+                  <p>Fun and attention during the day at a Minder's house </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-2">
+              <img class="icon-sleepover" src="../../../assets/images/home/petsitting-selected.svg" alt="">
+            </div>
+            <div class="col-10">
+              <div class="row">
+                <div class="col-12">
+                  <h6>Just feed<a class="link-more"> &nbsp;  see more ></a></h6>
+                </div>
+                <div class="col-12 service-description">
+                  <p>A Minder comes to your house to take care of your pet for feed and change water.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="col-1">
         </div>

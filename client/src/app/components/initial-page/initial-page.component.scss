@@ -52,7 +52,9 @@
     padding-top: 24px;
 }
 .link-more{
-        color: #028177;
+        color: #028177 !important;
+        text-decoration: underline;
+        font-weight: 700;
         cursor: pointer;
         &:hover{
             text-decoration: underline;
