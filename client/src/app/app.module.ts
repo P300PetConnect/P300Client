@@ -58,6 +58,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MessageAlertComponent } from './components/message-alert/message-alert.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 // import { MdInputModule } from '@angular/material';
@@ -78,6 +79,7 @@ import { BottomInfoComponent } from './search_service_components/bottom-info/bot
 import { SearchResultsComponent } from './search_service_components/search-results/search-results.component';
 import { CalendarComponent } from './calendar-components/calendar/calendar.component';
 import { ChunkPipe } from './calender-pipe/chunk.pipe';
+import { SearchVersion2Component } from './components/search-version2/search-version2.component';
 
 
 
@@ -97,12 +99,13 @@ import { ChunkPipe } from './calender-pipe/chunk.pipe';
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component
     
   ],
   imports: [
     BrowserModule,
     NgbPaginationModule, 
+    MatSlideToggleModule,
     MatButtonModule,
     NgbAlertModule,
     HttpClientModule,

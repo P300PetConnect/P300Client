@@ -165,6 +165,10 @@
     background-color: orange;
 }
 
+.mat-form-field{
+    display: inline; 
+}
+
 .third-item {
     &:hover{
         border: 1px solid #0082C9; 

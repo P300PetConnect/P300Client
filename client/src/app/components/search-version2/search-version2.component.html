@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="row pt-4 user-search md-inline-form">
+    <div class="row">
+        <div class="col-2">
+        <mat-form-field appearance="outline">
+            <mat-label>Service</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let serviceCategory of serviceCategories" [value]="serviceCategory.value">
+                  <img with="40" height="40" src="{{serviceCategory.value}}">
+                      {{serviceCategory.viewValue}}  
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+
+      <mat-form-field class="col-3" appearance="outline">
+        <mat-label>Insert your location</mat-label>
+        <input matInput placeholder="N. Street ">
+      </mat-form-field>
+
+      <mat-form-field class="col-3 col-sx-12" *ngIf="" appearance="outline">
+        <mat-label>Enter some input</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate matInput placeholder="Start date">
+          <input matEndDate matInput placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      
+
+      <mat-form-field class="col-3 col-sx-12" appearance="outline">
+        <mat-label>Dates</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate matInput placeholder="Start date">
+          <input matEndDate matInput placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      <mat-form-field class="col-2" appearance="outline">
+        <mat-label>Pet Type</mat-label>
+        <mat-select [formControl]="category" multiple>
+          <mat-select-trigger>
+            {{petCategory[0].viewValue || ''}}
+            <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
+              (+{{(category.value?.length || 0) - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let category of petCategory" [value]="category">{{category.viewValue}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="col-2">
+        <button mat-flat-button class="search-btn" >Search Service</button>
+      </div>
+    </div>
+
+  </div>  
+  <div class="row">
+    <div class="col-4">
+        <mat-slide-toggle>Show map</mat-slide-toggle>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+        <p>23  pet minders was found </p>
+    </div>
+    <div class="col-2">
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Sort by
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Distance</button>
+                <button class="dropdown-item" type="button">Lower Starting Price</button>
+                <button class="dropdown-item" type="button">Rating</button>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="row">
+        <div class="col-4">
+          <div class="row">
+                <div class="col-md-12 col-xl-12">
+                  <div class="card mb-3">
+           
+                    <div class="card-body text-center pb-0 ">
+                      <h5 class="card-title mb-0 d-flex justify-content-between">
+                       <p>Filters (0)</p>
+                       <p>clear</p>
+                      </h5>
+                      <hr>
+                    <div class="row text-left">
+                        <p>Pet Type Select: Dog</p>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Dog's Breed</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let food of petBreed" [value]="food.value">
+                                {{food.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+        
+                        <mat-form-field appearance="outline">
+                            <mat-label>Size of your Dog</mat-label>
+                            <mat-select [formControl]="petsize" multiple>
+                            <mat-select-trigger>
+                                {{petsize.value?.[0] || ''}}
+                                <span *ngIf="(petsize.value?.length || 0) > 1" class="example-additional-selection">
+                                (+{{(petsize.value?.length || 0) - 1}} {{petsize.value?.length === 2 ? 'other' : 'others'}})
+                                </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let petsize of petsizeList" [value]="petsize">{{petsize}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <hr>
+                      <div class="text-muted text-left">
+                        <h5>Characteristics of your pet</h5>
+                        <div class="row pt-4">
+                            <p>What is your pet's gender?</p>
+                            <div class="col-6 d-flex justify-content-end">
+                             <button class="btn btn-outline-secondary w-75 ">Male</button>
+                            </div>
+                            <div class="col-6  d-flex justify-content-start">
+                                <button class="btn btn-outline-secondary w-75">Female</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <p>Is your pet neutered?</p>
+                            <div class="col-6 d-flex justify-content-end">
+                             <button class="btn btn-outline-secondary w-75 ">Yes</button>
+                            </div>
+                            <div class="col-6  d-flex justify-content-start">
+                                <button class="btn btn-outline-secondary w-75">No</button>
+                            </div>
+                        </div>
+                        <hr>
+                            <h5>Special care</h5>
+                            <mat-slide-toggle>oral medication</mat-slide-toggle>
+                            <mat-slide-toggle>medicine in injection</mat-slide-toggle>     
+                        <hr>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            <div class="col-8 pl-5">
+
+               
+              </div>
+

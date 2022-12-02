@@ -94,6 +94,7 @@
                               <mat-option *ngFor="let petsize of petsizeList" [value]="petsize">{{petsize}}</mat-option>
                             </mat-select>
                           </mat-form-field>
+                          
                           <div class="row justify-content-md-center">
                             <button mat-flat-button class="search-btn" (click)="SearchService(animals.value, location.value)" type = "submit">Search Service</button>
                           </div>
