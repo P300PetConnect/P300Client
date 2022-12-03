@@ -23,3 +23,8 @@ img{
 agm-map {
     height:40rem; 
   }
+
+  .card-click:hover{
+    box-shadow: 0 0 3px rgb(193, 197, 199);
+    cursor: pointer;
+  }
