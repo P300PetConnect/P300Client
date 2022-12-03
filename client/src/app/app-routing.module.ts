@@ -5,6 +5,7 @@ import { CalendarComponent } from './calendar-components/calendar/calendar.compo
 import { CognitoGuard } from './cognito.guard';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { LoginComponent } from './components/login/login.component';
+import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
 import { SearchVersion2Component } from './components/search-version2/search-version2.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserformComponent } from './components/userform/userform.component';
@@ -41,6 +42,9 @@ const routes: Routes = [
   }, 
   {
     path:'login', component:LoginComponent
+  },
+  {
+    path:'petsitter', component:PetSitterDetailsComponent
   }
  ];
 
