@@ -24,7 +24,7 @@ const routes: Routes = [
   { path:'initial', component:InitialPageComponent }, 
   { path:'', component:InitialPageComponent }, 
   { path:'login', component:LoginComponent },
-  { path:'petsitter', component:PetSitterDetailsComponent } 
+  { path:'petsitterdetails', component:PetSitterDetailsComponent } 
 ];
 
 @NgModule({
