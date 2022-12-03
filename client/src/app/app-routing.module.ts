@@ -13,40 +13,19 @@ import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.com
 import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
 
 const routes: Routes = [
-  {
-    path:'users/:id', component:UserProfileComponent
-  },
-  {
-        path:'forum', component:ForumWallComponent
-  },
-  {
-    path:'login', component:LoginComponent
-  },
-  {
-    path:'search', component:SearchContainerComponent
-  },
-  {
-    path:'search2', component:SearchVersion2Component
-  },
-  {
-    path:'cal', component:CalendarComponent
-  }, 
-  {
-    path:'profile', component:UserProfileComponent
-  }, 
-  {
-    path:'form', component:UserformComponent
-  }, 
-  {
-    path:'initial', component:InitialPageComponent
-  }, 
-  {
-    path:'login', component:LoginComponent
-  },
-  {
-    path:'petsitter', component:PetSitterDetailsComponent
-  }
- ];
+  { path:'users/:id', component:UserProfileComponent },
+  { path:'forum', component:ForumWallComponent},
+  { path:'login', component:LoginComponent},
+  { path:'search', component:SearchContainerComponent },
+  { path:'search2', component:SearchVersion2Component },
+  { path:'cal', component:CalendarComponent }, 
+  { path:'profile', component:UserProfileComponent }, 
+  { path:'form', component:UserformComponent }, 
+  { path:'initial', component:InitialPageComponent }, 
+  { path:'', component:InitialPageComponent }, 
+  { path:'login', component:LoginComponent },
+  { path:'petsitter', component:PetSitterDetailsComponent } 
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
