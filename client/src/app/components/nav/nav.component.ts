@@ -38,7 +38,7 @@ export class NavComponent implements OnInit {
   async Logout() {
     this.isLogout = true; 
     this.authenticator?.signOut()
-    this.router.navigate(['/login'])
+    this.router.navigate([''])
 }
 
 
