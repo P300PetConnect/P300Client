@@ -39,7 +39,7 @@ export class NavComponent implements OnInit {
     this.isLogout = true; 
     this.authenticator?.signOut()
 
-    this._router.navigate([''])
+    this._router.navigate(['/login'])
     this._router.routeReuseStrategy. shouldReuseRoute = () => false;
     this._router.onSameUrlNavigation = 'reload';
 }
