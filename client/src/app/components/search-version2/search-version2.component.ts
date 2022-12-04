@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface serviceCategory {
   value: string;
@@ -48,7 +49,7 @@ export class SearchVersion2Component implements OnInit {
   lng = -8.471640;
   isMapsDisplay: boolean = false; 
 
-  constructor() { }
+  constructor( public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -62,4 +63,7 @@ export class SearchVersion2Component implements OnInit {
 
   }
   
+  seePetMinder(){
+    this.router.navigate(['petsitterdetails'])
+  }
 }
