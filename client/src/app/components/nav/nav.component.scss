@@ -38,7 +38,8 @@
 	// color: #525357!important;
 	padding-left: 0;
 	padding-right: 50px;
-	font-size: 24px;		
+	font-size: 24px;	
+		
 }
 .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
 	color: #fff;
@@ -85,9 +86,10 @@
 .navbar .navbar-nav > a {
 	// color: #17a2b8 !important;
 	color: #525357!important;
-	padding: 8px 15px;
-	font-size: 14px;		
+    padding: 9px 15px;
+    font-size: 15px;
 }
+
 .navbar .navbar-nav > a:hover, .navbar .navbar-nav > a:focus {
 	color: #fff;
 	text-shadow: 0 0 4px rgba(255,255,255,0.3);
@@ -133,6 +135,7 @@
 .navbar .navbar-nav .user-action {
 	padding: 9px 15px;
 	font-size: 15px;
+
 }
 .navbar .navbar-toggle {
 	border-color: #fff;
