@@ -67,6 +67,12 @@ export class SearchServiceService {
       query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?sel=all&animal=' + animal + '&service=' + service + '&location=' + location
 
     }
+//just service
+    else if(animal == '' && service != '' && location == '' )
+    {
+      query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?sel=ser&service=' + service;
+
+    }
 
     return this.http.get<RdsUserServices>(query)
     .pipe(

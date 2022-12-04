@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TestBed } from '@angular/core/testing';
 interface petCategory {
   value: string;
   viewValue: string;
@@ -20,6 +21,9 @@ secondIsActive: boolean = false;
 thirdIsActive: boolean = false; 
 fourthIsActive: boolean = false; 
 sleepOver : boolean = false; 
+
+service = '';
+selectedPet = '';
 
 petsize = new FormControl('');
 petsizeList: string[] = ['up to 5 kg', '5-10 kg', '10-20 kg', '20-40 kg', '+40kg'];
@@ -55,6 +59,7 @@ images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
       this.secondIsActive=false; 
       this.thirdIsActive=false;  
       this.sleepOver = true; 
+      this.service = 'Accommodation'
     }
     else if(id==2){
       this.isActive = false;
@@ -62,24 +67,37 @@ images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
       this.thirdIsActive=false; 
       this.fourthIsActive = false; 
       this.sleepOver = false; 
+
+      this.service = 'Mind Pet'
 }
 else if(id==3){
   this.isActive = false;
   this.secondIsActive=false;
   this.thirdIsActive=true; 
+  this.service = 'Just Feed'
 }
 else if(id==4){
   this.isActive = false;
   this.secondIsActive=false;
   this.thirdIsActive=false; 
   this.fourthIsActive = true; 
+
+  this.service = 'Walk'
 }
   }
 
+  changePet(value)
+  {
+    let obj = JSON.parse(JSON.stringify(value));
+    this.selectedPet = obj[0].viewValue;
 
-  SearchService(){
+   
+  }
+
+
+  SearchService(location: string){
     console.log('find')
-    this._router.navigateByUrl('search2')
+    this._router.navigate(['/search2', {'service': `${this.service}`, 'location': `${location}`, 'pet': `${this.selectedPet}`}])
     this.sleepover.nativeElement.hidden; 
   }
   getStarted(){
