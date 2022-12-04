@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
   isLogout:boolean =false; 
   userInfor:any; 
 
-  constructor( public authenticator: AuthenticatorService, private readonly  router: Router) {
+  constructor( public authenticator: AuthenticatorService, private readonly  _router: Router) {
     // Amplify.configure(awsExports);
   }
   ngOnInit(): void {
@@ -38,7 +38,10 @@ export class NavComponent implements OnInit {
   async Logout() {
     this.isLogout = true; 
     this.authenticator?.signOut()
-    this.router.navigate([''])
+
+    this._router.navigate([''])
+    this._router.routeReuseStrategy. shouldReuseRoute = () => false;
+    this._router.onSameUrlNavigation = 'reload';
 }
 
 
