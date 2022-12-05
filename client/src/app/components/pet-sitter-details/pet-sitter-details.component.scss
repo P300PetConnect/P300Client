@@ -129,6 +129,9 @@ h4 {
     line-height: 22px;
     font-size: 18px;
 }
+.card-inner{
+    margin-left: 4rem;
+}
 
 .bi-plus-circle-fill{
 
@@ -140,11 +143,25 @@ h4 {
 .card{
     cursor: pointer;
 }
-
-.checked {
-
-  }
-
+.search-btn{
+    // width: 10rem;
+    height: 3.2rem;
+    // margin-top: 0.3rem;
+    background-color:#17a2b8 !important;
+    color:white; 
+    font-size: 1.2rem;
+}
+.details{
+    font-size: 1rem;
+    padding: 12px;
+    cursor: auto;
+}
+b{
+    color: rgba(51, 59, 65, 0.753);
+}
+.review-time{
+    font-size: 0.9rem;
+}
   .bi-star-fill{
     padding: 0.2rem;
     font-size: 1.3rem;
@@ -153,4 +170,12 @@ h4 {
 .review{
     font-size: 0.8rem;
     color: gray;
+}
+
+.primary-link{
+    color: #028177 !important;
+    text-decoration: underline;
+    font-weight: 700;
+    cursor: pointer;
+    font-style: italic; 
 }
