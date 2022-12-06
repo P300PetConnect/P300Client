@@ -28,6 +28,9 @@ export class PetSitterDetailsComponent implements OnInit {
   public petOwner: IPetOwner; 
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
+  selected: Date | null;
+
+
 
   constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog) {
 
