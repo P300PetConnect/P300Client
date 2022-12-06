@@ -30,7 +30,6 @@
                 </div>
                 <hr class="my-0">
                 <div class="card-body">
-                  <!-- <h5 class="pl-4 card-title">Skills</h5> -->
                   <div class="row p-3">
                     <button mat-flat-button class="search-btn">Start Chat</button>
                   </div>
@@ -59,10 +58,42 @@
                         <span>Cancellation policy: <a class="primary-link">flexible</a></span>
                       </div>
                     </div>
-                    <!-- <span><i class="bi bi-hourglass-split"></i>Response time: 3 minutes</span>
-                    <span><i class="bi bi-chat-square-text"></i>Response rate: 98%</span>
-                    <span><i class="bi bi-x-octagon"></i>Cancellation policy: flexible</span> -->
-                  </div>
+
+                    <div class="row pt-3 pb-0 mb-0">
+                      <!-- <p>Check Availability</p> -->
+                      <mat-card class="demo-inline-calendar-card">
+                        <mat-calendar [(selected)]="selected"></mat-calendar>
+                      </mat-card>
+                      <!-- <p>Selected date: {{selected}}</p> -->
+                    </div>
+                    </div>
+               
+
+                    <div class="row pb-4 pt-4">
+                      <h4>Preferences</h4>
+                      <img src="../../../assets/images/Screenshot 2022-12-06 at 00.49.44.png" alt="">
+                    </div>
+                    <div class="row">
+                      <div class="col-1">
+                        <span class="material-symbols-outlined">
+                          pets
+                          </span>
+                      </div>
+                      <div class="col">
+                        <span>Doesn't take care of females in heat</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-1">
+                        <span class="material-symbols-outlined">
+                          pets
+                          </span>
+                      </div>
+                      <div class="col">
+                        <span>Males, neutered only</span>
+                      </div>
+                    </div>
+               
                 
 
                   <!-- <ul class="list-group list-group-flush pb-4">
@@ -181,5 +212,7 @@
 </div>
 <div>
 </div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 
