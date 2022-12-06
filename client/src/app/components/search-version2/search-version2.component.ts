@@ -71,28 +71,47 @@ export class SearchVersion2Component implements OnInit {
 
   constructor( public router: Router, public r : ActivatedRoute, public search : SearchServiceService) { }
 
-  ngOnInit(): boolean {
+  ngOnInit(): void {
 
    this.service = this.r.snapshot.paramMap.get('service');
    this.location = this.r.snapshot.paramMap.get('location');
    this.pet = this.r.snapshot.paramMap.get('pet');
 
-
-  
-   this.search.getServiceData(this.pet, this.location, this.service).subscribe(
-     (      results: RdsUserServices) => {
-       this.userServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-     },
-     (      error: any) => this.errorMessage = <any>error
-   );
-
-   console.log(JSON.stringify(this.userServices));
-
-   return false;
-
-
+   this.SearchService(this.pet, this.location, this.service);
   // this.category['pet'].setValue(this.petCategory[2].viewValue);
   }
+
+  SearchService(pet : string, location : string , service: string)
+  {
+    console.log(pet + '  ' + this.location + '  ' + service);
+
+    this.search.getServiceData(pet, location, service).subscribe(
+      (      results: RdsUserServices) => {
+        this.userServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
+      },
+      (      error: any) => this.errorMessage = <any>error
+    );
+ 
+    console.log(JSON.stringify(this.userServices));
+ 
+    return false;
+
+  }
+
+  setLocation(loc: string)
+  {
+    this.location = loc;
+    
+  }
+
+  newSearchRequest(pet: string, service: string)
+  {
+    //needs ro be refactored here// 
+    
+    this.SearchService(pet, this.location, service);
+  }
+
+
   changed(){
     if(this.isMapsDisplay){
       this.isMapsDisplay = false; 
