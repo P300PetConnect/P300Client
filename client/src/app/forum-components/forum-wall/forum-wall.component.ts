@@ -24,14 +24,20 @@ export class ForumWallComponent implements OnInit {
   
   ngOnInit(): void 
   {
-    this.GetBoardDetails('1');
+    this.GetBoardDetails('0');
     
   }
+  SetTabIndex(event)
+  {
+    //alert(typeof(event.index))
+   this.GetBoardDetails(event.index);
+
+  }
+
 
   GetBoardDetails(r: string)
   {
-  
-    this._forumPosts.getBoardDetails(r).subscribe(
+      this._forumPosts.getBoardDetails(r).subscribe(
       (      results: BoardInterface) => {
         this.boards= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
         console.log(this.boards)

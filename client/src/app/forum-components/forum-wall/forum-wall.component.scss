@@ -10,10 +10,10 @@
 .addPost
 {
     margin: 0 auto;
-    padding: 5%;
+    
     background-color: white;
     box-shadow: 0 0 15px black;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     position: relative;
     text-align: left;
 }
@@ -28,25 +28,15 @@
 {
    
     border-bottom: 1px solid black;
-    margin: 5%;
+    margin-top: 5%;
+    margin-bottom: 2%;
     background-color: white;
     padding: 2% 7%;
     box-shadow: 0 0 15px black;
-  
     position: relative;
 
 }
 .boardTitle
 {
     text-decoration: underline;
-}
-.forumNav li
-{
-    padding: 2% 0 2% 0;
-}
-.forumNav li a 
-{
-   
-    border-right: 1px solid black;
- 
 }
