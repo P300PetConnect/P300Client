@@ -47,15 +47,17 @@
               </div>
   
             </div>
-            <div class="row pt-4 user-search md-inline-form">
+            <div class=" pt-4 user-search md-inline-form">
               <div class="row">
                 <mat-form-field class="col-4" appearance="outline">
-                  <mat-label>Insert your location</mat-label>
+                  <mat-label>Where would you like to stay?</mat-label>
                   <input matInput placeholder="N. Street " #location>
                 </mat-form-field>
 
-                <mat-form-field class="col-3 col-sx-12" *ngIf="isActive" appearance="outline">
-                  <mat-label>Select dates</mat-label>
+                <!-- Just add *ngIf="isActive" to control the calendar types -->
+
+                <mat-form-field class="col-3 col-sx-12"  appearance="outline">
+                  <mat-label>When?</mat-label>
                   <mat-date-range-input [rangePicker]="picker">
                     <input matStartDate matInput placeholder="Start date">
                     <input matEndDate matInput placeholder="End date">
@@ -213,7 +215,7 @@
   <div class="">
       <div class="row d-flex justify-content-center testimonial-pos">
           <div class="col-md-12 pt-4 d-flex justify-content-center">
-              <h3>Testimonials</h3>
+              <h3>What our users say about us</h3>
           </div>
           <div class="col-md-12 d-flex justify-content-center">
               <h2>PetConnect Minders are 5 stars</h2>
@@ -248,7 +250,7 @@
                           <div class="tour-desc bg-white">
                               <div class="tour-text color-grey-3 text-center">&ldquo;Fred is loving walking every morning, I highly recommend the platform, the refound policies make me feel safe.&rdquo;</div>
                               <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""></div>
-                              <div class="link-name d-flex justify-content-center">Ciara Henry</div>
+                              <div class="link-name d-flex justify-content-center">Ciara MacNice</div>
                               <div class="link-position d-flex justify-content-center">using PetConnect for 2 years</div>
                           </div>
                       </div>
@@ -258,7 +260,7 @@
                           <div class="tour-desc bg-white">
                               <div class="tour-text color-grey-3 text-center">&ldquo;I needed to make a last minute trip and I'm glad I managed to find a reliable person through the platform.&rdquo;</div>
                               <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://images.pexels.com/photos/4946604/pexels-photo-4946604.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""></div>
-                              <div class="link-name d-flex justify-content-center">Aisling O'Brian</div>
+                              <div class="link-name d-flex justify-content-center">Aisling MacLove</div>
                               <div class="link-position d-flex justify-content-center">using PetConnect for 6 months</div>
                           </div>
                       </div>
