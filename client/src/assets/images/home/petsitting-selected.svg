@@ -23,14 +23,14 @@
                     </g>
                 </g>
                 <g id="Illustration/Services/PetSitting" transform="translate(2.000000, 2.000000)">
-                    <path d="M20.00005,40 C8.95421667,40 5.00000001e-05,31.0458333 5.00000001e-05,20 C5.00000001e-05,8.95416667 8.95421667,0 20.00005,0 C31.0458833,0 40.00005,8.95416667 40.00005,20 C40.00005,31.0458333 31.0458833,40 20.00005,40 Z" id="Fill-1" fill="#0082CA"></path>
+                    <path d="M20.00005,40 C8.95421667,40 5.00000001e-05,31.0458333 5.00000001e-05,20 C5.00000001e-05,8.95416667 8.95421667,0 20.00005,0 C31.0458833,0 40.00005,8.95416667 40.00005,20 C40.00005,31.0458333 31.0458833,40 20.00005,40 Z" id="Fill-1" fill="#BD83A3"></path>
                     <g id="Illustration/CherrySecondary/Feeding" transform="translate(8.000000, 6.000000)" stroke-width="1">
                         <g id="Color/White_100" transform="translate(1.857143, 10.678571)">
                             <mask id="mask-4" fill="white">
                                 <use xlink:href="#path-3"></use>
                             </mask>
                             <use id="Mask" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-3"></use>
-                            <g id="Color/Azul_500" mask="url(#mask-4)" fill="#0082CA">
+                            <g id="Color/Azul_500" mask="url(#mask-4)" fill="#BD83A3">
                                 <g transform="translate(-1.857143, -10.678571)">
                                     <rect x="0" y="0" width="26" height="26"></rect>
                                 </g>
@@ -62,7 +62,7 @@
                             <mask id="mask-10" fill="white">
                                 <use xlink:href="#path-9"></use>
                             </mask>
-                            <use id="Mask" fill-opacity="0" fill="#3097D3" xlink:href="#path-9"></use>
+                            <use id="Mask" fill-opacity="0" fill="#BD83A3" xlink:href="#path-9"></use>
                             <g id="Color/Azul_075" mask="url(#mask-10)" fill="#B9DCF0">
                                 <g transform="translate(-1.392857, -19.035714)" id="Color/Azul_050">
                                     <rect x="0" y="0" width="26" height="26"></rect>
