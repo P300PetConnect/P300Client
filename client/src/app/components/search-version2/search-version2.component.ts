@@ -49,6 +49,7 @@ export class SearchVersion2Component implements OnInit {
   lng = -8.471640;
   isMapsDisplay: boolean = false; 
 
+
   constructor( public router: Router) { }
 
   ngOnInit(): void {
@@ -62,7 +63,7 @@ export class SearchVersion2Component implements OnInit {
     }
 
   }
-  
+
   seePetMinder(){
     this.router.navigate(['petsitterdetails'])
   }
