@@ -7,13 +7,13 @@
     </defs>
     <g fill="none" fill-rule="evenodd" transform="translate(2 2)">
         <circle cx="20" cy="20" r="20" stroke="#FFF" stroke-width="4"/>
-        <path fill="#7C499D" d="M20 40C8.954 40 0 31.046 0 20S8.954 0 20 0s20 8.954 20 20-8.954 20-20 20z"/>
+        <path fill="#487BA5" d="M20 40C8.954 40 0 31.046 0 20S8.954 0 20 0s20 8.954 20 20-8.954 20-20 20z"/>
         <g transform="translate(10 18)">
             <mask id="b" fill="#fff">
                 <use xlink:href="#a"/>
             </mask>
             <use fill="#FFF" fill-rule="nonzero" xlink:href="#a"/>
-            <g fill="#7C499D" mask="url(#b)">
+            <g fill="#487BA5" mask="url(#b)">
                 <path d="M-3-14h28v28H-3z"/>
             </g>
         </g>
@@ -40,7 +40,7 @@
                 <use xlink:href="#g"/>
             </mask>
             <use fill="#FEFEFE" fill-opacity="0" xlink:href="#g"/>
-            <g fill="#7C499D" mask="url(#h)">
+            <g fill="#487BA5" mask="url(#h)">
                 <path d="M-6-20h28V8H-6z"/>
             </g>
         </g>
