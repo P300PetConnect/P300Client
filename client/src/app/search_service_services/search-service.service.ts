@@ -68,7 +68,7 @@ export class SearchServiceService {
 
     }
 //just service
-    else if(animal == '' && service != '' && location == '' )
+    else if( service != '' && animal == ''  && location == '' )
     {
       query = 'https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/rds_users_services?sel=ser&service=' + service;
 

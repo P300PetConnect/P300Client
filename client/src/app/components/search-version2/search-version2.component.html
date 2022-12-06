@@ -4,7 +4,7 @@
       <div class="col-2">
         <mat-form-field appearance="outline">
             <mat-label>Service</mat-label>
-            <mat-select [(value)]="service">
+            <mat-select [(value)]="service" #selectedService>
               <mat-option value="Accommodation">
                 <img with="40" height="40" src="../../../assets/images/home/boarding-selected.svg">
                 Accommodation
@@ -26,21 +26,17 @@
           </mat-form-field>
           </div>
       
-
-     
             <mat-form-field class="col-3" appearance="outline" *ngIf="location == '' ">
               <mat-label>Insert your location</mat-label>
-              <input matInput placeholder="N. Street ">
+              <input matInput placeholder="N. Street " #selectedLocation (change)="setLocation(selectedLocation.Value)">
             </mat-form-field>
         
             <mat-form-field class="col-3" appearance="outline" *ngIf="location != '' ">
               <mat-label>Insert your location</mat-label>
-              <input matInput placeholder="N. Street " value="{{location}}">
+              <input matInput placeholder="N. Street " value="{{location}}" #selectedLocation (change)="setLocation(selectedLocation.value)">
             </mat-form-field>
          
           
-  
-
       <mat-form-field class="col-3 col-sx-12" *ngIf="" appearance="outline">
         <mat-label>Enter some input</mat-label>
         <mat-date-range-input [rangePicker]="picker">
@@ -64,7 +60,7 @@
       
       <mat-form-field class="col-2" appearance="outline">
         <mat-label>Pet Type</mat-label>
-        <mat-select [(value)]="pet">
+        <mat-select [(value)]="pet" #selectedPet>
           <mat-option>None</mat-option>
           <mat-option value="Dog">Dog</mat-option>
           <mat-option value="Cat">Cat</mat-option>
@@ -73,15 +69,15 @@
         </mat-select>
       </mat-form-field>
       <div class="col-2">
-        <button mat-flat-button class="search-btn" >Search Service</button>
+        <button mat-flat-button class="search-btn" (click)="newSearchRequest(selectedPet.value,selectedService.value)">Search Service</button>
       </div>
     </div>
 
    
 
   </div>  
-  <div class="mt-2">
-     <h5>{{userServices[0].length}}  pet minders were found </h5> 
+  <div class="mt-2" *ngIf="userServices[0].length > 0">
+     <h5 >{{userServices[0].length}}  pet minders were found </h5> 
   </div>
   <div class="row pt-4 pb-4">
     <div class="col-10">
