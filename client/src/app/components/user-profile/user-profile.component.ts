@@ -29,6 +29,15 @@ export class UserProfileComponent implements OnInit {
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
 
+
+  //hardcoded bools to demo comments 
+
+  comments1 = false;
+  comments2 = false;
+  comments3 = false;
+  comments4 = false;
+  com = false;
+
   constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog) {
 
 
