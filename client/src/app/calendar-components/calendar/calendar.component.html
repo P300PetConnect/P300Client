@@ -1,8 +1,8 @@
-<button (click)="test()">test</button>
-<div class = "container">
-<div>
+
+<div class = "container mt-4 ">
+<div class = "row justify-content-center text-center mb-3">
     <div>
-      <h4>{{displayMonth}}</h4>
+      <h4 class="text-decoration-underline">{{displayMonth}}</h4>
     </div>
     <div>
       <input type="button" class="btn btn-success" (click)="setCurrentMonth()" value="today" style="margin-right: 2%;" />
@@ -34,10 +34,14 @@
               <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
                 {{monthNames[c.date.getMonth()]}}
               </strong>
-              <img src="../../../assets/images/brazil.png" (click)="setValues(c.eventTitle, c.eventDescription)" alt="">
+              <div class = "row justify-content-center">
+              <img src="../../../assets/images/available.png" style = "width: 60px;" (click)="setValues(c.eventTitle, c.eventDescription, c.eventDescription2, c.petOwner)" alt="">
+              </div>
             </div>
+
+           
             
-            <div *ngIf="!c.hasEvent" class="calendar-day-header"  [ngClass]="{'blue-date': c.isToday}">
+            <div *ngIf="!c.hasEvent && !c.notAvailable" class="calendar-day-header"  [ngClass]="{'blue-date': c.isToday}">
               <strong>
                 {{c.date.getDate()}}
               </strong> 
@@ -45,6 +49,20 @@
                 {{monthNames[c.date.getMonth()]}}
               </strong>
             </div>
+            <div *ngIf="c.notAvailable" class="calendar-day-header"    [ngClass]="{'blue-date': c.isToday}">
+              <strong>
+                {{c.date.getDate()}}
+              </strong> 
+              <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
+                {{monthNames[c.date.getMonth()]}}
+              </strong>
+              <div class = "row justify-content-center">
+                <img src="../../../assets/images/notAvailable.png" class="mt-2 mb-2" style = "width: 45px;">
+              </div>
+              
+            </div>
+
+            
           </td>
       </tr>
     </tbody>
@@ -54,8 +72,10 @@
     <div class="modal-content">
         <Button class = "btn btn-danger close" (click)="displayEvent = false" >&#10005;</Button>
         <div class = "content">
-          <h4>{{title}}</h4>
-          <p>{{desc}}</p>
+          <h5 class="text-decoration-underline mb-3">{{title}}</h5>
+          <h6>Pet owner: {{owner}}</h6>
+          <p>{{desc}} </p>
+          <p>{{desc2}}</p>
         </div>
       </div>
     </div>

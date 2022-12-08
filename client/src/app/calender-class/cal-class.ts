@@ -8,8 +8,11 @@ export class CalendarDay {
     public isPastDate: boolean;
     public isToday: boolean;
     public hasEvent: boolean;
+    public petOwner: string;
     public eventTitle: string;
     public eventDescription : string;
+    public eventDescription2 : string;
+    public notAvailable : boolean;
   
     constructor(d: Date) {
       this.date = d;

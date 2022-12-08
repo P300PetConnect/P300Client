@@ -14,6 +14,7 @@
   
   .calendar-table td, .calendar-table th {
     border: 1px solid #dee2e6;
+    width: 60px;
   }
   
   .calendar-table td, .calendar-table th {
@@ -66,7 +67,7 @@
   
 
     border: 2px solid black;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
     box-shadow: 0 0 15px var(--clr-darkShade);
   }
 
@@ -74,8 +75,9 @@
 .content{
     position: relative;
     margin: 0 auto;
-    width: 85%; 
-    padding: 10% 5% 10% 5%;
+    width: 80%; 
+   padding: 5%;
+   text-align: center;
 }
 .close
 {
