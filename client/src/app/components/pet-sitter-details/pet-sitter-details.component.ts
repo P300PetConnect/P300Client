@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, Renderer2} from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/components/service/user.service';
 import { IUser, IPet} from 'src/app/components/interfaces/form';
@@ -10,6 +10,7 @@ import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-pet-sitter-details',
@@ -17,8 +18,8 @@ import { PetService } from '../service/pet.service';
   styleUrls: ['./pet-sitter-details.component.scss']
 })
 export class PetSitterDetailsComponent implements OnInit {
-
- 
+  panelOpenState = false;
+  panelOpenState2 = false; 
   public user: IUser; 
   public pet:IPet;
   isReadOnly?:boolean = false; 
@@ -31,8 +32,33 @@ export class PetSitterDetailsComponent implements OnInit {
   selected: Date | null;
 
 
+  dateFilter: (date: Date | null) => boolean =
+  (date: Date | null) => {
+    if (!date) {
+      return false;
+    }
+    const day = date.getDay();
+    return day == 1; // 1 means monday, 0 means sunday, etc.
+  };
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog) {
+  
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+
+    var date = cellDate.getDate();
+
+    console.log(date); 
+
+    // if (view == 'month') {
+        return 'highlightCard';
+    // }
+
+    // return "";
+}
+
+
+  @ViewChild('picker') picker:ElementRef;
+
+  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private renderer: Renderer2) {
 
 
 
@@ -51,6 +77,10 @@ export class PetSitterDetailsComponent implements OnInit {
   
   ngOnInit(): void {
 
+    console.log(this.selected); 
+
+
+
 this.pet = {
   "name": "Lucy",
   "description": "She snores when sleeps",
@@ -61,6 +91,7 @@ this.pet = {
   "PetSize": "Small", 
   "createdDate":"12/09/2022", 
 }
+
 
     // if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
     // console.log('test carai')
@@ -73,7 +104,7 @@ this.pet = {
     // }
 
 
-
+console.log('picker', this.picker); 
   }
 
 
@@ -86,6 +117,8 @@ this.pet = {
 //     }); 
 //     return false; 
 //   }
+
+
 
   getPetSitter(){
     this._userService.get_petsitter("fatherted@gmail.com").subscribe(

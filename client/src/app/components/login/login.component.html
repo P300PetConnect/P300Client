@@ -14,7 +14,7 @@
 
         <app-search-version2 *ngIf="user?.attributes?.email=='joannasmith@gmail.com'"></app-search-version2>
         <!-- <button type="submit" (click)="signOut()">Sign Out</button> -->
-        <app-calendar *ngIf="user?.attributes?.email=='fatherted@gmail.com'"></app-calendar>
+        <app-user-profile *ngIf="user?.attributes?.email=='fatherted@gmail.com'"></app-user-profile>
 
       </ng-template>
     </amplify-authenticator>
