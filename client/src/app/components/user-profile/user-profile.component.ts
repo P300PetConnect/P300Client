@@ -155,7 +155,7 @@ getPetDetails(){
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
     this.dialog.open(OrderComponent, dialogConfig); 
-
+  }
   getReviews(id: number):boolean
   {/////fiiiiix
     this.review.getReviews(id).subscribe({
@@ -168,4 +168,4 @@ getPetDetails(){
 
   }
 
-}
+
