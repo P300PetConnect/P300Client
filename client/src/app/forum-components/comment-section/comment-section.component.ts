@@ -19,6 +19,7 @@ export class CommentSectionComponent implements OnInit {
   test?: any;
   comments?:any
   errorMessage: any;
+  message: any;
   constructor(private _forumPosts : DataService) { }
 
   ngOnInit(): void {
@@ -47,13 +48,17 @@ export class CommentSectionComponent implements OnInit {
     //issue with the date string here, not showing in db
     const commentItem = new CommentItem(this.docID, this.makeRandom(12,possible), "N/A",comment,0,now)
     
-    this._forumPosts.PushCommentsToDB(commentItem);
+    this._forumPosts.PushCommentsToDB(commentItem)
+    .subscribe({
+      next: com => {
+        console.log(JSON.stringify(com) + 'added');
+        this.message = "Comment added";
+         this.GetForumPosts();     
+           },
+      error: (err) => this.message = err
+    });;
 
-    // refreshing comments after 200 miliseconds 
-    setTimeout(() => {
-      this.GetForumPosts()
-   }, 200);
-    return false;
+   
 
   }
 
@@ -94,3 +99,22 @@ export class CommentSectionComponent implements OnInit {
   */
 
 }
+
+
+
+// PushComment(comment:string, form: NgForm)
+//   {
+//     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+//     const now = new Date().toDateString();
+//     //issue with the date string here, not showing in db
+//     const commentItem = new CommentItem(this.docID, this.makeRandom(12,possible), "N/A",comment,0,now)
+    
+//     this._forumPosts.PushCommentsToDB(commentItem);
+
+//     // refreshing comments after 200 miliseconds 
+//     setTimeout(() => {
+//       this.GetForumPosts()
+//    }, 200);
+//     return false;
+
+//   }
