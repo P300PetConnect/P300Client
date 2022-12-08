@@ -182,10 +182,10 @@ b{
     cursor: pointer;
     font-style: italic; 
 }
-.mat-card:not([class*=mat-elevation-z]) {
-    box-shadow: none; 
+// .mat-card:not([class*=mat-elevation-z]) {
+//     // box-shadow: none; 
 
-}
+// }
 .mat-card{
     padding: 0px !important;
     margin-top: 0px !important;
