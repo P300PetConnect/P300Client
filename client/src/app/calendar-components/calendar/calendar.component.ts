@@ -20,6 +20,8 @@ export class CalendarComponent implements OnInit {
 
   title = '';
   desc = ''; 
+  desc2 = '';
+  owner ='';
 
   events: event[];
 
@@ -74,13 +76,33 @@ export class CalendarComponent implements OnInit {
      
     // }
 
-    this.calendar[41].hasEvent = true;
-    this.calendar[41].eventTitle = "Walking Jenny's Date 5km";
-    this.calendar[41].eventDescription = "Pick up: Sligo, Agreed payment £35"
+  
+
+    this.calendar[41].notAvailable = true;
+    this.calendar[34].notAvailable = true;
+    this.calendar[27].notAvailable = true;
+    this.calendar[20].notAvailable = true;
+    this.calendar[13].notAvailable = true;
+    this.calendar[6].notAvailable = true;
+
+    this.calendar[40].notAvailable = true;
+    this.calendar[33].notAvailable = true;
+    this.calendar[26].notAvailable = true;
+    this.calendar[19].notAvailable = true;
+    this.calendar[12].notAvailable = true;
+    this.calendar[5].notAvailable = true;
+
+    this.calendar[16].hasEvent = true;
+    this.calendar[16].petOwner = "Jenny Kelly";
+    this.calendar[16].eventTitle = "Walk fluffy - 5km";
+    this.calendar[16].eventDescription = "Pick up: Sligo"
+    this.calendar[16].eventDescription2 = "payment: £35"
 
     this.calendar[32].hasEvent = true;
-    this.calendar[32].eventTitle = "feed Johns Dog";
-    this.calendar[32].eventDescription = "Location: Carrick, Agreed payment £15"
+    this.calendar[32].petOwner = "John Smith";
+    this.calendar[32].eventTitle = "feed Dog";
+    this.calendar[32].eventDescription = "Location: Carrick"
+    this.calendar[32].eventDescription2 = "payment: £15"
   }
 
 
@@ -117,11 +139,15 @@ export class CalendarComponent implements OnInit {
     this.generateCalendarDays(this.monthIndex);
   }
 
-  setValues(title: string, desc: string)
+  setValues(title: string, desc: string, desc2 : string, owner: string)
   {
     this.displayEvent = true;
     this.title = title;
     this.desc = desc;
+    this.desc2 = desc2;
+    this.owner = owner;
+
+    
 
   }
 
