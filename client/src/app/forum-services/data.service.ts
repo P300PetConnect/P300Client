@@ -40,6 +40,7 @@ Notes for tomorrow
 })
 export class DataService {
   postId;
+  handleError: any;
 
   constructor(private http: HttpClient){}
   getBoardDetails(r: string) : Observable<BoardInterface> {
@@ -72,27 +73,34 @@ export class DataService {
     );
 }
 
-    PushPost(Item : PostItem)
+    PushPost(Item : PostItem) : Observable<unknown>
     {
       const bodyj = (JSON.stringify(Item));
+      return this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', bodyj)
+      .pipe(
+        catchError(this.handleError)
+      )
      
-      this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', bodyj).subscribe(data => {
-      this.postId = data.id;
-     })
+      // this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', bodyj).subscribe(data => {
+      // this.postId = data.id;
+   //  })
 
     }
 
       // this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post', bodyj).subscribe(data => {
       // this.postId = data.id;
    // })
-    PushCommentsToDB(commentItem : CommentItem)
+    PushCommentsToDB(commentItem : CommentItem): Observable<unknown>
     {
      
       const bodyj = (JSON.stringify(commentItem));
+
+      return this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/comment', bodyj)
+      .pipe(
+        catchError(this.handleError)
+      )
     
-      this.http.post<any>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/comment', bodyj).subscribe(data => {
-      this.postId = data.id;
-     })
+     
 
     }
 

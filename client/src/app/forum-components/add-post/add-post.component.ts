@@ -21,7 +21,7 @@ export class AddPostComponent implements OnInit {
   selectedFiles!: any;
   tempPostItem!: PostItem;
   addMedia = false;
-
+message: any
   createdLocalPost: any;
 
   //localPost?: PostItem;
@@ -31,7 +31,7 @@ export class AddPostComponent implements OnInit {
    
   }
 
-  public AddPostNoImage(title: string, content: string,  form: HTMLFormElement) : boolean
+  public AddPostNoImage(title: string, content: string,  form: HTMLFormElement)
   {
   
     // need board id here, passed back from wall as input
@@ -43,13 +43,17 @@ export class AddPostComponent implements OnInit {
      this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 );
      
     
-     this._forumPosts.PushPost(this.tempPostItem);
+     this._forumPosts.PushPost(this.tempPostItem)
+     .subscribe({
+      next: book => {
+        console.log(JSON.stringify(book) + 'post added');
+        this.message = "post added";
+        this.RefreshPosts(id);     
+         },
+      error: (err) => this.message = err
+    });;
     
-     // refreshes post after post
-     setTimeout(() => {
-      this.RefreshPosts(id)
-   }, 200);
-    return false;
+ 
      
   }
 
@@ -106,3 +110,28 @@ export class AddPostComponent implements OnInit {
 }
 
 }
+
+
+
+
+// public AddPostNoImage(title: string, content: string,  form: HTMLFormElement) : boolean
+// {
+
+//   // need board id here, passed back from wall as input
+//   let id = this.boards[0][0].boardID;
+  
+ 
+//   const now = new Date().toDateString();
+//   const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+//    this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 );
+   
+  
+//    this._forumPosts.PushPost(this.tempPostItem);
+  
+//    // refreshes post after post
+//    setTimeout(() => {
+//     this.RefreshPosts(id)
+//  }, 200);
+//   return false;
+   
+// }
