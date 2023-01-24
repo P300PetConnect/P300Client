@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../service/user.service';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 

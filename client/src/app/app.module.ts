@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { StreamChatModule, StreamAutocompleteTextareaModule } from 'stream-chat-angular';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AgmCoreModule} from '@agm/core';
 import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
-import  Amplify, {Auth } from 'aws-amplify';
-import awsconfig from '../aws-exports'
-Amplify.configure(awsconfig); 
+// import * as Amplify from 'aws-amplify';
+// import awsconfig from 'aws-exports'
+// Amplify.configure(awsconfig); 
+import { Amplify, Auth } from 'aws-amplify';
+import awsconfig from './aws-exports.js';
+Amplify.configure(awsconfig);
 import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
 import {FormsModule} from '@angular/forms'
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -22,7 +26,6 @@ import { InitialPageComponent } from './components/initial-page/initial-page.com
 import { UserformComponent } from './components/userform/userform.component';
 import { CognitoGuard } from './cognito.guard';
 import { UserService } from './components/service/user.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertmsgComponent } from './components/alertmsg/alertmsg.component';  
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -31,7 +34,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {Ng2TelInputModule} from 'ng2-tel-input';
+//import {Ng2TelInputModule} from 'ng2-tel-input';
 import {MatSelectModule} from '@angular/material/select';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
@@ -58,6 +61,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MessageAlertComponent } from './components/message-alert/message-alert.component';
 import {MatButtonModule} from '@angular/material/button';
+import { ChatPageComponent } from './components/chat-page/chat-page.component';
+import { InterceptorService } from './components/service/interceptor.service.js';
 
 
 // import { MdInputModule } from '@angular/material';
@@ -88,8 +93,7 @@ import {MatButtonModule} from '@angular/material/button';
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent,
-    
+    PetSitterServiceComponent, MessageAlertComponent, ChatPageComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +113,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatFormFieldModule,
     MatExpansionModule,
-    Ng2TelInputModule,
+    //Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
     MatIconModule,
@@ -126,6 +130,8 @@ import {MatButtonModule} from '@angular/material/button';
             deps: [HttpClient]
         }, 
     }),
+    StreamChatModule,
+    StreamAutocompleteTextareaModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
     FormsModule,
@@ -137,7 +143,10 @@ import {MatButtonModule} from '@angular/material/button';
       libraries: ['places']
     }),
   ],
-  providers: [AuthenticatorService, CognitoGuard, UserService],
+  providers: [
+    //{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    AuthenticatorService,
+   CognitoGuard, UserService],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })

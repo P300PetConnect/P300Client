@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
-import { catchError, Observable, tap, throwError } from 'rxjs'
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators'
 import { IUser } from "../interfaces/form";
 import { environment } from "src/environments/environment";
 import { IPetOwner, IPetSitter } from "../interfaces/users";

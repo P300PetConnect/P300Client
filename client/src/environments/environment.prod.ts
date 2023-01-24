@@ -6,6 +6,9 @@
 export const environment = {
   GOOGLE_MAPS_API_KEY: 'AIzaSyCz-Nu0ku-0DJEe5iPt13RTq0QVpiz45AY',
   production: true,
+  stream: {
+    key: 'p7xbrvtd4sm4'
+  },
   region: 'eu-west-1',
   identityPoolId: 'eu-west-1:632c2f15-6b41-44b0-9d26-539386e90e4d',
   userPoolId: 'eu-west-1_dkqFlijuX',

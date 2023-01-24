@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { CognitoGuard } from './cognito.guard';
+import { ChatPageComponent } from './components/chat-page/chat-page.component';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -26,6 +27,9 @@ const routes: Routes = [
   }, 
   {
     path:'login', component:LoginComponent
+  },
+  {
+    path: 'chat', component:ChatPageComponent
   }
  ];
 

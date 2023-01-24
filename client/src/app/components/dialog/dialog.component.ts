@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {ModalDismissReasons, NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
-import { input } from 'aws-amplify';
+// import { input } from 'aws-amplify';
 import { ActivatedRoute } from '@angular/router';
 
 

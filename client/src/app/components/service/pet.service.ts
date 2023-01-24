@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { catchError, Observable, tap, throwError } from 'rxjs'
+import { Observable, throwError } from 'rxjs'
 import { IPet } from '../interfaces/form';
 
 

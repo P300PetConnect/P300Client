@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/forum-services/data.service';
 import { PostItem, PostInterface } from '../../forum-interfaces/post-interface';
 import { BoardInterface } from 'src/app/forum-interfaces/board-interface';

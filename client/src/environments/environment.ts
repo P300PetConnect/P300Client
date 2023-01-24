@@ -10,6 +10,9 @@
 
 export const environment = {
   production: false,
+  stream: {
+    key: 'p7xbrvtd4sm4'
+  },
   GOOGLE_MAPS_API_KEY: 'AIzaSyCz-Nu0ku-0DJEe5iPt13RTq0QVpiz45AY',
   region: 'eu-central-1',
   identityPoolId: 'eu-west-1:632c2f15-6b41-44b0-9d26-539386e90e4d',
