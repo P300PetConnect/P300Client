@@ -11,7 +11,8 @@
 export const environment = {
   production: false,
   stream: {
-    key: 'p7xbrvtd4sm4'
+    //key: 'p7xbrvtd4sm4',
+    key: 'a584yba4xs7f'
   },
   GOOGLE_MAPS_API_KEY: 'AIzaSyCz-Nu0ku-0DJEe5iPt13RTq0QVpiz45AY',
   region: 'eu-central-1',
