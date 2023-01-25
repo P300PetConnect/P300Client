@@ -29,26 +29,26 @@ import { UserService } from './components/service/user.service';
 import { AlertmsgComponent } from './components/alertmsg/alertmsg.component';  
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { environment} from '../environments/environment'; 
+import { environment } from '../environments/environment'; 
 import { MatSliderModule } from '@angular/material/slider';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 //import {Ng2TelInputModule} from 'ng2-tel-input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import {MatCardModule} from '@angular/material/card';
-import {MatListModule} from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SearchpositivekeywordsComponent } from './components/search-pet-service/search-pet-service.component';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatIconModule} from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule} from '@angular/material/expansion';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatIconModule } from '@angular/material/icon';
 import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
 import { AddPostComponent } from './forum-components/add-post/add-post.component';
 import { PostComponent } from './forum-components/post/post.component';
@@ -57,12 +57,12 @@ import { SharedFormComponent } from './components/shared-form/shared-form.compon
 import { SettingsComponent } from './components/settings/settings.component';
 import { PetComponent } from './components/pet/pet.component';
 import { PetSitterServiceComponent } from './components/pet-sitter-service/pet-sitter-service.component';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MessageAlertComponent } from './components/message-alert/message-alert.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { ChatPageComponent } from './components/chat-page/chat-page.component';
-import { InterceptorService } from './components/service/interceptor.service.js';
+import { InterceptorService } from './components/service/interceptor.service';
 
 
 // import { MdInputModule } from '@angular/material';
@@ -144,9 +144,10 @@ import { InterceptorService } from './components/service/interceptor.service.js'
     }),
   ],
   providers: [
-    //{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService,
-   CognitoGuard, UserService],
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  AuthenticatorService,
+  CognitoGuard,
+  UserService],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })

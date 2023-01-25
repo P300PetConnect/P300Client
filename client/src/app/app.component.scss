@@ -1,8 +1,7 @@
 .loader{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: black;
-    opacity: 0.6;
-    z-index: 99;
+    position: fixed;
+    top: 20;
+    left: 0;
+    transform: translate(calc(50vw - 50%));
+    z-index: 999;
 }

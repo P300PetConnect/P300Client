@@ -14,7 +14,10 @@ export class InterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(
       finalize(
         () => {
-          this.loaderService.isLoading.next(false);
+          //loaderService is added within a setTimout method to add 1500 tik delay and make  loader more visable
+          setTimeout(() => {
+            this.loaderService.isLoading.next(false);
+          }, 1500)
         }
       )
     );
