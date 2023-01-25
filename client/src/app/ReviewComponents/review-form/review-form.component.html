@@ -9,8 +9,8 @@
     <div class="form-group">
         <mat-form-field appearance="outline">
             <mat-label>Star Rating</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let s of stars" [value]="s">
+            <mat-select [(value)]="selected">
+              <mat-option *ngFor="let s of stars" value="{{s}}" >
                 {{s}}
               </mat-option>
             </mat-select>
@@ -20,7 +20,7 @@
     <div class="form-group">
     
         <div class="col-sm-10">
-            <textarea type="text" class="form-control" id="review" placeholder="Enter review"></textarea>
+            <textarea type="text" class="form-control" id="review" placeholder="Enter review" formControlName="content"></textarea>
        
         </div>
       </div>
@@ -32,8 +32,9 @@
          
         </div>
 
-      
+
     
     </div>
   </form>
 </div>
+

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TestScheduler } from 'rxjs/testing';
 import { ReviewService } from 'src/app/Review-services/review.service';
 
 @Component({
@@ -12,34 +13,37 @@ export class ReviewFormComponent implements OnInit {
   @Output() closeForm = new EventEmitter<Boolean>();
   stars: number[] = [1,2,3,4,5];
   message: any;
+  selected = 1;
 
    // add order number when integrated
    addReview : FormGroup = new FormGroup({
-    UserIDSubject: new FormControl('', [Validators.required]),
-    UserIDCreator: new FormControl('', [Validators.required]),
-    ReviewRating: new FormControl('', [Validators.required]),
-    ReviewContent: new FormControl('', [Validators.required]),
+    subID: new FormControl('', [Validators.required]),
+    creatorID: new FormControl('', [Validators.required]),
+    rating: new FormControl('', [Validators.required]),
+    content: new FormControl('', [Validators.required]),
   
   });
 
-  close() 
-  {
-    this.closeForm.emit();
-  }
+      
   constructor(private db: ReviewService) { }
 
 
 
   ngOnInit(): void {
+ 
+
+ 
   }
 
   onSubmit()
 {
- //submits review to be added to DB
- //will get subject and creator ID's when integrated
-  this.addReview.controls['UserIDSubject'].setValue(43);
-  this.addReview.controls['UserIDCreator'].setValue(6);
+      //submits review to be added to DB
+    //will get subject and creator ID's when integrated
 
+  this.addReview.controls['subID'].setValue(43);
+  this.addReview.controls['creatorID'].setValue(6);
+  this.addReview.controls['rating'].setValue(this.selected);
+ 
   this.db.addReview(this.addReview).subscribe({
     next: review => {
       console.log(JSON.stringify(review) + 'review added');
@@ -50,21 +54,32 @@ export class ReviewFormComponent implements OnInit {
     error: (err) => this.message = err
   });
 
-  let reviewAmount = this.addReview.controls['UserIDSubject'];
+this.UpdateReview();
+}
 
-  // this.db.updateReview(reviewAmount).subscribe({
-  //   next: review => {
-  //     console.log(JSON.stringify(review) + 'review added');
-  //     this.message = "list added";
-  //     this.close();
+UpdateReview()
+{
+  let subID = Number(this.addReview.controls['subID'].value);
+  let reviewAmount = Number(this.addReview.controls['rating'].value);
+
+  this.db.updateReview(subID,reviewAmount).subscribe({
+    next: review => {
+      console.log(JSON.stringify(review) + 'review updated');
+      this.message = "review Updated";
+  
      
-  //      },
-  //   error: (err) => this.message = err
-  // });
-
-
+       },
+    error: (err) => this.message = err
+  });
 
 }
+
+close() 
+{
+  this.closeForm.emit();
+}
+
+
 
 
 
