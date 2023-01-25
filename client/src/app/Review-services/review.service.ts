@@ -14,17 +14,21 @@ export class ReviewService {
   addReview(review : FormGroup)
   {
     console.log(review.value);
-    return this.http.post<any>(this.dataUriLists, review.value)
+    return this.http.post<any>(' https://icua47lrek.execute-api.eu-west-1.amazonaws.com/prod/', review.value)
     .pipe(
       catchError(this.handleError)
     )
 
-  
-
   }
 
-  updateReview(reviewAmount: Number)
+  updateReview(subID: number,reviewAmount: number)
   {
+    //https://icua47lrek.execute-api.eu-west-1.amazonaws.com/prod/?id=43&reviewAmount=3
+    console.log(reviewAmount + '   ' +  subID);
+    return this.http.get<any>(`https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/update?id=${subID}&reviewAmount=${reviewAmount}`)
+    .pipe(
+      catchError(this.handleError)
+    )
 
   }
 }
