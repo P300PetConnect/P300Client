@@ -21,6 +21,7 @@ interface petCategory {
 export class SearchVersion2Component implements OnInit {
 
   selected = "";
+  reviewForm = false;
   
   serviceCategories: serviceCategory[] = [
     {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Accomodation'},
@@ -145,5 +146,9 @@ export class SearchVersion2Component implements OnInit {
 
   seePetMinder(){
     this.router.navigate(['petsitterdetails'])
+  }
+  closeForm()
+  {
+    this.reviewForm = false;
   }
 }

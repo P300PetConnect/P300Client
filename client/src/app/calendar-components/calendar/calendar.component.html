@@ -70,7 +70,7 @@
 
   <div *ngIf="displayEvent" class = "modal-Background">
     <div class="modal-content">
-        <Button class = "btn btn-danger close" (click)="displayEvent = false" >&#10005;</Button>
+        <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="displayEvent = false" >&#10005;</Button>
         <div class = "content">
           <h5 class="text-decoration-underline mb-3">{{title}}</h5>
           <h6>Pet owner: {{owner}}</h6>
