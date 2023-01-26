@@ -228,8 +228,11 @@
                   </div>
                 </div>  -->
               </mat-tab>
-              <mat-tab label="Reviews">
-      
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <span (click)="getReviews(43)">Reviews</span>
+              </ng-template>
+                 <app-review></app-review>
               </mat-tab>
               <mat-tab label="Set Preferences">
       

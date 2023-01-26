@@ -83,6 +83,7 @@ import { SearchVersion2Component } from './components/search-version2/search-ver
 import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
 import { SearchSitterServicesComponent } from './components/search-sitter-services/search-sitter-services.component';
 import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.component';
+import { ReviewComponent } from './ReviewComponents/review/review.component';
 
 
 
@@ -102,7 +103,7 @@ import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent
     
   ],
   imports: [

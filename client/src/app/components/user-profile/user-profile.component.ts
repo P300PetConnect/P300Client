@@ -10,6 +10,7 @@ import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
+import { ReviewService } from 'src/app/Review-services/review.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,6 +20,11 @@ import { PetService } from '../service/pet.service';
 
 export class UserProfileComponent implements OnInit {
   
+  //make interface for review
+  //configure get for reviews
+  //leave comments on where further integration is needed. 
+
+
   public user: IUser; 
   public pet:IPet;
   isReadOnly?:boolean = false; 
@@ -29,6 +35,7 @@ export class UserProfileComponent implements OnInit {
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
 
+ // Lists:List[] = [];
 
   //hardcoded bools to demo comments 
 
@@ -38,7 +45,7 @@ export class UserProfileComponent implements OnInit {
   comments4 = false;
   com = false;
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog) {
+  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private review:ReviewService) {
 
 
 
@@ -138,6 +145,17 @@ getPetDetails(){
      dialogConfig.height = "93%";
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
+
+  // getReviews( id: number):boolean
+  // {
+  //   this.review.getReviews().subscribe({
+  //     next: (value: List[] )=> this.Lists = value,
+  //     complete: () => console.log('List service finished ' + this.Lists[0].title),
+  //     error: (mess) => this.message = mess
+  //   })
+    
+  //   return false;
+  // }
 
 
 }
