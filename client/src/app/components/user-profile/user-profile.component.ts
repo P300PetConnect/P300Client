@@ -10,6 +10,7 @@ import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
+import { OrderComponent } from '../order/order.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -129,6 +130,14 @@ getPetDetails(){
      dialogConfig.height = "93%";
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
+  onCreateOrder(){
+    // this._userService.initializeFormGroup(); 
+    const dialogConfig = new MatDialogConfig(); 
+    dialogConfig.disableClose = false; 
+    dialogConfig.autoFocus = true; 
+    dialogConfig.width = "60%";
+    this.dialog.open(OrderComponent, dialogConfig); 
 
+  }
 
 }

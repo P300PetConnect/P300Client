@@ -11,6 +11,7 @@ import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-serv
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { OrderComponent } from '../order/order.component';
 
 @Component({
   selector: 'app-pet-sitter-details',
@@ -118,7 +119,15 @@ console.log('picker', this.picker);
 //     return false; 
 //   }
 
+onCreateOrder(){
+  // this._userService.initializeFormGroup(); 
+  const dialogConfig = new MatDialogConfig(); 
+  dialogConfig.disableClose = false; 
+  dialogConfig.autoFocus = true; 
+  dialogConfig.width = "60%";
+  this.dialog.open(OrderComponent, dialogConfig); 
 
+}
 
   getPetSitter(){
     this._userService.get_petsitter("fatherted@gmail.com").subscribe(
