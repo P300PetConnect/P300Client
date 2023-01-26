@@ -82,6 +82,7 @@ import { ChunkPipe } from './calender-pipe/chunk.pipe';
 import { SearchVersion2Component } from './components/search-version2/search-version2.component';
 import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
 import { SearchSitterServicesComponent } from './components/search-sitter-services/search-sitter-services.component';
+import { OrderComponent } from './components/order/order.component';
 import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.component';
 import { ReviewComponent } from './ReviewComponents/review/review.component';
 
@@ -103,7 +104,7 @@ import { ReviewComponent } from './ReviewComponents/review/review.component';
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent
     
   ],
   imports: [

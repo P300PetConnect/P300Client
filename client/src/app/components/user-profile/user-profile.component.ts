@@ -12,6 +12,7 @@ import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
+import { OrderComponent } from '../order/order.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -147,6 +148,13 @@ getPetDetails(){
      dialogConfig.height = "93%";
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
+  onCreateOrder(){
+    // this._userService.initializeFormGroup(); 
+    const dialogConfig = new MatDialogConfig(); 
+    dialogConfig.disableClose = false; 
+    dialogConfig.autoFocus = true; 
+    dialogConfig.width = "60%";
+    this.dialog.open(OrderComponent, dialogConfig); 
 
   getReviews(id: number):boolean
   {/////fiiiiix
@@ -158,5 +166,6 @@ getPetDetails(){
     return false;
   }
 
+  }
 
 }
