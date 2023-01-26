@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Review } from 'src/app/ReviewInterfaces/review';
 
 @Component({
   selector: 'app-review',
@@ -9,7 +11,13 @@ export class ReviewComponent implements OnInit {
 
   constructor() { }
 
+  @Input() review: Review;
   ngOnInit(): void {
+
+    
+  }
+  numSequence(n: number): Array<number> {
+    return Array(n);
   }
 
 }
