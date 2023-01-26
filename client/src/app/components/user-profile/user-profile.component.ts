@@ -13,6 +13,7 @@ import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
+import { ReviewService } from 'src/app/Review-services/review.service';
 
 @Component({
   selector: 'app-user-profile',
