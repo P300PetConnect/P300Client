@@ -14,6 +14,7 @@ import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
 import { ReviewService } from 'src/app/Review-services/review.service';
+import { Review } from 'src/app/ReviewInterfaces/review';
 
 @Component({
   selector: 'app-user-profile',
