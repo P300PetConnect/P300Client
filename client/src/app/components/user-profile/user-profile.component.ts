@@ -11,6 +11,7 @@ import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-serv
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
+import { Review } from 'src/app/ReviewInterfaces/review';
 
 @Component({
   selector: 'app-user-profile',
@@ -35,7 +36,8 @@ export class UserProfileComponent implements OnInit {
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
 
- // Lists:List[] = [];
+  reviews:Review[] = [];
+  message: any;
 
   //hardcoded bools to demo comments 
 
@@ -146,16 +148,15 @@ getPetDetails(){
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
 
-  // getReviews( id: number):boolean
-  // {
-  //   this.review.getReviews().subscribe({
-  //     next: (value: List[] )=> this.Lists = value,
-  //     complete: () => console.log('List service finished ' + this.Lists[0].title),
-  //     error: (mess) => this.message = mess
-  //   })
-    
-  //   return false;
-  // }
+  getReviews(id: number):boolean
+  {/////fiiiiix
+    this.review.getReviews(id).subscribe({
+      next: (value: Review[] )=> this.reviews = value,
+      complete: () => console.log('Review service finished ' +  JSON.stringify((this.reviews))),
+      error: (mess) => this.message = mess
+    })
+    return false;
+  }
 
 
 }

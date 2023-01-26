@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { catchError } from 'rxjs';
+import { catchError, tap } from 'rxjs';
+import { Review } from '../ReviewInterfaces/review';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,16 @@ export class ReviewService {
       catchError(this.handleError)
     )
 
+  }
+
+  getReviews(id)
+  {
+    return this.http.get<Review>('https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/review?id='+ id)
+    .pipe(
+      tap(data => console.log('list/error' + JSON.stringify(data))
+      
+    ),
+     catchError(this.handleError)
+    );
   }
 }

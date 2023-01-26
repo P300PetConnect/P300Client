@@ -227,13 +227,23 @@
                   </div>
                   </div>
                 </div>  -->
+
+
+
               </mat-tab>
               <mat-tab>
                 <ng-template mat-tab-label>
                   <span (click)="getReviews(43)">Reviews</span>
               </ng-template>
-                 <app-review></app-review>
+              <div *ngFor="let r of reviews">
+        
+                <app-review [review] = "r"></app-review>
+              </div>
+                
               </mat-tab>
+
+
+
               <mat-tab label="Set Preferences">
       
               </mat-tab>
