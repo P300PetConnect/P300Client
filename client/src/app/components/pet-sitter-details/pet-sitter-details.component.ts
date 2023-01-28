@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, ElementRef, ComponentFactoryResolver, ElementRef, OnInit, ViewChild,, ViewChild, Renderer2Renderer2} from '@angular/core';
+import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, Renderer2} from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/components/service/user.service';
 import { IUser, IPet} from 'src/app/components/interfaces/form';
@@ -11,7 +11,6 @@ import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-serv
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
-import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { OrderComponent } from '../order/order.component';
 
 @Component({
@@ -20,8 +19,8 @@ import { OrderComponent } from '../order/order.component';
   styleUrls: ['./pet-sitter-details.component.scss']
 })
 export class PetSitterDetailsComponent implements OnInit {
-  panelOpenState = false;  panelOpenState = false;
-  panelOpenState2 = false;  panelOpenState2 = false; 
+  panelOpenState = false;
+  panelOpenState2 = false; 
   public user: IUser; 
   public pet:IPet;
   isReadOnly?:boolean = false; 
@@ -43,33 +42,6 @@ export class PetSitterDetailsComponent implements OnInit {
     return day == 1; // 1 means monday, 0 means sunday, etc.
   };
 
-  dateFilter: (date: Date | null) => boolean =
-  (date: Date | null) => {
-    if (!date) {
-      return false;
-    }
-    const day = date.getDay();
-    return day == 1; // 1 means monday, 0 means sunday, etc.
-  };
-
-  
-  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-
-    var date = cellDate.getDate();
-
-    console.log(date); 
-
-    // if (view == 'month') {
-        return 'highlightCard';
-    // }
-
-    // return "";
-}
-
-
-  @ViewChild('picker') picker:ElementRef;
-
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private renderer: Renderer2) {
   
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
 
@@ -110,10 +82,6 @@ export class PetSitterDetailsComponent implements OnInit {
 
 
 
-    console.log(this.selected); 
-
-
-
 this.pet = {
   "name": "Lucy",
   "description": "She snores when sleeps",
@@ -138,7 +106,6 @@ this.pet = {
 
 
 console.log('picker', this.picker); 
-console.log('picker', this.picker); 
   }
 
 
@@ -151,8 +118,6 @@ console.log('picker', this.picker);
 //     }); 
 //     return false; 
 //   }
-
-
 
 onCreateOrder(){
   // this._userService.initializeFormGroup(); 
