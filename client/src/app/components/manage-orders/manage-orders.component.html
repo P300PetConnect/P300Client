@@ -1,1 +1,46 @@
-<p>manage-orders works!</p>
+<div class="container">
+    <h2 class="pt-4 pb-4">Manage Orders</h2>
+    <div class="row">
+        <div class="col-12">
+            <mat-tab-group animationDuration="0ms">
+                <mat-tab label="ACTIVE">
+                    <div>
+                        orders in progress
+                    </div>
+                </mat-tab>
+                <mat-tab label="COMPLETED">
+                    <ng-template mat-tab-label>
+                        <span>COMPLETED</span>
+                    </ng-template>
+                </mat-tab>
+                <mat-tab label="COMPLETED">
+                    <div class="row pt-4 container">
+                        <div class="col-4">
+                            <div class="card p-4">
+                                <div class="text-center card-body">
+                                    <div class="member-card">
+                                        <i class="bi bi-plus-circle-fill text-info"></i>
+                                        <p>Create a new Service</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="DRAFT">
+
+                </mat-tab>
+                <mat-tab label="Reviews">
+                    <!-- <ng-template mat-tab-label>
+                    <span (click)="getReviews(43)">Reviews</span>
+                    </ng-template>
+                    <div *ngFor="let r of reviews">
+                    <app-review [review] = "r"></app-review>
+                    </div> -->
+                </mat-tab>
+                <mat-tab label="Set Preferences">
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
