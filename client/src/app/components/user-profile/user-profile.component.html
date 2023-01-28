@@ -240,6 +240,13 @@
                 </div>  -->
               </mat-tab>
               <mat-tab label="Reviews">
+                <ng-template mat-tab-label>
+                  <span (click)="getReviews(43)">Reviews</span>
+              </ng-template>
+              <div *ngFor="let r of reviews">
+        
+                <app-review [review] = "r"></app-review>
+              </div>
       
               </mat-tab>
               <mat-tab label="Set Preferences">
