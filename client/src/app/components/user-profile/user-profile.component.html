@@ -175,9 +175,6 @@
           </div>
         </div>
       </div>
-      
-      
-      
           <div class="col-8 pl-5">
             <mat-tab-group animationDuration="0ms">
               <mat-tab label="Schedule">
@@ -185,10 +182,10 @@
                   <app-calendar></app-calendar>
                 </div>
               </mat-tab>
-              <mat-tab label="Schedule">
-                <div>
-                  <app-calendar></app-calendar>
-                </div>
+              <mat-tab label="Orders">
+                <ng-template mat-tab-label>
+                  <span (click)="getOrders('fatherted@gmail.com')">Orders</span>
+              </ng-template>
               </mat-tab>
               <mat-tab label="Active service">
                 <div class="row pt-4 container">
