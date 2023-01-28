@@ -23,133 +23,6 @@
                     <span class="bi bi-star-fill"></span>
                     <span class="bi bi-star-fill"></span>
                     <span class="review my-auto pl-2"><u>14 reviews</u></span>
-    <div class="row">
-      <div class="tab-content">
-        <div class="row">
-          <div class="col-4">
-            <div class="card mb-3">
-              <div class="card-header d-flex justify-content-between">
-                <h5 class="card-title mb-0">Pet Sitter</h5>
-                <i class="bi bi-heart"> save</i>
-              </div>
-              <div class="card-body text-center pb-0 ">
-                <img src={{petSitter?.profilePicUrl}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2"
-                  width="128" height="128">
-                <h5 class="card-title mb-0">{{petSitter?.name}} {{petSitter?.surname}}</h5>
-                <div class="text-muted">
-                </div>
-                <div class="mt-3">
-                  <div class="h-100">
-                    <span class="bi bi-star-fill"></span>
-                    <span class="bi bi-star-fill"></span>
-                    <span class="bi bi-star-fill"></span>
-                    <span class="bi bi-star-fill"></span>
-                    <span class="bi bi-star-fill"></span>
-                    <span class="review my-auto pl-2"><u>14 reviews</u></span>
-
-                  </div>
-                </div>
-              </div>
-              <hr class="my-0">
-              <div class="card-body">
-                <div class="row p-3">
-                  <button mat-flat-button class="search-btn">Start Chat</button>
-                </div>
-                <div class="row details">
-                  <div class="row">
-                    <div class="col-1">
-                      <i class="bi bi-hourglass-split"></i>
-                    </div>
-                    <div class="col">
-                      <span>Response time: <b>17 minutes</b></span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-1">
-                      <i class="bi bi-chat-square-text"></i>
-                    </div>
-                    <div class="col">
-                      <span>Response rate: <b>98%</b></span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-1">
-                      <i class="bi bi-x-octagon"></i>
-                    </div>
-                    <div class="col">
-                      <span>Cancellation policy: <a class="primary-link">flexible</a></span>
-                    </div>
-                  </div>
-                  <div class="row pt-4">
-                    <hr>
-                    <h4>My place</h4>
-
-                    <div class="row">
-                      <div class="col-1">
-                        <span class="material-symbols-outlined">
-                          cottage
-                        </span> </div>
-                      <div class="col">
-                        <span>Living in a <b> house</b></span>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-1">
-                        <span class="material-symbols-outlined">
-                          smoke_free
-                        </span>
-                      </div>
-                      <div class="col">
-                        <span><b> No</b> smokers</span>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-1">
-                        <span class="material-symbols-outlined md-18">
-                          sound_detection_dog_barking
-                        </span>
-                      </div>
-                      <div class="col">
-                        <span><b> 1 </b> Dog </span>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-1">
-                        <span class="material-symbols-outlined ">
-                          child_care
-                        </span>
-                      </div>
-                      <div class="col">
-                        <span> One - 12 years old kid</span>
-                      </div>
-                    </div>
-
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <!-- <div class="card mb-3">
-                <div class="card-header d-flex justify-content-between">
-                  <h5 class="card-title mb-0">Pet Sitter</h5>
-                  <i class="bi bi-heart"> save</i>
-                </div>
-                <div class="card-body text-center pb-0 ">
-                  <img src={{petSitter?.profilePicUrl}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2"
-                    width="128" height="128">
-                  <h5 class="card-title mb-0">{{petSitter?.name}} {{petSitter?.surname}}</h5>
-                  <div class="text-muted">
-                  </div>
-                  <div class="mt-3">
-                    <div class="h-100">
-                      <span class="bi bi-star-fill"></span>
-                      <span class="bi bi-star-fill"></span>
-                      <span class="bi bi-star-fill"></span>
-                      <span class="bi bi-star-fill"></span>
-                      <span class="bi bi-star-fill"></span>
-                      <span class="review my-auto pl-2"><u>14 reviews</u></span>
 
                   </div>
                 </div>
@@ -292,83 +165,7 @@
                       </div>
                     </div> -->
           </div>
-                    </div> -->
-          </div>
 
-          <div class="col-8">
-            <div class="row">
-              <div class="col-6">
-                <div class="row pb-5 pt-4">
-                  <h4>Services:</h4>
-                  <mat-accordion class="pt-4">
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                      <mat-expansion-panel-header class="pt-5 pb-5">
-                        <mat-panel-title>
-                          <picture class="align-initial pr-3">
-                            <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                          </picture>
-                          <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title"> Mind
-                              Pet</strong>
-                            <br></span>
-                        </mat-panel-title>
-                        <mat-panel-description>
-                          Starting price: € 15.00
-                        </mat-panel-description>
-                      </mat-expansion-panel-header>
-                      <p>Service description</p>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel (opened)="panelOpenState2 = true" class="mt-3"
-                      (closed)="panelOpenState2 = false">
-                      <mat-expansion-panel-header class="pt-5 pb-5">
-                        <mat-panel-title>
-                          <picture class="align-initial pr-3">
-                            <img src="../../../assets/images/home/walk-selected.svg" alt="Walk" class="img-fluid">
-                          </picture>
-                          <span class="align-middle nav-title"><strong
-                              class="d-inline-block d-md-inline title">Walk</strong>
-                            <br></span>
-                        </mat-panel-title>
-                        <mat-panel-description>
-                          Starting price: € 5.00/km
-                        </mat-panel-description>
-                      </mat-expansion-panel-header>
-                      <p>Service description</p>
-                    </mat-expansion-panel>
-                  </mat-accordion>
-                </div>
-                <div class="row pt-3">
-                  <h4>I usually take care of:</h4>
-                  <img src="../../../assets/images/Screenshot 2022-12-06 at 00.49.44.png" alt="" style="width:26rem;">
-                </div>
-                <div class="row pt-4">
-                  <div class="col-1">
-                    <span class="material-symbols-outlined">
-                      pets
-                    </span>
-                  </div>
-                  <div class="col">
-                    <span>Don't take care of females in heat</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-1">
-                    <span class="material-symbols-outlined">
-                      pets
-                    </span>
-                  </div>
-                  <div class="col">
-                    <span>Males, neutered only</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-1">
-                    <span class="material-symbols-outlined">
-                      pets
-                    </span>
-                  </div>
-                  <div class="col">
-                    <span>List of breed I don't take care of: Link</span>
           <div class="col-8">
             <div class="row">
               <div class="col-6">
@@ -447,13 +244,7 @@
                 </div>
               </div>
               <div class="col-6">
-              <div class="col-6">
 
-                <div class="row pb-4 pt-4">
-                  <h4>I am available on:</h4>
-                  <mat-card class="demo-inline-calendar-card" >
-                    <mat-calendar [(selected)]="selected"></mat-calendar>
-                  </mat-card>
                 <div class="row pb-4 pt-4">
                   <h4>I am available on:</h4>
                   <mat-card class="demo-inline-calendar-card" >
@@ -558,117 +349,13 @@
               </div>
             </div>
           </div>
-
-              <div class="col-12">
-                <div class="row pt-5">
-                  <hr>
-                    <mat-tab-group animationDuration="0ms">
-                      <mat-tab label="Description">
-                        <div class="row p-4">
-                          <div class="col-12 text-justify">
-                            <p>Dogs have always been part of my family, since I was a little boy I learned to love, care for and respect animals. I was used to hosting doggies for friends and family, until a friend commented on this app and I loved the idea of ​​putting this experience in my daily life. I will take the same care and affection with your puppy, respecting his routine and personality.
-                        
-                              <ul class="list list-group list-group-flush">
-                                <li class="list-group-item">24 hour supervision</li>
-                                <li class="list-group-item">Veterinary first aid</li>
-                                <li class="list-group-item">Apply oral medication</li>
-                                <li class="list-group-item">Have experience with seniors dog</li>
-                                <li class="list-group-item">emergency transportation</li>
-                              </ul>
-                          </div>
-                        </div>
-                      </mat-tab>
-
-                      <mat-tab label="Reviews">
-        
-                        <div class="container pt-5 p-0">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="row">
-        
-                                <div class="col-md-2">
-                                  <img
-                                    src="https://i0.wp.com/therighthairstyles.com/wp-content/uploads/2014/03/1-medium-layered-haircut-for-square-face.jpg?w=500&ssl=1"
-                                    class="img-fluid rounded-circle mb-2" />
-                                </div>
-        
-                                <div class="col-md-10">
-                                  <p>
-                                    <a class="float-left" href=""><strong>Anne Martins</strong></a>
-        
-                                    <span class=" float-right bi bi-star-fill"></span>
-                                    <span class=" float-right bi bi-star-fill"></span>
-                                    <span class=" float-right bi bi-star-fill"></span>
-                                    <span class="float-right bi bi-star-fill"></span>
-                                    <span class="float-right bi bi-star-fill"></span>
-                                  </p>
-        
-                                  <div class="clearfix m-0 p-0"></div>
-                                  <p class="p-0 m-0">Father Ted is very dedicated and attentive. I have two elderly dogs, one of
-                                    them diabetic, and he put on insulin and took very good care of them. They went home super
-                                    happy. I highly recommend 🙂
-                                  </p>
-                                  <a class=" float-right review-time text-secondary text-right">2 days ago</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-        
-                        <div class="container pt-5 p-0">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="row">
-        
-                                <div class="col-md-2">
-                                  <img src="https://lookyourbestbeyourbest.files.wordpress.com/2011/11/image-3.jpeg"
-                                    class="img-fluid rounded-circle mb-2" />
-                                </div>
-        
-                                <div class="col-md-10">
-                                  <p>
-                                    <a class="float-left" href=""><strong>Thomas O'Brian</strong></a>
-        
-                                    <span class=" float-right bi bi-star-fill"></span>
-                                    <span class=" float-right bi bi-star-fill"></span>
-                                    <span class=" float-right bi bi-star-fill"></span>
-                                    <span class="float-right bi bi-star-fill"></span>
-                                    <span class="float-right bi bi-star-fill"></span>
-                                  </p>
-                                  <div class="clearfix m-0 p-0"></div>
-                                  <p class="p-0 m-0">Father Ted is very dedicated and attentive. I have two elderly dogs, one of
-                                    them diabetic, and he put on insulin and took very good care of them. They went home super
-                                    happy. I highly recommend 🙂
-                                  </p>
-                                  <a class=" float-right review-time text-secondary text-right">2 days ago</a>
-        
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </mat-tab>
-                      <mat-tab label="Gallery">
-                      </mat-tab>
-                    </mat-tab-group>
-                  </div>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="row text-center d-flex justify-content-center">
-        </div>
-      </div>
-      <hr class="my-0">
         <div class="row text-center d-flex justify-content-center">
         </div>
       </div>
       <hr class="my-0">
     </div>
   </div>
-  <div>
-  </div>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <div>
   </div>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

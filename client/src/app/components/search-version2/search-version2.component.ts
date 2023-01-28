@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RdsUserServices } from 'src/app/search_service_interfaces/rds-user-services';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 
-
 interface serviceCategory {
   value: string;
   viewValue: string;
@@ -13,9 +12,6 @@ interface petCategory {
   value: string;
   viewValue: string;
 }
-
-
-
 
 @Component({
   selector: 'app-search-version2',
