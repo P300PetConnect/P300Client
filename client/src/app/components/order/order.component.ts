@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable, startWith } from 'rxjs';
@@ -9,6 +9,7 @@ import { MessageAlertComponent } from '../message-alert/message-alert.component'
 import { MatStepper } from '@angular/material/stepper';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
+import { OrderService } from '../service/order.service';
 
 
 
@@ -29,42 +30,53 @@ interface serviceCategory {
 })
 
 export class OrderComponent implements OnInit {
-  
+  //Order Form 
+      AddOrder : FormGroup = new FormGroup({
+      PetSitterID: new FormControl('', [Validators.required]),
+      PetOwnerID: new FormControl('', [Validators.required]),
+      OrderDate: new FormControl('', [Validators.required]),
+      Description: new FormControl('', [Validators.required]),
+      Status: new FormControl('', [Validators.required]),
+      ServiceID: new FormControl('', [Validators.required]), //input
+      Price: new FormControl('', [Validators.required]),
+      PaymentStatus: new FormControl('', [Validators.required]),
+    });
+
 selectedPet = '';
 selectedCategories: any;
-
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
-  });
+});
   secondFormGroup = this._formBuilder.group({
     secondCtrl: '',
   });
   isOptional = false;
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  
   positivekeywordsCtrl = new FormControl('');
-  
   filteredpositivekeywordss: Observable<string[]>;
   positivekeywordss: string[] = ['morning walk'];
   allpositivekeywordss: string[] = ['Take care', 'Minder', 'Overnight', 'Feed'];
 
   @ViewChild('positivekeywordsInput') positivekeywordsInput: ElementRef<HTMLInputElement>;
+  @ViewChild('Description') Description: ElementRef<HTMLInputElement>;
+
   @ViewChild('stepper')
   stepper: MatStepper;
   
-  
-  constructor(private _formBuilder: FormBuilder, private dialog:MatDialog) { 
+  //form
+  orderForm: FormGroup = new FormGroup({});
+  message: string;
+
+  constructor(private _formBuilder: FormBuilder, private dialog:MatDialog, private db: OrderService) { 
     this.filteredpositivekeywordss = this.positivekeywordsCtrl.valueChanges.pipe(
       startWith(null),
       map((positivekeywords: string | null) => (positivekeywords ? this._filter(positivekeywords) : this.allpositivekeywordss.slice())),
     );
 
   }
-
   ngOnInit(): void {
-
-  }
+}
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.
@@ -91,9 +103,6 @@ add(event: MatChipInputEvent): void {
 
     this.positivekeywordsCtrl.setValue(null);
   }
-
-   
-
 
   remove(positivekeywords: string): void {
     const index = this.positivekeywordss.indexOf(positivekeywords);
@@ -122,17 +131,17 @@ add(event: MatChipInputEvent): void {
   service=new FormControl(''); 
 
 petCategory: petCategory[] = [
-  {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Dog'},
+  {value: '../../../assets/images/home/boarding-selected.svg', viewValue:'Bob'},
   {value: '../../../assets/images/home/walk-selected.svg', viewValue: 'Cat'},
   {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Bird'},
   {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Fish'},
 
 ];
 serviceCategory: serviceCategory[] = [
-  {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Accommodation'},
-  {value: '../../../assets/images/home/walk-selected.svg', viewValue: 'Mind'},
-  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Walk'},
-  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Just feed'},
+  {value: '../../../assets/images/home/boarding-selected.svg', viewValue: '1'},
+  {value: '../../../assets/images/home/walk-selected.svg', viewValue: '2'},
+  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: '3'},
+  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: '4'},
 
 ];
 
@@ -153,6 +162,30 @@ serviceCategory: serviceCategory[] = [
     this.selectedPet = obj[0].viewValue;
     console.log('services selected: ', this.service.value); 
   }
+
+CreateOrder(){
+  this.AddOrder.controls['ServiceID'].setValue(2);
+  this.AddOrder.controls['PetSitterID'].setValue(6);
+  this.AddOrder.controls['PetOwnerID'].setValue(43);
+  this.AddOrder.controls['OrderDate'].setValue('2022-02-01'); 
+  this.AddOrder.controls['Status'].setValue(true); 
+  this.AddOrder.controls['Price'].setValue(50); 
+  this.AddOrder.controls['PaymentStatus'].setValue(1); 
+  this.AddOrder.controls['Description'].setValue('test description'); 
+
+  this.db.addOrder(this.AddOrder).subscribe({
+    next: order => {
+      console.log(JSON.stringify(order) + 'order added');
+      this.message = "list added";
+      //this.close();
+       },
+    error: (err) => this.message = err
+  });
+}
+ 
+GetOrderByUser(){
+  
+}
 
 
   onClose(){
@@ -189,9 +222,6 @@ serviceCategory: serviceCategory[] = [
 			this.url = reader.result; 
 		}
 	}
-  
-
-
 }
 
 
