@@ -18,21 +18,39 @@ formFields: any;
 isOpen: boolean = true; 
 @Input() isLogout: boolean; 
 @ViewChildren('field') allFields;
-
+userGroup: string;
 
   constructor(private _router: Router, public authenticator: AuthenticatorService ) {
     Amplify.configure(awsExports);
+   
+    Auth.currentAuthenticatedUser()
+    .then(user => {
+      this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+    })
+    .catch(err => console.log(err));
+
   }
+  async ngOnInit(){
+    // console.log('user group',this.userGroup)
 
+    // this.authenticator.getUserGroup().then(group => {
+      // console.log(this.authenticator.user.get);
+  // 
+  Auth.currentAuthenticatedUser()
+  .then(user => {
+    this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+  })
+  .catch(err => console.log(err));
 
-  ngOnInit(): void {
     if(this.authenticator.user){
       this._router.navigateByUrl('/user-form');
     }
+
     // if(this.isLogout){
     //   this.authenticator.signOut(); 
     //   console.log(this.authenticator.signOut()); 
     // }
+    console.log(this.userGroup); 
 
 }
 
