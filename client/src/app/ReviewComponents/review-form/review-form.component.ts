@@ -41,7 +41,7 @@ export class ReviewFormComponent implements OnInit {
     //will get subject and creator ID's when integrated
 
   this.addReview.controls['subID'].setValue(43);
-  this.addReview.controls['creatorID'].setValue(6);
+  this.addReview.controls['creatorID'].setValue(70);
   this.addReview.controls['rating'].setValue(this.selected);
  
   this.db.addReview(this.addReview).subscribe({
