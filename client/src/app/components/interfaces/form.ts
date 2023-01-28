@@ -20,6 +20,18 @@ export interface IPet{
     createdDate:string; 
     // petcaracteristics:string;
 }
+ 
+export interface IOrder{
+     PetSitterID: string, 
+     PetOwnerID: string,
+     OrderDate:string,
+     Description: string, 
+     Status: string, 
+     ServiceID: string, 
+     Price : string, 
+     PaymentStatus: string
+}
+
 
 export enum Iform{
 USERPETOWNER = 'USERPETOWNER', 
