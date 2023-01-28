@@ -12,9 +12,9 @@
         let-signOut="signOut">
         <!-- <h2>Welcome, {{ user?.attributes?.email }}!</h2> -->
 
-        <app-search-version2 *ngIf="user?.attributes?.email=='joannasmith@gmail.com'"></app-search-version2>
+        <app-search-version2 *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetOwner'"></app-search-version2>
         <!-- <button type="submit" (click)="signOut()">Sign Out</button> -->
-        <app-user-profile> *ngIf="user?.attributes?.email=='fatherted@gmail.com'"></app-user-profile>
+        <app-user-profile *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetSitter'"></app-user-profile>
 
       </ng-template>
     </amplify-authenticator>
