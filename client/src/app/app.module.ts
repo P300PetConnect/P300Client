@@ -86,6 +86,7 @@ import { SearchSitterServicesComponent } from './components/search-sitter-servic
 import { OrderComponent } from './components/order/order.component';
 import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.component';
 import { ReviewComponent } from './ReviewComponents/review/review.component';
+import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
 
 
 
@@ -105,7 +106,7 @@ import { ReviewComponent } from './ReviewComponents/review/review.component';
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ManageOrdersComponent
     
   ],
   imports: [
