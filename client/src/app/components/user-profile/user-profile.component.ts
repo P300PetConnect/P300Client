@@ -157,7 +157,7 @@ getPetDetails(){
     this.dialog.open(OrderComponent, dialogConfig); 
   }
   getReviews(id: number):boolean
-  {/////fiiiiix
+  {
     this.review.getReviews(id).subscribe({
       next: (value: Review[] )=> this.reviews = value,
       complete: () => console.log('Review service finished ' +  JSON.stringify((this.reviews))),

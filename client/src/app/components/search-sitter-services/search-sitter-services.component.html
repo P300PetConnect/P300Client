@@ -24,7 +24,7 @@
               <div class="row">
                   <div class="d-flex justify-content-between">
                       <div class="h-100" *ngIf="service.NumReviews > 0">
-                          <span *ngFor="let n of num(service.ReviewsTotal / service.NumReviews | number:'1.0-0')" class="bi bi-star-fill"></span>
+                          <span *ngFor="let _ of [].constructor(service.ReviewsTotal / service.NumReviews | number:'0.0-0')" class="bi bi-star-fill"></span>
                           <span class="review my-auto pl-2">{{service.ReviewsTotal / service.NumReviews | number:'1.2-2'}}   ({{service.NumReviews}}) </span>
                       </div>
                       <div class="h-100" *ngIf="service.NumReviews <= 0">

@@ -12,6 +12,8 @@ import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { OrderComponent } from '../order/order.component';
+import { Review } from 'src/app/ReviewInterfaces/review';
+import { ReviewService } from 'src/app/Review-services/review.service';
 
 @Component({
   selector: 'app-pet-sitter-details',
@@ -31,6 +33,8 @@ export class PetSitterDetailsComponent implements OnInit {
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
   selected: Date | null;
+  reviews:Review[] = [];
+  message: any;
 
 
   dateFilter: (date: Date | null) => boolean =
@@ -59,7 +63,8 @@ export class PetSitterDetailsComponent implements OnInit {
 
   @ViewChild('picker') picker:ElementRef;
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private renderer: Renderer2) {
+  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService) {
+ 
 
 
 
@@ -174,6 +179,17 @@ getPetDetails(){
      dialogConfig.height = "93%";
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
+
+  getReviews(id: number):boolean
+  {
+    this.review.getReviews(id).subscribe({
+      next: (value: Review[] )=> this.reviews = value,
+      complete: () => console.log('Review service finished ' +  JSON.stringify((this.reviews))),
+      error: (mess) => this.message = mess
+    })
+    return false;
+  }
+
 
 
 }

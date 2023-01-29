@@ -47,8 +47,8 @@ export class SearchSitterServicesComponent implements OnInit {
 
   }
   num(n: number): Array<number> {
-   // alert(n);
-    return Array(n);
+   alert(n);
+    return Array(4);
   }
 
 }
