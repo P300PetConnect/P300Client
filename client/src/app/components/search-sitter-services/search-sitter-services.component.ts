@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RdsUserServices } from 'src/app/search_service_interfaces/rds-user-services';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 
@@ -16,7 +17,7 @@ export class SearchSitterServicesComponent implements OnInit {
   otherServices?: any;
   errorMessage : any;
 
-  constructor(private search: SearchServiceService) { }
+  constructor(private search: SearchServiceService, private _router: Router) { }
 
   ngOnInit(): void {
     
@@ -49,6 +50,11 @@ export class SearchSitterServicesComponent implements OnInit {
   num(n: number): Array<number> {
    alert(n);
     return Array(4);
+  }
+  SearchSitter(id: number){
+    console.log('find')
+    this._router.navigate(['/petsitterdetails', {'id': `${id}`}])
+   //[routerLink]="['/petsitterdetails']"
   }
 
 }

@@ -36,11 +36,11 @@ userGroup: string;
     // this.authenticator.getUserGroup().then(group => {
       // console.log(this.authenticator.user.get);
   // 
-  Auth.currentAuthenticatedUser()
-  .then(user => {
-    this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
-  })
-  .catch(err => console.log(err));
+  // Auth.currentAuthenticatedUser()
+  // .then(user => {
+  //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+  // })
+  // .catch(err => console.log(err));
 
     if(this.authenticator.user){
       this._router.navigateByUrl('/user-form');

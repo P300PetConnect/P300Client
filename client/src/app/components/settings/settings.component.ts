@@ -45,6 +45,7 @@ export class SettingsComponent implements OnInit {
     "mobileNumber": "0870915483",
     "emailAddress": "fatherted@gmail.com",
     "petOwnerId": "fatherted@gmail.com"
+   
 }
 this.pet = {
   "name": "Lucy",

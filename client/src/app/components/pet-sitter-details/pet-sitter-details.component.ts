@@ -14,6 +14,7 @@ import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { OrderComponent } from '../order/order.component';
 import { Review } from 'src/app/ReviewInterfaces/review';
 import { ReviewService } from 'src/app/Review-services/review.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pet-sitter-details',
@@ -35,6 +36,7 @@ export class PetSitterDetailsComponent implements OnInit {
   selected: Date | null;
   reviews:Review[] = [];
   message: any;
+  email: string;
 
 
   dateFilter: (date: Date | null) => boolean =
@@ -63,7 +65,8 @@ export class PetSitterDetailsComponent implements OnInit {
 
   @ViewChild('picker') picker:ElementRef;
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService) {
+  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
+    private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute) {
  
 
 
@@ -84,6 +87,7 @@ export class PetSitterDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     console.log(this.selected); 
+    this.email = this.r.snapshot.paramMap.get('id');
 
 
 
@@ -105,7 +109,7 @@ this.pet = {
     // this.getPetDetails(); 
     // }
   //  if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
-    this.getPetSitter(); 
+    this.getPetSitter(this.email); 
     console.log(this.petSitter);
     // }
 
@@ -134,8 +138,8 @@ onCreateOrder(){
 
 }
 
-  getPetSitter(){
-    this._userService.get_petsitter("fatherted@gmail.com").subscribe(
+  getPetSitter(email: string){
+    this._userService.get_petsitter(email).subscribe(
       petSitter=>{
         this.petSitter = petSitter;
         console.log(petSitter)
@@ -144,14 +148,6 @@ onCreateOrder(){
     }
 
 //get pets 
-getPetDetails(){
-  this._petService.get_petdetails("joannasmith@gmail.com").subscribe(
-    petDetails=>{
-      this.petDetails = petDetails; 
-      console.log(petDetails)
-    }); 
-    return false; 
-}
 
   
   onCreate(){
@@ -182,6 +178,7 @@ getPetDetails(){
 
   getReviews(id: number):boolean
   {
+    
     this.review.getReviews(id).subscribe({
       next: (value: Review[] )=> this.reviews = value,
       complete: () => console.log('Review service finished ' +  JSON.stringify((this.reviews))),
@@ -193,3 +190,16 @@ getPetDetails(){
 
 
 }
+
+/**
+ *
+ *  getPetDetails(){
+  this._petService.get_petdetails("joannasmith@gmail.com").subscribe(
+    petDetails=>{
+      this.petDetails = petDetails; 
+      console.log(petDetails)
+    }); 
+    return false; 
+}
+
+ */

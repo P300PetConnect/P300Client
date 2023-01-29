@@ -110,6 +110,7 @@ export class SearchVersion2Component implements OnInit {
     
     this.SearchService(pet, this.location, service);
   }
+  
 
 
   changed(){
@@ -121,6 +122,7 @@ export class SearchVersion2Component implements OnInit {
     }
 
   }
+  
 
 
   seePetMinder(){
