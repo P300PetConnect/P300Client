@@ -22,6 +22,7 @@ export interface IPet{
 }
  
 export interface IOrder{
+    OrderID:string, 
      PetSitterID: string, 
      PetOwnerID: string,
      OrderDate:string,
@@ -29,7 +30,8 @@ export interface IOrder{
      Status: string, 
      ServiceID: string, 
      Price : string, 
-     PaymentStatus: string
+     PaymentStatus: string, 
+     ServiceTitle:string,
 }
 
 
