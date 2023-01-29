@@ -18,8 +18,8 @@ export class OrderService {
     .pipe(tap(), catchError(this.handleError));
   }
 
-  getOderByUser(userEmail:string):Observable<IOrder[]>{
-    return this._http.get<IOrder[]>('https://uf7ep4mh1l.execute-api.eu-west-1.amazonaws.com/dev/getorders?email='+userEmail)
+  getOderByUser(userEmail){
+    return this._http.get<IOrder[]>('https://dw8reoypi6.execute-api.eu-west-1.amazonaws.com/dev/orders?email='+userEmail)
     .pipe(
       tap(data => console.log('list/error' + JSON.stringify(data))
       
