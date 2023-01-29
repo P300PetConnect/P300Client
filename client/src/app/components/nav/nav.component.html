@@ -37,12 +37,13 @@
     <div class="navbar-nav ml-auto">
       <a href="#" class="nav-item nav-link active"><i class="bi bi-house-heart-fill"></i><span>Home</span></a>
       <a routerLink="forum" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link"><i class="bi bi-people-fill"></i><span>Forum</span></a>
+      <a href="#" routerLink="chat" class="nav-item nav-link"><i class="bi bi-chat-text-fill"></i><span>Messages</span></a>
       <!-- <a mat-button [matMenuTriggerFor]="messageBox" data-toggle="dropdown" class="nav-item nav-link user-action">
         <i class="bi bi-chat-text-fill"></i>
         <span>Messages</span> -->
         <!-- <span class="badge badge-danger badge-counter badge2">7</span> -->
       <!-- </a> -->
-      <mat-menu #messageBox="matMenu" xPosition="before">
+      <!--<mat-menu #messageBox="matMenu" xPosition="before">
         <h6 class="dropdown-header">Message Center</h6>
         <a class="dropdown-item d-flex align-items-center" href="#">
           <div class="dropdown-list-image mr-3">
@@ -103,9 +104,7 @@
           </div>
         </a>
         <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-      </mat-menu>
-
-      <a class="nav-item nav-link" [matMenuTriggerFor]="messageBox" data-toggle="dropdown" class="nav-item nav-link user-action"><i class="bi bi-chat-text-fill"></i><span>Messages</span></a>
+      </mat-menu>-->
       <a href="#" class="nav-item nav-link"><i class="bi bi-bell-fill"></i><span>Notifications</span></a>
       <a mat-button [matMenuTriggerFor]="beforeMenu" data-toggle="dropdown"
         class="nav-item nav-link dropdown-toggle user-action pt-4">

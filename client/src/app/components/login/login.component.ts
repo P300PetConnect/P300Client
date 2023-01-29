@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
-import Amplify, { Auth } from 'aws-amplify'; 
+//import Amplify, { Auth } from 'aws-amplify'; 
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import awsExports from 'src/aws-exports';
+//import awsExports from 'src/aws-exports';
 import { UserService } from '../service/user.service';
 import { IUser } from '../interfaces/form';
 import { NavComponent } from '../nav/nav.component';
@@ -21,13 +21,13 @@ isOpen: boolean = true;
 userGroup: string;
 
   constructor(private _router: Router, public authenticator: AuthenticatorService ) {
-    Amplify.configure(awsExports);
+    // Amplify.configure(awsExports);
    
-    Auth.currentAuthenticatedUser()
-    .then(user => {
-      this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
-    })
-    .catch(err => console.log(err));
+    // Auth.currentAuthenticatedUser()
+    // .then(user => {
+    //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+    // })
+    // .catch(err => console.log(err));
 
   }
   async ngOnInit(){
@@ -36,15 +36,15 @@ userGroup: string;
     // this.authenticator.getUserGroup().then(group => {
       // console.log(this.authenticator.user.get);
   // 
-  Auth.currentAuthenticatedUser()
-  .then(user => {
-    this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
-  })
-  .catch(err => console.log(err));
+  // Auth.currentAuthenticatedUser()
+  // .then(user => {
+  //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+  // })
+  // .catch(err => console.log(err));
 
-    if(this.authenticator.user){
-      this._router.navigateByUrl('/user-form');
-    }
+  //   if(this.authenticator.user){
+  //     this._router.navigateByUrl('/user-form');
+  //   }
 
     // if(this.isLogout){
     //   this.authenticator.signOut(); 
