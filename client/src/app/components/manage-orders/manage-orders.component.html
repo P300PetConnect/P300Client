@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <mat-tab-group animationDuration="0ms">
-                <mat-tab label="COMPLETED" (click)="getOrders()">
+                <mat-tab label="ACTIVE" (click)="getOrders()">
                         <div class="panel panel-default">
                                 <div class="panel-heading">
                                 </div>
@@ -62,16 +62,6 @@
                 </mat-tab>
                 <mat-tab label="DRAFT">
 
-                </mat-tab>
-                <mat-tab label="Reviews">
-                    <!-- <ng-template mat-tab-label>
-                    <span (click)="getReviews(43)">Reviews</span>
-                    </ng-template>
-                    <div *ngFor="let r of reviews">
-                    <app-review [review] = "r"></app-review>
-                    </div> -->
-                </mat-tab>
-                <mat-tab label="Set Preferences">
                 </mat-tab>
             </mat-tab-group>
         </div>
