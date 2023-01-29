@@ -88,11 +88,13 @@ export class SearchServiceService {
 
 
 
-getOtherServices(id : string) : Observable<RdsUserServices> {
-  return this.http.get<RdsUserServices>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/other?id=' + id)
+getOtherServices(id : number)
+{
+  return this.http.get<ServiceInterface>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/other?id=' + id)
   .pipe(
     tap(data => console.log('Forum/error' + JSON.stringify(data))
-  )
+  ),
+  catchError(this.handleError)
  
   );
 }

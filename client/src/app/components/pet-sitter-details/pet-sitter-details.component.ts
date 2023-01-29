@@ -15,6 +15,8 @@ import { OrderComponent } from '../order/order.component';
 import { Review } from 'src/app/ReviewInterfaces/review';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { ActivatedRoute } from '@angular/router';
+import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
 
 @Component({
   selector: 'app-pet-sitter-details',
@@ -35,8 +37,13 @@ export class PetSitterDetailsComponent implements OnInit {
   public petDetails:IPet[]; 
   selected: Date | null;
   reviews:Review[] = [];
+  serviceList:ServiceInterface[] = [];
   message: any;
   email: string;
+  userID: string;
+
+  // array of key words to check for images// 
+  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
 
 
   dateFilter: (date: Date | null) => boolean =
@@ -66,7 +73,7 @@ export class PetSitterDetailsComponent implements OnInit {
   @ViewChild('picker') picker:ElementRef;
 
   constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
-    private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute) {
+    private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute, private service: SearchServiceService) {
  
 
 
@@ -87,9 +94,10 @@ export class PetSitterDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     console.log(this.selected); 
-    this.email = this.r.snapshot.paramMap.get('id');
-
-
+    this.email = this.r.snapshot.paramMap.get('email');
+    this.userID = this.r.snapshot.paramMap.get('id');
+    //get users services
+     this.getServices(Number(this.userID));
 
 this.pet = {
   "name": "Lucy",
@@ -185,6 +193,17 @@ onCreateOrder(){
       error: (mess) => this.message = mess
     })
     return false;
+  }
+
+  getServices(id: number): boolean
+  {
+    this.service.getOtherServices(id).subscribe({
+      next: (value: ServiceInterface[] )=> this.serviceList = value,
+      complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
+      error: (mess) => this.message = mess
+    })
+    return false;
+
   }
 
 

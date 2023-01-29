@@ -24,36 +24,36 @@ export class SearchSitterServicesComponent implements OnInit {
     this.service.ShowOther = false;
   }
 
-  public getOtherServices(id : string)
-  {
-    this.service.ShowOther = ! this.service.ShowOther;
+  // public getOtherServices(id : string)
+  // {
+  //   this.service.ShowOther = ! this.service.ShowOther;
 
-    if( this.service.ShowOther == true)
-    {
-      this.search.getOtherServices(id).subscribe(
-        (      results: RdsUserServices) => {
-          this.otherServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-        },
-        (      error: any) => this.errorMessage = <any>error
-      );
+  //   if( this.service.ShowOther == true)
+  //   {
+  //     this.search.getOtherServices(id).subscribe(
+  //       (      results: RdsUserServices) => {
+  //         this.otherServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
+  //       },
+  //       (      error: any) => this.errorMessage = <any>error
+  //     );
   
-      console.log(this.otherServices);
+  //     console.log(this.otherServices);
   
-      return false;
+  //     return false;
 
-    }
+  //   }
 
-    return false;
+  //   return false;
    
 
-  }
+  // }
   num(n: number): Array<number> {
    alert(n);
     return Array(4);
   }
-  SearchSitter(id: number){
+  SearchSitter(email: string, id: number){
     console.log('find')
-    this._router.navigate(['/petsitterdetails', {'id': `${id}`}])
+    this._router.navigate(['/petsitterdetails', {'email': `${email}`,'id': `${id}`}])
    //[routerLink]="['/petsitterdetails']"
   }
 
