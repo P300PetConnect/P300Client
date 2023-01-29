@@ -183,9 +183,7 @@ CreateOrder(){
   });
 }
  
-GetOrderByUser(){
-  
-}
+
 
 
   onClose(){
