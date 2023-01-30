@@ -18,8 +18,8 @@ export class OrderService {
     .pipe(tap(), catchError(this.handleError));
   }
 
-  getOderByUser(userEmail){
-    return this._http.get<IOrder[]>('https://dw8reoypi6.execute-api.eu-west-1.amazonaws.com/dev/orders?email='+userEmail)
+  getOderByUser(PetSitterID){
+    return this._http.get<IOrder[]>('https://dw8reoypi6.execute-api.eu-west-1.amazonaws.com/dev/orders?PetSitterID='+PetSitterID)
     .pipe(
       tap(data => console.log('list/error' + JSON.stringify(data))
       

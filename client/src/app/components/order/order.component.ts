@@ -10,6 +10,8 @@ import { MatStepper } from '@angular/material/stepper';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import { OrderService } from '../service/order.service';
+import { UserService } from '../service/user.service';
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
 
 
 
@@ -32,24 +34,27 @@ interface serviceCategory {
 export class OrderComponent implements OnInit {
   //Order Form 
       AddOrder : FormGroup = new FormGroup({
-      PetSitterID: new FormControl('', [Validators.required]),
-      PetOwnerID: new FormControl('', [Validators.required]),
-      OrderDate: new FormControl('', [Validators.required]),
-      Description: new FormControl('', [Validators.required]),
-      Status: new FormControl('', [Validators.required]),
-      ServiceID: new FormControl('', [Validators.required]), //input
-      Price: new FormControl('', [Validators.required]),
-      PaymentStatus: new FormControl('', [Validators.required]),
+      PetSitterID: new FormControl(''),
+      PetOwnerID: new FormControl(''),
+      OrderDate: new FormControl(''),
+      Description: new FormControl(''),
+      Status: new FormControl(''),
+      ServiceID: new FormControl(''), //input
+      Price: new FormControl(''),
+      PaymentStatus: new FormControl(''),
+      category: new FormControl(''),
+      service: new FormControl('')
+      
     });
 
 selectedPet = '';
 selectedCategories: any;
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-});
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: '',
-  });
+//   firstFormGroup = this._formBuilder.group({
+//     firstCtrl: ['', Validators.required],
+// });
+  // secondFormGroup = this._formBuilder.group({
+  //   secondCtrl: '',
+  // });
   isOptional = false;
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -67,8 +72,10 @@ selectedCategories: any;
   //form
   orderForm: FormGroup = new FormGroup({});
   message: string;
+  petSitter: import("/Users/jessicahenry/Project300Backup 2/client/src/app/components/interfaces/users").IPetSitter;
 
-  constructor(private _formBuilder: FormBuilder, private dialog:MatDialog, private db: OrderService) { 
+  constructor(private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,
+    public authenticator: AuthenticatorService) { 
     this.filteredpositivekeywordss = this.positivekeywordsCtrl.valueChanges.pipe(
       startWith(null),
       map((positivekeywords: string | null) => (positivekeywords ? this._filter(positivekeywords) : this.allpositivekeywordss.slice())),
@@ -76,7 +83,18 @@ selectedCategories: any;
 
   }
   ngOnInit(): void {
+
+this.getPetSitter(); 
+  
 }
+getPetSitter(){
+  this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
+    async petSitter=>{
+      this.petSitter = petSitter;
+    }); 
+    return false; 
+  }
+
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.
@@ -163,15 +181,16 @@ serviceCategory: serviceCategory[] = [
     console.log('services selected: ', this.service.value); 
   }
 
-CreateOrder(){
-  this.AddOrder.controls['ServiceID'].setValue(2);
-  this.AddOrder.controls['PetSitterID'].setValue(6);
-  this.AddOrder.controls['PetOwnerID'].setValue(43);
-  this.AddOrder.controls['OrderDate'].setValue('2022-02-01'); 
-  this.AddOrder.controls['Status'].setValue(true); 
-  this.AddOrder.controls['Price'].setValue(50); 
-  this.AddOrder.controls['PaymentStatus'].setValue(1); 
-  this.AddOrder.controls['Description'].setValue('test description'); 
+  onSubmit(){
+  console.log('check test',this.AddOrder?.value); 
+  this.AddOrder.controls['ServiceID'].setValue(4);
+  this.AddOrder.controls['PetSitterID'].setValue(this?.petSitter?.petSitterId);
+  this.AddOrder.controls['PetOwnerID'].setValue(3);
+  // this.AddOrder.controls['OrderDate'].setValue('2022-02-01'); 
+  this.AddOrder.controls['Status'].setValue(OrderStatus.Pendent); 
+  // this.AddOrder.controls['Price'].setValue(90); 
+  this.AddOrder.controls['PaymentStatus'].setValue(PaymentStatus.Pendent); 
+  // this.AddOrder.controls['Description'].setValue('test Form '); 
 
   this.db.addOrder(this.AddOrder).subscribe({
     next: order => {
@@ -181,6 +200,8 @@ CreateOrder(){
        },
     error: (err) => this.message = err
   });
+  console.log('myfomr', this.AddOrder); 
+
 }
  
 
@@ -202,9 +223,7 @@ CreateOrder(){
 			this.msg = 'You must select an image';
 			return;
 		}
-		
 		var mimeType = event.target.files[0].type;
-		
 		if (mimeType.match(/image\/*/) == null) {
 			this.msg = "Only images are supported";
 			return;
@@ -212,15 +231,52 @@ CreateOrder(){
 		
 		var reader = new FileReader();
 		reader.readAsDataURL(event.target.files[0]);
-		
 		reader.onload = (_event) => {
 			this.msg = "";
       this.isShow = false; 
-
 			this.url = reader.result; 
 		}
 	}
+
+
+  ////
+  // onSubmit() {
+  //   console.log('check test',this.AddOrder?.value); 
+  // this.AddOrder.controls['ServiceID'].setValue(4);
+  // this.AddOrder.controls['PetSitterID'].setValue(this?.petSitter?.petSitterId);
+  // this.AddOrder.controls['PetOwnerID'].setValue(2);
+  // // this.AddOrder.controls['OrderDate'].setValue('2022-02-01'); 
+  // this.AddOrder.controls['Status'].setValue(1); 
+  // // this.AddOrder.controls['Price'].setValue(90); 
+  // this.AddOrder.controls['PaymentStatus'].setValue(true); 
+  // // this.AddOrder.controls['Description'].setValue('test Form '); 
+
+  // // this.db.addOrder(this.AddOrder).subscribe({
+  // //   next: order => {
+  // //     console.log(JSON.stringify(order) + 'order added');
+  // //     this.message = "list added";
+  // //     //this.close();
+  // //      },
+  // //   error: (err) => this.message = err
+  // // });
+  // console.log('myfomr', this.AddOrder); 
+  //   console.log('my form', this.AddOrder.value); 
+  // }
 }
 
 
 
+enum OrderStatus {
+  Pendent = 'Pendent',
+  Processing = 'Processing',
+  Review = 'Review',
+  Canceled = 'Canceled', 
+  Delivered = 'Delivered', 
+}
+
+enum PaymentStatus{
+  Pendent = 'Pendent',
+  Declined = 'Declined', 
+  Confirmed = 'Confirmed', 
+  Refounded = 'Confirmed', 
+}
