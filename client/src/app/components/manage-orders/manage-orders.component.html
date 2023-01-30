@@ -6,6 +6,7 @@
                 <mat-tab label="ACTIVE" (click)="getOrders()">
                         <div class="panel panel-default">
                                 <div class="panel-heading">
+                                   <button class="btn btn-primary" (click)="onCreateOrder()">Create Order</button>
                                 </div>
                         <div class="panel-body pt-5">
                                     <table class="table table-condensed table-striped">
@@ -24,25 +25,27 @@
                         <th>STATUS</th>
                         </tr>
                     </thead>
-                    <tbody  *ngFor="let o of orders">
-        <tr  data-toggle="collapse" data-target="#indexOfelement" class="accordion-toggle">
+                    <tbody  *ngFor="let o of orders;let i=index" >
+        <tr  data-toggle="collapse" data-toggle="collapse" [attr.data-target]="orders[i]?.Name ? '#' + orders[i]?.Name : ''"  class="accordion-toggle">
             <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
-            <td><img src="https://www.we-love-pets.co.uk/hubfs/Emma%20Curtis%20Bridgend.jpg" width="65px" alt=""></td>
-            <td>{{o.ServiceTitle}}</td>
+            <td><img src="{{orders[i]?.Profile_Pic_URL}}" width="65px" alt=""></td>
+            <td>{{o.Name}} {{o.Surname}}</td>
             <td></td>
             <td></td>
+            <td>{{o?.ServiceTitle}}</td>
             <td></td>
-            <td></td>
-            <td>{{o.OrderDate | date}}</td>
-            <td>{{o.OrderDate | date}}</td>
-            <td>{{o.Price }}</td>
-            <td>{{o.Status}}</td>
-        </tr>
+            <td>{{o?.OrderDate | date}}</td>
+            <td>{{o?.OrderDate | date}}</td>
+            <td>{{o?.Price }}</td>
+            <!-- <td>{{o.Status}}</td> -->
+            <td><span class="badge badge-success">{{o.Status}}</span></td>
+          </tr>
         <tr>
-            <td colspan="6" class="hiddenRow"><div id="indexOfelement" class="accordian-body collapse">{{o.Description}}</div></td>
+            <td colspan="12" class="hiddenRow"><div [attr.id]="orders[i]?.Name"  class="accordian-body collapse">{{o?.Description}}</div></td>
         </tr>
     </tbody>
 </table>
+
             </div>
           </div> 
                 </mat-tab>
@@ -57,13 +60,10 @@
     </div>
 </div>
 
-
 <!-- 
-
 <mat-tab label="ACTIVE">
     <div class="row pt-4">
      <div class="col-4">
-
      </div>
      <div class="col-1">
          ORDER DATE
@@ -77,7 +77,6 @@
      <div class="col-1">
          PAYMENT
      </div>
-
     </div>
      <mat-accordion>
          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -116,3 +115,93 @@
          </mat-expansion-panel>
        </mat-accordion>
  </mat-tab> -->
+<!-- 
+ <div class="container mt-5">
+  <div class="d-flex justify-content-center row">
+      <div class="col-md-10">
+          <div class="rounded">
+              <div class="table-responsive table-borderless">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th class="text-center">S. No.</th>
+                              <th>Order #</th>
+                              <th>Company name</th>
+                              <th>status</th>
+                              <th>Total</th>
+                              <th>Created</th>
+                              <th></th>
+                          </tr>
+                      </thead>
+                      <tbody class="table-body">
+                          <tr class="cell-1" data-toggle="collapse" data-target="#demo">
+                              <td class="text-center">1</td>
+                              <td>#SO-13487</td>
+                              <td>Gasper Antunes</td>
+                              <td><span class="badge badge-danger">Fullfilled</span></td>
+                              <td>$2674.00</td>
+                              <td>Today</td>
+                              <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                          </tr>
+                          <tr id="demo" class="collapse cell-1 row-child">
+                              <td class="text-center" colspan="1"><i class="fa fa-angle-up"></i></td>
+                              <td colspan="1">Product&nbsp;</td>
+                              <td colspan="3">iphone SX with ratina display</td>
+                              <td colspan="1">QTY</td>
+                              <td colspan="2">2</td>
+                          </tr>
+                          <tr class="cell-1" data-toggle="collapse" data-target="#demo-2">
+                              <td class="text-center">2</td>
+                              <td>#SO-13488</td>
+                              <td>Tinder Steel</td>
+                              <td><span class="badge badge-success">Fullfilled</span></td>
+                              <td>$3664.00</td>
+                              <td>Yesterday</td>
+                              <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                          </tr>
+                          <tr id="demo-2" class="collapse cell-1 row-child">
+                              <td class="text-center" colspan="1"><i class="fa fa-angle-up"></i></td>
+                              <td colspan="1">Product&nbsp;</td>
+                              <td colspan="3">iphone SX with ratina display</td>
+                              <td colspan="1">QTY</td>
+                              <td colspan="2">2</td>
+                          </tr>
+                          <tr class="cell-1" data-toggle="collapse" data-target="#demo-3">
+                              <td class="text-center">3</td>
+                              <td>#SO-13489</td>
+                              <td>Micro Steel</td>
+                              <td><span class="badge badge-success">Placed</span></td>
+                              <td>$2674.00</td>
+                              <td>March 20, 2020</td>
+                              <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                          </tr>
+                          <tr id="demo-3" class="collapse cell-1 row-child">
+                              <td class="text-center" colspan="1"><i class="fa fa-angle-up"></i></td>
+                              <td colspan="1">Product&nbsp;</td>
+                              <td colspan="3">iphone SX with ratina display</td>
+                              <td colspan="1">QTY</td>
+                              <td colspan="2">2</td>
+                          </tr>
+                          <tr class="cell-1" data-toggle="collapse" data-target="#demo-4">
+                              <td class="text-center">4</td>
+                              <td>#SO-13490</td>
+                              <td>B Mobiles</td>
+                              <td><span class="badge badge-success">Delivered</span></td>
+                              <td>$4674.00</td>
+                              <td>March 22, 2020</td>
+                              <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                          </tr>
+                          <tr id="demo-4" class="collapse cell-1 row-child">
+                              <td class="text-center" colspan="1"><i class="fa fa-angle-up"></i></td>
+                              <td colspan="1">Product&nbsp;</td>
+                              <td colspan="3">iphone SX with ratina display</td>
+                              <td colspan="1">QTY</td>
+                              <td colspan="2">2</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
