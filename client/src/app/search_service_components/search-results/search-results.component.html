@@ -1,0 +1,43 @@
+
+  
+<div class="result">
+    
+    <div>
+        <div class = "row">
+            <div class = "col">
+                <img  src="{{service.Profile_Pic_URL}}" alt="Card image cap">
+            </div>
+            <div class = "col">
+                <h6 style="text-decoration: underline;">{{service.Name}} {{service.Surname}}</h6>
+                
+                <hr>
+                <p>{{service.Line_2}}</p>
+                <p>{{service.County}}</p>
+            </div>
+
+        </div>
+
+        <div class = "row">
+            <div class = "col justify-content-md-center pt-3 service">
+                <p>{{service.Description}}</p>
+            </div>
+        </div>
+
+            <div class = "row" *ngIf="service.ShowOther">
+                <div *ngFor="let o of otherServices[0]">
+                    <div *ngIf="o.Description != service.Description"  class = "col justify-content-md-center pt-3 service">
+                      <p>{{o.Description}}</p>
+                    </div>
+                </div>
+            </div>
+
+       
+
+        <div class = "row justify-content-md-center">
+            <button class = "btn btn-info" (click)="getOtherServices(service.UserID)">Other services</button>
+        </div>
+
+    </div>
+  </div>
+
+
