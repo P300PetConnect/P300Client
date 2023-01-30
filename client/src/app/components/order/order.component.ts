@@ -100,8 +100,6 @@ getPetSitter(){
     // Only highligh dates inside the month view.
     if (view === 'month') {
       const date = cellDate.getDate();
-
-      // Highlight the 1st and 20th day of each month.
       return date === 1 || date === 20 ? 'example-custom-date-class' : '';
     }
 
@@ -115,7 +113,6 @@ add(event: MatChipInputEvent): void {
     if (value) {
       this.positivekeywordss.push(value);
     }
-
     // Clear the input value
     event.chipInput!.clear();
 
@@ -141,7 +138,6 @@ add(event: MatChipInputEvent): void {
 }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.allpositivekeywordss.filter(positivekeywords => positivekeywords.toLowerCase().includes(filterValue));
   }
 
@@ -171,7 +167,6 @@ serviceCategory: serviceCategory[] = [
     dialogConfig.height = "31%";
     this.dialog.open(MessageAlertComponent, dialogConfig)
     console.log(this.stepper.selectedIndex); 
-
   }
 
   changePet(value)
@@ -186,11 +181,8 @@ serviceCategory: serviceCategory[] = [
   this.AddOrder.controls['ServiceID'].setValue(4);
   this.AddOrder.controls['PetSitterID'].setValue(this?.petSitter?.petSitterId);
   this.AddOrder.controls['PetOwnerID'].setValue(3);
-  // this.AddOrder.controls['OrderDate'].setValue('2022-02-01'); 
   this.AddOrder.controls['Status'].setValue(OrderStatus.Pendent); 
-  // this.AddOrder.controls['Price'].setValue(90); 
   this.AddOrder.controls['PaymentStatus'].setValue(PaymentStatus.Pendent); 
-  // this.AddOrder.controls['Description'].setValue('test Form '); 
 
   this.db.addOrder(this.AddOrder).subscribe({
     next: order => {
@@ -203,15 +195,10 @@ serviceCategory: serviceCategory[] = [
   console.log('myfomr', this.AddOrder); 
 
 }
- 
 
-
-
-  onClose(){
+onClose(){
     this.dialog.closeAll(); 
   }
-
-  //url; //Angular 8
 	url: any; //Angular 11, for stricter type
 	msg = "";
   icon = ""
@@ -237,29 +224,6 @@ serviceCategory: serviceCategory[] = [
 			this.url = reader.result; 
 		}
 	}
-  ////
-  // onSubmit() {
-  //   console.log('check test',this.AddOrder?.value); 
-  // this.AddOrder.controls['ServiceID'].setValue(4);
-  // this.AddOrder.controls['PetSitterID'].setValue(this?.petSitter?.petSitterId);
-  // this.AddOrder.controls['PetOwnerID'].setValue(2);
-  // // this.AddOrder.controls['OrderDate'].setValue('2022-02-01'); 
-  // this.AddOrder.controls['Status'].setValue(1); 
-  // // this.AddOrder.controls['Price'].setValue(90); 
-  // this.AddOrder.controls['PaymentStatus'].setValue(true); 
-  // // this.AddOrder.controls['Description'].setValue('test Form '); 
-
-  // // this.db.addOrder(this.AddOrder).subscribe({
-  // //   next: order => {
-  // //     console.log(JSON.stringify(order) + 'order added');
-  // //     this.message = "list added";
-  // //     //this.close();
-  // //      },
-  // //   error: (err) => this.message = err
-  // // });
-  // console.log('myfomr', this.AddOrder); 
-  //   console.log('my form', this.AddOrder.value); 
-  // }
 }
 
 
