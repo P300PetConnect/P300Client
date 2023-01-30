@@ -237,8 +237,6 @@ serviceCategory: serviceCategory[] = [
 			this.url = reader.result; 
 		}
 	}
-
-
   ////
   // onSubmit() {
   //   console.log('check test',this.AddOrder?.value); 
