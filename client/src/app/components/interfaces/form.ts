@@ -1,5 +1,6 @@
 export interface IUser {
         name: string;
+        UserID?:number;
         surname: string;
         dob?: string;
         profilePicUrl?: string;
@@ -22,7 +23,7 @@ export interface IPet{
 }
  
 export interface IOrder{
-    OrderID:string, 
+     OrderID:string, 
      PetSitterID: string, 
      PetOwnerID: string,
      OrderDate:string,
@@ -32,6 +33,10 @@ export interface IOrder{
      Price : string, 
      PaymentStatus: string, 
      ServiceTitle:string,
+     Name:string,
+     Surname:string, 
+     Profile_Pic_URL:string, 
+     EmailAddress:string, 
 }
 
 
