@@ -42,6 +42,7 @@ export class PetSitterDetailsComponent implements OnInit {
   email: string;
   userID: string;
 
+
   // array of key words to check for images// 
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
 
@@ -205,6 +206,11 @@ onCreateOrder(){
     return false;
 
   }
+
+  num(n: number): Array<number> {
+    //alert(n);
+     return Array(n);
+   }
 
 
 

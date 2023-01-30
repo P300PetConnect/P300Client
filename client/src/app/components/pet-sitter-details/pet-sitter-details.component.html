@@ -17,12 +17,9 @@
                 </div>
                 <div class="mt-3">
                   <div class="h-100">
-                    <span class="bi bi-star-fill"></span>
-                    <span class="bi bi-star-fill"></span>
-                    <span class="bi bi-star-fill"></span>
-                    <span class="bi bi-star-fill"></span>
-                    <span class="bi bi-star-fill"></span>
-                    <span class="review my-auto pl-2"><u>14 reviews</u></span>
+                    <!-- <span *ngFor="let _ of [].constructor((petSitter?.reviewsTotal / petSitter?.numReviews) | number:'1.0-0')" class="bi bi-star-fill"></span> -->
+                    <span *ngFor="let l of num((petSitter?.reviewsTotal / petSitter?.numReviews) | number:'1.0-0')" class="bi bi-star-fill"></span>
+                    <span  class="review my-auto pl-2"><u>{{petSitter?.numReviews}}</u></span>
 
                   </div>
                 </div>

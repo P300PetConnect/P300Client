@@ -23,6 +23,8 @@ export interface IPetSitter{
     county?: string;
     zipCode?: string;
     country?: string;
+    numReviews: number;
+    reviewsTotal:number;
 }
 
 export interface IPetOwner{
