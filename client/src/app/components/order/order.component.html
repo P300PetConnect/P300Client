@@ -7,10 +7,10 @@
       <i class="bi bi-x-lg" (click)="onCancel()"></i>
     </div>
   </div>
+  <form [formGroup]="AddOrder" class="form-group">
 
 <mat-stepper linear #stepper>
   <mat-step [stepControl]="AddOrder">
-    <form [formGroup]="AddOrder" (ngSubmit)="onSubmit()" class="form-group">
       <ng-template matStepLabel>Create Order</ng-template>
       <div class="container pt-4">
                 <div class="row pt-2">
@@ -72,7 +72,7 @@
                 id="name" type="text" formControlName="name" class="form-control"
                 placeholder="I will..."
                 placeholder="service title" formControlName="firstCtrl" required
-                type="text" class="form-control" id="Description" formControlName="Description" class="Description">
+                type="text" class="form-control" #Description id="Description" formControlName="Description" class="Description">
               
               
               </textarea>
@@ -113,11 +113,11 @@
       
           </div>
           <div class="col-6 d-flex justify-content-end">
-            <button mat-button class="btn btn-primary" mat-button matStepperNext>Save & Continue</button>
+            <button mat-button class="btn btn-primary" mat-button matStepperNext >Save & Continue</button>
           </div>
         </div>
       </div>
-    </form>
+  
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>View Order</ng-template>
@@ -128,27 +128,27 @@
    <div class="row pt-3">
     
     <h6>Description:</h6>
-    <p>{{Description}}</p>
+    <p>{{Description.value}}</p>
     <h6>Price:</h6>
-    <p>{{price}}</p>
+    <!-- <p>{{price?}}</p> -->
     <h6>Service:</h6>
-    <p>{{service}} </p>
+    <!-- <p>{{service}} </p> -->
     <h6>Pets:</h6>
-    <p>{{category}} </p>
+    <p>{{Description.value}} </p>
       <div class="row pt-4">
         <div class="col-6">
           <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
           <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <button mat-button class="btn btn-primary" mat-button matStepperNext type="submit">Send the Order</button>
+          <button mat-button class="btn btn-primary" (click)="onSubmit()" mat-button matStepperNext type="submit">Send the Order</button>
         </div>
       </div>
     </div>
 </div>
   </mat-step>
 </mat-stepper>
-
+</form>
 <!-- 
 
 <div class="tab-content">
