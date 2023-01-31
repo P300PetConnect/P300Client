@@ -1,34 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EmailValidator, FormGroup } from '@angular/forms';
-import { catchError, Observable, tap } from 'rxjs';
+import {  FormGroup } from '@angular/forms';
+import { catchError, tap } from 'rxjs';
 import { IOrder } from '../interfaces/form';
+import { environment } from "src/environments/environment";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
   constructor(private _http: HttpClient) { }
-
   handleError: any;
   addOrder(order : FormGroup)
   {
     console.log('order here',order.value);
-    return this._http.post<any>('https://g7oga89fg3.execute-api.eu-west-1.amazonaws.com/dev/', order.value)
+    return this._http.post<any>(environment.UriAddOrder, order.value)
     .pipe(tap(), catchError(this.handleError));
   }
 
   getOderByUser(PetSitterID){
-    return this._http.get<IOrder[]>('https://dw8reoypi6.execute-api.eu-west-1.amazonaws.com/dev/orders?PetSitterID='+PetSitterID)
+    return this._http.get<IOrder[]>(environment.UriGetOrdersByPetSitter+'/orders?PetSitterID='+PetSitterID)
     .pipe(
       tap(data => console.log('list/error' + JSON.stringify(data))
-      
     ),
      catchError(this.handleError)
     );
   }
+
   getOrderByUserPetOwnerView(PetOwnerID){
-    return this._http.get<IOrder[]>('https://kxewd44z5k.execute-api.eu-west-1.amazonaws.com/dev/orders?PetOwnerID='+PetOwnerID)
+    return this._http.get<IOrder[]>(environment.UriGetOrdersByPetOwnerView+'/orders?PetOwnerID='+PetOwnerID)
     .pipe(
       tap(data => console.log('list/error' + JSON.stringify(data))
       
