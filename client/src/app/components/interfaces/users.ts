@@ -61,8 +61,6 @@ USERPETMINDER = 'USERPETMINDER',
 USERADMIN = 'USERADMIN',
 }
 
-
-
 export interface IServiceFind {
     success: boolean;
     errorMessage?: string;
