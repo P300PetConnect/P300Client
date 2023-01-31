@@ -20,7 +20,7 @@ export class AppComponent {
     if(_authenticator){
       console.log(router); 
     }
-  }
+}
 
 
 
