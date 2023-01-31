@@ -87,6 +87,7 @@ import { OrderComponent } from './components/order/order.component';
 import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.component';
 import { ReviewComponent } from './ReviewComponents/review/review.component';
 import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 
@@ -106,7 +107,7 @@ import { ManageOrdersComponent } from './components/manage-orders/manage-orders.
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ManageOrdersComponent
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ManageOrdersComponent, PaymentComponent
     
   ],
   imports: [
