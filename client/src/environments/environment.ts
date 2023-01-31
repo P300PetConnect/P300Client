@@ -20,7 +20,10 @@ export const environment = {
   sts_endpoint: '',
   UriPetSitter:'https://wwcwkeoqxa.execute-api.eu-west-1.amazonaws.com/dev', //petsitter, have to change it 
   UriPetOwner:'https://xpsdh54gsd.execute-api.eu-west-1.amazonaws.com/dev', //petowner 
-  UriPet:'https://gl8g0i4oj1.execute-api.eu-west-1.amazonaws.com/' //Pet
+  UriPet:'https://gl8g0i4oj1.execute-api.eu-west-1.amazonaws.com/',//Pet
+  UriAddOrder:'https://g7oga89fg3.execute-api.eu-west-1.amazonaws.com/dev/', //Create Order 
+  UriGetOrdersByPetSitter:'https://dw8reoypi6.execute-api.eu-west-1.amazonaws.com/dev', 
+  UriGetOrdersByPetOwnerView:'https://kxewd44z5k.execute-api.eu-west-1.amazonaws.com/dev'
 };
 
 

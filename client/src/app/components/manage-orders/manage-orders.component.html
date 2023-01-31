@@ -1,0 +1,74 @@
+<div class="container-xxl pt-5">
+    <h2 class="pt-2">Manage Orders</h2>
+    <div class="row">
+        <div class="col-12">
+            <mat-tab-group animationDuration="0ms">
+                <mat-tab label="ACTIVE" (click)="getOrders()" class="table">
+                        <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row pt-3">
+                                        <div class="col-12 d-flex justify-content-end" >
+                                            <button class="btn btn-success" (click)="onCreateOrder()">Create Order</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div class="panel-body pt-2">
+                                    <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                         <th></th>
+                         <th></th>
+                        <th></th>
+                  
+                        <th>DATE</th>
+                        <th>DUE ON</th>
+                        <th>PAYMENT STATUS</th>
+                        <th>TOTAL</th>
+                        <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody  *ngFor="let o of orders;let i=index" >
+        <tr  data-toggle="collapse" data-toggle="collapse" [attr.data-target]=" '#' + orders[i]?.Name +''+ orders[i]?.OrderID"  class="accordion-toggle">
+            <td><button class="btn btn-default btn-xs"><i class="bi bi-eye"></i></button></td>
+            <td><img src="{{orders[i]?.Profile_Pic_URL}}" width="65px" alt=""></td>
+            <td>{{o.Name}} {{o.Surname}}</td>
+            <td></td>
+      
+            <td>{{o?.ServiceTitle}}</td>
+            <td></td>
+            <td>{{o?.OrderDate | date}}</td>
+            <td>{{o?.OrderDate | date}}</td>
+            <td><span class="badge {{o.PaymentStatus}}">{{o.PaymentStatus}}</span></td>
+            <td>{{o?.Price }}</td>
+            <td><span class="badge {{o.Status}}">{{o.Status}}</span></td>
+          </tr>
+        <tr>
+            <td colspan="12" class="hiddenRow">
+                <div [attr.id]="orders[i]?.Name+''+ orders[i]?.OrderID"  class="accordian-body collapse">
+                   <div class="row">
+                    <div class="col-12 pl-4 pr-4">
+                        {{o?.Description}}
+                    </div>
+                   </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+            </div>
+          </div> 
+                </mat-tab>
+                <mat-tab label="COMPLETED">
+                    
+                </mat-tab>
+                <mat-tab label="DRAFT">
+
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

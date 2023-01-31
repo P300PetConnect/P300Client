@@ -73,7 +73,6 @@
                                 <a class="list-group-item d-flex justify-content-start"><i class="material-symbols-outlined p-0">description</i>{{pet?.description}}</a>
                               </ul>
                             </div>
-                       <!-- <button type="" class="btn btn-primary" >See Certificate</button> -->
                     </div>
                     </div>
                     </div>
@@ -129,7 +128,6 @@
                 <div class="card mb-3">
                   <div class="card-header d-flex justify-content-between">
                       <h5 class="card-title mb-0">Pet Sitter</h5>
-                      <!-- <i class="bi bi-heart"> save</i> -->
                   </div>
                   <div class="card-body text-center pb-0 ">
                     <img src={{petSitter?.profilePicUrl}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2" width="128" height="128">
@@ -175,9 +173,6 @@
           </div>
         </div>
       </div>
-      
-      
-      
           <div class="col-8 pl-5">
             <mat-tab-group animationDuration="0ms">
               <mat-tab label="Schedule">
@@ -185,11 +180,7 @@
                   <app-calendar></app-calendar>
                 </div>
               </mat-tab>
-              <mat-tab label="Schedule">
-                <div>
-                  <app-calendar></app-calendar>
-                </div>
-              </mat-tab>
+ 
               <mat-tab label="Active service">
                 <div class="row pt-4 container">
                   <div class="col-4">
@@ -208,36 +199,7 @@
              
              
               <mat-tab label="Draft">
-                <!-- <div class="row pt-4">
-                <div class="col-4">
-                  <div class="card">
-                    <div class="text-center card-body">
-                      <div class="member-card">
-                        <div class="thumb-lg member-thumb mx-auto"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU" class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                          <div class="pt-2">
-                              <h4>{{petDetails?.name}}</h4>
-                          </div>
-                          <ul class="social-links list-inline mb-auto pt-1">
-                            <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips " href="" data-original-title="SpecialCare"><span class="material-symbols-outlined">
-                              medical_information</span></a></li>
-                              <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Vaccines"><span class="material-symbols-outlined">vaccines</span></a></li>
-                              <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Behavior"><span class="material-symbols-outlined">pets</span></a></li>
-                          </ul>
-                              <div class="row">
-                                <div class="card-body">
-                                <ul class="list-group list-group-flush pb-4">
-                                  <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{pet.dob}}</li>
-                                  <li class="list-group-item"><i class="bi bi-telephone  profile-icons"></i>{{pet.petBreed}}</li>
-                                  <a class="list-group-item"><i class="bi bi-geo-alt-fill profile-icons"></i>{{pet.description}}</a>
-                                </ul>
-                              </div>
-                         <button type="" class="btn btn-primary" >See Certificate</button>
-                      </div>
-                      </div>
-                      </div>
-                  </div>
-                  </div>
-                </div>  -->
+
               </mat-tab>
               <mat-tab label="Reviews">
                 <ng-template mat-tab-label>
@@ -249,9 +211,7 @@
               </div>
       
               </mat-tab>
-              <mat-tab label="Set Preferences">
-      
-              </mat-tab>
+ 
             <mat-tab label="New Posts">
               <mat-tab-group mat-stretch-tabs class="pt-3">
                 <mat-tab label = "Pet Help">

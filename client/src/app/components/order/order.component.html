@@ -7,10 +7,10 @@
       <i class="bi bi-x-lg" (click)="onCancel()"></i>
     </div>
   </div>
+  <form [formGroup]="AddOrder" class="form-group">
 
 <mat-stepper linear #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
+  <mat-step [stepControl]="AddOrder">
       <ng-template matStepLabel>Create Order</ng-template>
       <div class="container pt-4">
                 <div class="row pt-2">
@@ -24,22 +24,27 @@
               <div class="col-6 p-0">
                 <mat-form-field class="col-12" appearance="outline">
                   <mat-label>Select the service for this order:</mat-label>
-                  <mat-select [formControl]="service" multiple (selectionChange)="changePet($event.value)">
+                  <mat-select  id="service" formControlName="service" 
+                   multiple (selectionChange)="changePet($event.value)">
                     <mat-select-trigger>
                       {{serviceCategory[0].viewValue || ''}}
                       <span *ngIf="(service.value?.length || 0) > 1" class="example-additional-selection">
                         (+{{(service.value?.length || 0) - 1}} {{service.value?.length === 2 ? 'other' : 'others'}})
                       </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let service of serviceCategory" [value]="service.viewValue">{{service.viewValue}}</mat-option>
+                    <mat-option *ngFor="let service of serviceCategory" [value]="service.viewValue"
+                    >{{service.viewValue}}</mat-option>
                   </mat-select>
                 </mat-form-field>
-
               </div>
               <div class="col-6 p-0">
                 <mat-form-field class="col-12" appearance="outline">
                   <mat-label>Select the pet this order is for:</mat-label>
-                  <mat-select [formControl]="category" multiple (selectionChange)="changePet($event.value)">
+                  <mat-select 
+                  
+                  id="category" formControlName="category"
+
+                  multiple (selectionChange)="changePet($event.value)">
                     <mat-select-trigger>
                       {{petCategory[0].viewValue || ''}}
                       <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
@@ -61,10 +66,15 @@
           <div class="col-8">
             <div class="row">
               <mat-form-field hintLabel="Max 300 characters" appearance="outline">
-                <mat-label>Insert any extra order information</mat-label>
+                <mat-label for="Description">Insert any extra order information</mat-label>
                 <textarea matInput #textarea  maxlength="300" 
+                id="name" type="text" formControlName="name" class="form-control"
                 placeholder="I will..."
-                placeholder="service title" formControlName="firstCtrl" required></textarea>
+                placeholder="service title" formControlName="firstCtrl" required
+                type="text" class="form-control" #Description id="Description" formControlName="Description" class="Description">
+              
+              
+              </textarea>
                 <mat-hint align="end">{{textarea.value.length}}/300</mat-hint>
               </mat-form-field>
             </div>
@@ -81,16 +91,17 @@
               <div class="row">
                    <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Price Charged - € EUR </mat-label>
-                    <input matInput #price placeholder="">
+                    <input matInput id="Price" #price placeholder="" formControlName="Price" class="Price">
                   </mat-form-field>
               </div>
             </div>
             <div class="col-3 p-0">
               <mat-form-field class="col-12 col-sx-12"  appearance="outline">
-                <mat-label>Date of the service </mat-label>
-                <input matInput [matDatepicker]="picker">
+                <mat-label for="OrderDate">Date of the service </mat-label>
+                <input matInput [matDatepicker]="picker"  id="OrderDate" formControlName="OrderDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker #picker
+                ></mat-datepicker>
               </mat-form-field>
             </div>
           </div>
@@ -101,11 +112,11 @@
       
           </div>
           <div class="col-6 d-flex justify-content-end">
-            <button mat-button class="btn btn-primary" mat-button matStepperNext>Save & Continue</button>
+            <button mat-button class="btn btn-primary" mat-button matStepperNext >Save & Continue</button>
           </div>
         </div>
       </div>
-    </form>
+  
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>View Order</ng-template>
@@ -116,26 +127,61 @@
    <div class="row pt-3">
     
     <h6>Description:</h6>
-    <p>{{textarea.value}}</p>
+    <p>{{Description.value}}</p>
     <h6>Price:</h6>
-    <p>{{price.value}}</p>
+    <!-- <p>{{price?}}</p> -->
     <h6>Service:</h6>
-    <p>{{service.value}} </p>
+    <!-- <p>{{service}} </p> -->
     <h6>Pets:</h6>
-    <p>{{category.value}} </p>
+    <p>{{Description.value}} </p>
       <div class="row pt-4">
         <div class="col-6">
           <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
           <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
         </div>
         <div class="col-6 d-flex justify-content-end">
-          <button mat-button class="btn btn-primary" mat-button matStepperNext>Send the Order</button>
+          <button mat-button class="btn btn-primary" (click)="onSubmit()" mat-button matStepperNext type="submit">Send the Order</button>
         </div>
       </div>
     </div>
 </div>
   </mat-step>
 </mat-stepper>
+</form>
+<!-- 
 
-
-
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="account" role="tabpanel">
+    <div class="card mb-3">
+      <div class="card-header">
+        <div class="card-actions float-end">
+          <div class="dropdown position-relative">
+            <a (click)="onCancel()">
+              <i class="bi bi-x-lg"></i>
+            </a>
+          </div>
+        </div>
+        <h5 class="card-title mb-0">EVENT FORM</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="AddOrder" (ngSubmit)="onSubmit()" class="form-group">
+          <div class="row">
+           
+          
+            <div class="mb-3 col-6">
+              <div class="row">
+                <div class="col-12  mb-3">
+                  <label for="Description">Event Title</label>
+                  <input type="text" class="form-control" id="Description" formControlName="Description" >
+                </div>
+               
+                </div>
+              </div>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+              <button type="submit">Submit</button>
+            </div>
+         
+        </form>
+      </div>
+    </div> -->
