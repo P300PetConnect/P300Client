@@ -16,37 +16,18 @@ export class SearchSitterServicesComponent implements OnInit {
   showOther = false;
   otherServices?: any;
   errorMessage : any;
+  averageRoundStars: number;
 
   constructor(private search: SearchServiceService, private _router: Router) { }
 
   ngOnInit(): void {
     
     this.service.ShowOther = false;
+    this.averageRoundStars = Math.floor(this.service.ReviewsTotal / this.service.NumReviews);
+   
   }
 
-  // public getOtherServices(id : string)
-  // {
-  //   this.service.ShowOther = ! this.service.ShowOther;
 
-  //   if( this.service.ShowOther == true)
-  //   {
-  //     this.search.getOtherServices(id).subscribe(
-  //       (      results: RdsUserServices) => {
-  //         this.otherServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-  //       },
-  //       (      error: any) => this.errorMessage = <any>error
-  //     );
-  
-  //     console.log(this.otherServices);
-  
-  //     return false;
-
-  //   }
-
-  //   return false;
-   
-
-  // }
   num(n: number): Array<number> {
    alert(n);
     return Array(4);

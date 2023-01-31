@@ -48,6 +48,8 @@ export class UserProfileComponent implements OnInit {
   comments4 = false;
   com = false;
 
+  averageRoundStars: number;
+
   constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private review:ReviewService) {
 
 
@@ -77,6 +79,7 @@ this.pet = {
   "PetSize": "Small", 
   "createdDate":"12/09/2022", 
 }
+ 
 
     if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
     console.log('test carai')
@@ -108,6 +111,7 @@ getPetOwner(){
       petSitter=>{
         this.petSitter = petSitter;
         console.log(petSitter)
+        this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal / this.petSitter.numReviews);
       }); 
       return false; 
     }

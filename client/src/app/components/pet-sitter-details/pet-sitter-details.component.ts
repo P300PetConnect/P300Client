@@ -42,6 +42,8 @@ export class PetSitterDetailsComponent implements OnInit {
   email: string;
   userID: string;
 
+  averageRoundStars: number;
+
 
   // array of key words to check for images// 
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
@@ -98,32 +100,25 @@ export class PetSitterDetailsComponent implements OnInit {
     this.email = this.r.snapshot.paramMap.get('email');
     this.userID = this.r.snapshot.paramMap.get('id');
     //get users services
-     this.getServices(Number(this.userID));
-
-this.pet = {
-  "name": "Lucy",
-  "description": "She snores when sleeps",
-  "petImageUrl": "https://img.freepik.com/free-photo/pug-dog-isolated-white-background_2829-11416.jpg?w=2000",
-  "dob": "2018-03-21",
-  "petType":"Dog",
-  "petBreed": "Pug",
-  "PetSize": "Small", 
-  "createdDate":"12/09/2022", 
-}
-
-
-    // if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
-    // console.log('test carai')
-    // this.getPetOwner(); 
-    // this.getPetDetails(); 
-    // }
-  //  if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
+    this.getServices(Number(this.userID));
     this.getPetSitter(this.email); 
+
     console.log(this.petSitter);
-    // }
+ 
+    console.log('picker', this.picker); 
 
+  this.pet = {
+    "name": "Lucy",
+    "description": "She snores when sleeps",
+    "petImageUrl": "https://img.freepik.com/free-photo/pug-dog-isolated-white-background_2829-11416.jpg?w=2000",
+    "dob": "2018-03-21",
+    "petType":"Dog",
+    "petBreed": "Pug",
+    "PetSize": "Small", 
+    "createdDate":"12/09/2022", 
+  }
 
-console.log('picker', this.picker); 
+   
   }
 
 
@@ -152,7 +147,11 @@ onCreateOrder(){
       petSitter=>{
         this.petSitter = petSitter;
         console.log(petSitter)
+        //rounded average to print stars on profile view
+        this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal / this.petSitter.numReviews);
+      
       }); 
+      
       return false; 
     }
 
