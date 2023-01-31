@@ -24,61 +24,17 @@ export class ManageOrdersComponent implements OnInit {
   clients: any = {}; 
   petOwners: any;
   errorMessage: any;
+ openT:string = 'bi bi-plus'
+ closeT:string='bi bi-dash'
+open: boolean = false; 
   petSitter: import("/Users/jessicahenry/Project300Backup 2/client/src/app/components/interfaces/users").IPetSitter;
   
   constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService) {
    }
    ngOnInit():void{
     this.getOrders(); 
+
    }
-
-
-  //  async getOrders(){
-  //   const orders = await this._httpOrder.getOderByUser(this.authenticator?.user?.attributes?.email).toPromise()
-  //   this.orders = orders;
-  //   this.getClients(this.orders[3]?.PetOwnerID); 
-  //   this.orders.forEach(element => {
-  //     this.getClients(element?.PetOwnerID).then(petOwner => this.clients.push(petOwner));
-  //   });
-  // }
-
-  //  async getClients(petOwnerId){
-  //   const customers = await this._httpUser.get_petownerByUserID(petOwnerId).toPromise(); 
-  //   this.petOwners=customers; 
-  //   return customers; 
-  //  }
-
-  // async getOrders(){
-  //   const orders = await this._httpOrder.getOderByUser(this.authenticator?.user?.attributes?.email).toPromise()
-  //   this.orders = orders;
-  //   this.clients = [];
-  //   this.orders.forEach(element => {
-  //     this.getClients(element?.PetOwnerID).then(petOwner => this.clients.push(petOwner));
-  //   });
-  // }
-  
-  // async getClients(petOwnerId){
-  //   const customers = await this._httpUser.get_petownerByUserID(petOwnerId).toPromise(); 
-  //   this.petOwners=customers; 
-  //   return customers; 
-  // }
-  
-  // async getOrders() {
-  //   const orders = await this._httpOrder.getOderByUser(this.authenticator?.user?.attributes?.email).toPromise()
-  //   this.orders = orders;
-  //   this.clients = [];
-  
-  //   const promises = this.orders.map(element => this.getClients(element?.PetOwnerID));
-  //   this.clients = await Promise.all(promises);
-  
-  //   console.log('Orders', this.orders);
-  //   console.log('Clients:', this.clients);
-  // }
-
-  // async getPetsitter(){
-  //   const petSitterInformation = await this._httpUser.get_petsitter().toPromise(); 
-  //   return petSitterInformation; 
-  // }
 
   getPetSitter(){
     this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
@@ -110,5 +66,8 @@ export class ManageOrdersComponent implements OnInit {
   
   }
 
+Test(test:string){
+  console.log('Testssss',test); 
+}
 
 }
