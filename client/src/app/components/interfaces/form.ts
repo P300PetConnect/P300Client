@@ -14,12 +14,10 @@ export interface IPet{
     description: string,
     petImageUrl: string,
     dob: string, 
-    // petType: IPetType
     petType:string,
     petBreed: string,
     PetSize: string,
     createdDate:string; 
-    // petcaracteristics:string;
 }
  
 export interface IOrder{
@@ -38,7 +36,6 @@ export interface IOrder{
      Profile_Pic_URL:string, 
      EmailAddress:string, 
 }
-
 
 export enum Iform{
 USERPETOWNER = 'USERPETOWNER', 

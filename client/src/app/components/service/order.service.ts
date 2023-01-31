@@ -27,4 +27,13 @@ export class OrderService {
      catchError(this.handleError)
     );
   }
+  getOrderByUserPetOwnerView(PetOwnerID){
+    return this._http.get<IOrder[]>('https://kxewd44z5k.execute-api.eu-west-1.amazonaws.com/dev/orders?PetOwnerID='+PetOwnerID)
+    .pipe(
+      tap(data => console.log('list/error' + JSON.stringify(data))
+      
+    ),
+     catchError(this.handleError)
+    );
+  }
 }

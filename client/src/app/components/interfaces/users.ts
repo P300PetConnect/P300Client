@@ -42,42 +42,6 @@ export interface IPetOwner{
     country?: string;
 }
 
-// export class PetOwner{
-//     name: string;
-//     surname: string;
-//     dob: Date;
-//     joinDate: Date;
-//     profilePicUrl: string;
-//     mobileNumber: string;
-//     emailAddress: string;
-//     petOwnerId: number;
-//     line1: string;
-//     line2: any;
-//     city: string;
-//     county: string;
-//     zipCode: string;
-//     country: string;
-
-//     constructor(name: string, surname: string, dob: Date, joinDate: Date, profilePicUrl:string, mobileNumber:string, 
-//         emailAddress: string, petOwnerId: number, line1: string, line2: any, city: string, county: string, zipCode: string, 
-//         country: string) {
-//         this.name = name; 
-//         this.surname = surname; 
-//         this.dob = dob; 
-//         this.joinDate = joinDate; 
-//         this.profilePicUrl = profilePicUrl;  
-//         this.mobileNumber = mobileNumber; 
-//         this.emailAddress = emailAddress; 
-//         this.petOwnerId =petOwnerId; 
-//         this.line1 = line1; 
-//         this.line2 = line2; 
-//         this.city = city; 
-//         this.county = county; 
-//         this.zipCode = zipCode;
-//     }
-
-// }
-
 export interface IPet{
         petId: number;
         name: string;
@@ -96,6 +60,8 @@ USERPETOWNER = 'USERPETOWNER',
 USERPETMINDER = 'USERPETMINDER', 
 USERADMIN = 'USERADMIN',
 }
+
+
 
 export interface IServiceFind {
     success: boolean;
