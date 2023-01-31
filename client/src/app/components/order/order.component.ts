@@ -12,18 +12,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { OrderService } from '../service/order.service';
 import { UserService } from '../service/user.service';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-
-
-
-interface petCategory {
-  value: string;
-  viewValue: string;
-}
-interface serviceCategory {
-  value: string;
-  viewValue: string;
-}
-
+import { IPetCategory, IServiceCategory, EOrderStatus, EPaymentStatus } from '../interfaces/order';
 
 @Component({
   selector: 'app-order',
@@ -144,14 +133,14 @@ add(event: MatChipInputEvent): void {
   category= new FormControl('');
   service=new FormControl(''); 
 
-petCategory: petCategory[] = [
+petCategory: IPetCategory[] = [
   {value: '../../../assets/images/home/boarding-selected.svg', viewValue:'Bob'},
   {value: '../../../assets/images/home/walk-selected.svg', viewValue: 'Cat'},
   {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Bird'},
   {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Fish'},
 
 ];
-serviceCategory: serviceCategory[] = [
+serviceCategory: IServiceCategory[] = [
   {value: '../../../assets/images/home/boarding-selected.svg', viewValue: '1'},
   {value: '../../../assets/images/home/walk-selected.svg', viewValue: '2'},
   {value: '../../../assets/images/home/daycare-selected.svg', viewValue: '3'},
@@ -181,14 +170,13 @@ serviceCategory: serviceCategory[] = [
   this.AddOrder.controls['ServiceID'].setValue(4);
   this.AddOrder.controls['PetSitterID'].setValue(this?.petSitter?.petSitterId);
   this.AddOrder.controls['PetOwnerID'].setValue(3);
-  this.AddOrder.controls['Status'].setValue(OrderStatus.Pendent); 
-  this.AddOrder.controls['PaymentStatus'].setValue(PaymentStatus.Pendent); 
+  this.AddOrder.controls['Status'].setValue(EOrderStatus.Pendent); 
+  this.AddOrder.controls['PaymentStatus'].setValue(EPaymentStatus.Pendent); 
 
   this.db.addOrder(this.AddOrder).subscribe({
     next: order => {
       console.log(JSON.stringify(order) + 'order added');
       this.message = "list added";
-      //this.close();
        },
     error: (err) => this.message = err
   });
@@ -199,13 +187,12 @@ serviceCategory: serviceCategory[] = [
 onClose(){
     this.dialog.closeAll(); 
   }
-	url: any; //Angular 11, for stricter type
+	url: any; 
 	msg = "";
   icon = ""
   isShow:boolean = true; 
 	
-	//selectFile(event) { //Angular 8
-	selectFile(event: any) { //Angular 11, for stricter type
+	selectFile(event: any) { 
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
 			this.msg = 'You must select an image';
 			return;
@@ -227,18 +214,3 @@ onClose(){
 }
 
 
-
-enum OrderStatus {
-  Pendent = 'Pendent',
-  Processing = 'Processing',
-  Review = 'Review',
-  Canceled = 'Canceled', 
-  Delivered = 'Delivered', 
-}
-
-enum PaymentStatus{
-  Pendent = 'Pendent',
-  Declined = 'Declined', 
-  Confirmed = 'Confirmed', 
-  Refounded = 'Confirmed', 
-}
