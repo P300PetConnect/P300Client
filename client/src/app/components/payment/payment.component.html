@@ -1,13 +1,43 @@
-<div class="container">
-    <h2 class="mt-5 mb-4">Angular Stripe Checkout Example</h2>
-    <div class="col-md-5 mb-2">
-      <button (click)="makePayment(15)" class="btn btn-danger btn-block">Pay $15</button>
+<div class="d-flex justify-content-end ">
+  <div class="container">
+    <div class="col-12 mb-2">
+      <div class="row">
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+              <h5 class="card-title">Hi &#9996;</h5>
+              <p class="card-text pt-2">{{cardTitle}}</p>
+              <div class="row">
+                <div class="col-6 text-muted">
+                  Total price
+                </div>
+                <div class="col-6">
+                  {{order?.Price}}
+                </div>
+                <div class="col-6 text-muted">
+                  Order from
+                </div>
+                <div class="col-6">
+                  {{order?.Name}} {{order?.Surname}}
+                </div>
+                <div class="col-6 text-muted">
+                  Order Ref       
+                </div>
+                <div class="col-6">
+                  #00{{order?.OrderID}}         
+                </div>
+              </div>
+              <div class="mt-2">
+                <button (click)="makePayment(order?.Price, this.actionToBtn)" class="btn btn-{{btnclass}} btn-block">{{btnText}}</button>
+                <button *ngIf="order.Status!='Canceled'&& order.Status!='Processing'" #btn2  (click)="SecondBtnPayment(order?.Price, this.actionToBtn)" class="btn btn-{{btnclass2}} btn-block">{{btnText2}}</button>
+              </div>
+            </div>
+          </div>
     </div>
-    <div class="col-md-5 mb-2">
-      <button (click)="makePayment(25)" class="btn btn-primary btn-block">Pay $25</button>
-    </div>
-    <div class="col-md-5">
-      <button (click)="makePayment(35)" class="btn btn-success btn-block">Pay $35</button>
+      <!-- <p>{{cardTitle}}</p>
+      <button (click)="makePayment(order?.Price)" class="btn btn-{{btnclass}} btn-block">{{btnText}}</button> -->
     </div>
   </div>
-  
+</div>
+
+
+
