@@ -13,6 +13,8 @@ import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
+import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -27,6 +29,8 @@ export class UserProfileComponent implements OnInit {
   //leave comments on where further integration is needed. 
 
 
+  
+
   public user: IUser; 
   public pet:IPet;
   isReadOnly?:boolean = false; 
@@ -38,7 +42,10 @@ export class UserProfileComponent implements OnInit {
   public petDetails:IPet[]; 
 
   reviews:Review[] = [];
+  serviceList:ServiceInterface[] = [];
   message: any;
+
+  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
 
   //hardcoded bools to demo comments 
 
@@ -47,10 +54,13 @@ export class UserProfileComponent implements OnInit {
   comments3 = false;
   comments4 = false;
   com = false;
+  showDes = false;
 
   averageRoundStars: number;
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private review:ReviewService) {
+  constructor(private _userService: UserService, private _petService:PetService,
+     public authenticator: AuthenticatorService, private dialog:MatDialog, 
+     private review:ReviewService,private service: SearchServiceService) {
 
 
 
@@ -126,6 +136,17 @@ getPetDetails(){
     return false; 
 }
 
+getServices(id: number): boolean
+{
+  this.service.getOtherServices(id).subscribe({
+    next: (value: ServiceInterface[] )=> this.serviceList = value,
+    complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
+    error: (mess) => this.message = mess
+  })
+  return false;
+
+}
+
   
   onCreate(){
     // this._userService.initializeFormGroup(); 
@@ -149,7 +170,8 @@ getPetDetails(){
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = false; 
     dialogConfig.width = "80%";
-     dialogConfig.height = "93%";
+    dialogConfig.height = "93%";
+    dialogConfig.data = {myObjectHolder: this.petSitter.petSitterId} ;
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
   onCreateOrder(){

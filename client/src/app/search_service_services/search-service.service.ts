@@ -99,5 +99,21 @@ getOtherServices(id : number)
   );
 }
 
+AddService(id: number,key1: string, key2: string, des: string ): Observable<unknown>
+{
+  let key = key1 + ' ' + key2
+  let obj = 
+  {
+    "ID" :id,
+    "Title": key,
+    "Description": des
+  }
+  return this.http.post<any>('https://djftt69kei.execute-api.eu-west-1.amazonaws.com/n/prod',obj)
+  .pipe(
+   catchError(this.handleError)
+  )
+
+}
+
 
 }
