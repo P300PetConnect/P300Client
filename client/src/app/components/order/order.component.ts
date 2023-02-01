@@ -13,6 +13,7 @@ import { OrderService } from '../service/order.service';
 import { UserService } from '../service/user.service';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { IPetCategory, IServiceCategory, EOrderStatus, EPaymentStatus } from '../interfaces/order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -63,7 +64,7 @@ selectedCategories: any;
   message: string;
   petSitter: import("/Users/jessicahenry/Project300Backup 2/client/src/app/components/interfaces/users").IPetSitter;
 
-  constructor(private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,
+  constructor(private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
     public authenticator: AuthenticatorService) { 
     this.filteredpositivekeywordss = this.positivekeywordsCtrl.valueChanges.pipe(
       startWith(null),
@@ -181,6 +182,14 @@ serviceCategory: IServiceCategory[] = [
     error: (err) => this.message = err
   });
   console.log('myfomr', this.AddOrder); 
+
+
+  this._router.routeReuseStrategy. shouldReuseRoute = () => false;
+  this._router.onSameUrlNavigation = 'reload';
+
+    this._router.navigate(['/orders']);
+   //reload screen 
+   this.dialog.closeAll();
 
 }
 
