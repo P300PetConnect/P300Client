@@ -7,7 +7,7 @@ table{
 }
 
 
-img {
+.img-profile {
 	border-radius: 50%;
 	width: 36px;
 	height: 36px;
@@ -38,9 +38,14 @@ img {
     color: color-yiq(rgba(28,187,140,.15));
     color: #3788d8;
 }
-.Refound{
+.Refounded{
 	background-color: #212529c9;
     color: color-yiq(rgba(28,187,140,.15));
     color: #e9ecef;
 }
 
+
+
+b{
+    color: gray;
+}

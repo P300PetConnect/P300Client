@@ -14,7 +14,6 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./manage-orders.component.scss']
 })
 export class ManageOrdersComponent implements OnInit {
-  
   @Output() onCreate: EventEmitter<any> = new EventEmitter<any>();
   orders:IOrder[]=[]; 
   clients: any = {}; 
@@ -23,7 +22,7 @@ export class ManageOrdersComponent implements OnInit {
   petSitter: IPetSitter;
   userGroup: any;
   petOwner: IPetOwner;
-  
+
   constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService) {
     Auth.currentAuthenticatedUser()
     .then(user => {
@@ -80,5 +79,6 @@ export class ManageOrdersComponent implements OnInit {
     this.dialog.open(OrderComponent, dialogConfig); 
   
   }
+
 
 }

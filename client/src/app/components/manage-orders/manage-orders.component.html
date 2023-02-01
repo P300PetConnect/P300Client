@@ -7,7 +7,7 @@
                         <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="row pt-3">
-                                        <div class="col-12 d-flex justify-content-end" >
+                                        <div *ngIf="userGroup!='PetOwner'" class="col-12 d-flex justify-content-end" >
                                             <button class="btn btn-success" (click)="onCreateOrder()">Create Order</button>
                                         </div>
                                     </div>
@@ -33,26 +33,45 @@
                     <tbody  *ngFor="let o of orders;let i=index" >
         <tr  data-toggle="collapse" data-toggle="collapse" [attr.data-target]=" '#' + orders[i]?.Name +''+ orders[i]?.OrderID"  class="accordion-toggle">
             <td><button class="btn btn-default btn-xs"><i class="bi bi-eye"></i></button></td>
-            <td><img src="{{orders[i]?.Profile_Pic_URL}}" width="65px" alt=""></td>
+            <td><img src="{{orders[i]?.Profile_Pic_URL}}" class="img-profile" width="65px" alt=""></td>
             <td>{{o.Name}} {{o.Surname}}</td>
             <td></td>
-      
             <td>{{o?.ServiceTitle}}</td>
             <td></td>
             <td>{{o?.OrderDate | date}}</td>
             <td>{{o?.OrderDate | date}}</td>
             <td><span class="badge {{o.PaymentStatus}}">{{o.PaymentStatus}}</span></td>
-            <td>{{o?.Price }}</td>
+            <td *ngIf="o?.PaymentStatus!='Refounded'">{{o?.Price }}</td>
+            <td *ngIf="o?.PaymentStatus=='Refounded'"><s>{{o?.Price }}</s></td>
             <td><span class="badge {{o.Status}}">{{o.Status}}</span></td>
           </tr>
         <tr>
             <td colspan="12" class="hiddenRow">
-                <div [attr.id]="orders[i]?.Name+''+ orders[i]?.OrderID"  class="accordian-body collapse">
-                   <div class="row">
-                    <div class="col-12 pl-4 pr-4">
-                        {{o?.Description}}
+                <div [attr.id]="orders[i]?.Name+''+ orders[i]?.OrderID"  class="accordian-body collapse p-0 m-0">
+                   <div class="row pl-4 pt-2">
+                     
+                        <div class="row pl-5 pt-3">
+                            <div class="col-6 text-justify card-text">
+                                <h5>Description</h5>
+                                <p>{{o.Description}}</p>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <div class="row">
+                                    <div class="col-6"></div>
+                                    <div class="col-6">
+                                          <app-payment [order]="orders[i]"></app-payment>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 p-3">
+                                <p></p>
+                                <img src="https://assets-global.website-files.com/6050a76fa6a633d5d54ae714/609147088669907f652110b0_report-an-issue(about-maps).jpeg" width="200px" alt="">
+                            </div>
+                        </div>
                     </div>
-                   </div>
+                    
+                </div>
                 </div>
             </td>
         </tr>
