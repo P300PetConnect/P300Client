@@ -10,9 +10,8 @@ export enum EOrderStatus {
     Pendent = 'Pendent',
     Declined = 'Declined', 
     Confirmed = 'Confirmed', 
-    Refounded = 'Confirmed', 
+    Refounded = 'Refounded', 
   }
-
   export interface IPetCategory {
     value: string;
     viewValue: string;
