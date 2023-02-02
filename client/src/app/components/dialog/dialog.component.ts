@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {ModalDismissReasons, NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
-import { input } from 'aws-amplify';
+//import { input } from 'aws-amplify';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -16,10 +16,14 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 @Input() modalbtntitle : string = "";  
 @Input() class : string = "";  
 
+
 closeResult: string;
+  
+    
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -28,6 +32,11 @@ closeResult: string;
     });
   }
   
+  openWindow(){
+  
+    console.log("rauting here")
+
+  }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

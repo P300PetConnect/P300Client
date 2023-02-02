@@ -1,8 +1,12 @@
 import { Component, Input, OnInit, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
-import Amplify, { Auth } from 'aws-amplify'; 
+//import Amplify, { Auth } from 'aws-amplify'; 
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import awsExports from 'src/aws-exports';
+//import awsExports from 'src/aws-exports';
+import { UserService } from '../service/user.service';
+import { IUser } from '../interfaces/form';
+import { NavComponent } from '../nav/nav.component';
+
 
 @Component({
   selector: 'app-login',
@@ -17,25 +21,35 @@ isOpen: boolean = true;
 userGroup: string;
 
   constructor(private _router: Router, public authenticator: AuthenticatorService ) {
-    Amplify.configure(awsExports);
+    // Amplify.configure(awsExports);
    
-    Auth.currentAuthenticatedUser()
-    .then(user => {
-      this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
-    })
-    .catch(err => console.log(err));
+    // Auth.currentAuthenticatedUser()
+    // .then(user => {
+    //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+    // })
+    // .catch(err => console.log(err));
 
   }
   async ngOnInit(){
-  Auth.currentAuthenticatedUser()
-  .then(user => {
-    this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
-  })
-  .catch(err => console.log(err));
+    // console.log('user group',this.userGroup)
 
-    if(this.authenticator.user){
-      this._router.navigateByUrl('/user-form');
-    }
+    // this.authenticator.getUserGroup().then(group => {
+      // console.log(this.authenticator.user.get);
+  // 
+  // Auth.currentAuthenticatedUser()
+  // .then(user => {
+  //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+  // })
+  // .catch(err => console.log(err));
+
+  //   if(this.authenticator.user){
+  //     this._router.navigateByUrl('/user-form');
+  //   }
+
+    // if(this.isLogout){
+    //   this.authenticator.signOut(); 
+    //   console.log(this.authenticator.signOut()); 
+    // }
     console.log(this.userGroup); 
 
 }
@@ -44,7 +58,27 @@ btnClick= function () {
   this.router.navigateByUrl('inital');
 };
 
+
 }
 
 
   
+
+
+
+
+  // async loginWithCognito(){
+  //   // try{
+  //   //   var user = await Auth.signIn(this.email.toString(), this.password.toString()); 
+  //   //   console.log('Authentication performed for user = '+ this.email + 'password ='+this.password); 
+  //   //   var tokens =  user.signInUserSession; 
+  //   //   if(tokens !=null){
+  //   //     console.log('User authentication'); 
+  //   //     this.router.navigate(['home']); 
+  //   //     alert('Youre logged in successfully !')
+  //   //   }
+  //   // }catch(error){
+  //   //   console.log(error); 
+  //   // }
+  //   // }
+

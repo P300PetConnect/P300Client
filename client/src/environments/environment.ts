@@ -10,6 +10,9 @@
 
 export const environment = {
   production: false,
+  stream: {
+    key: 'a584yba4xs7f'
+  },
   GOOGLE_MAPS_API_KEY: 'AIzaSyCz-Nu0ku-0DJEe5iPt13RTq0QVpiz45AY',
   region: 'eu-central-1',
   identityPoolId: 'eu-west-1:632c2f15-6b41-44b0-9d26-539386e90e4d',
@@ -20,10 +23,7 @@ export const environment = {
   sts_endpoint: '',
   UriPetSitter:'https://wwcwkeoqxa.execute-api.eu-west-1.amazonaws.com/dev', //petsitter, have to change it 
   UriPetOwner:'https://xpsdh54gsd.execute-api.eu-west-1.amazonaws.com/dev', //petowner 
-  UriPet:'https://gl8g0i4oj1.execute-api.eu-west-1.amazonaws.com/',//Pet
-  UriAddOrder:'https://g7oga89fg3.execute-api.eu-west-1.amazonaws.com/dev/', //Create Order 
-  UriGetOrdersByPetSitter:'https://dw8reoypi6.execute-api.eu-west-1.amazonaws.com/dev', 
-  UriGetOrdersByPetOwnerView:'https://kxewd44z5k.execute-api.eu-west-1.amazonaws.com/dev'
+  UriPet:'https://gl8g0i4oj1.execute-api.eu-west-1.amazonaws.com/' //Pet
 };
 
 

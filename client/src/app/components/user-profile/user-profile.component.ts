@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/components/service/user.service';
-import { IUser, IPet, IOrder} from 'src/app/components/interfaces/form';
+import { IUser, IPet} from 'src/app/components/interfaces/form';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.component';
@@ -13,7 +13,6 @@ import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
-import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -39,8 +38,6 @@ export class UserProfileComponent implements OnInit {
   public petDetails:IPet[]; 
 
   reviews:Review[] = [];
-  orders:IOrder [] = []; 
-
   message: any;
 
   //hardcoded bools to demo comments 
@@ -51,7 +48,7 @@ export class UserProfileComponent implements OnInit {
   comments4 = false;
   com = false;
 
-  constructor(private _userService: UserService, private _httpOrder: OrderService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private review:ReviewService) {
+  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private review:ReviewService) {
 
 
 
@@ -115,7 +112,6 @@ getPetOwner(){
       return false; 
     }
 
-
 //get pets 
 getPetDetails(){
   this._petService.get_petdetails("joannasmith@gmail.com").subscribe(
@@ -170,9 +166,4 @@ getPetDetails(){
     return false;
   }
 
-getOrders(email:string){
-  this._httpOrder.getOderByUser(email).subscribe(orders => this.orders = orders);
-  console.log('Orders',JSON.stringify((this.orders)))
- }
-}
-
+  }

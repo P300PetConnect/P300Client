@@ -1,6 +1,5 @@
 export interface IUser {
         name: string;
-        UserID?:number;
         surname: string;
         dob?: string;
         profilePicUrl?: string;
@@ -14,27 +13,12 @@ export interface IPet{
     description: string,
     petImageUrl: string,
     dob: string, 
+    // petType: IPetType
     petType:string,
     petBreed: string,
     PetSize: string,
     createdDate:string; 
-}
- 
-export interface IOrder{
-     OrderID:string, 
-     PetSitterID: string, 
-     PetOwnerID: string,
-     OrderDate:string,
-     Description: string, 
-     Status: string, 
-     ServiceID: string, 
-     Price : string, 
-     PaymentStatus: string, 
-     ServiceTitle:string,
-     Name:string,
-     Surname:string, 
-     Profile_Pic_URL:string, 
-     EmailAddress:string, 
+    // petcaracteristics:string;
 }
 
 export enum Iform{
