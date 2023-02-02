@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { CalendarComponent } from './calendar-components/calendar/calendar.component';
 import { CognitoGuard } from './cognito.guard';
+import { ChatPageComponent } from './components/chat-page/chat-page.component';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { LoginComponent } from './components/login/login.component';
-import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
 import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
 import { SearchVersion2Component } from './components/search-version2/search-version2.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -25,8 +25,8 @@ const routes: Routes = [
   { path:'initial', component:InitialPageComponent }, 
   { path:'', component:InitialPageComponent }, 
   { path:'login', component:LoginComponent },
-  { path:'petsitterdetails', component:PetSitterDetailsComponent }, 
-  {path:'orders', component:ManageOrdersComponent} //TODO: ADD USER ID 
+  { path:'petsitterdetails', component:PetSitterDetailsComponent },
+  { path: 'chat', component:ChatPageComponent }
 ];
 
 @NgModule({

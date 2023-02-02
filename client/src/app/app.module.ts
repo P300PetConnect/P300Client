@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { StreamChatModule, StreamAutocompleteTextareaModule } from 'stream-chat-angular';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import {AgmCoreModule} from '@agm/core';
 import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
-import  Amplify, {Auth } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports'
 Amplify.configure(awsconfig); 
 import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
 import {FormsModule} from '@angular/forms'
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -31,7 +32,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {Ng2TelInputModule} from 'ng2-tel-input';
+//import {Ng2TelInputModule} from 'ng2-tel-input';
 import {MatSelectModule} from '@angular/material/select';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
@@ -86,10 +87,8 @@ import { SearchSitterServicesComponent } from './components/search-sitter-servic
 import { OrderComponent } from './components/order/order.component';
 import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.component';
 import { ReviewComponent } from './ReviewComponents/review/review.component';
-import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
-
-
-
+import { InterceptorService } from './components/service/interceptor.service';
+import { ChatPageComponent } from './components/chat-page/chat-page.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +105,7 @@ import { ManageOrdersComponent } from './components/manage-orders/manage-orders.
     UserformComponent, 
     AlertmsgComponent, 
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ManageOrdersComponent
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent
     
   ],
   imports: [
@@ -128,7 +127,7 @@ import { ManageOrdersComponent } from './components/manage-orders/manage-orders.
     MatInputModule,
     MatFormFieldModule,
     MatExpansionModule,
-    Ng2TelInputModule,
+    //Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
     MatIconModule,
@@ -145,6 +144,8 @@ import { ManageOrdersComponent } from './components/manage-orders/manage-orders.
             deps: [HttpClient]
         }, 
     }),
+    StreamChatModule,
+    StreamAutocompleteTextareaModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
     FormsModule,
@@ -156,7 +157,9 @@ import { ManageOrdersComponent } from './components/manage-orders/manage-orders.
       libraries: ['places']
     }),
   ],
-  providers: [AuthenticatorService, CognitoGuard, UserService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    AuthenticatorService, CognitoGuard, UserService],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })
