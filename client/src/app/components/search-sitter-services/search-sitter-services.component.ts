@@ -32,9 +32,9 @@ export class SearchSitterServicesComponent implements OnInit {
    alert(n);
     return Array(4);
   }
-  SearchSitter(email: string, id: number){
+  SearchSitter(id: number){
     console.log('find')
-    this._router.navigate(['/petsitterdetails', {'email': `${email}`,'id': `${id}`}])
+    this._router.navigate(['/petsitterdetails', {'id': `${id}`}])
    //[routerLink]="['/petsitterdetails']"
   }
 

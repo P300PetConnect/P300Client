@@ -8,6 +8,25 @@ export interface IUser {
         petOwnerId: number;
     }
 
+    //data being returned straight from DB, Different keys 
+export interface IPetSitterID{
+    Name: string;
+    Surname: string;
+    DOB?: any;
+    JoinDate?: Date;
+    Profile_Pic_URL?: string;
+    MobileNumber?: string;
+    EmailAddress?: string;
+    PetSitterID?: number;
+    Line_1?: string;
+    Line_2?: string;
+    City?: string;
+    County?: string;
+    ZipCode?: string;
+    Country?: string;
+    NumReviews?: number;
+    ReviewsTotal?:number;
+}
 export interface IPetSitter{
     name: string;
     surname: string;
@@ -23,8 +42,8 @@ export interface IPetSitter{
     county?: string;
     zipCode?: string;
     country?: string;
-    numReviews: number;
-    reviewsTotal:number;
+    numReviews?: number;
+    reviewsTotal?:number;
 }
 
 export interface IPetOwner{
@@ -103,3 +122,22 @@ export interface IServiceFind {
     success: boolean;
     errorMessage?: string;
   }
+
+//   export interface IPetSitter{
+//     name: string;
+//     surname: string;
+//     dob?: any;
+//     joinDate?: Date;
+//     profilePicUrl?: string;
+//     mobileNumber?: string;
+//     emailAddress?: string;
+//     petSitterId?: number;
+//     line1?: string;
+//     line2?: string;
+//     city?: string;
+//     county?: string;
+//     zipCode?: string;
+//     country?: string;
+//     numReviews: number;
+//     reviewsTotal:number;
+// }

@@ -121,6 +121,7 @@
       </div>
      </div>
      <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'fatherted@gmail.com'">
+      <h1>{{petSitter?.name}}</h1>
       <div class="col-4">
         <div class="row">
           <div class="col-12">
@@ -141,7 +142,7 @@
                           <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
                           
                           <span class="review my-auto pl-2"><u>{{petSitter?.numReviews}}</u></span>
-         
+       
                       </div>
                     </div>
                   </div>

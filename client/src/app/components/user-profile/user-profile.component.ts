@@ -115,13 +115,14 @@ getPetOwner(){
     }); 
     return false; 
   }
+  //     <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
 
   getPetSitter(){
     this._userService.get_petsitter("fatherted@gmail.com").subscribe(
       petSitter=>{
         this.petSitter = petSitter;
         console.log(petSitter)
-        this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal / this.petSitter.numReviews);
+       this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal/ this.petSitter.numReviews);
       }); 
       return false; 
     }

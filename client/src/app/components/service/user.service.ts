@@ -14,14 +14,24 @@ export class UserService{
 
     constructor(private _http: HttpClient){ } 
 
-    get_petsitter(email): Observable<IPetSitter>{
+    get_petsitter_ID(id){
         console.log("get pet sitter called")
-        return this._http
-        .get<IPetSitter>(
-            this.baseUrl+email
+        return this._http.get<IPetSitter>("https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/user?id="+ id
         )
-        .pipe(tap(), catchError(this.hangleError))
-    }
+        .pipe(
+            catchError(this.hangleError)
+          )
+      
+        }
+
+        get_petsitter(email): Observable<IPetSitter>{
+            return this._http
+            .get<IPetSitter>(
+                this.baseUrl+email
+            )
+            .pipe(tap(), catchError(this.hangleError))
+        }
+  
     private hangleError(err: HttpErrorResponse){
         return throwError('error: ' + err.message)
     }

@@ -8,7 +8,7 @@ import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.
 import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { IPetOwner, IPetSitter, IPetSitterID } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { OrderComponent } from '../order/order.component';
@@ -33,7 +33,7 @@ export class PetSitterDetailsComponent implements OnInit {
   isShow:boolean; 
   isPetOwner:boolean = false; 
   public petOwner: IPetOwner; 
-  public petSitter: IPetSitter; 
+  public petSitter: IPetSitterID; 
   public petDetails:IPet[]; 
   selected: Date | null;
   reviews:Review[] = [];
@@ -43,6 +43,11 @@ export class PetSitterDetailsComponent implements OnInit {
   userID: string;
 
   averageRoundStars: number;
+
+
+  //weird 0 on data being returned, refactor get method in this class, get method in service
+  
+  // make sure all other gets are working 
 
 
   // array of key words to check for images// 
@@ -97,11 +102,13 @@ export class PetSitterDetailsComponent implements OnInit {
   ngOnInit(): void {
 
     console.log(this.selected); 
-    this.email = this.r.snapshot.paramMap.get('email');
+   
     this.userID = this.r.snapshot.paramMap.get('id');
     //get users services
     this.getServices(Number(this.userID));
-    this.getPetSitter(this.email); 
+
+
+    this.getPetSitter(Number(this.userID)); 
 
     console.log(this.petSitter);
  
@@ -142,13 +149,13 @@ onCreateOrder(){
 
 }
 
-  getPetSitter(email: string){
-    this._userService.get_petsitter(email).subscribe(
+  getPetSitter(id: number){
+    this._userService.get_petsitter_ID(id).subscribe(
       petSitter=>{
-        this.petSitter = petSitter;
+        this.petSitter = petSitter[0];
         console.log(petSitter)
         //rounded average to print stars on profile view
-        this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal / this.petSitter.numReviews);
+        this.averageRoundStars = Math.floor(this.petSitter.ReviewsTotal / this.petSitter.NumReviews);
       
       }); 
       
