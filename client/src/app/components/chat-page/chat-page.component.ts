@@ -3,6 +3,8 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { StreamChat } from 'stream-chat';
 import { ChannelService, ChatClientService, CustomTemplatesService, StreamI18nService } from 'stream-chat-angular';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { OrderComponent } from '../order/order.component';
 
 @Component({
   selector: 'app-chat-page',
@@ -16,7 +18,8 @@ export class ChatPageComponent implements OnInit {
     private chatService: ChatClientService,
     private channelService: ChannelService,
     private streamI18nService: StreamI18nService,
-    private http: HttpClient
+    private http: HttpClient, 
+    private dialog:MatDialog
     ) {}
 
   async ngOnInit(): Promise<void> {
@@ -128,7 +131,7 @@ export class ChatPageComponent implements OnInit {
     const channel = client.channel('messaging', 'petconnect', {
       name: 'Create Order',
     });
-    window.open("https://www.example.com");
+    this.onCreateOrder();
   
     const chatHtml = `
       <div style="position: fixed; bottom: 0; right: 0; width: 300px; height: 400px;">
@@ -143,6 +146,19 @@ export class ChatPageComponent implements OnInit {
       </div>
     `;
     document.body.insertAdjacentHTML('beforeend', chatHtml);
+
+
+  }
+
+
+  onCreateOrder(){
+    
+    const dialogConfig = new MatDialogConfig(); 
+    dialogConfig.disableClose = false; 
+    dialogConfig.autoFocus = true; 
+    dialogConfig.width = "60%";
+    this.dialog.open(OrderComponent, dialogConfig); 
+  
   }
   }
 
