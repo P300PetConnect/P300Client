@@ -90,6 +90,9 @@ import { ReviewComponent } from './ReviewComponents/review/review.component';
 import { InterceptorService } from './components/service/interceptor.service';
 import { ChatPageComponent } from './components/chat-page/chat-page.component';
 
+import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
+import { PaymentComponent } from './components/payment/payment.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +106,7 @@ import { ChatPageComponent } from './components/chat-page/chat-page.component';
     LoginComponent,
     InitialPageComponent,
     UserformComponent, 
-    AlertmsgComponent, 
+    AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent
     
