@@ -4,10 +4,12 @@
             <div class="col-3">
                 <stream-channel-list></stream-channel-list>
             </div>
-        
+        <!-- <button mat-troked-button>Add users</button> -->
             <div class="col-9">
                 <stream-channel>
                     <div id="header">
+                        <button (click)="openChat()">Create Order</button>
+
                         <stream-channel-header></stream-channel-header>
                     </div>
                     <stream-message-list></stream-message-list>
