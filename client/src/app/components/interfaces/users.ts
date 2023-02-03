@@ -37,6 +37,12 @@ export interface IPetSitterID{
     UsualPetsDetail3: string;
     ProfileDesc: string;
 }
+export enum eUserType{
+    PetOwner = 'PetOwner', 
+    PetSitter = 'PetSitter', 
+    Admin = 'Admin',
+}
+    
 export interface IPetSitter{
     name: string;
     surname: string;
@@ -54,6 +60,7 @@ export interface IPetSitter{
     country?: string;
     numReviews?: number;
     reviewsTotal?:number;
+    id:number; 
 }
 
 export interface IPetOwner{
