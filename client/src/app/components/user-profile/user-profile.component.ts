@@ -8,7 +8,7 @@ import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.
 import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { eUserType, IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
@@ -57,6 +57,7 @@ export class UserProfileComponent implements OnInit {
   showDes = false;
 
   averageRoundStars: number;
+  UserGroup: string;
 
   constructor(private _userService: UserService, private _petService:PetService,
      public authenticator: AuthenticatorService, private dialog:MatDialog, 
@@ -90,9 +91,9 @@ this.pet = {
   "createdDate":"12/09/2022", 
 }
  
+this.UserGroup = JSON.parse(localStorage.getItem('UserGroup')); 
 
-    if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
-    console.log('test carai')
+    if(this.UserGroup == eUserType.PetOwner){
     this.getPetOwner(); 
     this.getPetDetails(); 
     }
@@ -100,22 +101,12 @@ this.pet = {
     this.getPetSitter(); 
     console.log(this.petSitter);
     }
-
-
-
   }
 
-
-//getpet owner 
+//Get Pet Owner 
 getPetOwner(){
-  this._userService.get_petowner("joannasmith@gmail.com").subscribe(
-    petOwner=>{
-      this.petOwner = petOwner;
-      console.log(petOwner)
-    }); 
-    return false; 
+  this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
   }
-  //     <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
 
   getPetSitter(){
     this._userService.get_petsitter("fatherted@gmail.com").subscribe(
@@ -129,7 +120,7 @@ getPetOwner(){
 
 //get pets 
 getPetDetails(){
-  this._petService.get_petdetails("joannasmith@gmail.com").subscribe(
+  this._petService.get_petdetails(this.petOwner?.emailAddress).subscribe(
     petDetails=>{
       this.petDetails = petDetails; 
       console.log(petDetails)
