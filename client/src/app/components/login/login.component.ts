@@ -6,6 +6,9 @@ import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { UserService } from '../service/user.service';
 import { IUser } from '../interfaces/form';
 import { NavComponent } from '../nav/nav.component';
+import { eUserType, IPetOwner, IPetSitter } from '../interfaces/users';
+import { Auth } from 'aws-amplify';
+import { ThemeService } from 'stream-chat-angular';
 
 
 @Component({
@@ -19,45 +22,66 @@ isOpen: boolean = true;
 @Input() isLogout: boolean; 
 @ViewChildren('field') allFields;
 userGroup: string;
+petOwner: IPetOwner;
+petSitter: IPetSitter; 
+averageRoundStars: number;
+PetSitterProfile: boolean = false;
+PetOwnerProfile: boolean = false; 
 
-  constructor(private _router: Router, public authenticator: AuthenticatorService ) {
-    // Amplify.configure(awsExports);
-   
-    // Auth.currentAuthenticatedUser()
-    // .then(user => {
-    //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
-    // })
-    // .catch(err => console.log(err));
+
+  constructor(private _router: Router, public authenticator: AuthenticatorService, private _httpUserService: UserService ) {
+    Auth.currentAuthenticatedUser()
+    .then(user => {
+      this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+      localStorage.setItem('UserGroup', JSON.stringify(this.userGroup)); 
+    })
+    .catch(err => console.log(err));
 
   }
-  async ngOnInit(){
-    // console.log('user group',this.userGroup)
 
-    // this.authenticator.getUserGroup().then(group => {
-      // console.log(this.authenticator.user.get);
-  // 
-  // Auth.currentAuthenticatedUser()
-  // .then(user => {
-  //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
-  // })
-  // .catch(err => console.log(err));
+ ngOnInit(){
+    if(this.userGroup =='PetOwner'){
+     this.getPetOwner(); 
+     alert(this.userGroup); 
 
-  //   if(this.authenticator.user){
-  //     this._router.navigateByUrl('/user-form');
-  //   }
+      }
+      else if(this.userGroup==eUserType.PetSitter){
+     this.getPetSitter(); 
+      alert(this.userGroup); 
+    }
 
-    // if(this.isLogout){
-    //   this.authenticator.signOut(); 
-    //   console.log(this.authenticator.signOut()); 
-    // }
-    console.log(this.userGroup); 
-
+    console.log(this.petSitter); 
 }
+
+async getPetOwner(){
+  try {
+   const petOwner = await this._httpUserService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+   this.petOwner= petOwner;
+      localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+ async getPetSitter(){
+  try{
+    const petSitter = await this._httpUserService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
+    this.petSitter = petSitter; 
+     this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal/ this.petSitter.numReviews);
+     localStorage.setItem('PetSitter', JSON.stringify(petSitter)); 
+     console.log(this.petSitter, 'My Pet Sitter'); 
+     this.PetSitterProfile = true; 
+
+  } catch(error){
+      console.error(error); 
+  }
+}
+
 
 btnClick= function () {
   this.router.navigateByUrl('inital');
 };
-
 
 }
 
