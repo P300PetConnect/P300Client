@@ -49,56 +49,56 @@
                       <span>Response rate: <b>98%</b></span>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row"  *ngIf="petSitter?.CancellationPolicy">
                     <div class="col-1">
                       <i class="bi bi-x-octagon"></i>
                     </div>
                     <div class="col">
-                      <span>Cancellation policy: <a class="primary-link">flexible</a></span>
+                      <span>Cancellation policy: <a class="primary-link">{{petSitter?.CancellationPolicy}}</a></span>
                     </div>
                   </div>
                   <div class="row pt-4">
                     <hr>
                     <h4>My place</h4>
 
-                    <div class="row">
+                    <div class="row" *ngIf="petSitter?.HouseType">
                       <div class="col-1">
                         <span class="material-symbols-outlined">
                           cottage
                         </span> </div>
-                      <div class="col">
-                        <span>Living in a <b> house</b></span>
+                      <div class="col" >
+                        <span>Living in a <b>{{petSitter?.HouseType}}</b></span>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row"  *ngIf="petSitter?.HouseDetails">
                       <div class="col-1">
                         <span class="material-symbols-outlined">
                           smoke_free
                         </span>
                       </div>
                       <div class="col">
-                        <span><b> No</b> smokers</span>
+                        <span><b> </b>{{petSitter?.HouseDetails}} </span>
                       </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" *ngIf="petSitter?.PetsInHome">
                       <div class="col-1">
                         <span class="material-symbols-outlined md-18">
                           sound_detection_dog_barking
                         </span>
                       </div>
                       <div class="col">
-                        <span><b> 1 </b> Dog </span>
+                        <span><b>  </b> {{petSitter?.PetsInHome}} </span>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row" *ngIf="petSitter?.Children">
                       <div class="col-1">
                         <span class="material-symbols-outlined ">
                           child_care
                         </span>
                       </div>
                       <div class="col">
-                        <span> One - 12 years old kid</span>
+                        <span>{{petSitter?.Children}}</span>
                       </div>
                     </div>
 
@@ -139,14 +139,16 @@
                           Starting price: € 15.00
                         </mat-panel-description>
                       </mat-expansion-panel-header>
-                      <p>{{s.Description}}</p>
+                      <p n>{{petSitter?.ProfileDesc}}</p>
                     </mat-expansion-panel>
 
                 
                   </mat-accordion>
                 </div>
                 <div class="row pt-3">
+
                   <h4>I usually take care of:</h4>
+                  <p *ngIf="petSitter?.UsualPets">Needs to be matched to images {{petSitter?.UsualPets}}</p>
                   <img src="../../../assets/images/Screenshot 2022-12-06 at 00.49.44.png" alt="" style="width:26rem;">
                 </div>
                 <div class="row pt-4">
@@ -155,8 +157,8 @@
                       pets
                     </span>
                   </div>
-                  <div class="col">
-                    <span>Don't take care of females in heat</span>
+                  <div class="col" *ngIf="petSitter?.UsualPetsDetail1">
+                    <span>{{petSitter?.UsualPetsDetail1}}</span>
                   </div>
                 </div>
                 <div class="row">
@@ -165,8 +167,8 @@
                       pets
                     </span>
                   </div>
-                  <div class="col">
-                    <span>Males, neutered only</span>
+                  <div class="col" *ngIf="petSitter?.UsualPetsDetail2">
+                    <span>{{petSitter?.UsualPetsDetail2}}</span>
                   </div>
                 </div>
                 <div class="row">
@@ -175,7 +177,7 @@
                       pets
                     </span>
                   </div>
-                  <div class="col">
+                  <div class="col" >
                     <span>List of breed I don't take care of: Link</span>
                   </div>
                 </div>
@@ -197,7 +199,7 @@
                       <mat-tab label="Description">
                         <div class="row p-4">
                           <div class="col-12 text-justify">
-                            <p>Dogs have always been part of my family, since I was a little boy I learned to love, care for and respect animals. I was used to hosting doggies for friends and family, until a friend commented on this app and I loved the idea of ​​putting this experience in my daily life. I will take the same care and affection with your puppy, respecting his routine and personality.
+                            <p *ngIf="petSitter?.ProfileDesc">{{petSitter?.ProfileDesc}}</p>
                         
                               <ul class="list list-group list-group-flush">
                                 <li class="list-group-item">24 hour supervision</li>

@@ -26,6 +26,16 @@ export interface IPetSitterID{
     Country?: string;
     NumReviews?: number;
     ReviewsTotal?:number;
+    CancellationPolicy: string;
+    HouseType: string;
+    HouseDetails: string;
+    PetsInHome: string;
+    Children: string;
+    UsualPets: string;
+    UsualPetsDetail1: string;
+    UsualPetsDetail2: string;
+    UsualPetsDetail3: string;
+    ProfileDesc: string;
 }
 export interface IPetSitter{
     name: string;
