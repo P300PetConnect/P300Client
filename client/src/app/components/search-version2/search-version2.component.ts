@@ -62,9 +62,12 @@ export class SearchVersion2Component implements OnInit {
   service = '';
   location = '';
   pet = '';  
-  userServices:any;
+
   errorMessage: any;
   showOther = false;
+  message: any;
+  userServices:RdsUserServices[] = [];
+ 
  
 
   constructor( public router: Router, public r : ActivatedRoute, public search : SearchServiceService) { }
@@ -83,16 +86,15 @@ export class SearchVersion2Component implements OnInit {
   {
     console.log(pet + '  ' + this.location + '  ' + service);
 
-    this.search.getServiceData(pet, location, service).subscribe(
-      (      results: RdsUserServices) => {
-        this.userServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-      },
-      (      error: any) => this.errorMessage = <any>error
-    );
- 
-    console.log(JSON.stringify(this.userServices));
- 
-    return false;
+    this.search.getServiceData(pet, location, service).subscribe({
+      next: (value: RdsUserServices[] )=>this.userServices = value,
+      complete: () => console.log('Review service finished ' +  JSON.stringify((this.userServices))),
+      error: (mess) => this.message = mess
+    })
+
+   
+
+  
 
   }
 
@@ -108,6 +110,7 @@ export class SearchVersion2Component implements OnInit {
     
     this.SearchService(pet, this.location, service);
   }
+  
 
 
   changed(){
@@ -119,30 +122,8 @@ export class SearchVersion2Component implements OnInit {
     }
 
   }
-
-  // public getOtherServices(id : string)
-  // {
-  //   this.service.ShowOther = ! this.service.ShowOther;
-
-  //   if( this.service.ShowOther == true)
-  //   {
-  //     this.search.getOtherServices(id).subscribe(
-  //       (      results: RdsUserServices) => {
-  //         this.otherServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-  //       },
-  //       (      error: any) => this.errorMessage = <any>error
-  //     );
   
-  //     console.log(this.otherServices);
-  
-  //     return false;
 
-  //   }
-
-  //   return false;
-   
-
-  // }
 
   seePetMinder(){
     this.router.navigate(['petsitterdetails'])

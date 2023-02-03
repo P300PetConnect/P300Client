@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
@@ -7,6 +7,9 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MessageAlertComponent } from '../message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Data } from '@angular/router';
+import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 
 @Component({
   selector: 'app-pet-sitter-service',
@@ -29,22 +32,30 @@ export class PetSitterServiceComponent implements OnInit {
   filteredpositivekeywordss: Observable<string[]>;
   positivekeywordss: string[] = ['morning walk'];
   allpositivekeywordss: string[] = ['Take care', 'Minder', 'Overnight', 'Feed'];
+  id: any;
+  message: any;
 
   @ViewChild('positivekeywordsInput') positivekeywordsInput: ElementRef<HTMLInputElement>;
   @ViewChild('stepper')
   stepper: MatStepper;
+ 
   
-  
-  constructor(private _formBuilder: FormBuilder, private dialog:MatDialog) { 
+  constructor(private _formBuilder: FormBuilder, private dialog:MatDialog,
+    @Inject(MAT_DIALOG_DATA) data: { myObjectHolder: any },
+    private _service: SearchServiceService) { 
     this.filteredpositivekeywordss = this.positivekeywordsCtrl.valueChanges.pipe(
       startWith(null),
       map((positivekeywords: string | null) => (positivekeywords ? this._filter(positivekeywords) : this.allpositivekeywordss.slice())),
     );
+    // passed from user profile to be pushed with service object
+    this.id = data.myObjectHolder;
+   
 
   }
 
 
   ngOnInit(): void {
+  
 
   }
 add(event: MatChipInputEvent): void {
@@ -128,5 +139,18 @@ add(event: MatChipInputEvent): void {
 			this.url = reader.result; 
 		}
 	}
+
+  AddService(key1: string, key2: string, des: string )
+  {
+    this._service.AddService(this.id, key1, key2, des).subscribe({
+      next: ser => {
+        console.log(JSON.stringify(ser) + 'service added');
+        this.message = "service added";
+          
+         },
+      error: (err) => this.message = err
+    });
+
+  }
   
 }
