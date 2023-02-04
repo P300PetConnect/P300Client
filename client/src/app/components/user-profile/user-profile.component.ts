@@ -57,13 +57,6 @@ export class UserProfileComponent implements OnInit {
      public authenticator: AuthenticatorService, private dialog:MatDialog, 
      private review:ReviewService,private service: SearchServiceService) {
 
-
-
-  //   this._userService.get_user().subscribe((res: IUser) => {
-  //     this.user= res; 
-
-  //     console.log(this.user.emailAddress)
-  //   })
    }
 
    myFilter = (d: Date | null): boolean => {
@@ -84,28 +77,38 @@ this.pet = {
   "PetSize": "Small", 
   "createdDate":"12/09/2022", 
 }
- 
-    if(this.userGroup == eUserGroup.PETOWNER){
+
+this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
+
+    if(this.userGroup == eUserGroup.PetOwner){
     this.getPetOwner(); 
     this.getPetDetails();
     localStorage.setItem('chatUserName', this.user.emailAddress);
     }
-    else if(this.userGroup == eUserGroup.PETSITTER){
+    else if(this.userGroup == eUserGroup.PetSitter){
     this.getPetSitter();
     }
   }
 
 
 //getpet owner 
-getPetOwner(){
-  this._userService.get_petowner("joannasmith@gmail.com").subscribe(
-    petOwner=>{
-      this.petOwner = petOwner;
-      console.log(petOwner)
-    }); 
-    return false; 
-  }
-  //     <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
+  async getPetOwner(){
+// IF PetOwner Local Store is empty, make the service request
+// IF PetOwner local store is not empty, get data from there
+console.log(localStorage.getItem('PetOwner')); 
+if(!this.petOwner){
+  console.log('I am here, requestiong petowner data for the first time')
+  try {
+  const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+  this.petOwner= petOwner;
+  localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
+
+   } catch (error) {
+     console.error(error);
+   }
+}
+}
+
 
   getPetSitter(){
     this._userService.get_petsitter("fatherted@gmail.com").subscribe(

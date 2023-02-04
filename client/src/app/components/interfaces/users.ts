@@ -94,8 +94,8 @@ USERPETMINDER = 'USERPETMINDER',
 USERADMIN = 'USERADMIN',
 }
 export enum eUserGroup{
-    PETOWNER = 'PETOWNER', 
-    PETSITTER = 'PETSITTER'
+    PetOwner = 'PetOwner', 
+    PetSitter = 'PetSitter'
 }
 
 export interface IServiceFind {
