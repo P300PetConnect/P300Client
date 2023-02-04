@@ -93,6 +93,10 @@ USERPETOWNER = 'USERPETOWNER',
 USERPETMINDER = 'USERPETMINDER', 
 USERADMIN = 'USERADMIN',
 }
+export enum eUserGroup{
+    PETOWNER = 'PETOWNER', 
+    PETSITTER = 'PETSITTER'
+}
 
 export interface IServiceFind {
     success: boolean;

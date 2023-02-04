@@ -8,7 +8,7 @@ import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.
 import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { eUserGroup, IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit {
 
 
   
-
+  userGroup: string = localStorage.getItem('userGroup'); 
   public user: IUser; 
   public pet:IPet;
   isReadOnly?:boolean = false; 
@@ -40,15 +40,10 @@ export class UserProfileComponent implements OnInit {
   public petOwner: IPetOwner; 
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
-
   reviews:Review[] = [];
   serviceList:ServiceInterface[] = [];
   message: any;
-
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
-
-  //hardcoded bools to demo comments 
-
   comments1 = false;
   comments2 = false;
   comments3 = false;
@@ -90,12 +85,12 @@ this.pet = {
   "createdDate":"12/09/2022", 
 }
  
-    if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
+    if(this.userGroup == eUserGroup.PETOWNER){
     this.getPetOwner(); 
     this.getPetDetails();
     localStorage.setItem('chatUserName', this.user.emailAddress);
     }
-    else if(this.authenticator?.user?.attributes?.email=="fatherted@gmail.com"){
+    else if(this.userGroup == eUserGroup.PETSITTER){
     this.getPetSitter();
     }
   }
