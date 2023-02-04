@@ -90,7 +90,7 @@
                 <div class="member-card">
                     <div class="thumb-lg member-thumb mx-auto"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU" class="rounded-circle img-thumbnail" alt="profile-image"></div>
                     <div class="pt-2">
-                        <h4>{{petDetails?.name}}</h4>
+                    
                     </div>
                     <ul class="social-links list-inline mb-auto pt-1">
                       <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips " href="" data-original-title="SpecialCare"><span class="material-symbols-outlined">
@@ -121,6 +121,7 @@
       </div>
      </div>
      <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'fatherted@gmail.com'">
+
       <div class="col-4">
         <div class="row">
           <div class="col-12">
@@ -138,13 +139,10 @@
                     </div>
                     <div class="mt-3">
                       <div class="h-100">
-                          <span class="bi bi-star-fill"></span>
-                          <span class="bi bi-star-fill"></span>
-                          <span class="bi bi-star-fill"></span>
-                          <span class="bi bi-star-fill"></span>
-                          <span class="bi bi-star-fill"></span>
-                          <span class="review my-auto pl-2"><u>14 reviews</u></span>
-         
+                          <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
+                          
+                          <span class="review my-auto pl-2"><u>{{petSitter?.numReviews}}</u></span>
+       
                       </div>
                     </div>
                   </div>
@@ -190,11 +188,42 @@
                   <app-calendar></app-calendar>
                 </div>
               </mat-tab>
+
+
               <mat-tab label="Active service">
+                <ng-template mat-tab-label>
+                  <span (click)="getServices(petSitter?.id)">Active service</span>
+              </ng-template>
                 <div class="row pt-4 container">
+                  <div class="col-4" *ngFor="let s of serviceList">
+                    <div class="card p-4 mb-4" >
+                      <div class="text-center card-body">
+                        <div class="member-card">
+                          <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</strong>
+                            <br></span>
+                          <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
+                            <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
+                          </picture>
+                          <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
+                            <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
+                          </picture>
+                          <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
+                            <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                          </picture>
+                          <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
+                            <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
+                          </picture>
+                         <div>
+                           <p>{{s.Description | slice:0:35}}</p>
+                         </div>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
                   <div class="col-4">
                     <div class="card p-4" (click)="onCreateService()">
                       <div class="text-center card-body">
+                      
                         <div class="member-card">
                           <i class="bi bi-plus-circle-fill text-info"></i>
                           <p>Create a new Service</p>
@@ -202,6 +231,7 @@
                     </div>
                     </div>
                   </div>
+                  
                 </div>
       
               </mat-tab>

@@ -13,6 +13,8 @@ import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
+import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
 
 @Component({
   selector: 'app-user-profile',
@@ -27,6 +29,8 @@ export class UserProfileComponent implements OnInit {
   //leave comments on where further integration is needed. 
 
 
+  
+
   public user: IUser; 
   public pet:IPet;
   isReadOnly?:boolean = false; 
@@ -38,7 +42,10 @@ export class UserProfileComponent implements OnInit {
   public petDetails:IPet[]; 
 
   reviews:Review[] = [];
+  serviceList:ServiceInterface[] = [];
   message: any;
+
+  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
 
   //hardcoded bools to demo comments 
 
@@ -47,8 +54,13 @@ export class UserProfileComponent implements OnInit {
   comments3 = false;
   comments4 = false;
   com = false;
+  showDes = false;
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog, private review:ReviewService) {
+  averageRoundStars: number;
+
+  constructor(private _userService: UserService, private _petService:PetService,
+     public authenticator: AuthenticatorService, private dialog:MatDialog, 
+     private review:ReviewService,private service: SearchServiceService) {
 
 
 
@@ -77,6 +89,7 @@ this.pet = {
   "PetSize": "Small", 
   "createdDate":"12/09/2022", 
 }
+ 
 
     if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
     console.log('test carai')
@@ -103,12 +116,14 @@ getPetOwner(){
     }); 
     return false; 
   }
+  //     <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
 
   getPetSitter(){
     this._userService.get_petsitter("fatherted@gmail.com").subscribe(
       petSitter=>{
         this.petSitter = petSitter;
         console.log(petSitter)
+       this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal/ this.petSitter.numReviews);
       }); 
       return false; 
     }
@@ -121,6 +136,17 @@ getPetDetails(){
       console.log(petDetails)
     }); 
     return false; 
+}
+
+getServices(id: number): boolean
+{
+  this.service.getOtherServices(id).subscribe({
+    next: (value: ServiceInterface[] )=> this.serviceList = value,
+    complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
+    error: (mess) => this.message = mess
+  })
+  return false;
+
 }
 
   
@@ -146,7 +172,8 @@ getPetDetails(){
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = false; 
     dialogConfig.width = "80%";
-     dialogConfig.height = "93%";
+    dialogConfig.height = "93%";
+    dialogConfig.data = {myObjectHolder: this.petSitter.petSitterId} ;
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
   onCreateOrder(){
@@ -158,7 +185,7 @@ getPetDetails(){
     this.dialog.open(OrderComponent, dialogConfig); 
   }
   getReviews(id: number):boolean
-  {/////fiiiiix
+  {
     this.review.getReviews(id).subscribe({
       next: (value: Review[] )=> this.reviews = value,
       complete: () => console.log('Review service finished ' +  JSON.stringify((this.reviews))),
