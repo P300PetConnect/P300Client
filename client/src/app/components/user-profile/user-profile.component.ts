@@ -81,10 +81,11 @@ this.pet = {
     if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
     console.log('test carai')
     this.getPetOwner(); 
-    this.getPetDetails(); 
+    this.getPetDetails();
+    localStorage.setItem('chatUserName', this.user.emailAddress);
     }
     else if(this.authenticator?.user?.attributes?.email=="fatherted@gmail.com"){
-    this.getPetSitter(); 
+    this.getPetSitter();
     console.log(this.petSitter);
     }
 

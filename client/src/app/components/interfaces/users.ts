@@ -6,6 +6,8 @@ export interface IUser {
         mobileNumber?: string;
         emailAddress: string;
         petOwnerId: number;
+        chatUserName: string;
+        chatToken: string;
     }
 
 export interface IPetSitter{
