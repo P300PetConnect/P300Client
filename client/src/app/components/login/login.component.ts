@@ -54,17 +54,20 @@ userGroup: string;
 
 }
 
-btnClick= function () {
-  this.router.navigateByUrl('inital');
-};
-search2(){
-  this._router.navigateByUrl('search2');
-  
-}
-profile(){
-  this._router.navigateByUrl('profile');
-}
+// btnClick= function () {
+//   this.router.navigateByUrl('inital');
+// };
+onCheckRoute(UserGroup:string){
+  if(UserGroup == 'PetOwner'){
+    localStorage.setItem('userGroup','PetOwner')
+    this._router.navigateByUrl('search2');
+  }
+  else if(UserGroup == 'PetSitter'){
+    localStorage.setItem('userGroup','PetSitter')
+    this._router.navigateByUrl('profile');
+  }
 
+}
 
 }
 

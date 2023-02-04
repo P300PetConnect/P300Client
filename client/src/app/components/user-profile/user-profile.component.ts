@@ -90,19 +90,13 @@ this.pet = {
   "createdDate":"12/09/2022", 
 }
  
-
     if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
-    console.log('test carai')
     this.getPetOwner(); 
     this.getPetDetails(); 
     }
     else if(this.authenticator?.user?.attributes?.email=="fatherted@gmail.com"){
     this.getPetSitter(); 
-    console.log(this.petSitter);
     }
-
-
-
   }
 
 
