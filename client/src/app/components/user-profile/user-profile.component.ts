@@ -78,15 +78,22 @@ this.pet = {
   "createdDate":"12/09/2022", 
 }
 
-this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
 
     if(this.userGroup == eUserGroup.PetOwner){
-    this.getPetOwner(); 
+    this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
+    this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
+    
+    if(!this.petOwner){
+      this.getPetOwner(); 
     this.getPetDetails();
+    }
     localStorage.setItem('chatUserName', this.user.emailAddress);
     }
     else if(this.userGroup == eUserGroup.PetSitter){
+    this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+    if(!this.petSitter){
     this.getPetSitter();
+    }
     }
   }
 
@@ -96,7 +103,6 @@ this.petOwner = JSON.parse(localStorage.getItem('PetOwner'));
 // IF PetOwner Local Store is empty, make the service request
 // IF PetOwner local store is not empty, get data from there
 console.log(localStorage.getItem('PetOwner')); 
-if(!this.petOwner){
   console.log('I am here, requestiong petowner data for the first time')
   try {
   const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
@@ -106,28 +112,34 @@ if(!this.petOwner){
    } catch (error) {
      console.error(error);
    }
-}
+
 }
 
 
-  getPetSitter(){
-    this._userService.get_petsitter("fatherted@gmail.com").subscribe(
-      petSitter=>{
+  async getPetSitter(){
+    try{
+      const petSitter = await this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
-        console.log(petSitter)
+        localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
        this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal/ this.petSitter.numReviews);
-      }); 
       return false; 
+    }catch (error) {
+      console.error(error);
     }
+  }
 
 //get pets 
-getPetDetails(){
-  this._petService.get_petdetails("joannasmith@gmail.com").subscribe(
-    petDetails=>{
-      this.petDetails = petDetails; 
-      console.log(petDetails)
-    }); 
-    return false; 
+  async getPetDetails(){
+    if(!this.petDetails){
+      try{
+        const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
+        this.petDetails = petDetails; 
+        localStorage.setItem('petDetails', JSON.stringify(this.petDetails)); 
+        console.log(petDetails)
+       }catch (error) {
+        console.error(error);
+      }
+    }
 }
 
 getServices(id: number): boolean
