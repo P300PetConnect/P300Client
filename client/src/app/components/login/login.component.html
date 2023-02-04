@@ -10,10 +10,12 @@
         amplifySlot="authenticated"
         let-user="user"
         let-signOut="signOut">
-        <!-- <h2>Welcome, {{userGroup}}!{{user.signInUserSession.accessToken.payload["cognito:groups"][0]}}</h2> -->
-        <app-search-version2 *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetOwner'"></app-search-version2>
-        <!-- <button type="submit" (click)="signOut()">Sign Out</button> -->
-        <app-user-profile *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetSitter'"></app-user-profile>
+        <div  *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetOwner'">
+           {{onCheckRoute('PetOwner')?onCheckRoute('PetOwner'):""}}
+        </div>
+        <div *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetSitter'">
+          {{onCheckRoute('PetSitter')?onCheckRoute('PetSitter'):""}}
+        </div >
       </ng-template>
     </amplify-authenticator>
  </div>   
