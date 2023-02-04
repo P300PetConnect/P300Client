@@ -57,6 +57,13 @@ userGroup: string;
 btnClick= function () {
   this.router.navigateByUrl('inital');
 };
+search2(){
+  this._router.navigateByUrl('search2');
+  
+}
+profile(){
+  this._router.navigateByUrl('profile');
+}
 
 
 }

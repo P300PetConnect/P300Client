@@ -11,9 +11,15 @@
         let-user="user"
         let-signOut="signOut">
         <!-- <h2>Welcome, {{userGroup}}!{{user.signInUserSession.accessToken.payload["cognito:groups"][0]}}</h2> -->
-        <app-search-version2 *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetOwner'"></app-search-version2>
+        <div  *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetOwner'">
+           {{search2()?search2():""}}
+        </div>
+        <!-- <app-search-version2 *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetOwner'"></app-search-version2> -->
         <!-- <button type="submit" (click)="signOut()">Sign Out</button> -->
-        <app-user-profile *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetSitter'"></app-user-profile>
+        <div *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetSitter'">
+          {{profile()?profile():""}}
+        </div >
+        <!-- <app-user-profile *ngIf="user.signInUserSession.accessToken.payload['cognito:groups'][0]=='PetSitter'"></app-user-profile> -->
       </ng-template>
     </amplify-authenticator>
  </div>   
