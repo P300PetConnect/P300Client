@@ -96,7 +96,7 @@ this.pet = {
     localStorage.setItem('chatUserName', this.user.emailAddress);
     }
     else if(this.authenticator?.user?.attributes?.email=="fatherted@gmail.com"){
-    this.getPetSitter(); 
+    this.getPetSitter();
     }
   }
 
