@@ -82,7 +82,7 @@ this.pet = {
     if(this.userGroup == eUserGroup.PetOwner){
     this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
     this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
-    localStorage.setItem('chatUserName', this.user.emailAddress);
+    localStorage.setItem('chatUserName', this.user?.emailAddress);
 
     if(!this.petOwner){
       this.getPetOwner(); 
@@ -149,8 +149,6 @@ getServices(id: number): boolean
   return false;
 
 }
-
-  
   onCreate(){
     // this._userService.initializeFormGroup(); 
     const dialogConfig = new MatDialogConfig(); 
