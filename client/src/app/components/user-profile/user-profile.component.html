@@ -192,9 +192,22 @@
 
               <mat-tab label="Active service">
                 <ng-template mat-tab-label>
-                  <span (click)="getServices(petSitter?.id)">Active service</span>
+                Active service
               </ng-template>
                 <div class="row pt-4 container">
+                  <div class="col-4">
+                    <div class="card p-4" (click)="onCreateService()">
+                      <div class="text-center card-body">
+                      
+                        <div class="member-card">
+                          <i class="bi bi-plus-circle-fill text-info"></i>
+                          <p>Create a new Service</p>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                  
+                  
                   <div class="col-4" *ngFor="let s of serviceList">
                     <div class="card p-4 mb-4" >
                       <div class="text-center card-body">
@@ -220,18 +233,7 @@
                     </div>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="card p-4" (click)="onCreateService()">
-                      <div class="text-center card-body">
-                      
-                        <div class="member-card">
-                          <i class="bi bi-plus-circle-fill text-info"></i>
-                          <p>Create a new Service</p>
-                        </div>
-                    </div>
-                    </div>
-                  </div>
-                  
+                 
                 </div>
       
               </mat-tab>
@@ -270,8 +272,7 @@
                 </div>  -->
               </mat-tab>
               <mat-tab label="Reviews">
-                <ng-template mat-tab-label>
-                  <span (click)="getReviews(43)">Reviews</span>
+                <ng-template mat-tab-label>Reviews
               </ng-template>
               <div *ngFor="let r of reviews">
         

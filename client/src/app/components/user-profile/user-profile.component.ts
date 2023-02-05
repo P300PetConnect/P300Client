@@ -8,7 +8,7 @@ import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.
 import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { eUserGroup, IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
 import { ReviewService } from 'src/app/Review-services/review.service';
 import { Review } from 'src/app/ReviewInterfaces/review';
@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit {
 
 
   
-
+  userGroup: string = localStorage.getItem('userGroup'); 
   public user: IUser; 
   public pet:IPet;
   isReadOnly?:boolean = false; 
@@ -40,15 +40,10 @@ export class UserProfileComponent implements OnInit {
   public petOwner: IPetOwner; 
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
-
   reviews:Review[] = [];
   serviceList:ServiceInterface[] = [];
   message: any;
-
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
-
-  //hardcoded bools to demo comments 
-
   comments1 = false;
   comments2 = false;
   comments3 = false;
@@ -60,15 +55,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private _userService: UserService, private _petService:PetService,
      public authenticator: AuthenticatorService, private dialog:MatDialog, 
-     private review:ReviewService,private service: SearchServiceService) {
+     private _httpReview:ReviewService,private _httpService: SearchServiceService) {
 
-
-
-  //   this._userService.get_user().subscribe((res: IUser) => {
-  //     this.user= res; 
-
-  //     console.log(this.user.emailAddress)
-  //   })
    }
 
    myFilter = (d: Date | null): boolean => {
@@ -89,61 +77,95 @@ this.pet = {
   "PetSize": "Small", 
   "createdDate":"12/09/2022", 
 }
- 
-    if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
-    this.getPetOwner(); 
-    this.getPetDetails();
-    localStorage.setItem('chatUserName', this.user.emailAddress);
+
+
+    if(this.userGroup == eUserGroup.PetOwner){
+    this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
+    this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
+    localStorage.setItem('chatUserName', this.user?.emailAddress);
+
+    if(!this.petOwner){
+      this.getPetOwner(); 
+      this.getPetDetails();
     }
-    else if(this.authenticator?.user?.attributes?.email=="fatherted@gmail.com"){
-    this.getPetSitter();
+    }
+    else if(this.userGroup == eUserGroup.PetSitter){
+
+
+    this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+    this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
+    this.reviews = JSON.parse(localStorage.getItem('reviews')); 
+
+    if (!this.petSitter) {
+      this.getPetSitter().then(() => {
+        this.getServices();
+        this.getReviews();
+      });
+    }
     }
   }
 
+  async getPetOwner(){
+  console.log(localStorage.getItem('PetOwner')); 
+  console.log('I am here, requestiong petowner data for the first time')
+  try {
+  const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+  this.petOwner= petOwner;
+  localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
 
-//getpet owner 
-getPetOwner(){
-  this._userService.get_petowner("joannasmith@gmail.com").subscribe(
-    petOwner=>{
-      this.petOwner = petOwner;
-      console.log(petOwner)
-    }); 
-    return false; 
-  }
-  //     <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
-
-  getPetSitter(){
-    this._userService.get_petsitter("fatherted@gmail.com").subscribe(
-      petSitter=>{
+   } catch (error) {
+     console.error(error);
+   }
+}
+  async getPetSitter(){
+    try{
+      const petSitter = await this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
-        console.log(petSitter)
+        localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
        this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal/ this.petSitter.numReviews);
-      }); 
-      return false; 
+       
+    }catch (error) {
+      console.error(error);
     }
+  }
 
-//get pets 
-getPetDetails(){
-  this._petService.get_petdetails("joannasmith@gmail.com").subscribe(
-    petDetails=>{
-      this.petDetails = petDetails; 
-      console.log(petDetails)
-    }); 
-    return false; 
+  async getPetDetails(){
+      try{
+        const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
+        this.petDetails = petDetails; 
+        localStorage.setItem('petDetails', JSON.stringify(this.petDetails)); 
+        console.log(petDetails)
+       }catch (error) {
+        console.error(error);
+      }
+}
+async getServices() {
+  try{
+    await this._httpService.getOtherServices(this.petSitter.id).toPromise().then(
+      (value: ServiceInterface[]) => this.serviceList = value,
+      (mess) => this.message = mess
+    ).finally(() => console.log('Services finished'));
+    localStorage.setItem('serviceList', JSON.stringify(this.serviceList)); 
+    console.log('pet sitter service ', this.serviceList); 
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-getServices(id: number): boolean
+async getReviews()
 {
-  this.service.getOtherServices(id).subscribe({
-    next: (value: ServiceInterface[] )=> this.serviceList = value,
-    complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
-    error: (mess) => this.message = mess
-  })
-  return false;
-
+  try{
+   await this._httpReview.getReviews(this.petSitter?.id).toPromise().then(
+    (value: Review[])=> this.reviews = value,
+    (mess) => this.message = mess
+   ).finally(()=>console.log('Review service finished ' +  JSON.stringify(this.reviews))); 
+   localStorage.setItem('reviews', JSON.stringify(this.reviews)); 
+   console.log('pet sitter reviews ', this.reviews); 
+  }catch(error){
+    console.error(error);
+  }
 }
 
-  
   onCreate(){
     // this._userService.initializeFormGroup(); 
     const dialogConfig = new MatDialogConfig(); 
@@ -171,21 +193,12 @@ getServices(id: number): boolean
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
   onCreateOrder(){
-    // this._userService.initializeFormGroup(); 
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
     this.dialog.open(OrderComponent, dialogConfig); 
   }
-  getReviews(id: number):boolean
-  {
-    this.review.getReviews(id).subscribe({
-      next: (value: Review[] )=> this.reviews = value,
-      complete: () => console.log('Review service finished ' +  JSON.stringify((this.reviews))),
-      error: (mess) => this.message = mess
-    })
-    return false;
-  }
+
 
   }
