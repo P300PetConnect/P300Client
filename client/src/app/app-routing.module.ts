@@ -20,6 +20,7 @@ const routes: Routes = [
   { path:'login', component:LoginComponent},
   { path:'search', component:SearchContainerComponent },
   { path:'search2', component:SearchVersion2Component },
+  { path:'search2/:id', component:SearchVersion2Component },
   { path:'cal', component:CalendarComponent }, 
   { path:'profile', component:UserProfileComponent }, 
   { path:'form', component:UserformComponent }, 

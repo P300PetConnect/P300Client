@@ -60,7 +60,7 @@ userGroup: string;
 onCheckRoute(UserGroup:string){
   if(UserGroup == 'PetOwner'){
     localStorage.setItem('userGroup','PetOwner')
-    this._router.navigateByUrl('search2');
+    this._router.navigateByUrl('search2/search2;service=;location=;pet=');
   }
   else if(UserGroup == 'PetSitter'){
     localStorage.setItem('userGroup','PetSitter')
