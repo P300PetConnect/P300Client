@@ -14,6 +14,7 @@ import { UserService } from '../service/user.service';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { IPetCategory, IServiceCategory, EOrderStatus, EPaymentStatus } from '../interfaces/order';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-order',
@@ -62,10 +63,10 @@ selectedCategories: any;
   //form
   orderForm: FormGroup = new FormGroup({});
   message: string;
-  petSitter: import("/Users/jessicahenry/Project300Backup 2/client/src/app/components/interfaces/users").IPetSitter;
+  petSitter: import("../interfaces/users").IPetSitter;
 
   constructor(private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
-    public authenticator: AuthenticatorService) { 
+    public authenticator: AuthenticatorService, private http: HttpClient) { 
     this.filteredpositivekeywordss = this.positivekeywordsCtrl.valueChanges.pipe(
       startWith(null),
       map((positivekeywords: string | null) => (positivekeywords ? this._filter(positivekeywords) : this.allpositivekeywordss.slice())),
@@ -187,6 +188,8 @@ serviceCategory: IServiceCategory[] = [
   this._router.routeReuseStrategy. shouldReuseRoute = () => false;
   this._router.onSameUrlNavigation = 'reload';
 
+  this.sendEmailToPetOwner();
+
     this._router.navigate(['/orders']);
    //reload screen 
    this.dialog.closeAll();
@@ -220,6 +223,13 @@ onClose(){
 			this.url = reader.result; 
 		}
 	}
+
+  //make a call to lambda function to send email to pet owner
+  sendEmailToPetOwner() {
+    this.http.get('https://fff6cc2r06.execute-api.eu-west-1.amazonaws.com/default/sendOrderPlacedEmailLambda').subscribe(data => {
+      console.log(data)
+    })
+  }
 }
 
 

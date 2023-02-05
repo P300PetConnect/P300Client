@@ -58,6 +58,9 @@ export interface IPetSitter{
     numReviews?: number;
     reviewsTotal?:number;
     id:number;
+    chatUserName: string;
+    chatToken: string;
+    
 }
 
 export interface IPetOwner{
@@ -75,6 +78,8 @@ export interface IPetOwner{
     county?: string;
     zipCode?: string;
     country?: string;
+    chatUserName: string;
+    chatToken: string;
 }
 
 export interface IPet{

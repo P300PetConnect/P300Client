@@ -69,7 +69,6 @@ export class UserProfileComponent implements OnInit {
     if(this.userGroup == eUserGroup.PetOwner){
     this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
     this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
-    localStorage.setItem('chatUserName', this.user?.emailAddress);
 
     if(!this.petOwner){
       this.getPetOwner(); 
