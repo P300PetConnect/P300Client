@@ -66,19 +66,6 @@ export class UserProfileComponent implements OnInit {
   };
   
   ngOnInit(): void {
-
-this.pet = {
-  "name": "Lucy",
-  "description": "She snores when sleeps",
-  "petImageUrl": "https://img.freepik.com/free-photo/pug-dog-isolated-white-background_2829-11416.jpg?w=2000",
-  "dob": "2018-03-21",
-  "petType":"Dog",
-  "petBreed": "Pug",
-  "PetSize": "Small", 
-  "createdDate":"12/09/2022", 
-}
-
-
     if(this.userGroup == eUserGroup.PetOwner){
     this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
     this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
@@ -90,8 +77,6 @@ this.pet = {
     }
     }
     else if(this.userGroup == eUserGroup.PetSitter){
-
-
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
     this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
     this.reviews = JSON.parse(localStorage.getItem('reviews')); 
