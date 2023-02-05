@@ -55,7 +55,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private _userService: UserService, private _petService:PetService,
      public authenticator: AuthenticatorService, private dialog:MatDialog, 
-     private review:ReviewService,private service: SearchServiceService) {
+     private _httpReview:ReviewService,private _httpService: SearchServiceService) {
 
    }
 
@@ -86,22 +86,25 @@ this.pet = {
 
     if(!this.petOwner){
       this.getPetOwner(); 
-    this.getPetDetails();
+      this.getPetDetails();
     }
     }
     else if(this.userGroup == eUserGroup.PetSitter){
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
-    if(!this.petSitter){
-    this.getPetSitter();
+    this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
+    this.reviews = JSON.parse(localStorage.getItem('reviews')); 
+
+    if (!this.petSitter) {
+      this.getPetSitter().then(() => {
+        this.getServices();
+        this.getReviews();
+      });
     }
     }
   }
 
-
-//getpet owner 
   async getPetOwner(){
-// IF PetOwner Local Store is empty, make the service request
-console.log(localStorage.getItem('PetOwner')); 
+  console.log(localStorage.getItem('PetOwner')); 
   console.log('I am here, requestiong petowner data for the first time')
   try {
   const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
@@ -111,7 +114,6 @@ console.log(localStorage.getItem('PetOwner'));
    } catch (error) {
      console.error(error);
    }
-
 }
   async getPetSitter(){
     try{
@@ -119,15 +121,13 @@ console.log(localStorage.getItem('PetOwner'));
         this.petSitter = petSitter;
         localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
        this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal/ this.petSitter.numReviews);
-      return false; 
+       
     }catch (error) {
       console.error(error);
     }
   }
 
-//get pets 
   async getPetDetails(){
-    if(!this.petDetails){
       try{
         const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
         this.petDetails = petDetails; 
@@ -136,19 +136,36 @@ console.log(localStorage.getItem('PetOwner'));
        }catch (error) {
         console.error(error);
       }
-    }
 }
 
-getServices(id: number): boolean
+async getServices() {
+  try{
+    await this._httpService.getOtherServices(this.petSitter.id).toPromise().then(
+      (value: ServiceInterface[]) => this.serviceList = value,
+      (mess) => this.message = mess
+ 
+    ).finally(() => console.log('Services finished ' + JSON.stringify(this._httpService)));
+    localStorage.setItem('serviceList', JSON.stringify(this.serviceList)); 
+    console.log('pet sitter service ', this.serviceList); 
+  }catch (error) {
+    console.error(error);
+  }
+}
+
+async getReviews()
 {
-  this.service.getOtherServices(id).subscribe({
-    next: (value: ServiceInterface[] )=> this.serviceList = value,
-    complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
-    error: (mess) => this.message = mess
-  })
-  return false;
-
+  try{
+   await this._httpReview.getReviews(this.petSitter?.id).toPromise().then(
+    (value: Review[])=> this.reviews = value,
+    (mess) => this.message = mess
+   ).finally(()=>console.log('Review service finished ' +  JSON.stringify(this.reviews))); 
+   localStorage.setItem('reviews', JSON.stringify(this.reviews)); 
+   console.log('pet sitter reviews ', this.reviews); 
+  }catch(error){
+    console.error(error);
+  }
 }
+
   onCreate(){
     // this._userService.initializeFormGroup(); 
     const dialogConfig = new MatDialogConfig(); 
@@ -176,21 +193,12 @@ getServices(id: number): boolean
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
   onCreateOrder(){
-    // this._userService.initializeFormGroup(); 
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
     this.dialog.open(OrderComponent, dialogConfig); 
   }
-  getReviews(id: number):boolean
-  {
-    this.review.getReviews(id).subscribe({
-      next: (value: Review[] )=> this.reviews = value,
-      complete: () => console.log('Review service finished ' +  JSON.stringify((this.reviews))),
-      error: (mess) => this.message = mess
-    })
-    return false;
-  }
+
 
   }
