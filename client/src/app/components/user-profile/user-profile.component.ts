@@ -95,6 +95,7 @@ this.pet = {
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
     this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
     this.reviews = JSON.parse(localStorage.getItem('reviews')); 
+    this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
     if (!this.petSitter) {
       this.getPetSitter().then(() => {
@@ -103,6 +104,7 @@ this.pet = {
       });
     }
     }
+    
   }
 
   async getPetOwner(){
@@ -122,8 +124,7 @@ this.pet = {
       const petSitter = await this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
         localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
-       this.averageRoundStars = Math.floor(this.petSitter.reviewsTotal/ this.petSitter.numReviews);
-       
+        this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
     }catch (error) {
       console.error(error);
     }
