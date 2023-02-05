@@ -90,6 +90,8 @@ this.pet = {
     }
     }
     else if(this.userGroup == eUserGroup.PetSitter){
+
+
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
     this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
     this.reviews = JSON.parse(localStorage.getItem('reviews')); 
@@ -137,17 +139,15 @@ this.pet = {
         console.error(error);
       }
 }
-
 async getServices() {
   try{
     await this._httpService.getOtherServices(this.petSitter.id).toPromise().then(
       (value: ServiceInterface[]) => this.serviceList = value,
       (mess) => this.message = mess
- 
-    ).finally(() => console.log('Services finished ' + JSON.stringify(this._httpService)));
+    ).finally(() => console.log('Services finished'));
     localStorage.setItem('serviceList', JSON.stringify(this.serviceList)); 
     console.log('pet sitter service ', this.serviceList); 
-  }catch (error) {
+  } catch (error) {
     console.error(error);
   }
 }
