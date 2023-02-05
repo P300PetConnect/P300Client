@@ -38,6 +38,7 @@ export interface IPetSitterID{
     UsualPetsDetail2: string;
     UsualPetsDetail3: string;
     ProfileDesc: string;
+    Id:number; 
 }
 export interface IPetSitter{
     name: string;
@@ -56,6 +57,7 @@ export interface IPetSitter{
     country?: string;
     numReviews?: number;
     reviewsTotal?:number;
+    id:number;
 }
 
 export interface IPetOwner{
