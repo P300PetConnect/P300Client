@@ -15,6 +15,8 @@ import { Review } from 'src/app/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
+import { IOrderList } from '../interfaces/order';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -41,6 +43,7 @@ export class UserProfileComponent implements OnInit {
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
   reviews:Review[] = [];
+  orders:IOrderList[] = [];
   serviceList:ServiceInterface[] = [];
   message: any;
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
@@ -55,7 +58,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private _userService: UserService, private _petService:PetService,
      public authenticator: AuthenticatorService, private dialog:MatDialog, 
-     private _httpReview:ReviewService,private _httpService: SearchServiceService) {
+     private _httpReview:ReviewService,private _httpService: SearchServiceService, private _order: OrderService) {
 
    }
 
@@ -80,6 +83,9 @@ export class UserProfileComponent implements OnInit {
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
     this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
     this.reviews = JSON.parse(localStorage.getItem('reviews')); 
+
+    // get orders for schedule 
+    this.GetOrders(this.petSitter.petSitterId);
     this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
     if (!this.petSitter) {
@@ -90,6 +96,18 @@ export class UserProfileComponent implements OnInit {
     }
     }
     
+  }
+
+  GetOrders(id: number)
+  {
+    this._order.getOrdersList(id).subscribe({
+      next: (value: IOrderList[] )=>this.orders = value,
+      complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
+      error: (mess) => this.message = mess
+    })
+
+
+
   }
 
   async getPetOwner(){

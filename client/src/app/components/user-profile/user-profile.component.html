@@ -177,8 +177,9 @@
           <div class="col-8 pl-5">
             <mat-tab-group animationDuration="0ms">
               <mat-tab label="Schedule">
-                <div>
-                  <app-calendar></app-calendar>
+                <div *ngFor="let o of orders">
+                  
+                  <app-schedule-list [order] = o></app-schedule-list>
                 </div>
               </mat-tab>
               <!-- <mat-tab label="Schedule">
