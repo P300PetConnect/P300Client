@@ -62,7 +62,7 @@ selectedCategories: any;
   //form
   orderForm: FormGroup = new FormGroup({});
   message: string;
-  petSitter: import("/Users/jessicahenry/Project300Backup 2/client/src/app/components/interfaces/users").IPetSitter;
+  //petSitter: import("/Users/jessicahenry/Project300Backup 2/client/src/app/components/interfaces/users").IPetSitter;
 
   constructor(private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
     public authenticator: AuthenticatorService) { 
@@ -80,7 +80,7 @@ this.getPetSitter();
 getPetSitter(){
   this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
     async petSitter=>{
-      this.petSitter = petSitter;
+      //this.petSitter = petSitter;
     }); 
     return false; 
   }
@@ -169,7 +169,7 @@ serviceCategory: IServiceCategory[] = [
   onSubmit(){
   console.log('check test',this.AddOrder?.value); 
   this.AddOrder.controls['ServiceID'].setValue(4);
-  this.AddOrder.controls['PetSitterID'].setValue(this?.petSitter?.petSitterId);
+  //this.AddOrder.controls['PetSitterID'].setValue(this?.petSitter?.petSitterId);
   this.AddOrder.controls['PetOwnerID'].setValue(3);
   this.AddOrder.controls['Status'].setValue(EOrderStatus.Pendent); 
   this.AddOrder.controls['PaymentStatus'].setValue(EPaymentStatus.Pendent); 
