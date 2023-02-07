@@ -21,7 +21,7 @@ export class ManageOrdersComponent implements OnInit {
   errorMessage: any;
   petSitter: IPetSitter;
   userGroup: any;
-  petOwner: IPetOwner;
+  petOwner: IPetOwner; 
 
   constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService) {
     Auth.currentAuthenticatedUser()
@@ -38,28 +38,33 @@ export class ManageOrdersComponent implements OnInit {
     .catch(err => console.log(err));
        console.log('user group', this.userGroup)
 
+       this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
+       this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+
     this.getOrders(); 
+
+  
    }
 
-   getOrders(){
+   async getOrders(){
     if(this.userGroup =="PetSitter"){
-      this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
-        async petSitter=>{
-          this.petSitter = petSitter;
+      // this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
+        // async petSitter=>{
+          // this.petSitter = petSitter;
           const orders = await this._httpOrder.getOderByUser(this.petSitter?.petSitterId).toPromise()
           this.orders = orders;
-        }); 
-        return false; 
+        // }); 
+        // return false; 
     }
     else if(this.userGroup =="PetOwner"){
-      this._httpUser.get_petowner(this.authenticator?.user?.attributes?.email).subscribe(
-        async petOwner=>{
-          this.petOwner = petOwner;
+      // this._httpUser.get_petowner(this.authenticator?.user?.attributes?.email).subscribe(
+        // async petOwner=>{
+          // this.petOwner = petOwner;
           const orders = await this._httpOrder.getOrderByUserPetOwnerView(this.petOwner?.petOwnerId).toPromise()
           this.orders = orders;
           console.log('Pet Owner ID', this.petOwner?.petOwnerId); 
-        }); 
-        return false;
+        // }); 
+        // return false;
     }
     
 }
