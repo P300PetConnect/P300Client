@@ -43,6 +43,7 @@ export enum EOrderStatus {
     ServiceTitle: string;
     UserTitle: string;
     servicedes: string;
+    formatted_date: string;
     
   }
   

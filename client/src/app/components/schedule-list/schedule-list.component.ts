@@ -10,6 +10,8 @@ export class ScheduleListComponent implements OnInit {
 
   constructor() { }
   @Input() order: IOrderList;
+  currentDate = new Date();
+  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
   ngOnInit(): void {
   }
  

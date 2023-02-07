@@ -1,29 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { Console } from 'console';
+import { IOrderList } from 'src/app/components/interfaces/order';
 import { CalendarDay, event} from '../../calender-class/cal-class'
 
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
+  providers: [DatePipe]
 })
 export class CalendarComponent implements OnInit {
  
+  // constructor(private datePipe: DatePipe) {
+
+  // }
+  constructor(private datePipe: DatePipe) { }
   public calendar: CalendarDay[] = [];
   public monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
   public displayMonth: string;
   private monthIndex: number = 0;
-
+  @Input() orders: IOrderList [] = [];
+  selectedOrder: IOrderList;
+  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
   displayEvent = false;
 
   title = '';
   desc = ''; 
   desc2 = '';
   owner ='';
+  myDate = "2021-04-17T17:19:19.831Z";
 
   events: event[];
+
 
   ngOnInit(): void {
     this.events = [
@@ -33,7 +45,14 @@ export class CalendarComponent implements OnInit {
   ]
 
     this.generateCalendarDays(this.monthIndex);
+
+    console.log(this.calendar);
     
+  }
+
+  isObjectInArray(value: string): boolean {
+    //console.log(value);
+    return this.orders.some(obj => obj.formatted_date === value);
   }
 
   addDays(date: Date, days: number): Date {
@@ -61,20 +80,8 @@ export class CalendarComponent implements OnInit {
       dateToAdd = new Date(dateToAdd.setDate(dateToAdd.getDate() + 1));
     }
 
-    // for (var i = 0; i < this.calendar.length; i++) {
-
-    //       for(let e = 0; e < this.events.length; e++)
-    //       {
-           
-    //         if(this.calendar[i].date == this.events[e].date)
-    //         {
-    //         this.calendar[i].hasEvent = true;
-    //         console.log('test');
-    //         }
-
-    //      }
      
-    // }
+    // } 
 
   
 
@@ -139,14 +146,23 @@ export class CalendarComponent implements OnInit {
     this.generateCalendarDays(this.monthIndex);
   }
 
-  setValues(title: string, desc: string, desc2 : string, owner: string)
+  setValues(value: string)
   {
-    this.displayEvent = true;
-    this.title = title;
-    this.desc = desc;
-    this.desc2 = desc2;
-    this.owner = owner;
+    value = this.datePipe.transform(new Date(value), 'dd MMM yyyy');
+   
 
+    for(var i = 0; i < this.orders.length; i++)
+    {
+      if(this.orders[i].formatted_date == value)
+      {
+        //sets selected order in temp object so we can render the details out on screen
+        this.selectedOrder = this.orders[i];
+      }
+
+    }
+    
+    this.displayEvent = true;
+   
     
 
   }
