@@ -1,0 +1,456 @@
+<div class="container">
+    <p>Settings</p>
+    <div class="row">
+      <div class="col-3">
+       
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Profile Settings</h5>
+          </div>
+          <div class="list-group list-group-flush" role="tablist">
+            <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#account" role="tab"
+              aria-selected="true">
+              Profile
+            </a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#settings" role="tab"
+            aria-selected="true">
+            Settings
+          </a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#password" role="tab"
+              aria-selected="false" tabindex="-1">
+              Password
+            </a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab"
+              aria-selected="false" tabindex="-1">
+              Privacy and safety
+            </a>
+            <a class="list-group-item lifst-group-item-action" data-bs-toggle="list" href="#" role="tab"
+              aria-selected="false" tabindex="-1">
+              Email notifications
+            </a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab"
+              aria-selected="false" tabindex="-1">
+              Web notifications
+            </a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab"
+              aria-selected="false" tabindex="-1">
+              Bla Bla
+            </a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab"
+              aria-selected="false" tabindex="-1">
+              Your data
+            </a>
+            <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab"
+              aria-selected="false" tabindex="-1" >
+              Delete account
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-9">
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="account" role="tabpanel">
+       <div class="row">
+        <div class="col-8">
+          <div class="row">
+            <div class="col-4 p-0">
+              <div class="card">
+                <div class="text-center card-body">
+                  <div class="member-card">
+                      <div class="thumb-lg member-thumb mx-auto"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                      <div class="pt-2">
+                          <h4>{{pet.name}}</h4>
+                      </div>
+                      <ul class="social-links list-inline mb-auto pt-1">
+                        <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips " href="" data-original-title="SpecialCare"><span class="material-symbols-outlined">
+                          medical_information</span></a></li>
+                          <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Vaccines"><span class="material-symbols-outlined">vaccines</span></a></li>
+                          <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Behavior"><span class="material-symbols-outlined">pets</span></a></li>
+                      </ul>
+                      
+                          <div class="row">
+                            <div class="card-body">
+                            <ul class="list-group list-group-flush pb-4">
+                              <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{pet.dob}}</li>
+                              <li class="list-group-item"><i class="bi bi-telephone  profile-icons"></i>{{pet.petBreed}}</li>
+                              <a class="list-group-item"><i class="bi bi-geo-alt-fill profile-icons"></i>{{pet.description}}</a>
+                            </ul>
+                          </div>
+                          </div>
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-4">
+        <div class="row">
+          <div class="col-12">
+            <div class="tab-content">
+              <div class="col-md-12 col-xl-12">
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <h5 class="card-title mb-0">My Profile</h5>
+                  </div>
+                  <div class="card-body text-center">
+                    <img src="https://i.guim.co.uk/img/media/831ce4428aa017e2d4c9f883be27baeef95ef894/312_237_6076_3644/master/6076.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=e0508d322f18a9230080d1edfd8a5315" alt="Stacie Hall" class="img-fluid rounded-circle mb-2" width="128" height="128">
+                    <h5 class="card-title mb-0">{{user?.name}} {{user.surname}}</h5>
+                    <div class="text-muted mb-2"></div>
+                  </div>
+                  <hr class="my-0">
+                  <div class="card-body">
+                    <h5 class="h6 card-title">About</h5>
+                    <ul class="list-group list-group-flush pb-4">
+                      <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{user?.emailAddress}}</li>
+                      <li class="list-group-item"><i class="bi bi-telephone  profile-icons"></i>{{user?.mobileNumber}}</li>
+                      <a class="list-group-item"><i class="bi bi-geo-alt-fill profile-icons"></i>5 Elm Park - Sligo</a>
+                    </ul>
+                    <div class="row text-center d-flex justify-content-center">
+                     <div class="btn btn-primary w-50" (click)="onCreate()">
+                      Edit Profile
+                    </div>
+                    </div>
+                  </div>
+                  <hr class="my-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+       </div>
+       </div>
+      </div> 
+      </div>
+    </div>
+  </div>
+  <div>
+  </div>
+  
+  
+          <!-- <div class="row mt-3">
+        <div class="card">
+              <div class="card-header">
+                <div class="card-actions float-end">
+                  <div class="dropdown position-relative">
+                    <a href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" class="">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
+                  </div>
+                </div>
+                <h5 class="card-title mb-0">Pet(s) Info Displayed</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="mb-3">
+                        
+                        <label for="inputUsername" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Pet Name">
+                      </div>
+                      <div class="mb-3">
+                        <label for="inputUsername" class="form-label">Description</label>
+                        <textarea rows="2" class="form-control" id="inputBio"
+                          placeholder="Tell something about yourself"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center">
+                        <img alt="frank" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU" class="rounded-circle img-responsive mt-2"
+                          width="128" height="128">
+                        <div class="mt-2">
+                          <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
+                        </div>
+                        <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+              </div>
+            </div> 
+  
+          </div> -->
+  
+  
+  
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <!-- <div class="content">
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-4"><a href="#custom-modal" class="btn btn-custom waves-effect waves-light mb-4" data-animation="fadein" data-plugin="custommodal" data-overlayspeed="200" data-overlaycolor="#36404a"><i class="mdi mdi-plus"></i> Add Pet</a></div>
+          </div>
+          <div class="row">
+              <div class="col-lg-3">
+                <div class="card">
+                  <div class="text-center card-body">
+                    <div class="member-card pt-2 pb-2">
+                        <div class="thumb-lg member-thumb mx-auto"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                        <div class="">
+                            <h4>Bella</h4>
+                        </div>
+                        <ul class="social-links list-inline mb-auto">
+                          <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips " href="" data-original-title="SpecialCare"><span class="material-symbols-outlined">
+                            medical_information</span></a></li>
+                            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Vaccines"><span class="material-symbols-outlined">vaccines</span></a></li>
+                            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Behavior"><span class="material-symbols-outlined">pets</span></a></li>
+                        </ul>
+                        <div class="mt-4">
+                            <div class="row">
+                              <div class="col-2"></div>
+                                <div class="col-4">
+                                    <div class="mt-3">
+                                        <h4>25</h4>
+                                        <p class="mb-0 text-muted">Positive reviews</p>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="mt-3">
+                                        <h4>6952</h4>
+                                        <p class="mb-0 text-muted">Km walked</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+  </div>
+   -->
+  
+  
+  <!-- 
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="account" role="tabpanel">
+            <div class="card mb-3">
+              <div class="card-header">
+                <div class="card-actions float-end">
+                  <div class="dropdown position-relative">
+                    <a  (click)="isReadOnly = !isReadOnly">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
+                  </div>
+                </div>
+                <h5 class="card-title mb-0">Private info</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="mb-3 col-8">
+                      <div class="row">
+                        <div class="col-6  mb-3">
+                           <label for="inputFirstName"  class="form-label">First name</label>
+                        <input type="text" [readonly]="isReadOnly" class="form-control" id="inputFirstName" placeholder="First name">
+                        </div>
+                        <div class="col-6 mb-3">
+                          <label for="inputLastName" class="form-label">Last name</label>
+                          <input type="text" [readonly]="isReadOnly" class="form-control" id="inputLastName" placeholder="Last name">
+                        </div>
+                        <div class="col-12 mb-3">
+                          <label for="inputEmail4" class="form-label">Email</label>
+                          <input type="email" readonly class="form-control" id="inputEmail4" placeholder="{{authenticator?.user?.attributes?.email }}">
+                        </div>
+                        <div class="col-12">
+                           <div class="mb-3">
+                           <label for="inputAddress" class="form-label">Address</label>
+                           <input type="text"  [readonly]="isReadOnly" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                         </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3 col-4">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="text-center">
+                            <img alt="frank" src="https://i.guim.co.uk/img/media/831ce4428aa017e2d4c9f883be27baeef95ef894/312_237_6076_3644/master/6076.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=e0508d322f18a9230080d1edfd8a5315" class="rounded-circle img-responsive mt-2"
+                              width="128" height="128">
+                            <div class="mt-2">
+                              <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
+                            </div>
+                            <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputAddress2" class="form-label">Address 2</label>
+                    <input type="text" [readonly]="isReadOnly"  class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                  </div>
+                  <div class="row">
+                    <div class="mb-3 col-md-6">
+                      <label for="inputCity" class="form-label">Town</label>
+                      <input type="text" [readonly]="isReadOnly"  class="form-control" id="inputCity">
+                    </div>
+                    <div class="mb-3 col-md-4">
+                      <label for="inputState" class="form-label">County</label>
+                      <select id="inputState"  class="form-control">
+                        <option selected="">Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="mb-3 col-md-2">
+                      <label for="inputZip" class="form-label">Zip</label>
+                      <input [readonly]="isReadOnly"  type="text" class="form-control" id="inputZip">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+  
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-actions float-end">
+                  <div class="dropdown position-relative">
+                    <a href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" class="">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
+                  </div>
+                </div>
+                <h5 class="card-title mb-0">Pet(s) info</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="mb-3">
+                        <label for="inputUsername" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Pet Name">
+                      </div>
+                      <div class="mb-3">
+                        <label for="inputUsername" class="form-label">Description</label>
+                        <textarea rows="2" class="form-control" id="inputBio"
+                          placeholder="Tell something about yourself"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center">
+                        <img alt="frank" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU" class="rounded-circle img-responsive mt-2"
+                          width="128" height="128">
+                        <div class="mt-2">
+                          <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
+                        </div>
+                        <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+              </div>
+            </div>
+  
+  
+          </div>
+          <div class="tab-pane fade" id="password" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Password</h5>
+  
+                <form>
+                  <div class="mb-3">
+                    <label for="inputPasswordCurrent" class="form-label">Current password</label>
+                    <input type="password" class="form-control" id="inputPasswordCurrent">
+                    <small><a href="#">Forgot your password?</a></small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputPasswordNew" class="form-label">New password</label>
+                    <input type="password" class="form-control" id="inputPasswordNew">
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputPasswordNew2" class="form-label">Verify password</label>
+                    <input type="password" class="form-control" id="inputPasswordNew2">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div> -->
+  
+  
+        <!-- <div class="row">
+          <div class="card" *ngIf="!isSelected">
+            <div class="card-header">
+              <div class="card-actions float-end">
+                <div class="dropdown position-relative">
+                  <a href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" class="">
+                    <i class="bi bi-pencil-square"></i>
+                  </a>
+                </div>
+              </div>
+              <h5 class="card-title mb-0">Pet(s) info</h5>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="mb-3 row">
+                      <div class="col-6">
+                        <label for="inputUsername" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Pet Name">  
+                      </div>
+                    <div class="col-6">
+                      <label for="inputUsername" class="form-label">Date of Birthday</label>
+                      <input type="text" class="form-control" id="inputUsername" placeholder="Pet Name">
+                    </div> 
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="row">
+                          <div class="col-4">
+                            <label class="form-label" for="weight">Weight</label>
+                          </div>
+                          <div class="col-8 text-end">
+                            <a class="form-label" for="weight" (click)="isShow = !isShow">{{!isShow?'Switch to st,lb':'Switch to Kg'}}</a>
+                          </div>
+                        </div>
+                        <div *ngIf="!isShow">
+                          <input type="phone" id="weight" placeholder="Kilograms" class="form-control" />
+                        </div>
+                        <div>
+                          <div *ngIf="isShow" class="row">
+                            <div class="col-6">
+                              <input type="phone" id="weight" placeholder="Stone" class="form-control" />
+                            </div>
+                            <div class="col-6">
+                              <input type="phone" id="weight" placeholder="Paunds" class="form-control" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="mb-3">
+                      <label for="inputUsername" class="form-label">Description</label>
+                      <textarea rows="2" class="form-control" id="inputBio"
+                        placeholder="Tell something about your pet"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="text-center">
+                      <img alt="pet profile picture" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU" class="rounded-circle img-responsive mt-2"
+                        width="128" height="128">
+                      <div class="mt-2">
+                        <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
+                      </div>
+                      <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-outline-info mr-2">See certificate</button>
+                <button type="submit" class="btn btn-primary" (click)="!isSelected = true">Save changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+         -->
+  
+  
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
