@@ -1,8 +1,5 @@
 
-<div *ngFor="let o of orders">
-  {{ o.OrderDate | date: 'dd MMM yyyy'}}
 
-</div>
 
 <div class = "container mt-4 ">
 <div class = "row justify-content-center text-center mb-3">
@@ -96,8 +93,8 @@
                             </picture>
           
                       </div>
-                      <div class="col-3">
-                          <h6>{{selectedOrder.ServiceTitle}}</h6>
+                      <div class="col-4">
+                          <h5 class="text-decoration-underline">{{selectedOrder.ServiceTitle}}</h5>
                           <small>{{selectedOrder.OrderDate| date: 'dd-MM-yyyy'}}</small>
           
                       </div>
@@ -107,9 +104,40 @@
                 
               </div>
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+               
+                <div class = "d-flex align-items-start">
+                  <img src="{{selectedOrder.Profile_Pic_URL}}" class="img-fluid rounded-circle mb-2" width="100" height="100" alt="">
+
+                  <div class="col">
+                    <div class="row">
+                      <p>{{selectedOrder.Name}} {{selectedOrder.Surname}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+               
+                      <p>{{selectedOrder.Line_2}}, {{selectedOrder.County}}</p>
+                     
+                    </div>
+
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <p>{{selectedOrder.Description}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+               
+                      <p>Price: {{selectedOrder.Price}}</p>
+                     
+                    </div>
+
+                  </div>
+                  
+
+                </div>
+                
+               <div class="d-flex justify-content-center align-items-center">
+                <a (click)="ChangeRoute()" class="btn btn-success">More Info</a>
+               </div>
+             
               </div>
             </div>
           </div>
