@@ -10,7 +10,10 @@ jobs:
       runs-on: ubuntu-latest
       steps:
        - uses: actions/checkout@v2
-       - uses: actions/setup-node@v2
+       - name: Setup git repo
+         uses: actions/setup-git@v2
+         with: 
+           working-directory: /client
        - name: Install dependences 
          run: npm install
        - name: Build webapp
