@@ -1,0 +1,41 @@
+.like img
+{
+    width: 25px;
+    margin-right: 10px;
+}
+.like img:hover
+{
+    opacity: 0.7;
+    transform: translateY(-2px);
+    
+}
+
+.post
+{
+    background-color: white;
+    padding: 2% 7%;
+    box-shadow: 0 0 15px black;
+    margin-bottom: 5%;
+    position: relative;
+    
+}
+.postHeader{
+    text-align: left;
+}
+.postFooter{
+    padding: 0 30%;
+}
+.postImage
+{
+    width: 40%;
+    border: 1px solid black;
+    margin-bottom: 5%;
+}
+.beside{
+    display: inline-block;
+}
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

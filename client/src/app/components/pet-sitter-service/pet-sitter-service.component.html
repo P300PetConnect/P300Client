@@ -1,0 +1,353 @@
+
+  <div class="row">
+    <div class="col-6 d-flex justify-content-start">
+    <button *ngIf="this.stepper.selectedIndex!=0" class="btn btn-outline-secondary" (click)="onBack(stepper)">&#60; Back</button>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+      <i class="bi bi-x-lg" (click)="onCancel()"></i>
+    </div>
+  </div>
+
+<mat-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Service Overview</ng-template>
+      <div class="container pt-4">
+        <div class="row">
+          <div class="col-4">
+            <h6>Service title</h6>
+            <p>
+              As your Service storefront, your title is the most important place to include keywords that pet owners would likely use to search for a service like yours</p>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <mat-form-field hintLabel="Max 70 characters" appearance="outline">
+                <mat-label>Insert service title</mat-label>
+                <textarea matInput #textarea  maxlength="70" 
+                placeholder="I will..."
+                placeholder="service title" formControlName="firstCtrl" required></textarea>
+                <mat-hint align="end">{{textarea.value.length}}/70</mat-hint>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-4">
+            <h6>Category</h6>
+            <p>
+              Choose the category and sub-category most suitable for your Service.</p>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1"></label>
+                  <select class="form-control" id="exampleFormControlSelect1" #key1>
+                    <option>select a pet type</option>
+                    <option>Dog</option>
+                    <option>Cat</option>
+              
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1"></label>
+                  <select class="form-control" id="exampleFormControlSelect1" #key2>
+                    <option>select a service category</option>
+                    <option>Walk</option>
+                    <option>Just Feed</option>
+                    <option>Accommodation</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-4">
+            <h6>
+              Search tags
+            </h6>
+            <p>
+              Tag your Service with buzz words that are relevant to the services you offer. Use all 5 tags to get found.</p>
+          </div>
+          <div class="col-8">
+            <h6>Positive keywords</h6>
+            <p>Enter search terms you feel the pet owners will use when looking for your service.</p>
+            <!-- <label for="exampleFormControlTextarea1"></label> -->
+            <mat-form-field class="example-chip-list" appearance="outline">
+              <mat-label>Positive keywords</mat-label>
+              <mat-chip-list #chipList aria-label="positivekeywords selection">
+                <mat-chip
+                  *ngFor="let positivekeywords of positivekeywordss"
+                  (removed)="remove(positivekeywords)">
+                  {{positivekeywords}}
+                  <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip>
+                <input
+                  placeholder="New positive keyword..."
+                  #positivekeywordsInput
+                  [formControl]="positivekeywordsCtrl"
+                  [matAutocomplete]="auto"
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  (matChipInputTokenEnd)="add($event)">
+              </mat-chip-list>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let positivekeywords of filteredpositivekeywordss | async" [value]="positivekeywords">
+                  {{positivekeywords}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-6">
+            <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+            <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
+      
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+            <button mat-button class="btn btn-primary" mat-button matStepperNext>Save & Continue</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" [optional]="isOptional" >
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Pricing and Description</ng-template>
+      <!-- <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <h6>Insert description your service</h6>
+            <p>Here you can briefly Describe Your Service</p>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Briefly Describe Your Service</mat-label>
+                <textarea matInput placeholder="Here you can add more information about your service" formControlName="description" required></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <h6>Price the service</h6>
+                <p>this price is just a initial paramere</p>
+              </div>
+              <div class="col-8">
+                <div class="row">
+                  <mat-form-field class="example-full-width"  appearance="outline">
+                    <mat-label>Starts from</mat-label>
+                    <input matInput formControlName="secondCtrl" placeholder="5"
+                           required>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+        </div> -->
+        <div class="container pt-4">
+          <div class="row">
+            <div class="col-4">
+              <h6>Description</h6>
+              <p>Briefly describe your service, here the pet owner can see more details of what you're offering</p>
+               </div>
+            <div class="col-8">
+              <div class="row">
+                <mat-form-field class="example-full-width" hintLabel="Max 300 characters"  appearance="outline">
+                  <mat-label>Insert service description</mat-label>
+                  <textarea #description  maxlength="300"  matInput placeholder="more details" formControlName="description" required #des></textarea>
+                  <mat-hint align="end">{{description.value.length}}/300</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col-4">
+              <h6>Starting Pricing</h6>
+              <p>
+                Insert the start price of the service, for extra service you might change the price charged, you can negociate with Pet Owner through chat.</p>
+            </div>
+            <div class="col-4">
+              <div class="row">
+                   <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Price - € EUR </mat-label>
+                    <input matInput placeholder="">
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row pt-4">
+            <div class="col-6">
+              <!-- <button class="btn btn-outline-primary" mat-button matStepperPrevious>Back </button> -->
+              <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+              <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
+        
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+              <button mat-button class="btn btn-primary" mat-button matStepperNext>Save & Continue</button>
+            </div>
+          </div>
+        </div>
+      <div>
+      
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Gallery</ng-template>
+
+          <div class="container pt-2">
+<div class="row">
+  <h5>Showcase Your Services In a Service Gallery</h5> 
+  <p>Encourage Pet Owners to choose your service by featuring a variety of your work.</p>
+</div>
+   <div class="row pt-3">
+    <h6>Images (up to 3)</h6>
+    <p>Get noticed by the right buyers with visual examples of your services.</p>
+
+    <div class="col-3">
+      <div class="dragBox">
+        <div *ngIf="isShow">
+          <p>Drag and Drop image here</p>
+          <i class="bi bi-image"></i></div>
+    <div [innerHtml]='msg' *ngIf="msg"  style="color: red;">
+      </div>
+
+    <div><img class="dragBox" [src]="url" *ngIf="url"></div>
+    <p>
+      <input type="file" (change)="selectFile($event)">
+    </p>
+     </div>
+      </div>
+
+      <div class="col-3">
+        <div class="dragBox">
+          <div *ngIf="!isShow">
+            <p>Drag and Drop image here</p>
+            <i class="bi bi-image"></i>
+          </div>
+      <p>
+        <input type="file" (change)="selectFile($event)">
+      </p>
+       </div>
+      </div>
+
+      <div class="col-3">
+        <div class="dragBox">
+          <div *ngIf="!isShow">
+            <!-- <p>drag and Drop image here</p>
+            <i class="bi bi-image"></i> -->
+          </div>
+      <p>
+        <input type="file" (change)="selectFile($event)">
+      </p>
+       </div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="col-6">
+          <!-- <button class="btn btn-outline-primary" mat-button matStepperPrevious>Back </button> -->
+          <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+          <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
+    
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <button mat-button class="btn btn-primary" mat-button matStepperNext (click)="AddService(key1.value, key2.value, des.value)">Save & Continue</button>
+        </div>
+      </div>
+      <!-- <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button> -->
+    </div>
+
+    
+</div>
+  </mat-step>
+</mat-stepper>
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="h6">Service title</div>
+      <p>
+        As your Service storefront, your title is the most important place to include keywords that pet owners would likely use to search for a service like yours</p>
+    </div>
+    <div class="col-8">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1"></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-2">
+    <div class="col-4">
+      <h6>Category</h6>
+      <p>
+        Choose the category and sub-category most suitable for your Service.</p>
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1"></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>select a pet type</option>
+              <option>Dog</option>
+              <option>Cat</option>
+              <option>Bird</option>
+              <option>Rabit</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1"></label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>select a service category</option>
+              <option>walk</option>
+              <option>give bath</option>
+              <option>mind</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="row pt-4">
+    <div class="col-4">
+      <h6>
+        Search tags
+      </h6>
+      <p>
+        Tag your Service with buzz words that are relevant to the services you offer. Use all 5 tags to get found.</p>
+    </div>
+    <div class="col-8">
+      <h6>Positive keywords</h6>
+      <p>Enter search terms you feel the pet owners will use when looking for your service.</p>
+    <label for="exampleFormControlTextarea1"></label> 
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+    </div>
+  </div>
+  <div class="row pt-4">
+    <div class="col-6">
+      <button class="btn btn-outline-danger">Cancel</button>
+      <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
+
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+      <button class="btn btn-primary">Save & Continue</button>
+    </div>
+  </div>
+</div> -->

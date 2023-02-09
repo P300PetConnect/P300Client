@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@aws-amplify/ui-angular/theme.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+// Functions first
+@import "../node_modules/bootstrap/scss/functions";
+
+// Variable overrides second
+$primary: #900;
+$enable-shadows: true;
+$prefix: "mo-";
+
+// Required Bootstrap imports
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// Optional components
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+@import "../node_modules/bootstrap/scss/utilities/api";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+// @import "../node_modules/bootstrap/scss/variables";
+
+// html,
+// body {
+//   height: 100%;
+//   // padding-top: 60px;
+//   margin: 0;
+//   width: 100%;
+//   font-family: "CenturyGothic", Century Gothic, CenturyGothic, AppleGothic,
+//   sans-serif;
+// }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: default;
+}
+
+.btn-secondary{
+    background: #212529;
+    border: solid 1px #212529;
+    border-radius: 0px;
+}
+.btn-primary{
+    background: #d6dce2;
+    border: solid 1px #c7d0da;
+    border-radius: 0px;
+    color: #212529;
+    width: 10rem;
+}
+.wrapper{
+    min-height: 66vh;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*Chat Style Begin*/
+@import '~stream-chat-angular/src/assets/styles/v2/scss/index.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  height: 100%;
+
+  stream-channel-list {
+    width: 30%;
+  }
+
+  stream-channel {
+    width: 100%;
+  }
+
+  stream-thread {
+    width: 45%;
+  }
+}
+/*Chat Style Finish*/
+
