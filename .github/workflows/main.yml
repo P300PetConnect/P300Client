@@ -4,13 +4,12 @@ on:
   push:
     branches:
     - master
-
+defaults: 
+ run: 
+   working-directory: ./client 
 jobs:
   build:
       runs-on: ubuntu-latest
-      defaults: 
-         run: 
-           working-directory: ./client  
       steps:
        - name: Setup git repo
        - uses: actions/checkout@v2
