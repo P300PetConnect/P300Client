@@ -1,4 +1,4 @@
-name: GitHub Pages
+name: Deploy
 
 on:
   push:
@@ -6,44 +6,36 @@ on:
     - master
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
-        aws-region: eu-west-1
+  build:
+      runs-on: ubuntu-latest
+      steps:
+       - uses: actions/checkout@v2
+       - uses: actions/setup-node@v2
+       - name: Install dependences 
+         run: npm install
+       - name: Build webapp
+         run: npm run build 
+       - name: Set Credentials
+         uses: aws-actions/configure-aws-credentials@v1
+         with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
 
-    - name: Checkout
-      uses: actions/checkout@v2
+       - name: Copy to S3
+         uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
+       - name: Setup Node.js
+         uses: actions/setup-node@v2
+         with:
+           node-version: 14
 
-    - name: Install dependencies
-      run: npm install
+       - name: Install dependencies
+         run: npm install
 
-    - name: Run tests
-      run: npm run test:headless
+       - name: Run tests
+         run: npm run test:headless
 
-    - name: Build
-      run: npm run build:prod
-
-    - name: Deploy
-      if: success()
-      run: aws s3 sync ./dist/client s3://mywebapppetconnect/client/
-      
-      
-      
-      
-      
-      
-      
-      
-
+       - name: Deploy
+         if: success()
+         run: aws s3 sync .dist/client s3://mywebapppetconnect
