@@ -1,12 +1,18 @@
-name: GitHub Pages
+name: Deploy
 
 on:
   push:
     branches:
-    - main
+    - master
 
 jobs:
-  deploy:
+  build:
+    uses: actions/checkout@v2
+    uses: actions/setup-node@v2
+    - name: Install dependences 
+    run: npm install
+    - name: Build webapp
+    run: npm run build 
     runs-on: ubuntu-latest
     steps:
     - name: Configure AWS Credentials
@@ -30,9 +36,6 @@ jobs:
     - name: Run tests
       run: npm run test:headless
 
-    - name: Build
-      run: npm run build:prod
-
     - name: Deploy
       if: success()
-      run: aws s3 sync ./dist/client s3://mywebapppetconnect/client/
+      run: aws s3 sync .dist/client s3://mywebapppetconnect
