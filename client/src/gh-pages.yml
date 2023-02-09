@@ -1,38 +1,36 @@
-name: GitHub Pages
+name: Deploy to Github Pages
 
 on:
   push:
     branches:
-    - main
+      - main
+
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  deployment:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: AKIAVZODYHL27WBMPNCS
-        aws-secret-access-key: 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
-        aws-region: eu-west-1
+      - uses: actions/checkout@v2
 
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
+      - name: Build
+        run: |
+          npm i
+          npm run build
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run tests
-      run: npm run test:headless
-
-    - name: Build
-      run: npm run build:prod
-
-    - name: Deploy
-      if: success()
-      run: aws s3 sync /Users/jessicahenry/P300Client/client/dist/client s3://mywebapppetconnect/dist/client/
+      - name: Deploy
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: "./out"
