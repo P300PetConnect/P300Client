@@ -10,11 +10,11 @@ jobs:
       runs-on: ubuntu-latest
       defaults: 
          run: 
-           working-directory: ./client
+           working-directory: ./client  
       steps:
-       - uses: actions/checkout@v2
        - name: Setup git repo
-         uses: actions/setup-git@v2
+       - uses: actions/checkout@v2
+       - uses: actions/setup-git@v2
        - name: Install dependences 
          run: npm install
        - name: Build webapp
