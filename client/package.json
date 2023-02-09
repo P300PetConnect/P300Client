@@ -66,5 +66,8 @@
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.",
   "main": "karma.conf.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC", 
+  "build:prod": "ng build --configuration production",
+  "test:headless": "ng test --watch=false --browsers=ChromeHeadless"
+
 }
