@@ -13,7 +13,7 @@ jobs:
        - name: Setup git repo
          uses: actions/setup-git@v2
          with: 
-           working-directory: ./P300Client/client/
+           working-directory: client
        - name: Install dependences 
          run: npm install
        - name: Build webapp
