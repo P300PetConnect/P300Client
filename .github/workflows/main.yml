@@ -8,12 +8,13 @@ on:
 jobs:
   build:
       runs-on: ubuntu-latest
+      defaults: 
+         run: 
+           working-directory: ./client
       steps:
        - uses: actions/checkout@v2
        - name: Setup git repo
          uses: actions/setup-git@v2
-         with: 
-           working-directory: client
        - name: Install dependences 
          run: npm install
        - name: Build webapp
