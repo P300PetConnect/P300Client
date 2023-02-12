@@ -15,7 +15,7 @@ import { Review } from 'src/app/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
-import { IOrderList } from '../interfaces/order';
+import { INotAvailable, IOrderList } from '../interfaces/order';
 import { OrderService } from '../service/order.service';
 
 @Component({
@@ -44,6 +44,7 @@ export class UserProfileComponent implements OnInit {
   public petDetails:IPet[]; 
   reviews:Review[] = [];
   orders:IOrderList[] = [];
+  notAvailble:INotAvailable[] = [];
   serviceList:ServiceInterface[] = [];
   message: any;
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
@@ -86,6 +87,8 @@ export class UserProfileComponent implements OnInit {
 
     // get orders for schedule 
     this.GetOrders(this.petSitter.petSitterId);
+    this.GetnotAvailable(this.petSitter.id);
+
     this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
     if (!this.petSitter) {
@@ -105,9 +108,15 @@ export class UserProfileComponent implements OnInit {
       complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
       error: (mess) => this.message = mess
     })
+  }
 
-
-
+  GetnotAvailable(id: number)
+  {
+    this._order.getNotAvailable(id).subscribe({
+      next: (value: INotAvailable[] )=>this.notAvailble = value,
+      complete: () => console.log('not available service finished ' +  JSON.stringify((this.notAvailble))),
+      error: (mess) => this.message = mess
+    })
   }
 
   async getPetOwner(){

@@ -1,0 +1,66 @@
+<div  class = "modal-Background">
+    <div class="modal-content">
+       
+        <div >
+          <div class="card">
+              <div class="card-header">
+                <Button class = "btn btn-danger position-absolute top-0 end-0" >&#10005;</Button>
+                  <div class="row">
+                    
+                      
+                  </div>
+                 
+                
+              </div>
+              <div class="card-body">
+
+                <div class="pl-5">
+                    <mat-tab-group animationDuration="0ms">
+                      <!-- <mat-tab label="Schedule">
+                        <div *ngFor="let o of orders">
+                          
+                          <app-schedule-list [order] = o></app-schedule-list>
+                        </div>
+                      </mat-tab> -->
+                      <mat-tab label="Manage Available slots">
+                        <div class = "d-flex align-items-start" *ngFor="let a in notAvailable">
+                           
+                            
+          
+                          </div>
+                        
+                      </mat-tab>
+                      <mat-tab label="Create Not Available slots">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" #date>
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+
+                          <button class = "btn btn-success" (click)="SetNotAvailble(date.value)">Set Not Available</button>
+                      </mat-tab>
+
+                    
+                
+                
+                    
+                      </mat-tab-group>
+                 
+                
+                     
+                    </div>
+               
+             
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+

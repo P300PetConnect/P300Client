@@ -94,6 +94,7 @@ import { MessageInputComponent } from './components/message-input/message-input.
 import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
+import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,7 @@ import { ScheduleListComponent } from './components/schedule-list/schedule-list.
     UserformComponent, 
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
     
   ],
   imports: [

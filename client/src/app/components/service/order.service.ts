@@ -4,7 +4,7 @@ import {  FormGroup } from '@angular/forms';
 import { catchError, tap } from 'rxjs';
 import { IOrder } from '../interfaces/form';
 import { environment } from "src/environments/environment";
-import { IOrderList } from '../interfaces/order';
+import { INotAvailable, IOrderList } from '../interfaces/order';
 
 
 @Injectable({
@@ -44,6 +44,30 @@ export class OrderService {
     return this._http.get<IOrderList>("https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/order?id=" + id)
     .pipe(
       tap(data => console.log('list/error' + JSON.stringify(data))
+      
+    ),
+     catchError(this.handleError)
+    );
+
+  }
+
+  getNotAvailable(id)
+  {
+    return this._http.get<INotAvailable>("https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/not?id=" + id)
+    .pipe(
+      tap(data => console.log('list/error' + JSON.stringify(data))
+      
+    ),
+     catchError(this.handleError)
+    );
+
+  }
+
+  addNotAvailable(obj)
+  {
+    return this._http.post("https://l4m2qu5vya.execute-api.eu-west-1.amazonaws.com/prod/not", obj)
+    .pipe(
+      tap(data => console.log('nAvailable/error' + JSON.stringify(data))
       
     ),
      catchError(this.handleError)

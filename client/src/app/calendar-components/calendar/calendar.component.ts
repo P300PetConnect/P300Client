@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Console } from 'console';
-import { IOrderList } from 'src/app/components/interfaces/order';
+import { INotAvailable, IOrderList } from 'src/app/components/interfaces/order';
 import { CalendarDay, event} from '../../calender-class/cal-class'
 
 
@@ -26,11 +26,15 @@ export class CalendarComponent implements OnInit {
   displayEvent = false;
   
   @Input() orders: IOrderList [] = [];
+  @Input() notAvailble: INotAvailable [] = [];
+
   public calendar: CalendarDay[] = [];
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
   public monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
+
+  notAvailable = false;
 
   ngOnInit(): void {
     
@@ -43,6 +47,11 @@ export class CalendarComponent implements OnInit {
    //tests to see if date is in list array
     return this.orders.some(obj => obj.formatted_date === value);
   }
+
+  isObjectInArray2(value: string): boolean {
+    //tests to see if date is in notAvailable array
+     return this.notAvailble.some(obj => obj.TimeStamp === value);
+   }
 
   addDays(date: Date, days: number): Date {
     date.setDate(date.getDate() + days);
@@ -127,6 +136,7 @@ export class CalendarComponent implements OnInit {
     value = this.datePipe.transform(new Date(value), 'dd MMM yyyy');
     for(var i = 0; i < this.orders.length; i++)
     {
+
       if(this.orders[i].formatted_date == value)
       {
         //sets selected order in temp object so we can render the details out on screen

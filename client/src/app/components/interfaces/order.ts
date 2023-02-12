@@ -46,4 +46,9 @@ export enum EOrderStatus {
     formatted_date: string;
     
   }
+  export interface INotAvailable {
+    NotAvailableID: number;
+    UserID: number;
+    TimeStamp: string;
+  }
   
