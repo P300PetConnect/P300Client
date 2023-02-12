@@ -1,41 +1,253 @@
-.like img
-{
-    width: 25px;
-    margin-right: 10px;
+// .like img
+// {
+//     width: 25px;
+//     margin-right: 10px;
+// }
+// .like img:hover
+// {
+//     opacity: 0.7;
+//     transform: translateY(-2px);
+    
+// }
+
+// .post
+// {
+//     background-color: white;
+//     padding: 2% 7%;
+//     box-shadow: 0 0 15px black;
+//     margin-bottom: 5%;
+//     position: relative;
+    
+// }
+// .postHeader{
+//     text-align: left;
+// }
+// .postFooter{
+//     padding: 0 30%;
+// }
+// .postImage
+// {
+//     width: 40%;
+//     border: 1px solid black;
+//     margin-bottom: 5%;
+// }
+// .beside{
+//     display: inline-block;
+// }
+// .close{
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+// }
+
+// .card-footer, .card hr {
+//     border-color: rgba(24,28,33,0.06);
+// }
+
+
+
+// My post design CSS >>>>>>>>>>>>>>>>>>>>
+ .single_post {
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease
 }
-.like img:hover
-{
-    opacity: 0.7;
-    transform: translateY(-2px);
+
+ .single_post .img-post {
+    position: relative;
+    overflow: hidden;
+    max-height: 500px
+}
+
+ .single_post .img-post>img {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transition: -webkit-transform .4s ease, opacity .4s ease;
+    transition: transform .4s ease, opacity .4s ease;
+    max-width: 100%;
+    filter: none;
+    -webkit-filter: grayscale(0);
+    -webkit-transform: scale(1.01)
+}
+
+ .single_post .img-post:hover img {
+    -webkit-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    transform: scale(1.02);
+    opacity: .7;
+    filter: gray;
+    -webkit-filter: grayscale(1);
+    -webkit-transition: all .8s ease-in-out
+}
+
+ .single_post .img-post:hover .social_share {
+    display: block
+}
+
+ .single_post .img-post .social_share {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: none
+}
+
+ .single_post .meta {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+ .single_post .meta li {
+    display: inline-block;
+    margin-right: 15px;
     
 }
 
-.post
-{
-    background-color: white;
-    padding: 2% 7%;
-    box-shadow: 0 0 15px black;
-    margin-bottom: 5%;
-    position: relative;
-    
+ .single_post li a {
+    font-style: italic;
+    color: #959595;
+    text-decoration: none;
+    font-size: 12px
 }
-.postHeader{
-    text-align: left;
+
+ .single_post .meta li a i {
+    margin-right: 6px;
+    font-size: 12px
 }
-.postFooter{
-    padding: 0 30%;
+
+ .single_post h3 {
+    font-size: 20px;
+    line-height: 26px;
+    -webkit-transition: color .4s ease;
+    transition: color .4s ease
 }
-.postImage
-{
-    width: 40%;
-    border: 1px solid black;
-    margin-bottom: 5%;
+
+ .single_post h3 a {
+    color: #242424;
+    text-decoration: none
 }
-.beside{
+
+ .single_post p {
+    font-size: 15px
+}
+
+ .single_post .blockquote p {
+    margin-top: 0 !important
+}
+
+ .right-box .categories-clouds li {
     display: inline-block;
+    margin-bottom: 5px
 }
-.close{
+
+ .right-box .categories-clouds li a {
+    display: block;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 3px;
+    color: #242424
+}
+
+ .right-box .instagram-plugin {
+    overflow: hidden
+}
+
+ .right-box .instagram-plugin li {
+    float: left;
+    overflow: hidden;
+    border: 1px solid #fff
+}
+
+ .comment-reply li {
+    margin-bottom: 15px
+}
+
+ .comment-reply li:last-child {
+    margin-bottom: none
+}
+
+ .comment-reply li h5 {
+    font-size: 18px
+}
+
+ .comment-reply li p {
+    margin-bottom: 0px;
+    font-size: 15px;
+    color: #777
+}
+
+ .comment-reply .list-inline li {
+    display: inline-block;
+    margin: 0;
+    padding-right: 20px
+}
+
+ .comment-reply .list-inline li a {
+    font-size: 13px
+}
+
+.page.with-sidebar.right .left-box {
+    margin-right: -20px
+}
+
+@media (max-width: 414px) {
+    .section.blog-page {
+        padding: 20px 0
+    }
+    .blog-page .left-box .single-comment-box>ul>li {
+        padding: 25px 0
+    }
+    .blog-page .left-box .single-comment-box ul li .icon-box {
+        display: inline-block
+    }
+    .blog-page .left-box .single-comment-box ul li .text-box {
+        display: block;
+        padding-left: 0;
+        margin-top: 10px
+    }
+}
+.card {
+    background: #fff;
+    margin-bottom: 30px;
+    transition: .5s;
+    border: 0;
+    border-radius: .55rem;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+}
+
+.card .body {
+    font-size: 14px;
+    color: #424242;
+    padding: 20px;
+    font-weight: 400;
+}
+.card .header {
+    color: #424242;
+    padding: 20px;
+    position: relative;
+    box-shadow: none;
+}
+.card .header h2 {
+    font-size: 15px;
+    color: #757575;
+    position: relative;
+}
+.card .header h2:before {
+    background: #a27ce6;
+}
+.card .header h2::before {
     position: absolute;
-    top: 0;
-    right: 0;
+    width: 20px;
+    height: 1px;
+    left: 0;
+    top: -20px;
+    content: '';
 }
+.m-b-15 {
+    margin-bottom: 15px;
+}
+
