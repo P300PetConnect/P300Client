@@ -62,7 +62,7 @@ selectedCategories: any;
   //form
   orderForm: FormGroup = new FormGroup({});
   message: string;
-  petSitter: import("/Users/jessicahenry/Project300Backup 2/client/src/app/components/interfaces/users").IPetSitter;
+  petSitter: import("../interfaces/users").IPetSitter;
 
   constructor(private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
     public authenticator: AuthenticatorService) { 

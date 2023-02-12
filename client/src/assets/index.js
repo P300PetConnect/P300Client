@@ -1,7 +1,9 @@
 
 //javascript.js
 //set map options
+function initMap() {
 
+}
 var myLatLng;
 var mapOptions;
 
@@ -14,6 +16,7 @@ var directionsService;
 
 //create a DirectionsRenderer object which we will use to display the route
 var directionsDisplay;
+
 function SettingMap() {
   myLatLng = { lat: 54.2789982, lng: -8.4606109 };
   mapOptions = {
@@ -21,6 +24,7 @@ function SettingMap() {
     zoom: 16,
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
+  
   };
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
@@ -47,7 +51,10 @@ function SettingMap() {
   var input2 = document.getElementById("to");
   var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
   //#endregion
+
+  console.log("setting up map done");
 }
+SettingMap();
 
 console.log("Before onCalc");
 //#region Here when we call this function it will draw the line

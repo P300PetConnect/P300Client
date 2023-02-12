@@ -101,9 +101,14 @@
   
     
       <hr>
-      <div *ngFor="let d of posts[0]">
-       <app-post [post]="d" ></app-post>
+      <!-- Add row class  and added div with container class , posts-content-->
+      <div class="container posts-content row ">
+
+      
+      <div class="col-lg-4 col-md-6 col-sm-12   justify-content-center" *ngFor="let d of posts[0]">
+       <app-post class="" [post]="d" ></app-post>
       </div>
+    </div>
         <hr>
    </div>
   
