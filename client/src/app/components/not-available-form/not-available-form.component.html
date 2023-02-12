@@ -4,7 +4,7 @@
         <div >
           <div class="card">
               <div class="card-header">
-                <Button class = "btn btn-danger position-absolute top-0 end-0" >&#10005;</Button>
+                <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="CloseForm()">&#10005;</Button>
                   <div class="row">
                     
                       
@@ -23,8 +23,22 @@
                         </div>
                       </mat-tab> -->
                       <mat-tab label="Manage Available slots">
-                        <div class = "d-flex align-items-start" *ngFor="let a in notAvailable">
-                           
+                        <ng-template mat-tab-label>
+                            <span (click)="refresh()">Manage Available slots</span>
+                        </ng-template>
+                        <div class = "m-3" *ngFor="let a of notAvailble">
+                           <div class = "row">
+                            <div class = "col-5">
+                                    <h5>{{a.TimeStamp}}</h5>
+                            </div>
+                            <div class = "col-5">
+                                 <h5>Not available</h5>
+                            </div>
+                            <div class = "col-2">
+                                <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="DeleteNotAvailable(a.NotAvailbleID)" >&#10005;</Button>
+                            </div>
+                        
+                           </div>
                             
           
                           </div>

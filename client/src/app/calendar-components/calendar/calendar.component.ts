@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Console } from 'console';
 import { INotAvailable, IOrderList } from 'src/app/components/interfaces/order';
@@ -28,13 +28,15 @@ export class CalendarComponent implements OnInit {
   @Input() orders: IOrderList [] = [];
   @Input() notAvailble: INotAvailable [] = [];
 
+  
+
   public calendar: CalendarDay[] = [];
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
   public monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
 
-  notAvailable = false;
+ 
 
   ngOnInit(): void {
     
@@ -152,6 +154,8 @@ export class CalendarComponent implements OnInit {
     this.router.navigate(['/orders']);
 
   }
+
+
 
   
 

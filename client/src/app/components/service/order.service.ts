@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {  FormGroup } from '@angular/forms';
-import { catchError, tap } from 'rxjs';
+import { catchError, Observable, tap } from 'rxjs';
 import { IOrder } from '../interfaces/form';
 import { environment } from "src/environments/environment";
 import { INotAvailable, IOrderList } from '../interfaces/order';
@@ -73,6 +73,16 @@ export class OrderService {
      catchError(this.handleError)
     );
 
+  }
+
+  
+  DeleteItem(id: any) : Observable<any>
+  {
+    return this._http.delete<any>("https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/not?id=" + id) 
+    .pipe(
+      catchError(this.handleError)
+    )
+   
   }
 }
 

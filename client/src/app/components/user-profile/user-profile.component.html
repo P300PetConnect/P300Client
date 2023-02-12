@@ -121,7 +121,7 @@
       </div>
      </div>
      <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'fatherted@gmail.com'">
-
+      
       <div class="col-4">
         <div class="row">
           <div class="col-12">
@@ -146,6 +146,7 @@
                   </div>
                   <hr class="my-0">
                   <div class="card-body">
+                    <button (click)="notAvailable = true ">test</button>
                     <h5 class="pl-4 card-title">About</h5>
                     <ul class="list-group list-group-flush pb-4">
                       <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{petSitter?.emailAddress}}</li>
@@ -184,7 +185,7 @@
               </mat-tab> -->
               <mat-tab label="Schedule">
                 <div>
-                  <app-calendar [orders] = orders [notAvailble] = notAvailble></app-calendar>
+                  <app-calendar [orders] = orders [notAvailble] = notAvailble ></app-calendar>
                 </div>
               </mat-tab>
 
@@ -384,6 +385,10 @@
 
      </div>
 <div>
+</div>
+
+<div *ngIf="notAvailable">
+  <app-not-available-form [orders] = "orders" [notAvailble] = "notAvailble" [userID] = "petSitter?.id" (newItemEvent)="GetnotAvailable(petSitter?.id)" (closeForm)="close()"></app-not-available-form>
 </div>
 
 <!-- 

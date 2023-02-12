@@ -54,6 +54,7 @@ export class UserProfileComponent implements OnInit {
   comments4 = false;
   com = false;
   showDes = false;
+  notAvailable = false;
 
   averageRoundStars: number;
 
@@ -213,5 +214,10 @@ async getReviews()
     this.dialog.open(OrderComponent, dialogConfig); 
   }
 
+  close()
+  {
+
+    this.notAvailable = false;
+  }
 
   }
