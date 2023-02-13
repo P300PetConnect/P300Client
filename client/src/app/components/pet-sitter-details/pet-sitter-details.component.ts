@@ -48,7 +48,7 @@ export class PetSitterDetailsComponent implements OnInit {
 
   orders:IOrderList[] = [];
   notAvailble:INotAvailable[] = [];
-  componentFlag = "searchProfile"
+  componentFlag = "searchProfile";
 
 
   //weird 0 on data being returned, refactor get method in this class, get method in service

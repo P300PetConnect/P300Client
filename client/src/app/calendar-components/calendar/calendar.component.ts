@@ -27,7 +27,6 @@ export class CalendarComponent implements OnInit {
   
   @Input() orders: IOrderList [] = [];
   @Input() notAvailble: INotAvailable [] = [];
-
   @Input() componentFlag: string;
 
   
