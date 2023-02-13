@@ -19,9 +19,7 @@ export class UserService{
         return this._http.get<IPetSitter>("https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/user?id="+ id
         )
         .pipe(
-            catchError(this.hangleError)
-          )
-      
+            catchError(this.hangleError))
         }
 
         get_petsitter(email): Observable<IPetSitter>{
@@ -31,7 +29,7 @@ export class UserService{
             )
             .pipe(tap(), catchError(this.hangleError))
         }
-  
+
     private hangleError(err: HttpErrorResponse){
         return throwError('error: ' + err.message)
     }
@@ -64,4 +62,4 @@ export class UserService{
             return this._http.put( this.baseUrlPetOwner+email, params);
         }
     
-  }
+}

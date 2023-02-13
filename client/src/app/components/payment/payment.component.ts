@@ -102,6 +102,7 @@ export class PaymentComponent implements OnInit {
     this.btnText = 'Cancel';
     this.actionToBtn = "Cancel"; 
 
+    this.sendEmailToPetSitter();
   }
   invokeStripe() {
     if (!window.document.getElementById('stripe-script')) {
@@ -197,6 +198,13 @@ export class PaymentComponent implements OnInit {
     if(this.order?.PaymentStatus=='Confirmad'){
      
     }
+  }
+
+  //make a call to lambda function to send email to pet sitter when order is confirmed
+  sendEmailToPetSitter() {
+    this._http.get(' https://aux8jeddzh.execute-api.eu-west-1.amazonaws.com/default/sendOrderConfirmedEmailLambda').subscribe(data => {
+      console.log(data)
+    })
   }
 
 }
