@@ -74,58 +74,55 @@
     <div class="modal-content">
        
         <div >
-          <div class="card">
+          <div class="card" >
               <div class="card-header">
-                <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="displayEvent = false" >&#10005;</Button>
-                  <div class="row">
+                <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="closeReset()" >&#10005;</Button>
+                  <div class="row m-3" *ngFor="let s of selectedOrders" style="border: 1px solid black;">
                       <div class="col-2">
-                          <picture class="align-middle pr-3" *ngIf="selectedOrder.ServiceTitle.includes(picKeyWords[1])">
+                          <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
                               <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
                             </picture>
-                            <picture class="align-middle pr-3" *ngIf="selectedOrder.ServiceTitle.includes(picKeyWords[0])">
+                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
                               <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
                             </picture>
-                            <picture class="align-middle pr-3" *ngIf="selectedOrder.ServiceTitle.includes(picKeyWords[3])">
+                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
                               <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
                             </picture>
-                            <picture class="align-middle pr-3" *ngIf="selectedOrder.ServiceTitle.includes(picKeyWords[2])">
+                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
                               <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
                             </picture>
           
                       </div>
                       <div class="col-4">
-                          <h5 class="text-decoration-underline">{{selectedOrder.ServiceTitle}}</h5>
-                          <small>{{selectedOrder.OrderDate| date: 'dd-MM-yyyy'}}</small>
+                          <h5 class="text-decoration-underline">{{s.ServiceTitle}}</h5>
+                          <small>{{s.OrderDate| date: 'dd-MM-yyyy'}}</small>
           
                       </div>
                       
-                  </div>
-                 
-                
-              </div>
+               
               <div class="card-body">
                
-                <div class = "d-flex align-items-start">
-                  <img src="{{selectedOrder.Profile_Pic_URL}}" class="img-fluid rounded-circle mb-2" width="100" height="100" alt="">
+                <div class = "d-flex align-items-start" >
+                  <img src="{{s.Profile_Pic_URL}}" class="img-fluid rounded-circle mb-2" width="100" height="100" alt="">
 
                   <div class="col">
                     <div class="row">
-                      <p>{{selectedOrder.Name}} {{selectedOrder.Surname}}</p>
+                      <p>{{s.Name}} {{s.Surname}}</p>
                     </div>
                     <div class="d-flex justify-content-between">
                
-                      <p>{{selectedOrder.Line_2}}, {{selectedOrder.County}}</p>
+                      <p>{{s.Line_2}}, {{s.County}}</p>
                      
                     </div>
 
                   </div>
                   <div class="col">
                     <div class="row">
-                      <p>{{selectedOrder.Description}}</p>
+                      <p>{{s.Description}}</p>
                     </div>
                     <div class="d-flex justify-content-between">
                
-                      <p>Price: {{selectedOrder.Price}}</p>
+                      <p>Price: {{s.Price}}</p>
                      
                     </div>
 

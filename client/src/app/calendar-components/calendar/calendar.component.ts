@@ -22,7 +22,7 @@ export class CalendarComponent implements OnInit {
 //pass string as input from component, different for each component, use ngif and have two versions of the calender. 
   public displayMonth: string;
   private monthIndex: number = 0;
-  selectedOrder: IOrderList;
+  selectedOrders: IOrderList [] = [];
   displayEvent = false;
   
   @Input() orders: IOrderList [] = [];
@@ -144,10 +144,11 @@ export class CalendarComponent implements OnInit {
       if(this.orders[i].formatted_date == value)
       {
         //sets selected order in temp object so we can render the details out on screen
-        this.selectedOrder = this.orders[i];
+        this.selectedOrders.push(this.orders[i]);
       }
     }
     
+    console.log(JSON.stringify(this.selectedOrders));
     this.displayEvent = true;
    
   }
@@ -155,6 +156,13 @@ export class CalendarComponent implements OnInit {
   {
     this.router.navigate(['/orders']);
 
+  }
+
+  closeReset()
+  {
+    this.displayEvent = false;
+    //clear selected orders
+    this.selectedOrders = [];
   }
 
 

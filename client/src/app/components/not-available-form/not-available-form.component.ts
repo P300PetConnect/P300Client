@@ -11,48 +11,70 @@ import { OrderService } from '../service/order.service';
 })
 export class NotAvailableFormComponent implements OnInit {
 
-  /*
-  -change so selected orders for the day can be more than 1
-  -style the not available form
-  -move calander to profile view will all events x't out
  
-  
-  */
   @Input() orders: IOrderList [] = [];
   @Input() userID: number;
   @Input() notAvailble: INotAvailable [] = [];
   @Output() newItemEvent = new EventEmitter();
   @Output() closeForm = new EventEmitter();
+
+  repeatDates: string[] = [];
   message: any;
   selected: Date | null;
+
+  alreadyCreated = false;
   
   constructor(private datePipe: DatePipe, private _order: OrderService) { }
 
   ngOnInit(): void {
   }
 
-  SetNotAvailble(date: string)
+  SetNotAvailble(dateString: string, note: string)
   {
    
-    date = this.datePipe.transform(new Date(date), 'dd MMM yyyy');
-    alert(this.userID);
-
-    let obj = 
+   
+    let date = '';
+    if(dateString == "null")
     {
-      "UserID": this.userID,
-      "TimeStamp" : date
+      //sting of null passed from create single slot to convert date in correct formatt
+      date = this.datePipe.transform(new Date(this.selected), 'dd MMM yyyy');
+
+    }
+    else
+    {// create multiple date is in the correct format already
+      date = dateString;
+    }
+
+    if(this.isDateInArray(date))
+    {
+      //if date is already in array show error screen
+      this.alreadyCreated = true;
+     
+      
+    }
+    else
+    {
+      //if not add it
+      let obj = 
+      {
+        "UserID": this.userID,
+        "TimeStamp" : date,
+        "Note": note
+      }
+      this._order.addNotAvailable(obj).subscribe({
+        next: nAvailable => {
+          console.log(JSON.stringify(nAvailable) + 'nAvailable added');
+          this.message = "nAvailable added";
+          this.newItemEvent.emit();
+          //resets array
+          this.repeatDates = [];
+         
+           },
+        error: (err) => this.message = err
+      });
 
     }
 
-    this._order.addNotAvailable(obj).subscribe({
-      next: nAvailable => {
-        console.log(JSON.stringify(nAvailable) + 'nAvailable added');
-        this.message = "nAvailable added";
-        this.newItemEvent.emit();
-       
-         },
-      error: (err) => this.message = err
-    });
   }
   DeleteNotAvailable(id: number)
   {
@@ -66,6 +88,31 @@ export class NotAvailableFormComponent implements OnInit {
       error: (err) => this.message = err
     });
   }
+
+  SetRepeating(dateString: string, weeks: number, note: string)
+  {
+    
+  
+    let date = this.datePipe.transform(new Date(dateString), 'dd MMM yyyy');
+       let futureDate = new Date(date);
+       
+
+      for(let i = 0; i < weeks; i ++)
+      {
+        this.repeatDates.push(this.datePipe.transform(new Date(futureDate.setDate(futureDate.getDate() + 1 * 7)), 'dd MMM yyyy') );
+      }
+
+      for(let i =0; i < this.repeatDates.length; i++)
+      {
+        this.SetNotAvailble(this.repeatDates[i], note);
+      }
+  }
+  
+  isDateInArray(value: string): boolean {
+    //tests to see if date is in list array
+   
+     return this.notAvailble.some(obj => obj.TimeStamp === value);
+   }
 
   refresh()
   {
