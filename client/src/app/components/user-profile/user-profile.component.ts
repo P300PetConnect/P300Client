@@ -56,6 +56,8 @@ export class UserProfileComponent implements OnInit {
   showDes = false;
   notAvailable = false;
 
+  componentFlag = "userProfile"
+
   averageRoundStars: number;
 
   constructor(private _userService: UserService, private _petService:PetService,

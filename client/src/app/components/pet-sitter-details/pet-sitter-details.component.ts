@@ -17,6 +17,8 @@ import { ReviewService } from 'src/app/Review-services/review.service';
 import { ActivatedRoute } from '@angular/router';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
+import { OrderService } from '../service/order.service';
+import { INotAvailable, IOrderList } from '../interfaces/order';
 
 @Component({
   selector: 'app-pet-sitter-details',
@@ -43,6 +45,10 @@ export class PetSitterDetailsComponent implements OnInit {
   userID: string;
 
   averageRoundStars: number;
+
+  orders:IOrderList[] = [];
+  notAvailble:INotAvailable[] = [];
+  componentFlag = "searchProfile"
 
 
   //weird 0 on data being returned, refactor get method in this class, get method in service
@@ -81,7 +87,8 @@ export class PetSitterDetailsComponent implements OnInit {
   @ViewChild('picker') picker:ElementRef;
 
   constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
-    private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute, private service: SearchServiceService) {
+    private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute,
+     private service: SearchServiceService,private _order: OrderService) {
  
 
 
@@ -106,9 +113,9 @@ export class PetSitterDetailsComponent implements OnInit {
     this.userID = this.r.snapshot.paramMap.get('id');
     //get users services
     this.getServices(Number(this.userID));
-
-
-    this.getPetSitter(Number(this.userID)); 
+    this.getPetSitter(Number(this.userID));
+    this.GetOrders(Number(this.userID));
+    this.GetnotAvailable(Number(this.userID));
 
     console.log(this.petSitter);
  
@@ -211,6 +218,24 @@ onCreateOrder(){
     })
     return false;
 
+  }
+
+  GetOrders(id: number)
+  {
+    this._order.getOrdersList(id).subscribe({
+      next: (value: IOrderList[] )=>this.orders = value,
+      complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
+      error: (mess) => this.message = mess
+    })
+  }
+
+  GetnotAvailable(id: number)
+  {
+    this._order.getNotAvailable(id).subscribe({
+      next: (value: INotAvailable[] )=>this.notAvailble = value,
+      complete: () => console.log('not available service finished ' +  JSON.stringify((this.notAvailble))),
+      error: (mess) => this.message = mess
+    })
   }
 
   num(n: number): Array<number> {

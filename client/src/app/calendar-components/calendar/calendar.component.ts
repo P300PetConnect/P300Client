@@ -19,7 +19,7 @@ export class CalendarComponent implements OnInit {
   // }
   constructor(private datePipe: DatePipe, private router: Router) { }
 
-
+//pass string as input from component, different for each component, use ngif and have two versions of the calender. 
   public displayMonth: string;
   private monthIndex: number = 0;
   selectedOrder: IOrderList;
@@ -27,6 +27,8 @@ export class CalendarComponent implements OnInit {
   
   @Input() orders: IOrderList [] = [];
   @Input() notAvailble: INotAvailable [] = [];
+
+  @Input() componentFlag: string;
 
   
 

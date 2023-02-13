@@ -24,6 +24,7 @@ export class NotAvailableFormComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter();
   @Output() closeForm = new EventEmitter();
   message: any;
+  selected: Date | null;
   
   constructor(private datePipe: DatePipe, private _order: OrderService) { }
 

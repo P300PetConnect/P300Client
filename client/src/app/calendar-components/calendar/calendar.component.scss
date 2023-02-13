@@ -1,9 +1,9 @@
 .calendar-table {
     border-collapse: collapse;
-  
     margin-bottom: 1rem;
     border: 1px solid black;
     background-color: #fff;
+
   }
   
   .calendar-table thead th {
@@ -14,11 +14,11 @@
   
   .calendar-table td, .calendar-table th {
     border: 1px solid #dee2e6;
-    width: 60px;
+    
   }
   
   .calendar-table td, .calendar-table th {
-    padding: .75rem;
+   // padding: .75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
   }
