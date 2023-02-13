@@ -17,6 +17,7 @@
   height: 32rem;
   opacity: 1;
   color: black;
+  overflow:hidden;
 }
 
 
@@ -734,3 +735,83 @@
   font-size: 2rem;
   color: orange;
 }
+
+
+// Abdul Respnsive
+
+h1 {
+ font-size: 1.2rem;
+}
+h2 {
+ font-size: 1.1rem;
+}
+
+@media (min-width: 401px) {
+  html {
+    font-size: 1.1rem;
+  }
+  h1 {
+      font-size: 1.3rem;
+  }
+  h2 {
+      font-size: 1.2rem;
+  }
+  .icon-sleepover {
+   width: 3.8rem;
+ }
+ 
+ 
+ }
+
+
+@media (min-width: 768px) {
+ html {
+   font-size: 1.1rem;
+ }
+ h1 {
+     font-size: 1.3rem;
+ }
+ h2 {
+     font-size: 1.2rem;
+ }
+ .icon-sleepover {
+  width: 4rem;
+}
+
+
+}
+
+@media (min-width: 991px) {
+   html {
+   font-size: 1.2rem;
+ }
+ h1 {
+     font-size: 1.5rem;
+ }
+ h2 {
+     font-size: 1.4rem;
+ }
+}
+
+@media (min-width: 1200px) {
+ html {
+   font-size: 1.2rem;
+ }
+ h1 {
+     font-size: 1.7rem;
+ }
+ h2 {
+     font-size: 1.6rem;
+ }
+
+}
+
+@media (max-width: 400px) {
+.icon-sleepover {
+  width: 3rem;
+}
+ }
+
+
+
+
