@@ -59,10 +59,11 @@ function getArray(arr1, arr2, IdArray) {
           document.getElementById("accordionExampleFav").innerHTML += `<div class="card">
 <div class="card-header" id="heading${i}">
   <h2 class="mb-0">
-    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true"
+    <button class="btn " type="button" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true"
       aria-controls="collapse${i}">
-      Route ${i + 1} - ${start} -> ${end}
+      Route ${i + 1} - ${start} -> ${end} 
     </button>
+    <button onclick="copyRouteID(${post._id})"></button>
   </h2>
 </div>
 
@@ -354,3 +355,15 @@ function getArray(arr1, arr2, IdArray) {
       }
   }
   // End of share a route
+
+
+
+  function copyRouteID(routeID) {
+    // Get the text field
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(routeID);
+    
+    // Alert the copied text
+    alert("Copied the text: " + copyText.value);
+  }
