@@ -95,7 +95,13 @@ import { ManageOrdersComponent } from './components/manage-orders/manage-orders.
 import { PaymentComponent } from './components/payment/payment.component';
 import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
 import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
+import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
+import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import { CalendarV2Component } from './components/calendar-v2/calendar-v2.component';
+// import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
+
+//test
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,14 +117,17 @@ import { NotAvailableFormComponent } from './components/not-available-form/not-a
     UserformComponent, 
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent, CalendarV2Component
     
   ],
   imports: [
     BrowserModule,
+    BrowserModule,
+    ScheduleModule,
     NgbPaginationModule, 
     MatSlideToggleModule,
     MatButtonModule,
+    ScheduleModule,
     NgbAlertModule,
     HttpClientModule,
     MatChipsModule,
@@ -165,7 +174,15 @@ import { NotAvailableFormComponent } from './components/not-available-form/not-a
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService, CognitoGuard, UserService],
+    AuthenticatorService, CognitoGuard, UserService,
+    DayService, 
+    WeekService, 
+    WorkWeekService, 
+    MonthService,
+    AgendaService,
+    MonthAgendaService
+
+  ],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })
