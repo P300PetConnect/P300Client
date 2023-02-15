@@ -42,6 +42,10 @@ export class BrowseRouteComponent implements OnInit {
   isOpen = false;
   map: google.maps.Map;
 
+  // Variables for filtering routes
+  routeID:string="63da4c099f24f5595df39b76";
+  citryName:string;
+
   //#endregion
 
   constructor( private dataService: DataService, public authenticator: AuthenticatorService) { }
@@ -61,18 +65,29 @@ export class BrowseRouteComponent implements OnInit {
     this.ToPoints = [];
     this.FromPoints = [];
     this.ArrayIds = [];
+    this.onwerPosts=[];
 
     this.dataService.getAllPost().subscribe(
       (res) => {
         for (let index = 0; index < res.length; index++) {
+          if(this.routeID=="" ||this.routeID==null){
+
           // if (res[index].email == this.authenticator?.user?.attributes?.email) {
             console.log("Email in getAll: "+ this.authenticator?.user?.attributes?.email);
             this.onwerPosts.push(res[index]);
             this.FromPoints.push(res[index].startPoint);
             this.ToPoints.push(res[index].endPoint);
             this.ArrayIds.push(res[index]);
+          }else if(res[index]._id==this.routeID){
+            console.log("Email in getAll: "+ this.authenticator?.user?.attributes?.email);
+            this.onwerPosts.push(res[index]);
+            this.FromPoints.push(res[index].startPoint);
+            this.ToPoints.push(res[index].endPoint);
+            this.ArrayIds.push(res[index]);
+          }
           
         }
+
         this.allPosts = this.onwerPosts;
         console.log(this.allPosts);
      
