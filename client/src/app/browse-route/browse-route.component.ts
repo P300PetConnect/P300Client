@@ -43,7 +43,7 @@ export class BrowseRouteComponent implements OnInit {
   map: google.maps.Map;
 
   // Variables for filtering routes
-  routeID:string="63da4c099f24f5595df39b76";
+  routeID:string="";
   citryName:string;
 
   //#endregion
