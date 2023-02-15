@@ -243,6 +243,8 @@ function drawRoute2(start, end, method, animate = true, color = '#e53935') {
         scale: 3
       };
 
+      console.log(response.routes);
+console.log("Route length is : "+response.routes.length );
       var path = response.routes[0].overview_path;
       if (response.routes.length >= 2) {
         path = response.routes[1].overview_path;

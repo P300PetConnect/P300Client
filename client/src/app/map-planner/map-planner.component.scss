@@ -816,8 +816,8 @@ Banner Style
 
 #section-1 {
   margin-top: 0px;
-  height: 100vh;
-  min-height: 700px;
+  height: 80vh;
+  min-height: 500px;
   color: #fff;
   background-color: #222;
   position: relative;
@@ -924,15 +924,15 @@ Banner Style
 }
 #section-1 .content-slider .slider #top-banner-1 {
   
-  background: url('https://www.akc.org/wp-content/uploads/2018/04/beagle-walking-on-leash-looking-up.jpg') no-repeat center center;
+  background: url('/client/src/assets/images/dogwalk.jpg') no-repeat center center;
   background-size: cover;
 }
 #section-1 .content-slider .slider #top-banner-2 {
-  background: url('https://www.cpre.org.uk/wp-content/uploads/2021/08/20200921_184047-1110x460.jpg') no-repeat center center;
+  background: url('/client/src/assets/images/dogwalk.jpg') no-repeat center center;
   background-size: cover;
 }
 #section-1 .content-slider .slider #top-banner-3 {
-  background: url('https://media.gettyimages.com/id/1189933870/video/young-woman-walking-with-three-dogs-in-public-park.jpg?s=640x640&k=20&c=cIRuzDJ1aII09_wHNnotNZ4a0Supmg1o3APijio0XlQ=') no-repeat center center;
+  background: url('/client/src/assets/images/dogwalk.jpg') no-repeat center center;
   background-size: cover;
 }
 #section-1 .content-slider .slider #top-banner-4 {
