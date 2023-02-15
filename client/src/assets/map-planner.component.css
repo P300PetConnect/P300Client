@@ -99,8 +99,6 @@ body {
   }
 
 
-
-  
   /* CSS from template */
 
 /*
@@ -816,8 +814,8 @@ Banner Style
 
 #section-1 {
   margin-top: 0px;
-  height: 100vh;
-  min-height: 700px;
+  height: 85vh;
+  min-height: 500px;
   color: #fff;
   background-color: #222;
   position: relative;
@@ -825,7 +823,7 @@ Banner Style
 #section-1 .content-slider {
   position: relative;
   width: 100%;
-  height: 100%;
+  /* height: 80%; */
 }
 #section-1 .content-slider input {
   display: none;
@@ -924,19 +922,19 @@ Banner Style
 }
 #section-1 .content-slider .slider #top-banner-1 {
   
-  background: url('https://www.akc.org/wp-content/uploads/2018/04/beagle-walking-on-leash-looking-up.jpg') no-repeat center center;
+  background: url('src/assets/images/mapss.jpg') no-repeat center center;
   background-size: cover;
 }
 #section-1 .content-slider .slider #top-banner-2 {
-  background: url('https://www.cpre.org.uk/wp-content/uploads/2021/08/20200921_184047-1110x460.jpg') no-repeat center center;
+  background: url('src/assets/images/mapss.jpg') no-repeat center center;
   background-size: cover;
 }
 #section-1 .content-slider .slider #top-banner-3 {
-  background: url('https://media.gettyimages.com/id/1189933870/video/young-woman-walking-with-three-dogs-in-public-park.jpg?s=640x640&k=20&c=cIRuzDJ1aII09_wHNnotNZ4a0Supmg1o3APijio0XlQ=') no-repeat center center;
+  background: url('src/assets/images/mapss.jpg') no-repeat center center;
   background-size: cover;
 }
 #section-1 .content-slider .slider #top-banner-4 {
-  background: url('/client/src/assets/images/dogwalk.jpg') no-repeat center center;
+  background: url('src/assets/images/mapss.jpg') no-repeat center center;
   background-size: cover;
 }
 #section-1 .content-slider nav {
@@ -1169,7 +1167,7 @@ Call To Action Style
 
 .call-to-action {
   margin-top: 120px;
-  background-image: url("https://www.akc.org/wp-content/uploads/2018/04/beagle-walking-on-leash-looking-up.jpg");
+  background-image: url("src/assets/images/mapss.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -1244,7 +1242,7 @@ About Page Style
 .about-main-content {
   margin-top: 70px;
  
-  // background-image: url("client/src/assets/images/about-content-bg.jpg");
+  background-image: url("src/assets/images/about-content-bg.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1255,7 +1253,7 @@ About Page Style
 .blur-bg {
 	width: 100%;
   height: 100%;
-  // background: url("client/src/assets/images/about-content-bg.jpg") no-repeat center center fixed;
+  background: url("src/assets/images/about-content-bg.jpg") no-repeat center center fixed;
   background-size: cover;
   filter: blur(8px) brightness(80%);
   position: absolute;
@@ -1948,8 +1946,7 @@ Deals Page Style
 */
 
 .page-heading {
-
-  // background-image: url("client/src/assets/images/heading-bg.jpg");
+  background-image: url("src/assets/images/heading-bg.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2132,7 +2129,7 @@ Reservation Page Style
 */
 
 .second-page-heading {
-  // background-image: url("src/assets/images/heading-bg-02.jpg");
+  background-image: url("src/assets/images/heading-bg-02.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
