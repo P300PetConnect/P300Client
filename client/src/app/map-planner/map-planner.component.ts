@@ -20,6 +20,7 @@ declare const calcRoute: any;
 declare const Gen2OnLoadDo: any;
 //declare const move: any;
 declare const shareRoute: any;
+declare const copyRouteID:any;
 
 
 // Testing here
@@ -346,7 +347,10 @@ Gen2OnLoadDo();
 
 
   shareTheRoute(post: Post) {
-    shareRoute(post.startPoint, post.endPoint, post.routeName, post.email);
+    // shareRoute(post.startPoint, post.endPoint, post.routeName, post.email);
+    copyRouteID(post._id);
+    Swal.fire('Route ID Copied to Cliboard!');  
+
   }
 
  

@@ -77,7 +77,7 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <input type="text" class="form-control search-slt" [(ngModel)]="routeID"
+                                <input id="inpputedID" type="text" class="form-control search-slt" [(ngModel)]="routeID"
                                     placeholder="Enter Route id">
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -94,7 +94,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <button type="button" (click)="getAllPost()"
+                                <button type="button" (click)="getFilteredRoutes()"
                                     class="btn btn-primary wrn-btn">Search</button>
                             </div>
                         </div>
@@ -111,25 +111,29 @@
     <div class="container-fluid">
         <div class="row">
             <!-- *ngFor="let index of allPosts" -->
-            <div class="col-md-12 col-lg-10 listing-block">
-                <!-- <div class="media">
+            <div id="listOFRoutes" *ngFor="let index of allPosts" class="col-md-12 col-lg-10 listing-block">
+                <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
 </div>
-              <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
-              <div class="media-body pl-3">
+              <!-- <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image"> -->
+              <div class="media-body pl-3 container">
                 <div class="price">{{index.routeName}}<small>Sligo - from {{index.startPoint}}  to {{index.endPoint}}</small></div>
                 <div class="stats">
                     <span><i class="fa fa-arrows-alt"></i>8 mins</span>
                     <span><i class="fa fa-bath"></i>224.6 Calories</span>
                 </div>
-                <div class="address">Made by {{index.email}}</div>
+                <!-- <div class="address">Made by {{index.email}}</div>
+                class="text-button" -->
+                <div class="address" >
+                    <a href='https://www.google.com/maps/dir/${{index.startPoint}}/${{index.endPoint}}'>Need Directions ? <i class="fa fa-arrow-right"></i></a>
+                  </div>
               </div>
-            </div> -->
-                <div class="media">
+            </div>
+                <!-- <div class="media">
                     <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
                     </div>
                     <img class="d-flex align-self-start"
-                        src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Oxford_blue.png/220px-Oxford_blue.png"
                         alt="Generic placeholder image">
                     <div class="media-body pl-3">
                         <div class="price">Happy Walking<small>Sligo - from Doorly Park to Riverside Hotel</small></div>
@@ -169,7 +173,7 @@
                         </div>
                         <div class="address">Made by Mike</div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
             <div class="col-md-7 col-lg-4 map-box mx-0 px-0">

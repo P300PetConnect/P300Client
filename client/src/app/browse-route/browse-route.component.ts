@@ -43,7 +43,7 @@ export class BrowseRouteComponent implements OnInit {
   map: google.maps.Map;
 
   // Variables for filtering routes
-  routeID:string="";
+  routeID:string= "";
   citryName:string;
 
   //#endregion
@@ -67,6 +67,7 @@ export class BrowseRouteComponent implements OnInit {
     this.ArrayIds = [];
     this.onwerPosts=[];
 
+   
     this.dataService.getAllPost().subscribe(
       (res) => {
         for (let index = 0; index < res.length; index++) {
@@ -99,6 +100,16 @@ export class BrowseRouteComponent implements OnInit {
 
 
 
+  }
+
+
+  getFilteredRoutes(){
+    const input = document.getElementById('inpputedID') as HTMLInputElement | null;
+
+const value = input?.value;
+this.routeID=value;
+    document.getElementById("listOFRoutes").innerHTML=``;
+    this.getAllPost();
   }
 
 }
