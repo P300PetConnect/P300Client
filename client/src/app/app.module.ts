@@ -90,11 +90,12 @@ import { ReviewComponent } from './ReviewComponents/review/review.component';
 import { InterceptorService } from './components/service/interceptor.service';
 import { ChatPageComponent } from './components/chat-page/chat-page.component';
 import { MessageInputComponent } from './components/message-input/message-input.component';
-
 import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
 import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
+import { MapPlannerComponent } from './map-planner/map-planner.component';
+import { BrowseRouteComponent } from './browse-route/browse-route.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,7 @@ import { NotAvailableFormComponent } from './components/not-available-form/not-a
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
-    
+    ,MapPlannerComponent, BrowseRouteComponent
   ],
   imports: [
     BrowserModule,
