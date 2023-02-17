@@ -5,11 +5,11 @@ WORKDIR /client
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
-RUN npm run build
+RUN npm run build 
 
 FROM nginx:latest
 
