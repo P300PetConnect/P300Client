@@ -47,7 +47,7 @@ export class UserProfileComponent implements OnInit {
   notAvailble:INotAvailable[] = [];
   serviceList:ServiceInterface[] = [];
   message: any;
-  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
+  picKeyWords: string[] = ["Feed", "Walk", "Sitting","Grooming"] 
   comments1 = false;
   comments2 = false;
   comments3 = false;

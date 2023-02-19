@@ -57,7 +57,7 @@ export class PetSitterDetailsComponent implements OnInit {
 
 
   // array of key words to check for images// 
-  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
+  picKeyWords: string[] = ["Feed", "Walk", "Sitting","Grooming"] 
 
 
   dateFilter: (date: Date | null) => boolean =

@@ -84,6 +84,7 @@ export class SearchVersion2Component implements OnInit {
 
   SearchService(pet : string, location : string , service: string)
   {
+    
     console.log(pet + '  ' + this.location + '  ' + service);
 
     this.search.getServiceData(pet, location, service).subscribe({

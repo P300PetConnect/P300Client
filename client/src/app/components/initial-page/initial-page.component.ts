@@ -44,9 +44,8 @@ category= new FormControl('');
 
 petCategory: petCategory[] = [
   {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Dog'},
-  {value: '../../../assets/images/home/walk-selected.svg', viewValue: 'Cat'},
-  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Bird'},
-  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Fish'},
+  {value: '../../../assets/images/home/walk-selected.svg', viewValue: 'Cat'}
+
 
 ];
 
@@ -81,7 +80,7 @@ images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
       this.secondIsActive=false; 
       this.thirdIsActive=false;  
       this.sleepOver = true; 
-      this.service = 'Accommodation'
+      this.service = 'Sitting'
     }
     else if(id==2){
       this.isActive = false;
@@ -90,7 +89,7 @@ images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
       this.fourthIsActive = false; 
       this.sleepOver = false; 
 
-      this.service = 'Mind Pet'
+      this.service = 'Grooming'
 }
 else if(id==3){
   this.isActive = false;
