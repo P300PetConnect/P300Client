@@ -79,7 +79,7 @@
               <!-- <img src="../../../assets/images/share.png" alt=""> -->
               </div>
         </div>
-        <div class = "row" *ngIf="post.DisplayComments">
+        <div class = "row" style="margin-left: 0px;margin-right: 0px;" *ngIf="post.DisplayComments">
           <app-comment-section [docID]="post.PostID" [postData]="postData"></app-comment-section>
         </div> 
     </div>
