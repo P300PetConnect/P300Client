@@ -42,8 +42,8 @@ body {
 }
 
 .search-box {
-    width: 90%;
-    margin: 0 auto 2%px;
+    width: 100%;
+    margin: 0% 2%;
     box-shadow: 10px 13px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -51,7 +51,7 @@ body {
     background: #fff;
    
     padding-top: 20px;
-    overflow-y: scroll;
+    // overflow-y: scroll;
 }
 
 .slimScrollDiv {
@@ -152,4 +152,13 @@ body {
     text-transform: capitalize;
      height: calc(3rem + 2px) !important;
      border-radius:0;
+}
+
+.vertical-scrollable>.row {
+    position: absolute;
+    top: 120px;
+    bottom: 100px;
+    left: 180px;
+    width: 50%;
+    overflow-y: scroll;
 }

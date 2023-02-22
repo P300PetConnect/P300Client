@@ -14,7 +14,7 @@
   background-position: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 32rem;
+  height: auto;
   opacity: 1;
   color: black;
 }
@@ -734,3 +734,31 @@
   font-size: 2rem;
   color: orange;
 }
+
+
+
+
+@media screen and (max-width: 480px) {
+  .home-testimonial-bottom div div :nth-child(2) {  
+   display: none;
+  }
+
+  .icon-sleepover{
+    width: 2.5rem;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  .home-testimonial-bottom div div :nth-child(3) {  
+   display: none;
+  }
+
+}
+
+// @media screen and (min-width: 480px) {
+//   .home-testimonial-bottom div div :nth-child(2) {  
+//    display: none;
+//   }
+
+// }
