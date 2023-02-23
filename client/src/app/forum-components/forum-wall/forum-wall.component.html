@@ -30,16 +30,16 @@
       <div class="row newpost">
         <div class="col-md-12" style="
         border: 1px solid #ccc;" >
-          <mat-tab-group mat-stretch-tabs (selectedTabChange)="SetTabIndex($event)">
+          <mat-tab-group animationDuration="0ms" mat-stretch-tabs (selectedTabChange)="SetTabIndex($event)">
             <mat-tab>
               <ng-template mat-tab-label>
                 <mat-icon class="example-tab-icon">rocket</mat-icon>
                 <span>Best</span>
               </ng-template>
               <div>
-                  <div *ngFor="let b of boards;" class="pt-3">
-                    <!-- <h5>{{b[0].boardTitle}}</h5> -->
-                    <p>{{b[0].description}}</p>
+                  <div  class="pt-3">
+                    <!-- <h5>{{b[0].boardTitle}}</h5>
+                    <p>{{b[0].description}}</p> -->
                   </div>
    
               </div>
@@ -51,14 +51,14 @@
                 <span>Hot</span>
               </ng-template>
               <div style="padding: 0 6%;">
-                <div class = "boardIntro">
-                  <div *ngFor="let b of boards;">
-                    <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-                    <p>{{b[0].description}}</p>
+                <div class = "">
+                  <div *ngFor="let b of boards;"  class="pt-3">
+                    <!-- <h5 class = "boardTitle">{{b[0].boardTitle}}</h5> -->
+                    <!-- <p>{{b[0].description}}</p> -->
                   </div>
-                  <div style="text-align: center;">
+                  <!-- <div style="text-align: center;">
                     <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </mat-tab>
@@ -68,14 +68,14 @@
                 <span>Top</span>
               </ng-template>
               <div style="padding: 0 6%;">
-                <div class = "boardIntro">
-                  <div *ngFor="let b of boards;">
-                    <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-                    <p>{{b[0].description}}</p>
+                <div class = "">
+                  <div *ngFor="let b of boards;"  class="pt-3">
+                    <!-- <h5 class = "boardTitle">{{b[0].boardTitle}}</h5> -->
+                    <!-- <p>{{b[0].description}}</p> -->
                   </div>
-                  <div style="text-align: center;">
+                  <!-- <div style="text-align: center;">
                     <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               
@@ -85,17 +85,16 @@
                 <mat-icon class="example-tab-icon">today</mat-icon>
                 <span class="btn-tab">Today</span>
               </ng-template>
-              <div style="padding: 0 6%;">
-                <div class = "boardIntro">
-                  <div *ngFor="let b of boards;">
-                    <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-                    <p>{{b[0].description}}</p>
+              <!-- <div style="padding: 0 6%;"> -->
+    
+                  <div *ngFor="let b of boards;"  class="pt-3">
+                    <!-- <h5 class = "boardTitle">{{b[0].boardTitle}}</h5> -->
+                    <!-- <p>{{b[0].description}}</p> -->
                   </div>
-                  <div style="text-align: center;">
+                  <!-- <div style="text-align: center;">
                     <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-                  </div>
-                </div>
-              </div>
+                  </div> -->
+              <!-- </div> -->
             </mat-tab>
           </mat-tab-group>
         </div>
@@ -110,16 +109,9 @@
        </div>
     </div> -->
 <!-- Posts -->
-
   <!-- </div> -->
 
 </div>
-
-
-
-
-
-
 <!-- 
   <div class = "wallContainer">
     <mat-tab-group mat-stretch-tabs (selectedTabChange)="SetTabIndex($event)">
@@ -218,11 +210,6 @@
         <hr>
    </div>
   </div>
-
-
-
-
-    <!-- </div> -->
     <div class="col-md-3">
       <div class="sidebar">
         <img src="https://www.redditstatic.com/desktop2x/img/id-cards/home-banner@2x.png">
@@ -237,6 +224,4 @@
     </div>
   </div>
 </div>
-
-
 </div>
