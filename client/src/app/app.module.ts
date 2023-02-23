@@ -96,6 +96,7 @@ import { ScheduleListComponent } from './components/schedule-list/schedule-list.
 import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
 import { MapPlannerComponent } from './map-planner/map-planner.component';
 import { BrowseRouteComponent } from './browse-route/browse-route.component';
+import { MapRoutesComponent } from './map-routes/map-routes.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,7 @@ import { BrowseRouteComponent } from './browse-route/browse-route.component';
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
-    ,MapPlannerComponent, BrowseRouteComponent
+    ,MapPlannerComponent, BrowseRouteComponent, MapRoutesComponent
   ],
   imports: [
     BrowserModule,
