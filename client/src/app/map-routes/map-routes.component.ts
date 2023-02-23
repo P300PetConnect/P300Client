@@ -57,6 +57,7 @@ export class MapRoutesComponent implements OnInit {
 
   isOpen = false;
   map: google.maps.Map;
+  isSidebar:boolean =false;
 
   //#endregion
 
@@ -351,6 +352,19 @@ Gen2OnLoadDo();
     copyRouteID(post._id);
     Swal.fire('Route ID Copied to Cliboard!');  
 
+  }
+
+
+
+  showSideBard(){
+    
+    document.getElementById("sidebar").style.display="block";
+  }
+
+
+  hideSideBard(){
+    
+    document.getElementById("sidebar").style.display="none";
   }
 
  

@@ -363,28 +363,28 @@ function GetRoutInfo2(start, end, i) {
           <div onclick="ShowRouteG('${start}', '${end}',${i})" class="card-body">
             <div class="container">
               <div class="row align-items-start">
-                  <div class="col">
+                  <div class="col-lg-6">
                       <div class="card-body">
                           <h5 class="card-title">${response.routes[0].legs[0].distance.text}</h5>
                           <h6 class="card-subtitle mb-2 text-muted">Distance</h6>
       
                       </div>
                   </div>
-                  <div class="col">
+                  <div class="col-lg-6">
                     <div class="card-body">
                       <h5 class="card-title">${response.routes[0].legs[0].duration.text}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Duration</h6>
       
                   </div>
                   </div>
-                  <div class="col">
+                  <div class="col-lg-6">
                     <div class="card-body">
                       <h5 class="card-title">${ExpectedCalories.toFixed(2)}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Expected Calories Burned</h6>
       
                   </div>
                   </div>
-                  <div class="col">
+                  <div class="col-lg-6">
                     <div class="card-body">
                       <h5 class="card-title">${numOFSteps.toFixed(2)}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Steps</h6>
