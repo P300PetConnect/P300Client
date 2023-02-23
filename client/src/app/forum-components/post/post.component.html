@@ -5,11 +5,11 @@
             <div class="col-md-1">
               <div class="d-flex flex-column votebox">
                 <div class="p-2">
-                  <i class="bi bi-arrow-up"></i>
+                  <i class="bi bi-arrow-up"  (click)="AddVote(post)"></i>
                 </div>
-                <div class="p-2 votecount">42</div>
+                <div class="p-2 votecount">{{post.VoteCount}}</div>
                 <div class="p-2">
-                  <i class="bi bi-arrow-down"></i>
+                  <i class="bi bi-arrow-down" (click)="RemoveVote(post)"></i>
                 </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
   </div>
   <div class="col-11">
     <div class="d-flex flex-row">
-      <button mat-flat-button>
+      <button mat-flat-button (click)="DisplayComments(post)">
         <span class="material-symbols-outlined">
           mode_comment
           </span>
