@@ -1,4 +1,4 @@
-<!-- <div  class = "">
+<div  class = "">
     <div class = "post row-12" >
       <div class = "col postHeader">
      
@@ -38,49 +38,4 @@
 
     </div>
   </div>
- -->
 
-
- 
-  <!-- My post attempt -->
-
-  <div class="col-lg-12 col-md-12 col-sm-12">
-    <div class="card single_post">
-        <div class="header">
-            <h2><strong>Latest</strong> Post</h2>
-        </div>
-        <div class="body">
-            <h3 class="m-t-0 m-b-5"><a href="#">{{post.PostTitle}}</a></h3>
-            <ul class="meta">
-                <li><a href="#"><i class="bi bi-person-fill"></i>Posted By: John Smith</a></li>
-                <li><a href="#"><i class="zmdi zmdi-label col-amber"></i>{{post.Date}}</a></li>
-                <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: {{post.VoteCount}}</a></li>
-            </ul>
-        </div>
-        <div class="body">
-           
-            <p class="" >{{post.Content}}</p>
-            <!-- <a href="#" title="read more" class="btn btn-round btn-info">Read More</a> -->
-        </div>
-        <div class = "row postFooter " >
-          <div class = "like col row">
-            <i class="bi bi-caret-up-fill " (click)="AddVote(post)"></i>
-              <!-- <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(post)"> -->
-              <p class = "beside " style="margin-right: 10px;">{{post.VoteCount}}</p>
-              <i class="bi bi-caret-down-fill " (click)="RemoveVote(post)"></i>
-              <!-- <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(post)"> -->
-         </div>
-          <div class = "like col">
-            <i class="bi bi-chat" (click)="DisplayComments(post)"></i>
-          <!-- <img src="../../../assets/images/comment.png" alt="" (click)="DisplayComments(post)"> -->
-          </div>
-          <div class = "like col">
-            <i class="bi bi-share"></i>
-              <!-- <img src="../../../assets/images/share.png" alt=""> -->
-              </div>
-        </div>
-        <div class = "row" style="margin-left: 0px;margin-right: 0px;" *ngIf="post.DisplayComments">
-          <app-comment-section [docID]="post.PostID" [postData]="postData"></app-comment-section>
-        </div> 
-    </div>
-</div>
