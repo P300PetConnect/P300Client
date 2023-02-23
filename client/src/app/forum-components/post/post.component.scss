@@ -19,6 +19,19 @@
     position: relative;
     
 }
+.post-internal{
+    --post-line-color: #ccc;    
+    // border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.8);
+    color: #878A8C;
+    position: relative;
+    border-radius: 4px;
+    padding:5px;
+}
+
 .img-profile{
     border-radius: 50%;
     width: 10px;

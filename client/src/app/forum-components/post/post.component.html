@@ -1,7 +1,7 @@
     <div class = "post row-12">
       <div class = "row">
         <div class="col-md-12">
-          <div class="row post">
+          <div class="row post-internal">
             <div class="col-md-1">
               <div class="d-flex flex-column votebox">
                 <div class="p-2">
@@ -34,45 +34,47 @@
                 <div>
                   <p class="post-text">{{post.Content}}</p>
                 </div>
+
+                
               </div>
               
         </div>
         </div>
 
-        <div *ngIf="post.imageLocation != 'N/A'" style="text-align: center;">
+        <!-- <div *ngIf="post.imageLocation != 'N/A'" style="text-align: center;">
           <img src="{{post.imageLocation}}" class = "postImage" alt="">
-        </div>
+        </div> -->
 
+<div class="row pb-2">
+  <div class="col-1">
 
-          <div class="col-2">
-                  <button mat-flat-button>
-                    <span class="material-symbols-outlined">
-                      mode_comment
-                      </span>
-                      Comments
-                  </button>
-                </div>
-        
-         <div class="col-2">
-          <button mat-flat-button>
-            <span class="material-symbols-outlined">
-              google_plus_reshare
-              </span>
-              Share
-          </button>
+  </div>
+  <div class="col-11">
+    <div class="d-flex flex-row">
+      <button mat-flat-button>
+        <span class="material-symbols-outlined">
+          mode_comment
+          </span>
+          Comments
+      </button>
+
+      <button mat-flat-button> <span class="material-symbols-outlined">
+        google_plus_reshare</span>
+        Share
+      </button>
+      <button mat-flat-button>
+      <span class="material-symbols-outlined">
+        bookmark
+        </span>
+        Save
+      </button>
         </div>
-        <div class="col-2">
-          <button mat-flat-button>
-            <span class="material-symbols-outlined">
-              bookmark
-              </span>
-              Save
-          </button>
-        </div>
- </div>
-       
-        
-       
+      </div>
+                
+      </div>
+      </div>
+              
+            
 
         
         <!-- <div class = "row">
