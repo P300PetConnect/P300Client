@@ -49,14 +49,14 @@
             </div>
             <div class=" pt-4 user-search md-inline-form">
               <div class="row">
-                <mat-form-field class="col-4" appearance="outline">
+                <mat-form-field class="col-lg-4" appearance="outline">
                   <mat-label>Where would you like the service?</mat-label>
                   <input matInput placeholder="N. Street " #location>
                 </mat-form-field>
 
                 <!-- Just add *ngIf="isActive" to control the calendar types -->
 
-                <mat-form-field class="col-3 col-sx-12"  appearance="outline">
+                <mat-form-field class="col-lg-3 col-sx-12"  appearance="outline">
                   <mat-label>When?</mat-label>
                   <mat-date-range-input [rangePicker]="picker">
                     <input matStartDate matInput placeholder="Start date">
@@ -66,7 +66,7 @@
                   <mat-date-range-picker #picker></mat-date-range-picker>
                 </mat-form-field>
                 <!-- <mat-form-field class="col-3" appearance="outline"> -->
-                  <mat-form-field class="col-3" appearance="outline">
+                  <mat-form-field class="col-lg-3" appearance="outline">
                     <mat-label>Pet Type</mat-label>
                     <mat-select [formControl]="category" multiple (selectionChange)="changePet($event.value)">
                       <mat-select-trigger>
@@ -106,12 +106,12 @@
     <div class="row">
       <h1 class="text-center mb-3 pb-3">See more details of our services</h1>
       <div class="row">
-        <div class="col-6 mt-4 services">
+        <div class="col-lg-6 mt-4 services">
           <div class="row">
-            <div class="col-2">
+            <div class="col-lg-2">
               <img class="icon-sleepover" src="../../../assets/images/home/boarding-selected.svg" alt="">
             </div>
-            <div class="col-10">
+            <div class="col-lg-10">
               <div class="row">
                 <div class="col-12">
                   <h6>Sitting &nbsp; <a class="link-more">see more ></a></h6>
@@ -124,10 +124,10 @@
             </div>
           </div>
           <div class="row mt-4">
-            <div class="col-2">
+            <div class="col-lg-2">
               <img class="icon-sleepover" src="../../../assets/images/home/walk-selected.svg" alt="">
             </div>
-            <div class="col-10">
+            <div class="col-lg-10">
               <div class="row">
                 <div class="col-12">
                   <h6>Walking &nbsp;<a class="link-more">see more ></a></h6>
@@ -139,10 +139,10 @@
             </div>
           </div>
           <div class="row mt-4">
-            <div class="col-2">
+            <div class="col-lg-2">
               <img class="icon-sleepover" src="../../../assets/images/home/daycare-selected.svg" alt="">
             </div>
-            <div class="col-10">
+            <div class="col-lg-10">
               <div class="row">
                 <div class="col-12">
                   <h6>Grooming &nbsp; <a class="link-more">see more ></a></h6>
@@ -154,10 +154,10 @@
             </div>
           </div>
           <div class="row mt-4">
-            <div class="col-2">
+            <div class="col-lg-2">
               <img class="icon-sleepover" src="../../../assets/images/home/petsitting-selected.svg" alt="">
             </div>
-            <div class="col-10">
+            <div class="col-lg-10">
               <div class="row">
                 <div class="col-12">
                   <h6>Just feed<a class="link-more"> &nbsp;  see more ></a></h6>

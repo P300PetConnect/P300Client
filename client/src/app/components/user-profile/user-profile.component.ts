@@ -73,33 +73,36 @@ export class UserProfileComponent implements OnInit {
   };
   
   ngOnInit(): void {
+
     if(this.userGroup == eUserGroup.PetOwner){
-    this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
-    this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
+    // this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
+    // this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
     localStorage.setItem('chatUserName', this.user?.emailAddress);
 
-    if(!this.petOwner){
+    // if(!this.petOwner.emailAddress){
       this.getPetOwner(); 
       this.getPetDetails();
-    }
+    // }
     }
     else if(this.userGroup == eUserGroup.PetSitter){
-    this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
-    this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
-    this.reviews = JSON.parse(localStorage.getItem('reviews')); 
+      console.log('PetSitter',this.petSitter);
+
+    // this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+    // this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
+    // this.reviews = JSON.parse(localStorage.getItem('reviews')); 
 
     // get orders for schedule 
-    this.GetOrders(this.petSitter.petSitterId);
-    this.GetnotAvailable(this.petSitter.id);
+    this.GetOrders(this.petSitter?.petSitterId);
+    this.GetnotAvailable(this.petSitter?.id);
 
     this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
-    if (!this.petSitter) {
+    // if (this.petSitter.emailAddress==null) {
       this.getPetSitter().then(() => {
         this.getServices();
         this.getReviews();
       });
-    }
+    // }
     }
     
   }
@@ -123,12 +126,12 @@ export class UserProfileComponent implements OnInit {
   }
 
   async getPetOwner(){
-  console.log(localStorage.getItem('PetOwner')); 
+  // console.log(localStorage.getItem('PetOwner')); 
   console.log('I am here, requestiong petowner data for the first time')
   try {
   const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
   this.petOwner= petOwner;
-  localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
+  // localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
 
    } catch (error) {
      console.error(error);
@@ -138,7 +141,7 @@ export class UserProfileComponent implements OnInit {
     try{
       const petSitter = await this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
-        localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
+        // localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
         this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
     }catch (error) {
       console.error(error);
@@ -149,7 +152,7 @@ export class UserProfileComponent implements OnInit {
       try{
         const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
         this.petDetails = petDetails; 
-        localStorage.setItem('petDetails', JSON.stringify(this.petDetails)); 
+        // localStorage.setItem('petDetails', JSON.stringify(this.petDetails)); 
         console.log(petDetails)
        }catch (error) {
         console.error(error);
@@ -161,7 +164,7 @@ async getServices() {
       (value: ServiceInterface[]) => this.serviceList = value,
       (mess) => this.message = mess
     ).finally(() => console.log('Services finished'));
-    localStorage.setItem('serviceList', JSON.stringify(this.serviceList)); 
+    // localStorage.setItem('serviceList', JSON.stringify(this.serviceList)); 
     console.log('pet sitter service ', this.serviceList); 
   } catch (error) {
     console.error(error);
