@@ -83,8 +83,7 @@
   }
 
   .newpost{
-    // --post-line-color: #ccc;    
-    border: 1px solid #ccc;
+    // --post-line-color: #ccc;  
     margin-top: 10px;
     margin-bottom: 10px;
     overflow: hidden;
@@ -132,7 +131,9 @@
 
 
   .test{
+    // background: rgba(145, 156, 156, 0.333);
     background: rgba(199, 215, 215, 0.144);
+
   }
 
 
@@ -185,4 +186,9 @@
     font-weight: 500;
     line-height: 20px;
     color: #1c1c1c;
+}
+
+.poststest{
+background: rgb(247,249,249);
+padding: 0px;
 }
