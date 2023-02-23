@@ -22,53 +22,95 @@
   </div>
 </div>
 
+<!-- CREATE POST CLASSIFICATION-->
+<!-- Best | Hot  | New  | Top -->
 
-<!-- Posts -->
 <div class="container">
   <div class="row">
-    <hr />
+    <hr/>
     <div class="col-md-9">
-      <div class="row post">
-        <div class="col-md-1">
-          <div class="col-md-1">
-            <div class="d-flex flex-column votebox">
-            <div class="p-2">
-              <i class="bi bi-arrow-up"></i>
-            </div>
-            <div class="p-2 votecount">42</div>
-            <div class="p-2">
-              <i class="bi bi-arrow-down"></i>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="col-md-11">
-          <span>
-            <span class="subreddit-text"><a class="post-url" href="">{{post.subredditName}}</a></span>
-            <span> . Posted
-              <span> {{post.duration}} </span>
-              by              
-              <a class="username" href="">{{post.userName}}</a>
-            </span>
-          </span>
-          <hr />
-          <a routerLink="post.url" class="post-title">{{post.postName}}</a>
-          <div>
-            <p class="post-text" [innerHtml]="post.description"></p>
-          </div>
-          <div class="post-comment">
-            <form>
-              <div class="form-group">
-                <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>
+      <div class="row newpost pt-2 pb-2">
+        <div class="col-md-12">
+          <mat-tab-group mat-stretch-tabs (selectedTabChange)="SetTabIndex($event)">
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">rocket</mat-icon>
+                <span>Best</span>
+              </ng-template>
+              <div>
+                  <div *ngFor="let b of boards;" class="pt-3">
+                    <!-- <h5>{{b[0].boardTitle}}</h5> -->
+                    <p>{{b[0].description}}</p>
+                  </div>
+   
               </div>
-              <button type="submit" class="login float-right">Comment</button>
-            </form>
-          </div>
+            </mat-tab>
+            
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">local_fire_department</mat-icon>
+                <span>Hot</span>
+              </ng-template>
+              <div style="padding: 0 6%;">
+                <div class = "boardIntro">
+                  <div *ngFor="let b of boards;">
+                    <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
+                    <p>{{b[0].description}}</p>
+                  </div>
+                  <div style="text-align: center;">
+                    <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">arrow_upward</mat-icon>
+                <span>Top</span>
+              </ng-template>
+              <div style="padding: 0 6%;">
+                <div class = "boardIntro">
+                  <div *ngFor="let b of boards;">
+                    <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
+                    <p>{{b[0].description}}</p>
+                  </div>
+                  <div style="text-align: center;">
+                    <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
+                  </div>
+                </div>
+              </div>
+              
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <span class="btn-tab">Today</span>
+              </ng-template>
+              <div style="padding: 0 6%;">
+                <div class = "boardIntro">
+                  <div *ngFor="let b of boards;">
+                    <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
+                    <p>{{b[0].description}}</p>
+                  </div>
+                  <div style="text-align: center;">
+                    <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
         </div>
+
+        <div *ngFor="let d of posts[0]">
+          <app-post [post]="d" ></app-post>
+         </div>
+         
       </div>
-    </div>
-    <div class="col-md-3">
-    </div>
+      <!-- <div *ngFor="let d of posts[0]">
+        <app-post [post]="d" ></app-post>
+       </div>
+    </div> -->
+<!-- Posts -->
+
   </div>
 </div>
 
@@ -168,9 +210,6 @@
     <div class="addPost" *ngIf = "showAddPost">
       <app-add-post [boards] = "boards" (GetForumPosts) = "GetForumPosts($event)"></app-add-post>
     </div>
-
-  
-    
       <hr>
       <div *ngFor="let d of posts[0]">
        <app-post [post]="d" ></app-post>
