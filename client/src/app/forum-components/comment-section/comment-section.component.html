@@ -1,4 +1,4 @@
-<!-- <div>
+<div>
     <div class = "row">
         <hr>
         
@@ -37,85 +37,4 @@
             </div>
         </div>
 </form>
-</div> -->
-
-
-<!-- Responsive code -->
-
-<div>
-    <div class="coment-bottom bg-white p-2 px-4">
-     
-
-        <div class="container row" *ngFor="let c of comments">
-        <div class="commented-section mt-2">
-            <div class="d-flex flex-row align-items-center commented-user">
-                <h5 class="mr-2">username</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{c.date}}</span>
-            </div>
-            <div class="comment-text-sm"><span>{{c.comment}}</span></div>
-            <div class="reply-section">
-                <div class="d-flex flex-row align-items-center voting-icons"><i
-                        class="bi bi-caret-up-fill fa-2x mt-3 hit-voting" (click)="AddVote(c)"></i><i
-                        class="bi bi-caret-down-fill fa-2x mb-3 hit-voting" (click)="RemoveVote(c)"></i><span class="ml-2">{{c.voteCount}}</span><span
-                        class="dot ml-2"></span>
-                    <h6 class="ml-2 mt-1">Reply</h6>
-                </div>
-            </div>
-        </div>
-    </div>
-        <!-- End of container -->
-        
-
-        <form #myForm="ngForm" class="commentFooter">
-            <div class="d-flex flex-row add-comment-section mt-4 mb-4">
-                <img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/qdiP4DB.jpg" width="38">
-                <input type="text" class="form-control mr-3" placeholder="Add comment" #comment>
-                <button class="btn btn-primary" type="button" (click)="PushComment(comment.value, myForm); comment.value = '' ">Comment</button>
-            </div>
-        </form>
-    
-    </div>
-
-    <!-- <div class = "row">
-        <hr>
-        
-        <div class = "col commentBox" *ngIf="comments.length > 0" >
-            <div *ngFor="let c of comments"> 
-                <div class ="comment">
-               
-                    <h6>{{c.date}}</h6>
-                  
-                    <p>{{c.comment}}</p>
-               
-                <div class = "row commentFooter" >
-                    <div class = "like col">
-                        <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(c)">
-                        <p class = "beside" style="margin-right: 10px;">{{c.voteCount}}</p>
-                        <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(c)">
-                    </div>
-                   </div>
-                </div>
-            </div>
-            
-        </div>
-    </div> -->
-
-
-
-    <!-- End comment section -->
-
-    <!-- <form #myForm="ngForm" class="commentFooter">
-        <div class="row" class="commentForm">
-            <div class="col">
-                <div class="form-group">
-                    <textarea type="content" class="form-control" placeholder="Comment" #comment></textarea>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <button class="btn btn-secondary"
-                    (click)="PushComment(comment.value, myForm); comment.value = '' ">Post</button>
-            </div>
-        </div>
-    </form> -->
 </div>

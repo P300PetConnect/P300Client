@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <div style="padding: 0px;" class = "wallContainer">
+  <div class = "wallContainer">
     <mat-tab-group mat-stretch-tabs (selectedTabChange)="SetTabIndex($event)">
       <mat-tab  label="All Posts" >
         <div style="padding: 0 6%;">
@@ -100,24 +100,11 @@
 
   
     
-      <!-- <hr>
+      <hr>
       <div *ngFor="let d of posts[0]">
        <app-post [post]="d" ></app-post>
       </div>
-        <hr> -->
-
-
-        <!-- Abdul trying -->
         <hr>
-        <!-- Add row class  and added div with container class , posts-content-->
-        <div style="margin-left: 0px;margin-right: 0%;"  class="container posts-content row  ">
-  
-        
-        <div class="col-lg-4 col-md-6 col-sm-12   justify-content-center" *ngFor="let d of posts[0]">
-         <app-post class="" [post]="d" ></app-post>
-        </div>
-      </div>
-          <hr>
    </div>
   
   
