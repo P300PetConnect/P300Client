@@ -95,89 +95,8 @@
                 
       </div>
       </div>
-
-        
-        <!-- <div class = "row">
-          <h5>{{post.PostTitle}}</h5>
-        </div>
-          <div class = "row">
-            <h6>{{post.Date}}</h6>
-          </div>
-          
-          <div class = "col-12">
-           <p>{{post.Content}}</p> 
-          </div>
-          
-
-        </div>
-        <div class = "row postFooter" >
-          <div class = "like col">
-              <img src="../../../assets/images/Uparrow.png" class = "beside" alt="" (click)="AddVote(post)">
-              <p class = "beside" style="margin-right: 10px;">{{post.VoteCount}}</p>
-              <img src="../../../assets/images/downArrow.png" class = "beside" alt="" (click)="RemoveVote(post)">
-         </div>
-          <div class = "like col">
-          <img src="../../../assets/images/comment.png" alt="" (click)="DisplayComments(post)">
-          </div>
-          <div class = "like col">
-              <img src="../../../assets/images/share.png" alt="">
-              </div>
-        </div>
-        <div class = "row" *ngIf="post.DisplayComments">
-          <app-comment-section [docID]="post.PostID" [postData]="postData"></app-comment-section>
-        </div>  -->
-
         <div class = "row" *ngIf="post.DisplayComments">
           <app-comment-section [docID]="post.PostID" [postData]="postData"></app-comment-section>
         </div> 
         
     </div>
-
-<!-- <div class="container">
-    <div class="row">
-      <hr />
-      <div class="col-md-9">
-        <div class="row post">
-          <div class="col-md-1">
-            <div class="col-md-1">
-              <div class="d-flex flex-column votebox">
-              <div class="p-2">
-                <i class="bi bi-arrow-up"></i>
-              </div>
-              <div class="p-2 votecount">42</div>
-              <div class="p-2">
-                <i class="bi bi-arrow-down"></i>
-              </div>
-              </div>
-          </div>
-          </div>
-          <div class="col-md-11">
-            <span>
-              <span class="subreddit-text"><a class="post-url" href="">{{post?.Date}}</a></span>
-              <span>{{post?.PostTitle}}
-                <span> {{post?.duration}} </span>
-                by              
-                <a class="username" href="">{{post?.Date}}</a>
-              </span>
-            </span>
-            <hr />
-            <a routerLink="post.url" class="post-title">{{post?.Date}}</a>
-            <div>
-              <p class="post-text" [innerHtml]="post.description"></p>
-            </div>
-            <div class="post-comment">
-              <form>
-                <div class="form-group">
-                  <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>
-                </div>
-                <button type="submit" class="login float-right">Comment</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-      </div>
-    </div>
-  </div> -->
-
