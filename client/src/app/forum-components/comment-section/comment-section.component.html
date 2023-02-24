@@ -22,13 +22,15 @@
         <div class="row post-internal">
           <div class="col-md-1">
             <div class="d-flex flex-column votebox">
-              <div class="p-2">
-                <i class="bi bi-arrow-up"  (click)="AddVote(post)"></i>
-              </div>
-              <div class="p-2 votecount">{{c.voteCount}}</div>
-              <div class="p-2">
-                <i class="bi bi-arrow-down" (click)="RemoveVote(post)"></i>
-              </div>
+              <button mat-button>
+                <mat-icon (click)="AddVote(c)">arrow_upward</mat-icon>
+              </button>
+
+              <div class="p-2 postNum">{{c.voteCount}}</div>
+              <button mat-button>
+                <mat-icon  (click)="RemoveVote(c)">arrow_downward</mat-icon>
+              </button>
+
               </div>
             </div>
             <div class="col-md-11">
