@@ -5,14 +5,14 @@
             <div class="col-md-1">
               <div class="d-flex flex-column votebox">
                 <button mat-button>
-                  <mat-icon>arrow_upward</mat-icon>
+                  <mat-icon (click)="AddVote(post)">arrow_upward</mat-icon>
                 </button>
                 <div class="postNum">
                   <span>{{post.VoteCount}}</span>
                 </div>
 
                 <button mat-button>
-                  <mat-icon>arrow_downward</mat-icon>
+                  <mat-icon  (click)="RemoveVote(post)">arrow_downward</mat-icon>
                 </button>
                 </div>
               </div>
