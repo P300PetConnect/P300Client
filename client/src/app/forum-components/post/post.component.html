@@ -4,13 +4,16 @@
           <div class="row post-internal">
             <div class="col-md-1">
               <div class="d-flex flex-column votebox">
-                <div class="p-2">
-                  <i class="bi bi-arrow-up"  (click)="AddVote(post)"></i>
+                <button mat-button>
+                  <mat-icon>arrow_upward</mat-icon>
+                </button>
+                <div class="postNum">
+                  <span>{{post.VoteCount}}</span>
                 </div>
-                <div class="p-2 votecount">{{post.VoteCount}}</div>
-                <div class="p-2">
-                  <i class="bi bi-arrow-down" (click)="RemoveVote(post)"></i>
-                </div>
+
+                <button mat-button>
+                  <mat-icon>arrow_downward</mat-icon>
+                </button>
                 </div>
               </div>
               <div class="col-md-11">
@@ -68,13 +71,24 @@
         </span>
         Save
       </button>
-
-      <button mat-flat-button>
-        <span class="material-symbols-outlined">
-          more_horiz
-          </span>
-          
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_horiz</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>flag</mat-icon>
+            <span>Report</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>link</mat-icon>
+            <span>Copy link</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>visibility_off</mat-icon>
+            <span>Not interested in this</span>
+          </button>
+        </mat-menu>
+
 
         </div>
       </div>
