@@ -113,6 +113,10 @@
           <app-comment-section [docID]="post.PostID" [postData]="postData"></app-comment-section>
         </div>  -->
 
+        <div class = "row" *ngIf="post.DisplayComments">
+          <app-comment-section [docID]="post.PostID" [postData]="postData"></app-comment-section>
+        </div> 
+        
     </div>
 
 <!-- <div class="container">
