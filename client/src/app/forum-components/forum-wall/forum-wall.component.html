@@ -1,9 +1,6 @@
 
 <div class="test">
-
-
 <div class="container-xxl pt-5">
-<!-- WRITE A POST -->
 <div class="container">
   <div class="row">
     <hr/>
@@ -22,11 +19,9 @@
       </div>
 <!-- CREATE POST CLASSIFICATION-->
 <!-- Best | Hot  | New  | Top -->
-
 <div class="">
   <div class="">
     <hr/>
-    <!-- <div class="col-md-9"> -->
       <div class="row newpost">
         <div class="col-md-12" style="
         border: 1px solid #ccc;" >
@@ -38,8 +33,6 @@
               </ng-template>
               <div>
                   <div  class="pt-3">
-                    <!-- <h5>{{b[0].boardTitle}}</h5>
-                    <p>{{b[0].description}}</p> -->
                   </div>
    
               </div>
@@ -53,12 +46,7 @@
               <div style="padding: 0 6%;">
                 <div class = "">
                   <div *ngFor="let b of boards;"  class="pt-3">
-                    <!-- <h5 class = "boardTitle">{{b[0].boardTitle}}</h5> -->
-                    <!-- <p>{{b[0].description}}</p> -->
                   </div>
-                  <!-- <div style="text-align: center;">
-                    <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-                  </div> -->
                 </div>
               </div>
             </mat-tab>
@@ -70,12 +58,7 @@
               <div style="padding: 0 6%;">
                 <div class = "">
                   <div *ngFor="let b of boards;"  class="pt-3">
-                    <!-- <h5 class = "boardTitle">{{b[0].boardTitle}}</h5> -->
-                    <!-- <p>{{b[0].description}}</p> -->
                   </div>
-                  <!-- <div style="text-align: center;">
-                    <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-                  </div> -->
                 </div>
               </div>
               
@@ -85,16 +68,8 @@
                 <mat-icon class="example-tab-icon mr-1">today</mat-icon>
                 <span class="btn-tab">Today</span>
               </ng-template>
-              <!-- <div style="padding: 0 6%;"> -->
-    
                   <div *ngFor="let b of boards;"  class="pt-3">
-                    <!-- <h5 class = "boardTitle">{{b[0].boardTitle}}</h5> -->
-                    <!-- <p>{{b[0].description}}</p> -->
                   </div>
-                  <!-- <div style="text-align: center;">
-                    <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-                  </div> -->
-              <!-- </div> -->
             </mat-tab>
           </mat-tab-group>
         </div>
@@ -102,111 +77,8 @@
         <div *ngFor="let d of posts[0]" class="poststest">
           <app-post [post]="d" ></app-post>
          </div>
-         
       </div>
-      <!-- <div *ngFor="let d of posts[0]">
-        <app-post [post]="d" ></app-post>
-       </div>
-    </div> -->
-<!-- Posts -->
-  <!-- </div> -->
-
 </div>
-<!-- 
-  <div class = "wallContainer">
-    <mat-tab-group mat-stretch-tabs (selectedTabChange)="SetTabIndex($event)">
-      <mat-tab  label="All Posts" >
-        <div style="padding: 0 6%;">
-          <div class = "boardIntro">
-            <div *ngFor="let b of boards;">
-              <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-              <p>{{b[0].description}}</p>
-            </div>
-            <div style="text-align: center;">
-              <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-            </div>
-          </div>
-        </div>
-    
-      </mat-tab>
-      <mat-tab label="General">
-        <div style="padding: 0 6%;">
-          <div class = "boardIntro">
-            <div *ngFor="let b of boards;">
-              <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-              <p>{{b[0].description}}</p>
-            </div>
-            <div style="text-align: center;">
-              <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-            </div>
-          </div>
-        </div>
-      
-      </mat-tab>
-      <mat-tab label="Pet Help">
-        <div style="padding: 0 6%;">
-          <div class = "boardIntro">
-            <div *ngFor="let b of boards;">
-              <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-              <p>{{b[0].description}}</p>
-            </div>
-            <div style="text-align: center;">
-              <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-            </div>
-          </div>
-        </div>
-       
-      </mat-tab>
-      <mat-tab label="Walking Routes">
-        <div style="padding: 0 6%;">
-          <div class = "boardIntro">
-            <div *ngFor="let b of boards;">
-              <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-              <p>{{b[0].description}}</p>
-            </div>
-            <div style="text-align: center;">
-              <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-            </div>
-          </div>
-        </div>
-        
-      </mat-tab>
-      <mat-tab label="Questions">
-        <div style="padding: 0 6%;">
-          <div class = "boardIntro">
-            <div *ngFor="let b of boards;">
-              <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-              <p>{{b[0].description}}</p>
-            </div>
-            <div style="text-align: center;">
-              <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-            </div>
-          </div>
-        </div>
-      </mat-tab>
-      <mat-tab label="Reviews">
-        <div style="padding: 0 6%;">
-          <div class = "boardIntro">
-            <div *ngFor="let b of boards;">
-              <h5 class = "boardTitle">{{b[0].boardTitle}}</h5>
-              <p>{{b[0].description}}</p>
-            </div>
-            <div style="text-align: center;">
-              <button class="btn btn-secondary" (click)="toggleAddPost()">Add Post</button>
-            </div>
-          </div>
-        </div>
-       
-      </mat-tab>
-    </mat-tab-group>
-
-    <div class="addPost" *ngIf = "showAddPost">
-      <app-add-post [boards] = "boards" (GetForumPosts) = "GetForumPosts($event)"></app-add-post>
-    </div>
-      <hr>
-      <div *ngFor="let d of posts[0]">
-       <app-post [post]="d" ></app-post>
-      </div> -->
         <hr>
    </div>
   </div>
