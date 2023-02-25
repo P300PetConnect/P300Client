@@ -6,6 +6,8 @@ import { RdsUserServices } from 'src/app/search_service_interfaces/rds-user-serv
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 import { IPet } from '../interfaces/form';
 import { PetService } from '../service/pet.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PetComponent } from '../pet/pet.component';
 
 interface serviceCategory {
   value: string;
@@ -74,7 +76,7 @@ export class SearchVersion2Component implements OnInit {
  
  
 
-  constructor( public router: Router, public r : ActivatedRoute, public search : SearchServiceService,  private _petService:PetService,public authenticator: AuthenticatorService,) { }
+  constructor( public router: Router, public r : ActivatedRoute, public search : SearchServiceService, private dialog:MatDialog, private _petService:PetService,public authenticator: AuthenticatorService,) { }
 
   ngOnInit(): void {
 
@@ -135,7 +137,14 @@ export class SearchVersion2Component implements OnInit {
 
   }
   
-
+  AddNewPet(){
+        // this._userService.initializeFormGroup(); 
+        const dialogConfig = new MatDialogConfig(); 
+        dialogConfig.disableClose = false; 
+        dialogConfig.autoFocus = true; 
+        dialogConfig.width = "60%";
+        this.dialog.open(PetComponent, dialogConfig)
+  }
 
   seePetMinder(){
     this.router.navigate(['petsitterdetails'])

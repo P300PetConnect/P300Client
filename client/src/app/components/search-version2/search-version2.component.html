@@ -120,6 +120,9 @@
             <div  *ngFor="let pet of petDetails">
               <app-pet-card-view [pet]="pet"></app-pet-card-view>
               </div>
+              <div class="col-12">
+                <button class="btn btn-outline-secondary w-100 " (click)="AddNewPet()">Add a new Pet</button>
+               </div>
 
                         <!-- <mat-form-field appearance="outline">
                             <mat-label>Dog's Breed</mat-label>
