@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { RdsUserServices } from 'src/app/search_service_interfaces/rds-user-services';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { IPet } from '../interfaces/form';
+import { PetService } from '../service/pet.service';
 
 interface serviceCategory {
   value: string;
@@ -22,6 +25,7 @@ export class SearchVersion2Component implements OnInit {
 
   selected = "";
   reviewForm = false;
+  public petDetails:IPet[]; 
   
   serviceCategories: serviceCategory[] = [
     {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Accomodation'},
@@ -70,7 +74,7 @@ export class SearchVersion2Component implements OnInit {
  
  
 
-  constructor( public router: Router, public r : ActivatedRoute, public search : SearchServiceService) { }
+  constructor( public router: Router, public r : ActivatedRoute, public search : SearchServiceService,  private _petService:PetService,public authenticator: AuthenticatorService,) { }
 
   ngOnInit(): void {
 
@@ -80,6 +84,7 @@ export class SearchVersion2Component implements OnInit {
 
    this.SearchService(this.pet, this.location, this.service);
   // this.category['pet'].setValue(this.petCategory[2].viewValue);
+  this.getPetDetails(); 
   }
 
   SearchService(pet : string, location : string , service: string)
@@ -92,11 +97,6 @@ export class SearchVersion2Component implements OnInit {
       complete: () => console.log('Review service finished ' +  JSON.stringify((this.userServices))),
       error: (mess) => this.message = mess
     })
-
-   
-
-  
-
   }
 
   setLocation(loc: string)
@@ -104,6 +104,17 @@ export class SearchVersion2Component implements OnInit {
     this.location = loc;
     
   }
+
+  async getPetDetails(){
+    try{
+      const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
+      this.petDetails = petDetails; 
+      // localStorage.setItem('petDetails', JSON.stringify(this.petDetails)); 
+      console.log(petDetails)
+     }catch (error) {
+      console.error(error);
+    }
+}
 
   newSearchRequest(pet: string, service: string)
   {

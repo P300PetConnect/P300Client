@@ -88,7 +88,6 @@ images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
       this.thirdIsActive=false; 
       this.fourthIsActive = false; 
       this.sleepOver = false; 
-
       this.service = 'Grooming'
 }
 else if(id==3){
@@ -102,7 +101,6 @@ else if(id==4){
   this.secondIsActive=false;
   this.thirdIsActive=false; 
   this.fourthIsActive = true; 
-
   this.service = 'Walk'
 }
   }
