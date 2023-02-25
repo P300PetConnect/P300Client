@@ -69,8 +69,6 @@ export class SearchVersion2Component implements OnInit {
   category= new FormControl({
     pet: new FormControl('test')
   });
-  // lat = 54.2792;
-  // lng = -8.471640;
   isMapsDisplay: boolean = false; 
 
 
@@ -105,17 +103,9 @@ export class SearchVersion2Component implements OnInit {
    this.pet = this.r.snapshot.paramMap.get('pet');
    this.getLatLng('11 glenard, ballinode')
    this.SearchService(this.pet, this.location, this.service);
-  // this.category['pet'].setValue(this.petCategory[2].viewValue);
   this.getPetDetails(); 
- //load Places Autocomplete
  this.mapsAPILoader.load().then(() => {
 });
-
-for (const user of this.userServices) {
-  console.log
-  const testAddress = this.getAddressByUser(user.Line_1+' '+user.Line_2+' '+user.County, user);
-  console.log('test addressssssssss', testAddress); 
-}
 
 
 }
@@ -135,7 +125,6 @@ getAddressByUser(address:string, PetSitter:any){
       lng: location.lng,
       draggable: true,
       content: PetSitter?.Name +' '+PetSitter?.Surname,
-      // iconUrl: "http://maps.google.com/mapfiles/ms/micons/blue-pushpin.png"
       iconUrl:'https://s3-images-web-ca2.s3.eu-west-1.amazonaws.com/Screenshot_2023-02-25_at_18.46.34-removebg-preview+(1).png'
 
     });
@@ -167,7 +156,6 @@ getAddressByUser(address:string, PetSitter:any){
     try{
       const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
       this.petDetails = petDetails; 
-      // localStorage.setItem('petDetails', JSON.stringify(this.petDetails)); 
       console.log(petDetails)
      }catch (error) {
       console.error(error);
@@ -176,8 +164,6 @@ getAddressByUser(address:string, PetSitter:any){
 
   newSearchRequest(pet: string, service: string)
   {
-    //needs ro be refactored here// 
-    
     this.SearchService(pet, this.location, service);
   }
   
@@ -203,7 +189,6 @@ getAddressByUser(address:string, PetSitter:any){
   }
   
   AddNewPet(){
-        // this._userService.initializeFormGroup(); 
         const dialogConfig = new MatDialogConfig(); 
         dialogConfig.disableClose = false; 
         dialogConfig.autoFocus = true; 
@@ -212,7 +197,6 @@ getAddressByUser(address:string, PetSitter:any){
   }
   public getLatLng(address: string): Observable<any> {
     const url = `${this.GEOCODING_API_URL}?address=${encodeURIComponent(address)}&key=AIzaSyCz-Nu0ku-0DJEe5iPt13RTq0QVpiz45AY`;
-    console.log('tessst', url); 
 
     return this.http.get(url).pipe(
       map(response => {
