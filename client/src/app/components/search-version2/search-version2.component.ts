@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
@@ -8,6 +8,11 @@ import { IPet } from '../interfaces/form';
 import { PetService } from '../service/pet.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PetComponent } from '../pet/pet.component';
+import { MapsAPILoader } from '@agm/core';
+import { GeocodingService } from '../geocoding.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 interface serviceCategory {
   value: string;
@@ -28,7 +33,9 @@ export class SearchVersion2Component implements OnInit {
   selected = "";
   reviewForm = false;
   public petDetails:IPet[]; 
-  
+  public lat: number[] = [];
+  public lng: number[] = [];
+
   serviceCategories: serviceCategory[] = [
     {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Accomodation'},
     {value: '../../../assets/images/home/walk-selected.svg', viewValue: 'Walk'},
@@ -46,7 +53,8 @@ export class SearchVersion2Component implements OnInit {
   petsize = new FormControl('');
   petsizeList: string[] = ['up to 5 kg', '5-10 kg', '10-20 kg', '20-40 kg', '+40kg'];
 
-  
+  private readonly GEOCODING_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+
 
 
   petCategory: petCategory[] = [
@@ -60,8 +68,8 @@ export class SearchVersion2Component implements OnInit {
   category= new FormControl({
     pet: new FormControl('test')
   });
-  lat = 54.2792;
-  lng = -8.471640;
+  // lat = 54.2792;
+  // lng = -8.471640;
   isMapsDisplay: boolean = false; 
 
 
@@ -76,18 +84,40 @@ export class SearchVersion2Component implements OnInit {
  
  
 
-  constructor( public router: Router, public r : ActivatedRoute, public search : SearchServiceService, private dialog:MatDialog, private _petService:PetService,public authenticator: AuthenticatorService,) { }
+  constructor( public router: Router,   private http: HttpClient,  private mapsAPILoader: MapsAPILoader,private geoCodingService: GeocodingService,
+    private ngZone: NgZone, public r : ActivatedRoute, public search : SearchServiceService, private dialog:MatDialog, private _petService:PetService,public authenticator: AuthenticatorService,) { }
 
   ngOnInit(): void {
 
    this.service = this.r.snapshot.paramMap.get('service');
    this.location = this.r.snapshot.paramMap.get('location');
    this.pet = this.r.snapshot.paramMap.get('pet');
-
+   this.getLatLng('11 glenard, ballinode')
    this.SearchService(this.pet, this.location, this.service);
   // this.category['pet'].setValue(this.petCategory[2].viewValue);
   this.getPetDetails(); 
-  }
+ //load Places Autocomplete
+ this.mapsAPILoader.load().then(() => {
+});
+
+for (const user of this.userServices) {
+  console.log
+  const testAddress = this.getAddressByUser(user.Line_1+' '+user.Line_2+' '+user.County);
+  console.log('test addressssssssss', testAddress); 
+}
+
+
+}
+
+
+getAddressByUser(address:string){
+  this.getLatLng(address).subscribe((location) => {
+    this.lat.push(location.lat);
+    this.lng.push(location.lng); 
+    console.log('latitude', this?.lat); 
+    console.log(this?.lng);
+  });
+}
 
   SearchService(pet : string, location : string , service: string)
   {
@@ -99,6 +129,7 @@ export class SearchVersion2Component implements OnInit {
       complete: () => console.log('Review service finished ' +  JSON.stringify((this.userServices))),
       error: (mess) => this.message = mess
     })
+
   }
 
   setLocation(loc: string)
@@ -133,6 +164,10 @@ export class SearchVersion2Component implements OnInit {
     }
     else{
       this.isMapsDisplay = true; 
+      this.userServices.forEach(element => {
+        this.getAddressByUser(element?.Line_1 + ' '+element?.Line_2 + ' '+element?.County)
+        console.log('full address', element?.Line_1 + ' '+element?.Line_2 + ' '+element?.County)
+      });
     }
 
   }
@@ -145,7 +180,22 @@ export class SearchVersion2Component implements OnInit {
         dialogConfig.width = "60%";
         this.dialog.open(PetComponent, dialogConfig)
   }
+  public getLatLng(address: string): Observable<any> {
+    const url = `${this.GEOCODING_API_URL}?address=${encodeURIComponent(address)}&key=AIzaSyCz-Nu0ku-0DJEe5iPt13RTq0QVpiz45AY`;
+    console.log('tessst', url); 
 
+    return this.http.get(url).pipe(
+      map(response => {
+        const result = response['results'][0];
+        const location = result?.geometry?.location;
+        return {
+          lat: location?.lat,
+          lng: location?.lng
+        };
+      })
+    );
+  }
+  
   seePetMinder(){
     this.router.navigate(['petsitterdetails'])
   }

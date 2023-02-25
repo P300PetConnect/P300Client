@@ -99,11 +99,16 @@
   </div>
   <div class="row">
         <div class="col-4">
-            <div *ngIf="isMapsDisplay">
-                <agm-map [latitude]="lat" [longitude]="lng">
-                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                  </agm-map>
+          <div *ngIf="isMapsDisplay">
+            <div>
+              <agm-map [latitude]="lat[0]" [longitude]="lng[0]" [zoom]="13">
+                <agm-marker  *ngFor="let l of lat;let indexOfelement=index;"  [latitude]="lat[indexOfelement]" [longitude]="lng[indexOfelement]"></agm-marker>
+              </agm-map>
+              <!-- <agm-map [latitude]="54.2706" [longitude]="-8.4710" [zoom]="13" style="height: 40rem;"></agm-map> -->
+
             </div>
+         </div>
+              
           <div class="row"  *ngIf="!isMapsDisplay">
                 <div class="col-md-12 col-xl-12">
                   <div class="card mb-3">

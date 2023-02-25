@@ -162,7 +162,7 @@ import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.c
 
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY,
-      libraries: ['places']
+      libraries: ['places', 'geometry']
     }),
   ],
   providers: [
