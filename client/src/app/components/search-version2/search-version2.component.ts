@@ -13,6 +13,7 @@ import { GeocodingService } from '../geocoding.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { IPetSitter } from '../interfaces/users';
 
 interface serviceCategory {
   value: string;
@@ -81,9 +82,19 @@ export class SearchVersion2Component implements OnInit {
   showOther = false;
   message: any;
   userServices:RdsUserServices[] = [];
- 
- 
 
+  markers: any[] = [
+    {
+      lat: 51.673858,
+      lng: 7.815982,
+      label: "A",
+      draggable: true,
+      content: "InfoWindow content",
+      color: "#FFFFFF",
+      iconUrl: "http://maps.google.com/mapfiles/ms/micons/gas.png"
+    }
+
+  ]
   constructor( public router: Router,   private http: HttpClient,  private mapsAPILoader: MapsAPILoader,private geoCodingService: GeocodingService,
     private ngZone: NgZone, public r : ActivatedRoute, public search : SearchServiceService, private dialog:MatDialog, private _petService:PetService,public authenticator: AuthenticatorService,) { }
 
@@ -102,7 +113,7 @@ export class SearchVersion2Component implements OnInit {
 
 for (const user of this.userServices) {
   console.log
-  const testAddress = this.getAddressByUser(user.Line_1+' '+user.Line_2+' '+user.County);
+  const testAddress = this.getAddressByUser(user.Line_1+' '+user.Line_2+' '+user.County, user);
   console.log('test addressssssssss', testAddress); 
 }
 
@@ -110,13 +121,27 @@ for (const user of this.userServices) {
 }
 
 
-getAddressByUser(address:string){
+getAddressByUser(address:string, PetSitter:any){
+  console.log(PetSitter); 
+
   this.getLatLng(address).subscribe((location) => {
     this.lat.push(location.lat);
     this.lng.push(location.lng); 
     console.log('latitude', this?.lat); 
     console.log(this?.lng);
+
+    this.markers.push({
+      lat: location.lat,
+      lng: location.lng,
+      draggable: true,
+      content: PetSitter?.Name +' '+PetSitter?.Surname,
+      // iconUrl: "http://maps.google.com/mapfiles/ms/micons/blue-pushpin.png"
+      iconUrl:'https://s3-images-web-ca2.s3.eu-west-1.amazonaws.com/Screenshot_2023-02-25_at_18.46.34-removebg-preview+(1).png'
+
+    });
   });
+  console.log('markes', this?.markers); 
+
 }
 
   SearchService(pet : string, location : string , service: string)
@@ -163,9 +188,13 @@ getAddressByUser(address:string){
       this.isMapsDisplay = false; 
     }
     else{
+
       this.isMapsDisplay = true; 
+       this.lat = [];
+       this.lng= [];
+
       this.userServices.forEach(element => {
-        this.getAddressByUser(element?.Line_1 + ' '+element?.Line_2 + ' '+element?.County)
+        this.getAddressByUser(element?.Line_1 + ' '+element?.Line_2 + ' '+element?.County,element)
         console.log('full address', element?.Line_1 + ' '+element?.Line_2 + ' '+element?.County)
       });
     }
