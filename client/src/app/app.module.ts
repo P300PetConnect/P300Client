@@ -73,7 +73,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 //     userPoolWebCliendId:'1kvja59f1tthl9chrrjn59pgou', 
 //     AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
 
-
 import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
 import { PopServiceCardComponent } from './search_service_components/pop-service-card/pop-service-card.component';
 import { BottomInfoComponent } from './search_service_components/bottom-info/bottom-info.component';
@@ -145,6 +144,12 @@ import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.c
     MatMenuModule, 
     MatDialogModule,
     MatStepperModule,
+    BrowserModule,  
+      BrowserAnimationsModule,  
+      MatSliderModule, 
+      FormsModule,  
+      ReactiveFormsModule,
+
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

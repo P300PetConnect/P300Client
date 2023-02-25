@@ -13,7 +13,6 @@ import { GeocodingService } from '../geocoding.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { IPetSitter } from '../interfaces/users';
 
 interface serviceCategory {
   value: string;
