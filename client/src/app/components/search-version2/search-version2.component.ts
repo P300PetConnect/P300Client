@@ -91,7 +91,7 @@ export class SearchVersion2Component implements OnInit {
       draggable: true,
       content: "InfoWindow content",
       color: "#FFFFFF",
-      iconUrl: "http://maps.google.com/mapfiles/ms/micons/gas.png"
+      iconUrl: "https://s3-images-web-ca2.s3.eu-west-1.amazonaws.com/Screenshot_2023-02-25_at_18.46.34-removebg-preview+(1).png"
     }
 
   ]
@@ -192,6 +192,7 @@ getAddressByUser(address:string, PetSitter:any){
       this.isMapsDisplay = true; 
        this.lat = [];
        this.lng= [];
+       this.markers = []; 
 
       this.userServices.forEach(element => {
         this.getAddressByUser(element?.Line_1 + ' '+element?.Line_2 + ' '+element?.County,element)
