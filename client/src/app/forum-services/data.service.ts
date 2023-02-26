@@ -129,6 +129,7 @@ export class DataService {
             "Date": Item.Date,
             "DisplayComments": Item.DisplayComments,
             "VoteCount": Item.VoteCount,
+            "imageProfileUrl":Item.imageProfileUrl
   //
         }
         
