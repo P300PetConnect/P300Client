@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UserService } from '../service/user.service';
 import { IPetOwner } from '../interfaces/users';
+import { ConsoleLogger } from '@aws-amplify/core';
 
 interface serviceCategory {
   value: string;
@@ -136,15 +137,11 @@ getAddressByUser(address:string, PetSitter:any){
 
     });
   });
-  console.log('markes', this?.markers); 
-
 }
 
   SearchService(pet : string, location : string , service: string)
   {
-    
-    console.log(pet + '  ' + this.location + '  ' + service);
-
+  
     this.search.getServiceData(pet, location, service).subscribe({
       next: (value: RdsUserServices[] )=>this.userServices = value,
       complete: () => console.log('Review service finished ' +  JSON.stringify((this.userServices))),
@@ -160,15 +157,21 @@ getAddressByUser(address:string, PetSitter:any){
   }
 
   async getPetDetails(){
-    try{
-      const petDetails =  await this._petService.get_petdetails(this.petOwner?.emailAddress).toPromise()
-      this.petDetails = petDetails; 
-      console.log(petDetails)
-      localStorage.setItem('petOwnerPets', JSON.stringify(this.petDetails));
+    this.petDetails = JSON.parse(localStorage.getItem('petDetails'))
 
-     }catch (error) {
-      console.error(error);
-    }
+    if(!this.petDetails){
+      try{
+        const petDetails =  await this._petService.get_petdetails(this.petOwner?.emailAddress).toPromise()
+        this.petDetails = petDetails; 
+        console.log(petDetails)
+        localStorage.setItem('petDetails', JSON.stringify(this.petDetails));
+       }catch (error) {
+        console.error(error);
+      }
+     }
+     else{
+      this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
+     }
 }
 
   newSearchRequest(pet: string, service: string)
@@ -177,8 +180,6 @@ getAddressByUser(address:string, PetSitter:any){
   }
   
   async getPetOwner(){
-    // console.log(localStorage.getItem('PetOwner')); 
-    console.log('I am here, requestiong petowner data for the first time')
     try {
     const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
     this.petOwner= petOwner;

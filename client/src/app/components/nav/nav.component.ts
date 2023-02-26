@@ -49,7 +49,7 @@ export class NavComponent implements OnInit {
     localStorage.setItem('PetOwner', JSON.stringify(''));
     localStorage.setItem('PetSitter', JSON.stringify(''));
     localStorage.setItem('reviews', JSON.stringify(''));
-
+    localStorage.setItem('petDetails', JSON.stringify(''));
     
     this._router.navigate(['/login'])
     this._router.routeReuseStrategy. shouldReuseRoute = () => false;

@@ -14,7 +14,7 @@ import { UserService } from '../service/user.service';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { IPetCategory, EOrderStatus, EPaymentStatus } from '../interfaces/order';
 import { Router } from '@angular/router';
-import { IPetSitter } from '../interfaces/users';
+import { eUserGroup, IPetSitter } from '../interfaces/users';
 import { IPet } from '../interfaces/form';
 
 @Component({
@@ -35,7 +35,9 @@ export class OrderComponent implements OnInit {
       Price: new FormControl(''),
       PaymentStatus: new FormControl(''),
       PetSelected: new FormControl(''),
+      CreatedBy: new FormControl(''),
       // service: new FormControl('')
+
     });
 
 selectedPet = '';
@@ -46,18 +48,19 @@ selectedCategories: any;
   filteredpositivekeywordss: Observable<string[]>;
   positivekeywordss: string[] = ['morning walk'];
   allpositivekeywordss: string[] = ['Take care', 'Minder', 'Overnight', 'Feed'];
+  userGroup: string = localStorage.getItem('userGroup'); 
 
   @ViewChild('positivekeywordsInput') positivekeywordsInput: ElementRef<HTMLInputElement>;
   @ViewChild('Description') Description: ElementRef<HTMLInputElement>;
-
   @ViewChild('stepper')
+
   stepper: MatStepper;
   
   orderForm: FormGroup = new FormGroup({});
   message: string;
   petSitter: IPetSitter;
   serviceCategory: any[];
-  petCategory = JSON.parse(localStorage.getItem('petOwnerPets'));
+  petCategory = JSON.parse(localStorage.getItem('petDetails'));
   serviceSelected: any;
   petSelected: any;
   
@@ -68,15 +71,14 @@ selectedCategories: any;
       map((positivekeywords: string | null) => (positivekeywords ? this._filter(positivekeywords) : this.allpositivekeywordss.slice())),
       
     );
-    console.log('data of the petsitter and services', this.data);
   }
   ngOnInit(): void {
 
     this.serviceCategory= this.data?.serviceList;
-    console.log('petCategory', this.petCategory)
-
+    if(!this.petCategory){
+      console.log('TO DO: GET PETS BY PET OWNER WHEN THE LOCAL STORAGE IS EMPTY')
+    }
 this.getPetSitter(); 
-  
 }
 getPetSitter(){
   this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
@@ -132,8 +134,8 @@ add(event: MatChipInputEvent): void {
     return this.allpositivekeywordss.filter(positivekeywords => positivekeywords.toLowerCase().includes(filterValue));
   }
 
-  category= new FormControl('');
-  service=new FormControl(''); 
+  // category= new FormControl('');
+  // service=new FormControl(''); 
 
   onCancel(){
     const dialogConfig = new MatDialogConfig(); 
@@ -142,25 +144,20 @@ add(event: MatChipInputEvent): void {
     dialogConfig.width = "40%";
     dialogConfig.height = "31%";
     this.dialog.open(MessageAlertComponent, dialogConfig)
-    console.log(this.stepper.selectedIndex); 
   }
 
   changeService(value)
   {
-    console.log('what is this value?',value)
     let obj = JSON.parse(JSON.stringify(value));
     this.selectedCategories = obj[0]?.ServiceTitle;
     this.serviceSelected = value; 
-    console.log('check data structure', this.serviceSelected[0]?.ServiceID)
 
   }
   changePet(value)
   {
-    console.log('what is this value?',value)
     let obj = JSON.parse(JSON.stringify(value));
     this.selectedPet = obj[0]?.name;
     this.petSelected = value; 
-    console.log('check data  petSelected structure', this.petSelected[0]?.petId)
 
   }
   seeform(){
@@ -168,12 +165,20 @@ add(event: MatChipInputEvent): void {
   }
 
   onSubmit(){
+
   this.AddOrder.controls['ServiceID'].setValue(this.serviceSelected[0]?.ServiceID);
   this.AddOrder.controls['PetSitterID'].setValue(this.serviceSelected[0]?.PetSitterID);
   this.AddOrder.controls['PetOwnerID'].setValue(3);
   this.AddOrder.controls['Status'].setValue(EOrderStatus.Pendent); 
   this.AddOrder.controls['PaymentStatus'].setValue(EPaymentStatus.Pendent); 
   this.AddOrder.controls['PetSelected'].setValue(this.petSelected[0]?.petId);
+  if(this.userGroup== eUserGroup.PetOwner){
+    console.log('it is a pet owner'); 
+   this.AddOrder.controls['CreatedBy'].setValue(eUserGroup.PetOwner);
+  }
+  else if(this.userGroup== eUserGroup.PetSitter){
+    this.AddOrder.controls['CreatedBy'].setValue(eUserGroup.PetSitter);
+  }
 
   this.db.addOrder(this.AddOrder).subscribe({
     next: order => {
@@ -183,7 +188,6 @@ add(event: MatChipInputEvent): void {
     error: (err) => this.message = err
   });
   console.log('myfomr', this.AddOrder); 
-  console.log('check test',this.AddOrder?.value); 
 
 
   this._router.routeReuseStrategy. shouldReuseRoute = () => false;
