@@ -48,7 +48,6 @@ export class NavComponent implements OnInit {
     localStorage.setItem('userGroup', JSON.stringify(''));
     localStorage.setItem('PetOwner', JSON.stringify(''));
     localStorage.setItem('PetSitter', JSON.stringify(''));
-    localStorage.setItem('petOwner', JSON.stringify(''));
     localStorage.setItem('reviews', JSON.stringify(''));
 
     
