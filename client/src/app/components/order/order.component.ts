@@ -1,10 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable, startWith } from 'rxjs';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MessageAlertComponent } from '../message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
@@ -12,7 +12,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { OrderService } from '../service/order.service';
 import { UserService } from '../service/user.service';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import { IPetCategory, IServiceCategory, EOrderStatus, EPaymentStatus } from '../interfaces/order';
+import { IPetCategory, EOrderStatus, EPaymentStatus } from '../interfaces/order';
 import { Router } from '@angular/router';
 import { IPetSitter } from '../interfaces/users';
 
@@ -30,7 +30,7 @@ export class OrderComponent implements OnInit {
       OrderDate: new FormControl(''),
       Description: new FormControl(''),
       Status: new FormControl(''),
-      ServiceID: new FormControl(''), //input
+      ServiceID: new FormControl(''), 
       Price: new FormControl(''),
       PaymentStatus: new FormControl(''),
       category: new FormControl(''),
@@ -64,16 +64,20 @@ selectedCategories: any;
   orderForm: FormGroup = new FormGroup({});
   message: string;
   petSitter: IPetSitter;
+  serviceCategory: any[]; 
 
   constructor(private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
-    public authenticator: AuthenticatorService) { 
+    public authenticator: AuthenticatorService, @Inject(MAT_DIALOG_DATA) public data: any) { 
     this.filteredpositivekeywordss = this.positivekeywordsCtrl.valueChanges.pipe(
       startWith(null),
       map((positivekeywords: string | null) => (positivekeywords ? this._filter(positivekeywords) : this.allpositivekeywordss.slice())),
+      
     );
-
+    console.log('data of the petsitter and services', this.data);
   }
   ngOnInit(): void {
+
+    this.serviceCategory= this.data?.serviceList; 
 
 this.getPetSitter(); 
   
@@ -142,13 +146,18 @@ petCategory: IPetCategory[] = [
   {value: '../../../assets/images/home/daycare-selected.svg', viewValue: 'Fish'},
 
 ];
-serviceCategory: IServiceCategory[] = [
-  {value: '../../../assets/images/home/boarding-selected.svg', viewValue: '1'},
-  {value: '../../../assets/images/home/walk-selected.svg', viewValue: '2'},
-  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: '3'},
-  {value: '../../../assets/images/home/daycare-selected.svg', viewValue: '4'},
+// Get Services of the pet sitter selected 
+// Get the Pets Of the PetOwner Selected 
+// Get The Pet Owner Address 
+// Get The Payment 
 
-];
+// serviceCategory: IServiceCategory[] = [
+//   {value: '../../../assets/images/home/boarding-selected.svg', viewValue: '1'},
+//   {value: '../../../assets/images/home/walk-selected.svg', viewValue: '2'},
+//   {value: '../../../assets/images/home/daycare-selected.svg', viewValue: '3'},
+//   {value: '../../../assets/images/home/daycare-selected.svg', viewValue: '4'},
+
+// ];
 
   onCancel(){
     const dialogConfig = new MatDialogConfig(); 
@@ -160,12 +169,21 @@ serviceCategory: IServiceCategory[] = [
     console.log(this.stepper.selectedIndex); 
   }
 
+  changeService(value)
+  {
+    console.log('what is this value?',value)
+    let obj = JSON.parse(JSON.stringify(value));
+    this.selectedCategories = obj[0]?.ServiceTitle;
+    console.log('services selected: ', value[0]?.ServiceTitle, 'selected categories', this.selectedCategories); 
+  }
   changePet(value)
   {
+    console.log('what is this value?',value)
     let obj = JSON.parse(JSON.stringify(value));
     this.selectedPet = obj[0].viewValue;
-    console.log('services selected: ', this.service.value); 
+    console.log('services selected: ', this.service?.value); 
   }
+
 
   onSubmit(){
   console.log('check test',this.AddOrder?.value); 

@@ -24,16 +24,15 @@
               <div class="col-6 p-0">
                 <mat-form-field class="col-12" appearance="outline">
                   <mat-label>Select the service for this order:</mat-label>
-                  <mat-select  id="service" formControlName="service" 
-                   multiple (selectionChange)="changePet($event.value)">
+                  <mat-select  id="service" #service formControlName="service" 
+                   multiple (selectionChange)="changeService($event?.value)">
                     <mat-select-trigger>
-                      {{serviceCategory[0].viewValue || ''}}
+                      {{selectedCategories || ''}}
                       <span *ngIf="(service.value?.length || 0) > 1" class="example-additional-selection">
                         (+{{(service.value?.length || 0) - 1}} {{service.value?.length === 2 ? 'other' : 'others'}})
                       </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let service of serviceCategory" [value]="service.viewValue"
-                    >{{service.viewValue}}</mat-option>
+                    <mat-option *ngFor="let service of serviceCategory" [value]="service">{{service?.ServiceTitle}}</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
