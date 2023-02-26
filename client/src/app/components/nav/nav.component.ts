@@ -9,6 +9,7 @@ import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.
 import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
+import { IPetOwner } from '../interfaces/users';
 
 @Component({
   selector: 'app-nav',
@@ -21,6 +22,9 @@ export class NavComponent implements OnInit {
   public pet: IPet; 
   isLogout:boolean =false; 
   userInfor:any; 
+  PetOwner: IPetOwner;
+  userGroup: any;
+  PetSitter: any;
 
   constructor( public authenticator: AuthenticatorService, private readonly  _router: Router) {
     // Amplify.configure(awsExports);
@@ -29,6 +33,7 @@ export class NavComponent implements OnInit {
 
     console.log(this.authenticator.user); 
     this.userInfor =this.authenticator.user;  
+    this.PetOwner = JSON.parse(localStorage.getItem('PetOwner')); 
   }
 
 
@@ -39,6 +44,14 @@ export class NavComponent implements OnInit {
     this.isLogout = true; 
     this.authenticator?.signOut()
 
+    //Clean local storage
+    localStorage.setItem('userGroup', JSON.stringify(''));
+    localStorage.setItem('PetOwner', JSON.stringify(''));
+    localStorage.setItem('PetSitter', JSON.stringify(''));
+    localStorage.setItem('petOwner', JSON.stringify(''));
+    localStorage.setItem('reviews', JSON.stringify(''));
+
+    
     this._router.navigate(['/login'])
     this._router.routeReuseStrategy. shouldReuseRoute = () => false;
     this._router.onSameUrlNavigation = 'reload';

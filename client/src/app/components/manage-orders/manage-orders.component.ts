@@ -57,14 +57,23 @@ export class ManageOrdersComponent implements OnInit {
         // return false; 
     }
     else if(this.userGroup =="PetOwner"){
-      // this._httpUser.get_petowner(this.authenticator?.user?.attributes?.email).subscribe(
-        // async petOwner=>{
-          // this.petOwner = petOwner;
+
+      if(!this.petOwner?.petOwnerId){
+        this._httpUser.get_petowner(this.authenticator?.user?.attributes?.email).subscribe(
+        async petOwner=>{
+          this.petOwner = petOwner;
           const orders = await this._httpOrder.getOrderByUserPetOwnerView(this.petOwner?.petOwnerId).toPromise()
           this.orders = orders;
-          console.log('Pet Owner ID', this.petOwner?.petOwnerId); 
-        // }); 
-        // return false;
+          this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
+        }); 
+        return false;
+      }
+      else{
+        const orders = await this._httpOrder.getOrderByUserPetOwnerView(this.petOwner?.petOwnerId).toPromise()
+        this.orders = orders;
+        console.log('Pet Owner ID', this.petOwner?.petOwnerId); 
+      }
+      
     }
     
 }

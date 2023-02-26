@@ -13,6 +13,8 @@ import { GeocodingService } from '../geocoding.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { UserService } from '../service/user.service';
+import { IPetOwner } from '../interfaces/users';
 
 interface serviceCategory {
   value: string;
@@ -35,6 +37,7 @@ export class SearchVersion2Component implements OnInit {
   public petDetails:IPet[]; 
   public lat: number[] = [];
   public lng: number[] = [];
+  petOwner: IPetOwner; 
 
   petOwnerPets: any;
 
@@ -94,7 +97,7 @@ export class SearchVersion2Component implements OnInit {
     }
 
   ]
-  constructor( public router: Router,   private http: HttpClient,  private mapsAPILoader: MapsAPILoader,private geoCodingService: GeocodingService,
+  constructor( public router: Router,private _userService: UserService,   private http: HttpClient,  private mapsAPILoader: MapsAPILoader,private geoCodingService: GeocodingService,
     private ngZone: NgZone, public r : ActivatedRoute, public search : SearchServiceService, private dialog:MatDialog, private _petService:PetService,public authenticator: AuthenticatorService,) { }
 
   ngOnInit(): void {
@@ -104,7 +107,8 @@ export class SearchVersion2Component implements OnInit {
    this.pet = this.r.snapshot.paramMap.get('pet');
    this.getLatLng('11 glenard, ballinode')
    this.SearchService(this.pet, this.location, this.service);
-  this.getPetDetails(); 
+  this.getPetOwner(); 
+
  this.mapsAPILoader.load().then(() => {
 });
 }
@@ -157,7 +161,7 @@ getAddressByUser(address:string, PetSitter:any){
 
   async getPetDetails(){
     try{
-      const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
+      const petDetails =  await this._petService.get_petdetails(this.petOwner?.emailAddress).toPromise()
       this.petDetails = petDetails; 
       console.log(petDetails)
       localStorage.setItem('petOwnerPets', JSON.stringify(this.petDetails));
@@ -172,6 +176,19 @@ getAddressByUser(address:string, PetSitter:any){
     this.SearchService(pet, this.location, service);
   }
   
+  async getPetOwner(){
+    // console.log(localStorage.getItem('PetOwner')); 
+    console.log('I am here, requestiong petowner data for the first time')
+    try {
+    const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+    this.petOwner= petOwner;
+    localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
+    this.getPetDetails(); 
+
+     } catch (error) {
+       console.error(error);
+     }
+  }
 
 
   changed(){
