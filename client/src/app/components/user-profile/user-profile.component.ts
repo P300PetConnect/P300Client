@@ -161,7 +161,7 @@ export class UserProfileComponent implements OnInit {
 async getServices() {
   try{
     await this._httpService.getOtherServices(this.petSitter.id).toPromise().then(
-      (value: ServiceInterface[]) => this.serviceList = value,
+      (value: any[]) => this.serviceList = value,
       (mess) => this.message = mess
     ).finally(() => console.log('Services finished'));
     // localStorage.setItem('serviceList', JSON.stringify(this.serviceList)); 

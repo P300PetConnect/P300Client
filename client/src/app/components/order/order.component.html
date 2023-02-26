@@ -40,17 +40,15 @@
                 <mat-form-field class="col-12" appearance="outline">
                   <mat-label>Select the pet this order is for:</mat-label>
                   <mat-select 
-                  
-                  id="category" formControlName="category" 
-
+                  id="category" #category formControlName="category" 
                   multiple (selectionChange)="changePet($event.value)">
                     <mat-select-trigger>
-                      {{petCategory[0].viewValue || ''}}
+                      {{selectedPet || ''}}
                       <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
                         (+{{(category.value?.length || 0) - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
                       </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let category of petCategory" [value]="category.viewValue">{{category.viewValue}}</mat-option>
+                    <mat-option *ngFor="let category of petCategory" [value]="category">{{category?.name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -111,7 +109,7 @@
       
           </div>
           <div class="col-6 d-flex justify-content-end">
-            <button mat-button class="btn btn-primary" mat-button matStepperNext >Save & Continue</button>
+            <button mat-button class="btn btn-primary" mat-button matStepperNext (click)="seeform()" >Save & Continue</button>
           </div>
         </div>
       </div>
@@ -140,13 +138,13 @@
       <h6>Service:</h6>
     </div>
     <div class="col-6">
-      <p>Walk</p>
+      <p>{{this.selectedCategories}}</p>
     </div>
     <div class="col-6">
       <h6>Pets</h6>
     </div>
     <div class="col-6">
-      <p>Bob</p>
+      <p>{{this.selectedPet}}</p>
     </div>
       <div class="row pt-4">
         <div class="col-6">

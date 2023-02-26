@@ -214,11 +214,12 @@ onCreateOrder(){
   }
 
   getServices(id: number): boolean
-  {
+  { 
     this.service.getOtherServices(id).subscribe({
       next: (value: ServiceInterface[] )=> this.serviceList = value,
       complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
       error: (mess) => this.message = mess
+   
     })
     return false;
 

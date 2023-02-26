@@ -36,6 +36,8 @@ export class SearchVersion2Component implements OnInit {
   public lat: number[] = [];
   public lng: number[] = [];
 
+  petOwnerPets: any;
+
   serviceCategories: serviceCategory[] = [
     {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Accomodation'},
     {value: '../../../assets/images/home/walk-selected.svg', viewValue: 'Walk'},
@@ -105,8 +107,10 @@ export class SearchVersion2Component implements OnInit {
   this.getPetDetails(); 
  this.mapsAPILoader.load().then(() => {
 });
-
-
+}
+ngOnDestroy() {
+  // localStorage.setItem('petOwnerPets', JSON.stringify(''));
+  // localStorage.setItem('PetOwnerInformation', JSON.stringify('')); 
 }
 
 
@@ -156,6 +160,8 @@ getAddressByUser(address:string, PetSitter:any){
       const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
       this.petDetails = petDetails; 
       console.log(petDetails)
+      localStorage.setItem('petOwnerPets', JSON.stringify(this.petDetails));
+
      }catch (error) {
       console.error(error);
     }
