@@ -166,16 +166,18 @@
                       </h5>
                       <hr>
                     <div class="row text-left">
-                      <p>for which pet is this service?</p>
-        
+                 
+        <div *ngIf="petDetails.length > 0"> 
+          <p>for which pet is this service?</p>
             <div  *ngFor="let pet of petDetails">
               <app-pet-card-view [pet]="pet"></app-pet-card-view>
               </div>
-              <div class="col-12">
-                <button class="btn btn-outline-secondary w-100 " (click)="AddNewPet()">Add a new Pet</button>
-               </div>
-
-                        <!-- <mat-form-field appearance="outline">
+            </div>
+            <div class="col-12 pb-2">
+              <button class="btn btn-outline-secondary w-100 " (click)="AddNewPet()">Add a new Pet</button>
+             </div>
+            <div>
+                        <mat-form-field appearance="outline">
                             <mat-label>Dog's Breed</mat-label>
                             <mat-select>
                               <mat-option *ngFor="let food of petBreed" [value]="food.value">
@@ -183,8 +185,8 @@
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
-                         -->
-                        <!-- <mat-form-field appearance="outline">
+                        
+                        <mat-form-field appearance="outline">
                             <mat-label>Size of your Dog</mat-label>
                             <mat-select [formControl]="petsize" multiple>
                             <mat-select-trigger>
@@ -195,38 +197,42 @@
                             </mat-select-trigger>
                             <mat-option *ngFor="let petsize of petsizeList" [value]="petsize">{{petsize}}</mat-option>
                             </mat-select>
-                        </mat-form-field> -->
+                        </mat-form-field>
+
+                        <div class="text-muted text-left">
+                          <hr>
+                          <h5>Tell me more about your Pet</h5>
+                          <div class="row pt-4">
+                              <p>How long does your dog need to walk?</p>
+                              <div class="col-6 d-flex justify-content-end">
+                               <button class="btn btn-outline-secondary w-75 ">30 minutes</button>
+                              </div>
+                              <div class="col-6  d-flex justify-content-start">
+                                  <button class="btn btn-outline-secondary w-75">60 minutes</button>
+                              </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                         
+                              <p>Is your pet neutered?</p>
+                              <div class="col-6 d-flex justify-content-end">
+                               <button class="btn btn-outline-secondary w-75 ">Yes</button>
+                              </div>
+                              <div class="col-6  d-flex justify-content-start">
+                                  <button class="btn btn-outline-secondary w-75">No</button>
+                              </div>
+                          </div>
+                          <hr>
+                              <h5>Special care</h5>
+                              <mat-slide-toggle>oral medication</mat-slide-toggle>
+                              <mat-slide-toggle>medicine in injection</mat-slide-toggle>     
+                          <hr>
+                      </div>
+
                     </div>
 
-                      <div class="text-muted text-left">
-                        <hr>
-                        <!-- <h5>Tell me more about your Dog</h5> -->
-                        <div class="row pt-4">
-                            <p>How long does your dog need to walk?</p>
-                            <div class="col-6 d-flex justify-content-end">
-                             <button class="btn btn-outline-secondary w-75 ">30 minutes</button>
-                            </div>
-                            <div class="col-6  d-flex justify-content-start">
-                                <button class="btn btn-outline-secondary w-75">60 minutes</button>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                       
-                            <!-- <p>Is your pet neutered?</p>
-                            <div class="col-6 d-flex justify-content-end">
-                             <button class="btn btn-outline-secondary w-75 ">Yes</button>
-                            </div>
-                            <div class="col-6  d-flex justify-content-start">
-                                <button class="btn btn-outline-secondary w-75">No</button>
-                            </div> -->
-                        </div>
-                        <!-- <hr>
-                            <h5>Special care</h5>
-                            <mat-slide-toggle>oral medication</mat-slide-toggle>
-                            <mat-slide-toggle>medicine in injection</mat-slide-toggle>     
-                        <hr> -->
-                    </div>
+                     
+                  </div>
                     </div>
                   </div>
                 </div>
