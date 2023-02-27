@@ -48,7 +48,7 @@ export class AppComponent {
       this.petDetails = petDetails; 
       console.log(petDetails)
       localStorage.setItem('petDetails', JSON.stringify(this.petDetails));
-
+console.log('Pet Details', this.petDetails); 
      }catch (error) {
       console.error(error);
     }

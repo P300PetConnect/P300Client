@@ -118,7 +118,7 @@
       <a mat-button [matMenuTriggerFor]="beforeMenu" data-toggle="dropdown"
         class="nav-item nav-link dropdown-toggle user-action pt-4">
         <!-- It is temporary  just to presentation - TO DO remove local variables  -->
-          <img *ngIf="petSitter"  src="{{petSitter?.profilePicUrl}}" class="avatar" alt="Avatar" />
+          <img *ngIf="PetSitter"  src="{{PetSitter?.profilePicUrl}}" class="avatar" alt="Avatar" />
           <img  *ngIf="PetOwner" src="{{PetOwner?.profilePicUrl}}" class="avatar" alt="Avatar" />
           {{authenticator.user.attributes.name}}    {{authenticator.user.attributes.family_name}} <b class="caret"></b></a>
       <mat-menu #beforeMenu="matMenu" xPosition="before">

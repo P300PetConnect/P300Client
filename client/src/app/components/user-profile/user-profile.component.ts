@@ -87,9 +87,9 @@ export class UserProfileComponent implements OnInit {
     else if(this.userGroup == eUserGroup.PetSitter){
       console.log('PetSitter',this.petSitter);
 
-    // this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
-    // this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
-    // this.reviews = JSON.parse(localStorage.getItem('reviews')); 
+    this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+    this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
+    this.reviews = JSON.parse(localStorage.getItem('reviews')); 
 
     // get orders for schedule 
     this.GetOrders(this.petSitter?.petSitterId);
@@ -141,7 +141,7 @@ export class UserProfileComponent implements OnInit {
     try{
       const petSitter = await this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
-        // localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
+        localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
         this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
     }catch (error) {
       console.error(error);

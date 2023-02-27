@@ -35,7 +35,7 @@
                         (+{{(service.value?.length || 0) - 1}} {{service.value?.length === 2 ? 'other' : 'others'}})
                       </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let service of serviceCategory" [value]="service">{{service?.ServiceTitle}}</mat-option>
+                    <mat-option *ngFor="let service of serviceCategory" [value]="service">{{service?.ServiceTitle}} - Price: {{service?.StartingPrice}}€</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
