@@ -34,6 +34,7 @@ export class NavComponent implements OnInit {
     console.log(this.authenticator.user); 
     this.userInfor =this.authenticator.user;  
     this.PetOwner = JSON.parse(localStorage.getItem('PetOwner')); 
+    this.PetSitter = JSON.parse(localStorage.getItem('PetSitter')); 
   }
 
 
