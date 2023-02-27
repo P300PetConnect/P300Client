@@ -167,7 +167,7 @@
                       <hr>
                     <div class="row text-left">
                  
-        <div *ngIf="petDetails.length > 0"> 
+        <div *ngIf="petDetails"> 
           <p>for which pet is this service?</p>
             <div  *ngFor="let pet of petDetails">
               <app-pet-card-view [pet]="pet"></app-pet-card-view>
