@@ -65,6 +65,7 @@ amplifytools.xcconfig
 **.sample
 #amplify-do-not-edit-end
 
+<<<<<<< HEAD
 .DS_Store
 
 # remove .DS_Store file from GitHub that MAC OS X creates
@@ -80,3 +81,5 @@ echo .DS_Store > .gitignore
 git add .gitignore
 git commit -m '.DS_Store removed'
 git push origin master
+=======
+>>>>>>> a3bf37e (fixed aws credentials)
