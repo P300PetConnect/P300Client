@@ -22,6 +22,8 @@ export class UserService{
             catchError(this.hangleError)
         )
     
+        )
+    
         }
 
         get_petsitter(email): Observable<IPetSitter>{
