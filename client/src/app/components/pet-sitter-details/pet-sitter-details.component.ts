@@ -19,6 +19,10 @@ import { SearchServiceService } from 'src/app/search_service_services/search-ser
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
 import { OrderService } from '../service/order.service';
 import { INotAvailable, IOrderList } from '../interfaces/order';
+import { StreamChat, ChannelData, UserResponse, TokenProvider } from 'stream-chat';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-pet-sitter-details',
@@ -50,6 +54,12 @@ export class PetSitterDetailsComponent implements OnInit {
   notAvailble:INotAvailable[] = [];
   componentFlag = "searchProfile";
 
+
+  //start chat channel
+  private readonly apiKey = environment.stream.key;
+  private readonly user1Token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiam9hbm5hc21pdGhAZ21haWwifQ.m0LLSTgdE_iW9Xb_L8y8Z7x7nmXfsmuChE2k8LaoTHU'; // the token for pet owner
+  private readonly user2Token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiam9uZXNAZ21haWwifQ.CIVYsvWnafp9nm0cDmI40jmYuD1Nf6u4dWe-2pKk0GM'; // the token for pet sitter
+  private client: StreamChat;
 
   //weird 0 on data being returned, refactor get method in this class, get method in service
   
@@ -88,8 +98,9 @@ export class PetSitterDetailsComponent implements OnInit {
 
   constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
     private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute,
-     private service: SearchServiceService,private _order: OrderService) {
- 
+     private service: SearchServiceService,private _order: OrderService, private router: Router) {
+
+      this.client = new StreamChat(this.apiKey);
 
 
 
@@ -240,13 +251,38 @@ onCreateOrder(){
 
   num(n: number): Array<number> {
     //alert(n);
-     return Array(n);
-   }
+    return Array(n);
+  }
 
+  //create new chat
+  async startChatChannel() {
+    const user1Id = 'joannasmith@gmail'; //pet owner chatUserName
+    const user2Id = 'jones@gmail';//pet sitter chatUserName
 
+    const userTokenProvider: TokenProvider = async () => {
+      return this.user1Token;
+    };
+
+    await this.client.connectUser(
+      { id: user1Id },
+      userTokenProvider,
+    );
+
+    const channelData: ChannelData = {
+      members: [user1Id, user2Id],
+      name: 'my-new-channel',
+      created_by_id: user1Id,
+    };
+
+    const channel = this.client.channel('messaging', channelData);
+
+    await channel.create();
+
+    this.router.navigate(['/chat']);
+    console.log(channel);
+  }
 
 }
-
 /**
  *
  *  getPetDetails(){

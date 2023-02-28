@@ -8,7 +8,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MessageAlertComponent } from '../message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { OrderService } from '../service/order.service';
 import { UserService } from '../service/user.service';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
