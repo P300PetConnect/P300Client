@@ -1,10 +1,88 @@
-    <div class="row">
+    <div class="container">
       <div class="card">
         <div class="card-header">
           <div class="card-actions float-end">
             <div class="dropdown position-relative">
               <a href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" class="">
-                <!-- <i class="bi bi-x-lg"></i> -->
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <img class="col-1 img-thumbnail img-fluid" src="../../../assets/images/MicrosoftTeams-image (6).png" alt="">
+            <h5 class="col-11 card-title mt-2">Add New Pet</h5>
+          </div>
+        </div>
+        <div class="card-body">
+          <form action="" [formGroup]="addPetForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <div class="col-8">
+                <div class="row">
+                  <div class="col form-group">
+                    <label for="petName" class="form-label" style="display: block;">Name</label>
+                    <input type="text" formControlName="name" placeholder="pets name">
+                  </div>
+                  <div class="col form-group">
+                    <label for="petDob" class="form-label">Date of Birth</label>
+                    <input type="text" formControlName="dob" placeholder="2000-12-30">
+                  </div>
+                </div>
+                <div class="col form-group">
+                  <label for="description" class="form-label" style="display: block;">Description</label>
+                  <textarea class="form-control" rows="3" formControlName="description" id="inputBio" placeholder="Tell something about your pet"></textarea>
+                </div>
+              </div>
+      
+              <div class="col-4">
+                <div *ngIf="uploadedImageUrl">
+                  <img class="img-fluid mb-1" [src]="uploadedImageUrl" alt="Uploaded image">
+                </div>
+                <div *ngIf="!uploadedImageUrl">
+                  <img class="img-fluid mb-1" src="https://cdn.pixabay.com/photo/2013/04/01/21/30/photo-99135__480.png" alt="Uploaded image">
+                </div>
+                <div class="form-group">
+                  <input type="file" (change)="uploadImage($event.target.files[0])">
+                </div>
+              </div>
+            </div>
+    
+            <div class="col">
+              <div class="row">
+                <div class="col form-group">
+                  <label for="type" class="form-label" style="display: block;">Pet Type</label>
+                  <select class="form-select" id="type" formControlName="petType">
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="rodent">Rodent</option>
+                    <option value="reptile">Reptile</option>
+                    <option value="fish">Fish</option>
+                  </select>
+                </div>
+                <div class="col form-group">
+                  <label for="breed" class="form-label">Pet Breed</label>
+                  <input type="text" formControlName="petBreed" placeholder="breed">
+                </div>
+                <div class="col form-group">
+                  <label for="size" class="form-label">Pet Size</label>
+                  <input type="text" formControlName="petSize" placeholder="size">
+                </div>
+              </div>
+            </div>
+    
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button type="button" class="btn btn-outline-info ms-2">Save draft</button>
+    
+          </form>
+        </div>
+      </div>
+    </div>
+
+      <!--<div class="row">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-actions float-end">
+            <div class="dropdown position-relative">
+              <a href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" class="">
               </a>
             </div>
           </div>
@@ -73,7 +151,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> -->
     
 
     <!-- <div *ngIf="isSelected" class="row">

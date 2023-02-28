@@ -20,8 +20,8 @@ export class UserService{
         )
         .pipe(
             catchError(this.hangleError)
-          )
-      
+        )
+    
         }
 
         get_petsitter(email): Observable<IPetSitter>{
@@ -31,7 +31,7 @@ export class UserService{
             )
             .pipe(tap(), catchError(this.hangleError))
         }
-  
+
     private hangleError(err: HttpErrorResponse){
         return throwError('error: ' + err.message)
     }
@@ -41,7 +41,11 @@ export class UserService{
         .get<IPetOwner>(
             this.baseUrlPetOwner+email
         )
-        .pipe(tap(), catchError(this.hangleError2))
+        .pipe(
+            tap((petOwner: IPetOwner) => {
+                localStorage.setItem('PetOwner', JSON.stringify(petOwner))
+            }),
+            catchError(this.hangleError2))
     }
     private hangleError2(err: HttpErrorResponse){
         return throwError('error: ' + err.message)

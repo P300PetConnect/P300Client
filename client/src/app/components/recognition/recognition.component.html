@@ -1,0 +1,66 @@
+<div class="container">
+    <h2>Found a Lost Pet?</h2>
+    <p>Try our pet recognition service. Uploade an image of the pet and let our system recognise its owner!</p>
+    <div class="row" style="background-color: #17a2b8;">
+        
+        <div class="col">
+            <div *ngIf="uploadedImageUrl">
+                <img class="img-fluid mb-1" [src]="uploadedImageUrl" alt="Uploaded image" style="width: 200px;">
+            </div>
+              <div *ngIf="!uploadedImageUrl">
+                <img class="img-fluid mb-1" src="https://cdn.pixabay.com/photo/2013/04/01/21/30/photo-99135__480.png" alt="Uploaded image" style="width: 200px;">
+            </div>
+            <div class="form-group">
+                <input type="file" (change)="uploadImage($event.target.files[0])">
+            </div>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" (click)="recognizeImage()">Find Owner</button>
+        </div>
+    
+    </div>
+    
+</div>
+
+<app-footer></app-footer>
+
+<!--<div class="container mt-5">
+    <h1 class="mb-4">Compare Images</h1>
+  
+    <form>
+      <div class="form-group">
+        <label for="image1">Upload Image 1</label>
+        <input type="file" class="form-control-file" id="image1" (change)="uploadImage1($event)">
+      </div>
+  
+      <div class="form-group">
+        <label for="image2">Upload Image 2</label>
+        <input type="file" class="form-control-file" id="image2" (change)="uploadImage2($event)">
+      </div>
+  
+      <button type="button" class="btn btn-primary" (click)="compareImages()">Compare Images</button>
+    </form>
+  
+    <div *ngIf="showResult" class="mt-5">
+      <h2>Results</h2>
+  
+      <div *ngIf="labelsMatch">
+        <p>The images contain a matching label!</p>
+      </div>
+  
+      <div *ngIf="!labelsMatch">
+        <p>The images do not contain a matching label.</p>
+      </div>
+  
+      <h3>Image 1 Labels:</h3>
+      <ul>
+        <li *ngFor="let label of image1Labels">{{ label }}</li>
+      </ul>
+  
+      <h3>Image 2 Labels:</h3>
+      <ul>
+        <li *ngFor="let label of image2Labels">{{ label }}</li>
+      </ul>
+    </div>
+  </div>-->
+  
