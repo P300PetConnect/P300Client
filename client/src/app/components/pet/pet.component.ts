@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import AWS from 'aws-sdk';
 import { environment } from 'src/environments/environment';
-import { janisenv } from 'src/environments/janisenv';
 
 @Component({
   selector: 'app-pet',
@@ -18,11 +17,8 @@ export class PetComponent implements OnInit {
   user = localStorage.getItem("PetOwner");
   userDetails = JSON.parse(this.user);
 
-  s3 = new AWS.S3({
-    region: `${janisenv.REGION}`,
-    accessKeyId: `${janisenv.ACCESSKEYID}`,
-    secretAccessKey: `${janisenv.SECRETACCESSKEY}`
-  });
+  accesKey: '';
+  secret: '';
 
   private rekognition: AWS.Rekognition;
 
@@ -32,8 +28,11 @@ export class PetComponent implements OnInit {
   isShow:boolean;
 
   ngOnInit() {
-    AWS.config.region = `${janisenv.REGION}`;
-    AWS.config.credentials = new AWS.Credentials(`${janisenv.ACCESSKEYID}`, `${janisenv.SECRETACCESSKEY}`);
+    this.getId();
+    this.getSecret();
+
+    AWS.config.region = 'eu-west-1';
+    AWS.config.credentials = new AWS.Credentials(this.accesKey, this.secret);
     this.addPetForm = this.fb.group({
       'name': ['', Validators.required],
       'description': ['', Validators.required],
@@ -64,6 +63,7 @@ export class PetComponent implements OnInit {
   }
 
   async uploadImage(file: File) {
+
     const params = {
       Bucket: 'petimagesp300',
       Key: file.name,
@@ -74,16 +74,20 @@ export class PetComponent implements OnInit {
       }
     };
     try {
-      const response = await this.s3.upload(params).promise();
+      const response = await new AWS.S3({
+        region: 'eu-west-1',
+        accessKeyId: this.accesKey,
+        secretAccessKey: this.secret
+      }).upload(params).promise();
       console.log('File uploaded successfully:', response.Location);
       this.uploadedImageUrl = response.Location;
       this.addPetForm.controls['petImageUrl'].setValue(response.Location);
 
       // Add the uploaded image to Rekognition collection and index it
       const rekognition = new AWS.Rekognition({
-        region: `${janisenv.REGION}`,
-        accessKeyId: `${janisenv.ACCESSKEYID}`,
-        secretAccessKey: `${janisenv.SECRETACCESSKEY}`
+        region: 'eu-west-1',
+        accessKeyId: this.accesKey,
+        secretAccessKey: this.secret
       });
       const rekognitionParams = {
         CollectionId: 'pet-collection',
@@ -131,6 +135,22 @@ export class PetComponent implements OnInit {
         console.log('Collection exists');
       }
     });
+  }
+
+  getId() {
+    this.http.get('https://ex6krn40t6.execute-api.eu-west-1.amazonaws.com/default/getJanisId', { responseType: 'text' }).subscribe((response) => {
+      this.accesKey = JSON.parse(response);
+      console.log(this.accesKey);
+    });
+    return this.accesKey;
+  }
+
+  getSecret() {
+    this.http.get('https://e86pwqxn89.execute-api.eu-west-1.amazonaws.com/default/getJanisSecret', { responseType: 'text' }).subscribe((response) => {
+      this.secret = JSON.parse(response);
+      console.log(this.secret);
+    });
+    return this.secret;
   }
   
 }

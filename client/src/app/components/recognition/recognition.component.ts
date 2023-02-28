@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as AWS from 'aws-sdk';
-import { janisenv } from 'src/environments/janisenv';
 
 @Component({
   selector: 'app-recognition',
@@ -13,15 +12,15 @@ export class RecognitionComponent implements OnInit {
   public uploadedImageUrl: string;
 
   s3 = new AWS.S3({
-    region: `${janisenv.REGION}`,
-    accessKeyId: `${janisenv.ACCESSKEYID}`,
-    secretAccessKey: `${janisenv.SECRETACCESSKEY}`
+    region: '',
+    accessKeyId: '',
+    secretAccessKey: ''
   });
 
   rekognition = new AWS.Rekognition({
-    region: janisenv.REGION,
-    accessKeyId: janisenv.ACCESSKEYID,
-    secretAccessKey: janisenv.SECRETACCESSKEY
+    region: '',
+    accessKeyId: '',
+    secretAccessKey: ''
   });
 
   constructor(private http: HttpClient) { }
