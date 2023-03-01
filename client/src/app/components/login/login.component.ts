@@ -7,7 +7,6 @@ import { UserService } from '../service/user.service';
 import { IUser } from '../interfaces/form';
 import { NavComponent } from '../nav/nav.component';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
 
 
 @Component({
