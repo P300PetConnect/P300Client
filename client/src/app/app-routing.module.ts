@@ -16,6 +16,7 @@ import { SearchContainerComponent } from './search_service_components/search-con
 import { MapPlannerComponent } from './map-planner/map-planner.component';
 import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { MapRoutesComponent } from './map-routes/map-routes.component';
+import { WalkingPlannerComponent } from './walking-planner/walking-planner.component';
 
 const routes: Routes = [
   { path:'users/:id', component:UserProfileComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'route', component: MapPlannerComponent }, 
   {path: 'browseroute',component:BrowseRouteComponent},
   {path: 'route2',component:MapRoutesComponent}
+  // {path: 'route3',component:WalkingPlannerComponent}
 
 
 ];

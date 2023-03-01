@@ -97,6 +97,7 @@ import { NotAvailableFormComponent } from './components/not-available-form/not-a
 import { MapPlannerComponent } from './map-planner/map-planner.component';
 import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { MapRoutesComponent } from './map-routes/map-routes.component';
+// import { WalkingPlannerComponent } from './walking-planner/walking-planner.component';
 
 @NgModule({
   declarations: [

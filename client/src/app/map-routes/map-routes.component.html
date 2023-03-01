@@ -44,14 +44,14 @@
           <ul>
             <li class="header-menu">
               <!-- <span>Map Planner</span> -->
-              <div  class="col-lg-12 ">
-                <ul style="margin-bottom: 3rem;" class="nav nav-pills nav-fill">
+              <div  id="createRouteController" class="col-lg-12 " >
+                <ul style="margin-bottom: 0rem;" class="nav nav-pills nav-fill">
                     <li id="mkRoute" class="nav-item">
                         <a (click)="onClickshowMakeRoute()" class="nav-link active" aria-current="page">Create
                             Route</a>
                     </li>
                     <li id="GenRoute" class="nav-item">
-                        <a (click)="onClickshowGenRoute()" class="nav-link">Recommend Route</a>
+                        <a (click)="onClickshowGenRoute()" class="nav-link">Generate Route</a>
                     </li>
                     <li id="FavRoute" class="nav-item">
                         <a (click)="onClickshowFavRoute()" class="nav-link">My Routes</a>
@@ -61,7 +61,7 @@
                 <!-- Form for Making routes  -->
                 <form id="formm" class="form-horizontal ">
 
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="from" class="col-xs-3 control-label"><i onclick="GetCurrentLocationForInputG()"
                                 class="far fa-dot-circle"></i> <label style="margin-left:3%;" for="from">
                                 From</label></label>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="to" class="col-xs-3 control-label"><i class="fas fa-map-marker-alt"></i> <label
                                 style="margin-left:3%;" for="from"> To</label></label>
                         <div class="col-xs-6">
@@ -80,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="to" class="col-xs-3 control-label"><i class="fas fa-map-marker-alt"></i> <label
                                 style="margin-left:3%;" for="RouteName"> Route Name</label></label>
                         <div class="col-xs-6">
@@ -99,8 +99,8 @@
                                 class="fas fa-map-signs ">Preview
                                 Route</i></button>  </div>
 <div class="col-lg-2"></div>
-                                <div class="col-lg-5">
-                        <button style="margin-left: 1rem;" class="btn btn-info btn-lg " (click)="createPostSave()"><i
+                                <div class="col-lg-4" >
+                        <button style="margin-right: 1rem;" class="btn btn-info btn-lg " (click)="createPostSave()"><i
                                 class="fas fa-map-signs">Save
                                 Route</i></button></div>
 
@@ -112,7 +112,7 @@
                 <!-- Form for generating routes -->
                 <form id="formmG" style="display: none;" class="form-horizontal ">
 
-                    <div class="form-group">
+                    <div class="form-group row">
 
                         <label for="fromG" class="col-xs-4 control-label"><i onclick="GetCurrentLocationForInput()"
                                 class="far fa-dot-circle"></i> <label style="margin-left:3%;" for="from"> Starting
@@ -123,7 +123,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group row">
 
                         <label for="DistanceG" class="col-xs-4 control-label"><i class="fas fa-map-marker-alt"></i>
                             <label style="margin-left:3%;" for="from">Distance</label></label>
