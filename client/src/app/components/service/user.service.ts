@@ -29,7 +29,9 @@ export class UserService{
             .get<IPetSitter>(
                 this.baseUrl+email
             )
-            .pipe(tap(), catchError(this.hangleError))
+            .pipe(tap((petSitter: IPetSitter) => {
+                localStorage.setItem('PetConnectUser', JSON.stringify(petSitter))
+            }), catchError(this.hangleError))
         }
 
     private hangleError(err: HttpErrorResponse){
@@ -43,7 +45,7 @@ export class UserService{
         )
         .pipe(
             tap((petOwner: IPetOwner) => {
-                localStorage.setItem('PetOwner', JSON.stringify(petOwner))
+                localStorage.setItem('PetConnectUser', JSON.stringify(petOwner))
             }),
             catchError(this.hangleError2))
     }
