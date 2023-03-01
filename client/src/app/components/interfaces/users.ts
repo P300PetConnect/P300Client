@@ -38,7 +38,9 @@ export interface IPetSitterID{
     UsualPetsDetail2: string;
     UsualPetsDetail3: string;
     ProfileDesc: string;
-    Id:number; 
+    Id:number;
+    ChatToken:string;
+    ChatUserName:string;
 }
 export interface IPetSitter{
     name: string;

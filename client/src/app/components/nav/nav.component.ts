@@ -55,8 +55,9 @@ export class NavComponent implements OnInit {
     this._router.navigate(['/login'])
     this._router.routeReuseStrategy. shouldReuseRoute = () => false;
     this._router.onSameUrlNavigation = 'reload';
+    localStorage.removeItem('PetConnectUser');
+    localStorage.removeItem('userGroup');
 }
-
 
   
 }

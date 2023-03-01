@@ -6,6 +6,7 @@ import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { UserService } from '../service/user.service';
 import { IUser } from '../interfaces/form';
 import { NavComponent } from '../nav/nav.component';
+import { IPetOwner, IPetSitter } from '../interfaces/users';
 
 
 @Component({
@@ -20,7 +21,10 @@ isOpen: boolean = true;
 @ViewChildren('field') allFields;
 userGroup: string;
 
-  constructor(private _router: Router, public authenticator: AuthenticatorService ) {
+public petOwner: IPetOwner; 
+public petSitter: IPetSitter; 
+
+  constructor(private _router: Router, public authenticator: AuthenticatorService, private userService: UserService ) {
     // Amplify.configure(awsExports);
    
     // Auth.currentAuthenticatedUser()
@@ -50,8 +54,7 @@ userGroup: string;
     //   this.authenticator.signOut(); 
     //   console.log(this.authenticator.signOut()); 
     // }
-    console.log(this.userGroup); 
-
+    console.log(this.userGroup);
 }
 
 // btnClick= function () {
@@ -61,13 +64,34 @@ onCheckRoute(UserGroup:string){
   if(UserGroup == 'PetOwner'){
     localStorage.setItem('userGroup','PetOwner')
     this._router.navigateByUrl('search2/search2;service=;location=;pet=');
+    this.getPetOwner();
   }
   else if(UserGroup == 'PetSitter'){
     localStorage.setItem('userGroup','PetSitter')
     this._router.navigateByUrl('profile');
+    this.getPetSitter();
+  }
+}
+
+//load pey owner data to local storage
+async getPetOwner(){
+  try {
+  const petOwner = await this.userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+  this.petOwner = petOwner;
+  } catch (error) {
+      console.error(error);
+    }
   }
 
-}
+//load pet sitter data to local storage
+  async getPetSitter(){
+    try{
+      const petSitter = await this.userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
+        this.petSitter = petSitter;
+    }catch (error) {
+      console.error(error);
+    }
+  }
 
 }
 
