@@ -9,6 +9,10 @@ import { ChannelService, ChatClientService, StreamI18nService } from 'stream-cha
 })
 export class ChatPageComponent implements OnInit {
 
+  ///get from localstorage
+  userDetails = localStorage.getItem('PetConnectUser');
+  chatName = JSON.parse(this.userDetails);
+
   constructor(
     private chatService: ChatClientService,
     private channelService: ChannelService,
@@ -16,12 +20,10 @@ export class ChatPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.streamI18nService.setTranslation();
-    this.chatService.init(environment.stream.key, 'joannasmith@gmail', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiam9hbm5hc21pdGhAZ21haWwifQ.m0LLSTgdE_iW9Xb_L8y8Z7x7nmXfsmuChE2k8LaoTHU');
-    //this.chatService.init(environment.stream.key, 'fatherted@gmail', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZmF0aGVydGVkQGdtYWlsIn0.xAa90NtHiXLMMCTvjOOvkyBZeTGMueTZGOW13vZ1pcM');
+    this.chatService.init(environment.stream.key, this.chatName.chatUserName, this.chatName.chatToken);
     this.channelService.init({
       type: 'messaging',
-      members: { $in: ['joannasmith@gmail'] }
-      //members: { $in: ['fatherted@gmail'] }
+      members: { $in: [this.chatName.chatUserName] }
     });
     
   }
