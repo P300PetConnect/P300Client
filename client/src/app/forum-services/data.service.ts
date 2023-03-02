@@ -99,9 +99,6 @@ export class DataService {
       .pipe(
         catchError(this.handleError)
       )
-    
-     
-
     }
 
     getComments(postID: string) : Observable<CommentInterface> {
