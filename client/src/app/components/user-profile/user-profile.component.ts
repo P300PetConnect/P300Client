@@ -149,6 +149,24 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  GetOrders(id: number)
+  {
+    this._order.getOrdersList(id).subscribe({
+      next: (value: IOrderList[] )=>this.orders = value,
+      complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
+      error: (mess) => this.message = mess
+    })
+  }
+
+  GetnotAvailable(id: number)
+  {
+    this._order.getNotAvailable(id).subscribe({
+      next: (value: INotAvailable[] )=>this.notAvailble = value,
+      complete: () => console.log('not available service finished ' +  JSON.stringify((this.notAvailble))),
+      error: (mess) => this.message = mess
+    })
+  }
+
   async getPetOwner(email:string){
   // console.log(localStorage.getItem('PetOwner')); 
   console.log('I am here, requestiong petowner data for the first time')
@@ -165,7 +183,7 @@ export class UserProfileComponent implements OnInit {
     try{
       const petSitter = await this._userService.get_petsitter(email).toPromise()
         this.petSitter = petSitter;
-        localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
+        // localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
         this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
     }catch (error) {
       console.error(error);
