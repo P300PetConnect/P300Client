@@ -1,7 +1,9 @@
 
 //javascript.js
 //set map options
+function initMap() {
 
+}
 var myLatLng;
 var mapOptions;
 
@@ -21,6 +23,7 @@ function SettingMap() {
     zoom: 16,
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
+  
   };
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
@@ -47,7 +50,10 @@ function SettingMap() {
   var input2 = document.getElementById("to");
   var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
   //#endregion
-}
+
+  console.log("setting up map done");
+} 
+SettingMap();
 
 console.log("Before onCalc");
 //#region Here when we call this function it will draw the line
@@ -236,6 +242,8 @@ function drawRoute2(start, end, method, animate = true, color = '#e53935') {
         scale: 3
       };
 
+      console.log(response.routes);
+console.log("Route length is : "+response.routes.length );
       var path = response.routes[0].overview_path;
       if (response.routes.length >= 2) {
         path = response.routes[1].overview_path;

@@ -90,10 +90,14 @@ import { ReviewComponent } from './ReviewComponents/review/review.component';
 import { InterceptorService } from './components/service/interceptor.service';
 import { ChatPageComponent } from './components/chat-page/chat-page.component';
 import { MessageInputComponent } from './components/message-input/message-input.component';
-
 import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
+import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
 import { MapPlannerComponent } from './map-planner/map-planner.component';
+import { BrowseRouteComponent } from './browse-route/browse-route.component';
+import { RecognitionComponent } from './components/recognition/recognition.component';
+import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 
 @NgModule({
   declarations: [
@@ -110,8 +114,8 @@ import { MapPlannerComponent } from './map-planner/map-planner.component';
     UserformComponent, 
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, MapPlannerComponent
-    
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent
   ],
   imports: [
     BrowserModule,
@@ -159,7 +163,7 @@ import { MapPlannerComponent } from './map-planner/map-planner.component';
 
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY,
-      libraries: ['places']
+      libraries: ['places', 'geometry']
     }),
   ],
   providers: [

@@ -32,6 +32,8 @@ export class SharedFormComponent implements OnInit {
     // country: new FormControl('')
   })
 
+  userGroup = '';
+
 
   constructor(public dialogRef:MatDialogRef<SharedFormComponent>, private _userService:UserService, public authenticator: AuthenticatorService) { }
 
@@ -42,11 +44,12 @@ export class SharedFormComponent implements OnInit {
   public user: any;
   
   ngOnInit(): void {
-    if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
+    this.userGroup = localStorage.getItem('userGroup');
+    if(this.authenticator?.user?.attributes?.email && this.userGroup=='PetOwner') {
       console.log('test carai')
       this.getPetOwner(); 
       }
-      else if(this.authenticator?.user?.attributes?.email=="fatherted@gmail.com"){
+      else if(this.authenticator?.user?.attributes?.email && this.userGroup=='PetSitter') {
 
       this.getPetSitter(); 
       }
@@ -55,7 +58,7 @@ export class SharedFormComponent implements OnInit {
 
   // TO DO - Remove it and pass data from the user profile 
   getPetSitter(){
-    this._userService.get_petsitter("fatherted@gmail.com").subscribe(
+    this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
       petSitter=>{
         this.user = petSitter;
         console.log(this.user)
@@ -66,7 +69,7 @@ export class SharedFormComponent implements OnInit {
 
 //getpet owner 
 getPetOwner(){
-  this._userService.get_petowner("joannasmith@gmail.com").subscribe(
+  this._userService.get_petowner(this.authenticator?.user?.attributes?.email).subscribe(
     petOwner=>{
       this.user = petOwner;
       console.log(petOwner)

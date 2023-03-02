@@ -8,12 +8,13 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MessageAlertComponent } from '../message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { OrderService } from '../service/order.service';
 import { UserService } from '../service/user.service';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { IPetCategory, IServiceCategory, EOrderStatus, EPaymentStatus } from '../interfaces/order';
 import { Router } from '@angular/router';
+import { IPetSitter } from '../interfaces/users';
 
 @Component({
   selector: 'app-order',
@@ -62,7 +63,7 @@ selectedCategories: any;
   //form
   orderForm: FormGroup = new FormGroup({});
   message: string;
-  petSitter: import("/Users/jessicahenry/Project300Backup 2/client/src/app/components/interfaces/users").IPetSitter;
+  petSitter: IPetSitter;
 
   constructor(private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
     public authenticator: AuthenticatorService) { 

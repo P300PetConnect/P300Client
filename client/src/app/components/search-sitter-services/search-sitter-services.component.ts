@@ -18,12 +18,17 @@ export class SearchSitterServicesComponent implements OnInit {
   errorMessage : any;
   averageRoundStars: number;
 
+  loyalCus = 0;
+
   constructor(private search: SearchServiceService, private _router: Router) { }
 
   ngOnInit(): void {
     
     this.service.ShowOther = false;
     this.averageRoundStars = Math.floor(this.service.ReviewsTotal / this.service.NumReviews);
+
+     this.loyalCus = this.service.NumReviews + 5
+
    
   }
 

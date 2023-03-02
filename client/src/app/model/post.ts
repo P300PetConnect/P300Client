@@ -6,4 +6,3 @@ export interface Post {
     endPoint : string
   }
   
-  

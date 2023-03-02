@@ -1,3 +1,7 @@
+
+
+
+
 <div class="container pt-5">
   <div class="row">
     <div class="row">
@@ -27,7 +31,7 @@
               <hr class="my-0">
               <div class="card-body">
                 <div class="row p-2">
-                  <button mat-flat-button class="search-btn">Start Chat</button>
+                  <button mat-flat-button class="search-btn" (click)="startChatChannel()">Start Chat</button>
                 </div>
                   <div class="row p-2">
                   <button mat-flat-button class="order-btn" (click)="onCreateOrder()">Create Order</button>
@@ -136,7 +140,7 @@
                             <br></span>
                         </mat-panel-title>
                         <mat-panel-description>
-                          Starting price: € 15.00
+                          Starting price: €{{s.StartingPrice}}
                         </mat-panel-description>
                       </mat-expansion-panel-header>
                       <p n>{{petSitter?.ProfileDesc}}</p>
@@ -185,9 +189,10 @@
               <div class="col-6">
 
                 <div class="row pb-4 pt-4">
-                  <h4>I am available on:</h4>
+                  <h4>I am not available on:</h4>
                   <mat-card class="demo-inline-calendar-card" >
-                    <mat-calendar [(selected)]="selected"></mat-calendar>
+                    <app-calendar [orders] = "orders" [notAvailble] = "notAvailble" [componentFlag] = "componentFlag" ></app-calendar>
+             
                   </mat-card>
                 </div>
               </div>
@@ -201,13 +206,7 @@
                           <div class="col-12 text-justify">
                             <p *ngIf="petSitter?.ProfileDesc">{{petSitter?.ProfileDesc}}</p>
                         
-                              <ul class="list list-group list-group-flush">
-                                <li class="list-group-item">24 hour supervision</li>
-                                <li class="list-group-item">Veterinary first aid</li>
-                                <li class="list-group-item">Apply oral medication</li>
-                                <li class="list-group-item">Have experience with seniors dog</li>
-                                <li class="list-group-item">emergency transportation</li>
-                              </ul>
+                           
                           </div>
                         </div>
                       </mat-tab>
@@ -241,3 +240,5 @@
   <div>
   </div>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+

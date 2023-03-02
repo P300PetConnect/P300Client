@@ -1,9 +1,9 @@
 .calendar-table {
     border-collapse: collapse;
-  
     margin-bottom: 1rem;
     border: 1px solid black;
     background-color: #fff;
+
   }
   
   .calendar-table thead th {
@@ -14,11 +14,11 @@
   
   .calendar-table td, .calendar-table th {
     border: 1px solid #dee2e6;
-    width: 60px;
+    
   }
   
   .calendar-table td, .calendar-table th {
-    padding: .75rem;
+   // padding: .75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
   }
@@ -62,23 +62,13 @@
   
   .modal-content {
     position: relative;
-  
-    margin: 15% auto; /* 15% from the top and centered */
-  
-
-    border: 2px solid black;
-    width: 30%; /* Could be more or less, depending on screen size */
-    box-shadow: 0 0 15px var(--clr-darkShade);
+    margin: 5% auto; /* 15% from the top and centered */
+    border: 1px solid black;
+    width: 55%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 0 5px black;
   }
 
 
-.content{
-    position: relative;
-    margin: 0 auto;
-    width: 80%; 
-   padding: 5%;
-   text-align: center;
-}
 .close
 {
   position: absolute;

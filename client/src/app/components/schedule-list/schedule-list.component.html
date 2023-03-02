@@ -1,0 +1,43 @@
+<div>
+
+</div>
+
+
+<div  class="px-5 my-4">
+<h6>{{currentDate  | date: 'dd-MM-yyyy'}}</h6>
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-2">
+                <picture class="align-middle pr-3" *ngIf="order.ServiceTitle.includes(picKeyWords[1])">
+                    <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+                  <picture class="align-middle pr-3" *ngIf="order.ServiceTitle.includes(picKeyWords[0])">
+                    <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+                  <picture class="align-middle pr-3" *ngIf="order.ServiceTitle.includes(picKeyWords[3])">
+                    <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+                  <picture class="align-middle pr-3" *ngIf="order.ServiceTitle.includes(picKeyWords[2])">
+                    <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+
+            </div>
+            <div class="col-3">
+                <h6>{{order.ServiceTitle}}</h6>
+                <small>{{order.OrderDate| date: 'dd-MM-yyyy'}}</small>
+
+            </div>
+            
+        </div>
+       
+      
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>

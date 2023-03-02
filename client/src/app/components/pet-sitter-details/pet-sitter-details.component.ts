@@ -17,6 +17,12 @@ import { ReviewService } from 'src/app/Review-services/review.service';
 import { ActivatedRoute } from '@angular/router';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
+import { OrderService } from '../service/order.service';
+import { INotAvailable, IOrderList } from '../interfaces/order';
+import { StreamChat, ChannelData, UserResponse, TokenProvider, UserFromToken } from 'stream-chat';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-pet-sitter-details',
@@ -44,6 +50,24 @@ export class PetSitterDetailsComponent implements OnInit {
 
   averageRoundStars: number;
 
+  orders:IOrderList[] = [];
+  notAvailble:INotAvailable[] = [];
+  componentFlag = "searchProfile";
+
+
+  //start chat channel
+  private readonly userDetails = localStorage.getItem('PetConnectUser');
+  chatUserPetOwner = JSON.parse(this.userDetails);
+  private readonly apiKey = environment.stream.key;
+  private user1Token = this.chatUserPetOwner.chatToken; // the token for pet owner
+  private user2Token = ''; // the token for pet sitter
+  chatOwnerId = this.chatUserPetOwner.chatUserName;
+  chatSitterId = '';
+  chatName1 = this.chatUserPetOwner.name;
+  chatName2 = '';
+  chatUser1Img = this.chatUserPetOwner.profilePicUrl;
+  chatUser2Img = '';
+  private client: StreamChat;
 
   //weird 0 on data being returned, refactor get method in this class, get method in service
   
@@ -51,7 +75,7 @@ export class PetSitterDetailsComponent implements OnInit {
 
 
   // array of key words to check for images// 
-  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
+  picKeyWords: string[] = ["Feed", "Walk", "Sitting","Grooming"] 
 
 
   dateFilter: (date: Date | null) => boolean =
@@ -81,10 +105,10 @@ export class PetSitterDetailsComponent implements OnInit {
   @ViewChild('picker') picker:ElementRef;
 
   constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
-    private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute, private service: SearchServiceService) {
- 
+    private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute,
+     private service: SearchServiceService,private _order: OrderService, private router: Router) {
 
-
+      this.client = new StreamChat(this.apiKey);
 
   //   this._userService.get_user().subscribe((res: IUser) => {
   //     this.user= res; 
@@ -106,13 +130,15 @@ export class PetSitterDetailsComponent implements OnInit {
     this.userID = this.r.snapshot.paramMap.get('id');
     //get users services
     this.getServices(Number(this.userID));
-
-
-    this.getPetSitter(Number(this.userID)); 
+    this.getPetSitter(Number(this.userID));
+    this.GetOrders(Number(this.userID));
+    this.GetnotAvailable(Number(this.userID));
 
     console.log(this.petSitter);
  
-    console.log('picker', this.picker); 
+    console.log('picker', this.picker);
+
+  
 
   this.pet = {
     "name": "Lucy",
@@ -153,10 +179,13 @@ onCreateOrder(){
     this._userService.get_petsitter_ID(id).subscribe(
       petSitter=>{
         this.petSitter = petSitter[0];
-        console.log(petSitter)
+        console.log('favorite sitter', petSitter)
         //rounded average to print stars on profile view
         this.averageRoundStars = Math.floor(this.petSitter.ReviewsTotal / this.petSitter.NumReviews);
-      
+        this.user2Token = petSitter[0].ChatToken;
+        this.chatSitterId = petSitter[0].ChatUserName;
+        this.chatUser2Img = petSitter[0].profilePicUrl;
+        this.chatName2 = petSitter[0].name;
       }); 
       
       return false; 
@@ -213,15 +242,72 @@ onCreateOrder(){
 
   }
 
+  GetOrders(id: number)
+  {
+    this._order.getOrdersList(id).subscribe({
+      next: (value: IOrderList[] )=>this.orders = value,
+      complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
+      error: (mess) => this.message = mess
+    })
+  }
+
+  GetnotAvailable(id: number)
+  {
+    this._order.getNotAvailable(id).subscribe({
+      next: (value: INotAvailable[] )=>this.notAvailble = value,
+      complete: () => console.log('not available service finished ' +  JSON.stringify((this.notAvailble))),
+      error: (mess) => this.message = mess
+    })
+  }
+
   num(n: number): Array<number> {
     //alert(n);
-     return Array(n);
-   }
+    return Array(n);
+  }
 
+  //create new chat
+  async startChatChannel() {
+    const user1Id =  this.chatOwnerId;//pet owner chatUserName
+    const user2Id = this.chatSitterId;//pet sitter chatUserName
+    // const user2Id = {
+    //   id: this.chatSitterId,//pet sitter chatUserName
+    //   name: this.chatName2,
+    //   image: this.chatUser2Img
+    // };
 
+    const userTokenProvider: TokenProvider = async () => {
+      return this.user1Token;
+    };
+
+    await this.client.connectUser(
+      { id: user1Id, name: this.chatName1, image: this.chatUser1Img },
+      userTokenProvider,
+    );
+
+    // const userTokenProvider2: TokenProvider = async () => {
+    //   return this.user2Token;
+    // };
+    
+    // await this.client.connectUser(
+    //   { id: user2Id, name: this.chatName2, image: this.chatUser2Img },
+    //   userTokenProvider2,
+    // );
+
+    const channelData: ChannelData = {
+      members: [user1Id, user2Id],
+      name: 'my-new-channel',
+      created_by_id: user1Id
+    };
+
+    const channel = this.client.channel('messaging', channelData);
+
+    await channel.create();
+
+    this.router.navigate(['/chat']);
+    console.log(channel);
+  }
 
 }
-
 /**
  *
  *  getPetDetails(){

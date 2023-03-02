@@ -1,5 +1,5 @@
 import { Component, OnInit,Inject } from '@angular/core';
-//import { Loader } from '@googlemaps/js-api-loader';
+// import { Loader } from '@googlemaps/js-api-loader';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Post } from 'src/app/model/post';
 import { DataService } from '../service/data.service';
@@ -20,6 +20,7 @@ declare const calcRoute: any;
 declare const Gen2OnLoadDo: any;
 //declare const move: any;
 declare const shareRoute: any;
+declare const copyRouteID:any;
 
 
 // Testing here
@@ -55,14 +56,30 @@ export class MapPlannerComponent implements OnInit {
   ArrayIds: Post[] = [];
 
   isOpen = false;
-
+  map: google.maps.Map;
 
   //#endregion
 
   constructor( private dataService: DataService, public authenticator: AuthenticatorService) { }
 ngOnInit(): void {
-  
+  console.log("Email: "+ this.authenticator?.user?.attributes?.email);
+   this.email= this.authenticator?.user?.attributes?.email;
+  // const loader = new Loader({apiKey: 'AIzaSyAHau_5frbGGXxZooEP1SkiXMHortLbB4w'}).load().then(initMap);
+    this.allPosts = [];
+    this.allPosts = [];
+    this.getAllPost();
+SettingMap();
+Gen2OnLoadDo();
 }
+
+
+
+// initMap(): void {
+//   map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8,
+//   });
+// }
   // ngOnInit(): void {
   //   //#region  Atlas variables
   //   this._id = '';
@@ -89,7 +106,8 @@ ngOnInit(): void {
     this.dataService.getAllPost().subscribe(
       (res) => {
         for (let index = 0; index < res.length; index++) {
-          if (res[index].email == this.email) {
+          if (res[index].email == this.authenticator?.user?.attributes?.email) {
+            console.log("Email in getAll: "+ this.authenticator?.user?.attributes?.email);
             this.onwerPosts.push(res[index]);
             this.FromPoints.push(res[index].startPoint);
             this.ToPoints.push(res[index].endPoint);
@@ -171,7 +189,8 @@ ngOnInit(): void {
   }
 
   createPost() {
-    this.post.email = this.email;
+    console.log(this.email);
+    this.post.email = this.authenticator?.user?.attributes?.email;
     this.post.routeName = this.routeName;
     this.post.startPoint = this.startPoint;
     this.post.endPoint = this.endPoint;
@@ -311,7 +330,7 @@ ngOnInit(): void {
 
 
 
-    this.post.email = this.email;
+    this.post.email = this.authenticator?.user?.attributes?.email;
     this.post.routeName = inputRouteName!.value;
     this.post.startPoint = inputstartPoint!.value;
     this.post.endPoint = inputToPoint!.value;
@@ -328,10 +347,11 @@ ngOnInit(): void {
 
 
   shareTheRoute(post: Post) {
-    shareRoute(post.startPoint, post.endPoint, post.routeName, post.email);
+    // shareRoute(post.startPoint, post.endPoint, post.routeName, post.email);
+    copyRouteID(post._id);
+    Swal.fire('Route ID Copied to Cliboard!');  
+
   }
 
  
-
-
 }

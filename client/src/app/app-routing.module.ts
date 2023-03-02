@@ -14,6 +14,8 @@ import { UserformComponent } from './components/userform/userform.component';
 import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
 import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
 import { MapPlannerComponent } from './map-planner/map-planner.component';
+import { BrowseRouteComponent } from './browse-route/browse-route.component';
+import { RecognitionComponent } from './components/recognition/recognition.component';
 
 const routes: Routes = [
   { path:'users/:id', component:UserProfileComponent },
@@ -31,7 +33,10 @@ const routes: Routes = [
   { path:'petsitterdetails', component:PetSitterDetailsComponent },
   { path: 'chat', component:ChatPageComponent }, 
   {path:'orders', component:ManageOrdersComponent}, //TODO: ADD USER ID 
-  { path: 'route', component: MapPlannerComponent },
+  { path: 'route', component: MapPlannerComponent }, 
+  {path: 'browseroute',component:BrowseRouteComponent},
+  {path: 'recognition', component:RecognitionComponent}
+
 
 ];
 
