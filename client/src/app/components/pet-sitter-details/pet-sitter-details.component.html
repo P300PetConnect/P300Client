@@ -1,244 +1,221 @@
-
-
-
-
-<div class="container pt-5">
-  <div class="row">
+<div class="tab-content">
+  <div class="container mt-5">
     <div class="row">
-      <div class="tab-content">
-        <div class="row">
-          <div class="col-4">
-            <div class="card mb-3">
-              <div class="card-header d-flex justify-content-between">
-                <h5 class="card-title mb-0">Pet Sitter</h5>
-                <i class="bi bi-heart"> save</i>
-              </div>
-              <div class="card-body text-center pb-0 ">
-                <img src={{petSitter?.Profile_Pic_URL}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2"
-                  width="128" height="128">
-                <h5 class="card-title mb-0">{{petSitter?.Name}} {{petSitter?.Surname}}</h5>
-                <div class="text-muted">
-                </div>
-                <div class="mt-3">
-                  <div class="h-100">
-                    <!-- <span *ngFor="let _ of [].constructor((petSitter?.reviewsTotal / petSitter?.numReviews) | number:'1.0-0')" class="bi bi-star-fill"></span> -->
-                    <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
-                    <span  class="review my-auto pl-2"><u>({{petSitter?.NumReviews}})</u></span>
-
-                  </div>
-                </div>
-              </div>
-              <hr class="my-0">
-              <div class="card-body">
-                <div class="row p-2">
-                  <button mat-flat-button class="search-btn" (click)="startChatChannel()">Start Chat</button>
-                </div>
-                  <div class="row p-2">
-                  <button mat-flat-button class="order-btn" (click)="onCreateOrder()">Create Order</button>
-                </div>
-                <div class="row details">
-                  <div class="row">
-                    <div class="col-1">
-                      <i class="bi bi-hourglass-split"></i>
-                    </div>
-                    <div class="col">
-                      <span>Response time: <b>17 minutes</b></span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-1">
-                      <i class="bi bi-chat-square-text"></i>
-                    </div>
-                    <div class="col">
-                      <span>Response rate: <b>98%</b></span>
-                    </div>
-                  </div>
-                  <div class="row"  *ngIf="petSitter?.CancellationPolicy">
-                    <div class="col-1">
-                      <i class="bi bi-x-octagon"></i>
-                    </div>
-                    <div class="col">
-                      <span>Cancellation policy: <a class="primary-link">{{petSitter?.CancellationPolicy}}</a></span>
-                    </div>
-                  </div>
-                  <div class="row pt-4">
-                    <hr>
-                    <h4>My place</h4>
-
-                    <div class="row" *ngIf="petSitter?.HouseType">
-                      <div class="col-1">
-                        <span class="material-symbols-outlined">
-                          cottage
-                        </span> </div>
-                      <div class="col" >
-                        <span>Living in a <b>{{petSitter?.HouseType}}</b></span>
-                      </div>
-                    </div>
-                    <div class="row"  *ngIf="petSitter?.HouseDetails">
-                      <div class="col-1">
-                        <span class="material-symbols-outlined">
-                          smoke_free
-                        </span>
-                      </div>
-                      <div class="col">
-                        <span><b> </b>{{petSitter?.HouseDetails}} </span>
-                      </div>
-                    </div>
-
-                    <div class="row" *ngIf="petSitter?.PetsInHome">
-                      <div class="col-1">
-                        <span class="material-symbols-outlined md-18">
-                          sound_detection_dog_barking
-                        </span>
-                      </div>
-                      <div class="col">
-                        <span><b>  </b> {{petSitter?.PetsInHome}} </span>
-                      </div>
-                    </div>
-                    <div class="row" *ngIf="petSitter?.Children">
-                      <div class="col-1">
-                        <span class="material-symbols-outlined ">
-                          child_care
-                        </span>
-                      </div>
-                      <div class="col">
-                        <span>{{petSitter?.Children}}</span>
-                      </div>
-                    </div>
-
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-  
+      <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+        <div class="card mb-3">
+          <div class="card-header d-flex justify-content-between">
+            <h5 class="card-title mb-0">Pet Sitter</h5>
+            <i class="bi bi-heart"> save</i>
           </div>
-
-          <div class="col-8">
-            <div class="row">
-              <div class="col-6">
-                <div class="row pb-5 pt-4">
-                  <h4>Services:</h4>
-                  <mat-accordion class="pt-4">
-                    <mat-expansion-panel *ngFor="let s of serviceList" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                      <mat-expansion-panel-header class="pt-5 pb-5">
-                        <mat-panel-title>
-                          <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
-                            <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
-                          </picture>
-                          <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
-                            <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
-                          </picture>
-                          <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
-                            <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                          </picture>
-                          <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
-                            <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                          </picture>
-                          <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</strong>
-                            <br></span>
-                        </mat-panel-title>
-                        <mat-panel-description>
-                          Starting price: €{{s.StartingPrice}}
-                        </mat-panel-description>
-                      </mat-expansion-panel-header>
-                      <p n>{{petSitter?.ProfileDesc}}</p>
-                    </mat-expansion-panel>
-
-                
-                  </mat-accordion>
-                </div>
-                <div class="row pt-3">
-
-                  <h4>I usually take care of:</h4>
-                  <p *ngIf="petSitter?.UsualPets">Needs to be matched to images {{petSitter?.UsualPets}}</p>
-                  <img src="../../../assets/images/Screenshot 2022-12-06 at 00.49.44.png" alt="" style="width:26rem;">
-                </div>
-                <div class="row pt-4">
-                  <div class="col-1">
-                    <span class="material-symbols-outlined">
-                      pets
-                    </span>
-                  </div>
-                  <div class="col" *ngIf="petSitter?.UsualPetsDetail1">
-                    <span>{{petSitter?.UsualPetsDetail1}}</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-1">
-                    <span class="material-symbols-outlined">
-                      pets
-                    </span>
-                  </div>
-                  <div class="col" *ngIf="petSitter?.UsualPetsDetail2">
-                    <span>{{petSitter?.UsualPetsDetail2}}</span>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-1">
-                    <span class="material-symbols-outlined">
-                      pets
-                    </span>
-                  </div>
-                  <div class="col" >
-                    <span>List of breed I don't take care of: Link</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6">
-
-                <div class="row pb-4 pt-4">
-                  <h4>I am not available on:</h4>
-                  <mat-card class="demo-inline-calendar-card" >
-                    <app-calendar [orders] = "orders" [notAvailble] = "notAvailble" [componentFlag] = "componentFlag" ></app-calendar>
-             
-                  </mat-card>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="row pt-5">
-                  <hr>
-                    <mat-tab-group animationDuration="0ms">
-                      <mat-tab label="Description">
-                        <div class="row p-4">
-                          <div class="col-12 text-justify">
-                            <p *ngIf="petSitter?.ProfileDesc">{{petSitter?.ProfileDesc}}</p>
-                        
-                           
-                          </div>
-                        </div>
-                      </mat-tab>
-
-                      <mat-tab label="Reviews">
-                        <ng-template mat-tab-label>
-                          <span (click)="getReviews(petSitter?.UserID)">Reviews</span>
-                      </ng-template>
-                      <div *ngFor="let r of reviews">
-                
-                        <app-review [review] = "r"></app-review>
-                      </div>
-        
-                   
-                      
-                      </mat-tab>
-                      <mat-tab label="Gallery">
-                      </mat-tab>
-                    </mat-tab-group>
-                  </div>
+          <div class="card-body text-center pb-0 ">
+            <img src={{petSitter.Profile_Pic_URL}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2" width="128"
+              height="128">
+            <h5 class="card-title mb-0">{{petSitter?.Name}} {{petSitter?.Surname}}</h5>
+            <div class="text-muted">
+            </div>
+            <div class="mt-3">
+              <div class="h-100">
+                <!-- <span *ngFor="let _ of [].constructor((petSitter?.reviewsTotal / petSitter?.numReviews) | number:'1.0-0')" class="bi bi-star-fill"></span> -->
+                <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
+                <span class="review my-auto pl-2"><u>({{petSitter?.NumReviews}})</u></span>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row text-center d-flex justify-content-center">
+          <hr class="my-0">
+          <div class="card-body">
+            <div class="row p-2">
+              <button mat-flat-button class="search-btn">Start Chat</button>
+            </div>
+            <div class="row p-2">
+              <button mat-flat-button class="order-btn" (click)="onCreateOrder()">Create Order</button>
+            </div>
+            <div class="row details">
+              <div class="row">
+                <div class="col-1">
+                  <i class="bi bi-hourglass-split"></i>
+                </div>
+                <div class="col">
+                  <span>Response time: <b>17 minutes</b></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-1">
+                  <i class="bi bi-chat-square-text"></i>
+                </div>
+                <div class="col">
+                  <span>Response rate: <b>98%</b></span>
+                </div>
+              </div>
+              <div class="row" *ngIf="petSitter?.CancellationPolicy">
+                <div class="col-1">
+                  <i class="bi bi-x-octagon"></i>
+                </div>
+                <div class="col">
+                  <span>Cancellation policy: <a class="primary-link">{{petSitter?.CancellationPolicy}}</a></span>
+                </div>
+              </div>
+              <div class="row pt-4">
+                <hr>
+                <h4>My place</h4>
+
+                <div class="row" *ngIf="petSitter?.HouseType">
+                  <div class="col-1">
+                    <span class="material-symbols-outlined">
+                      cottage
+                    </span>
+                  </div>
+                  <div class="col">
+                    <span>Living in a <b>{{petSitter?.HouseType}}</b></span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="petSitter?.HouseDetails">
+                  <div class="col-1">
+                    <span class="material-symbols-outlined">
+                      smoke_free
+                    </span>
+                  </div>
+                  <div class="col">
+                    <span><b> </b>{{petSitter?.HouseDetails}} </span>
+                  </div>
+                </div>
+
+                <div class="row" *ngIf="petSitter?.PetsInHome">
+                  <div class="col-1">
+                    <span class="material-symbols-outlined md-18">
+                      sound_detection_dog_barking
+                    </span>
+                  </div>
+                  <div class="col">
+                    <span><b> </b> {{petSitter?.PetsInHome}} </span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="petSitter?.Children">
+                  <div class="col-1">
+                    <span class="material-symbols-outlined ">
+                      child_care
+                    </span>
+                  </div>
+                  <div class="col">
+                    <span>{{petSitter?.Children}}</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
-      <hr class="my-0">
+
+      <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="mb-5 mt-4">
+              <h4>Services:</h4>
+              <mat-accordion class="pt-4">
+                <mat-expansion-panel *ngFor="let s of serviceList" (opened)="panelOpenState = true"
+                  (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header class="pt-5 pb-5">
+                    <mat-panel-title>
+                      <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
+                        <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
+                      </picture>
+                      <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
+                        <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
+                      </picture>
+                      <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
+                        <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                      </picture>
+                      <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
+                        <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                      </picture>
+                      <span class="align-middle nav-title"><strong
+                          class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</strong>
+                        <br></span>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Starting price: € 15.00
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p n>{{petSitter?.ProfileDesc}}</p>
+                </mat-expansion-panel>
+
+
+              </mat-accordion>
+            </div>
+            <div class="mt-3">
+              <h4>I usually take care of:</h4>
+              <p *ngIf="petSitter?.UsualPets">Needs to be matched to images {{petSitter?.UsualPets}}</p>
+              <img src="../../../assets/images/Screenshot 2022-12-06 at 00.49.44.png"  alt="" style="width:22rem;">
+            </div>
+            <div class="row pt-4">
+              <div class="col-1">
+                <span class="material-symbols-outlined">
+                  pets
+                </span>
+              </div>
+              <div class="col" *ngIf="petSitter?.UsualPetsDetail1">
+                <span>{{petSitter?.UsualPetsDetail1}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1">
+                <span class="material-symbols-outlined">
+                  pets
+                </span>
+              </div>
+              <div class="col" *ngIf="petSitter?.UsualPetsDetail2">
+                <span>{{petSitter?.UsualPetsDetail2}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-1">
+                <span class="material-symbols-outlined">
+                  pets
+                </span>
+              </div>
+              <div class="col">
+                <span>List of breed I don't take care of: Link</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+            <div class="my-4">
+              <h4>I am not available on:</h4>
+              <mat-card class="demo-inline-calendar-card">
+                <app-calendar [orders]="orders" [notAvailble]="notAvailble"
+                  [componentFlag]="componentFlag"></app-calendar>
+              </mat-card>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <hr>
+            <div class="mt-5">
+              <mat-tab-group animationDuration="0ms">
+                <mat-tab label="Description">
+                  <p class="p-4" *ngIf="petSitter?.ProfileDesc">{{petSitter?.ProfileDesc}}</p>
+                </mat-tab>
+
+                <mat-tab label="Reviews">
+                  <ng-template mat-tab-label>
+                    <span (click)="getReviews(petSitter?.UserID)">Reviews</span>
+                  </ng-template>
+                  <div *ngFor="let r of reviews">
+                    <app-review [review]="r"></app-review>
+                  </div>
+                </mat-tab>
+
+                <mat-tab label="Gallery">
+                </mat-tab>
+
+              </mat-tab-group>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div>
-  </div>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
+</div>
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
