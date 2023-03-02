@@ -1,5 +1,5 @@
 <div class="home-section">
-  <section>
+  <section class="main-container container-fluid">
     <div class="main-container">
       <div class="home-searchbox">
         <div class="row text-center">
@@ -11,7 +11,8 @@
             </h6>
             <div class="row  text-left">
               <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link first-item nav-host nav nav-primary" [class.active]="isActive" (click)="setSelected(1)">
+                <a role="tab" class="nav-item nav-link first-item nav-host nav nav-primary" [class.active]="isActive"
+                  (click)="setSelected(1)">
                   <picture class="align-initial">
                     <img src="../../../assets/images/home/boarding-selected.svg" alt="Accommodation" class="img-fluid">
                   </picture>
@@ -20,15 +21,18 @@
                 </a>
               </div>
               <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link fourth-item nav-host" [class.active]="fourthIsActive" (click)="setSelected(4)">
+                <a role="tab" class="nav-item nav-link fourth-item nav-host" [class.active]="fourthIsActive"
+                  (click)="setSelected(4)">
                   <picture class="align-initial">
-                    <img src="../../../assets/images/home/walk-selected.svg" alt="Walk" class="img-fluid"></picture>
+                    <img src="../../../assets/images/home/walk-selected.svg" alt="Walk" class="img-fluid">
+                  </picture>
                   <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Walk</strong>
                     <br></span>
                 </a>
               </div>
               <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link second-item nav-host" [class.active]="secondIsActive" (click)="setSelected(2)">
+                <a role="tab" class="nav-item nav-link second-item nav-host" [class.active]="secondIsActive"
+                  (click)="setSelected(2)">
                   <picture class="align-initial">
                     <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
                   </picture>
@@ -37,7 +41,8 @@
                 </a>
               </div>
               <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link third-item nav-host" [class.active]="thirdIsActive" (click)="setSelected(3)">
+                <a role="tab" class="nav-item nav-link third-item nav-host" [class.active]="thirdIsActive"
+                  (click)="setSelected(3)">
                   <picture class="align-initial">
                     <img src="../../../assets/images/home/petsitting-selected.svg" alt="Home Sitter" class="img-fluid">
                   </picture>
@@ -45,7 +50,7 @@
                     <br></span>
                 </a>
               </div>
-  
+
             </div>
             <div class=" pt-4 user-search md-inline-form">
               <div class="row">
@@ -56,7 +61,7 @@
 
                 <!-- Just add *ngIf="isActive" to control the calendar types -->
 
-                <mat-form-field class="col-lg-3 col-sx-12"  appearance="outline" *ngIf="this.service!='Walk'">
+                <mat-form-field class="col-lg-3 col-sx-12" appearance="outline" *ngIf="this.service!='Walk'">
                   <mat-label>When?</mat-label>
                   <mat-date-range-input [rangePicker]="picker">
                     <input matStartDate matInput placeholder="Start date">
@@ -66,20 +71,21 @@
                   <mat-date-range-picker #picker></mat-date-range-picker>
                 </mat-form-field>
                 <!-- <mat-form-field class="col-3" appearance="outline"> -->
-                  <mat-form-field class="col-lg-3" appearance="outline" *ngIf="this.service!='Walk'">
-                    <mat-label>Pet Type</mat-label>
-                    <mat-select [formControl]="category" multiple (selectionChange)="changePet($event.value)">
-                      <mat-select-trigger>
-                        {{petCategory[0].viewValue || ''}}
-                        <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
-                          (+{{(category.value?.length || 0) - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
-                        </span>
-                      </mat-select-trigger>
-                      <mat-option *ngFor="let category of petCategory" [value]="category">{{category.viewValue}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                <mat-form-field class="col-lg-3" appearance="outline" *ngIf="this.service!='Walk'">
+                  <mat-label>Pet Type</mat-label>
+                  <mat-select [formControl]="category" multiple (selectionChange)="changePet($event.value)">
+                    <mat-select-trigger>
+                      {{petCategory[0].viewValue || ''}}
+                      <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
+                        (+{{(category.value?.length || 0) - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
+                      </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let category of petCategory"
+                      [value]="category">{{category.viewValue}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
 
-                  <!-- <mat-label>Size of your pet</mat-label>
+                <!-- <mat-label>Size of your pet</mat-label>
                   <mat-select [formControl]="petsize" multiple>
                     <mat-select-trigger>
                       {{petsize.value?.[0] || ''}}
@@ -91,7 +97,8 @@
                   </mat-select> -->
                 <!-- </mat-form-field> -->
                 <div class="col-2">
-                  <button mat-flat-button class="search-btn" (click)="SearchService(location.value)">Search Service</button>
+                  <button mat-flat-button class="search-btn" (click)="SearchService(location.value)">Search
+                    Service</button>
                 </div>
               </div>
 
@@ -120,7 +127,7 @@
                   <p>A trusted pet minder hosts your puppy for one night or more</p>
                 </div>
               </div>
-              
+
             </div>
           </div>
           <div class="row mt-4">
@@ -133,7 +140,7 @@
                   <h6>Walking &nbsp;<a class="link-more">see more ></a></h6>
                 </div>
                 <div class="col-12 service-description">
-                  <p>30 to 60 min or 2 to 5 km  walks for your dog to burn off energy</p>
+                  <p>30 to 60 min or 2 to 5 km walks for your dog to burn off energy</p>
                 </div>
               </div>
             </div>
@@ -160,7 +167,7 @@
             <div class="col-lg-10">
               <div class="row">
                 <div class="col-12">
-                  <h6>Just feed<a class="link-more"> &nbsp;  see more ></a></h6>
+                  <h6>Just feed<a class="link-more"> &nbsp; see more ></a></h6>
                 </div>
                 <div class="col-12 service-description">
                   <p>A Minder comes to your house to take care of your pet for feed and change water.</p>
@@ -175,20 +182,22 @@
         <div class="col-md-5 xs-col-12">
           <section class="card-bullets pt-5">
             <div class="card-bullets-header">
-              <img data-src="../../../assets/images/home/medal-01.svg" alt="Icon Security" class="ls-is-cached lazyloaded"
-                src="../../../assets/images/home/medal-01.svg">
+              <img data-src="../../../assets/images/home/medal-01.svg" alt="Icon Security"
+                class="ls-is-cached lazyloaded" src="../../../assets/images/home/medal-01.svg">
               <p class="card-strong"><strong>98% of reviews are 5 stars</strong></p>
             </div>
             <ul class="list-bullets p-2">
               <li>
-                <p><i class="bi bi-check-lg pr-2"></i><b> Tracking map</b> companion during your pete during the walk</p>
+                <p><i class="bi bi-check-lg pr-2"></i><b> Tracking map</b> companion during your pete during the walk
+                </p>
               </li>
               <li>
-                <p><i class="bi bi-check-lg pr-2"></i><b>Secure payment</b> by PetConnect<a href="/garantia-veterinaria" title="Garantia Veterinária"
-                    target="_blank"> see more details about our refund policies</a></p>
+                <p><i class="bi bi-check-lg pr-2"></i><b>Secure payment</b> by PetConnect<a href="/garantia-veterinaria"
+                    title="Garantia Veterinária" target="_blank"> see more details about our refund policies</a></p>
               </li>
               <li>
-                <p><i class="bi bi-check-lg pr-2"></i><b> Photos and news</b> for you to accompany your puppy wherever you are</p>
+                <p><i class="bi bi-check-lg pr-2"></i><b> Photos and news</b> for you to accompany your puppy wherever
+                  you are</p>
               </li>
             </ul>
           </section>
@@ -213,62 +222,70 @@
 
 <section class="home-testimonial">
   <div class="">
-      <div class="row d-flex justify-content-center testimonial-pos">
-          <div class="col-md-12 pt-4 d-flex justify-content-center">
-              <h3>What our users say about us</h3>
-          </div>
-          <div class="col-md-12 d-flex justify-content-center">
-              <h2>PetConnect Sitters are 5 stars</h2>
-          </div>
-
-          <div class="h-100  d-flex justify-content-center">
-            <span class="bi bi-star-fill"></span>
-            <span class="bi bi-star-fill"></span>
-            <span class="bi bi-star-fill"></span>
-            <span class="bi bi-star-fill"></span>
-            <span class="bi bi-star-fill"></span>
-            <span class="review my-auto pl-2"></span>
-        </div>
-          
-
+    <div class="row d-flex justify-content-center testimonial-pos">
+      <div class="col-md-12 pt-4 d-flex justify-content-center">
+        <h3>What our users say about us</h3>
       </div>
-      <section class="home-testimonial-bottom">
-          <div class="container testimonial-inner">
-              <div class="row d-flex justify-content-center">
-                  <div class="col-md-4 style-3">
-                      <div class="tour-item ">
-                          <div class="tour-desc bg-white">
-                              <div class="tour-text color-grey-3 text-center">&ldquo;I needed to make a last minute trip and I'm glad I managed to find a reliable person through the platform.&rdquo;</div>
-                              <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://images.pexels.com/photos/6625914/pexels-photo-6625914.jpeg" alt=""></div>
-                              <div class="link-name d-flex justify-content-center">Aoife MacCool</div>
-                              <div class="link-position d-flex justify-content-center">using PetConnect for 1 year</div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-4 style-3">
-                      <div class="tour-item ">
-                          <div class="tour-desc bg-white">
-                              <div class="tour-text color-grey-3 text-center">&ldquo;Fred is loving walking every morning, I highly recommend the platform, the refound policies make me feel safe.&rdquo;</div>
-                              <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""></div>
-                              <div class="link-name d-flex justify-content-center">Ciara MacNice</div>
-                              <div class="link-position d-flex justify-content-center">using PetConnect for 2 years</div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-4 style-3">
-                      <div class="tour-item ">
-                          <div class="tour-desc bg-white">
-                              <div class="tour-text color-grey-3 text-center">&ldquo;I needed to make a last minute trip and I'm glad I managed to find a reliable person through the platform.&rdquo;</div>
-                              <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://images.pexels.com/photos/4946604/pexels-photo-4946604.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""></div>
-                              <div class="link-name d-flex justify-content-center">Aisling MacLove</div>
-                              <div class="link-position d-flex justify-content-center">using PetConnect for 6 months</div>
-                          </div>
-                      </div>
-                  </div>
+      <div class="col-md-12 d-flex justify-content-center">
+        <h2>PetConnect Sitters are 5 stars</h2>
+      </div>
+
+      <div class="h-100  d-flex justify-content-center">
+        <span class="bi bi-star-fill"></span>
+        <span class="bi bi-star-fill"></span>
+        <span class="bi bi-star-fill"></span>
+        <span class="bi bi-star-fill"></span>
+        <span class="bi bi-star-fill"></span>
+        <span class="review my-auto pl-2"></span>
+      </div>
+
+
+    </div>
+    <section class="home-testimonial-bottom">
+      <div class="container testimonial-inner">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-4 style-3">
+            <div class="tour-item ">
+              <div class="tour-desc bg-white">
+                <div class="tour-text color-grey-3 text-center">&ldquo;I needed to make a last minute trip and I'm glad
+                  I managed to find a reliable person through the platform.&rdquo;</div>
+                <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
+                    src="https://images.pexels.com/photos/6625914/pexels-photo-6625914.jpeg" alt=""></div>
+                <div class="link-name d-flex justify-content-center">Aoife MacCool</div>
+                <div class="link-position d-flex justify-content-center">using PetConnect for 1 year</div>
               </div>
-</div>
-</section>
-</div>
+            </div>
+          </div>
+          <div class="col-md-4 style-3">
+            <div class="tour-item ">
+              <div class="tour-desc bg-white">
+                <div class="tour-text color-grey-3 text-center">&ldquo;Fred is loving walking every morning, I highly
+                  recommend the platform, the refound policies make me feel safe.&rdquo;</div>
+                <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
+                    src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    alt=""></div>
+                <div class="link-name d-flex justify-content-center">Ciara MacNice</div>
+                <div class="link-position d-flex justify-content-center">using PetConnect for 2 years</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 style-3">
+            <div class="tour-item ">
+              <div class="tour-desc bg-white">
+                <div class="tour-text color-grey-3 text-center">&ldquo;I needed to make a last minute trip and I'm glad
+                  I managed to find a reliable person through the platform.&rdquo;</div>
+                <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
+                    src="https://images.pexels.com/photos/4946604/pexels-photo-4946604.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    alt=""></div>
+                <div class="link-name d-flex justify-content-center">Aisling MacLove</div>
+                <div class="link-position d-flex justify-content-center">using PetConnect for 6 months</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </section>
 
 
@@ -281,4 +298,3 @@
 
 
 <app-footer></app-footer>
-
