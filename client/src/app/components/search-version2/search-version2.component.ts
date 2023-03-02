@@ -13,7 +13,9 @@ import { GeocodingService } from '../geocoding.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { IPetSitter } from '../interfaces/users';
+import { UserService } from '../service/user.service';
+import { IPetOwner } from '../interfaces/users';
+import { ConsoleLogger } from '@aws-amplify/core';
 
 interface serviceCategory {
   value: string;
@@ -36,6 +38,9 @@ export class SearchVersion2Component implements OnInit {
   public petDetails:IPet[]; 
   public lat: number[] = [];
   public lng: number[] = [];
+  petOwner: IPetOwner; 
+
+  petOwnerPets: any;
 
   serviceCategories: serviceCategory[] = [
     {value: '../../../assets/images/home/boarding-selected.svg', viewValue: 'Accomodation'},
@@ -93,7 +98,7 @@ export class SearchVersion2Component implements OnInit {
     }
 
   ]
-  constructor( public router: Router,   private http: HttpClient,  private mapsAPILoader: MapsAPILoader,private geoCodingService: GeocodingService,
+  constructor( public router: Router,private _userService: UserService,   private http: HttpClient,  private mapsAPILoader: MapsAPILoader,private geoCodingService: GeocodingService,
     private ngZone: NgZone, public r : ActivatedRoute, public search : SearchServiceService, private dialog:MatDialog, private _petService:PetService,public authenticator: AuthenticatorService,) { }
 
   ngOnInit(): void {
@@ -103,11 +108,14 @@ export class SearchVersion2Component implements OnInit {
    this.pet = this.r.snapshot.paramMap.get('pet');
    this.getLatLng('11 glenard, ballinode')
    this.SearchService(this.pet, this.location, this.service);
-  this.getPetDetails(); 
+  this.getPetOwner(); 
+
  this.mapsAPILoader.load().then(() => {
 });
-
-
+}
+ngOnDestroy() {
+  // localStorage.setItem('petOwnerPets', JSON.stringify(''));
+  // localStorage.setItem('PetOwnerInformation', JSON.stringify('')); 
 }
 
 
@@ -129,15 +137,11 @@ getAddressByUser(address:string, PetSitter:any){
 
     });
   });
-  console.log('markes', this?.markers); 
-
 }
 
   SearchService(pet : string, location : string , service: string)
   {
-    
-    console.log(pet + '  ' + this.location + '  ' + service);
-
+  
     this.search.getServiceData(pet, location, service).subscribe({
       next: (value: RdsUserServices[] )=>this.userServices = value,
       complete: () => console.log('Review service finished ' +  JSON.stringify((this.userServices))),
@@ -153,13 +157,21 @@ getAddressByUser(address:string, PetSitter:any){
   }
 
   async getPetDetails(){
-    try{
-      const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
-      this.petDetails = petDetails; 
-      console.log(petDetails)
-     }catch (error) {
-      console.error(error);
-    }
+    this.petDetails = JSON.parse(localStorage.getItem('petDetails'))
+
+    if(!this.petDetails){
+      try{
+        const petDetails =  await this._petService.get_petdetails(this.petOwner?.emailAddress).toPromise()
+        this.petDetails = petDetails; 
+        console.log(petDetails)
+        localStorage.setItem('petDetails', JSON.stringify(this.petDetails));
+       }catch (error) {
+        console.error(error);
+      }
+     }
+     else{
+      this.petDetails = JSON.parse(localStorage.getItem('petDetails')); 
+     }
 }
 
   newSearchRequest(pet: string, service: string)
@@ -167,6 +179,17 @@ getAddressByUser(address:string, PetSitter:any){
     this.SearchService(pet, this.location, service);
   }
   
+  async getPetOwner(){
+    try {
+    const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+    this.petOwner= petOwner;
+    localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
+    this.getPetDetails(); 
+
+     } catch (error) {
+       console.error(error);
+     }
+  }
 
 
   changed(){
@@ -217,4 +240,6 @@ getAddressByUser(address:string, PetSitter:any){
   {
     this.reviewForm = false;
   }
+
+
 }

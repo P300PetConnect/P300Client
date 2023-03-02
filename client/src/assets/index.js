@@ -16,6 +16,7 @@ var directionsService;
 
 //create a DirectionsRenderer object which we will use to display the route
 var directionsDisplay;
+
 function SettingMap() {
   myLatLng = { lat: 54.2789982, lng: -8.4606109 };
   mapOptions = {
@@ -52,7 +53,7 @@ function SettingMap() {
   //#endregion
 
   console.log("setting up map done");
-} 
+}
 SettingMap();
 
 console.log("Before onCalc");

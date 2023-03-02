@@ -165,13 +165,17 @@ export class PetSitterDetailsComponent implements OnInit {
 //     return false; 
 //   }
 
+
+// this.dialogRef2 = this.dialog.open(MessageAlertComponent, {data:{ order: this.order}
+
+
 onCreateOrder(){
   // this._userService.initializeFormGroup(); 
   const dialogConfig = new MatDialogConfig(); 
   dialogConfig.disableClose = false; 
   dialogConfig.autoFocus = true; 
   dialogConfig.width = "60%";
-  this.dialog.open(OrderComponent, dialogConfig); 
+  this.dialog.open(OrderComponent, {data:{petSitter:this.petSitter, serviceList:this.serviceList}}); 
 
 }
 
@@ -232,11 +236,12 @@ onCreateOrder(){
   }
 
   getServices(id: number): boolean
-  {
+  { 
     this.service.getOtherServices(id).subscribe({
       next: (value: ServiceInterface[] )=> this.serviceList = value,
       complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
       error: (mess) => this.message = mess
+   
     })
     return false;
 
