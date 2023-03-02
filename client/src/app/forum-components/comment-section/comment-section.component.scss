@@ -17,15 +17,16 @@
 	position: relative;
 	margin: 3%;
 }
-.close{
-    position: absolute;
-    top: 0;
-    right: 0;
+
+.close {
+	position: absolute;
+	top: 0;
+	right: 0;
 }
-.like img
-{
-    width: 25px;
-    margin-right: 10px;
+
+.like img {
+	width: 25px;
+	margin-right: 10px;
 }
 
 .like img:hover {
@@ -68,8 +69,9 @@
 	border: 1px solid black;
 	margin-bottom: 5%;
 }
-.beside{
-    display: inline-block;
+
+.beside {
+	display: inline-block;
 }
 .commentFooter
 {
