@@ -9,7 +9,6 @@ import { ChannelService, ChatClientService, StreamI18nService } from 'stream-cha
 })
 export class ChatPageComponent implements OnInit {
 
-  ///get from localstorage
   userDetails = localStorage.getItem('PetConnectUser');
   chatName = JSON.parse(this.userDetails);
 
