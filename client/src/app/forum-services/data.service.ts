@@ -46,7 +46,7 @@ export class DataService {
   getBoardDetails(r: string) : Observable<BoardInterface> {
     return this.http.get<BoardInterface>('https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/board'+ "?boardID="+ r)
     .pipe(
-      tap(data => console.log('Forum/error' + JSON.stringify(data))
+      tap(data => console.log('Forum/error',data)
     )
    
     );
@@ -68,7 +68,7 @@ export class DataService {
 
     return this.http.get<PostInterface>(url)
     .pipe(
-      tap(data => console.log('Forum/error' + JSON.stringify(data))
+      tap(data => console.log('Forum/error',data)
     )
     );
 }
@@ -108,7 +108,7 @@ export class DataService {
  
       return this.http.get<CommentInterface>('https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/Forum-GetComments'+"?postID=" + postID)
       .pipe(
-        tap(data => console.log('Forum/error' + JSON.stringify(data))
+        tap(data => console.log('Forum/error',data)
       ),
       // catchError(this.handleError)
     
@@ -217,7 +217,7 @@ export class DataService {
     getForumData(r: number) : Observable<PostInterface> {
     return this.http.get<PostInterface>('https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/Test')
     .pipe(
-      tap(data => console.log('Forum/error' + JSON.stringify(data))
+      tap(data => console.log('Forum/error',data)
     ),
     // catchError(this.handleError)
   
