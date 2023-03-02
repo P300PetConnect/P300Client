@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-4 user-search md-inline-form">
     <div class="row">
-      <div class="col-2">
+      <div class="col-md-2">
         <mat-form-field appearance="outline">
             <mat-label>Service</mat-label>
             <mat-select [(value)]="service" #selectedService>
@@ -26,12 +26,12 @@
           </mat-form-field>
           </div>
       
-            <mat-form-field class="col-3" appearance="outline" *ngIf="location == '' ">
+            <mat-form-field class="col-md-3" appearance="outline" *ngIf="location == '' ">
               <mat-label>Insert your location</mat-label>
               <input matInput placeholder="N. Street " #selectedLocation (change)="setLocation(selectedLocation.Value)">
             </mat-form-field>
         
-            <mat-form-field class="col-3" appearance="outline" *ngIf="location != '' ">
+            <mat-form-field class="col-md-3" appearance="outline" *ngIf="location != '' ">
               <mat-label>Insert your location</mat-label>
               <input matInput placeholder="N. Street " value="{{location}}" #selectedLocation (change)="setLocation(selectedLocation.value)">
             </mat-form-field>
@@ -48,7 +48,7 @@
       </mat-form-field>
       
 
-      <mat-form-field class="col-3 col-sx-12" appearance="outline">
+      <mat-form-field class="col-md-3 col-sx-12" appearance="outline">
         <mat-label>Dates</mat-label>
         <mat-date-range-input [rangePicker]="picker">
           <input matStartDate matInput placeholder="Start date">
@@ -58,7 +58,7 @@
         <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
       
-      <mat-form-field class="col-2" appearance="outline">
+      <mat-form-field class="col-md-2" appearance="outline">
         <mat-label>Pet Type</mat-label>
         <mat-select [(value)]="pet" #selectedPet>
           <mat-option>None</mat-option>
@@ -66,7 +66,7 @@
           <mat-option value="Cat">Cat</mat-option>
         </mat-select>
       </mat-form-field>
-      <div class="col-2">
+      <div class="col-md-2">
         <button mat-flat-button class="search-btn" (click)="newSearchRequest(selectedPet.value,selectedService.value)">Search Service</button>
       </div>
     </div>
@@ -74,14 +74,14 @@
    
 
   </div>  
-  <div class="mt-2" *ngIf="userServices.length > 0">
+  <div class="mt-2 d-md-block" *ngIf="userServices.length > 0">
      <h5 >{{userServices.length}}  pet sitters were found </h5> 
   </div>
   <div class="row pt-4 pb-4">
-    <div class="col-10">
+    <div class="col-md-10">
         <mat-slide-toggle (change)="changed()">Show map</mat-slide-toggle>
     </div>
-    <div class="col-2 d-flex justify-content-end">
+    <div class="col-md-2 d-flex justify-content-end">
         <div class="btn-group">
             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Sort by
@@ -97,7 +97,7 @@
     </div>
   </div>
   <div class="row">
-        <div class="col-4">
+        <div class="col-md-4">
           <div *ngIf="isMapsDisplay">
             <!-- <div>
               <agm-map  [latitude]="lat[0]"   [longitude]="lng[0]" [zoom]="9">
@@ -242,7 +242,7 @@
 
             
 
-            <div class="col-8 pl-3" *ngIf="userServices.length > 0">
+            <div class="col-md-8 pl-3 pt-4" *ngIf="userServices.length > 0">
                    <div class="row" *ngFor="let p of userServices" >
                     <app-search-sitter-services  [service] = "p" ></app-search-sitter-services >
                   </div>
