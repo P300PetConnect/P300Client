@@ -110,8 +110,6 @@ export class PetSitterDetailsComponent implements OnInit {
 
       this.client = new StreamChat(this.apiKey);
 
-
-
   //   this._userService.get_user().subscribe((res: IUser) => {
   //     this.user= res; 
 

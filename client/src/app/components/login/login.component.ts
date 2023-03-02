@@ -20,6 +20,7 @@ isOpen: boolean = true;
 @Input() isLogout: boolean; 
 @ViewChildren('field') allFields;
 userGroup: string;
+userEmail: string;
 
 public petOwner: IPetOwner; 
 public petSitter: IPetSitter; 
@@ -73,11 +74,12 @@ onCheckRoute(UserGroup:string){
   }
 }
 
-//load pey owner data to local storage
+//load pet owner data to local storage
 async getPetOwner(){
   try {
   const petOwner = await this.userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
   this.petOwner = petOwner;
+  localStorage.setItem('userEmail', petOwner.emailAddress);
   } catch (error) {
       console.error(error);
     }
@@ -88,6 +90,7 @@ async getPetOwner(){
     try{
       const petSitter = await this.userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
+        localStorage.setItem('userEmail', petSitter.emailAddress);
     }catch (error) {
       console.error(error);
     }
