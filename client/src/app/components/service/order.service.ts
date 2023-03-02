@@ -23,7 +23,7 @@ export class OrderService {
   getOderByUser(PetSitterID){
     return this._http.get<IOrder[]>(environment.UriGetOrdersByPetSitter+'/orders?id='+PetSitterID)
     .pipe(
-      tap(data => console.log('list/error' + JSON.stringify(data))
+      tap(data => console.log('list/error', data)
     ),
      catchError(this.handleError)
     );
@@ -32,7 +32,7 @@ export class OrderService {
   getOrderByUserPetOwnerView(PetOwnerID){
     return this._http.get<IOrder[]>(environment.UriGetOrdersByPetOwnerView+'/orders?PetOwnerID='+PetOwnerID)
     .pipe(
-      tap(data => console.log('list/error' + JSON.stringify(data))
+      tap(data => console.log('list/error', data)
       
     ),
      catchError(this.handleError)
@@ -43,7 +43,7 @@ export class OrderService {
   {
     return this._http.get<IOrderList>("https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/order?id=" + id)
     .pipe(
-      tap(data => console.log('list/error' + JSON.stringify(data))
+      tap(data => console.log('list/error', data)
       
     ),
      catchError(this.handleError)
@@ -55,7 +55,7 @@ export class OrderService {
   {
     return this._http.get<INotAvailable>("https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/not?id=" + id)
     .pipe(
-      tap(data => console.log('list/error' + JSON.stringify(data))
+      tap(data => console.log('list/error', data)
       
     ),
      catchError(this.handleError)
