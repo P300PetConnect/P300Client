@@ -75,11 +75,11 @@ selectedCategories: any;
   ngOnInit(): void {
 
     this.serviceCategory= this.data?.serviceList;
-    console.log(this.serviceCategory, 'service')
     if(!this.petCategory){
       console.log('TO DO: GET PETS BY PET OWNER WHEN THE LOCAL STORAGE IS EMPTY')
     }
-this.getPetSitter(); 
+    this.getPetSitter(); 
+
 }
 getPetSitter(){
   this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
