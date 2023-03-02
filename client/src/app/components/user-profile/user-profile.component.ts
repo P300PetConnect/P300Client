@@ -97,11 +97,7 @@ export class UserProfileComponent implements OnInit {
     this.GetnotAvailable(this.petSitter?.id);
 
     //check if the service list is not read
-    this.orders.forEach(element => {
-      if(element?.FlagReadPetSitter==false){
-        console.log('petsitter did not read the order yet')
-      }
-    });
+
     this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
     // if (this.petSitter.emailAddress==null) {
@@ -114,14 +110,28 @@ export class UserProfileComponent implements OnInit {
     
   }
 
-  GetOrders(id: number)
-  {
+  GetOrders(id: number) {
     this._order.getOrdersList(id).subscribe({
-      next: (value: IOrderList[] )=>this.orders = value,
-      complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
+      next: (value: IOrderList[]) => {
+        this.orders = value;
+        console.log('Order service finished ', this.orders);
+  
+        // Find all orders that haven't been read by the pet sitter
+        const ordersNotRead = this.orders.filter(order => !order.FlagReadPetSitter);
+  
+        // Store the list of unread orders in local storage
+        localStorage.setItem('OrdersNotRead', JSON.stringify(ordersNotRead));
+  
+        if (ordersNotRead.length > 0) {
+          console.log('Pet sitter has not read some orders yet.');
+        } else {
+          console.log('Pet sitter has read all orders.');
+        }
+      },
       error: (mess) => this.message = mess
-    })
+    });
   }
+  
 
   
 
@@ -129,7 +139,7 @@ export class UserProfileComponent implements OnInit {
   {
     this._order.getNotAvailable(id).subscribe({
       next: (value: INotAvailable[] )=>this.notAvailble = value,
-      complete: () => console.log('not available service finished ' +  JSON.stringify((this.notAvailble))),
+      complete: () => console.log('not available service finished ', this.notAvailble),
       error: (mess) => this.message = mess
     })
   }
@@ -186,7 +196,7 @@ async getReviews()
    await this._httpReview.getReviews(this.petSitter?.id).toPromise().then(
     (value: Review[])=> this.reviews = value,
     (mess) => this.message = mess
-   ).finally(()=>console.log('Review service finished ' +  JSON.stringify(this.reviews))); 
+   ).finally(()=>console.log('Review service finished ', this.reviews)); 
    localStorage.setItem('reviews', JSON.stringify(this.reviews)); 
    console.log('pet sitter reviews ', this.reviews); 
   }catch(error){
