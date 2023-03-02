@@ -15,11 +15,6 @@ import { IPetSitter } from '../interfaces/users';
 
 })
 export class PaymentComponent implements OnInit {
-
-
-
-
-
   
   btnclass: string="success";
   btnText: string='Make payment';

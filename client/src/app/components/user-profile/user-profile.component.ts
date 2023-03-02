@@ -160,7 +160,7 @@ export class UserProfileComponent implements OnInit {
     try{
       const petSitter = await this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
-        localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
+        // localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
         this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
     }catch (error) {
       console.error(error);
