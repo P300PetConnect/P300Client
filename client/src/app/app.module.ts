@@ -59,7 +59,6 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MessageAlertComponent } from './components/message-alert/message-alert.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
 import { AgmCoreModule } from "@agm/core";
 import { SocketService } from './service/socket.service';
 import { AgmDirectionModule } from 'agm-direction';
