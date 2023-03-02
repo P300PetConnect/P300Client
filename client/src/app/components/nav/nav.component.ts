@@ -10,6 +10,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-nav',
@@ -31,7 +32,7 @@ export class NavComponent implements OnInit {
   public petOwner: IPetOwner; 
   public petSitter: IPetSitter; 
 
-  constructor( public authenticator: AuthenticatorService, private readonly  _router: Router, private userService: UserService) {
+  constructor( private _httpOrder:OrderService,public authenticator: AuthenticatorService, private readonly  _router: Router, private userService: UserService, _httpUser: UserService) {
     // Amplify.configure(awsExports);
   }
   ngOnInit() {
@@ -80,7 +81,11 @@ export class NavComponent implements OnInit {
         console.error(error);
       }
     }
-  
+
+
+ 
+
+
     async getPetSitter(){
       try{
         const userEmail = localStorage.getItem('userEmail');
@@ -93,6 +98,9 @@ export class NavComponent implements OnInit {
         console.error(error);
       }
     }
+
+
+
 
   
 }
