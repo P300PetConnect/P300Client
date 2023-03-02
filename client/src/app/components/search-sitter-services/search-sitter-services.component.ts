@@ -28,6 +28,8 @@ export class SearchSitterServicesComponent implements OnInit {
  
  latlong1 = '';
  latlong2 = '';
+ distance = 0;
+ logged
  
 
   constructor(private search: SearchServiceService, private _router: Router, private http: HttpClient, private user: UserService) { }
@@ -38,14 +40,12 @@ export class SearchSitterServicesComponent implements OnInit {
     this.averageRoundStars = Math.floor(this.service.ReviewsTotal / this.service.NumReviews);
 
      this.loyalCus = this.service.NumReviews + 5
+   alert("e");
+   
+   
+    const zip1 = 'F91 NHR2'
+    const zip2 = this.service.ZipCode; 
 
-    
-    const zip1 = 'F91NHR2'
-    const zip2 = "H91VXV9"; 
-
-    const zips = ["F91NHR2", "H91VXV9"]
-
-    
        this.user.getLatLng(zip1).subscribe((str) => {
         this.latlong1 =str
         
@@ -53,16 +53,14 @@ export class SearchSitterServicesComponent implements OnInit {
        });
        this.user.getLatLng(zip2).subscribe((str) => {
         this.latlong2 =str
-        alert(this.distanceInKm());
-        
-       
+        this.distance = this.distanceInKm()
        });
 
-
-    
+       //promise await 
 
   }
  distanceInKm(): number {
+  console.log(this.latlong2);
   var l1 = this.latlong1.split(',').map(Number);
   var l2 = this.latlong2.split(',').map(Number);
   let lat1 = l1[0]; 
