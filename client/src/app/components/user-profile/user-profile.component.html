@@ -1,6 +1,6 @@
-<div class="container-xxl pt-5">
+<div class="container-xxl mt-5 overflow-hidden">
   <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'joannasmith@gmail.com' ">
-    <div class="col-lg-4 col-sm-12 col-md-4 ">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
       <div class="row">
         <div class="col-12">
           <div class="tab-content">
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="col-lg-8 pl-5 col-sm-12 col-md-8 ">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-12">
       <mat-tab-group animationDuration="0ms">
         <mat-tab label="Active Pets">
           <div class="row">
@@ -147,7 +147,7 @@
 
   <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'fatherted@gmail.com'">
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
       <div class="row">
         <div class="col-12">
           <div class="tab-content">
@@ -204,7 +204,7 @@
 
 
 
-    <div class="col-lg-8 pl-5">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-12">
       <mat-tab-group animationDuration="0ms">
         <!-- <mat-tab label="Schedule">
                 <div *ngFor="let o of orders">
@@ -223,9 +223,9 @@
           <ng-template mat-tab-label>
             Active service
           </ng-template>
-          <div class="row pt-4 container">
+          <div class="row mt-4 container-fluid">
             <div class="col-lg-4">
-              <div class="card p-4" (click)="onCreateService()">
+              <div class="card p-4 mb-4 mb-md-0" (click)="onCreateService()">
                 <div class="text-center card-body">
 
                   <div class="member-card">
@@ -342,7 +342,7 @@
                         <p><small>laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
                             distinctio</small></p>
                       </div>
-                      <div class="post" style="margin-top: 2%;">
+                      <div class="post" >
                         <h6>Thu Dec 08 2022</h6>
                         <p><small>maiores alias consequatur aut perferendis doloribus asperiores repella</small></p>
                       </div>
