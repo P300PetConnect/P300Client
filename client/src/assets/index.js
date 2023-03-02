@@ -2,7 +2,9 @@
 //javascript.js
 //set map options
 function initMap() {
+function initMap() {
 
+}
 }
 var myLatLng;
 var mapOptions;

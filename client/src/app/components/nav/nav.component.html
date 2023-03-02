@@ -14,6 +14,7 @@
         <a class="nav-item nav-link" routerLink="Register">Register</a>
         <a class="nav-item nav-link" routerLink="forum">Forum</a>
      
+     
       </div>
     </div>
 </div>
@@ -120,7 +121,7 @@
           {{userFName}}    {{userLName}} <b class="caret"></b></a>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
         <a  routerLink="/profile" class="dropdown-item" ><i class="bi bi-person pr-3 pt-2"></i>Profile</a>
-        <a href="#" class="dropdown-item"><i class="bi bi-receipt-cutoff pr-3 pt-2"></i> Billing</a>
+        <!-- <a href="#" class="dropdown-item"><i class="bi bi-receipt-cutoff pr-3 pt-2"></i> Billing</a> -->
         <a href="#" class="dropdown-item"><i class="bi bi-sliders2 pr-3 pt-2"></i>Settings</a>
         <div class="divider dropdown-divider"></div>
         <a class="dropdown-item" (click)="Logout()"><i class="bi bi-box-arrow-left pr-3"></i> Logout</a>
