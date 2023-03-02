@@ -321,22 +321,50 @@
         <i class="fa fa-power-off"></i>
       </a>
     </div>
-  </nav>
-  <!-- sidebar-wrapper  -->
-
-  </nav>
-  <!-- sidebar-wrapper  -->
-
-
-  <!-- The content appearse here -->
-  <main id="map" class="page-content">
-  <!-- The content appearse here -->
-  <main id="map" class="page-content">
-    <div class="container-fluid">
-
+  
+  
+    <!-- End of trying dialog -->
+  </div>
+  
+  <!-- Modal component -->
+  <!-- <button (click)="toggle()">Open Modal</button> -->
+  <div class="modal" [class.show]="isOpen">
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="routeNameed">Route Name</label>
+          <input type="email" class="form-control" id="routeNameed" aria-describedby="emailHelp"
+            [ngModelOptions]="{standalone: true}" placeholder="Enter email" [(ngModel)]="routeName">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="fromed">From</label>
+          <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="fromed" placeholder="start"
+            [(ngModel)]="startPoint">
+        </div>
+  
+        <div class="form-group">
+          <label for="toEd">To</label>
+          <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="toEd"
+            placeholder="destination" [(ngModel)]="endPoint">
+        </div>
+        <button (click)="toggleClose()">close</button>
+        <button class="btn btn-primary" (click)="updatePost()">Submit</button>
+      </form>
+      <!-- Your form fields here -->
+  
+  
+  
+  
+  
+  
+  
     </div>
-  </main>
-  <!-- page-content" -->
-  </main>
-  <!-- page-content" -->
-</div>
+  
+  
+  
+  </div>
+  
+  
+  
+  <app-footer></app-footer>
