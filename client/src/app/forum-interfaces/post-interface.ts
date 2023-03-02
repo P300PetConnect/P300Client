@@ -8,6 +8,7 @@ export interface PostInterface
   Date: string;
   VoteCount: number;
   DisplayComments: boolean;
+  imageProfileUrl:string;
 }
 
     export class PostItem
@@ -21,11 +22,12 @@ export interface PostInterface
     Date: string;
     VoteCount: number;
     DisplayComments: boolean;
+    imageProfileUrl:string;
     
 
     constructor(PostID: string, PostTitle:string, BoardID: string, 
                 User: string, Content: string, Date: string,
-                DisplayComments: boolean, VoteCount: number )
+                DisplayComments: boolean, VoteCount: number, imageProfileUrl:string )
     {
         this.PostID = PostID;
         this.PostTitle = PostTitle;
@@ -35,6 +37,7 @@ export interface PostInterface
         this.Date = Date
         this.DisplayComments = DisplayComments;
         this.VoteCount = VoteCount;
+        this.imageProfileUrl = imageProfileUrl; 
     }
 
 }

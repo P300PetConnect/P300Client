@@ -90,7 +90,7 @@ export class SearchServiceService {
 
 getOtherServices(id : number)
 {
-  return this.http.get<ServiceInterface>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/other?id=' + id)
+  return this.http.get<any>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/other?id=' + id)
   .pipe(
     tap(data => console.log('Forum/error' + JSON.stringify(data))
   ),

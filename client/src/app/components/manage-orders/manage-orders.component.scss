@@ -44,8 +44,10 @@ table{
     color: #e9ecef;
 }
 
-
-
-b{
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #b4e0e7;
+}
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --mo-table-accent-bg:  #fff;
     color: gray;
 }
