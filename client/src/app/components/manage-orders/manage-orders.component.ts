@@ -10,6 +10,7 @@ import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { OrderComponent } from '../order/order.component';
 import { OrderService } from '../service/order.service';
 import { UserService } from '../service/user.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-manage-orders',
@@ -32,7 +33,7 @@ export class ManageOrdersComponent implements OnInit {
 
 
   constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService,  
-    private service: SearchServiceService) {
+    private service: SearchServiceService, private sharedService: SharedService) {
     Auth.currentAuthenticatedUser()
     .then(user => {
       this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
@@ -53,7 +54,15 @@ export class ManageOrdersComponent implements OnInit {
        
     this.getServices(43);
     this.getOrders();   
+    this.createOrder(); 
    }
+
+   createOrder() {
+    // Call API to create order
+    const currentCount = this.sharedService.ordersCount.value;
+    this.sharedService.ordersCount.next(currentCount + 1);
+  
+  }
 
    async getOrders(){
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
