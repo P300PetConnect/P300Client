@@ -1,22 +1,5 @@
-@import "../../../variables.scss";
-
-.main-container {
-  height: 300px;
-  // background: linear-gradient(90deg,rgba(47,45,65,.5),rgba(47,10,65,.3)),url('../../../assets/images/home/banner-home-desktop.webp');
-  background: linear-gradient(90deg, rgba(47, 45, 65, .5), rgba(47, 10, 65, .3)), url('https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-  display: block;
-  position: relative;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  color: white !important;
-  background-position: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: auto;
-  opacity: 1;
-  color: black;
+#active_ {
+  background-color: orange;
 }
 
 .bi-star-fill {
@@ -323,30 +306,14 @@
   }
 }
 
-
-
-
 @media screen and (max-width: 480px) {
-  .home-testimonial-bottom div div :nth-child(2) {  
-   display: none;
+  .home-testimonial-bottom div div :nth-child(2) {
+    display: none;
   }
-
-  .icon-sleepover{
-    width: 2.5rem;
-  }
-
 }
 
 @media screen and (max-width: 480px) {
-  .home-testimonial-bottom div div :nth-child(3) {  
-   display: none;
+  .home-testimonial-bottom div div :nth-child(3) {
+    display: none;
   }
-
 }
-
-// @media screen and (min-width: 480px) {
-//   .home-testimonial-bottom div div :nth-child(2) {  
-//    display: none;
-//   }
-
-// }
