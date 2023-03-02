@@ -21,7 +21,7 @@ import { IPet } from './components/interfaces/form';
 export class AppComponent {
   isAutenticated: boolean; 
   public petDetails:IPet[]; 
-  petOwner: import("/Users/jessicahenry/P300Client/client/src/app/components/interfaces/users").IPetOwner;
+  petOwner: import("../app/components/interfaces/users").IPetOwner;
   constructor(public _authenticator: AuthenticatorService,private _petService:PetService, private _userService: UserService,public router: Router, public loaderService: LoaderService, public authenticator: AuthenticatorService) {
     if(_authenticator){
       console.log(router); 
