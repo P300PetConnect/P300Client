@@ -5,6 +5,7 @@ import { IUser } from "../interfaces/form";
 import { environment } from "src/environments/environment";
 import { IPetOwner, IPetSitter } from "../interfaces/users";
 import { userInfo } from "os";
+import { FormGroup } from "@angular/forms";
 
 @Injectable()
 
@@ -12,6 +13,7 @@ export class UserService{
 
     private baseUrl = `${environment.UriPetSitter}/user/`;
     private baseUrlPetOwner = `${environment.UriPetOwner}/user/`;
+    handleError: any;
 
     constructor(private _http: HttpClient){ } 
 
@@ -100,6 +102,18 @@ export class UserService{
         update(email: string, params: any) {
             console.log(params);
             return this._http.put( this.baseUrlPetOwner+email, params);
+        }
+
+        UpdateProfileDetails(d : FormGroup)
+        {
+            console.log(d.value);
+         
+            return this._http.post<any>('https://ft7rcaybtl.execute-api.eu-west-1.amazonaws.com/prod/updateprofile', d.value)
+            .pipe(
+              catchError(this.handleError)
+            )
+        
+
         }
     
   }

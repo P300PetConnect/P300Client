@@ -30,10 +30,12 @@ export class SharedFormComponent implements OnInit {
     county: new FormControl(''),
     zipCode: new FormControl(''),
     country: new FormControl(''),
-    town: new FormControl('')
+    town: new FormControl(''),
+ 
   })
 
   profileDetails : FormGroup = new FormGroup({
+    UserID: new FormControl (0),
     CancellationPolicy: new FormControl (''),
     ProfileDesc: new FormControl (''),
     HouseType: new FormControl(''),
@@ -44,14 +46,18 @@ export class SharedFormComponent implements OnInit {
     UsualPetsDetail1: new FormControl(''),
     UsualPetsDetail2: new FormControl(''),
     UsualPetsDetail3: new FormControl(''),
+
+    
   
 
   })
 
   userGroup = '';
+  message: any;
 
 
-  constructor(public dialogRef:MatDialogRef<SharedFormComponent>, private _userService:UserService, public authenticator: AuthenticatorService) { }
+  constructor(public dialogRef:MatDialogRef<SharedFormComponent>, private _userService:UserService, 
+    public authenticator: AuthenticatorService, _user: UserService) { }
 
   isSelected:boolean = false; 
   isShow:boolean; 
@@ -118,7 +124,22 @@ return false;
   
   SubmitProfileDetail()
   {
-    console.log(this.profileDetails);
+    this.profileDetails.controls.UserID.setValue(this.user.id)
+   
+
+    this._userService.UpdateProfileDetails(this.profileDetails);
+
+    this._userService.UpdateProfileDetails(this.profileDetails).subscribe({
+      next: details => {
+        console.log(JSON.stringify(details) + 'details updated');
+        this.message = "details updated";
+       
+        //resets array
+        ;
+       
+         },
+      error: (err) => this.message = err
+    });
   }
 
 
