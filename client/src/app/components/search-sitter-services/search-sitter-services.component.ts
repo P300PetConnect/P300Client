@@ -1,7 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { RdsUserServices } from 'src/app/search_service_interfaces/rds-user-services';
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-search-sitter-services',
@@ -20,7 +25,12 @@ export class SearchSitterServicesComponent implements OnInit {
 
   loyalCus = 0;
 
-  constructor(private search: SearchServiceService, private _router: Router) { }
+ 
+ latlong1 = '';
+ latlong2 = '';
+ 
+
+  constructor(private search: SearchServiceService, private _router: Router, private http: HttpClient, private user: UserService) { }
 
   ngOnInit(): void {
     
@@ -29,9 +39,54 @@ export class SearchSitterServicesComponent implements OnInit {
 
      this.loyalCus = this.service.NumReviews + 5
 
-   
+    
+    const zip1 = 'F91NHR2'
+    const zip2 = "H91VXV9"; 
+
+    const zips = ["F91NHR2", "H91VXV9"]
+
+    
+       this.user.getLatLng(zip1).subscribe((str) => {
+        this.latlong1 =str
+        
+       
+       });
+       this.user.getLatLng(zip2).subscribe((str) => {
+        this.latlong2 =str
+        alert(this.distanceInKm());
+        
+       
+       });
+
+
+    
+
+  }
+ distanceInKm(): number {
+  var l1 = this.latlong1.split(',').map(Number);
+  var l2 = this.latlong2.split(',').map(Number);
+  let lat1 = l1[0]; 
+  let lon1 = l1[1];
+  let lat2 = l2[0];
+  let lon2 = l2[1];
+    const earthRadiusKm = 6371; // radius of the earth in kilometers
+    const dLat = this.deg2rad(lat2 - lat1);
+    const dLon = this.deg2rad(lon2 - lon1);
+  
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const distance = earthRadiusKm * c;
+  
+    return distance;
+  }
+  
+   deg2rad(deg: number): number {
+    return deg * (Math.PI/180);
   }
 
+ 
 
   num(n: number): Array<number> {
    alert(n);
@@ -43,4 +98,8 @@ export class SearchSitterServicesComponent implements OnInit {
    //[routerLink]="['/petsitterdetails']"
   }
 
+
+ 
 }
+
+

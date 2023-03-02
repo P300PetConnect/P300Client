@@ -12,6 +12,7 @@ export class GeocodingService {
 
   public getLatLng(address: string): Observable<any> {
     const url = `${this.GEOCODING_API_URL}?address=${encodeURIComponent(address)}&key=`+ environment.GOOGLE_MAPS_API_KEY;
+ 
     return this.http.get(url);
   }
 }

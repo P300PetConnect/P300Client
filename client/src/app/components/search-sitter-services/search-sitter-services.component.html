@@ -10,7 +10,7 @@
           <div class="col-10 text-left">
               <div class="d-flex justify-content-between">
                       <h5>{{service.Name}} {{service.Surname}}</h5>
-                      <img data-src="../../../assets/images/home/medal-01.svg" alt="Icon Security" class="ls-is-cached lazyloaded"
+                      <img data-src="../../../assets/images/home/medal-01.svg" *ngIf="averageRoundStars == 5" alt="Icon Security" class="ls-is-cached lazyloaded"
                       src="../../../assets/images/home/medal-01.svg" width="30px" height="30px">
                     
               </div>
