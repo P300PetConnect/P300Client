@@ -17,6 +17,7 @@ import { SearchServiceService } from 'src/app/search_service_services/search-ser
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
 import { INotAvailable, IOrderList } from '../interfaces/order';
 import { OrderService } from '../service/order.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -62,7 +63,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private _userService: UserService, private _petService:PetService,
      public authenticator: AuthenticatorService, private dialog:MatDialog, 
-     private _httpReview:ReviewService,private _httpService: SearchServiceService, private _order: OrderService) {
+     private _httpReview:ReviewService,private _httpService: SearchServiceService, private _order: OrderService, private sharedService: SharedService) {
 
    }
 
@@ -81,7 +82,8 @@ export class UserProfileComponent implements OnInit {
     // if(!this.petOwner.emailAddress){
       this.getPetOwner(); 
       this.getPetDetails();
-    // }
+ // Example function to update orders count
+ this.sharedService.ordersCount.next(10);    // }
     }
     else if(this.userGroup == eUserGroup.PetSitter){
       console.log('PetSitter',this.petSitter);

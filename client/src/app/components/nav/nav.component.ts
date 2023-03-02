@@ -11,6 +11,7 @@ import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { OrderService } from '../service/order.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-nav',
@@ -32,7 +33,7 @@ export class NavComponent implements OnInit {
   public petOwner: IPetOwner; 
   public petSitter: IPetSitter; 
 
-  constructor( private _httpOrder:OrderService,public authenticator: AuthenticatorService, private readonly  _router: Router, private userService: UserService, _httpUser: UserService) {
+  constructor( public sharedService: SharedService, private _httpOrder:OrderService,public authenticator: AuthenticatorService, private readonly  _router: Router, private userService: UserService, _httpUser: UserService) {
     // Amplify.configure(awsExports);
   }
   ngOnInit() {
@@ -40,6 +41,13 @@ export class NavComponent implements OnInit {
     this.userGroup = localStorage.getItem('userGroup')
     // console.log(this.authenticator.user); 
     // this.userInfor =this.authenticator.user;
+
+    this.sharedService.ordersCount.next(5);
+    this.sharedService.ordersCount.subscribe(count => {
+      this.sharedService.ordersCount.next(count);
+    });
+  
+
 
     if(this.userGroup == 'PetOwner'){
       this.getPetOwner();
