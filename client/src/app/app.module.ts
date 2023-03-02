@@ -62,6 +62,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
+
 // import { MdInputModule } from '@angular/material';
 
 
@@ -98,6 +99,7 @@ import { MapPlannerComponent } from './map-planner/map-planner.component';
 import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
+import { Cal2Component } from './components/cal2/cal2.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +117,7 @@ import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.c
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
-    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, Cal2Component
   ],
   imports: [
     BrowserModule,
@@ -160,6 +162,7 @@ import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.c
     FormsModule,
     AmplifyAuthenticatorModule,
     NgbModule, 
+    
 
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY,

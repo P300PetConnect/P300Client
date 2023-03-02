@@ -19,17 +19,33 @@ export class SharedFormComponent implements OnInit {
     userForm : FormGroup = new FormGroup({
     name: new FormControl (''),
     surname: new FormControl (''),
-    // dob: new FormControl(''),
-    // profilePicUrl: new FormControl(''),
-    // mobileNumber: new FormControl(''),
-    // emailAddress: new FormControl(''),
-    // petOwnerId: new FormControl(''),
-    // line1: new FormControl(''),
-    // line2: new FormControl(''),
-    // city: new FormControl(''),
-    // county: new FormControl(''),
-    // zipCode: new FormControl(''),
-    // country: new FormControl('')
+    dob: new FormControl(''),
+    profilePicUrl: new FormControl(''),
+    mobileNumber: new FormControl(''),
+    emailAddress: new FormControl(''),
+    petOwnerId: new FormControl(''),
+    line1: new FormControl(''),
+    line2: new FormControl(''),
+    city: new FormControl(''),
+    county: new FormControl(''),
+    zipCode: new FormControl(''),
+    country: new FormControl(''),
+    town: new FormControl('')
+  })
+
+  profileDetails : FormGroup = new FormGroup({
+    CancellationPolicy: new FormControl (''),
+    ProfileDesc: new FormControl (''),
+    HouseType: new FormControl(''),
+    HouseDetails: new FormControl(''),
+    PetsInHome: new FormControl(''),
+    Children: new FormControl(''),
+    UsualPets: new FormControl(''),
+    UsualPetsDetail1: new FormControl(''),
+    UsualPetsDetail2: new FormControl(''),
+    UsualPetsDetail3: new FormControl(''),
+  
+
   })
 
   userGroup = '';
@@ -99,7 +115,11 @@ return false;
     // this._userService.initializeFormGroup(); 
     this.dialogRef.close(); 
   }
-
+  
+  SubmitProfileDetail()
+  {
+    console.log(this.profileDetails);
+  }
 
 
 

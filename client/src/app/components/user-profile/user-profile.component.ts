@@ -90,9 +90,7 @@ export class UserProfileComponent implements OnInit {
     // this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
     // this.reviews = JSON.parse(localStorage.getItem('reviews')); 
 
-    // get orders for schedule 
-    this.GetOrders(this.petSitter?.petSitterId);
-    this.GetnotAvailable(this.petSitter?.id);
+   
 
     this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
@@ -100,6 +98,8 @@ export class UserProfileComponent implements OnInit {
       this.getPetSitter().then(() => {
         this.getServices();
         this.getReviews();
+        this.GetOrders(this.petSitter.petSitterId);
+        this.GetnotAvailable(this.petSitter.id);
       });
     // }
     }
