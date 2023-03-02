@@ -1,6 +1,6 @@
 
 <div *ngIf="router.url != '/form'">
-    <app-nav></app-nav>
+    <app-nav class="fixed-top"></app-nav>
     <div class="loader" *ngIf="loaderService.isLoading | async">
         <img src="../../assets/images/petlogoslow.gif" alt=""/>
     </div>
