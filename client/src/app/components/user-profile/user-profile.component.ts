@@ -96,6 +96,12 @@ export class UserProfileComponent implements OnInit {
     this.GetOrders(this.petSitter?.petSitterId);
     this.GetnotAvailable(this.petSitter?.id);
 
+    //check if the service list is not read
+    this.orders.forEach(element => {
+      if(element?.FlagReadPetSitter==false){
+        console.log('petsitter did not read the order yet')
+      }
+    });
     this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
     // if (this.petSitter.emailAddress==null) {
@@ -116,6 +122,8 @@ export class UserProfileComponent implements OnInit {
       error: (mess) => this.message = mess
     })
   }
+
+  
 
   GetnotAvailable(id: number)
   {
