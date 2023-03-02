@@ -2,6 +2,8 @@ import { Component, Directive, EventEmitter, OnInit, Output } from '@angular/cor
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Auth } from 'aws-amplify';
+import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
+import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 import { IOrder, IUser } from '../interfaces/form';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { OrderComponent } from '../order/order.component';
@@ -19,11 +21,16 @@ export class ManageOrdersComponent implements OnInit {
   clients: any = {}; 
   petOwners: any;
   errorMessage: any;
+  message: any;
   petSitter: IPetSitter;
   userGroup: any;
   petOwner: IPetOwner; 
+  serviceList:ServiceInterface[] = [];
+  userID: string;
 
-  constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService) {
+
+  constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService,  
+    private service: SearchServiceService) {
     Auth.currentAuthenticatedUser()
     .then(user => {
       this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
@@ -41,9 +48,9 @@ export class ManageOrdersComponent implements OnInit {
        this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
        this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
 
-    this.getOrders(); 
-
-  
+       
+    this.getServices(43);
+    this.getOrders();   
    }
 
    async getOrders(){
@@ -78,20 +85,24 @@ export class ManageOrdersComponent implements OnInit {
     
 }
 
-  // async getOrders() {
-  //   //IF Pet Sitter
-  //   const orders = await this._httpOrder.getOderByUser(36).toPromise()
-  //   this.orders = orders;
-  //   console.log('Orders', this.orders);
-  // }
+getServices(id: number): boolean
+{ 
+  this.service.getOtherServices(id).subscribe({
+    next: (value: ServiceInterface[] )=> this.serviceList = value,
+    complete: () => console.log('Services finished ', this.serviceList),
+    error: (mess) => this.message = mess
+  })
+
+  return false;
+
+}
 
   onCreateOrder(){
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
-    this.dialog.open(OrderComponent, dialogConfig); 
-  
+    this.dialog.open(OrderComponent, {data:{petSitter:this.petSitter, serviceList:this.serviceList}}); 
   }
 
 
