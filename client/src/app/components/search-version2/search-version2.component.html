@@ -128,8 +128,9 @@
               </agm-map>
             </div> -->
 <agm-map
-  [latitude]="54.2766"
-  [longitude]="-8.4761">
+  [latitude]="lat[0]"
+  [longitude]="lng[0]"
+>
   <agm-marker
     *ngFor="let m of markers; let i = index"
     (markerClick)="clickedMarker(m.label, i)"
