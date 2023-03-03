@@ -21,7 +21,7 @@ export class OrderService {
   }
 
   getOderByUser(PetSitterID){
-    return this._http.get<IOrder[]>(environment.UriGetOrdersByPetSitter+'/orders?PetSitterID='+PetSitterID)
+    return this._http.get<IOrder[]>(environment.UriGetOrdersByPetSitter+'/orders?id='+PetSitterID)
     .pipe(
       tap(data => console.log('list/error' + JSON.stringify(data))
     ),
