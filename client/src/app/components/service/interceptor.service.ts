@@ -17,7 +17,7 @@ export class InterceptorService implements HttpInterceptor {
           //loaderService is added within a setTimout method to add 1500 tik delay and make loader more visable
           setTimeout(() => {
             this.loaderService.isLoading.next(false);
-          }, 500)
+          }, 0)
         }
       )
     );

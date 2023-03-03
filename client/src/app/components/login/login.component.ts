@@ -55,7 +55,7 @@ public petSitter: IPetSitter;
     //   this.authenticator.signOut(); 
     //   console.log(this.authenticator.signOut()); 
     // }
-    console.log(this.userGroup);
+    console.log('User Group Is:', this.userGroup);
 }
 
 // btnClick= function () {
