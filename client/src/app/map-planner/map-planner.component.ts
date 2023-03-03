@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 // import { Loader } from '@googlemaps/js-api-loader';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Post } from 'src/app/model/post';
@@ -20,7 +20,7 @@ declare const calcRoute: any;
 declare const Gen2OnLoadDo: any;
 //declare const move: any;
 declare const shareRoute: any;
-declare const copyRouteID:any;
+declare const copyRouteID: any;
 
 
 // Testing here
@@ -57,29 +57,30 @@ export class MapPlannerComponent implements OnInit {
 
   isOpen = false;
   map: google.maps.Map;
+  isSidebar: boolean = false;
 
   //#endregion
 
-  constructor( private dataService: DataService, public authenticator: AuthenticatorService) { }
-ngOnInit(): void {
-  console.log("Email: "+ this.authenticator?.user?.attributes?.email);
-   this.email= this.authenticator?.user?.attributes?.email;
-  // const loader = new Loader({apiKey: 'AIzaSyAHau_5frbGGXxZooEP1SkiXMHortLbB4w'}).load().then(initMap);
+  constructor(private dataService: DataService, public authenticator: AuthenticatorService) { }
+  ngOnInit(): void {
+    console.log("Email: " + this.authenticator?.user?.attributes?.email);
+    this.email = this.authenticator?.user?.attributes?.email;
+    // const loader = new Loader({apiKey: 'AIzaSyAHau_5frbGGXxZooEP1SkiXMHortLbB4w'}).load().then(initMap);
     this.allPosts = [];
     this.allPosts = [];
     this.getAllPost();
-SettingMap();
-Gen2OnLoadDo();
-}
+    SettingMap();
+    Gen2OnLoadDo();
+  }
 
 
 
-// initMap(): void {
-//   map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-//     center: { lat: -34.397, lng: 150.644 },
-//     zoom: 8,
-//   });
-// }
+  // initMap(): void {
+  //   map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+  //     center: { lat: -34.397, lng: 150.644 },
+  //     zoom: 8,
+  //   });
+  // }
   // ngOnInit(): void {
   //   //#region  Atlas variables
   //   this._id = '';
@@ -107,7 +108,7 @@ Gen2OnLoadDo();
       (res) => {
         for (let index = 0; index < res.length; index++) {
           if (res[index].email == this.authenticator?.user?.attributes?.email) {
-            console.log("Email in getAll: "+ this.authenticator?.user?.attributes?.email);
+            console.log("Email in getAll: " + this.authenticator?.user?.attributes?.email);
             this.onwerPosts.push(res[index]);
             this.FromPoints.push(res[index].startPoint);
             this.ToPoints.push(res[index].endPoint);
@@ -349,8 +350,21 @@ Gen2OnLoadDo();
   shareTheRoute(post: Post) {
     // shareRoute(post.startPoint, post.endPoint, post.routeName, post.email);
     copyRouteID(post._id);
-    Swal.fire('Route ID Copied to Cliboard!');  
+    Swal.fire('Route ID Copied to Cliboard!');
 
+  }
+
+
+
+  showSideBard() {
+
+    document.getElementById("sidebar").style.display = "block";
+  }
+
+
+  hideSideBard() {
+
+    document.getElementById("sidebar").style.display = "none";
   }
 
  
