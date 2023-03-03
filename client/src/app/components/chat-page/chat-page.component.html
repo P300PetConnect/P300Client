@@ -8,12 +8,16 @@
             
                 <div class="col-9 position-relative">
                     <stream-channel>
-                        <div id="header">
-                            <stream-channel-header></stream-channel-header>
+                        <div id="header" class="row">
+                            <stream-channel-header class="col"></stream-channel-header>
+                            <div class="col" *ngIf="group == 'PetSitter'">
+                                <button class="btn btn-secondary" (click)="onCreateOrder()">Create Order</button>
+                            </div>
                         </div>
                         <stream-message-list></stream-message-list>
                         <stream-notification-list style="padding-bottom: 0%;"></stream-notification-list>
                         <stream-message-input class="pb-3 fixed-bottom"></stream-message-input>
+                        
                     </stream-channel>
                 </div>
             </div>

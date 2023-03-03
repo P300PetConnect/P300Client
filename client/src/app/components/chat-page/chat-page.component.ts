@@ -1,6 +1,12 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConnectContactLens } from 'aws-sdk';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
+import { IPetOwner } from '../interfaces/users';
+import { OrderComponent } from '../order/order.component';
 
 @Component({
   selector: 'app-chat-page',
@@ -9,13 +15,17 @@ import { ChannelService, ChatClientService, StreamI18nService } from 'stream-cha
 })
 export class ChatPageComponent implements OnInit {
 
+  group = localStorage.getItem('userGroup');
   userDetails = localStorage.getItem('PetConnectUser');
   chatName = JSON.parse(this.userDetails);
+  members: any[] = [];
 
   constructor(
     private chatService: ChatClientService,
     private channelService: ChannelService,
-    private streamI18nService: StreamI18nService) {}
+    private streamI18nService: StreamI18nService,
+    private http: HttpClient,
+    private dialog:MatDialog) {}
 
   ngOnInit(): void {
     this.streamI18nService.setTranslation();
@@ -24,7 +34,51 @@ export class ChatPageComponent implements OnInit {
       type: 'messaging',
       members: { $in: [this.chatName.chatUserName] }
     });
-    
+
+    let currentChannel;
+    const currentUserID = this.chatName.chatUserName;
+    // Subscribe to the channels$ observable and log the user IDs of all members
+    this.channelService.channels$.subscribe((channels) => {
+      if (channels.length > 0) {
+        currentChannel = channels[0];
+        currentChannel.queryMembers({}, undefined, {})
+          .then((response) => {
+            response.members.forEach(member => {
+              if(member.user.id !== this.chatName.chatUserName)
+              console.log('Other user ID:', member.user.id);
+              this.members.push(member.user.id);
+            });
+            //get petownerdetails
+            this.getPetOwnerDetails();
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    });
+  }
+
+  getPetOwnerDetails(){
+    console.log('made a call');
+    this.http.get<IPetOwner>("https://5ugucpgs6k.execute-api.eu-west-1.amazonaws.com/dev/user/"+this.members[0])
+    .subscribe(
+      (response: any) => {
+        console.log('Received response:', response);
+        localStorage.setItem('ownerOrderDetails', JSON.stringify(response));
+      },
+      (error: any) => {
+        console.error('Failed to get data:', error);
+      }
+    );
+  }
+
+  onCreateOrder(){
+    const dialogConfig = new MatDialogConfig(); 
+    dialogConfig.disableClose = false; 
+    dialogConfig.autoFocus = true; 
+    dialogConfig.width = "60%";
+    this.dialog.open(OrderComponent, dialogConfig); 
+  
   }
 
 }
