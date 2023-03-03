@@ -68,7 +68,7 @@ export class ManageOrdersComponent implements OnInit {
       // this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
         // async petSitter=>{
           // this.petSitter = petSitter;
-          const orders = await this._httpOrder.getOderByUser(this.petSitter?.petSitterId).toPromise()
+          const orders = await this._httpOrder.getOderByUser(36).toPromise()
           this.orders = orders;
           console.log('test', this.orders); 
           console.log(this.petSitter)
