@@ -414,7 +414,7 @@ function ShowRouteG(start, end,i) {
   
     //This function will draw the line
     drawRouteG(start, end, "WALKING", animate = true, color = '#e53935',i);
-    drawRouteG2(end, start, "WALKING", animate = true, color = '#07e672');
+    drawRouteG2(end, start, "DRIVING", animate = true, color = '#07e672');
     // getReverseGeocodingData(startLatLong[0], startLatLong[1]);
     // getReverseGeocodingData2(endLatLong[0], endLatLong[1]);
   }
@@ -436,9 +436,15 @@ function ShowRouteG(start, end,i) {
 //#region  Map Drawing 
 function drawRouteG(start, end, method, animate = true, color = '#e53935',i) {
     var directionsService = new google.maps.DirectionsService();
+    var waypoints = [
+      {location: start},
+      {location: end}
+     
+    ];
     var request = {
       origin: start,
       destination: end,
+      waypoints: waypoints,
       travelMode: google.maps.DirectionsTravelMode[method],
       unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
   
@@ -572,9 +578,14 @@ function drawRouteG(start, end, method, animate = true, color = '#e53935',i) {
   }
   function drawRouteG2(start, end, method, animate = true, color = '#e53935') {
     var directionsService = new google.maps.DirectionsService();
+    var waypoints = [
+      {location: end}
+  
+    ];
     var request = {
       origin: start,
       destination: end,
+      waypoints: waypoints,
       travelMode: google.maps.DirectionsTravelMode[method],
       unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
   
