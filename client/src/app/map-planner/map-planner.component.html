@@ -1,506 +1,212 @@
-
-
-<!-- ***** Main Banner Area Start ***** -->
-<section id="section-1">
-
-
-  <div class="content-slider">
-
-   
-    
-    <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
-    <input type="radio" id="banner2" class="sec-1-input" name="banner">
-    <input type="radio" id="banner3" class="sec-1-input" name="banner">
-    <input type="radio" id="banner4" class="sec-1-input" name="banner">
-    <div class="slider">
-
-  
-
-      
-      <div id="top-banner-1" class="banner">
-        <div class="banner-inner-wrapper header-text">
-          <div class="main-caption">
-            <h2>Create your own routes and save them for </h2>
-            <h1>Create Route</h1>
-            <div class="border-button"><a href="about.html">Guide?</a></div>
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" (click)="showSideBard()">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">Route Planner</a>
+        <div id="close-sidebar" (click)="hideSideBard()">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <!-- <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+              alt="User picture">
           </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="more-info">
-                  <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>Route ID:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="routeID" aria-describedby="emailHelp" style="display: block;" placeholder="Enter Route ID">
-                      </div>
-                    </div>
+          <div class="user-info">
+            <span class="user-name">Jhon
+              <strong>Smith</strong>
+            </span>
+            <span class="user-role">Administrator</span>
+            <span class="user-status">
+              <i class="fa fa-circle"></i>
+              <span>Online</span>
+            </span>
+          </div>
+        </div> -->
+      <!-- sidebar-header  -->
+      <!-- <div class="sidebar-search">
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control search-menu" placeholder="Search...">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul class="list-unstyled">
+          <li class="header-menu">
+            <!-- <span>Map Planner</span> -->
+            <div id="createRouteController" class="col-lg-12 ">
+              <ul style="margin-bottom: 0rem;" class="nav nav-pills nav-fill">
+                <li id="mkRoute" class="nav-item">
+                  <a (click)="onClickshowMakeRoute()" class="nav-link active" aria-current="page">Create
+                    Route</a>
+                </li>
+                <li id="GenRoute" class="nav-item">
+                  <a (click)="onClickshowGenRoute()" class="nav-link">Generate Route</a>
+                </li>
+                <li id="FavRoute" class="nav-item">
+                  <a (click)="onClickshowFavRoute()" class="nav-link">My Routes</a>
+                </li>
+              </ul>
 
-                    <div class="col-lg-4 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>Country:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="CountryName" aria-describedby="emailHelp" style="display: block;" placeholder="Enter Country Name">
-                      </div>
-                    </div>
+              <!-- Form for Making routes  -->
+              <form id="formm" class="form-horizontal ">
 
-                    <div class="col-lg-3 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>City:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="CityName" aria-describedby="emailHelp" style="display: block;" placeholder="Enter City Name">
-                      </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-6 col-6">
-                      <div class="main-button">
-                        <a >Search Route</a>
-                      </div>
-                    </div>
+                <div class="form-group row">
+                  <label for="from" class="col-xs-3 control-label"><i onclick="GetCurrentLocationForInputG()"
+                      class="far fa-dot-circle"></i> <label style="margin-left:3%;" for="from">
+                      From</label></label>
+                  <div class="col-xs-6">
+                    <input type="text" id="from" placeholder="Origin" class="form-control" [(ngModel)]="startPoint">
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="top-banner-2" class="banner">
-        <div class="banner-inner-wrapper header-text">
-          <div class="main-caption">
-            <h2>Let our software generates some routes for you!</h2>
-            <h1>Recommend Route</h1>
-            <div class="border-button"><a href="about.html">Go There</a></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="more-info">
-                  <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>Route ID:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="routeID" aria-describedby="emailHelp" style="display: block;" placeholder="Enter Route ID">
-                      </div>
-                    </div>
 
-                    <div class="col-lg-4 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>Country:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="CountryName" aria-describedby="emailHelp" style="display: block;" placeholder="Enter Country Name">
-                      </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>City:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="CityName" aria-describedby="emailHelp" style="display: block;" placeholder="Enter City Name">
-                      </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-6 col-6">
-                      <div class="main-button">
-                        <a >Search Route</a>
-                      </div>
-                    </div>
+                <div class="form-group row">
+                  <label for="to" class="col-xs-3 control-label"><i class="fas fa-map-marker-alt"></i> <label
+                      style="margin-left:3%;" for="from"> To</label></label>
+                  <div class="col-xs-6">
+                    <input type="text" name="to" id="to" placeholder="Destination" class="form-control"
+                      [(ngModel)]="endPoint">
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="top-banner-3" class="banner">
-        <div class="banner-inner-wrapper header-text">
-          <div class="main-caption">
-            <h2>See your saved and created routes in your faviourte routes</h2>
-            <h1>Faviourte Routes</h1>
-            <div class="border-button"><a href="about.html">Go There</a></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="more-info">
-                  <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>Route ID:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="routeID" aria-describedby="emailHelp" style="display: block;" placeholder="Enter Route ID">
-                      </div>
-                    </div>
 
-                    <div class="col-lg-4 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>Country:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="CountryName" aria-describedby="emailHelp" style="display: block;" placeholder="Enter Country Name">
-                      </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>City:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="CityName" aria-describedby="emailHelp" style="display: block;" placeholder="Enter City Name">
-                      </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-6 col-6">
-                      <div class="main-button">
-                        <a >Search Route</a>
-                      </div>
-                    </div>
+                <div class="form-group row">
+                  <label for="to" class="col-xs-3 control-label"><i class="fas fa-map-marker-alt"></i> <label
+                      style="margin-left:3%;" for="RouteName"> Route Name</label></label>
+                  <div class="col-xs-6">
+                    <input type="text" name="RouteName" id="RouteName" placeholder="Route Name" class="form-control"
+                      [(ngModel)]="routeName">
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="top-banner-4" class="banner">
-        <div class="banner-inner-wrapper header-text">
-          <div class="main-caption">
-            <h2>Browse our routes</h2>
-            <h1>Our Routes</h1>
-            <div class="border-button"><a href="about.html">Go There</a></div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="more-info">
-                  <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>Route ID:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="routeID" aria-describedby="emailHelp" style="display: block;" placeholder="Enter Route ID">
-                      </div>
-                    </div>
 
-                    <div class="col-lg-4 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>Country:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="CountryName" aria-describedby="emailHelp" style="display: block;" placeholder="Enter Country Name">
-                      </div>
-                    </div>
 
-                    <div class="col-lg-3 col-sm-6 col-6 row">
-                      <div class="col-lg-4">
-                      <i class="fa fa-user"></i>
-                     
-                    </div>
-                      <div class="form-group col-lg-8">
-                        <h4><span>City:</span>
-                        </h4>
-                        <input type="text" class="form-control" id="CityName" aria-describedby="emailHelp" style="display: block;" placeholder="Enter City Name">
-                      </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-6 col-6">
-                      <div class="main-button">
-                        <a >Search Route</a>
-                      </div>
-                    </div>
+                <div style="margin-top: 0rem; margin-bottom:1rem;margin-right: 2rem;"
+                  class="col-xs-offset-2 col-xs-10 row">
+                  <div class="col-lg-5">
+
+
+                    <button class="btn btn-info btn-lg " (click)="onClickcalcRoute()"><i
+                        class="fas fa-map-signs ">Preview
+                        Route</i></button>
+                  </div>
+                  <div class="col-lg-2"></div>
+                  <div class="col-lg-4">
+                    <button style="margin-right: 1rem;" class="btn btn-info btn-lg " (click)="createPostSave()"><i
+                        class="fas fa-map-signs">Save
+                        Route</i></button>
+                  </div>
+
+                </div>
+                <!-- End of adding the list of routes -->
+
+
+              </form>
+              <!-- Form for generating routes -->
+              <form id="formmG" style="display: none;" class="form-horizontal ">
+
+                <div class="form-group row">
+
+                  <label for="fromG" class="col-xs-4 control-label"><i onclick="GetCurrentLocationForInput()"
+                      class="far fa-dot-circle"></i> <label style="margin-left:3%;" for="from"> Starting
+                      Point</label></label>
+                  <div class="col-xs-4">
+                    <input type="text" id="fromG" placeholder="Origin" class="form-control">
+
                   </div>
                 </div>
+
+                <div class="form-group row">
+
+                  <label for="DistanceG" class="col-xs-4 control-label"><i class="fas fa-map-marker-alt"></i>
+                    <label style="margin-left:3%;" for="from">Distance</label></label>
+                  <div class="col-xs-4">
+                    <input type="text" id="DistanceG" placeholder="Distance" class="form-control">
+                  </div>
+
+                </div>
+                <!-- Progress bar -->
+                <div id="Progress_Status">
+                  <div id="myprogressBar"></div>
+                </div>
+
+
+
+                <div class="col-xs-offset-2 col-xs-10">
+                  <button class="btn btn-info btn-lg " onclick="GenerateRoutes();"><i class="fas fa-map-signs"> Generate
+                      Routes</i></button>
+                </div>
+
+                <div id="routesBox2">
+                  <div class="accordion" id="accordionExample2">
+
+
+                  </div>
+                </div>
+              </form>
+              <div style="display: none;" id="routesBoxes">
+                <h3 style="color: black;" (click)="getArray2()">Faviourite routes</h3>
+
+
+                <div id="routesBox">
+                  <div class="accordion" id="accordionExampleFav">
+
+
+
+                  </div>
+                </div>
+
+                <!-- End of trying to add the data from atlas -->
               </div>
+              <!-- End of form for generating form  -->
+
+              <div id="output">
+
+              </div>
+
             </div>
-          </div>
-        </div>
+          </li>
+
+
+        </ul>
       </div>
+      <!-- sidebar-menu  -->
     </div>
-    <nav>
-      <div class="controls">
-        <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">1</span></label>
-        <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">2</span></label>
-        <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">3</span></label>
-        <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">4</span></label>
-      </div>
-    </nav>
-  </div>
-</section>
-
-<!-- Pick an option  -->
-<!-- <div class="visit-country">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="section-heading ">
-          <h2 class="d-flex justify-content-center">Pick to create a route or browse our routes</h2>
-   
-      </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a>
     </div>
-    </div>
-</div> -->
-<!-- Old code down -->
+  </nav>
+  <!-- sidebar-wrapper  -->
 
 
-<!-- ***** Main Banner Area End ***** -->
-
-<div style="padding-top: 3rem;" class="container-fluid">
-
-  <div class="jumbotron">
-    <div class="container-fluid">
-      <!-- <div style="margin-bottom: 3rem;" class="container">
-<h2>Route Planner</h2>
-      </div> -->
-
-      <!-- Weather widget -->
-      <div class="row">
-        <!-- Options -->
-        <div class="col-sm-8 ">
-          <select id="myCountySelect" onchange="myFunction()">
-            <option value="Sligo">Sligo</option>
-            <option value="Dublin">Dublin</option>
-            <option value="Cavan">Cavan</option>
-            <option value="Cork">Cork</option>
-            <option value="Donegal">Donegal</option>
-            <option value="Leitrim">Leitrim</option>
-            <option value="Limerick">Limerick</option>
-          </select>
-        </div>
-        <!-- Widgets -->
-        <div class="col-sm-4 col-lg-12">
-          <div id="weatherWidget"> 
-            <a class="weatherwidget-io" href="https://forecast7.com/en/54d16n8d61/sligo/" data-label_1="SLIGO"
-            data-label_2="WEATHER" style="margin-bottom: 2%;" data-theme="original">SLIGO WEATHER</a>
-          </div>
-        </div>
-      </div>
-
-     
-     
-      <div class="row">
-
-        <div style="background-color: white;" class="col-6 col-md-4">
-          <ul style="margin-bottom: 3rem;" class="nav nav-pills nav-fill">
-            <li id="mkRoute" class="nav-item">
-              <a (click)="onClickshowMakeRoute()" class="nav-link active" aria-current="page">Create Route</a>
-            </li>
-            <li id="GenRoute" class="nav-item">
-              <a (click)="onClickshowGenRoute()" class="nav-link">Recommend Route</a>
-            </li>
-            <li id="FavRoute" class="nav-item">
-              <a (click)="onClickshowFavRoute()" class="nav-link">My Routes</a>
-            </li>
-          </ul>
-
-          <!-- Form for Making routes  -->
-          <form id="formm" class="form-horizontal ">
-
-            <div class="form-group">
-              <label for="from" class="col-xs-3 control-label"><i onclick="GetCurrentLocationForInputG()"
-                  class="far fa-dot-circle"></i> <label style="margin-left:3%;" for="from"> From</label></label>
-              <div class="col-xs-6">
-                <input type="text" id="from" placeholder="Origin" class="form-control" [(ngModel)]="startPoint">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="to" class="col-xs-3 control-label"><i class="fas fa-map-marker-alt"></i> <label
-                  style="margin-left:3%;" for="from"> To</label></label>
-              <div class="col-xs-6">
-                <input type="text" name="to" id="to" placeholder="Destination" class="form-control"
-                  [(ngModel)]="endPoint">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="to" class="col-xs-3 control-label"><i class="fas fa-map-marker-alt"></i> <label
-                  style="margin-left:3%;" for="RouteName"> Route Name</label></label>
-              <div class="col-xs-6">
-                <input type="text" name="RouteName" id="RouteName" placeholder="Route Name" class="form-control"
-                  [(ngModel)]="routeName">
-              </div>
-            </div>
-
-
-            <div style="margin-top: 0rem; margin-bottom:1rem;margin-right: 2rem;" class="col-xs-offset-2 col-xs-10">
-              <button class="btn btn-info btn-lg " (click)="onClickcalcRoute()"><i class="fas fa-map-signs">Preview
-                  Route</i></button>
-              <button style="margin-left: 1rem;" class="btn btn-info btn-lg" (click)="createPostSave()"><i
-                  class="fas fa-map-signs">Save
-                  Route</i></button>
-
-            </div>
-            <!-- End of adding the list of routes -->
-
-
-          </form>
-          <!-- Form for generating routes -->
-          <form id="formmG" style="display: none;" class="form-horizontal ">
-
-            <div class="form-group">
-
-              <label for="fromG" class="col-xs-4 control-label"><i onclick="GetCurrentLocationForInput()"
-                  class="far fa-dot-circle"></i> <label style="margin-left:3%;" for="from"> Starting
-                  Point</label></label>
-              <div class="col-xs-4">
-                <input type="text" id="fromG" placeholder="Origin" class="form-control">
-
-              </div>
-            </div>
-
-            <div class="form-group">
-
-              <label for="DistanceG" class="col-xs-4 control-label"><i class="fas fa-map-marker-alt"></i> <label
-                  style="margin-left:3%;" for="from">Distance</label></label>
-              <div class="col-xs-4">
-                <input type="text" id="DistanceG" placeholder="Distance" class="form-control">
-              </div>
-
-            </div>
-            <!-- Progress bar -->
-            <div id="Progress_Status">
-              <div id="myprogressBar"></div>
-            </div>
-
-
-
-            <div class="col-xs-offset-2 col-xs-10">
-              <button class="btn btn-info btn-lg " onclick="GenerateRoutes();"><i class="fas fa-map-signs"> Generate
-                  Routes</i></button>
-            </div>
-
-            <div id="routesBox2">
-              <div class="accordion" id="accordionExample2">
-
-
-              </div>
-            </div>
-          </form>
-          <div style="display: none;" id="routesBoxes">
-            <h3 style="color: black;" (click)="getArray2()">Faviourite routes</h3>
-
-
-            <div id="routesBox">
-              <div class="accordion" id="accordionExampleFav">
-
-
-
-              </div>
-            </div>
-
-            <!-- End of trying to add the data from atlas -->
-          </div>
-          <!-- End of form for generating form  -->
-
-          <div id="output">
-
-          </div>
-
-        </div>
-        <div class="col-8 col-md-8">
-          <div id="map">
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-    <!-- Adding the list of routes -->
-
+  <!-- The content appearse here -->
+  <main id="map" class="page-content">
     <div class="container-fluid">
 
-      <div id="map">
-
-      </div>
-      <div id="output">
-
-      </div>
     </div>
-
-  </div>
-
-
-  <!-- End of trying dialog -->
+  </main>
+  <!-- page-content" -->
 </div>
-
-<!-- Modal component -->
-<!-- <button (click)="toggle()">Open Modal</button> -->
-<div class="modal" [class.show]="isOpen">
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="routeNameed">Route Name</label>
-        <input type="email" class="form-control" id="routeNameed" aria-describedby="emailHelp"
-          [ngModelOptions]="{standalone: true}" placeholder="Enter email" [(ngModel)]="routeName">
-        <small id="emailHelp" class="form-text text-muted">Give your route a meaningful name</small>
-      </div>
-      <div class="form-group">
-        <label for="fromed">From</label>
-        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="fromed" placeholder="start"
-          [(ngModel)]="startPoint">
-      </div>
-
-      <div class="form-group">
-        <label for="toEd">To</label>
-        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="toEd"
-          placeholder="destination" [(ngModel)]="endPoint">
-      </div>
-      <button (click)="toggleClose()">close</button>
-      <button class="btn btn-primary" (click)="updatePost()">Submit</button>
-    </form>
-    <!-- Your form fields here -->
-
-
-
-
-
-
-
-  </div>
-
-
-
-</div>
-
-
-
-<app-footer></app-footer>

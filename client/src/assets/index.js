@@ -68,7 +68,7 @@ function calcRoute() {
   console.log("start Point : " + startPoint);
   //This function will draw the line
   drawRoute(startPoint, endPoint, "WALKING", animate = true, color = '#e53935');
-  drawRoute2(endPoint, startPoint, "WALKING", animate = true, color = '#07e672');
+  drawRoute2(endPoint, startPoint, "DRIVING", animate = true, color = '#07e672');
 
 }
 //#endregion
@@ -93,9 +93,15 @@ var allRouteMarkers = [];//Save all route markers for later to clear
 
 function drawRoute(start, end, method, animate = true, color = '#e53935') {
   var directionsService1 = new google.maps.DirectionsService();
+  var waypoints = [
+    {location: start},
+    {location: end}
+   
+  ];
   var request = {
     origin: start,
     destination: end,
+    waypoints: waypoints,
     travelMode: google.maps.DirectionsTravelMode[method],
     unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 
@@ -223,9 +229,14 @@ function drawRoute(start, end, method, animate = true, color = '#e53935') {
 }
 function drawRoute2(start, end, method, animate = true, color = '#e53935') {
   var directionsService = new google.maps.DirectionsService();
+  var waypoints = [
+    {location: end}
+
+  ];
   var request = {
     origin: start,
     destination: end,
+    waypoints: waypoints,
     travelMode: google.maps.DirectionsTravelMode[method],
     unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 

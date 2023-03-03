@@ -36,9 +36,11 @@ function getArray(arr1, arr2, IdArray) {
 
       console.log("Start from grt info: " + start);
       var directionsService = new google.maps.DirectionsService();
+  
       var request = {
         origin: start,
         destination: end,
+     
         travelMode: google.maps.DirectionsTravelMode["WALKING"],
         unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 
@@ -147,15 +149,21 @@ function getArray(arr1, arr2, IdArray) {
 
       //This function will draw the line
       drawRoute(start, end, "WALKING", animate = true, color = '#e53935');
-      drawRoute2(end, start, "WALKING", animate = true, color = '#07e672');
+      drawRoute2(end, start, "DRIVING", animate = true, color = '#07e672');
     }
 
 
     function drawRoute(start, end, method, animate = true, color = '#e53935') {
       var directionsService = new google.maps.DirectionsService();
+      var waypoints = [
+        {location: start},
+        {location: end}
+       
+      ];
       var request = {
         origin: start,
         destination: end,
+        waypoints: waypoints,
         travelMode: google.maps.DirectionsTravelMode[method],
         unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 
@@ -270,9 +278,14 @@ function getArray(arr1, arr2, IdArray) {
     }
     function drawRoute2(start, end, method, animate = true, color = '#e53935') {
       var directionsService = new google.maps.DirectionsService();
+      var waypoints = [
+        {location: end}
+    
+      ];
       var request = {
         origin: start,
         destination: end,
+        waypoints: waypoints,
         travelMode: google.maps.DirectionsTravelMode[method],
         unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 
