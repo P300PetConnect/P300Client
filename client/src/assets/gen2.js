@@ -350,7 +350,7 @@ function GetRoutInfo2(start, end, i) {
             var numOFSteps = (1000 * parseFloat(response.routes[0].legs[0].distance.text)) / 0.7; //This gets expected steps
             var ExpectedCalories = (numOFSteps * 0.04) //This will get the number of expected calories burned
             //#region  HTML Cards
-            document.getElementById("accordionExample2").innerHTML += `  <div class="card">
+            document.getElementById("accordionExample2").innerHTML += `  <div class="card mb-2">
         <div class="card-header" id="heading${i}">
           <h2 class="mb-0">
             <button style="color:#07b1e0;font-family: "Poppins", sans-serif;text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true" aria-controls="collapse${i}">
@@ -363,28 +363,28 @@ function GetRoutInfo2(start, end, i) {
           <div onclick="ShowRouteG('${start}', '${end}',${i})" class="card-body">
             <div class="container">
               <div class="row align-items-start">
-                  <div class="col">
+                  <div class="col-md-6 col-sm-6">
                       <div class="card-body">
                           <h5 class="card-title">${response.routes[0].legs[0].distance.text}</h5>
                           <h6 class="card-subtitle mb-2 text-muted">Distance</h6>
       
                       </div>
                   </div>
-                  <div class="col">
+                  <div class="col-md-6 col-sm-6">
                     <div class="card-body">
                       <h5 class="card-title">${response.routes[0].legs[0].duration.text}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Duration</h6>
       
                   </div>
                   </div>
-                  <div class="col">
+                  <div class="col-md-6 col-sm-6">
                     <div class="card-body">
                       <h5 class="card-title">${ExpectedCalories.toFixed(2)}</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Expected Calories Burned</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">Calories</h6>
       
                   </div>
                   </div>
-                  <div class="col">
+                  <div class="col-md-6 col-sm-6">
                     <div class="card-body">
                       <h5 class="card-title">${numOFSteps.toFixed(2)}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Steps</h6>
