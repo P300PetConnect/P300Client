@@ -60,6 +60,8 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MessageAlertComponent } from './components/message-alert/message-alert.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
+import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 
 
 
@@ -103,6 +105,7 @@ import { Cal2Component } from './components/cal2/cal2.component';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     NavComponent,
     FooterComponent,
@@ -120,6 +123,7 @@ import { Cal2Component } from './components/cal2/cal2.component';
     ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, Cal2Component
   ],
   imports: [
+    
     BrowserModule,
     NgbPaginationModule, 
     MatSlideToggleModule,
@@ -163,6 +167,8 @@ import { Cal2Component } from './components/cal2/cal2.component';
     AmplifyAuthenticatorModule,
     NgbModule, 
     
+   
+    
 
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY,
@@ -171,7 +177,13 @@ import { Cal2Component } from './components/cal2/cal2.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService, CognitoGuard, UserService],
+    AuthenticatorService, CognitoGuard, UserService,
+    DayService, 
+    WeekService, 
+    WorkWeekService, 
+    MonthService,
+    AgendaService,
+    MonthAgendaService],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })
