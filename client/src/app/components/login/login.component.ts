@@ -103,6 +103,7 @@ async getPetOwner(){
         this.navigationService.updateUser(this.petSitter);
 
 
+        localStorage.setItem('zip', petSitter.zipCode);
     }catch (error) {
       console.error(error);
     }

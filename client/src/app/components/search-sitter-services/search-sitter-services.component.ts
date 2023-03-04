@@ -43,9 +43,9 @@ export class SearchSitterServicesComponent implements OnInit {
 
      this.loyalCus = this.service.NumReviews + 5
  
-   
+   //gets logged in zipcode
     const zip1 = localStorage.getItem('zip')
-    alert(zip1);
+    //gets pet sitter zip
     const zip2 = this.service.ZipCode; 
 
     this.latlong1 = await this.user.getLatLng(zip1);
