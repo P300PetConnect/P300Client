@@ -143,6 +143,7 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     MatInputModule,
     MatFormFieldModule,
     MatExpansionModule,
+    ScheduleModule,
     //Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
