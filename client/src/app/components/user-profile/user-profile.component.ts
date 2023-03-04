@@ -249,5 +249,23 @@ async getReviews()
 
     this.notAvailable = false;
   }
+  DeleteService(id: number)
+  {
+    // 
+    alert(id);
+
+    this._httpService.DeleteService(id).subscribe({
+      next: service => {
+        console.log(JSON.stringify(service) + 'service deleted');
+        this.message = "service Updated";
+        this.getServices();
+    
+       
+         },
+      error: (err) => this.message = err
+    });
+  
+
+  }
 
   }

@@ -9,6 +9,7 @@
     background-color: #e2dde6; 
 }
 
+
 li{
     display: inline; 
 }
@@ -137,6 +138,16 @@ h4 {
     font-weight: 400;
 
 }
+
+.bi-arrow-down-circle-fill,.bi-arrow-up-circle-fill
+{
+    font-size: 26px;
+    font-weight: 400;
+
+}
+hr {
+    border-top: 2px solid gray; /* replace "red" with your desired color */
+  }
 
 .card{
     cursor: pointer;

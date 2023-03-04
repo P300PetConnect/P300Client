@@ -140,12 +140,14 @@ add(event: MatChipInputEvent): void {
 		}
 	}
 
-  AddService(key1: string, key2: string, des: string )
+  AddService(title: string, petType: string, service: string, des: string, price: string )
   {
-    this._service.AddService(this.id, key1, key2, des).subscribe({
+    alert(petType + service)
+    this._service.AddService(this.id, title, petType, service, des, price).subscribe({
       next: ser => {
         console.log(JSON.stringify(ser) + 'service added');
         this.message = "service added";
+        this.onClose();
           
          },
       error: (err) => this.message = err
