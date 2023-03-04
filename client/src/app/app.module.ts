@@ -105,6 +105,7 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
 
 @NgModule({
   declarations: [
+
     AppComponent,
     NavComponent,
     FooterComponent,
@@ -122,6 +123,7 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent, TrackerOrderComponent
   ],
   imports: [
+    
     BrowserModule,
     AgmDirectionModule,
     NgbPaginationModule, 
