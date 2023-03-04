@@ -93,6 +93,7 @@ async getPetOwner(){
       const petSitter = await this.userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
         localStorage.setItem('userEmail', petSitter.emailAddress);
+        localStorage.setItem('zip', petSitter.zipCode);
     }catch (error) {
       console.error(error);
     }
