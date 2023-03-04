@@ -142,6 +142,7 @@ import { Cal2Component } from './components/cal2/cal2.component';
     MatInputModule,
     MatFormFieldModule,
     MatExpansionModule,
+    ScheduleModule,
     //Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
