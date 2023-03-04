@@ -240,27 +240,67 @@
 
 
             <div class="col-lg-4 " *ngFor="let s of serviceList">
-              <div class="card p-4 mb-4">
+              <div class="card p-2 mb-4">
                 <div class="text-center card-body">
                   <div class="member-card">
-                    <span class="align-middle nav-title"><strong
-                        class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</strong>
-                      <br></span>
-                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
-                      <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
-                    </picture>
-                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
-                      <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
-                    </picture>
-                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
-                      <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                    </picture>
-                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
-                      <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
-                    </picture>
-                    <div>
-                      <p>{{s.Description | slice:0:35}}</p>
+                    <div class = "row">
+                  
+                      <div class = "col-12 text-center">
+                        <h6>{{s.UserTitle}}</h6>
+
+                      </div>
                     </div>
+                    <hr style="color: black;">
+                    <div class = "row align-items-center">
+                      <div class = "col-2">
+                        <picture class=" pr-1 mr-2" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
+                          <img src="../../../assets/images/home/walk-selected.svg" alt="Creche">
+                        </picture>
+                        <picture class="align-middle pr-1 mr-2" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
+                          <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" >
+                        </picture>
+                        <picture class="align-middle pr-1 mr-2" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
+                          <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" >
+                        </picture>
+                        <picture class="align-middle pr-1 mr-2" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
+                          <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" >
+                        </picture>
+
+                      </div>
+                      <div class = "col-10">
+                        <span class="align-middle nav-title"><h6
+                          class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</h6>
+                        <br></span>
+                      </div>
+                     
+                    
+
+                    </div>
+                    <div class = "row">
+                     <p>€{{s.StartingPrice}}</p>
+
+                    </div>
+                  
+           
+                   
+                 
+                    <div *ngIf = "s.ShowMore == null || s.ShowMore == false" >
+                      <i class="bi bi-arrow-down-circle-fill text-secondary" (click) = "s.ShowMore =! s.ShowMore"></i>
+                    
+                    </div>
+                    <div *ngIf = "s.ShowMore == true" >
+                 
+                      <i class="bi bi-arrow-up-circle-fill text-secondary" (click) = "s.ShowMore =! s.ShowMore"></i>
+                    </div>
+                  
+                    <div *ngIf="s.ShowMore">
+                      <p><small>{{s.Description}}</small></p>
+                      <div class = "row px-5">
+                        <button class = "btn btn-danger btn-sm" (click) = "DeleteService(s.ServiceID)">Delete Service</button> 
+
+                      </div>
+                    </div>
+                    
                   </div>
                 </div>
               </div>

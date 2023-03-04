@@ -9,24 +9,10 @@ import { ServiceInterface } from '../search_service_interfaces/service-interface
 })
 export class SearchServiceService {
   
-  private serviceData : ServiceInterface[] = [
-    {
-  "title":"Dog Walking","image": "N/A",
-  "desc": "Hire Someone to walk your dog"},
-  {
-    "title":"Pet Sitting","image": "N/A",
-    "desc": "Hire someone to mind your pet"},
-    {
-      "title":"Pet Feeding","image": "N/A",
-      "desc": "Need someone to feed your pet? See our pet sitter here"}]
 
       handleError: any;
 
-      getServices(): Observable<ServiceInterface[]>{
-        console.log('Dummy getBooks called');
     
-        return of(this.serviceData);
-      }
   constructor(private http: HttpClient) { }
 
 
@@ -99,19 +85,38 @@ getOtherServices(id : number)
   );
 }
 
-AddService(id: number,key1: string, key2: string, des: string ): Observable<unknown>
+AddService(id: number,title: string, petType: string, service: string, des: string, price: string ): Observable<unknown>
 {
-  let key = key1 + ' ' + key2
+
+  let key = petType + ' ' + service;
+
   let obj = 
   {
-    "ID" :id,
-    "Title": key,
-    "Description": des
+    "PetSitterID" :id,
+    "Description": des,
+    "ServiceTitle": key,
+    "UserTitle" : title,
+    "StartingPrice": price
   }
+
+  console.log(obj);
   return this.http.post<any>('https://djftt69kei.execute-api.eu-west-1.amazonaws.com/n/prod',obj)
   .pipe(
    catchError(this.handleError)
   )
+
+}
+
+DeleteService(id)
+{
+  return this.http.get<any>("https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/deleteService?id=" + id)
+  .pipe(
+    tap(data => console.log('service' + JSON.stringify(data))
+    
+  ),
+   catchError(this.handleError)
+  );
+
 
 }
 

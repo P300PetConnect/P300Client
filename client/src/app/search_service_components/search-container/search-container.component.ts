@@ -56,12 +56,7 @@ images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   ngOnInit(): void {
    
-    this.search.getServices().subscribe({
-      next: (value: ServiceInterface[]) => this.services = value,
-      complete: () => console.log(''),
-     // error: (message) => this.message = message
-    }) 
-
+ 
     console.log(this.services);
   }
   setSelected(id:number){
