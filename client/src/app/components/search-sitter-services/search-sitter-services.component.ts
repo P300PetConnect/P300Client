@@ -22,6 +22,7 @@ export class SearchSitterServicesComponent implements OnInit {
   otherServices?: any;
   errorMessage : any;
   averageRoundStars: number;
+  remainder: number;
 
   loyalCus = 0;
 
@@ -38,11 +39,13 @@ export class SearchSitterServicesComponent implements OnInit {
     
     this.service.ShowOther = false;
     this.averageRoundStars = Math.floor(this.service.ReviewsTotal / this.service.NumReviews);
+    this.remainder = (this.service.ReviewsTotal / this.service.NumReviews) - this.averageRoundStars;
 
      this.loyalCus = this.service.NumReviews + 5
+ 
    
-   
-    const zip1 = 'F91 NHR2'
+    const zip1 = localStorage.getItem('zip')
+    alert(zip1);
     const zip2 = this.service.ZipCode; 
 
     this.latlong1 = await this.user.getLatLng(zip1);
