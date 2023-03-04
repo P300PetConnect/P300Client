@@ -21,9 +21,9 @@ export class OrderService {
   }
 
   getOderByUser(PetSitterID){
-    return this._http.get<IOrder[]>(environment.UriGetOrdersByPetSitter+'/orders?PetSitterID='+PetSitterID)
+    return this._http.get<IOrder[]>(environment.UriGetOrdersByPetSitter+'/orders?id='+PetSitterID)
     .pipe(
-      tap(data => console.log('list/error', data)
+      tap(data => console.log('Get Order By User', data)
     ),
      catchError(this.handleError)
     );
@@ -32,7 +32,7 @@ export class OrderService {
   getOrderByUserPetOwnerView(PetOwnerID){
     return this._http.get<IOrder[]>(environment.UriGetOrdersByPetOwnerView+'/orders?PetOwnerID='+PetOwnerID)
     .pipe(
-      tap(data => console.log('list/error', data)
+      tap(data => console.log('Get Order by Pet Owner', data)
       
     ),
      catchError(this.handleError)
