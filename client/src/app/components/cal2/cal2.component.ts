@@ -8,17 +8,11 @@ import { EventSettingsModel, WeekService, MonthService } from '@syncfusion/ej2-a
   templateUrl: './cal2.component.html',
   styleUrls: ['./cal2.component.scss'],
   providers: [DayService, WeekService, MonthService, AgendaService, TimelineMonthService],
-  template: `<!-- To Render Calendar -->
-  <ejs-calendar></ejs-calendar>`
+  template: `<ejs-schedule width='100%' height='550px' [selectedDate]="selectedDate"
+  [eventSettings]="eventSettings" ></ejs-schedule>`
 
 })
 export class Cal2Component implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   public data: object[] = [{
     Id: 2,
     Subject: 'Paris',
@@ -29,5 +23,12 @@ public selectedDate: Date = new Date(2023, 2, 15);
 public eventSettings: EventSettingsModel = {
     dataSource: this.data
 };
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+ 
 
 }
