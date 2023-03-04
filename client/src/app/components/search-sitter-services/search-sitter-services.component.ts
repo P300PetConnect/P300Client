@@ -34,27 +34,25 @@ export class SearchSitterServicesComponent implements OnInit {
 
   constructor(private search: SearchServiceService, private _router: Router, private http: HttpClient, private user: UserService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     
     this.service.ShowOther = false;
     this.averageRoundStars = Math.floor(this.service.ReviewsTotal / this.service.NumReviews);
 
      this.loyalCus = this.service.NumReviews + 5
-   alert("e");
    
    
     const zip1 = 'F91 NHR2'
     const zip2 = this.service.ZipCode; 
 
-       this.user.getLatLng(zip1).subscribe((str) => {
-        this.latlong1 =str
-        
+    this.latlong1 = await this.user.getLatLng(zip1);
+    this.latlong2 = await this.user.getLatLng(zip2);
+
+    console.log(this.latlong1);
+
        
-       });
-       this.user.getLatLng(zip2).subscribe((str) => {
-        this.latlong2 =str
         this.distance = this.distanceInKm()
-       });
+      
 
        //promise await 
 

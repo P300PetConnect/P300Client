@@ -86,19 +86,19 @@ export class UserService{
         }
 
 
-        public getLatLng(address1: string): Observable<string>{
+     async getLatLng(address1: string): Promise<any>{
             let GEOCODING_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
           const url = `${GEOCODING_API_URL}?address=${encodeURIComponent(address1)}&key=`+ environment.GOOGLE_MAPS_API_KEY;
           //console.log(url);
    
 
-          return this._http.get(url).pipe(
+          return await this._http.get(url).pipe(
             map((response: any) => {
               const location = response.results[0].geometry.location;
               return  location.lat + ','+location.lng ;
             })
-          );
+          ).toPromise();
         }
 
     }
