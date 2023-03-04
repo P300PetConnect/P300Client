@@ -66,6 +66,7 @@ onCheckRoute(UserGroup:string){
     localStorage.setItem('userGroup','PetOwner')
     this._router.navigateByUrl('search2/search2;service=;location=;pet=');
     this.getPetOwner();
+
   }
   else if(UserGroup == 'PetSitter'){
     localStorage.setItem('userGroup','PetSitter')
@@ -80,6 +81,7 @@ async getPetOwner(){
   const petOwner = await this.userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
   this.petOwner = petOwner;
   localStorage.setItem('userEmail', petOwner.emailAddress);
+  localStorage.setItem('zip', petOwner.zipCode);
   } catch (error) {
       console.error(error);
     }
