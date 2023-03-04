@@ -96,8 +96,9 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
 import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
 import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
-import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { CalendarV2Component } from './components/calendar-v2/calendar-v2.component';
+import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+
 // import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
 

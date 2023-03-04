@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { map, Observable, take } from 'rxjs';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import awsExports from '../../src/aws-exports';
+import awsExports from '../aws-exports';
 
 @Injectable()
 export class CognitoGuard implements CanActivate {
