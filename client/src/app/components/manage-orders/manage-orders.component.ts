@@ -1,5 +1,6 @@
 import { Component, Directive, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Auth } from 'aws-amplify';
 import { IOrder, IUser } from '../interfaces/form';
@@ -22,8 +23,9 @@ export class ManageOrdersComponent implements OnInit {
   petSitter: IPetSitter;
   userGroup: any;
   petOwner: IPetOwner; 
+  email: string;
 
-  constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService) {
+  constructor(private _httpOrder:OrderService,private dialog:MatDialog,  private _router: Router,public authenticator: AuthenticatorService, private _httpUser: UserService) {
     Auth.currentAuthenticatedUser()
     .then(user => {
       this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
@@ -43,7 +45,7 @@ export class ManageOrdersComponent implements OnInit {
 
     this.getOrders(); 
 
-  
+  this.email = 'joannasmith@gmail.com'; 
    }
 
    async getOrders(){
@@ -99,5 +101,14 @@ export class ManageOrdersComponent implements OnInit {
   
   }
 
-
+  GetPetOwnerDetails(email:string){
+    
+    console.log('call pet owner')
+    if(this.userGroup =="PetSitter"){
+      this._router.navigate(['/petownerprofile', {'id': `${email}`}])
+    }
+    else if(this.userGroup =="PetOwner"){
+        this._router.navigate(['/petsitterdetails', {'id': `${43}`}])
+    }
+  }
 }
