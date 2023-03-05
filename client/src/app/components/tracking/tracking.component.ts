@@ -32,16 +32,16 @@ export class TrackingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-console.log('test',   AWS); 
+// console.log('test',   AWS); 
 
-    const map = new maplibregl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [54.2781407,-8.446533],
-      zoom: 12
-    });
+//     const map = new maplibregl.Map({
+//       container: 'map',
+//       style: 'mapbox://styles/mapbox/streets-v11',
+//       center: [54.2781407,-8.446533],
+//       zoom: 12
+//     });
 
-    this.main(); 
+//     this.main(); 
 
   }
 // Initialize a map
