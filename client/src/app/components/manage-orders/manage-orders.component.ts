@@ -1,5 +1,6 @@
 import { Component, Directive, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Auth } from 'aws-amplify';
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
@@ -119,5 +120,14 @@ getServices(id: number): boolean
     this.dialog.open(OrderComponent, {data:{petSitter:this.petSitter, serviceList:this.serviceList}}); 
   }
 
-
+  GetPetOwnerDetails(email:string){
+    
+    console.log('call pet owner')
+    if(this.userGroup =="PetSitter"){
+      this._router.navigate(['/petownerprofile', {'id': `${email}`}])
+    }
+    else if(this.userGroup =="PetOwner"){
+        this._router.navigate(['/petsitterdetails', {'id': `${43}`}])
+    }
+  }
 }
