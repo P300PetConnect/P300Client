@@ -17,6 +17,7 @@ import { SearchServiceService } from 'src/app/search_service_services/search-ser
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
 import { INotAvailable, IOrderList } from '../interfaces/order';
 import { OrderService } from '../service/order.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
