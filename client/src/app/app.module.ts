@@ -61,7 +61,6 @@ import { MessageAlertComponent } from './components/message-alert/message-alert.
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
-
 // import { MdInputModule } from '@angular/material';
 
 
@@ -98,6 +97,8 @@ import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
+import { DatePipe } from '@angular/common';
+import * as maplibregl from 'maplibre-gl';
 
 @NgModule({
   declarations: [
@@ -173,6 +174,7 @@ import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-
     }),
   ],
   providers: [
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     AuthenticatorService, CognitoGuard, UserService],
   bootstrap: [AppComponent], 
