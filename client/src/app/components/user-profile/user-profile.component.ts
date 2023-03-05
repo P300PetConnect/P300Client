@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/components/service/user.service';
 import { IUser, IPet} from 'src/app/components/interfaces/form';
@@ -31,7 +31,7 @@ export class UserProfileComponent implements OnInit {
   //configure get for reviews
   //leave comments on where further integration is needed. 
 
-
+  @Input()viewonly; 
   
   userGroup: string = localStorage.getItem('userGroup'); 
   public user: IUser; 
@@ -56,10 +56,12 @@ export class UserProfileComponent implements OnInit {
   com = false;
   showDes = false;
   notAvailable = false;
-
+  displayPetOwnerViewOnly = false; 
+  displatPetSitterViewOnly=false; 
   componentFlag = "userProfile"
 
   averageRoundStars: number;
+  PetOwnerOrderEmail: any;
 
   constructor(private _userService: UserService, private _petService:PetService,
      public authenticator: AuthenticatorService, private dialog:MatDialog, 
@@ -74,6 +76,13 @@ export class UserProfileComponent implements OnInit {
   };
   
   ngOnInit(): void {
+
+
+    console.log('view only',this.viewonly); 
+    this.PetOwnerOrderEmail = this.route.snapshot.params['id'];
+    console.log('view only',this.viewonly, 'route', this.PetOwnerOrderEmail ); 
+
+
 
     if(this.userGroup == eUserGroup.PetOwner){
     // this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
@@ -101,11 +110,25 @@ export class UserProfileComponent implements OnInit {
     this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
     // if (this.petSitter.emailAddress==null) {
-      this.getPetSitter().then(() => {
+      this.getPetSitter(this.authenticator?.user?.attributes?.email).then(() => {
         this.getServices();
         this.getReviews();
       });
     // }
+    }
+   if(this.viewonly && this.userGroup == eUserGroup.PetSitter){
+      this.getPetOwner(this.PetOwnerOrderEmail); 
+      this.getPetDetails(this.PetOwnerOrderEmail);
+      this.displayPetOwnerViewOnly = true; 
+      console.log('I am getting pet owner here'); 
+    }
+    else if(this.viewonly && this.userGroup == eUserGroup.PetOwner){
+      this.getPetSitter(this.PetOwnerOrderEmail).then(() => {
+        this.getServices();
+        this.getReviews();
+        this.displatPetSitterViewOnly=true; 
+      });
+      console.log('I am getting pet sitter here'); 
     }
     
   }
@@ -144,11 +167,11 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-  async getPetOwner(){
+  async getPetOwner(email:string){
   // console.log(localStorage.getItem('PetOwner')); 
   console.log('I am here, requestiong petowner data for the first time')
   try {
-  const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+  const petOwner = await this._userService.get_petowner(email).toPromise()
   this.petOwner= petOwner;
   // localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
 
@@ -156,9 +179,9 @@ export class UserProfileComponent implements OnInit {
      console.error(error);
    }
 }
-  async getPetSitter(){
+  async getPetSitter(email:string){
     try{
-      const petSitter = await this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
+      const petSitter = await this._userService.get_petsitter(email).toPromise()
         this.petSitter = petSitter;
         // localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
         this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
@@ -167,9 +190,9 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  async getPetDetails(){
+  async getPetDetails(email:string){
       try{
-        const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
+        const petDetails =  await this._petService.get_petdetails(email).toPromise()
         this.petDetails = petDetails; 
         // localStorage.setItem('petDetails', JSON.stringify(this.petDetails)); 
         console.log(petDetails)
