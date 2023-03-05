@@ -1,6 +1,7 @@
 import { Component, Directive, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Auth } from 'aws-amplify';
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
