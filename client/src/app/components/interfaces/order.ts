@@ -50,5 +50,6 @@ export enum EOrderStatus {
     NotAvailableID: number;
     UserID: number;
     TimeStamp: string;
+    Note: string;
   }
   

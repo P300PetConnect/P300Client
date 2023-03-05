@@ -59,6 +59,8 @@ export class UserProfileComponent implements OnInit {
   componentFlag = "userProfile"
 
   averageRoundStars: number;
+  orderComplete = false;
+  notAvailableComplete = false;
 
   constructor(private _userService: UserService, private _petService:PetService,
      public authenticator: AuthenticatorService, private dialog:MatDialog, 
@@ -108,20 +110,25 @@ export class UserProfileComponent implements OnInit {
 
   GetOrders(id: number)
   {
+   
     this._order.getOrdersList(id).subscribe({
       next: (value: IOrderList[] )=>this.orders = value,
       complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
+     
       error: (mess) => this.message = mess
     })
+    this.orderComplete = true;
   }
 
   GetnotAvailable(id: number)
   {
     this._order.getNotAvailable(id).subscribe({
+     
       next: (value: INotAvailable[] )=>this.notAvailble = value,
       complete: () => console.log('not available service finished ' +  JSON.stringify((this.notAvailble))),
       error: (mess) => this.message = mess
     })
+    this.notAvailableComplete = true;
   }
 
   async getPetOwner(){

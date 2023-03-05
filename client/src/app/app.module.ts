@@ -102,6 +102,7 @@ import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 import { Cal2Component } from './components/cal2/cal2.component';
+import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import { Cal2Component } from './components/cal2/cal2.component';
     MatFormFieldModule,
     MatExpansionModule,
     ScheduleModule,
+    
     //Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
