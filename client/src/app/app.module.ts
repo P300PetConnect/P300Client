@@ -98,7 +98,6 @@ import { RecognitionComponent } from './components/recognition/recognition.compo
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 import { TrackingComponent } from './components/tracking/tracking.component';
 import { DatePipe } from '@angular/common';
-import * as maplibregl from 'maplibre-gl';
 
 @NgModule({
   declarations: [
