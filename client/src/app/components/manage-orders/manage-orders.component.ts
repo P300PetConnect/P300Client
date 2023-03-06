@@ -45,7 +45,6 @@ export class ManageOrdersComponent implements OnInit {
 
     this.getOrders(); 
 
-  this.email = 'joannasmith@gmail.com'; 
    }
 
    async getOrders(){
@@ -54,7 +53,8 @@ export class ManageOrdersComponent implements OnInit {
       // this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
         // async petSitter=>{
           // this.petSitter = petSitter;
-          const orders = await this._httpOrder.getOderByUser(36).toPromise()
+          console.log(this.petSitter?.petSitterId); 
+          const orders = await this._httpOrder.getOderByUser(this.petSitter?.petSitterId).toPromise()
           this.orders = orders;
           console.log('test', this.orders); 
           console.log(this.petSitter)
@@ -101,14 +101,14 @@ export class ManageOrdersComponent implements OnInit {
   
   }
 
-  GetPetOwnerDetails(email:string){
+  GetPetOwnerDetails(userID:number,email:string){
     
     console.log('call pet owner')
     if(this.userGroup =="PetSitter"){
       this._router.navigate(['/petownerprofile', {'id': `${email}`}])
     }
     else if(this.userGroup =="PetOwner"){
-        this._router.navigate(['/petsitterdetails', {'id': `${43}`}])
+        this._router.navigate(['/petsitterdetails', {'id': `${userID}`}])
     }
   }
 }
