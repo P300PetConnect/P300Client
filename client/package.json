@@ -45,6 +45,7 @@
     "material-design-icons": "^3.0.1",
     "ngx-bootstrap": "^8.0.0",
     "rxjs": "~7.4.0",
+    "sdk": "^0.5.0",
     "stream-chat": "^8.3.0",
     "stream-chat-angular": "^4.15.0",
     "sweetalert2": "^9.17.2",

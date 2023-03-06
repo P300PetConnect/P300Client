@@ -127,6 +127,8 @@
 		}
   },
   "cli": {
+	"warnings": {
+    "versionMismatch": false      }, 
     "analytics": "a909fb24-9ef5-4f12-b4b9-9fc662edd54f"
   }
 }
