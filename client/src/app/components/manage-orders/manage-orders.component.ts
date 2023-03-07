@@ -31,7 +31,7 @@ export class ManageOrdersComponent implements OnInit {
   userID: string;
 
 
-  constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService,  
+  constructor(private _router: Router, private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService,  
     private service: SearchServiceService, private sharedService: SharedService) {
     Auth.currentAuthenticatedUser()
     .then(user => {
