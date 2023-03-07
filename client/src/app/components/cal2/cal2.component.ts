@@ -18,25 +18,30 @@ import {
   styleUrls: ['./cal2.component.scss'],
   providers: [DayService, WeekService, MonthService, AgendaService, TimelineMonthService,DatePipe,TimelineViewsService, ResizeService],
   template: `<ejs-schedule width='100%' height='550px' 
-  [eventSettings]="eventSettings" (dataBound)="onDataBound($event)" (eventRendered)="onEventRendered($event)" ></ejs-schedule>`
+  [eventSettings]="eventSettings"  (eventRendered)="onEventRendered($event)" 
+  >
+  <e-resources>
+    <e-resource field='organizer' title='Organizer'></e-resource>
+  </e-resources>
+		
+    </ejs-schedule>`
   
-//integrate with my backend, 
-//fix local storage zip
+
 
 })
 export class Cal2Component implements OnInit {
+
+  organizer: GroupModel = { resources: ["organizer"], allowGroupEdit: true };
+
   constructor(private datePipe: DatePipe, private router: Router,private _order: OrderService) { }
 
-  public data: object[] = [{
-    Id: 1,
-    Subject: 'Meeting',
-    type : 'off',
-    StartTime: new Date(2023, 1, 15, 10, 0),
-    EndTime: new Date(2023, 1, 15, 12, 30)
-  }];
+  public data: object[] = [];
 
 
-  public eventSettings: EventSettingsModel;
+   public eventSettings: EventSettingsModel;
+
+
+
   picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
   @Input() orders: IOrderList [] = [] ;
   @Input() notAvailble: INotAvailable [] = [];
@@ -68,15 +73,16 @@ export class Cal2Component implements OnInit {
        
           Id: this.not[i].NotAvailableID,
           Subject: this.not[i].Note,
-          Type: 'Meeting',
+          group: 'Test',
+         
           allowDeleting: false,
           allowEditing: false,
           StartTime: start,
           EndTime: newTimestampString,
           Color: '#fc0703', // Set the color property for the event
-          imageUrl: 'https://via.placeholder.com/150'
-  
+       
         })
+        
         this.eventSettings  = {
           dataSource: this.data,
      
@@ -90,40 +96,29 @@ export class Cal2Component implements OnInit {
   {
     this._order.getOrdersList(id).subscribe(data => {
       this.orderst = data;
-    //  alert(JSON.stringify(this.data))
+   
       for(let i = 0; i < this.orderst.length; i++)
       {
         this.data.push({
           Id: this.orderst[i].OrderID,
-          Type: 'Appointment',
           Subject: this.orderst[i].Description,
           StartTime: this.orderst[i].formatted_date,
           EndTime: this.orderst[i].formatted_date,
-          Color: '#07eb48'
+          Color: '#07eb48',
+          Location: this.orderst[i].Line_2 + ', ' + this.orderst[i].County ,
+          Organizer: 'John Doe'
   
         })
         this.eventSettings  = {
           dataSource: this.data
         }
-        
+         
       }
    
     });
   }
 
-  onDataBound(args: any) {
-    // Iterate through the events and set the color and other settings based on the event data or other conditions
-    args.data.forEach((event: any) => {
-      if (event.type === 'Meeting') {
-        event.color = '#1976d2';
-        event.textColor = '#ffffff';
-      } else if (event.type === 'Appointment') {
-        event.color = '#dc3545';
-        event.textColor = '#ffffff';
-      }
-    });
-  
-  }
+
 
   onEventRendered(args: any) {
     let event = args.data;
