@@ -17,7 +17,7 @@ import { SearchServiceService } from 'src/app/search_service_services/search-ser
 import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
 import { INotAvailable, IOrderList } from '../interfaces/order';
 import { OrderService } from '../service/order.service';
-import { SharedService } from '../shared.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -64,8 +64,8 @@ export class UserProfileComponent implements OnInit {
   PetOwnerOrderEmail: any;
 
   constructor(private _userService: UserService, private _petService:PetService,
-     public authenticator: AuthenticatorService, private dialog:MatDialog, 
-     private _httpReview:ReviewService,private _httpService: SearchServiceService, private _order: OrderService, private sharedService: SharedService) {
+     public authenticator: AuthenticatorService, private dialog:MatDialog, private route:ActivatedRoute,
+     private _httpReview:ReviewService,private _httpService: SearchServiceService, private _order: OrderService) {
 
    }
 
@@ -89,10 +89,10 @@ export class UserProfileComponent implements OnInit {
     // this.petDetails = JSON.parse(localStorage.getItem('petDetails'));
 
     // if(!this.petOwner.emailAddress){
-      this.getPetOwner(); 
-      this.getPetDetails();
- // Example function to update orders count
- this.sharedService.ordersCount.next(10);    // }
+      
+      this.getPetOwner(this.authenticator?.user?.attributes?.email); 
+      this.getPetDetails(this.authenticator?.user?.attributes?.email);
+    // }
     }
     else if(this.userGroup == eUserGroup.PetSitter){
       console.log('PetSitter',this.petSitter);
@@ -104,8 +104,6 @@ export class UserProfileComponent implements OnInit {
     // get orders for schedule 
     this.GetOrders(this.petSitter?.petSitterId);
     this.GetnotAvailable(this.petSitter?.id);
-
-    //check if the service list is not read
 
     this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
 
@@ -133,36 +131,20 @@ export class UserProfileComponent implements OnInit {
     
   }
 
-  GetOrders(id: number) {
+  GetOrders(id: number)
+  {
     this._order.getOrdersList(id).subscribe({
-      next: (value: IOrderList[]) => {
-        this.orders = value;
-        console.log('Order service finished ', this.orders);
-  
-        // Find all orders that haven't been read by the pet sitter
-        const ordersNotRead = this.orders.filter(order => !order.FlagReadPetSitter);
-  
-        // Store the list of unread orders in local storage
-        localStorage.setItem('OrdersNotRead', JSON.stringify(ordersNotRead));
-  
-        if (ordersNotRead.length > 0) {
-          console.log('Pet sitter has not read some orders yet.');
-        } else {
-          console.log('Pet sitter has read all orders.');
-        }
-      },
+      next: (value: IOrderList[] )=>this.orders = value,
+      complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
       error: (mess) => this.message = mess
-    });
+    })
   }
-  
-
-  
 
   GetnotAvailable(id: number)
   {
     this._order.getNotAvailable(id).subscribe({
       next: (value: INotAvailable[] )=>this.notAvailble = value,
-      complete: () => console.log('not available service finished ', this.notAvailble),
+      complete: () => console.log('not available service finished ' +  JSON.stringify((this.notAvailble))),
       error: (mess) => this.message = mess
     })
   }
@@ -183,7 +165,7 @@ export class UserProfileComponent implements OnInit {
     try{
       const petSitter = await this._userService.get_petsitter(email).toPromise()
         this.petSitter = petSitter;
-        // localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
+        localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
         this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
     }catch (error) {
       console.error(error);
@@ -219,7 +201,7 @@ async getReviews()
    await this._httpReview.getReviews(this.petSitter?.id).toPromise().then(
     (value: Review[])=> this.reviews = value,
     (mess) => this.message = mess
-   ).finally(()=>console.log('Review service finished ', this.reviews)); 
+   ).finally(()=>console.log('Review service finished ' +  JSON.stringify(this.reviews))); 
    localStorage.setItem('reviews', JSON.stringify(this.reviews)); 
    console.log('pet sitter reviews ', this.reviews); 
   }catch(error){
