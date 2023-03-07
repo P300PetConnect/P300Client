@@ -31,7 +31,7 @@ message: any
    
   }
 
-  public AddPostNoImage(title: string, content: string,  form: HTMLFormElement)
+  public AddPostNoImage(title: string, content: string,  form: HTMLFormElement, imageUserProfile:string)
   {
   
     // need board id here, passed back from wall as input
@@ -40,7 +40,7 @@ message: any
    
     const now = new Date().toDateString();
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-     this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 );
+     this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 ,imageUserProfile);
      
     
      this._forumPosts.PushPost(this.tempPostItem)
@@ -57,7 +57,7 @@ message: any
      
   }
 
-  AddPostWithImage(title: string, content: string, video:string, form: HTMLFormElement, image:HTMLImageElement) {
+  AddPostWithImage(title: string, content: string, video:string, form: HTMLFormElement, image:HTMLImageElement, imageUserProfile:string) {
     
 
     // need codition here for video link length
@@ -65,7 +65,7 @@ message: any
 
     const now = new Date().toDateString();
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-     this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 );
+     this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 , imageUserProfile);
 
      const file = this.selectedFiles;
 

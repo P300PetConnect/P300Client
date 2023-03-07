@@ -1,19 +1,21 @@
-
 @import url('https://fonts.googleapis.com/css?family=Muli:200,300,400,600');
 
-.bg{
-    background:#ccc5d2; 
-}
-.bg2{
-    background-color: #e2dde6;
-}
-.bg3{
-    background-color: #e2dde6; 
+.bg {
+    background: #ccc5d2;
 }
 
-li{
-    display: inline; 
+.bg2 {
+    background-color: #e2dde6;
 }
+
+.bg3 {
+    background-color: #e2dde6;
+}
+
+li {
+    display: inline;
+}
+
 .skills li i {
     color: #62646a;
     display: inline-block;
@@ -28,9 +30,10 @@ li{
     -o-transition: background-color .2s ease-in-out;
     transition: background-color .2s ease-in-out;
     text-decoration: none;
-    text-decoration-line:none; 
+    text-decoration-line: none;
 }
- ul {
+
+ul {
     list-style: none;
     list-style-image: none;
     margin: 0;
@@ -47,44 +50,51 @@ li{
 //     padding-inline-start: 40px;
 // }
 
-.text-description{
+.text-description {
     font-size: 0.9rem;
 }
 
-.skills{
+.skills {
     background: white;
     width: 27rem;
     padding: 1.3rem;
     margin-top: 1rem;
     border-radius: 0.3rem;
 
-    h1{
-        font-size:1.25rem
+    h1 {
+        font-size: 1.25rem
     }
 }
+
 @media (min-width: 1200px) {
-    .container-fluid{
+    .container-fluid {
         max-width: 1550px;
     }
 }
 
-.profile-icons{
-margin-right: 1rem!important;
+.profile-icons {
+    margin-right: 1rem !important;
 
 }
 
-@media (min-width: 1200px){
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-        max-width: 1200px;
-}
+@media (min-width: 1200px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1250px;
+    }
 }
 
 //test
 
-body{
-    background:#DCDCDC;
-    margin-top:20px;
+body {
+    background: #DCDCDC;
+    margin-top: 20px;
 }
+
 .card-box {
     padding: 20px;
     border-radius: 3px;
@@ -107,10 +117,12 @@ body{
     color: #797979;
     border: 2px solid #797979
 }
+
 .thumb-lg {
     height: 88px;
     width: 88px;
 }
+
 .img-thumbnail {
     padding: .25rem;
     background-color: #fff;
@@ -119,74 +131,134 @@ body{
     max-width: 100%;
     height: auto;
 }
+
 .text-pink {
-    color: #ff679b!important;
+    color: #ff679b !important;
 }
+
 .btn-rounded {
     border-radius: 2em;
 }
+
 .text-muted {
-    color: #98a6ad!important;
+    color: #98a6ad !important;
 }
+
 h4 {
     line-height: 22px;
     font-size: 18px;
 }
-.card-inner{
+
+.card-inner {
     margin-left: 4rem;
 }
 
-.bi-plus-circle-fill{
+.bi-plus-circle-fill {
 
     font-size: 48px;
     font-weight: 400;
 
 }
 
-.card{
+.card {
     cursor: pointer;
 }
-.search-btn{
+
+.search-btn {
     // width: 10rem;
     height: 3.2rem;
     // margin-top: 0.3rem;
-    background-color:#17a2b8 !important;
-    color:white; 
+    background-color: #17a2b8 !important;
+    color: white;
+    font-size: 1.2rem;
+
+}
+
+.order-btn {
+    // width: 10rem;
+    height: 3.2rem;
+    // margin-top: 0.3rem;
+    background-color: #6CBC00 !important;
+    color: white;
     font-size: 1.2rem;
 }
-.details{
+
+.details {
     font-size: 1rem;
     padding: 12px;
     cursor: auto;
 }
-b{
+
+b {
     color: rgba(51, 59, 65, 0.753);
 }
-.review-time{
+
+.review-time {
     font-size: 0.9rem;
 }
-  .bi-star-fill{
+
+.bi-star-fill {
     padding: 0.2rem;
     font-size: 1.3rem;
     color: orange;
 }
-.review{
+
+.review {
     font-size: 0.8rem;
     color: gray;
 }
 
-.primary-link{
+.primary-link {
     color: #028177 !important;
     text-decoration: underline;
     font-weight: 700;
     cursor: pointer;
-    font-style: italic; 
+    font-style: italic;
 }
-.mat-card:not([class*=mat-elevation-z]) {
-    box-shadow: none; 
 
-}
-.mat-card{
+// .mat-card:not([class*=mat-elevation-z]) {
+//     // box-shadow: none; 
+
+// }
+.mat-card {
     padding: 0px !important;
     margin-top: 0px !important;
+}
+
+.first-item {
+    &:hover {
+        border: 1px solid #487BA5;
+        background-color: white;
+    }
+}
+
+.first-item.active {
+    background-color: #487BA5;
+    color: white !important;
+}
+
+.second-item {
+    // &:hover {
+    border: 1px solid #338F90;
+    //   border-bottom: none;
+    //   background-color: #338F90;
+    //   color: white !important;
+
+    // }
+}
+
+.fourth-item {
+    border: 1px solid #E58A86;
+
+}
+
+.material-symbols-outlined {
+    font-weight: 50 !important;
+    font-size: 1.2rem;
+
+}
+
+
+::ng-deep .available .mat-calendar-body-cell-content {
+    background-color: rgba(14, 152, 5, 0.25);
 }

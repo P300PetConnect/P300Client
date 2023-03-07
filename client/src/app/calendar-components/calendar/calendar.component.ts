@@ -1,40 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Console } from 'console';
+import { INotAvailable, IOrderList } from 'src/app/components/interfaces/order';
 import { CalendarDay, event} from '../../calender-class/cal-class'
 
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
+  providers: [DatePipe]
 })
 export class CalendarComponent implements OnInit {
  
+  // constructor(private datePipe: DatePipe) {
+
+  // }
+  constructor(private datePipe: DatePipe, private router: Router) { }
+
+//pass string as input from component, different for each component, use ngif and have two versions of the calender. 
+  public displayMonth: string;
+  private monthIndex: number = 0;
+  selectedOrders: IOrderList [] = [];
+  displayEvent = false;
+  
+  @Input() orders: IOrderList [] = [];
+  @Input() notAvailble: INotAvailable [] = [];
+  @Input() componentFlag: string;
+
+  
+
   public calendar: CalendarDay[] = [];
+  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
   public monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
-  public displayMonth: string;
-  private monthIndex: number = 0;
 
-  displayEvent = false;
-
-  title = '';
-  desc = ''; 
-  desc2 = '';
-  owner ='';
-
-  events: event[];
+ 
 
   ngOnInit(): void {
-    this.events = [
-      new event(this.addDays(new Date, 1), "test"),
-      new event(this.addDays(new Date, 3), "Available"),
-      new event(this.addDays(new Date, 6), "Available")
-  ]
-
+    
     this.generateCalendarDays(this.monthIndex);
+    console.log(this.calendar);
     
   }
+
+  isObjectInArray(value: string): boolean {
+   //tests to see if date is in list array
+    return this.orders.some(obj => obj.formatted_date === value);
+  }
+
+  isObjectInArray2(value: string): boolean {
+    //tests to see if date is in notAvailable array
+     return this.notAvailble.some(obj => obj.TimeStamp === value);
+   }
 
   addDays(date: Date, days: number): Date {
     date.setDate(date.getDate() + days);
@@ -61,23 +81,7 @@ export class CalendarComponent implements OnInit {
       dateToAdd = new Date(dateToAdd.setDate(dateToAdd.getDate() + 1));
     }
 
-    // for (var i = 0; i < this.calendar.length; i++) {
-
-    //       for(let e = 0; e < this.events.length; e++)
-    //       {
-           
-    //         if(this.calendar[i].date == this.events[e].date)
-    //         {
-    //         this.calendar[i].hasEvent = true;
-    //         console.log('test');
-    //         }
-
-    //      }
-     
-    // }
-
-  
-
+//still hardcoded for dates no available
     this.calendar[41].notAvailable = true;
     this.calendar[34].notAvailable = true;
     this.calendar[27].notAvailable = true;
@@ -92,17 +96,7 @@ export class CalendarComponent implements OnInit {
     this.calendar[12].notAvailable = true;
     this.calendar[5].notAvailable = true;
 
-    this.calendar[16].hasEvent = true;
-    this.calendar[16].petOwner = "Jenny Kelly";
-    this.calendar[16].eventTitle = "Walk fluffy - 5km";
-    this.calendar[16].eventDescription = "Pick up: Sligo"
-    this.calendar[16].eventDescription2 = "payment: £35"
-
-    this.calendar[32].hasEvent = true;
-    this.calendar[32].petOwner = "John Smith";
-    this.calendar[32].eventTitle = "feed Dog";
-    this.calendar[32].eventDescription = "Location: Carrick"
-    this.calendar[32].eventDescription2 = "payment: £15"
+   
   }
 
 
@@ -139,23 +133,39 @@ export class CalendarComponent implements OnInit {
     this.generateCalendarDays(this.monthIndex);
   }
 
-  setValues(title: string, desc: string, desc2 : string, owner: string)
+  setValues(value: string)
   {
-    this.displayEvent = true;
-    this.title = title;
-    this.desc = desc;
-    this.desc2 = desc2;
-    this.owner = owner;
+    //gets date from clicked on event, matches it to the order list
+    value = this.datePipe.transform(new Date(value), 'dd MMM yyyy');
+    for(var i = 0; i < this.orders.length; i++)
+    {
 
+      if(this.orders[i].formatted_date == value)
+      {
+        //sets selected order in temp object so we can render the details out on screen
+        this.selectedOrders.push(this.orders[i]);
+      }
+    }
     
-
+    console.log(JSON.stringify(this.selectedOrders));
+    this.displayEvent = true;
+   
   }
-
-  test()
+  ChangeRoute()
   {
-    console.log(this.calendar);
-    console.log(this.events);
+    this.router.navigate(['/orders']);
 
   }
+
+  closeReset()
+  {
+    this.displayEvent = false;
+    //clear selected orders
+    this.selectedOrders = [];
+  }
+
+
+
+  
 
 }

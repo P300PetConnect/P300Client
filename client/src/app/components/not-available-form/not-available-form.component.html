@@ -1,0 +1,217 @@
+<div >
+    <div>
+       
+        <div >
+          <div>
+           
+              <div>
+
+                <div class="p-3">
+                    <mat-tab-group animationDuration="0ms">
+                      <!-- <mat-tab label="Schedule">
+                        <div *ngFor="let o of orders">
+                          
+                          <app-schedule-list [order] = o></app-schedule-list>
+                        </div>
+                      </mat-tab> -->
+                      <mat-tab label="Manage Available Slots">
+                        <ng-template mat-tab-label>
+                            <span (click)="refresh()">Manage Available slots</span>
+                        </ng-template>
+                        <div class = "px-5">
+
+                       
+                        <div class = "m-3 pt-3 px-3 " *ngFor="let a of notAvailble" style="border: 1px solid black">
+                           <div class = "row justify-content-center">
+                            <div class = "col-6">
+                              <label>Date:</label>
+                              <h6>{{a.TimeStamp}}</h6>
+                            </div>
+                            <div class = "col-6">
+                              <label>Note:</label>
+                              <p>{{a.Note}}</p>
+                            </div>
+                            <div class = "col-6 p-4 m-4">
+                                <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="DeleteNotAvailable(a.NotAvailbleID)">Delete not Available</Button>
+                            </div>
+                        
+                           </div>
+                            
+          
+                          </div>
+                        </div>
+                        
+                      </mat-tab>
+                
+
+                      <mat-tab label="Create Not Available Slot">
+                  <div class = "row px-3 pt-4">
+                    <div class="col-6">
+
+                          <div class="row pb-4 pt-4">
+
+                          <mat-card class="demo-inline-calendar-card" >
+                            <mat-calendar [(selected)]="selected"></mat-calendar>
+                          </mat-card>
+
+                          
+                         </div>
+                        
+                    </div>
+                    <div class="col-6 py-2">
+                      <div class="row p-2 mb-3">
+                        <label for="week select">Note:</label>
+                         <textarea name="note" id="note" cols="30" rows="3" class="mb-3" #note></textarea>
+                         <button class = "btn btn-success" (click)="SetNotAvailble('null', note.value)">Set Not Available</button>
+                      </div>
+
+                    </div>
+               
+                </div>
+             </mat-tab>
+                      <mat-tab label="Set Repeating Day">
+                        <div class = "row px-3 pt-4">
+
+                    
+                          <div class="col-6">
+                         
+                              <div class="row pb-4 mt-3">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Choose a date</mat-label>
+                                    <input matInput [matDatepicker]="picker" #date  >
+                                  
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                  </mat-form-field>
+                              </div>
+                              <div class="row p-2 mb-3">
+                                <label for="week select">Number of weeks:</label>
+                                <select class="form-select" aria-label="Default select example" #weeks>
+                                  <option selected >Open this select menu</option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                  <option value="4">Four</option>
+                                </select>
+                              </div>
+                          
+                              </div>
+                            <div class = "col-6">
+
+                              <div class="row p-2 mb-3">
+                                <label for="week select">Note:</label>
+                                 <textarea name="note" id="note" cols="30" rows="3" class="mb-3" #noteR></textarea>
+                                <button class = "btn btn-success" (click)="SetRepeating(date.value, weeks.value, noteR.value)">Set Not Available</button>
+                              </div>
+                            </div>
+                          </div>
+                            
+                            
+
+                    
+                      
+                       
+
+                         
+                      </mat-tab>
+                    
+
+                    
+                
+                
+                    
+                      </mat-tab-group>
+                 
+                
+                     
+                    </div>
+               
+             
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- <h4>I am available on:</h4>
+    <mat-card class="demo-inline-calendar-card" >
+      <mat-calendar [(selected)]="selected"></mat-calendar>
+    </mat-card>
+
+    <div  class = "modal-Background">
+      <div class="modal-content">
+         
+          <div >
+            <div class="card">
+                <div class="card-header">
+                  <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="CloseForm()">&#10005;</Button>
+                    <div class="row">
+                      
+                        
+                    </div>
+                   
+                  
+                </div>
+                <div class="card-body">
+  
+                  <div class="pl-5">
+                      <mat-tab-group animationDuration="0ms"> -->
+                        <!-- <mat-tab label="Schedule">
+                          <div *ngFor="let o of orders">
+                            
+                            <app-schedule-list [order] = o></app-schedule-list>
+                          </div>
+                        </mat-tab> -->
+                        <!-- <mat-tab label="Manage Available slots">
+                          <ng-template mat-tab-label>
+                              <span (click)="refresh()">Manage Available slots</span>
+                          </ng-template>
+                          <div class = "m-3" *ngFor="let a of notAvailble">
+                             <div class = "row">
+                              <div class = "col-5">
+                                      <h5>{{a.TimeStamp}}</h5>
+                              </div>
+                              <div class = "col-5">
+                                   <h5>Not available</h5>
+                              </div>
+                              <div class = "col-2">
+                                  <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="DeleteNotAvailable(a.NotAvailbleID)" >&#10005;</Button>
+                              </div>
+                          
+                             </div>
+                              
+            
+                            </div>
+                          
+                        </mat-tab>
+                        <mat-tab label="Create Not Available slots">
+                          <mat-form-field appearance="fill">
+                              <mat-label>Choose a date</mat-label>
+                              <input matInput [matDatepicker]="picker" #date>
+                              <mat-hint>MM/DD/YYYY</mat-hint>
+                              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+  
+                            <button class = "btn btn-success" (click)="SetNotAvailble(date.value)">Set Not Available</button>
+                        </mat-tab>
+  
+                      
+                  
+                  
+                      
+                        </mat-tab-group>
+                   
+                  
+                       
+                      </div>
+                 
+               
+                </div>
+              </div>
+            </div>
+        </div>
+      </div> -->

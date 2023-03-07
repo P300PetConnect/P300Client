@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { StreamChatModule, StreamAutocompleteTextareaModule } from 'stream-chat-angular';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import {AgmCoreModule} from '@agm/core';
 import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
-import  Amplify, {Auth } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports'
 Amplify.configure(awsconfig); 
 import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
 import {FormsModule} from '@angular/forms'
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -31,7 +32,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {Ng2TelInputModule} from 'ng2-tel-input';
+//import {Ng2TelInputModule} from 'ng2-tel-input';
 import {MatSelectModule} from '@angular/material/select';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
@@ -72,7 +73,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 //     userPoolWebCliendId:'1kvja59f1tthl9chrrjn59pgou', 
 //     AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
 
-
 import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
 import { PopServiceCardComponent } from './search_service_components/pop-service-card/pop-service-card.component';
 import { BottomInfoComponent } from './search_service_components/bottom-info/bottom-info.component';
@@ -83,8 +83,20 @@ import { SearchVersion2Component } from './components/search-version2/search-ver
 import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
 import { SearchSitterServicesComponent } from './components/search-sitter-services/search-sitter-services.component';
 
-
-
+import { OrderComponent } from './components/order/order.component';
+import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.component';
+import { ReviewComponent } from './ReviewComponents/review/review.component';
+import { InterceptorService } from './components/service/interceptor.service';
+import { ChatPageComponent } from './components/chat-page/chat-page.component';
+import { MessageInputComponent } from './components/message-input/message-input.component';
+import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
+import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
+import { MapPlannerComponent } from './map-planner/map-planner.component';
+import { BrowseRouteComponent } from './browse-route/browse-route.component';
+import { RecognitionComponent } from './components/recognition/recognition.component';
+import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 
 @NgModule({
   declarations: [
@@ -99,10 +111,10 @@ import { SearchSitterServicesComponent } from './components/search-sitter-servic
     LoginComponent,
     InitialPageComponent,
     UserformComponent, 
-    AlertmsgComponent, 
+    AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
-    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent
-    
+    PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent
   ],
   imports: [
     BrowserModule,
@@ -123,7 +135,7 @@ import { SearchSitterServicesComponent } from './components/search-sitter-servic
     MatInputModule,
     MatFormFieldModule,
     MatExpansionModule,
-    Ng2TelInputModule,
+    //Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
     MatIconModule,
@@ -133,6 +145,12 @@ import { SearchSitterServicesComponent } from './components/search-sitter-servic
     MatMenuModule, 
     MatDialogModule,
     MatStepperModule,
+    BrowserModule,  
+      BrowserAnimationsModule,  
+      MatSliderModule, 
+      FormsModule,  
+      ReactiveFormsModule,
+
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -140,6 +158,8 @@ import { SearchSitterServicesComponent } from './components/search-sitter-servic
             deps: [HttpClient]
         }, 
     }),
+    StreamChatModule,
+    StreamAutocompleteTextareaModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
     FormsModule,
@@ -148,10 +168,12 @@ import { SearchSitterServicesComponent } from './components/search-sitter-servic
 
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY,
-      libraries: ['places']
+      libraries: ['places', 'geometry']
     }),
   ],
-  providers: [AuthenticatorService, CognitoGuard, UserService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+    AuthenticatorService, CognitoGuard, UserService],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })

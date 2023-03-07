@@ -8,8 +8,15 @@ import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.
 import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { eUserGroup, IPetOwner, IPetSitter } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
+import { ReviewService } from 'src/app/Review-services/review.service';
+import { Review } from 'src/app/ReviewInterfaces/review';
+import { OrderComponent } from '../order/order.component';
+import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
+import { INotAvailable, IOrderList } from '../interfaces/order';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,6 +26,13 @@ import { PetService } from '../service/pet.service';
 
 export class UserProfileComponent implements OnInit {
   
+  //make interface for review
+  //configure get for reviews
+  //leave comments on where further integration is needed. 
+
+
+  
+  userGroup: string = localStorage.getItem('userGroup'); 
   public user: IUser; 
   public pet:IPet;
   isReadOnly?:boolean = false; 
@@ -28,25 +42,28 @@ export class UserProfileComponent implements OnInit {
   public petOwner: IPetOwner; 
   public petSitter: IPetSitter; 
   public petDetails:IPet[]; 
-
-
-  //hardcoded bools to demo comments 
-
+  reviews:Review[] = [];
+  orders:IOrderList[] = [];
+  notAvailble:INotAvailable[] = [];
+  serviceList:ServiceInterface[] = [];
+  message: any;
+  picKeyWords: string[] = ["Feed", "Walk", "Sitting","Grooming"] 
   comments1 = false;
   comments2 = false;
   comments3 = false;
   comments4 = false;
   com = false;
+  showDes = false;
+  notAvailable = false;
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, private dialog:MatDialog) {
+  componentFlag = "userProfile"
 
+  averageRoundStars: number;
 
+  constructor(private _userService: UserService, private _petService:PetService,
+     public authenticator: AuthenticatorService, private dialog:MatDialog, 
+     private _httpReview:ReviewService,private _httpService: SearchServiceService, private _order: OrderService) {
 
-  //   this._userService.get_user().subscribe((res: IUser) => {
-  //     this.user= res; 
-
-  //     console.log(this.user.emailAddress)
-  //   })
    }
 
    myFilter = (d: Date | null): boolean => {
@@ -57,62 +74,116 @@ export class UserProfileComponent implements OnInit {
   
   ngOnInit(): void {
 
-this.pet = {
-  "name": "Lucy",
-  "description": "She snores when sleeps",
-  "petImageUrl": "https://img.freepik.com/free-photo/pug-dog-isolated-white-background_2829-11416.jpg?w=2000",
-  "dob": "2018-03-21",
-  "petType":"Dog",
-  "petBreed": "Pug",
-  "PetSize": "Small", 
-  "createdDate":"12/09/2022", 
+    if(this.userGroup == eUserGroup.PetOwner){
+    // this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
+    // this.petDetails = JSON.parse(localStorage.getItem('petDetails'));
+
+    // if(!this.petOwner.emailAddress){
+      this.getPetOwner(); 
+      this.getPetDetails();
+    // }
+    }
+    else if(this.userGroup == eUserGroup.PetSitter){
+      console.log('PetSitter',this.petSitter);
+
+    this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+    this.serviceList = JSON.parse(localStorage.getItem('serviceList')); 
+    this.reviews = JSON.parse(localStorage.getItem('reviews')); 
+
+    // get orders for schedule 
+    this.GetOrders(this.petSitter?.petSitterId);
+    this.GetnotAvailable(this.petSitter?.id);
+
+    this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
+
+    // if (this.petSitter.emailAddress==null) {
+      this.getPetSitter().then(() => {
+        this.getServices();
+        this.getReviews();
+      });
+    // }
+    }
+    
+  }
+
+  GetOrders(id: number)
+  {
+    this._order.getOrdersList(id).subscribe({
+      next: (value: IOrderList[] )=>this.orders = value,
+      complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
+      error: (mess) => this.message = mess
+    })
+  }
+
+  GetnotAvailable(id: number)
+  {
+    this._order.getNotAvailable(id).subscribe({
+      next: (value: INotAvailable[] )=>this.notAvailble = value,
+      complete: () => console.log('not available service finished ' +  JSON.stringify((this.notAvailble))),
+      error: (mess) => this.message = mess
+    })
+  }
+
+  async getPetOwner(){
+  // console.log(localStorage.getItem('PetOwner')); 
+  console.log('I am here, requestiong petowner data for the first time')
+  try {
+  const petOwner = await this._userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+  this.petOwner= petOwner;
+  // localStorage.setItem('PetOwner', JSON.stringify(this.petOwner)); 
+
+   } catch (error) {
+     console.error(error);
+   }
 }
-
-    if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
-    console.log('test carai')
-    this.getPetOwner(); 
-    this.getPetDetails(); 
-    }
-    else if(this.authenticator?.user?.attributes?.email=="fatherted@gmail.com"){
-    this.getPetSitter(); 
-    console.log(this.petSitter);
-    }
-
-
-
-  }
-
-
-//getpet owner 
-getPetOwner(){
-  this._userService.get_petowner("joannasmith@gmail.com").subscribe(
-    petOwner=>{
-      this.petOwner = petOwner;
-      console.log(petOwner)
-    }); 
-    return false; 
-  }
-
-  getPetSitter(){
-    this._userService.get_petsitter("fatherted@gmail.com").subscribe(
-      petSitter=>{
+  async getPetSitter(){
+    try{
+      const petSitter = await this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
-        console.log(petSitter)
-      }); 
-      return false; 
+        localStorage.setItem('PetSitter', JSON.stringify(this.petSitter)); 
+        this.averageRoundStars = Math.floor(this.petSitter?.reviewsTotal/ this.petSitter?.numReviews);
+    }catch (error) {
+      console.error(error);
     }
+  }
 
-//get pets 
-getPetDetails(){
-  this._petService.get_petdetails("joannasmith@gmail.com").subscribe(
-    petDetails=>{
-      this.petDetails = petDetails; 
-      console.log(petDetails)
-    }); 
-    return false; 
+  async getPetDetails(){
+      try{
+        const petDetails =  await this._petService.get_petdetails(this.authenticator?.user?.attributes?.email).toPromise()
+        this.petDetails = petDetails; 
+        // localStorage.setItem('petDetails', JSON.stringify(this.petDetails)); 
+        console.log(petDetails)
+       }catch (error) {
+        console.error(error);
+      }
+}
+async getServices() {
+  try{
+    await this._httpService.getOtherServices(this.petSitter.id).toPromise().then(
+      (value: any[]) => this.serviceList = value,
+      (mess) => this.message = mess
+    ).finally(() => console.log('Services finished'));
+    // localStorage.setItem('serviceList', JSON.stringify(this.serviceList)); 
+    console.log('pet sitter service ', this.serviceList); 
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-  
+async getReviews()
+{
+  try{
+   await this._httpReview.getReviews(this.petSitter?.id).toPromise().then(
+    (value: Review[])=> this.reviews = value,
+    (mess) => this.message = mess
+   ).finally(()=>console.log('Review service finished ' +  JSON.stringify(this.reviews))); 
+   localStorage.setItem('reviews', JSON.stringify(this.reviews)); 
+   console.log('pet sitter reviews ', this.reviews); 
+  }catch(error){
+    console.error(error);
+  }
+}
+
   onCreate(){
     // this._userService.initializeFormGroup(); 
     const dialogConfig = new MatDialogConfig(); 
@@ -135,9 +206,22 @@ getPetDetails(){
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = false; 
     dialogConfig.width = "80%";
-     dialogConfig.height = "93%";
+    dialogConfig.height = "93%";
+    dialogConfig.data = {myObjectHolder: this.petSitter.petSitterId} ;
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
+  onCreateOrder(){
+    const dialogConfig = new MatDialogConfig(); 
+    dialogConfig.disableClose = false; 
+    dialogConfig.autoFocus = true; 
+    dialogConfig.width = "60%";
+    this.dialog.open(OrderComponent, dialogConfig); 
+  }
 
+  close()
+  {
 
-}
+    this.notAvailable = false;
+  }
+
+  }

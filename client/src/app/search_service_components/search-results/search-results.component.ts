@@ -24,27 +24,27 @@ export class SearchResultsComponent implements OnInit {
     this.service.ShowOther = false;
   }
 
-  public getOtherServices(id : string)
-  {
-    this.service.ShowOther = ! this.service.ShowOther;
+  // public getOtherServices(id : string)
+  // {
+  //   this.service.ShowOther = ! this.service.ShowOther;
 
-    if( this.service.ShowOther == true)
-    {
-      this.search.getOtherServices(id).subscribe(
-        (      results: RdsUserServices) => {
-          this.otherServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
-        },
-        (      error: any) => this.errorMessage = <any>error
-      );
+  //   if( this.service.ShowOther == true)
+  //   {
+  //     this.search.getOtherServices(id).subscribe(
+  //       (      results: RdsUserServices) => {
+  //         this.otherServices= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
+  //       },
+  //       (      error: any) => this.errorMessage = <any>error
+  //     );
   
-      console.log(this.otherServices);
+  //     console.log(this.otherServices);
   
-      return false;
+  //     return false;
 
-    }
+  //   }
 
-    return false;
+  //   return false;
    
 
-  }
+  // }
 }

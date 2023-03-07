@@ -1,0 +1,30 @@
+<div class="container">
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <stream-channel-list></stream-channel-list>
+                </div>
+            
+                <div class="col-9 position-relative">
+                    <stream-channel>
+                        <div id="header" class="row">
+                            <stream-channel-header class="col"></stream-channel-header>
+                            <div class="col" *ngIf="group == 'PetSitter'">
+                                <button class="btn btn-secondary" (click)="onCreateOrder()">Create Order</button>
+                            </div>
+                        </div>
+                        <stream-message-list></stream-message-list>
+                        <stream-notification-list style="padding-bottom: 0%;"></stream-notification-list>
+                        <stream-message-input class="pb-3 fixed-bottom"></stream-message-input>
+                        
+                    </stream-channel>
+                </div>
+            </div>
+        </div>
+    </body>
+</div>
+
+
+
+

@@ -1,203 +1,276 @@
-<div class="container-xxl pt-5">
-<div class="row" *ngIf="authenticator?.user?.attributes?.email== 'joannasmith@gmail.com' ">
-<div class="col-4">
-  <div class="row">
-    <div class="col-12">
-      <div class="tab-content">
-        <div class="col-md-12 col-xl-12">
-          <div class="card mb-3">
-            <div class="card-header">
-              <h5 class="card-title mb-0">My Profile</h5>
-            </div>
-            <div class="card-body text-center">
-              <img src={{petOwner?.profilePicUrl}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2" width="150" height="150">
-              <h5 class="card-title mb-0">{{petOwner?.name}} {{petOwner?.surname}}</h5>
-              <div class="text-muted mb-2"></div>
-            </div>
-            <hr class="my-0">
-            <div class="card-body">
-              <h5 class="h6 card-title">About</h5>
-              <ul class="list-group list-group-flush pb-4">
-                <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{petOwner?.emailAddress}}</li>
-                <li class="list-group-item"><i class="bi bi-telephone  profile-icons"></i>{{petOwner?.mobileNumber}}</li>
-                <a class="list-group-item"><i class="bi bi-geo-alt-fill profile-icons"></i>{{petOwner?.line1}} - {{petOwner?.county}}</a>
-              </ul>
-              <div class="row text-center d-flex justify-content-center">
-               <div class="btn btn-outline-info w-50" (click)="onCreate()">
-                Edit Profile
+<div class="container-xxl mt-5 overflow-hidden">
+  <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'joannasmith@gmail.com' ">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+      <div class="row">
+        <div class="col-12">
+          <div class="tab-content">
+            <div class="col-md-12 col-xl-12">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">My Profile</h5>
+                </div>
+                <div class="card-body text-center">
+                  <img src={{petOwner?.profilePicUrl}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2"
+                    width="150" height="150">
+                  <h5 class="card-title mb-0">{{petOwner?.name}} {{petOwner?.surname}}</h5>
+                  <div class="text-muted mb-2"></div>
+                </div>
+                <hr class="my-0">
+                <div class="card-body">
+                  <h5 class="h6 card-title">About</h5>
+                  <ul class="list-group list-group-flush pb-4">
+                    <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{petOwner?.emailAddress}}
+                    </li>
+                    <li class="list-group-item"><i class="bi bi-telephone  profile-icons"></i>{{petOwner?.mobileNumber}}
+                    </li>
+                    <a class="list-group-item"><i class="bi bi-geo-alt-fill profile-icons"></i>{{petOwner?.line1}} -
+                      {{petOwner?.county}}</a>
+                  </ul>
+                  <div class="row text-center d-flex justify-content-center">
+                    <div class="btn btn-outline-info w-50" (click)="onCreate()">
+                      Edit Profile
+                    </div>
+                  </div>
+
+                </div>
+                <hr class="my-0">
               </div>
-              </div>
-            
             </div>
-            <hr class="my-0">
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-    <div class="col-8 pl-5 ">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-12">
       <mat-tab-group animationDuration="0ms">
         <mat-tab label="Active Pets">
           <div class="row">
-            <div class="col-4 mt-4">
+            <div class="col-lg-4 mt-4">
               <div class="card p-4" (click)="onCreatePet()">
                 <div class="text-center card-body">
                   <div class="member-card">
                     <i class="bi bi-plus-circle-fill text-info"></i>
                     <p>Add a new Pet</p>
                   </div>
-              </div>
+                </div>
               </div>
             </div>
-            <div class="col-4 mt-4 mb-2" *ngFor="let pet of petDetails">
-                <div class="card">
-                  <div class="text-center card-body pb-1">
-                    <div class="member-card">
-                        <div class="thumb-lg member-thumb mx-auto"><img src={{pet?.petImageUrl}} class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                        <div class="pt-2">
-                            <h4>{{pet?.name}}</h4>
-                        </div>
-                        <ul class="social-links list-inline mb-auto pt-1 d-flex justify-content-between pl-3 pr-3">
-                          <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips " href="" data-original-title="SpecialCare"><span class="material-symbols-outlined">
+            <div class="col-lg-4 mt-4 mb-2" *ngFor="let pet of petDetails">
+              <div class="card">
+                <div class="text-center card-body pb-1">
+                  <div class="member-card">
+                    <div class="thumb-lg member-thumb mx-auto"><img src={{pet?.petImageUrl}}
+                        class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                    <div class="pt-2">
+                      <h4>{{pet?.name}}</h4>
+                    </div>
+                    <ul class="social-links list-inline mb-auto pt-1 d-flex justify-content-between pl-3 pr-3">
+                      <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip"
+                          class="tooltips " href="" data-original-title="SpecialCare"><span
+                            class="material-symbols-outlined">
                             medical_information</span></a></li>
-                            <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Vaccines"><span class="material-symbols-outlined">vaccines</span></a></li>
-                            <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Behavior"><span class="material-symbols-outlined">pets</span></a></li>
+                      <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip"
+                          class="tooltips" href="" data-original-title="Vaccines"><span
+                            class="material-symbols-outlined">vaccines</span></a></li>
+                      <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip"
+                          class="tooltips" href="" data-original-title="Behavior"><span
+                            class="material-symbols-outlined">pets</span></a></li>
+                    </ul>
+                    <div class="row pt-0">
+                      <div class="card-body pt-0 ">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item d-flex justify-content-start"><i
+                              class="material-symbols-outlined pr-4">pets</i>{{pet?.petBreed}}</li>
+                          <li class="list-group-item d-flex justify-content-start"><i
+                              class="bi bi-calendar-heart pr-4"></i>{{pet?.dob | date: 'mediumDate'}}</li>
+                          <a class="list-group-item d-flex justify-content-start"><i
+                              class="material-symbols-outlined p-0">description</i>{{pet?.description}}</a>
                         </ul>
-                            <div class="row pt-0">
-                              <div class="card-body pt-0 ">
-                              <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-start"><i class="material-symbols-outlined pr-4">pets</i>{{pet?.petBreed}}</li>
-                                <li class="list-group-item d-flex justify-content-start"><i class="bi bi-calendar-heart pr-4"></i>{{pet?.dob | date: 'mediumDate'}}</li>
-                                <a class="list-group-item d-flex justify-content-start"><i class="material-symbols-outlined p-0">description</i>{{pet?.description}}</a>
-                              </ul>
-                            </div>
-                       <!-- <button type="" class="btn btn-primary" >See Certificate</button> -->
+                      </div>
+                      <!-- <button type="" class="btn btn-primary" >See Certificate</button> -->
                     </div>
-                    </div>
-                    </div>
+                  </div>
                 </div>
-                </div>
+              </div>
             </div>
+          </div>
         </mat-tab>
-       
+
         <mat-tab label="Draft">
           <div class="row pt-4">
-          <div class="col-4">
-            <div class="card">
-              <div class="text-center card-body">
-                <div class="member-card">
-                    <div class="thumb-lg member-thumb mx-auto"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+            <div class="col-4">
+              <div class="card">
+                <div class="text-center card-body">
+                  <div class="member-card">
+                    <div class="thumb-lg member-thumb mx-auto"><img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFpdmHDg4o0Yi-xBZ7kKRJvhl54_Z3jzVfXhJvPiJ26cXJA017tw6LlNzjimNqpmbDgs&usqp=CAU"
+                        class="rounded-circle img-thumbnail" alt="profile-image"></div>
                     <div class="pt-2">
-                        <h4>{{petDetails?.name}}</h4>
+
                     </div>
                     <ul class="social-links list-inline mb-auto pt-1">
-                      <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips " href="" data-original-title="SpecialCare"><span class="material-symbols-outlined">
-                        medical_information</span></a></li>
-                        <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Vaccines"><span class="material-symbols-outlined">vaccines</span></a></li>
-                        <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Behavior"><span class="material-symbols-outlined">pets</span></a></li>
+                      <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip"
+                          class="tooltips " href="" data-original-title="SpecialCare"><span
+                            class="material-symbols-outlined">
+                            medical_information</span></a></li>
+                      <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip"
+                          class="tooltips" href="" data-original-title="Vaccines"><span
+                            class="material-symbols-outlined">vaccines</span></a></li>
+                      <li class="list-inline-item p-2"><a title="" data-placement="top" data-toggle="tooltip"
+                          class="tooltips" href="" data-original-title="Behavior"><span
+                            class="material-symbols-outlined">pets</span></a></li>
                     </ul>
-                        <div class="row">
-                          <div class="card-body">
-                          <ul class="list-group list-group-flush pb-4">
-                            <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{pet.dob}}</li>
-                            <li class="list-group-item"><i class="bi bi-telephone  profile-icons"></i>{{pet.petBreed}}</li>
-                            <a class="list-group-item"><i class="bi bi-geo-alt-fill profile-icons"></i>{{pet.description}}</a>
-                          </ul>
-                        </div>
-                   <button type="" class="btn btn-primary" >See Certificate</button>
+                    <div class="row">
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush pb-4">
+                          <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{pet?.dob}}</li>
+                          <li class="list-group-item"><i class="bi bi-telephone  profile-icons"></i>{{pet?.petBreed}}
+                          </li>
+                          <a class="list-group-item"><i
+                              class="bi bi-geo-alt-fill profile-icons"></i>{{pet?.description}}</a>
+                        </ul>
+                      </div>
+                      <button type="" class="btn btn-primary">See Certificate</button>
+                    </div>
+                  </div>
                 </div>
-                </div>
-                </div>
+              </div>
             </div>
-            </div>
-          </div> 
-          
+          </div>
+
         </mat-tab>
         <mat-tab label="Memorial">
         </mat-tab>
       </mat-tab-group>
-      </div>
-     </div>
-     <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'fatherted@gmail.com'">
-      <div class="col-4">
-        <div class="row">
-          <div class="col-12">
-            <div class="tab-content">
-              <div class="col-md-12 col-xl-12">
-                <div class="card mb-3">
-                  <div class="card-header d-flex justify-content-between">
-                      <h5 class="card-title mb-0">Pet Sitter</h5>
-                      <!-- <i class="bi bi-heart"> save</i> -->
+    </div>
+  </div>
+
+  <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'fatherted@gmail.com'">
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+      <div class="row">
+        <div class="col-12">
+          <div class="tab-content">
+            <div class="col-md-12 col-xl-12">
+              <div class="card mb-3">
+                <div class="card-header d-flex justify-content-between">
+                  <h5 class="card-title mb-0">Pet Sitter</h5>
+                  <!-- <i class="bi bi-heart"> save</i> -->
+                </div>
+                <div class="card-body text-center pb-0 ">
+                  <img src={{petSitter?.profilePicUrl}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2"
+                    width="128" height="128">
+                  <h5 class="card-title mb-0">{{petSitter?.name}} {{petSitter?.surname}}</h5>
+                  <div class="text-muted">
                   </div>
-                  <div class="card-body text-center pb-0 ">
-                    <img src={{petSitter?.profilePicUrl}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2" width="128" height="128">
-                    <h5 class="card-title mb-0">{{petSitter?.name}} {{petSitter?.surname}}</h5>
-                    <div class="text-muted">
-                    </div>
-                    <div class="mt-3">
-                      <div class="h-100">
-                          <span class="bi bi-star-fill"></span>
-                          <span class="bi bi-star-fill"></span>
-                          <span class="bi bi-star-fill"></span>
-                          <span class="bi bi-star-fill"></span>
-                          <span class="bi bi-star-fill"></span>
-                          <span class="review my-auto pl-2"><u>14 reviews</u></span>
-         
-                      </div>
+                  <div class="mt-3">
+                    <div class="h-100" *ngIf="averageRoundStars">
+                      <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>
+                      <span class="review my-auto pl-2"><u>{{petSitter?.numReviews}}</u></span>
                     </div>
                   </div>
-                  <hr class="my-0">
-                  <div class="card-body">
-                    <h5 class="pl-4 card-title">About</h5>
-                    <ul class="list-group list-group-flush pb-4">
-                      <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{petSitter?.emailAddress}}</li>
-                      <li class="list-group-item"><i class="bi bi-telephone  profile-icons"></i>{{petSitter?.mobileNumber}}</li>
-                      <a class="list-group-item"><i class="bi bi-geo-alt-fill profile-icons"></i>{{petSitter?.line1}} - {{petSitter?.county}} </a>
-                    </ul>
-                    <div class="row text-center d-flex justify-content-center">
-                     <div class="btn btn-outline-info w-50" (click)="onCreate()">
+                </div>
+                <hr class="my-0">
+                <div class="card-body">
+
+                  <h5 class="pl-4 card-title">About</h5>
+                  <ul class="list-group list-group-flush pb-4">
+                    <li class="list-group-item "><i class="bi bi-envelope profile-icons"></i>{{petSitter?.emailAddress}}
+                    </li>
+                    <li class="list-group-item"><i
+                        class="bi bi-telephone  profile-icons"></i>{{petSitter?.mobileNumber}}</li>
+                    <a class="list-group-item"><i class="bi bi-geo-alt-fill profile-icons"></i>{{petSitter?.line1}} -
+                      {{petSitter?.county}} </a>
+                  </ul>
+                  <div class="row text-center d-flex justify-content-center">
+                    <div class="btn btn-outline-info w-50" (click)="onCreate()">
                       Edit Profile
                     </div>
-                    </div>
-                  
+
                   </div>
-                  <hr class="my-0">
+                  <div class="row text-center d-flex justify-content-center pt-4">
+                    <div class="btn btn-outline-info w-50" (click)="onCreateOrder()">
+                      Create Order
+                    </div>
+                  </div>
                 </div>
+                <hr class="my-0">
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-      
-          <div class="col-8 pl-5">
-            <mat-tab-group animationDuration="0ms">
-              <mat-tab label="Schedule">
-                <div>
-                  <app-calendar></app-calendar>
+    </div>
+
+
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+      <mat-tab-group animationDuration="0ms">
+        <!-- <mat-tab label="Schedule">
+                <div *ngFor="let o of orders">
+                  
+                  <app-schedule-list [order] = o></app-schedule-list>
                 </div>
-              </mat-tab>
-              <mat-tab label="Active service">
-                <div class="row pt-4 container">
-                  <div class="col-4">
-                    <div class="card p-4" (click)="onCreateService()">
-                      <div class="text-center card-body">
-                        <div class="member-card">
-                          <i class="bi bi-plus-circle-fill text-info"></i>
-                          <p>Create a new Service</p>
-                        </div>
-                    </div>
+              </mat-tab> -->
+        <mat-tab label="Schedule">
+          <div>
+            <app-calendar [orders]="orders" [notAvailble]="notAvailble" [componentFlag]="componentFlag"></app-calendar>
+          </div>
+        </mat-tab>
+
+
+        <mat-tab label="Active service">
+          <ng-template mat-tab-label>
+            Active service
+          </ng-template>
+          <div class="row mt-4 container-fluid">
+            <div class="col-lg-4">
+              <div class="card p-4 mb-4 mb-md-0" (click)="onCreateService()">
+                <div class="text-center card-body">
+
+                  <div class="member-card">
+                    <i class="bi bi-plus-circle-fill text-info"></i>
+                    <p>Create a new Service</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-4 " *ngFor="let s of serviceList">
+              <div class="card p-4 mb-4">
+                <div class="text-center card-body">
+                  <div class="member-card">
+                    <span class="align-middle nav-title"><strong
+                        class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</strong>
+                      <br></span>
+                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
+                      <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
+                    </picture>
+                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
+                      <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
+                    </picture>
+                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
+                      <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                    </picture>
+                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
+                      <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
+                    </picture>
+                    <div>
+                      <p>{{s.Description | slice:0:35}}</p>
                     </div>
                   </div>
                 </div>
-      
-              </mat-tab>
-             
-             
-              <mat-tab label="Draft">
-                <!-- <div class="row pt-4">
+              </div>
+            </div>
+
+          </div>
+
+        </mat-tab>
+
+
+        <mat-tab label="Draft">
+          <!-- <div class="row pt-4">
                 <div class="col-4">
                   <div class="card">
                     <div class="text-center card-body">
@@ -227,116 +300,159 @@
                   </div>
                   </div>
                 </div>  -->
-              </mat-tab>
-              <mat-tab label="Reviews">
+        </mat-tab>
+        <mat-tab label="Reviews">
+          <ng-template mat-tab-label>Reviews
+          </ng-template>
+          <div *ngFor="let r of reviews">
+
+            <app-review [review]="r"></app-review>
+          </div>
+
+        </mat-tab>
+        <!-- <mat-tab label="Set Preferences">
       
-              </mat-tab>
-              <mat-tab label="Set Preferences">
-      
-              </mat-tab>
-            <mat-tab label="New Posts">
-              <mat-tab-group mat-stretch-tabs class="pt-3">
-                <mat-tab label = "Pet Help">
-                  <div class = "background">
-                    <div class = "post">
-                      <h6 class = "pt-3">My dog has a rash</h6>
-                      <p>Wed Dec 07 2022</p>
-                      <p><small>laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</small></p>
+              </mat-tab> -->
+        <mat-tab label="New Posts">
+          <mat-tab-group mat-stretch-tabs class="pt-3">
+            <mat-tab label="Pet Help">
+              <div class="background">
+                <div class="post">
+                  <h6 class="pt-3">My dog has a rash</h6>
+                  <p>Wed Dec 07 2022</p>
+                  <p><small>laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam
+                      libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+                      placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
+                      quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates
+                      repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+                      ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores
+                      repellat."</small></p>
 
-                      <div class = "row justify-content-center">
-                        <img src="../../../assets/images/comment.png" style="width: 6.5%;" alt="" class = " text-center" (click)="comments1 = ! comments1">
-
-                      </div>
-                     
-                     
-                      <div *ngIf="comments1" class="pt-3">
-                        <div class = "background pt-4">
-                          <div class = "post">
-                            <h6>Thu Dec 08 2022</h6>
-                            <p><small>laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio</small></p>
-                          </div>
-                          <div class = "post" style="margin-top: 2%;">
-                            <h6>Thu Dec 08 2022</h6>
-                            <p><small>maiores alias consequatur aut perferendis doloribus asperiores repella</small></p>
-                          </div>
-
-                          <div class = "text-center mt-4 mb-4" *ngIf="com">
-                            <textarea type="content" class="form-control"  placeholder="Comment" #comment></textarea>
-                          </div>
-
-                          <div class = "row justify-content-center">
-                            <button class="btn btn-secondary btn-sm mt-3 mb-3" style="width: 15%;" (click)="com = ! com">Add Comment</button>
-                          </div>
-                       
-                      
-                        </div>
-
-                        
-                      </div>
-                    </div>
+                  <div class="row justify-content-center">
+                    <img src="../../../assets/images/comment.png" style="width: 6.5%;" alt="" class=" text-center"
+                      (click)="comments1 = ! comments1">
 
                   </div>
 
-                  <div class = "background">
-                    <div class = "post">
-                      <h6 class = "pt-3">Pet Sitters in Sligo</h6>
-                      <p>Wed Dec 07 2022</p>
-                      <p><small>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</small></p>
-                      <div class = "row justify-content-center">
-                        <img src="../../../assets/images/comment.png" style="width: 6.5%;" alt="" class = " text-center" (click)="comments2 = ! comments2">
+
+                  <div *ngIf="comments1" class="pt-3">
+                    <div class="background pt-4">
+                      <div class="post">
+                        <h6>Thu Dec 08 2022</h6>
+                        <p><small>laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+                            distinctio</small></p>
                       </div>
-                      <div *ngIf="comments2">
-                       
+                      <div class="post" >
+                        <h6>Thu Dec 08 2022</h6>
+                        <p><small>maiores alias consequatur aut perferendis doloribus asperiores repella</small></p>
                       </div>
+
+                      <div class="text-center mt-4 mb-4" *ngIf="com">
+                        <textarea type="content" class="form-control" placeholder="Comment" #comment></textarea>
+                      </div>
+
+                      <div class="row justify-content-center">
+                        <button class="btn btn-secondary btn-sm mt-3 mb-3" style="width: 15%;" (click)="com = ! com">Add
+                          Comment</button>
+                      </div>
+
+
                     </div>
 
-                  </div>
-                  
-                </mat-tab>
-                <mat-tab label = "Walking Routes">
-                  <div class = "background">
-                    <div class = "post">
-                      <h6 class = "pt-3">New walking routes Sligo</h6>
-                      <p>Wed Dec 07 2022</p>
-                      <p><small>laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</small></p>
-                      <div class = "row justify-content-center">
-                        <img src="../../../assets/images/comment.png" style="width: 6.5%;" alt="" class = " text-center" (click)="comments3 = ! comments3">
-
-                      </div>
-                      <div *ngIf="comments3">
-  
-                      </div>
-                    </div>
 
                   </div>
-                  <div class = "background">
-                    <div class = "post">
-                      <h6 class = "pt-3">Has anyone walked this route in Carrick</h6>
-                      <p>Wed Dec 07 2022</p>
-                      <p><small>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</small></p>
-                      <div class = "row justify-content-center">
-                        <img src="../../../assets/images/comment.png" style="width: 6.5%;" alt="" class = " text-center" (click)="comments4 = ! comments4">
-                      </div>
-                      <div *ngIf="comments4">
-  
-                      </div>
-                    </div>
+                </div>
+
+              </div>
+
+              <div class="background">
+                <div class="post">
+                  <h6 class="pt-3">Pet Sitters in Sligo</h6>
+                  <p>Wed Dec 07 2022</p>
+                  <p><small>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                      laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                      beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                      odit aut fugit, sed quia consequuntur</small></p>
+                  <div class="row justify-content-center">
+                    <img src="../../../assets/images/comment.png" style="width: 6.5%;" alt="" class=" text-center"
+                      (click)="comments2 = ! comments2">
+                  </div>
+                  <div *ngIf="comments2">
 
                   </div>
-                  
-                </mat-tab>
-              </mat-tab-group>
+                </div>
+
+              </div>
+
             </mat-tab>
-            </mat-tab-group>
-      
-             
-            </div>
-    
-           </div>
+            <mat-tab label="Walking Routes">
+              <div class="background">
+                <div class="post">
+                  <h6 class="pt-3">New walking routes Sligo</h6>
+                  <p>Wed Dec 07 2022</p>
+                  <p><small>laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam
+                      libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+                      placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem
+                      quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates
+                      repudiandae sint et molestiae non recusandae.</small></p>
+                  <div class="row justify-content-center">
+                    <img src="../../../assets/images/comment.png" style="width: 6.5%;" alt="" class=" text-center"
+                      (click)="comments3 = ! comments3">
 
-     </div>
+                  </div>
+                  <div *ngIf="comments3">
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="background">
+                <div class="post">
+                  <h6 class="pt-3">Has anyone walked this route in Carrick</h6>
+                  <p>Wed Dec 07 2022</p>
+                  <p><small>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta
+                      nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+                      omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis
+                      debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                      recusandae.</small></p>
+                  <div class="row justify-content-center">
+                    <img src="../../../assets/images/comment.png" style="width: 6.5%;" alt="" class=" text-center"
+                      (click)="comments4 = ! comments4">
+                  </div>
+                  <div *ngIf="comments4">
+
+                  </div>
+                </div>
+
+              </div>
+
+            </mat-tab>
+          </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="Set Availability">
+          <ng-template mat-tab-label>Set Availability
+          </ng-template>
+
+
+
+          <app-not-available-form [orders]="orders" [notAvailble]="notAvailble" [userID]="petSitter?.id"
+            (newItemEvent)="GetnotAvailable(petSitter?.id)" (closeForm)="close()"></app-not-available-form>
+
+
+
+        </mat-tab>
+      </mat-tab-group>
+
+
+    </div>
+
+  </div>
+
+</div>
 <div>
 </div>
+
+
 
 <!-- 
   <div class="row mt-3">
@@ -583,7 +699,7 @@
       </div> -->
 
 
-      <!-- <div class="row">
+<!-- <div class="row">
         <div class="card" *ngIf="!isSelected">
           <div class="card-header">
             <div class="card-actions float-end">
@@ -662,8 +778,8 @@
        -->
 
 
-            
-      <!-- <div class="card">
+
+<!-- <div class="card">
         <div class="card-header">
           <h5 class="card-title mb-0">Profile Settings</h5>
         </div>
@@ -736,9 +852,3 @@
   </div>
   </div>
 </div> -->
-
-
-
-
-
-

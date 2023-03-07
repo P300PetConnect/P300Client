@@ -6,8 +6,42 @@ export interface IUser {
         mobileNumber?: string;
         emailAddress: string;
         petOwnerId: number;
+        chatUserName: string;
+        chatToken: string;
     }
 
+    //data being returned straight from DB, Different keys 
+export interface IPetSitterID{
+    Name: string;
+    Surname: string;
+    DOB?: any;
+    JoinDate?: Date;
+    Profile_Pic_URL?: string;
+    MobileNumber?: string;
+    EmailAddress?: string;
+    PetSitterID?: number;
+    Line_1?: string;
+    Line_2?: string;
+    City?: string;
+    County?: string;
+    ZipCode?: string;
+    Country?: string;
+    NumReviews?: number;
+    ReviewsTotal?:number;
+    CancellationPolicy: string;
+    HouseType: string;
+    HouseDetails: string;
+    PetsInHome: string;
+    Children: string;
+    UsualPets: string;
+    UsualPetsDetail1: string;
+    UsualPetsDetail2: string;
+    UsualPetsDetail3: string;
+    ProfileDesc: string;
+    Id:number;
+    ChatToken:string;
+    ChatUserName:string;
+}
 export interface IPetSitter{
     name: string;
     surname: string;
@@ -23,6 +57,9 @@ export interface IPetSitter{
     county?: string;
     zipCode?: string;
     country?: string;
+    numReviews?: number;
+    reviewsTotal?:number;
+    id:number;
 }
 
 export interface IPetOwner{
@@ -42,42 +79,6 @@ export interface IPetOwner{
     country?: string;
 }
 
-// export class PetOwner{
-//     name: string;
-//     surname: string;
-//     dob: Date;
-//     joinDate: Date;
-//     profilePicUrl: string;
-//     mobileNumber: string;
-//     emailAddress: string;
-//     petOwnerId: number;
-//     line1: string;
-//     line2: any;
-//     city: string;
-//     county: string;
-//     zipCode: string;
-//     country: string;
-
-//     constructor(name: string, surname: string, dob: Date, joinDate: Date, profilePicUrl:string, mobileNumber:string, 
-//         emailAddress: string, petOwnerId: number, line1: string, line2: any, city: string, county: string, zipCode: string, 
-//         country: string) {
-//         this.name = name; 
-//         this.surname = surname; 
-//         this.dob = dob; 
-//         this.joinDate = joinDate; 
-//         this.profilePicUrl = profilePicUrl;  
-//         this.mobileNumber = mobileNumber; 
-//         this.emailAddress = emailAddress; 
-//         this.petOwnerId =petOwnerId; 
-//         this.line1 = line1; 
-//         this.line2 = line2; 
-//         this.city = city; 
-//         this.county = county; 
-//         this.zipCode = zipCode;
-//     }
-
-// }
-
 export interface IPet{
         petId: number;
         name: string;
@@ -96,8 +97,31 @@ USERPETOWNER = 'USERPETOWNER',
 USERPETMINDER = 'USERPETMINDER', 
 USERADMIN = 'USERADMIN',
 }
+export enum eUserGroup{
+    PetOwner = 'PetOwner', 
+    PetSitter = 'PetSitter'
+}
 
 export interface IServiceFind {
     success: boolean;
     errorMessage?: string;
   }
+
+//   export interface IPetSitter{
+//     name: string;
+//     surname: string;
+//     dob?: any;
+//     joinDate?: Date;
+//     profilePicUrl?: string;
+//     mobileNumber?: string;
+//     emailAddress?: string;
+//     petSitterId?: number;
+//     line1?: string;
+//     line2?: string;
+//     city?: string;
+//     county?: string;
+//     zipCode?: string;
+//     country?: string;
+//     numReviews: number;
+//     reviewsTotal:number;
+// }

@@ -1,18 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessageAlertComponent } from './message-alert.component';
+import { ChatPageComponent } from './chat-page.component';
 
-describe('MessageAlertComponent', () => {
-  let component: MessageAlertComponent;
-  let fixture: ComponentFixture<MessageAlertComponent>;
+describe('ChatPageComponent', () => {
+  let component: ChatPageComponent;
+  let fixture: ComponentFixture<ChatPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MessageAlertComponent ]
+      declarations: [ ChatPageComponent ]
     })
     .compileComponents();
+  });
 
-    fixture = TestBed.createComponent(MessageAlertComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ChatPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

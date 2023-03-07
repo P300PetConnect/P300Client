@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { RdsUserServices } from '../search_service_interfaces/rds-user-services';
 import { ServiceInterface } from '../search_service_interfaces/service-interface';
 
@@ -20,6 +20,7 @@ export class SearchServiceService {
       "title":"Pet Feeding","image": "N/A",
       "desc": "Need someone to feed your pet? See our pet sitter here"}]
 
+      handleError: any;
 
       getServices(): Observable<ServiceInterface[]>{
         console.log('Dummy getBooks called');
@@ -29,7 +30,7 @@ export class SearchServiceService {
   constructor(private http: HttpClient) { }
 
 
-  getServiceData(animal: string, location: string, service: string) : Observable<RdsUserServices> {
+  getServiceData(animal: string, location: string, service: string) {
 
     //make sure first letter is capital to match DB. 
     location = location.charAt(0).toUpperCase() + location.slice(1);
@@ -74,21 +75,44 @@ export class SearchServiceService {
 
     }
 
+
     return this.http.get<RdsUserServices>(query)
     .pipe(
-      tap(data => console.log('Forum/error' + JSON.stringify(data))
-    )
-   
+      tap(data => console.log('list/error' + JSON.stringify(data))
+      
+    ),
+     catchError(this.handleError)
     );
 }
 
-getOtherServices(id : string) : Observable<RdsUserServices> {
-  return this.http.get<RdsUserServices>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/other?id=' + id)
+
+
+
+getOtherServices(id : number)
+{
+  return this.http.get<any>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/other?id=' + id)
   .pipe(
     tap(data => console.log('Forum/error' + JSON.stringify(data))
-  )
+  ),
+  catchError(this.handleError)
  
   );
+}
+
+AddService(id: number,key1: string, key2: string, des: string ): Observable<unknown>
+{
+  let key = key1 + ' ' + key2
+  let obj = 
+  {
+    "ID" :id,
+    "Title": key,
+    "Description": des
+  }
+  return this.http.post<any>('https://djftt69kei.execute-api.eu-west-1.amazonaws.com/n/prod',obj)
+  .pipe(
+   catchError(this.handleError)
+  )
+
 }
 
 

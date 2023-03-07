@@ -1,11 +1,12 @@
 import { Component, Input, OnInit, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
-import Amplify, { Auth } from 'aws-amplify'; 
+//import Amplify, { Auth } from 'aws-amplify'; 
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import awsExports from 'src/aws-exports';
+//import awsExports from 'src/aws-exports';
 import { UserService } from '../service/user.service';
 import { IUser } from '../interfaces/form';
 import { NavComponent } from '../nav/nav.component';
+import { IPetOwner, IPetSitter } from '../interfaces/users';
 
 
 @Component({
@@ -18,28 +19,82 @@ formFields: any;
 isOpen: boolean = true; 
 @Input() isLogout: boolean; 
 @ViewChildren('field') allFields;
+userGroup: string;
+userEmail: string;
 
+public petOwner: IPetOwner; 
+public petSitter: IPetSitter; 
 
-  constructor(private _router: Router, public authenticator: AuthenticatorService ) {
-    Amplify.configure(awsExports);
+  constructor(private _router: Router, public authenticator: AuthenticatorService, private userService: UserService ) {
+    // Amplify.configure(awsExports);
+   
+    // Auth.currentAuthenticatedUser()
+    // .then(user => {
+    //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+    // })
+    // .catch(err => console.log(err));
+
   }
+  async ngOnInit(){
+    // console.log('user group',this.userGroup)
 
+    // this.authenticator.getUserGroup().then(group => {
+      // console.log(this.authenticator.user.get);
+  // 
+  // Auth.currentAuthenticatedUser()
+  // .then(user => {
+  //   this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
+  // })
+  // .catch(err => console.log(err));
 
-  ngOnInit(): void {
-    if(this.authenticator.user){
-      this._router.navigateByUrl('/user-form');
-    }
+  //   if(this.authenticator.user){
+  //     this._router.navigateByUrl('/user-form');
+  //   }
+
     // if(this.isLogout){
     //   this.authenticator.signOut(); 
     //   console.log(this.authenticator.signOut()); 
     // }
-
+    console.log('User Group Is:', this.userGroup);
 }
 
-btnClick= function () {
-  this.router.navigateByUrl('inital');
-};
+// btnClick= function () {
+//   this.router.navigateByUrl('inital');
+// };
+onCheckRoute(UserGroup:string){
+  if(UserGroup == 'PetOwner'){
+    localStorage.setItem('userGroup','PetOwner')
+    this._router.navigateByUrl('search2/search2;service=;location=;pet=');
+    this.getPetOwner();
+  }
+  else if(UserGroup == 'PetSitter'){
+    localStorage.setItem('userGroup','PetSitter')
+    this._router.navigateByUrl('profile');
+    this.getPetSitter();
+  }
+}
 
+//load pet owner data to local storage
+async getPetOwner(){
+  try {
+  const petOwner = await this.userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
+  this.petOwner = petOwner;
+  localStorage.setItem('userEmail', petOwner.emailAddress);
+  } catch (error) {
+      console.error(error);
+    }
+  }
+
+//load pet sitter data to local storage
+  async getPetSitter(){
+    try{
+      const petSitter = await this.userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
+        this.petSitter = petSitter;
+        localStorage.setItem('userEmail', petSitter.emailAddress);
+    }catch (error) {
+      console.error(error);
+    }
+  }
 
 }
 

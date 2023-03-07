@@ -63,7 +63,7 @@
                           </mat-form-field>
           
                           <mat-form-field class="col-3 col-sx-12" *ngIf="sleepOver" appearance="outline">
-                            <mat-label>Enter some input</mat-label>
+                            <mat-label>Select dates</mat-label>
                             <mat-date-range-input [rangePicker]="picker">
                               <input matStartDate matInput placeholder="Start date">
                               <input matEndDate matInput placeholder="End date">
@@ -71,10 +71,6 @@
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-date-range-picker #picker></mat-date-range-picker>
                           </mat-form-field>
-          
-          
-          
-                          
                           <mat-form-field class="col-3" appearance="outline">
                             <mat-label>Type of pet</mat-label>
                             <mat-select [formControl]="petType" multiple #animals>

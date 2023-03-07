@@ -67,3 +67,34 @@ h6 {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*Chat Style Begin*/
+@import '~stream-chat-angular/src/assets/styles/v2/scss/index.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  height: 100%;
+
+  stream-channel-list {
+    width: 30%;
+  }
+
+  stream-channel {
+    width: 100%;
+  }
+
+  stream-thread {
+    width: 45%;
+  }
+}
+/*Chat Style Finish*/
+
