@@ -165,9 +165,9 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
             deps: [HttpClient]
         }, 
     }),
-    // AgmCoreModule.forRoot({
-    //   apiKey: apiKey,
-    // }),
+    AgmCoreModule.forRoot({
+      apiKey: apiKey,
+    }),
     StreamChatModule,
     StreamAutocompleteTextareaModule,
     AppRoutingModule,
@@ -176,10 +176,10 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     AmplifyAuthenticatorModule,
     NgbModule,
 
-    AgmCoreModule.forRoot({
-      apiKey: apiKey
-      // libraries: ['places', 'geometry']
-    }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: environment.GOOGLE_MAPS_API_KEY,
+    //   libraries: ['places', 'geometry']
+    // }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
