@@ -103,6 +103,7 @@ import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-
 import { EmailService } from './components/service/email.service';
 import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
 const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnswyJACAdgPdcdX4rsSq6k";
+import { EmailService } from './components/service/email.service';
 
 @NgModule({
   declarations: [
@@ -174,6 +175,7 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     BrowserAnimationsModule, 
     FormsModule,
     AmplifyAuthenticatorModule,
+    NgbModule,
     NgbModule,
 
     // AgmCoreModule.forRoot({
