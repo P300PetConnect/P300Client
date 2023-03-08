@@ -60,6 +60,7 @@ export class ManageOrdersComponent implements OnInit {
           console.log(this.petSitter)
           console.log('pets itter id ', this.petSitter?.petSitterId); 
 
+
         // }); 
         // return false; 
     }
@@ -85,6 +86,7 @@ export class ManageOrdersComponent implements OnInit {
     
 }
 
+
   // async getOrders() {
   //   //IF Pet Sitter
   //   const orders = await this._httpOrder.getOderByUser(36).toPromise()
@@ -97,8 +99,8 @@ export class ManageOrdersComponent implements OnInit {
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
-    this.dialog.open(OrderComponent, dialogConfig); 
-  
+    this.dialog.open(OrderComponent, {data:{petSitter:this.petSitter}}); 
+
   }
 
   GetPetOwnerDetails(userID:number,email:string){

@@ -131,6 +131,7 @@ export class UserProfileComponent implements OnInit {
     
   }
 
+  
   GetOrders(id: number)
   {
     this._order.getOrdersList(id).subscribe({
@@ -188,7 +189,7 @@ async getServices() {
       (value: any[]) => this.serviceList = value,
       (mess) => this.message = mess
     ).finally(() => console.log('Services finished'));
-    // localStorage.setItem('serviceList', JSON.stringify(this.serviceList)); 
+    localStorage.setItem('serviceList', JSON.stringify(this.serviceList));
     console.log('pet sitter service ', this.serviceList); 
   } catch (error) {
     console.error(error);

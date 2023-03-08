@@ -38,6 +38,25 @@ export class UserService{
         return throwError('error: ' + err.message)
     }
 
+    getPetOwnerDetails(email:string):Observable<IUser>{
+            console.log("get pet owner chat called")
+            return this._http.get<IUser>('https://5ugucpgs6k.execute-api.eu-west-1.amazonaws.com/dev/user/"+email'+email)
+        }
+
+        getPetOwnerDetails2(email): Observable<IPetOwner>{
+            return this._http
+            .get<IPetOwner>(
+                'https://5ugucpgs6k.execute-api.eu-west-1.amazonaws.com/dev/user/"+email'+email
+            )
+            .pipe(
+                tap((petOwner: IPetOwner) => {
+                    localStorage.setItem('PetConnectUser', JSON.stringify(petOwner))
+                }),
+                catchError(this.hangleError2))
+        }
+       
+    
+
     get_petowner(email): Observable<IPetOwner>{
         return this._http
         .get<IPetOwner>(
@@ -52,6 +71,19 @@ export class UserService{
     private hangleError2(err: HttpErrorResponse){
         return throwError('error: ' + err.message)
     }
+
+    getPetowner(email): Observable<IPetOwner>{
+        return this._http
+        .get<IPetOwner>(
+           "https://5ugucpgs6k.execute-api.eu-west-1.amazonaws.com/dev/user/"+email
+        )
+        .pipe(
+            tap((petOwner: IPetOwner) => {
+                localStorage.setItem('PetConnectUser', JSON.stringify(petOwner))
+            }),
+            catchError(this.hangleError2))
+    }
+
 
     
     get_petownerByUserID(userId:number):Observable<IUser>{
