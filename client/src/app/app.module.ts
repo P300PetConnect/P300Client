@@ -98,6 +98,7 @@ import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
+import { EmailService } from './components/service/email.service';
 
 @NgModule({
   declarations: [
@@ -165,7 +166,7 @@ import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-
     BrowserAnimationsModule, 
     FormsModule,
     AmplifyAuthenticatorModule,
-    NgbModule, 
+    NgbModule,
 
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY,
@@ -174,7 +175,7 @@ import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService, CognitoGuard, UserService],
+    AuthenticatorService, CognitoGuard, UserService, EmailService],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })
