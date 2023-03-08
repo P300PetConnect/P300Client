@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 import { eUserGroup, IPetSitter } from '../interfaces/users';
 import { IPet } from '../interfaces/form';
 import { PetService } from '../service/pet.service';
+import { EmailService } from '../service/email.service';
 
 @Component({
   selector: 'app-order',
@@ -66,7 +67,7 @@ selectedCategories: any;
   petSelected: any;
   petDetails: any;
   
-  constructor(private _petService:PetService, private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
+  constructor(private _petService:PetService, public emailService: EmailService, private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
     public authenticator: AuthenticatorService, @Inject(MAT_DIALOG_DATA) public data: any) { 
     this.filteredpositivekeywordss = this.positivekeywordsCtrl.valueChanges.pipe(
       startWith(null),
@@ -188,7 +189,12 @@ add(event: MatChipInputEvent): void {
     next: order => {
       console.log(JSON.stringify(order) + 'order added');
       this.message = "list added";
-       },
+      //send email when order is placed
+      this.emailService.sendOrderPlacedEmail().subscribe(
+        data => console.log('Email Sent!', data),
+        error => console.log('Error Sending Email!', error)
+      );
+      },
     error: (err) => this.message = err
   });
   console.log('myfomr', this.AddOrder); 

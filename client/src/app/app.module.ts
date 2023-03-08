@@ -102,6 +102,7 @@ import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.c
 import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
 import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
 const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnswyJACAdgPdcdX4rsSq6k";
+import { EmailService } from './components/service/email.service';
 
 @NgModule({
   declarations: [
@@ -173,7 +174,7 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     BrowserAnimationsModule, 
     FormsModule,
     AmplifyAuthenticatorModule,
-    NgbModule, 
+    NgbModule,
 
     // AgmCoreModule.forRoot({
     //   apiKey: environment.GOOGLE_MAPS_API_KEY,
@@ -182,7 +183,7 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService, CognitoGuard, UserService, SocketService],
+    AuthenticatorService, CognitoGuard, UserService, SocketService, EmailService],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent],   
   schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
