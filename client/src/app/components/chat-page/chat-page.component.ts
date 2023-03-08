@@ -24,8 +24,9 @@ export class ChatPageComponent implements OnInit {
   serviceList = JSON.parse(localStorage.getItem('serviceList')); 
   petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
   petOwner: any;
-  petDetails: import("/Users/jessicahenry/Desktop/Fixing/P300Client/client/src/app/components/interfaces/form").IPet[];
-  petOwner2: import("/Users/jessicahenry/Desktop/Fixing/P300Client/client/src/app/components/interfaces/form").IUser;
+
+  petDetails: import("../interfaces/form").IPet[];
+  petOwner2: import("../interfaces/form").IUser;
   petOwnerEmail: any;
 
   constructor(
