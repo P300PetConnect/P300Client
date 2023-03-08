@@ -99,6 +99,7 @@ import { RecognitionComponent } from './components/recognition/recognition.compo
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
 import { EmailService } from './components/service/email.service';
+import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,7 @@ import { EmailService } from './components/service/email.service';
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
-    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent, TrackerOrderComponent
   ],
   imports: [
     BrowserModule,
