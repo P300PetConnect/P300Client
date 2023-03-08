@@ -32,4 +32,5 @@ export const environment = {
   UriAddOrder:'https://g7oga89fg3.execute-api.eu-west-1.amazonaws.com/dev/', //Create Order 
   UriGetOrdersByPetSitter:'https://dw8reoypi6.execute-api.eu-west-1.amazonaws.com/dev', 
   UriGetOrdersByPetOwnerView:'https://kxewd44z5k.execute-api.eu-west-1.amazonaws.com/dev'
+  
 };

@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ConnectContactLens } from 'aws-sdk';
+// import { ConnectContactLens } from 'aws-sdk';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';

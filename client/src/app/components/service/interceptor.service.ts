@@ -1,6 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, Observable, Subscription } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { LoaderService } from './loader.service';
 
 @Injectable({
@@ -9,19 +9,21 @@ import { LoaderService } from './loader.service';
 export class InterceptorService implements HttpInterceptor {
 
   constructor(public loaderService: LoaderService) { }
-
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url.includes('5nxguu0vhi')) { // exclude requests for forum requests
-      return next.handle(req);
-    }
     this.loaderService.isLoading.next(true);
     return next.handle(req).pipe(
       finalize(
         () => {
-          this.loaderService.isLoading.next(false);
+          //loaderService is added within a setTimout method to add 1500 tik delay and make loader more visable
+          setTimeout(() => {
+            this.loaderService.isLoading.next(false);
+          }, 0)
         }
       )
     );
   }
+
+  
+  
 }
 

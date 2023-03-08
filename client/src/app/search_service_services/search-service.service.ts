@@ -78,7 +78,7 @@ export class SearchServiceService {
 
     return this.http.get<RdsUserServices>(query)
     .pipe(
-      tap(data => console.log('list/error', data)
+      tap(data => console.log('list/error' + JSON.stringify(data))
       
     ),
      catchError(this.handleError)
@@ -92,7 +92,7 @@ getOtherServices(id : number)
 {
   return this.http.get<any>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/other?id=' + id)
   .pipe(
-    tap(data => console.log('Forum/error',data)
+    tap(data => console.log('Forum/error' + JSON.stringify(data))
   ),
   catchError(this.handleError)
  

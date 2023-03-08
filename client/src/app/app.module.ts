@@ -61,6 +61,7 @@ import { MessageAlertComponent } from './components/message-alert/message-alert.
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
+
 // import { MdInputModule } from '@angular/material';
 
 
@@ -96,8 +97,6 @@ import { MapPlannerComponent } from './map-planner/map-planner.component';
 import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
-import { TrackingComponent } from './components/tracking/tracking.component';
-import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -115,7 +114,7 @@ import { DatePipe } from '@angular/common';
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
-    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, TrackingComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent
   ],
   imports: [
     BrowserModule,
@@ -173,7 +172,6 @@ import { DatePipe } from '@angular/common';
     }),
   ],
   providers: [
-    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     AuthenticatorService, CognitoGuard, UserService],
   bootstrap: [AppComponent], 

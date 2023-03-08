@@ -1,7 +1,159 @@
+
+
+
 <div class = "container mt-4" *ngIf="componentFlag == 'userProfile'">
+<div class = "row justify-content-center text-center mb-3">
+    <div>
+      <h4 class="text-decoration-underline">{{displayMonth}}</h4>
+    </div>
+    <div>
+      <input type="button" class="btn btn-success" (click)="setCurrentMonth()" value="today" style="margin-right: 2%;" />
+      <input type="button" class="btn btn-info"(click)="decreaseMonth()" value="-" style="margin-right: 0.5%;"/>
+      <input type="button" class="btn btn-info"(click)="increaseMonth()" value="+" />
+    </div>
+  </div>
+  
+  <table class='calendar-table table'*ngIf="calendar">
+    <thead>
+      <tr>
+        <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th>
+        <th scope="col">Thursday</th>
+        <th scope="col">Friday</th>
+        <th scope="col">Saturday</th>
+        <th scope="col">Sunday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of calendar | chunk: 7; let i = index">
+          <td class="calendar-day"  [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}" *ngFor="let c of row; let j = index">
+            
+            <div *ngIf="isObjectInArray(c.date | date: 'dd MMM yyyy')" class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}">
+              <strong>
+                {{c.date.getDate()}}
+              </strong> 
+              <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
+                {{monthNames[c.date.getMonth()]}}
+              </strong>
+              <div class = "row justify-content-center">
+              <img src="../../../assets/images/available.png" style = "width: 60px;" (click)="setValues(c.date)" alt="">
+              </div>
+            </div>
+        
+
+            <div *ngIf="isObjectInArray2(c.date | date: 'dd MMM yyyy')" class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}">
+              <strong>
+                {{c.date.getDate()}}
+              </strong> 
+              <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
+                {{monthNames[c.date.getMonth()]}}
+              </strong>
+              <div class = "row justify-content-center">
+                <img src="../../../assets/images/notAvailable.png" class="mt-2 mb-2" style = "width: 45px;">
+              </div>
+              
+            </div>
+
+            <div *ngIf="!isObjectInArray(c.date | date: 'dd MMM yyyy') && !isObjectInArray2(c.date | date: 'dd MMM yyyy')" class="calendar-day-header"  [ngClass]="{'blue-date': c.isToday}">
+              <strong>
+                {{c.date.getDate()}}
+              </strong> 
+              <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
+                {{monthNames[c.date.getMonth()]}}
+              </strong>
+            </div>
+
+            
+        
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="displayEvent" class = "modal-Background">
+    <div class="modal-content">
+       
+        <div >
+          <div class="card" >
+              <div class="card-header">
+                <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="closeReset()" >&#10005;</Button>
+                  <div class="row m-3" *ngFor="let s of selectedOrders" style="border: 1px solid black;">
+                      <div class="col-2">
+                          <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
+                              <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
+                            </picture>
+                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
+                              <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
+                            </picture>
+                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
+                              <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                            </picture>
+                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
+                              <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
+                            </picture>
+          
+                      </div>
+                      <div class="col-4">
+                          <h5 class="text-decoration-underline">{{s.ServiceTitle}}</h5>
+                          <small>{{s.OrderDate| date: 'dd-MM-yyyy'}}</small>
+          
+                      </div>
+                      
+               
+              <div class="card-body">
+               
+                <div class = "d-flex align-items-start" >
+                  <img src="{{s.Profile_Pic_URL}}" class="img-fluid rounded-circle mb-2" width="100" height="100" alt="">
+
+                  <div class="col">
+                    <div class="row">
+                      <p>{{s.Name}} {{s.Surname}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+               
+                      <p>{{s.Line_2}}, {{s.County}}</p>
+                     
+                    </div>
+
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <p>{{s.Description}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+               
+                      <p>Price: {{s.Price}}</p>
+                     
+                    </div>
+
+                  </div>
+                  
+
+                </div>
+                
+               <div class="d-flex justify-content-center align-items-center">
+                <a (click)="ChangeRoute()" class="btn btn-success">More Info</a>
+               </div>
+             
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+   
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class = "container mt-4" *ngIf="componentFlag == 'searchProfile'">
   <div class = "row justify-content-center text-center mb-3">
       <div>
-        <h4 class="text-decoration-underline">{{displayMonth}}</h4>
+        <h5 class="text-decoration-underline">{{displayMonth}}</h5>
       </div>
       <div>
         <input type="button" class="btn btn-success" (click)="setCurrentMonth()" value="today" style="margin-right: 2%;" />
@@ -10,7 +162,7 @@
       </div>
     </div>
     
-    <table class='calendar-table table'*ngIf="calendar">
+    <table class="calendar-table table table-responsive" *ngIf="calendar">
       <thead>
         <tr>
           <th scope="col">Monday</th>
@@ -23,23 +175,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of calendar | chunk: 7; let i = index">
+        <tr  *ngFor="let row of calendar | chunk: 7; let i = index">
             <td class="calendar-day"  [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}" *ngFor="let c of row; let j = index">
               
-              <div *ngIf="isObjectInArray(c.date | date: 'dd MMM yyyy')" class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}">
-                <strong>
-                  {{c.date.getDate()}}
-                </strong> 
-                <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
-                  {{monthNames[c.date.getMonth()]}}
-                </strong>
-                <div class = "row justify-content-center">
-                <img src="../../../assets/images/available.png" style = "width: 60px;" (click)="setValues(c.date)" alt="">
-                </div>
-              </div>
-          
-  
-              <div *ngIf="isObjectInArray2(c.date | date: 'dd MMM yyyy')" class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}">
+            
+              <div *ngIf="isObjectInArray(c.date | date: 'dd MMM yyyy') || isObjectInArray2(c.date | date: 'dd MMM yyyy')" class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}">
                 <strong>
                   {{c.date.getDate()}}
                 </strong> 
@@ -62,146 +202,9 @@
               </div>
   
               
-          
+            </td>
         </tr>
       </tbody>
     </table>
-  
-    <div *ngIf="displayEvent" class = "modal-Background">
-      <div class="modal-content">
-         
-          <div >
-            <div class="card" >
-                <div class="card-header">
-                  <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="closeReset()" >&#10005;</Button>
-                    <div class="row m-3" *ngFor="let s of selectedOrders" style="border: 1px solid black;">
-                        <div class="col-2">
-                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
-                                <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
-                              </picture>
-                              <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
-                                <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
-                              </picture>
-                              <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
-                                <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                              </picture>
-                              <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
-                                <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
-                              </picture>
-            
-                        </div>
-                        <div class="col-4">
-                            <h5 class="text-decoration-underline">{{s.ServiceTitle}}</h5>
-                            <small>{{s.OrderDate| date: 'dd-MM-yyyy'}}</small>
-            
-                        </div>
-                        
-                 
-                <div class="card-body">
-                 
-                  <div class = "d-flex align-items-start" >
-                    <img src="{{s?.Profile_Pic_URL}}" class="img-fluid rounded-circle mb-2" width="100" height="100" alt="">
-  
-                    <div class="col">
-                      <div class="row">
-                        <p>{{s.Name}} {{s.Surname}}</p>
-                      </div>
-                      <div class="d-flex justify-content-between">
-                 
-                        <p>{{s.Line_2}}, {{s.County}}</p>
-                       
-                      </div>
-  
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <p>{{s.Description}}</p>
-                      </div>
-                      <div class="d-flex justify-content-between">
-                 
-                        <p>Price: {{s.Price}}</p>
-                       
-                      </div>
-  
-                    </div>
-                    
-  
-                  </div>
-                  
-                 <div class="d-flex justify-content-center align-items-center">
-                  <a (click)="ChangeRoute()" class="btn btn-success">More Info</a>
-                 </div>
-               
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-  
-     
-  </div>
-  </div>
   </div>
   
-  
-  
-  
-  
-  <div class = "container mt-4" *ngIf="componentFlag == 'searchProfile'">
-    <div class = "row justify-content-center text-center mb-3">
-        <div>
-          <h5 class="text-decoration-underline">{{displayMonth}}</h5>
-        </div>
-        <div>
-          <input type="button" class="btn btn-success" (click)="setCurrentMonth()" value="today" style="margin-right: 2%;" />
-          <input type="button" class="btn btn-info"(click)="decreaseMonth()" value="-" style="margin-right: 0.5%;"/>
-          <input type="button" class="btn btn-info"(click)="increaseMonth()" value="+" />
-        </div>
-      </div>
-      
-      <table class="calendar-table table table-responsive" *ngIf="calendar">
-        <thead>
-          <tr>
-            <th scope="col">Monday</th>
-            <th scope="col">Tuesday</th>
-            <th scope="col">Wednesday</th>
-            <th scope="col">Thursday</th>
-            <th scope="col">Friday</th>
-            <th scope="col">Saturday</th>
-            <th scope="col">Sunday</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr  *ngFor="let row of calendar | chunk: 7; let i = index">
-              <td class="calendar-day"  [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}" *ngFor="let c of row; let j = index">
-                
-              
-                <div *ngIf="isObjectInArray(c.date | date: 'dd MMM yyyy') || isObjectInArray2(c.date | date: 'dd MMM yyyy')" class="calendar-day-header" [ngClass]="{'blue-date': c.isToday}">
-                  <strong>
-                    {{c.date.getDate()}}
-                  </strong> 
-                  <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
-                    {{monthNames[c.date.getMonth()]}}
-                  </strong>
-                  <div class = "row justify-content-center">
-                    <img src="../../../assets/images/notAvailable.png" class="mt-2 mb-2" style = "width: 45px;">
-                  </div>
-                  
-                </div>
-    
-                <div *ngIf="!isObjectInArray(c.date | date: 'dd MMM yyyy') && !isObjectInArray2(c.date | date: 'dd MMM yyyy')" class="calendar-day-header"  [ngClass]="{'blue-date': c.isToday}">
-                  <strong>
-                    {{c.date.getDate()}}
-                  </strong> 
-                  <strong *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)"> 
-                    {{monthNames[c.date.getMonth()]}}
-                  </strong>
-                </div>
-    
-                
-              </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    

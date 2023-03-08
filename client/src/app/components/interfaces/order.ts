@@ -44,8 +44,7 @@ export enum EOrderStatus {
     UserTitle: string;
     servicedes: string;
     formatted_date: string;
-    FlagReadPetSitter:boolean; 
-    FlagReadPetOwner:boolean;
+    
   }
   export interface INotAvailable {
     NotAvailableID: number;
