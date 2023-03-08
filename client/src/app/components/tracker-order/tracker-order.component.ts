@@ -196,8 +196,10 @@ ngAfterViewInit(): void {
   }
   arr= [];
   mapClicked($event: any) {
-    this.lat  = $event.coords.lat;
-    this.lng  = $event.coords.lng;
+  console.log('mouse clicked',$event); 
+
+    this.lat  = $event?.coords?.lat;
+    this.lng  = $event?.coords?.lng;
     this.arr.push($event.coords);
     console.log('$event.coords ==>', $event.coords);
     console.log('this.arr ===>', this.arr);
