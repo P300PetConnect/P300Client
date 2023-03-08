@@ -131,13 +131,15 @@ export class UserProfileComponent implements OnInit {
     
   }
 
-  GetOrders(id: number) {
+  GetOrders(id: number)
+  {
     this._order.getOrdersList(id).subscribe({
       next: (value: IOrderList[] )=>this.orders = value,
       complete: () => console.log('Order service finished ' +  JSON.stringify((this.orders))),
       error: (mess) => this.message = mess
     })
   }
+
   GetnotAvailable(id: number)
   {
     this._order.getNotAvailable(id).subscribe({

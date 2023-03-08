@@ -1,5 +1,5 @@
 <div class="container-xxl mt-5 overflow-hidden">
-  <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'joannasmith@gmail.com' ">
+  <div class="row" *ngIf="(userGroup=='PetOwner' && !viewonly) || (userGroup=='PetSitter' && viewonly)">
     <div class="col-lg-4 col-md-4 col-sm-12 col-12">
       <div class="row">
         <div class="col-12">
