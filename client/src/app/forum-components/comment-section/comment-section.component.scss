@@ -1,6 +1,14 @@
 .commentForm {
 	border-top: 1px solid black;
+.commentForm {
+	border-top: 1px solid black;
 }
+
+.commentBox {
+	background-color: #f0f0ee;
+	text-align: left;
+	border: 1px solid black;
+	margin-bottom: 3%;
 
 .commentBox {
 	background-color: #f0f0ee;
@@ -16,6 +24,14 @@
 	box-shadow: 0 0 15px black;
 	position: relative;
 	margin: 3%;
+
+.comment {
+	background-color: white;
+	padding: 3%;
+	border: 1px solid black;
+	box-shadow: 0 0 15px black;
+	position: relative;
+	margin: 3%;
 }
 
 .close {
@@ -23,6 +39,10 @@
 	top: 0;
 	right: 0;
 }
+
+.like img {
+	width: 25px;
+	margin-right: 10px;
 
 .like img {
 	width: 25px;
@@ -52,6 +72,9 @@
 	transform: translateY(-2px);
 }
 
+.post {
+	background-color: white;
+	position: relative;
 .post {
 	background-color: white;
 	position: relative;

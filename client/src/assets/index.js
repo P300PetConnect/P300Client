@@ -4,6 +4,7 @@
 function initMap() {
 
 }
+
 var myLatLng;
 var mapOptions;
 
