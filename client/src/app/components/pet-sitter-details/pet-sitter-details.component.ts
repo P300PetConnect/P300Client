@@ -233,16 +233,20 @@ onCreateOrder(){
     return false;
   }
 
-  getServices(id: number): boolean
-  { 
+  getServices(id: number): void {
     this.service.getOtherServices(id).subscribe({
-      next: (value: ServiceInterface[] )=> this.serviceList = value,
-      complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
-      error: (mess) => this.message = mess
-    })
-    return false;
-
+      next: (value: ServiceInterface[]) => {
+        this.serviceList = value;
+      },
+      error: (error: any) => {
+        this.message = error;
+      },
+      complete: () => {
+        console.log('service finished ', (this.service));
+      }
+    });
   }
+  
 
   GetOrders(id: number)
   {

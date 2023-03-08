@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
 import { IPetOwner } from '../interfaces/users';
 import { OrderComponent } from '../order/order.component';
+import { PetService } from '../service/pet.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-chat-page',
@@ -19,15 +21,24 @@ export class ChatPageComponent implements OnInit {
   userDetails = localStorage.getItem('PetConnectUser');
   chatName = JSON.parse(this.userDetails);
   members: any[] = [];
+  serviceList = JSON.parse(localStorage.getItem('serviceList')); 
+  petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+  petOwner: any;
+  petDetails: import("/Users/jessicahenry/Desktop/Fixing/P300Client/client/src/app/components/interfaces/form").IPet[];
+  petOwner2: import("/Users/jessicahenry/Desktop/Fixing/P300Client/client/src/app/components/interfaces/form").IUser;
+  petOwnerEmail: any;
 
   constructor(
     private chatService: ChatClientService,
     private channelService: ChannelService,
     private streamI18nService: StreamI18nService,
+    private _userService: UserService,
     private http: HttpClient,
-    private dialog:MatDialog) {}
+    private dialog:MatDialog,  private _petService:PetService) {}
 
   ngOnInit(): void {
+
+
     this.streamI18nService.setTranslation();
     this.chatService.init(environment.stream.key, this.chatName.chatUserName, this.chatName.chatToken);
     this.channelService.init({
@@ -46,10 +57,12 @@ export class ChatPageComponent implements OnInit {
             response.members.forEach(member => {
               if(member.user.id !== this.chatName.chatUserName)
               console.log('Other user ID:', member.user.id);
+              this.petOwnerEmail =  member.user.id; 
               this.members.push(member.user.id);
             });
             //get petownerdetails
             this.getPetOwnerDetails();
+
           })
           .catch((error) => {
             console.error(error);
@@ -65,6 +78,8 @@ export class ChatPageComponent implements OnInit {
       (response: any) => {
         console.log('Received response:', response);
         localStorage.setItem('ownerOrderDetails', JSON.stringify(response));
+        this.petOwner = response; 
+        this.getPetDetails(); 
       },
       (error: any) => {
         console.error('Failed to get data:', error);
@@ -72,12 +87,27 @@ export class ChatPageComponent implements OnInit {
     );
   }
 
+  async getPetDetails(){
+    try{
+      console.log(this.petOwner?.emailAddress); 
+      const petDetails =  await this._petService.get_petdetails( this.petOwner?.emailAddress).toPromise()
+      this.petDetails = petDetails; 
+      console.log(petDetails)
+      localStorage.setItem('petDetails', JSON.stringify(this.petDetails));
+console.log('Pet Details', this.petDetails); 
+     }catch (error) {
+      console.error(error);
+    }
+}
+
+
+
   onCreateOrder(){
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
-    this.dialog.open(OrderComponent, dialogConfig); 
+    this.dialog.open(OrderComponent, {data:{petSitter:this.petSitter, serviceList:this.serviceList, petOwner:this.petOwner, petDetails: this.petDetails}}); 
   
   }
 
