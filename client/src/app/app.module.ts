@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { StreamChatModule, StreamAutocompleteTextareaModule } from 'stream-chat-angular';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
-import {AgmCoreModule} from '@agm/core';
 import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports'
@@ -61,6 +60,9 @@ import { MessageAlertComponent } from './components/message-alert/message-alert.
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
+import { AgmCoreModule } from "@agm/core";
+import { SocketService } from './service/socket.service';
+import { AgmDirectionModule } from 'agm-direction';
 
 // import { MdInputModule } from '@angular/material';
 
@@ -99,6 +101,7 @@ import { RecognitionComponent } from './components/recognition/recognition.compo
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
 import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
+const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnswyJACAdgPdcdX4rsSq6k";
 
 @NgModule({
   declarations: [
@@ -120,6 +123,7 @@ import { TrackerOrderComponent } from './components/tracker-order/tracker-order.
   ],
   imports: [
     BrowserModule,
+    AgmDirectionModule,
     NgbPaginationModule, 
     MatSlideToggleModule,
     MatButtonModule,
@@ -160,6 +164,9 @@ import { TrackerOrderComponent } from './components/tracker-order/tracker-order.
             deps: [HttpClient]
         }, 
     }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: apiKey,
+    // }),
     StreamChatModule,
     StreamAutocompleteTextareaModule,
     AppRoutingModule,
@@ -169,15 +176,17 @@ import { TrackerOrderComponent } from './components/tracker-order/tracker-order.
     NgbModule, 
 
     AgmCoreModule.forRoot({
-      apiKey: environment.GOOGLE_MAPS_API_KEY,
-      libraries: ['places', 'geometry']
+      apiKey: apiKey
+      // libraries: ['places', 'geometry']
     }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService, CognitoGuard, UserService],
+    AuthenticatorService, CognitoGuard, UserService, SocketService],
   bootstrap: [AppComponent], 
-  entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
+  entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent],   
+  schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
+
 })
 export class AppModule { }
 // required for AOT compilation
