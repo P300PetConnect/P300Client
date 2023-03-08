@@ -34,11 +34,7 @@
         <tr  data-toggle="collapse" data-toggle="collapse" [attr.data-target]=" '#' + orders[i]?.Name +''+ orders[i]?.OrderID"  class="accordion-toggle">
             <td><button class="btn btn-default btn-xs"><i class="bi bi-eye"></i></button></td>
             <td><img src="{{orders[i]?.Profile_Pic_URL}}" class="img-profile" width="65px" alt=""></td>
-<<<<<<< HEAD
             <td (click)="GetPetOwnerDetails(o.UserID, o.EmailAddress)">{{o.Name}} {{o.Surname}}</td>
-=======
-            <td (click)="GetPetOwnerDetails(o.EmailAddress)">{{o.Name}} {{o.Surname}}</td>
->>>>>>> f3da75a (remove temp button)
             <td></td>
             <td>{{o?.ServiceTitle}}</td>
             <td></td>
@@ -56,10 +52,6 @@
                      
                         <div class="row pl-5 pt-3">
                             <div class="col-6 text-justify card-text">
-
-                                <h5>Pet</h5>
-                                <p>{{o.Description}}</p>
-                            <hr>
                                 <h5>Description</h5>
                                 <p>{{o.Description}}</p>
                                 <hr>

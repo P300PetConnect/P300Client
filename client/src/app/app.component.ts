@@ -22,13 +22,11 @@ export class AppComponent {
   isAutenticated: boolean; 
   public petDetails:IPet[]; 
   petOwner: import("../app/components/interfaces/users").IPetOwner;
-
   constructor(public _authenticator: AuthenticatorService,private _petService:PetService, private _userService: UserService,public router: Router, public loaderService: LoaderService, public authenticator: AuthenticatorService) {
     if(_authenticator){
       console.log(router); 
     }
   }
-
 
   async getPetOwner(){
     // console.log(localStorage.getItem('PetOwner')); 

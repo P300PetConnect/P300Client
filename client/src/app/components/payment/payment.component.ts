@@ -212,6 +212,11 @@ import { OrderService } from '../service/order.service';
 
 })
 export class PaymentComponent implements OnInit {
+
+
+
+
+
   
   btnclass: string="success";
   btnText: string='Make payment';

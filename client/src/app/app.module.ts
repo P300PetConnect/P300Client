@@ -61,6 +61,7 @@ import { MessageAlertComponent } from './components/message-alert/message-alert.
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
+
 // import { MdInputModule } from '@angular/material';
 
 
@@ -173,7 +174,6 @@ import { DatePipe } from '@angular/common';
     }),
   ],
   providers: [
-    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     AuthenticatorService, CognitoGuard, UserService],
   bootstrap: [AppComponent], 

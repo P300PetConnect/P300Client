@@ -1,5 +1,5 @@
 <div class="container-xxl mt-5 overflow-hidden">
-  <div class="row" *ngIf="(userGroup=='PetOwner' && !viewonly) || (userGroup=='PetSitter' && viewonly)">
+  <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'joannasmith@gmail.com' ">
     <div class="col-lg-4 col-md-4 col-sm-12 col-12">
       <div class="row">
         <div class="col-12">
@@ -27,7 +27,7 @@
                       {{petOwner?.county}}</a>
                   </ul>
                   <div class="row text-center d-flex justify-content-center">
-                    <div *ngIf="!viewonly" class="btn btn-outline-info w-50" (click)="onCreate()">
+                    <div class="btn btn-outline-info w-50" (click)="onCreate()">
                       Edit Profile
                     </div>
                   </div>
@@ -45,7 +45,7 @@
       <mat-tab-group animationDuration="0ms">
         <mat-tab label="Active Pets">
           <div class="row">
-            <div class="col-lg-4 mt-4"  *ngIf="!viewonly">
+            <div class="col-lg-4 mt-4">
               <div class="card p-4" (click)="onCreatePet()">
                 <div class="text-center card-body">
                   <div class="member-card">
@@ -96,7 +96,7 @@
           </div>
         </mat-tab>
 
-        <mat-tab label="Draft" *ngIf="!viewonly">
+        <mat-tab label="Draft">
           <div class="row pt-4">
             <div class="col-4">
               <div class="card">
@@ -145,7 +145,8 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="userGroup== 'PetSitter' && !viewonly">
+  <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'fatherted@gmail.com'">
+
     <div class="col-lg-4 col-md-4 col-sm-12 col-12">
       <div class="row">
         <div class="col-12">
@@ -182,7 +183,7 @@
                       {{petSitter?.county}} </a>
                   </ul>
                   <div class="row text-center d-flex justify-content-center">
-                    <div  class="btn btn-outline-info w-50" (click)="onCreate()">
+                    <div class="btn btn-outline-info w-50" (click)="onCreate()">
                       Edit Profile
                     </div>
 

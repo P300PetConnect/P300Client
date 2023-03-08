@@ -72,8 +72,6 @@ onCheckRoute(UserGroup:string){
     this._router.navigateByUrl('profile');
     this.getPetSitter();
   }
-
-
 }
 
 //load pet owner data to local storage

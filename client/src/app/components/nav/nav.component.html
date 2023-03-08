@@ -38,12 +38,7 @@
     <div class="navbar-nav ml-auto">
       <a href="#" class="nav-item nav-link active"><i class="bi bi-house-heart-fill"></i><span>Home</span></a>
       <a routerLink="forum" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link"><i class="bi bi-people-fill"></i><span>Forum</span></a>
-      <a routerLink="orders" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">
-      <span class="badge badge-pill badge-primary bg-danger" style="float:right;margin-bottom:-10px;">{{ ordersCount$ | async }}</span> 
-
-        <i class="bi bi-receipt"></i>
-        <span>Orders</span>
-      </a>
+      <a routerLink="orders" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link"><i class="bi bi-receipt"></i><span>Orders</span></a>
       <a href="#" routerLink="chat" class="nav-item nav-link"><i class="bi bi-chat-text-fill"></i><span>Messages</span></a>
       <a href="#" routerLink="route" class="nav-item nav-link"><i class="bi bi-map"></i><span>Route Planner</span></a>
     
@@ -126,7 +121,7 @@
           {{userFName}}    {{userLName}} <b class="caret"></b></a>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
         <a  routerLink="/profile" class="dropdown-item" ><i class="bi bi-person pr-3 pt-2"></i>Profile</a>
-        <!-- <a href="#" class="dropdown-item"><i class="bi bi-receipt-cutoff pr-3 pt-2"></i> Billing</a> -->
+        <a href="#" class="dropdown-item"><i class="bi bi-receipt-cutoff pr-3 pt-2"></i> Billing</a>
         <a href="#" class="dropdown-item"><i class="bi bi-sliders2 pr-3 pt-2"></i>Settings</a>
         <div class="divider dropdown-divider"></div>
         <a class="dropdown-item" (click)="Logout()"><i class="bi bi-box-arrow-left pr-3"></i> Logout</a>

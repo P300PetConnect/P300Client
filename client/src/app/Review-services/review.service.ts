@@ -37,7 +37,7 @@ export class ReviewService {
   {
     return this.http.get<Review>('https://856hqzp4v5.execute-api.eu-west-1.amazonaws.com/review?id='+ id)
     .pipe(
-      tap(data => console.log('list/error', data)
+      tap(data => console.log('list/error' + JSON.stringify(data))
       
     ),
      catchError(this.handleError)

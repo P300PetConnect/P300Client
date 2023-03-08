@@ -3,14 +3,11 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Auth } from 'aws-amplify';
-import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
-import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 import { IOrder, IUser } from '../interfaces/form';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { OrderComponent } from '../order/order.component';
 import { OrderService } from '../service/order.service';
 import { UserService } from '../service/user.service';
-import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-manage-orders',
@@ -23,17 +20,12 @@ export class ManageOrdersComponent implements OnInit {
   clients: any = {}; 
   petOwners: any;
   errorMessage: any;
-  message: any;
   petSitter: IPetSitter;
   userGroup: any;
   petOwner: IPetOwner; 
-  email: string;
-  serviceList:ServiceInterface[] = [];
-  userID: string;
 
 
-  constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService,  
-    private service: SearchServiceService, private sharedService: SharedService) {
+  constructor(private _httpOrder:OrderService,private dialog:MatDialog, public authenticator: AuthenticatorService, private _httpUser: UserService) {
     Auth.currentAuthenticatedUser()
     .then(user => {
       this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
@@ -51,18 +43,10 @@ export class ManageOrdersComponent implements OnInit {
        this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
        this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
 
-       
-    this.getServices(43);
-    this.getOrders();   
-    this.createOrder(); 
-   }
+    this.getOrders(); 
 
-   createOrder() {
-    // Call API to create order
-    const currentCount = this.sharedService.ordersCount.value;
-    this.sharedService.ordersCount.next(currentCount + 1);
   
-  }
+   }
 
    async getOrders(){
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
@@ -102,34 +86,21 @@ export class ManageOrdersComponent implements OnInit {
     
 }
 
-getServices(id: number): boolean
-{ 
-  this.service.getOtherServices(id).subscribe({
-    next: (value: ServiceInterface[] )=> this.serviceList = value,
-    complete: () => console.log('Services finished ', this.serviceList),
-    error: (mess) => this.message = mess
-  })
-
-  return false;
-
-}
+  // async getOrders() {
+  //   //IF Pet Sitter
+  //   const orders = await this._httpOrder.getOderByUser(36).toPromise()
+  //   this.orders = orders;
+  //   console.log('Orders', this.orders);
+  // }
 
   onCreateOrder(){
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
-    this.dialog.open(OrderComponent, {data:{petSitter:this.petSitter, serviceList:this.serviceList}}); 
+    this.dialog.open(OrderComponent, dialogConfig); 
+  
   }
 
-  GetPetOwnerDetails(userID:number,email:string){
-    
-    console.log('call pet owner')
-    if(this.userGroup =="PetSitter"){
-      this._router.navigate(['/petownerprofile', {'id': `${email}`}])
-    }
-    else if(this.userGroup =="PetOwner"){
-        this._router.navigate(['/petsitterdetails', {'id': `${userID}`}])
-    }
-  }
+
 }
