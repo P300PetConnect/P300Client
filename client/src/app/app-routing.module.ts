@@ -16,6 +16,7 @@ import { SearchContainerComponent } from './search_service_components/search-con
 import { MapPlannerComponent } from './map-planner/map-planner.component';
 import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
+import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
 
 const routes: Routes = [
   { path:'users/:id', component:UserProfileComponent },
@@ -35,8 +36,8 @@ const routes: Routes = [
   {path:'orders', component:ManageOrdersComponent}, //TODO: ADD USER ID 
   { path: 'route', component: MapPlannerComponent }, 
   {path: 'browseroute',component:BrowseRouteComponent},
-  {path: 'recognition', component:RecognitionComponent}
-
+  {path: 'recognition', component:RecognitionComponent},
+  {path: 'petownerprofile', component:PetOwnerProfileDetailsComponent}
 
 ];
 

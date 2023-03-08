@@ -89,11 +89,9 @@ export class PetSitterDetailsComponent implements OnInit {
 
   
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-
     var date = cellDate.getDate();
-
-    console.log(date); 
-
+    console.log(date);
+    
     // if (view == 'month') {
         return 'highlightCard';
     // }
@@ -220,7 +218,7 @@ onCreateOrder(){
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = false; 
     dialogConfig.width = "80%";
-     dialogConfig.height = "93%";
+    dialogConfig.height = "93%";
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
 
@@ -235,17 +233,20 @@ onCreateOrder(){
     return false;
   }
 
-  getServices(id: number): boolean
-  { 
+  getServices(id: number): void {
     this.service.getOtherServices(id).subscribe({
-      next: (value: ServiceInterface[] )=> this.serviceList = value,
-      complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
-      error: (mess) => this.message = mess
-   
-    })
-    return false;
-
+      next: (value: ServiceInterface[]) => {
+        this.serviceList = value;
+      },
+      error: (error: any) => {
+        this.message = error;
+      },
+      complete: () => {
+        console.log('service finished ', (this.service));
+      }
+    });
   }
+  
 
   GetOrders(id: number)
   {

@@ -204,6 +204,8 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { MessageAlertComponent } from '../message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
 import { OrderService } from '../service/order.service';
+import { EmailService } from '../service/email.service';
+import { C } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-payment',
@@ -227,7 +229,7 @@ export class PaymentComponent implements OnInit {
   private dialogRef2?: MatDialogRef<MessageAlertComponent>
   btnclass2: string;
 
-  constructor(private _http: HttpClient, private dialog:MatDialog, private _httpOrder:OrderService) { }
+  constructor(private _http: HttpClient, private dialog:MatDialog, private emailService: EmailService, private _httpOrder:OrderService) { }
   paymentHandler: any = null;
   @Input() order:IOrder | undefined;
   @ViewChild('btn2') btn2: ElementRef;
@@ -298,8 +300,13 @@ export class PaymentComponent implements OnInit {
     this.cardTitle="Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy"; 
     this.btnclass="danger";
     this.btnText = 'Cancel';
-    this.actionToBtn = "Cancel"; 
+    this.actionToBtn = "Cancel";
 
+    //send confirm order email
+    this.emailService.sendOrderConfirmedEmail().subscribe(
+      data => console.log('Confirmation Email Sent!', data),
+      error => console.log('Error Sending Email!', error)
+    );
   }
   invokeStripe() {
     if (!window.document.getElementById('stripe-script')) {

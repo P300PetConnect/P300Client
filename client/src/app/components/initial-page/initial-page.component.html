@@ -46,7 +46,7 @@
               <input matInput placeholder="N. Street " #location />
             </mat-form-field>
 
-            <mat-form-field class="col-lg-3 col-md-6 col-sm-6 col-12 col-sx-12" appearance="outline" *ngIf="this.service!='Walk'">
+            <mat-form-field class="col-lg-3 col-md-6 col-sm-6 col-12 col-sx-12" appearance="outline">
               <mat-label>When?</mat-label>
               <mat-date-range-input [rangePicker]="picker">
                 <input matStartDate matInput placeholder="Start date" />
@@ -56,7 +56,7 @@
               <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
 
-            <mat-form-field class="col-lg-3 col-md-6 col-sm-6 col-12" appearance="outline" *ngIf="this.service!='Walk'">
+            <mat-form-field class="col-lg-3 col-md-6 col-sm-6 col-12" appearance="outline">
               <mat-label>Pet Type</mat-label>
               <mat-select [formControl]="category" multiple (selectionChange)="changePet($event.value)">
                 <mat-select-trigger>

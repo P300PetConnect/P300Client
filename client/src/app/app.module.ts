@@ -97,6 +97,8 @@ import { MapPlannerComponent } from './map-planner/map-planner.component';
 import { BrowseRouteComponent } from './browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
+import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
+import { EmailService } from './components/service/email.service';
 
 @NgModule({
   declarations: [
@@ -114,7 +116,7 @@ import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.c
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
-    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -164,7 +166,7 @@ import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.c
     BrowserAnimationsModule, 
     FormsModule,
     AmplifyAuthenticatorModule,
-    NgbModule, 
+    NgbModule,
 
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY,
@@ -173,7 +175,7 @@ import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.c
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService, CognitoGuard, UserService],
+    AuthenticatorService, CognitoGuard, UserService, EmailService],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
 })

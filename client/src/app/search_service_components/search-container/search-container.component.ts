@@ -3,7 +3,6 @@ import { ServiceInterface } from 'src/app/search_service_interfaces/service-inte
 import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
 import { RdsUserServices } from 'src/app/search_service_interfaces/rds-user-services';
 import { HttpClient } from '@angular/common/http';
-import { Console } from 'console';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
