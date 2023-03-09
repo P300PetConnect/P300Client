@@ -17,7 +17,9 @@ export class CalendarComponent implements OnInit {
   // constructor(private datePipe: DatePipe) {
 
   // }
-  constructor(private datePipe: DatePipe, private router: Router) { }
+  constructor(private datePipe: DatePipe, private router: Router) { 
+    this.startDate = new Date();
+  }
 
 //pass string as input from component, different for each component, use ngif and have two versions of the calender. 
   public displayMonth: string;
@@ -32,9 +34,11 @@ export class CalendarComponent implements OnInit {
   showday = false;
   showweek = false;
   showmonth = false;
+  private startDate: Date;
+  dates: Date[] = [];
 
-  endIndex = 0
-  startIndex = 0;
+
+  
   
 
   public calendar: CalendarDay[] = [];
@@ -47,14 +51,11 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.generateCalendarDays(this.monthIndex, this.startIndex,  31);
+    this.generateCalendarDays(this.monthIndex);
     console.log(this.calendar);
+    this.getDatesForWeek();
     
   }
-
-
-
-
 
   isObjectInArray(value: string): boolean {
    //tests to see if date is in list array
@@ -62,7 +63,7 @@ export class CalendarComponent implements OnInit {
   }
 
   isObjectInArray2(value: string): boolean {
-    //tests to see if date is in notAvailable array
+
      return this.notAvailble.some(obj => obj.TimeStamp === value);
    }
 
@@ -72,7 +73,7 @@ export class CalendarComponent implements OnInit {
     return date;
 }
 
-  private generateCalendarDays(monthIndex: number, startIndex: number, endIndex: number): void {
+  private generateCalendarDays(monthIndex: number): void {
     // we reset our calendar
     this.calendar = [];
 
@@ -87,27 +88,10 @@ export class CalendarComponent implements OnInit {
 
     let dateToAdd = startingDateOfCalendar;
 
-    for (var i = startIndex; i < endIndex; i++) {
+    for (var i = 0; i < 31; i++) {
       this.calendar.push(new CalendarDay(new Date(dateToAdd)));
       dateToAdd = new Date(dateToAdd.setDate(dateToAdd.getDate() + 1));
     }
-
-//still hardcoded for dates no available
-    this.calendar[41].notAvailable = true;
-    this.calendar[34].notAvailable = true;
-    this.calendar[27].notAvailable = true;
-    this.calendar[20].notAvailable = true;
-    this.calendar[13].notAvailable = true;
-    this.calendar[6].notAvailable = true;
-
-    this.calendar[40].notAvailable = true;
-    this.calendar[33].notAvailable = true;
-    this.calendar[26].notAvailable = true;
-    this.calendar[19].notAvailable = true;
-    this.calendar[12].notAvailable = true;
-    this.calendar[5].notAvailable = true;
-
-   
   }
 
 
@@ -131,17 +115,17 @@ export class CalendarComponent implements OnInit {
 
    public increaseMonth() {
     this.monthIndex++;
-    this.generateCalendarDays(this.monthIndex, this.startIndex, this.endIndex);
+    this.generateCalendarDays(this.monthIndex);
   }
 
   public decreaseMonth() {
     this.monthIndex--
-    this.generateCalendarDays(this.monthIndex, this.startIndex, this.endIndex);
+    this.generateCalendarDays(this.monthIndex);
   }
 
   public setCurrentMonth() {
     this.monthIndex = 0;
-    this.generateCalendarDays(this.monthIndex, this.startIndex, this.endIndex);
+    this.generateCalendarDays(this.monthIndex);
   }
 
   setValues(value: string)
@@ -175,9 +159,47 @@ export class CalendarComponent implements OnInit {
     this.selectedOrders = [];
   }
 
+
+
+  getDatesForWeek() {
+
+    const endDate = new Date(this.startDate.getTime() + (7 * 24 * 60 * 60 * 1000));
+    let currentDate = this.startDate;
+    while (currentDate < endDate) {
+      this.dates.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+   
+
+  }
+
+
+  getNextWeek(): void {
+   this.dates = [];
+   this.getDatesForWeek();
+  }
+
+  getLastWeek(): void {
+    this.dates = [];
+
+     this.startDate.setDate(this.startDate.getDate() - 14);
+    
+   
+     this.getDatesForWeek();
+   }
+
+   GetToday()
+   {
+    this.dates = [];
+    this.startDate = new Date();
+    this.getDatesForWeek();
+
+   }
+
+
   ShowDay()
   {
-    alert("t")
+   this.startDate = new Date();
     this.showday = true;
     this.showweek = false;
     this.showmonth = false;
@@ -187,33 +209,22 @@ export class CalendarComponent implements OnInit {
     this.showday = false;
     this.showweek = true;
     this.showmonth = false;
-    this.startIndex = 14;
-    this.endIndex = 21;
-  
 
-    this.generateCalendarDays(this.monthIndex, this.startIndex, this.endIndex);
+    this.generateCalendarDays(this.monthIndex);
   }
   ShowMonth()
   {
     this.showday = false;
     this.showweek = false;
     this.showmonth = true;
-    this.startIndex = 14;
-    this.endIndex = 31
+  
    
-    this.generateCalendarDays(this.monthIndex,this.startIndex, this.endIndex );
+    this.generateCalendarDays(this.monthIndex );
   }
 
   GetNextWeek()
   {
-   
-    this.startIndex += 7
-    this.endIndex += 7
-    
-      this.generateCalendarDays(this.monthIndex,this.startIndex, this.endIndex );
-    
-
-
+      this.generateCalendarDays(this.monthIndex);
   }
 
 
