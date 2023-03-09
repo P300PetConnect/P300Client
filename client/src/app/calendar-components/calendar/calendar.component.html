@@ -6,12 +6,13 @@
 
 <div class = "container mt-4" *ngIf="componentFlag == 'userProfile'">
 <div class = "row justify-content-center text-center mb-1">
-  <div class = "col-4">
+  <div class = "col-4" >
     <div class = "d-flex justify-content-start" *ngIf="showmonth">
       
         <i class="bi bi-arrow-left-square" (click)="decreaseMonth()"></i>
       
         <h6 class = "ml-2">{{displayMonth}}</h6>
+        
         <i class="bi bi-arrow-right-square ml-2" (click)="increaseMonth()"></i>
 
         <i class="bi bi-calendar2 ml-1" (click)="setCurrentMonth()"></i>
@@ -20,19 +21,17 @@
     <div class = "d-flex justify-content-start" *ngIf="showweek">
       
       <i class="bi bi-arrow-left-square" (click)="getLastWeek()"></i>
-    
-      
+      <h6>{{monthStr}}</h6>
       <i class="bi bi-arrow-right-square ml-2" (click)="getNextWeek()"></i>
 
       <i class="bi bi-calendar2 ml-1" (click)="GetToday()"></i>
   </div>
 
-  <div class = "d-flex justify-content-start" *ngIf="showweek">
+  <div class = "d-flex justify-content-start" *ngIf="showday">
       
-    <i class="bi bi-arrow-left-square" (click)="getLastWeek()"></i>
-  
-    
-    <i class="bi bi-arrow-right-square ml-2" (click)="getNextWeek()"></i>
+    <i class="bi bi-arrow-left-square" (click)="subtractDay()"></i>
+    <h6>{{startDateStr}}</h6>
+    <i class="bi bi-arrow-right-square ml-2" (click)="addDay()"></i>
 
     <i class="bi bi-calendar2 ml-1" (click)="GetToday()"></i>
 </div>
@@ -41,9 +40,11 @@
 
   <div class = "col-8">
     <div class = "d-flex justify-content-end">
-        <button type="button" class="btn btn-outline-secondary btn-sm"    (click)="ShowDay()">Day</button> 
-        <button type="button" class="btn btn-outline-secondary btn-sm ml-2"  (click)="ShowWeek()">Week</button>
-        <button type="button" class="btn btn-outline-secondary btn-sm ml-2"  (click)="ShowMonth()">Month</button>
+      <button type="button" class="btn btn-outline-secondary btn-sm "  (click)="ShowMonth()">Month</button>
+      <button type="button" class="btn btn-outline-secondary btn-sm ml-2"  (click)="ShowWeek()">Week</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm ml-2"    (click)="ShowDay()">Day</button> 
+       
+ 
     </div>
   </div>
   </div>
@@ -51,14 +52,18 @@
 
 
   <div *ngIf="showday">
-    <!-- -sets today as start date
-    - adds orders or not available into temp arrays
-    - if orders print order same for not available
-    - methods to empty and refill arrays triggered when + - day -->
+  
 
-    <div>
+    <div *ngIf="notAvailbleDay.length > 0" >
+      <p>not available</p>
 
     </div>
+    <div *ngIf="ordersDay.length > 0">
+      <p>event</p>
+
+    </div>
+   
+    
   </div>
   <div *ngIf="showweek">
     <table class='calendar-table table'>
