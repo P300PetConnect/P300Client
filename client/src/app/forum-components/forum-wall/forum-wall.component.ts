@@ -19,6 +19,7 @@ export class ForumWallComponent implements OnInit {
   post: any;
 
   errorMessage:any;
+  user: any;
 
   constructor(private _forumPosts : DataService, private dialog:MatDialog) { }
 
@@ -39,9 +40,11 @@ export class ForumWallComponent implements OnInit {
       "downVote": false
 
     };
+console.log(this.user); 
 
     this.GetBoardDetails('0');
-    
+    this.user = JSON.parse(localStorage.getItem('PetConnectUser'));
+
   }
   SetTabIndex(event)
   {

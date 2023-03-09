@@ -92,7 +92,7 @@ getOtherServices(id : number)
 {
   return this.http.get<any>('https://0r68frdpq4.execute-api.eu-west-1.amazonaws.com/other?id=' + id)
   .pipe(
-    tap(data => console.log('Forum/error' + JSON.stringify(data))
+    tap(data => console.log('Forum/error' + data)
   ),
   catchError(this.handleError)
  
