@@ -27,6 +27,7 @@ export enum EOrderStatus {
     PetOwnerID: number;
     OrderDate: string;
     Description: string;
+    OrderDescription:string;
     OrderID: number;
     ServiceID: number;
     Price: string;

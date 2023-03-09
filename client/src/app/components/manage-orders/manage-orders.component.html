@@ -54,8 +54,11 @@
                             <div class="col-6 text-justify card-text">
                                 <h5>Description</h5>
                                 <p>{{o.Description}}</p>
-                                <app-tracker-order></app-tracker-order>
-                                
+                                <p>{{o.OrderDescription}}</p>
+                                <button *ngIf="userGroup==='PetSitter' && o.Status =='Processing'" (click)="startWorking()">Start Order</button>
+                                <div *ngIf="o.ServiceTitle=='Dog Walk' && petsitterisworking">
+                                    <app-tracker-order></app-tracker-order>
+                                </div>
                             </div>
                             <div class="col-6 d-flex justify-content-end">
                                 <div class="row">

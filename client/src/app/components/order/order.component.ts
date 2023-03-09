@@ -30,7 +30,7 @@ export class OrderComponent implements OnInit {
       PetSitterID: new FormControl(''),
       PetOwnerID: new FormControl(''),
       OrderDate: new FormControl(''),
-      Description: new FormControl(''),
+      OrderDescription: new FormControl(''),
       Status: new FormControl(''),
       ServiceID: new FormControl(''), 
       Price: new FormControl(''),
@@ -52,7 +52,7 @@ selectedCategories: any;
   userGroup: string = localStorage.getItem('userGroup'); 
 
   @ViewChild('positivekeywordsInput') positivekeywordsInput: ElementRef<HTMLInputElement>;
-  @ViewChild('Description') Description: ElementRef<HTMLInputElement>;
+  @ViewChild('OrderDescription') OrderDescription: ElementRef<HTMLInputElement>;
   @ViewChild('stepper')
 
   stepper: MatStepper;

@@ -24,6 +24,7 @@ export class ManageOrdersComponent implements OnInit {
   userGroup: any;
   petOwner: IPetOwner; 
   email: string;
+  petsitterisworking: boolean = false;
 
   constructor(private _httpOrder:OrderService,private dialog:MatDialog,  private _router: Router,public authenticator: AuthenticatorService, private _httpUser: UserService) {
     Auth.currentAuthenticatedUser()
@@ -86,7 +87,10 @@ export class ManageOrdersComponent implements OnInit {
     
 }
 
+startWorking(){
 
+  this.petsitterisworking=true; 
+}
   // async getOrders() {
   //   //IF Pet Sitter
   //   const orders = await this._httpOrder.getOderByUser(36).toPromise()
