@@ -1,95 +1,179 @@
 
-<div>
-
-</div>
-
-
 <div class = "container mt-4" *ngIf="componentFlag == 'userProfile'">
 <div class = "row justify-content-center text-center mb-1">
   <div class = "col-4" >
-    <div class = "d-flex justify-content-start" *ngIf="showmonth">
-      
-        <i class="bi bi-arrow-left-square" (click)="decreaseMonth()"></i>
-      
-        <h6 class = "ml-2">{{displayMonth}}</h6>
-        
-        <i class="bi bi-arrow-right-square ml-2" (click)="increaseMonth()"></i>
+        <div class = "d-flex justify-content-start" *ngIf="showmonth">
+            <i class="bi bi-arrow-left-square" (click)="decreaseMonth()"></i>
+            <h6 class = "ml-2">{{displayMonth}}</h6>
+            <i class="bi bi-arrow-right-square ml-2" (click)="increaseMonth()"></i>
+            <i class="bi bi-calendar2 ml-1" (click)="setCurrentMonth()"></i>
+        </div>
 
-        <i class="bi bi-calendar2 ml-1" (click)="setCurrentMonth()"></i>
+        <div class = "d-flex justify-content-start" *ngIf="showweek">
+          <i class="bi bi-arrow-left-square" (click)="getLastWeek()"></i>
+          <h6 class = "ml-2">{{monthStr}}</h6>
+          <i class="bi bi-arrow-right-square ml-2" (click)="getNextWeek()"></i>
+          <i class="bi bi-calendar2 ml-1" (click)="GetToday()"></i>
+      </div>
+
+      <div class = "d-flex justify-content-start" *ngIf="showday">
+        <i class="bi bi-arrow-left-square" (click)="subtractDay()"></i>
+        <h6>{{startDateStr}}</h6>
+        <i class="bi bi-arrow-right-square ml-2" (click)="addDay()"></i>
+        <i class="bi bi-calendar2 ml-1" (click)="GetToday()"></i>
     </div>
-
-    <div class = "d-flex justify-content-start" *ngIf="showweek">
-      
-      <i class="bi bi-arrow-left-square" (click)="getLastWeek()"></i>
-      <h6>{{monthStr}}</h6>
-      <i class="bi bi-arrow-right-square ml-2" (click)="getNextWeek()"></i>
-
-      <i class="bi bi-calendar2 ml-1" (click)="GetToday()"></i>
-  </div>
-
-  <div class = "d-flex justify-content-start" *ngIf="showday">
-      
-    <i class="bi bi-arrow-left-square" (click)="subtractDay()"></i>
-    <h6>{{startDateStr}}</h6>
-    <i class="bi bi-arrow-right-square ml-2" (click)="addDay()"></i>
-
-    <i class="bi bi-calendar2 ml-1" (click)="GetToday()"></i>
-</div>
-  
   </div>
 
   <div class = "col-8">
-    <div class = "d-flex justify-content-end">
-      <button type="button" class="btn btn-outline-secondary btn-sm "  (click)="ShowMonth()">Month</button>
-      <button type="button" class="btn btn-outline-secondary btn-sm ml-2"  (click)="ShowWeek()">Week</button>
-        <button type="button" class="btn btn-outline-secondary btn-sm ml-2"    (click)="ShowDay()">Day</button> 
-       
- 
-    </div>
+        <div class = "d-flex justify-content-end">
+          <button type="button" class="btn btn-outline-secondary btn-sm "  (click)="ShowMonth()">Month</button>
+          <button type="button" class="btn btn-outline-secondary btn-sm ml-2"  (click)="ShowWeek()">Week</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm ml-2"    (click)="ShowDay()">Day</button> 
+        </div>
   </div>
   </div>
  
-
-
   <div *ngIf="showday">
-  
+          <div *ngIf="notAvailbleDay.length > 0" >
+            <div class="col-md-12 col-xl-12" *ngFor="let n of notAvailbleDay">
+              <div class="test card mb-3" >
+                <div class="card-body text-center ">
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <img  src="../../../assets/images/notAvailable.png" class="img-fluid " style="width: 25%;">
+                    </div>
+                    <div class="col-4 ">
+                    <div class = "row text-center">
+                      <h4>Not Available</h4>
 
-    <div *ngIf="notAvailbleDay.length > 0" >
-      <p>not available</p>
+                    </div>
+                    <div class = "row text-center">
+                      <h6>Note: {{n.Note}}</h6>
 
+                    </div>
+                    <div class = "row text-center px-5">
+                      <button class = "btn btn-danger btn-sm">Delete</button>
+
+                    </div>
+                      
+                    
+                    </div>
+                  <div class="col-4">
+                    <img  src="../../../assets/images/notAvailable.png" class="img-fluid "  style="width: 25%;">
+                </div>
+                    
+                      
+                
+                </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div *ngIf="ordersDay.length > 0">
+            <div class="col-md-12 col-xl-12 " *ngFor="let o of ordersDay">
+              <div class="test card mb-3" >
+                <div class="card-body text-center booking">
+                <div class="row align-items-center">
+                
+                    <div class="col-2">
+                        <img src="{{o.Profile_Pic_URL}}"  class="img-fluid rounded-circle mb-2" width="100" height="100">
+                    </div>
+                    <div class="col-4 text-left">
+                        <div class="d-flex justify-content-between">
+                                <h5>{{o.Name}} {{o.Surname}}</h5>
+
+                        </div>
+                        <div class="d-flex justify-content-between">
+                        
+                          <p>{{o.Line_2}}, {{o.County}}</p>
+                        
+                        </div>
+                  </div>
+                  <div class = "col-6">
+                    <div class = "d-flex justify-content-center align-content-middle">
+                      <div class="col-2">
+                        <picture class="align-initial pr-3" *ngIf="o.ServiceTitle.includes(picKeyWords[1])">
+                          <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
+                        </picture>
+                        <picture class="align-initial pr-3" *ngIf="o.ServiceTitle.includes(picKeyWords[0])">
+                          <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
+                        </picture>
+                        <picture class="align-initial pr-3" *ngIf="o.ServiceTitle.includes(picKeyWords[3])">
+                          <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                        </picture>
+                        <picture class="align-initial pr-3" *ngIf="o.ServiceTitle.includes(picKeyWords[2])">
+                          <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                        </picture>
+                    </div>
+                    <div class="text-center" >
+                      <h6>{{o.UserTitle}}</h6>
+                      <h6 style="border-bottom: 1px solid black;" class = "pb-2"><small>{{o.ServiceTitle}}</small></h6>
+                      <div class = "d-flex justify-content-center align-content-middle">
+                        <label for="price"> <small>Payment:&nbsp;</small> </label>
+                        <p><small> {{o.Price}}</small></p>
+
+                    </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+
+          <div *ngIf="ordersDay.length == 0 && notAvailbleDay.length == 0">
+            
+          <div class="col-md-12 col-xl-12">
+            <div class="test card mb-3" >
+              <div class="card-body text-center ">
+              <div class="row align-items-center">
+                  <div class="col-4">
+                      <img  src="../../../assets/images/MicrosoftTeams-image (6).png" class="img-fluid " width="100" height="100">
+                  </div>
+                  <div class="col-4 ">
+                  
+                    <h4>No Events Today</h4>
+                  
+                  </div>
+                <div class="col-4">
+                  <img  src="../../../assets/images/MicrosoftTeams-image (6).png" class="img-fluid " width="100" height="100">
+              </div>
+                  
+                    
+              
+              </div>
+              </div>
+            </div>
+          </div>
+
+          </div>
     </div>
-    <div *ngIf="ordersDay.length > 0">
-      <p>event</p>
 
-    </div>
-   
-    
   </div>
   <div *ngIf="showweek">
     <table class='calendar-table table'>
-
       <tbody>
-
-    
         <tr *ngFor="let d of dates">
         <th>
-            <div class = "row">
+            <div class = "row p-1">
               <div class = "col-4">
-                <div class = "d-flex justify-content-center">
+                <div class = "d-flex justify-content-center align-items-center">
                   <h6>{{d | date: 'dd MMM yyyy'}}   </h6>
                 </div>
-
               </div>
               <div class = "col-8">
-                <div class = "d-flex justify-content-center">
-                  <div *ngIf="isObjectInArray(d | date: 'dd MMM yyyy')">
+                <div class = "d-flex justify-content-center"  >
+                  <div *ngIf="isObjectInArray(d | date: 'dd MMM yyyy')" class = "bookingWeek">
                     <div class = "d-flex justify-content-center align-items-center">
-                      <i class="bi bi-calendar-check-fill mr-2"></i>
+                      <i class="bi bi-calendar-check-fill mr-3"></i>
                     <h6>Booking</h6>
-                    <i class="bi bi-calendar-check-fill ml-2"></i>
+                    <i class="bi bi-calendar-check-fill ml-3"></i>
                     </div>
                 </div>
-                  <div *ngIf="isObjectInArray2(d | date: 'dd MMM yyyy')" >
+                  <div *ngIf="isObjectInArray2(d | date: 'dd MMM yyyy')" class = "notWeek" >
                     <div class = "d-flex justify-content-center align-items-center">
                     <i class="bi bi-x-square-fill mr-2"></i>
                    <h6>Not available</h6>
@@ -99,9 +183,13 @@
                   </div>
       
                   <div *ngIf="!isObjectInArray(d | date: 'dd MMM yyyy') && !isObjectInArray2(d | date: 'dd MMM yyyy')" class="calendar-day-header">
-                    
+                    <div class = "d-flex justify-content-center align-items-center">
+                      <img  src="../../../assets/images/MicrosoftTeams-image (6).png" class="img-fluid mr-1" width="50" height="50">
+                      <h6>No events</h6>
+                      <img  src="../../../assets/images/MicrosoftTeams-image (6).png" class="img-fluid ml-1" width="50" height="50">
+
+                    </div>
                 
-                    <h6>No events</h6>
                
                   
 
@@ -251,6 +339,6 @@
    
 </div>
 </div>
-</div>
+
 
   

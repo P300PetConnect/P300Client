@@ -47,7 +47,7 @@ export class CalendarComponent implements OnInit {
   
 
   public calendar: CalendarDay[] = [];
-  picKeyWords: string[] = ["Feed", "Walk", "Accommodation","Mind"] 
+  picKeyWords: string[] = ["Feed", "Walk", "Sitting","Grooming"] ;
   public monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];

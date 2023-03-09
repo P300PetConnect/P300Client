@@ -94,3 +94,24 @@
   color: green;
 
 }
+.booking:hover
+{
+  box-shadow: 0 0 1px 1px green;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.bookingWeek:hover
+{
+  border-bottom: 1px solid green;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+
+}
+.notWeek:hover
+{
+  border-bottom: 1px solid red;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+
+}
