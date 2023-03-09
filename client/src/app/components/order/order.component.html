@@ -64,11 +64,11 @@
           <div class="col-lg-8 col-md-8 col-12">
             <div class="row">
               <mat-form-field hintLabel="Max 300 characters" appearance="outline">
-                <mat-label for="Description">Insert any extra order information</mat-label>
+                <mat-label for="OrderDescription">Insert any extra order information</mat-label>
                 <textarea matInput #textarea maxlength="300" id="name" type="text" formControlName="name"
                   class="form-control" placeholder="I will..." placeholder="service title" formControlName="firstCtrl"
-                  required type="text" class="form-control" #Description id="Description" formControlName="Description"
-                  class="Description">
+                  required type="text" class="form-control" #OrderDescription id="OrderDescription" formControlName="Description"
+                  class="OrderDescription">
 
 
               </textarea>
@@ -126,7 +126,7 @@
             <h6>Description</h6>
           </div>
           <div class="col-md-6 col-12">
-            <p>{{Description.value}}</p>
+            <p>{{OrderDescription.value}}</p>
           </div>
           <div class="col-md-6 col-12">
             <h6>Price:</h6>
