@@ -26,7 +26,7 @@ export interface IOrder{
      PetSitterID: string, 
      PetOwnerID: string,
      OrderDate:string,
-     Description: string, 
+     OrderDescription: string, 
      Status: string, 
      ServiceID: string, 
      Price : string, 
