@@ -91,6 +91,10 @@ startWorking(){
 
   this.petsitterisworking=true; 
 }
+finishWorking(){
+  this.petsitterisworking=false; 
+
+}
   // async getOrders() {
   //   //IF Pet Sitter
   //   const orders = await this._httpOrder.getOderByUser(36).toPromise()

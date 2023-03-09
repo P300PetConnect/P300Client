@@ -57,8 +57,12 @@
                                 <p>{{o.OrderDescription}}</p>
                                 
                             
-                                <button *ngIf="userGroup==='PetSitter' && o.Status =='Processing'" (click)="startWorking()">Start Order</button>
-                                <div *ngIf="o.ServiceTitle=='Dog Walk' && petsitterisworking">
+                                <!-- <button *ngIf="userGroup==='PetSitter' && o.Status =='Processing'" (click)="startWorking()">Start Order</button> -->
+                                <button *ngIf="userGroup === 'PetSitter' && o.Status === 'Processing'" (click)="petsitterisworking ? finishWorking() : startWorking()">
+                                    {{petsitterisworking ? 'Finish Order' : 'Start Order'}}
+                                  </button>
+                                  
+                                <div *ngIf="o.ServiceTitle=='Dog Walk' && petsitterisworking" class="pt-4">
                                     <app-tracker-order></app-tracker-order>
                                 </div>
                             </div>

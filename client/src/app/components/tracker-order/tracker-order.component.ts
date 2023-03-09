@@ -11,7 +11,7 @@ import { MapsAPILoader } from '@agm/core';
   styleUrls: ['./tracker-order.component.scss']
 })
 export class TrackerOrderComponent implements OnInit, AfterViewInit  {
-
+  userGroup: string = localStorage.getItem('userGroup'); 
 
   start_end_mark = [];
 

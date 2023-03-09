@@ -2,7 +2,7 @@
 <h2>Your city is: {{ city }}, with calling code: {{ calling_code }}</h2>
 <p>Your coordinates are: latitude: {{ lat }}, longitude: {{ lng }}</p> -->
 
-<div class="pinboard">
+<div class="pinboard" *ngIf="userGroup=='PetSitter'">
   <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="zoom" (mapClick)="mapClicked($event)">
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map>
@@ -31,7 +31,7 @@
 <!-- <div #mapContainer class="map" id="map"></div> -->
 
 
-<div class="col-md-12">
+<div class="col-md-12 pt-4">
   <agm-map [latitude]="lat" [longitude]="lng"
   [fullscreenControl]='true' [mapTypeControl]='true' [fitBounds]="true">
       <agm-marker *ngFor="let coordinate of start_end_mark; let i=index"
