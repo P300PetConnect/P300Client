@@ -196,10 +196,8 @@ ngAfterViewInit(): void {
   }
   arr= [];
   mapClicked($event: any) {
-  console.log('mouse clicked',$event); 
-
-    this.lat  = $event?.coords?.lat;
-    this.lng  = $event?.coords?.lng;
+    this.lat  = $event.coords.lat;
+    this.lng  = $event.coords.lng;
     this.arr.push($event.coords);
     console.log('$event.coords ==>', $event.coords);
     console.log('this.arr ===>', this.arr);
@@ -214,10 +212,11 @@ ngAfterViewInit(): void {
   }
 
   pushRealTime(coordinates: any){
-    
+    this.latlng.push(coordinates);    
     this.polylinePaths.push(coordinates);
     this.start_end_mark.push(this.polylinePaths[0]);
     this.start_end_mark.push(this.polylinePaths[this.latlng.length - 1]);
+
   }
 
   getAll() {
