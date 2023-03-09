@@ -191,8 +191,17 @@
                 <div class="row pb-4 pt-4">
                   <h4>I am not available on:</h4>
                   <mat-card class="demo-inline-calendar-card" >
-                    <app-calendar [orders] = "orders" [notAvailble] = "notAvailble" [componentFlag] = "componentFlag" ></app-calendar>
-             
+                    <!-- <app-calendar [orders] = "orders" [notAvailble] = "notAvailble" [componentFlag] = "componentFlag" ></app-calendar> -->
+                    <!-- <mat-calendar [dateFilter]="shouldDisableDate"></mat-calendar> -->
+
+                    <mat-calendar [dateFilter]="shouldDisableDate">
+                      <mat-calendar-header></mat-calendar-header>
+                      <mat-calendar-content [ngClass]="shouldApplyClass" *matCalendarBody>
+                        <ng-template matCalendarCellTemplate let-date>
+                          {{ date.getDate() }}
+                        </ng-template>
+                      </mat-calendar-content>
+                    </mat-calendar>
                   </mat-card>
                 </div>
               </div>

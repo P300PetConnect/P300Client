@@ -10,7 +10,7 @@ import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 import { IPetOwner, IPetSitter, IPetSitterID } from '../interfaces/users';
 import { PetService } from '../service/pet.service';
-import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { MatCalendarCellClassFunction, MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { OrderComponent } from '../order/order.component';
 import { Review } from 'src/app/ReviewInterfaces/review';
 import { ReviewService } from 'src/app/Review-services/review.service';
@@ -22,6 +22,7 @@ import { INotAvailable, IOrderList } from '../interfaces/order';
 import { StreamChat, ChannelData, UserResponse, TokenProvider, UserFromToken } from 'stream-chat';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { DateAdapter } from '@angular/material/core';
 
 
 @Component({
@@ -69,6 +70,8 @@ export class PetSitterDetailsComponent implements OnInit {
   chatUser2Img = '';
   private client: StreamChat;
 
+
+
   //weird 0 on data being returned, refactor get method in this class, get method in service
   
   // make sure all other gets are working 
@@ -88,25 +91,15 @@ export class PetSitterDetailsComponent implements OnInit {
   };
 
   
-  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
 
-    var date = cellDate.getDate();
-
-    console.log(date); 
-
-    // if (view == 'month') {
-        return 'highlightCard';
-    // }
-
-    // return "";
-}
 
 
   @ViewChild('picker') picker:ElementRef;
 
   constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
     private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute,
-     private service: SearchServiceService,private _order: OrderService, private router: Router) {
+     private service: SearchServiceService,private _order: OrderService, private router: Router
+     ,private readonly dateAdapter: DateAdapter<Date>) {
 
       this.client = new StreamChat(this.apiKey);
 
@@ -306,6 +299,36 @@ onCreateOrder(){
     this.router.navigate(['/chat']);
     console.log(channel);
   }
+  private readonly DATES_TO_DISABLE: Date[] = [
+    new Date('2023-03-10'), // March 10th, 2023
+    new Date('2023-03-15'), // March 15th, 2023
+    new Date('2023-03-20')  // March 20th, 2023
+  ];
+
+  shouldDisableDate = (date: Date): boolean => {
+    // Check if the date is selected
+    if (this.DATES_TO_DISABLE.some(selectedDate =>
+      this.dateAdapter.compareDate(date, selectedDate) === 0
+    )) {
+      return false;
+    }
+  
+    // Otherwise, enable the date
+    return true;
+  }
+  shouldApplyClass = (date: Date): string => {
+    // Check if the date is selected
+    if (this.DATES_TO_DISABLE.some(selectedDate =>
+      this.dateAdapter.compareDate(date, selectedDate) === 0
+    )) {
+      return 'selected-date';
+    }
+  
+    // Otherwise, do not apply a class
+    return '';
+  }
+
+  
 
 }
 /**
