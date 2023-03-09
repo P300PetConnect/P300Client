@@ -33,9 +33,14 @@ export class CalendarComponent implements OnInit {
 
   showday = false;
   showweek = false;
-  showmonth = false;
-  private startDate: Date;
+  showmonth = true;
+  public startDate: Date;
+  public startDateStr: string;
+  public monthStr: string;
   dates: Date[] = [];
+  
+  ordersDay: IOrderList [] = [];
+   notAvailbleDay: INotAvailable [] = [];
 
 
   
@@ -52,8 +57,9 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
     
     this.generateCalendarDays(this.monthIndex);
-    console.log(this.calendar);
-    this.getDatesForWeek();
+    this.startDateStr = this.datePipe.transform(new Date(this.startDate), 'dd MMM');
+    this.CheckForDayEvents();
+   
     
   }
 
@@ -152,17 +158,11 @@ export class CalendarComponent implements OnInit {
 
   }
 
-  closeReset()
-  {
-    this.displayEvent = false;
-    //clear selected orders
-    this.selectedOrders = [];
-  }
 
-
+//methods for week view
 
   getDatesForWeek() {
-
+    this.dates = [];
     const endDate = new Date(this.startDate.getTime() + (7 * 24 * 60 * 60 * 1000));
     let currentDate = this.startDate;
     while (currentDate < endDate) {
@@ -172,60 +172,122 @@ export class CalendarComponent implements OnInit {
    
 
   }
-
-
   getNextWeek(): void {
    this.dates = [];
+   this.monthStr = this.datePipe.transform(new Date(this.startDate), 'MMMM');
    this.getDatesForWeek();
   }
 
   getLastWeek(): void {
     this.dates = [];
-
-     this.startDate.setDate(this.startDate.getDate() - 14);
-    
-   
+     this.startDate.setDate(this.startDate.getDate() - 14); 
+     this.monthStr = this.datePipe.transform(new Date(this.startDate), 'MMMM');
      this.getDatesForWeek();
+   }
+   
+   addDay()
+   {
+  
+    this.startDate.setDate(this.startDate.getDate() + 1); 
+    this.startDateStr = this.datePipe.transform(new Date(this.startDate), 'dd MMM');
+    this.CheckForDayEvents();
+ 
+
+   }
+   subtractDay()
+   {
+    this.startDate.setDate(this.startDate.getDate() - 1); 
+    this.startDateStr = this.datePipe.transform(new Date(this.startDate), 'dd MMM');
+    this.CheckForDayEvents();
+
    }
 
    GetToday()
    {
     this.dates = [];
     this.startDate = new Date();
-    this.getDatesForWeek();
+    this.startDateStr = this.datePipe.transform(new Date(this.startDate), 'dd MMM');
+    this.monthStr = this.datePipe.transform(new Date(this.startDate), 'MMMM');
+    if(this.showweek)
+    {
+      this.getDatesForWeek();
 
+    }
+    if(this.showday)
+    {
+      this.CheckForDayEvents();
+
+    }
    }
 
 
   ShowDay()
   {
    this.startDate = new Date();
+   this.CheckForDayEvents();
+    this.startDateStr = this.datePipe.transform(new Date(this.startDate), 'dd MMM');
     this.showday = true;
     this.showweek = false;
     this.showmonth = false;
   }
   ShowWeek()
   {
+    
+    this.startDate = new Date();
+    this.monthStr = this.datePipe.transform(new Date(this.startDate), 'MMMM');
+    this.getDatesForWeek();
+  
     this.showday = false;
     this.showweek = true;
     this.showmonth = false;
 
-    this.generateCalendarDays(this.monthIndex);
   }
   ShowMonth()
   {
     this.showday = false;
     this.showweek = false;
     this.showmonth = true;
-  
-   
     this.generateCalendarDays(this.monthIndex );
   }
 
-  GetNextWeek()
+  closeReset()
   {
-      this.generateCalendarDays(this.monthIndex);
+    this.displayEvent = false;
+    //clear selected orders
+    this.selectedOrders = [];
   }
+
+  CheckForDayEvents()
+  {
+    this.ordersDay = [];
+    this.notAvailbleDay = [];
+    let value = this.datePipe.transform(new Date(this.startDate), 'dd MMM yyyy');
+ 
+    
+    for(var i = 0; i < this.orders.length; i++)
+    {
+
+      if(this.orders[i].formatted_date == value)
+      {
+       
+        this.ordersDay.push(this.orders[i]);
+      }
+    }
+
+    for(var i = 0; i < this.notAvailble.length; i++)
+    {
+
+      if(this.notAvailble[i].TimeStamp == value)
+      {
+       
+        this.notAvailbleDay.push(this.notAvailble[i]);
+      }
+    }
+    
+    
+
+  }
+
 
 
 
