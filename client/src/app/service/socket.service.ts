@@ -28,7 +28,7 @@ export class SocketService {
 
   getAll(){
     return new Promise((resolve,reject)=>{
-      this.http.get(environment.SERVER_URL + '/history').subscribe((result:any)=>{
+      this.http.get(environment.SERVER_URL + '/api/history').subscribe((result:any)=>{
         resolve(result);
       },err=>{
         reject(err);

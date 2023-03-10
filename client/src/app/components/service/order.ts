@@ -3,7 +3,7 @@ export enum EOrderStatus {
     Processing = 'Processing',
     Review = 'Review',
     Canceled = 'Canceled', 
-    Delivered = 'Delivered', 
+    Completed = 'Completed', 
   }
   
   export enum EPaymentStatus{

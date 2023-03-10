@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Directive, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Auth } from 'aws-amplify';
 import { IOrder, IUser } from '../interfaces/form';
+import { EOrderStatus } from '../interfaces/order';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
 import { OrderComponent } from '../order/order.component';
 import { OrderService } from '../service/order.service';
@@ -25,8 +27,10 @@ export class ManageOrdersComponent implements OnInit {
   petOwner: IPetOwner; 
   email: string;
   petsitterisworking: boolean = false;
+  orderSelected: IOrder;
+  @Output() updateStatus = new EventEmitter<string>();
 
-  constructor(private _httpOrder:OrderService,private dialog:MatDialog,  private _router: Router,public authenticator: AuthenticatorService, private _httpUser: UserService) {
+  constructor(private _http: HttpClient, private _httpOrder:OrderService,private dialog:MatDialog,  private _router: Router,public authenticator: AuthenticatorService, private _httpUser: UserService) {
     Auth.currentAuthenticatedUser()
     .then(user => {
       this.userGroup = user.signInUserSession.accessToken.payload["cognito:groups"][0];
@@ -87,12 +91,26 @@ export class ManageOrdersComponent implements OnInit {
     
 }
 
-startWorking(){
-
+startWorking(order:IOrder){
+  this.orderSelected = order; 
   this.petsitterisworking=true; 
+  //Change the order status
+  this.updatePaymentStatus(EOrderStatus.Executing); 
+
 }
-finishWorking(){
+updatePaymentStatus(status: EOrderStatus){
+  this.orderSelected.Status = status; 
+  console.log('the order', this.orderSelected); 
+  this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev', this.orderSelected).subscribe(data => {
+    console.log('my data',data);
+  });
+}
+
+finishWorking(order:IOrder){
+  this.orderSelected = order; 
   this.petsitterisworking=false; 
+  this.updatePaymentStatus(EOrderStatus.Completed); 
+  this.updateStatus.emit('Completed');
 
 }
   // async getOrders() {
