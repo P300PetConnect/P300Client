@@ -64,10 +64,12 @@ public petSitter: IPetSitter;
 onCheckRoute(UserGroup:string){
   if(UserGroup == 'PetOwner'){
     localStorage.setItem('userGroup','PetOwner')
+    this._router.navigateByUrl('search2/search2;service=;location=;pet=');
     this.getPetOwner();
   }
   else if(UserGroup == 'PetSitter'){
-    localStorage.setItem('userGroup','PetSitter')
+    localStorage.setItem('userGroup','PetSitter'); 
+    this._router.navigateByUrl('profile');
     this.getPetSitter();
   }
 }
@@ -78,7 +80,6 @@ async getPetOwner(){
   const petOwner = await this.userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
   this.petOwner = petOwner;
   localStorage.setItem('userEmail', petOwner.emailAddress);
-  this._router.navigateByUrl('search2/search2;service=;location=;pet=');
   } catch (error) {
       console.error(error);
     }
@@ -90,7 +91,6 @@ async getPetOwner(){
       const petSitter = await this.userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
         localStorage.setItem('userEmail', petSitter.emailAddress);
-        this._router.navigateByUrl('profile');
     }catch (error) {
       console.error(error);
     }

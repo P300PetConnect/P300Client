@@ -74,7 +74,7 @@ export class ChatPageComponent implements OnInit {
 
   getPetOwnerDetails(){
     console.log('made a call');
-    this.http.get<IPetOwner>("https://5ugucpgs6k.execute-api.eu-west-1.amazonaws.com/dev/user/"+this.members[0])
+    this.http.get<IPetOwner>("https://5ugucpgs6k.execute-api.eu-west-1.amazonaws.com/dev/user/"+'joannasmith@gmail')
     .subscribe(
       (response: any) => {
         console.log('Received response:', response);

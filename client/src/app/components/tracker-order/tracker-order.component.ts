@@ -129,6 +129,7 @@ ngAfterViewInit(): void {
 
   // tslint:disable-next-line: use-life-cycle-interface
   ngOnInit() {
+
     // this.origin = { lat: 33.60297801899009, lng: 71.25951402963865 };
     // this.destination = { lat: 33.59931642884097, lng: 71.35169618906248 };
     // this.map.getLocation().subscribe((data) => {
@@ -140,6 +141,11 @@ ngAfterViewInit(): void {
     //   this.city = data.city;
     //   this.ip = data.ip;
     // });
+    this.socketService.onNewMessage().subscribe((result:any)=>{
+      console.log('result', result);
+      this.pushRealTime(result?.coordinates)
+      ;
+    })
     this.setCurrentLocation();
     this.getAll();
     // this.getUpdate();
@@ -203,7 +209,7 @@ ngAfterViewInit(): void {
     console.log('this.arr ===>', this.arr);
     let obj = { "orderId" : "1", "userId" : "2", "coordinates": [$event.coords.lat,$event.coords.lng] };
     this.socketService.sendMessage(obj);
-    this.pushRealTime(obj.coordinates);
+    // this.pushRealTime(obj.coordinates);
     // this.markers.push({
     //   lat: $event.coords.lat,
     //   lng: $event.coords.lng,
