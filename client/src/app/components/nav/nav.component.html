@@ -9,7 +9,7 @@
     </button>
     <div class="collapse navbar-collapse  justify-content-end" id="navbarNavAltMarkup">
       <div class="navbar-nav" >
-        <a class="nav-item nav-link active" routerLink="initial">Home <span class="sr-only"></span></a>
+        <a class="nav-item nav-link active" routerLink="/initial">Home <span class="sr-only"></span></a>
         <a class="nav-item nav-link" routerLink="/login">Login</a>
         <a class="nav-item nav-link" routerLink="/Register">Register</a>
         <a class="nav-item nav-link" routerLink="/forum">Forum</a>
@@ -21,7 +21,7 @@
 
 <nav *ngIf="authenticator.user" class="navbar navbar-expand-xl navbar-dark bg-dark">
   <div class="container">
-  <a href="/initial" class="navbar-brand">
+  <a routerLink="/initial"  class="navbar-brand">
     <img src="../../../assets/images/MicrosoftTeams-image (6).png" width="100px" height="100px" alt="">
     Pet<b>Connect</b></a>
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -35,7 +35,7 @@
       </div>
     </form> -->
     <div class="navbar-nav ml-auto">
-      <a href="/initial" class="nav-item nav-link active"><i class="bi bi-house-heart-fill"></i><span>Home</span></a>
+      <a  routerLink="/initial" class="nav-item nav-link active"><i class="bi bi-house-heart-fill"></i><span>Home</span></a>
       <a routerLink="/forum" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link"><i class="bi bi-people-fill"></i><span>Forum</span></a>
       <a routerLink="/orders" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link"><i class="bi bi-receipt"></i><span>Orders</span></a>
       <a href="#" routerLink="/chat" class="nav-item nav-link"><i class="bi bi-chat-text-fill"></i><span>Messages</span></a>
