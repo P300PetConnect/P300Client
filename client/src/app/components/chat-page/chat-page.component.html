@@ -8,15 +8,15 @@
             
                 <div class="col-9 position-relative">
                     <stream-channel>
-                        <div id="header" class="row">
+                        <div class="row" id="header">
                             <stream-channel-header class="col"></stream-channel-header>
-                            <div class="col" *ngIf="group == 'PetSitter'">
-                                <button class="btn btn-secondary" (click)="onCreateOrder()">Create Order</button>
+                            <div class="col d-flex justify-content-center" *ngIf="group == 'PetSitter'">
+                                <button mat-raised-button class="mt-2 mb-2" (click)="onCreateOrder()">Create Order</button>
                             </div>
                         </div>
-                        <stream-message-list></stream-message-list>
+                        <stream-message-list ></stream-message-list>
                         <stream-notification-list style="padding-bottom: 0%;"></stream-notification-list>
-                        <stream-message-input class="pb-3 fixed-bottom"></stream-message-input>
+                        <stream-message-input id="message-input" class="pb-3 fixed-bottom"></stream-message-input>
                         
                     </stream-channel>
                 </div>
