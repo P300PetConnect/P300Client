@@ -22,8 +22,6 @@ export class NavComponent implements OnInit {
   @Input() user: any; 
   public pet: IPet; 
   isLogout:boolean =false; 
-  userInfor:any; 
-
   userEmail: string;
   userGroup: string;
   userFName: string;
@@ -32,7 +30,7 @@ export class NavComponent implements OnInit {
   public petOwner: IPetOwner; 
   public petSitter: IPetSitter; 
   userUrl: string;
-
+  userData: any; 
   constructor( private navigationService: NavigationService,public authenticator: AuthenticatorService, private readonly  _router: Router, private userService: UserService) {
     // Amplify.configure(awsExports);
   }
@@ -41,6 +39,9 @@ export class NavComponent implements OnInit {
       this.userUrl = imageUrl;
       console.log('image',imageUrl); 
 
+    });
+    this.navigationService.getUserSource().subscribe(user => {
+      this.userData = user;
     });
 
     console.log(this.userEmail);

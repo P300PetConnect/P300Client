@@ -1,6 +1,6 @@
 <nav *ngIf="!authenticator.user" class="navbar navbar-expand-lg navbar-light bg-primary p-3">
     <div class="container">
-      <a href="#" class="navbar-brand">
+      <a href="/initial" class="navbar-brand">
         <img src="../../../assets/images/MicrosoftTeams-image (6).png" width="100px" height="100px" alt="">
      Pet<b>Connect</b>
       </a>
@@ -21,7 +21,7 @@
 
 <nav *ngIf="authenticator.user" class="navbar navbar-expand-xl navbar-dark bg-dark">
   <div class="container">
-  <a href="#" class="navbar-brand">
+  <a href="/initial" class="navbar-brand">
     <img src="../../../assets/images/MicrosoftTeams-image (6).png" width="100px" height="100px" alt="">
     Pet<b>Connect</b></a>
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -35,7 +35,7 @@
       </div>
     </form> -->
     <div class="navbar-nav ml-auto">
-      <a href="#" class="nav-item nav-link active"><i class="bi bi-house-heart-fill"></i><span>Home</span></a>
+      <a href="/initial" class="nav-item nav-link active"><i class="bi bi-house-heart-fill"></i><span>Home</span></a>
       <a routerLink="/forum" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link"><i class="bi bi-people-fill"></i><span>Forum</span></a>
       <a routerLink="/orders" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link"><i class="bi bi-receipt"></i><span>Orders</span></a>
       <a href="#" routerLink="/chat" class="nav-item nav-link"><i class="bi bi-chat-text-fill"></i><span>Messages</span></a>
@@ -117,7 +117,7 @@
           <img *ngIf="authenticator?.user?.attributes?.name=='Father'" src="https://i.guim.co.uk/img/media/831ce4428aa017e2d4c9f883be27baeef95ef894/312_237_6076_3644/master/6076.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=e0508d322f18a9230080d1edfd8a5315" class="avatar" alt="Avatar" />
           <img *ngIf="authenticator?.user?.attributes?.name=='Joanna'" src="https://qph.cf2.quoracdn.net/main-qimg-b0cdc0f7a6da0c3a05750b2431450e8b-lq" class="avatar" alt="Avatar" /> -->
           <img src="{{ this.userUrl}}">
-          {{userFName}}    {{userLName}} <b class="caret"></b></a>
+          {{userData?.name}}    {{userData?.surname}} <b class="caret"></b></a>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
         <a  routerLink="/profile" class="dropdown-item" ><i class="bi bi-person pr-3 pt-2"></i>Profile</a>
         <a href="#" class="dropdown-item"><i class="bi bi-receipt-cutoff pr-3 pt-2"></i> Billing</a>

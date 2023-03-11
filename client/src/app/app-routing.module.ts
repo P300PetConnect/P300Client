@@ -30,6 +30,7 @@ const routes: Routes = [
   { path:'form', component:UserformComponent }, 
   { path:'initial', component:InitialPageComponent }, 
   { path:'', component:InitialPageComponent }, 
+  { path:'#', component:InitialPageComponent }, 
   { path:'login', component:LoginComponent },
   { path:'petsitterdetails', component:PetSitterDetailsComponent },
   { path: 'chat', component:ChatPageComponent }, 

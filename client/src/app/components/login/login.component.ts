@@ -83,7 +83,8 @@ async getPetOwner(){
   localStorage.setItem('userEmail', petOwner.emailAddress);
    // Update the pet owner's image URL in the navigation service
    this.navigationService.updateUserImage(this.petOwner?.profilePicUrl);
-console.log(this.navigationService); 
+   this.navigationService.updateUser(this.petOwner);
+
 
   } catch (error) {
       console.error(error);
@@ -97,6 +98,8 @@ console.log(this.navigationService);
         this.petSitter = petSitter;
         localStorage.setItem('userEmail', petSitter.emailAddress);
         this.navigationService.updateUserImage(this.petSitter?.profilePicUrl);
+        this.navigationService.updateUser(this.petSitter);
+
 
     }catch (error) {
       console.error(error);
