@@ -10,9 +10,9 @@ export class NavigationService {
 
   constructor() {}
 
-  public updateUserImage(imageUrl: string) {
-    this.petOwnerImageSource.next(imageUrl);
-  }
+  // public updateUserImage(imageUrl: string) {
+  //   this.petOwnerImageSource.next(imageUrl);
+  // }
   public updateUser(user:any){
     this.user.next(user);
   }
@@ -24,6 +24,6 @@ export class NavigationService {
     return this.petOwnerImageSource.asObservable();
   }
   clear() {
-    this.petOwnerImageSource.next('');
+    this.user.next('');
   }
 }

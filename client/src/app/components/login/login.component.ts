@@ -82,7 +82,7 @@ async getPetOwner(){
   this.petOwner = petOwner;
   localStorage.setItem('userEmail', petOwner.emailAddress);
    // Update the pet owner's image URL in the navigation service
-   this.navigationService.updateUserImage(this.petOwner?.profilePicUrl);
+  //  this.navigationService.updateUserImage(this.petOwner?.profilePicUrl);
    this.navigationService.updateUser(this.petOwner);
 
 
@@ -97,7 +97,7 @@ async getPetOwner(){
       const petSitter = await this.userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
         localStorage.setItem('userEmail', petSitter.emailAddress);
-        this.navigationService.updateUserImage(this.petSitter?.profilePicUrl);
+        // this.navigationService.updateUserImage(this.petSitter?.profilePicUrl);
         this.navigationService.updateUser(this.petSitter);
 
 
