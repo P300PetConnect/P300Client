@@ -10,6 +10,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { NavigationService } from './NavigationService';
 
 @Component({
   selector: 'app-nav',
@@ -30,11 +31,18 @@ export class NavComponent implements OnInit {
   userImageUrl: string;
   public petOwner: IPetOwner; 
   public petSitter: IPetSitter; 
+  userUrl: string;
 
-  constructor( public authenticator: AuthenticatorService, private readonly  _router: Router, private userService: UserService) {
+  constructor( private navigationService: NavigationService,public authenticator: AuthenticatorService, private readonly  _router: Router, private userService: UserService) {
     // Amplify.configure(awsExports);
   }
   ngOnInit() {
+    this.navigationService.getUserImageSource().subscribe(imageUrl => {
+      this.userUrl = imageUrl;
+      console.log('image',imageUrl); 
+
+    });
+
     console.log(this.userEmail);
     this.userGroup = localStorage.getItem('userGroup')
     // console.log(this.authenticator.user); 
@@ -56,6 +64,7 @@ export class NavComponent implements OnInit {
 
   async Logout() {
     this.isLogout = true; 
+    this.navigationService.clear();
     this.authenticator?.signOut()
 
     this._router.navigate(['/login'])
