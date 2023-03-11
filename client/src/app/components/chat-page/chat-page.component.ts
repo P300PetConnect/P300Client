@@ -61,6 +61,7 @@ export class ChatPageComponent implements OnInit {
               this.petOwnerEmail =  member.user.id; 
               this.members.push(member.user.id);
             });
+            console.log('Other user ID:', this.members[1]);
             //get petownerdetails
             this.getPetOwnerDetails();
 
@@ -74,7 +75,7 @@ export class ChatPageComponent implements OnInit {
 
   getPetOwnerDetails(){
     console.log('made a call');
-    this.http.get<IPetOwner>("https://5ugucpgs6k.execute-api.eu-west-1.amazonaws.com/dev/user/"+this.members[0])
+    this.http.get<IPetOwner>("https://5ugucpgs6k.execute-api.eu-west-1.amazonaws.com/dev/user/"+this.members[1])
     .subscribe(
       (response: any) => {
         console.log('Received response:', response);
