@@ -7,6 +7,7 @@ import { UserService } from '../service/user.service';
 import { IUser } from '../interfaces/form';
 import { NavComponent } from '../nav/nav.component';
 import { IPetOwner, IPetSitter } from '../interfaces/users';
+import {NavigationService} from '../../components/nav/NavigationService'
 
 
 @Component({
@@ -25,7 +26,7 @@ userEmail: string;
 public petOwner: IPetOwner; 
 public petSitter: IPetSitter; 
 
-  constructor(private _router: Router, public authenticator: AuthenticatorService, private userService: UserService ) {
+  constructor( private navigationService: NavigationService, private _router: Router, public authenticator: AuthenticatorService, private userService: UserService ) {
     // Amplify.configure(awsExports);
    
     // Auth.currentAuthenticatedUser()
@@ -68,7 +69,7 @@ onCheckRoute(UserGroup:string){
     this.getPetOwner();
   }
   else if(UserGroup == 'PetSitter'){
-    localStorage.setItem('userGroup','PetSitter'); 
+    localStorage.setItem('userGroup','PetSitter')
     this._router.navigateByUrl('profile');
     this.getPetSitter();
   }
@@ -80,6 +81,10 @@ async getPetOwner(){
   const petOwner = await this.userService.get_petowner(this.authenticator?.user?.attributes?.email).toPromise()
   this.petOwner = petOwner;
   localStorage.setItem('userEmail', petOwner.emailAddress);
+   // Update the pet owner's image URL in the navigation service
+   this.navigationService.updateUserImage(this.petOwner?.profilePicUrl);
+console.log(this.navigationService); 
+
   } catch (error) {
       console.error(error);
     }
@@ -91,6 +96,8 @@ async getPetOwner(){
       const petSitter = await this.userService.get_petsitter(this.authenticator?.user?.attributes?.email).toPromise()
         this.petSitter = petSitter;
         localStorage.setItem('userEmail', petSitter.emailAddress);
+        this.navigationService.updateUserImage(this.petSitter?.profilePicUrl);
+
     }catch (error) {
       console.error(error);
     }
@@ -118,4 +125,3 @@ async getPetOwner(){
   //   //   console.log(error); 
   //   // }
   //   // }
-
