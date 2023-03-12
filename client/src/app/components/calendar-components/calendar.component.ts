@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Console } from 'console';
 import { INotAvailable, IOrderList } from 'src/app/interfaces/order';
-import { OrderService } from 'src/app/components/service/order.service';
+import { OrderService } from '../../service/order.service';
 import { CalendarDay, event} from '../calender-class/cal-class'
 
 

@@ -21,7 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { UserformComponent } from './components/userform/userform.component';
 import { CognitoGuard } from './cognito.guard';
-import { UserService } from './components/service/user.service';
+import { UserService } from '../app/service/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertmsgComponent } from './shared-components/alertmsg/alertmsg.component';  
 import { DialogComponent } from './components/dialog/dialog.component';
@@ -91,7 +91,7 @@ import { SearchSitterServicesComponent } from './components/search-sitter-servic
 import { OrderComponent } from './components/order/order.component';
 import { ReviewFormComponent } from './components/ReviewComponents/review-form/review-form.component';
 import { ReviewComponent } from './components/ReviewComponents/review/review.component';
-import { InterceptorService } from './components/service/interceptor.service';
+import { InterceptorService } from '../app/service/interceptor.service';
 import { ChatPageComponent } from './components/chat-page/chat-page.component';
 import { MessageInputComponent } from './shared-components/message-input/message-input.component';
 import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
