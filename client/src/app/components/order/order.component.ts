@@ -38,7 +38,11 @@ export class OrderComponent implements OnInit {
       PaymentStatus: new FormControl(''),
       PetSelected: new FormControl(''),
       CreatedBy: new FormControl(''),
-      // service: new FormControl('')
+      // service: new FormControl(''),
+      OrderStartDate: new FormControl(''),
+      OrderEndDate: new FormControl(''),
+      StartTime: new FormControl(''),
+      EndTime: new FormControl(''),
 
     });
 
@@ -61,6 +65,8 @@ selectedCategories: any;
   orderForm: FormGroup = new FormGroup({});
   message: string;
   petSitter: IPetSitter;
+  picker2:any;
+  picker: any
   serviceCategory: any[];
   petCategory = JSON.parse(localStorage.getItem('petDetails'));
   serviceSelected: any;
@@ -185,27 +191,51 @@ add(event: MatChipInputEvent): void {
     this.AddOrder.controls['CreatedBy'].setValue(eUserGroup.PetSitter);
   }
 
-  this.db.addOrder(this.AddOrder).subscribe({
-    next: order => {
-      console.log(JSON.stringify(order) + 'order added');
-      this.message = "list added";
+  let startDate = new Date(this.AddOrder.controls['OrderStartDate'].value)
+  let endDate = new Date(this.AddOrder.controls['OrderEndDate'].value)
+  let startTime = this.AddOrder.controls['StartTime'].value
+  let endTime = this.AddOrder.controls['EndTime'].value
+ // alert(startDate);
+ 
+  const [hours, minutes] = startTime.split(':');
+  const [hours2, minutes2] = endTime.split(':');
+
+  startDate.setHours(parseInt(hours), parseInt(minutes));
+  endDate.setHours(parseInt(hours2), parseInt(minutes2));
       //send email when order is placed
       this.emailService.sendOrderPlacedEmail().subscribe(
         data => console.log('Email Sent!', data),
         error => console.log('Error Sending Email!', error)
       );
-      },
-    error: (err) => this.message = err
-  });
-  console.log('myfomr', this.AddOrder); 
+
+// const startDateStr = startDate.toLocaleString([], { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false });
+  const startDateStr = startDate.toUTCString();
+  const endDateStr = endDate.toUTCString();
+
+ 
+//sets the new timestamps as form values
+  this.AddOrder.controls['OrderStartDate'].setValue(startDateStr);
+  this.AddOrder.controls['OrderEndDate'].setValue(endDateStr);
 
 
-  this._router.routeReuseStrategy. shouldReuseRoute = () => false;
-  this._router.onSameUrlNavigation = 'reload';
+  console.log(this.AddOrder.value);
 
-    this._router.navigate(['/orders']);
-   //reload screen 
-   this.dialog.closeAll();
+  // this.db.addOrder(this.AddOrder).subscribe({
+  //   next: order => {
+  //     console.log(JSON.stringify(order) + 'order added');
+  //     this.message = "list added";
+  //      },
+  //   error: (err) => this.message = err
+  // });
+  // console.log('myfomr', this.AddOrder); 
+
+
+  // this._router.routeReuseStrategy. shouldReuseRoute = () => false;
+  // this._router.onSameUrlNavigation = 'reload';
+
+  //   this._router.navigate(['/orders']);
+  //  //reload screen 
+  //  this.dialog.closeAll();
 
 }
 
