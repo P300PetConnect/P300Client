@@ -59,6 +59,10 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MessageAlertComponent } from './components/message-alert/message-alert.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+// import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
+// import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+
+
 import { AgmCoreModule } from "@agm/core";
 import { SocketService } from './service/socket.service';
 import { AgmDirectionModule } from 'agm-direction';
@@ -102,6 +106,8 @@ import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-
 import { EmailService } from './components/service/email.service';
 import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
 const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnswyJACAdgPdcdX4rsSq6k";
+// import { Cal2Component } from './components/cal2/cal2.component';
+// import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 
 @NgModule({
   declarations: [
@@ -121,6 +127,8 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
     ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent, TrackerOrderComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, 
+    // Cal2Component
   ],
   imports: [
     
@@ -188,6 +196,14 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     AuthenticatorService, CognitoGuard, UserService, EmailService, SocketService],
+    AuthenticatorService, CognitoGuard, UserService, EmailService, SocketService, CognitoGuard, UserService,
+    // DayService, 
+    // WeekService, 
+    // WorkWeekService, 
+    // MonthService,
+    // AgendaService,
+    // MonthAgendaService
+  ],
   bootstrap: [AppComponent], 
   entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent],   
   schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
