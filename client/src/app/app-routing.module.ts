@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import { CalendarComponent } from './components/calendar-components/calendar/calendar.component';
+import { CalendarComponent } from './components/calendar-components/calendar.component';
 import { CognitoGuard } from './cognito.guard';
 import { ChatPageComponent } from './components/chat-page/chat-page.component';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';

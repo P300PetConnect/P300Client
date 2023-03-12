@@ -82,7 +82,7 @@ import { SearchContainerComponent } from './components/search_service_components
 import { PopServiceCardComponent } from './components/search_service_components/pop-service-card/pop-service-card.component';
 import { BottomInfoComponent } from './components/search_service_components/bottom-info/bottom-info.component';
 import { SearchResultsComponent } from './components/search_service_components/search-results/search-results.component';
-import { CalendarComponent } from './components/calendar-components/calendar/calendar.component';
+import { CalendarComponent } from './components/calendar-components/calendar.component';
 import { ChunkPipe } from './components/calender-pipe/chunk.pipe';
 import { SearchVersion2Component } from './components/search-version2/search-version2.component';
 import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
