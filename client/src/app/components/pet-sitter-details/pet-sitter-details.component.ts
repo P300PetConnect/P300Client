@@ -52,6 +52,7 @@ export class PetSitterDetailsComponent implements OnInit {
   averageRoundStars: number;
 
   orders:IOrderList[] = [];
+  datesToGray : Date[] = [];
   notAvailble:INotAvailable[] = [];
   componentFlag = "searchProfile";
 
@@ -126,6 +127,7 @@ export class PetSitterDetailsComponent implements OnInit {
     this.getPetSitter(Number(this.userID));
     this.GetOrders(Number(this.userID));
     this.GetnotAvailable(Number(this.userID));
+  
 
     console.log(this.petSitter);
  
@@ -157,6 +159,8 @@ export class PetSitterDetailsComponent implements OnInit {
 //     }); 
 //     return false; 
 //   }
+
+
 
 onCreateOrder(){
   // this._userService.initializeFormGroup(); 
@@ -230,10 +234,13 @@ onCreateOrder(){
       next: (value: ServiceInterface[] )=> this.serviceList = value,
       complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
       error: (mess) => this.message = mess
+      
     })
     return false;
 
   }
+
+
 
   GetOrders(id: number)
   {
@@ -316,17 +323,7 @@ onCreateOrder(){
     // Otherwise, enable the date
     return true;
   }
-  shouldApplyClass = (date: Date): string => {
-    // Check if the date is selected
-    if (this.DATES_TO_DISABLE.some(selectedDate =>
-      this.dateAdapter.compareDate(date, selectedDate) === 0
-    )) {
-      return 'selected-date';
-    }
-  
-    // Otherwise, do not apply a class
-    return '';
-  }
+
 
   
 
