@@ -95,14 +95,54 @@
                   </mat-form-field>
               </div>
             </div>
-            <div class="col-3 p-0">
-              <mat-form-field class="col-12 col-sx-12"  appearance="outline">
-                <mat-label for="OrderDate">Date of the service </mat-label>
-                <input matInput [matDatepicker]="picker"  id="OrderDate" formControlName="OrderDate">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker
-                ></mat-datepicker>
-              </mat-form-field>
+            
+          </div>
+          <div class="row pt-2">
+            <div class="col-4">
+              <h6>Order Dates</h6>
+              <p>
+                Please insert the start and end date of the service </p>
+            </div>
+            <div class="col-3">
+              <div class="row">
+                <!-- <mat-form-field class="col-12 col-sx-12"  appearance="outline">
+                  <mat-label for="OrderStartDate">Start Date of the service </mat-label>
+                  <input matInput [matDatepicker]="picker"  id="OrderStartDate" formControlName="OrderStartDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker 
+                  ></mat-datepicker>
+                  
+                </mat-form-field>
+                <mat-form-field class="col-12 col-sx-12"  appearance="outline">
+                  <mat-label for="OrderEndDate">End Date of the service </mat-label>
+                  <input matInput [matDatepicker]="picker2"  id="OrderEndDate" formControlName="OrderEndDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2
+                  ></mat-datepicker>
+                </mat-form-field> -->
+
+                <mat-form-field>
+                  <mat-label>Order Start Time</mat-label>
+                  <input matInput [matDatepicker]="startDatepicker"  formControlName="OrderStartDate" >
+                  <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+                  <mat-datepicker #startDatepicker></mat-datepicker>
+                  <input matInput type="time" placeholder="Time" formControlName="StartTime">
+                </mat-form-field>
+
+               
+                
+              </div>
+            </div>
+            <div class="col-3">
+              <div class = "row align-items-center">
+                <mat-form-field>
+                  <mat-label>Order End Time</mat-label>
+                  <input matInput [matDatepicker]="endDatepicker"  formControlName="OrderEndDate">
+                  <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>
+                  <mat-datepicker #endDatepicker></mat-datepicker>
+                  <input matInput type="time" placeholder="Time" formControlName="EndTime">
+                </mat-form-field>
+            </div>
             </div>
           </div>
         <div class="row pt-4">
