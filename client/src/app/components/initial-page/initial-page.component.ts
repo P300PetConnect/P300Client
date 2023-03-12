@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TestBed } from '@angular/core/testing';

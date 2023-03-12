@@ -103,7 +103,7 @@ import { BrowseRouteComponent } from './components/browse-route/browse-route.com
 import { RecognitionComponent } from './components/recognition/recognition.component';
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
-import { EmailService } from './components/service/email.service';
+import { EmailService } from './service/email.service';
 import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
 const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnswyJACAdgPdcdX4rsSq6k";
 // import { Cal2Component } from './components/cal2/cal2.component';

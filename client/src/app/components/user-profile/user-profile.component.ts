@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserService } from 'src/app/components/service/user.service';
+import { UserService } from '../../service/user.service';
 import { IUser, IPet} from 'src/app/interfaces/form';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -9,14 +9,14 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
 import { eUserGroup, IPetOwner, IPetSitter } from '../../interfaces/users';
-import { PetService } from '../service/pet.service';
+import { PetService } from '../../service/pet.service';
 import { ReviewService } from 'src/app/components/Review-services/review.service';
 import { Review } from 'src/app/components/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
 import { SearchServiceService } from 'src/app/service/search-service.service';
 import { ServiceInterface } from 'src/app/interfaces/service-interface';
 import { INotAvailable, IOrderList } from '../../interfaces/order';
-import { OrderService } from '../service/order.service';
+import { OrderService } from '../../service/order.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

@@ -6,7 +6,7 @@ import { RdsUserServices } from 'src/app/interfaces/rds-user-services';
 import { SearchServiceService } from 'src/app/service/search-service.service';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-search-sitter-services',

@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
 import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
 import { IPetOwner } from '../../interfaces/users';
 import { OrderComponent } from '../order/order.component';
-import { PetService } from '../service/pet.service';
-import { UserService } from '../service/user.service';
+import { PetService } from '../../service/pet.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-chat-page',

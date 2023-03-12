@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {  FormGroup } from '@angular/forms';
 import { catchError, Observable, tap } from 'rxjs';
-import { IOrder } from '../../interfaces/form';
+import { IOrder } from '../interfaces/form';
 import { environment } from "src/environments/environment";
-import { INotAvailable, IOrderList } from '../../interfaces/order';
+import { INotAvailable, IOrderList } from '../interfaces/order';
 
 
 @Injectable({

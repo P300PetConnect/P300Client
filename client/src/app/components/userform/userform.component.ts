@@ -1,13 +1,13 @@
 import { UntypedFormGroup } from '@angular/forms';
 import { IUser } from '../../interfaces/form';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {Location, Appearance, GermanAddress} from '@angular-material-extensions/google-maps-autocomplete';
 import {} from "googlemaps";
 import { Container, EnterExitLeft, EnterExitRight } from './enterexitleft';
 import PlaceResult = google.maps.places.PlaceResult;
-import { PetService } from '../service/pet.service';
+import { PetService } from '../../service/pet.service';
 import { IPetOwner } from '../../interfaces/users';
 
 @Component({

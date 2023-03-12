@@ -9,15 +9,15 @@ import { MessageAlertComponent } from '../../shared-components/message-alert/mes
 import { MatStepper } from '@angular/material/stepper';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { OrderService } from '../service/order.service';
-import { UserService } from '../service/user.service';
+import { OrderService } from '../../service/order.service';
+import { UserService } from '../../service/user.service';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { IPetCategory, EOrderStatus, EPaymentStatus } from '../../interfaces/order';
 import { Router } from '@angular/router';
 import { eUserGroup, IPetSitter } from '../../interfaces/users';
 import { IPet } from '../../interfaces/form';
-import { PetService } from '../service/pet.service';
-import { EmailService } from '../service/email.service';
+import { PetService } from '../../service/pet.service';
+import { EmailService } from '../../service/email.service';
 
 @Component({
   selector: 'app-order',

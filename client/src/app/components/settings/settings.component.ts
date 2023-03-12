@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserService } from 'src/app/components/service/user.service';
+import { UserService } from '../../service/user.service';
 import { IUser, IPet} from 'src/app/interfaces/form';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';

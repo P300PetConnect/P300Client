@@ -5,8 +5,8 @@ import { EOrderStatus, EPaymentStatus } from '../../interfaces/order';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { MessageAlertComponent } from '../../shared-components/message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
-import { OrderService } from '../service/order.service';
-import { EmailService } from '../service/email.service';
+import { OrderService } from '../../service/order.service';
+import { EmailService } from '../../service/email.service';
 import { C } from '@angular/cdk/keycodes';
 
 @Component({

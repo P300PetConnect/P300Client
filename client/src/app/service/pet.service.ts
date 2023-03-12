@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError, Observable, of, tap, throwError } from 'rxjs'
-import { IPet } from '../../interfaces/form';
+import { IPet } from '../interfaces/form';
 import { map } from 'rxjs/operators';
 import { ok } from 'assert';
 

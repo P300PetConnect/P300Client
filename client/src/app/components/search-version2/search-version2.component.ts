@@ -5,7 +5,7 @@ import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { RdsUserServices } from 'src/app/interfaces/rds-user-services';
 import { SearchServiceService } from 'src/app/service/search-service.service';
 import { IPet } from '../../interfaces/form';
-import { PetService } from '../service/pet.service';
+import { PetService } from '../../service/pet.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PetComponent } from '../pet/pet.component';
 import { MapsAPILoader } from '@agm/core';
@@ -13,7 +13,7 @@ import { GeocodingService } from '../geocoding.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import { IPetOwner } from '../../interfaces/users';
 import { ConsoleLogger } from '@aws-amplify/core';
 

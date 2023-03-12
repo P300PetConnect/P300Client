@@ -8,8 +8,8 @@ import { IOrder, IUser } from '../../interfaces/form';
 import { EOrderStatus } from '../../interfaces/order';
 import { IPetOwner, IPetSitter } from '../../interfaces/users';
 import { OrderComponent } from '../order/order.component';
-import { OrderService } from '../service/order.service';
-import { UserService } from '../service/user.service';
+import { OrderService } from '../../service/order.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-manage-orders',
