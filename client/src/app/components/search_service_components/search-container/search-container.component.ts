@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ServiceInterface } from 'src/app/Interfaces/search_service_interfaces/service-interface';
-import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
+import { ServiceInterface } from 'src/app/Interfaces/service-interface';
+import { SearchServiceService } from 'src/app/service/search-service.service';
 import { RdsUserServices } from 'src/app/Interfaces/search_service_interfaces/rds-user-services';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
