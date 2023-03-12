@@ -107,6 +107,12 @@ export class UserProfileComponent implements OnInit {
     }
     
   }
+  refreshNA()
+  {
+    alert("test");
+    this.GetnotAvailable(this.petSitter.id);
+
+  }
 
   GetOrders(id: number)
   {

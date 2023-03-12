@@ -52,7 +52,7 @@
 
                     </div>
                     <div class = "row text-center px-5">
-                      <button class = "btn btn-danger btn-sm">Delete</button>
+                      <button class = "btn btn-danger btn-sm" (click)="DeleteNot(a.NotAvailbleID)" >Delete</button>
 
                     </div>
                       
@@ -61,9 +61,6 @@
                   <div class="col-4">
                     <img  src="../../../assets/images/notAvailable.png" class="img-fluid "  style="width: 25%;">
                 </div>
-                    
-                      
-                
                 </div>
                 </div>
               </div>
@@ -71,7 +68,7 @@
 
           </div>
           <div *ngIf="ordersDay.length > 0">
-            <div class="col-md-12 col-xl-12 " *ngFor="let o of ordersDay">
+            <div class="col-md-12 col-xl-12 " *ngFor="let o of ordersDay" (click)=" ChangeRoute()">
               <div class="test card mb-3" >
                 <div class="card-body text-center booking">
                 <div class="row align-items-center">
@@ -107,11 +104,18 @@
                         </picture>
                     </div>
                     <div class="text-center" >
-                      <h6>{{o.UserTitle}}</h6>
-                      <h6 style="border-bottom: 1px solid black;" class = "pb-2"><small>{{o.ServiceTitle}}</small></h6>
+                      <h5>{{o.UserTitle}}</h5>
+                      <h5 style="border-bottom: 1px solid black;" class = "pb-2"><small>{{o.ServiceTitle}}</small></h5>
                       <div class = "d-flex justify-content-center align-content-middle">
-                        <label for="price"> <small>Payment:&nbsp;</small> </label>
-                        <p><small> {{o.Price}}</small></p>
+                        <label for="price"> Payment:&nbsp; </label>
+                        <p> €{{o.Price.slice(1)}}</p>
+                       
+
+                    </div>
+                    <div class = "row">
+                      <h5> <small><span class="font-weight-bold">Start Date:</span> {{o.OrderStartDate | date: 'dd MMM yyyy , h:mm a'}}</small></h5>
+                      <h5> <small> <span class="font-weight-bold">End Date:</span>  {{o.OrderEndDate | date: 'dd MMM yyyy , h:mm a'}}</small></h5>
+                      <h5> <small><span class="font-weight-bold">Duration:</span> {{getTimeDifference(o.OrderStartDate,o.OrderEndDate)}}</small></h5>
 
                     </div>
                     </div>
@@ -129,21 +133,13 @@
           <div class="col-md-12 col-xl-12">
             <div class="test card mb-3" >
               <div class="card-body text-center ">
-              <div class="row align-items-center">
-                  <div class="col-4">
-                      <img  src="../../../assets/images/MicrosoftTeams-image (6).png" class="img-fluid " width="100" height="100">
-                  </div>
-                  <div class="col-4 ">
+              <div class="row align-items-center justify-content-center">
+                 
+                  <div class="col-4 p-3">
                   
                     <h4>No Events Today</h4>
                   
                   </div>
-                <div class="col-4">
-                  <img  src="../../../assets/images/MicrosoftTeams-image (6).png" class="img-fluid " width="100" height="100">
-              </div>
-                  
-                    
-              
               </div>
               </div>
             </div>
@@ -156,7 +152,7 @@
   <div *ngIf="showweek">
     <table class='calendar-table table'>
       <tbody>
-        <tr *ngFor="let d of dates">
+        <tr *ngFor="let d of dates" >
         <th>
             <div class = "row p-1">
               <div class = "col-4">
@@ -166,14 +162,14 @@
               </div>
               <div class = "col-8">
                 <div class = "d-flex justify-content-center"  >
-                  <div *ngIf="isObjectInArray(d | date: 'dd MMM yyyy')" class = "bookingWeek">
+                  <div *ngIf="isObjectInArray(d | date: 'dd MMM yyyy')" class = "bookingWeek" (click) = "setValues(d)">
                     <div class = "d-flex justify-content-center align-items-center">
                       <i class="bi bi-calendar-check-fill mr-3"></i>
                     <h6>Booking</h6>
                     <i class="bi bi-calendar-check-fill ml-3"></i>
                     </div>
                 </div>
-                  <div *ngIf="isObjectInArray2(d | date: 'dd MMM yyyy')" class = "notWeek" >
+                  <div *ngIf="isObjectInArray2(d | date: 'dd MMM yyyy')" class = "notWeek"  (click) = "setNotAvailable(d)" >
                     <div class = "d-flex justify-content-center align-items-center">
                     <i class="bi bi-x-square-fill mr-2"></i>
                    <h6>Not available</h6>
@@ -189,10 +185,6 @@
                       <img  src="../../../assets/images/MicrosoftTeams-image (6).png" class="img-fluid ml-1" width="50" height="50">
 
                     </div>
-                
-               
-                  
-
                  </div>
                </div>
                </div>
@@ -242,7 +234,7 @@
                   {{monthNames[c.date.getMonth()]}}
                 </strong>
                 <div class = "row justify-content-center">
-                  <img src="../../../assets/images/notAvailable.png" class="mt-2 mb-2" style = "width: 45px;">
+                  <img src="../../../assets/images/notAvailable.png" class="mt-2 mb-2"  (click) = "setNotAvailable(c.date)" style = "width: 45px;">
                 </div>
                 
               </div>
@@ -266,85 +258,128 @@
 
 
   <div *ngIf="displayEvent" class = "modal-Background">
-    <div class="modal-content">
+    <div class="modal-content p-5" style="padding: 0 5%;">
+      <Button class = "btn btn-danger position-absolute top-0 end-0 mb-3" (click)="closeReset()" >&#10005;</Button>
        
-        <div >
-          <div class="card" >
-              <div class="card-header">
-                <Button class = "btn btn-danger position-absolute top-0 end-0" (click)="closeReset()" >&#10005;</Button>
-                  <div class="row m-3" *ngFor="let s of selectedOrders" style="border: 1px solid black;">
-                      <div class="col-2">
-                          <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
-                              <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
-                            </picture>
-                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
-                              <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
-                            </picture>
-                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
-                              <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                            </picture>
-                            <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
-                              <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
-                            </picture>
+      <div class="col-md-12 col-xl-12 " *ngFor="let o of selectedOrders" (click)=" ChangeRoute()">
+        <div class="test card mb-3" >
+          <div class="card-body text-center booking">
+          <div class="row align-items-center">
           
-                      </div>
-                      <div class="col-4">
-                          <h5 class="text-decoration-underline">{{s.ServiceTitle}}</h5>
-                          <small>{{s.OrderStartDate}}</small>
-          
-                      </div>
-                      
-               
-              <div class="card-body">
-               
-                <div class = "d-flex align-items-start" >
-                  <img src="{{s.Profile_Pic_URL}}" class="img-fluid rounded-circle mb-2" width="100" height="100" alt="">
-
-                  <div class="col">
-                    <div class="row">
-                      <p>{{s.Name}} {{s.Surname}}</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-               
-                      <p>{{s.Line_2}}, {{s.County}}</p>
-                     
-                    </div>
-                    <div class="d-flex justify-content-between">
-               
-                      <p>{{s.OrderStartDate}} - {{s.OrderEndDate}}</p>
-                     
-                    </div>
-
+              <div class="col-2">
+                  <img src="{{o.Profile_Pic_URL}}"  class="img-fluid rounded-circle mb-2" width="100" height="100">
+              </div>
+              <div class="col-4 text-left">
+                  <div class="d-flex justify-content-between">
+                          <h5>{{o.Name}} {{o.Surname}}</h5>
 
                   </div>
-                  <div class="col">
-                    <div class="row">
-                      <p>{{s.Description}}</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-               
-                      <p>Price: {{s.Price}}</p>
-                     
-                    </div>
-
-                  </div>
+                  <div class="d-flex justify-content-between">
                   
+                    <p>{{o.Line_2}}, {{o.County}}</p>
+                  
+                  </div>
+            </div>
+            <div class = "col-6">
+              <div class = "d-flex justify-content-center align-content-middle">
+                <div class="col-2">
+                  <picture class="align-initial pr-3" *ngIf="o.ServiceTitle.includes(picKeyWords[1])">
+                    <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+                  <picture class="align-initial pr-3" *ngIf="o.ServiceTitle.includes(picKeyWords[0])">
+                    <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+                  <picture class="align-initial pr-3" *ngIf="o.ServiceTitle.includes(picKeyWords[3])">
+                    <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+                  <picture class="align-initial pr-3" *ngIf="o.ServiceTitle.includes(picKeyWords[2])">
+                    <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
+                  </picture>
+              </div>
+              <div class="text-center" >
+                <h5>{{o.UserTitle}}</h5>
+                <h5 style="border-bottom: 1px solid black;" class = "pb-2"><small>{{o.ServiceTitle}}</small></h5>
+                <div class = "d-flex justify-content-center align-content-middle">
+                  <label for="price"> Payment:&nbsp; </label>
+                  <p> €{{o.Price.slice(1)}}</p>
+                 
 
-                </div>
-                
+              </div>
+              <div class = "row">
+                <h5> <small><span class="font-weight-bold">Start Date:</span> {{o.OrderStartDate | date: 'dd MMM yyyy , h:mm a'}}</small></h5>
+                <h5> <small> <span class="font-weight-bold">End Date:</span>  {{o.OrderEndDate | date: 'dd MMM yyyy , h:mm a'}}</small></h5>
+                <h5> <small><span class="font-weight-bold">Duration:</span> {{getTimeDifference(o.OrderStartDate,o.OrderEndDate)}}</small></h5>
+
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
                <div class="d-flex justify-content-center align-items-center">
                 <a (click)="ChangeRoute()" class="btn btn-success">More Info</a>
                </div>
              
               </div>
             </div>
-          </div>
-      </div>
-    </div>
+
+            <div *ngIf="displayNotAvailable" class = "modal-Background">
+              <div class="modal-content p-5" style="padding: 0 5%;">
+                <Button class = "btn btn-danger position-absolute top-0 end-0 mb-3" (click)="closeReset()" >&#10005;</Button>
+             
+                <div class="col-md-12 col-xl-12 " *ngFor="let a of notAvailbleDay">
+               
+                  <div class="test card mb-3" >
+                    <div class="card-body text-center">
+                    <div class="row align-items-center">
+                      <div class="col-4">
+                        <img  src="../../../assets/images/notAvailable.png" class="img-fluid " style="width: 25%;">
+                    </div>
+                    <div class="col-4 ">
+                    <div class = "row text-center">
+                      <h4>Not Available</h4>
+
+                    </div>
+                    <div class = "row text-center">
+                      <h6>Note: {{a.Note}}</h6>
+
+                    </div>
+                    <div class = "row text-center px-5">
+                      <button class = "btn btn-danger btn-sm" (click)="DeleteNot(a.NotAvailbleID)">Delete</button>
+
+                    </div>
+                      
+                    
+                    </div>
+                  <div class="col-4">
+                    <img  src="../../../assets/images/notAvailable.png" class="img-fluid "  style="width: 25%;">
+                </div>
+                    
+                    
+                    </div>
+                  </div>
+                </div>
+          
+              </div>
+              </div>
+              </div>
+                            
+          
+                         
+                       
+                          
+                        
+                       
+    
+
 
    
-</div>
-</div>
+
+
 
 
   
