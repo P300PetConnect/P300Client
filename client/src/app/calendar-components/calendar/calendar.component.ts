@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Console } from 'console';
 import { INotAvailable, IOrderList } from 'src/app/components/interfaces/order';
+import { OrderService } from 'src/app/components/service/order.service';
 import { CalendarDay, event} from '../../calender-class/cal-class'
 
 
@@ -17,7 +18,7 @@ export class CalendarComponent implements OnInit {
   // constructor(private datePipe: DatePipe) {
 
   // }
-  constructor(private datePipe: DatePipe, private router: Router) { 
+  constructor(private datePipe: DatePipe, private router: Router, private _order: OrderService) { 
     this.startDate = new Date();
   }
 
@@ -26,10 +27,13 @@ export class CalendarComponent implements OnInit {
   private monthIndex: number = 0;
   selectedOrders: IOrderList [] = [];
   displayEvent = false;
+  displayNotAvailable = false;
+  message: any;
   
   @Input() orders: IOrderList [] = [];
   @Input() notAvailble: INotAvailable [] = [];
   @Input() componentFlag: string;
+  @Output() deleteNA = new EventEmitter();
 
   showday = false;
   showweek = false;
@@ -140,11 +144,6 @@ export class CalendarComponent implements OnInit {
   {
     //gets date from clicked on event, matches it to the order list
     value = new Date(value).toDateString();
-
-  
-
-    console.log("Heeeeeeeere"+JSON.stringify(this.orders))
- 
     for(var i = 0; i < this.orders.length; i++)
     {
       let d =  new Date(this.orders[i].OrderStartDate).toDateString();
@@ -265,39 +264,135 @@ export class CalendarComponent implements OnInit {
   closeReset()
   {
     this.displayEvent = false;
-    //clear selected orders
+   this.displayNotAvailable = false;
     this.selectedOrders = [];
+  }
+
+  DisplayEventsWeek()
+  {
+    this.displayEvent = true;
+    this.CheckForDayEvents
   }
 
   CheckForDayEvents()
   {
     this.ordersDay = [];
     this.notAvailbleDay = [];
-    let value = this.datePipe.transform(new Date(this.startDate), 'dd MMM yyyy');
- 
-    
+    let value = new Date(this.startDate).toDateString();
+    let valueNot = this.datePipe.transform(new Date(this.startDate), 'dd MMM yyyy')
+  
+
     for(var i = 0; i < this.orders.length; i++)
     {
+      let d =  new Date(this.orders[i].OrderStartDate).toDateString();
 
-      if(this.orders[i].formatted_date == value)
+      if(d == value)
       {
        
         this.ordersDay.push(this.orders[i]);
       }
     }
 
+
     for(var i = 0; i < this.notAvailble.length; i++)
     {
-
-      if(this.notAvailble[i].TimeStamp == value)
+      if(this.notAvailble[i].TimeStamp == valueNot)
       {
-       
+    
         this.notAvailbleDay.push(this.notAvailble[i]);
       }
     }
     
-    
+    if(this.ordersDay.length > 1)
+    {
+      this.ordersDay.sort((a, b) => new Date(a.OrderStartDate).getTime() - new Date(b.OrderStartDate).getTime());
 
+    }
+
+  }
+  GetNotAvaiable()
+  {
+
+  }
+
+  setNotAvailable(value: string)
+  {
+    this.notAvailbleDay = [];
+
+    let valueNot = this.datePipe.transform(new Date(value), 'dd MMM yyyy')
+
+    for(var i = 0; i < this.notAvailble.length; i++)
+    {
+      if(this.notAvailble[i].TimeStamp == valueNot)
+      {
+    
+        this.notAvailbleDay.push(this.notAvailble[i]);
+      }
+    }
+    
+    this.displayNotAvailable = true;
+  }
+
+  DeleteNot(id: string)
+  {
+    this._order.DeleteItem(id).subscribe({
+      next: nAvailable => {
+        console.log(JSON.stringify(nAvailable) + 'nAvailable removed');
+        this.message = "not avail removed";
+          
+         },
+      error: (err) => this.message = err
+    });
+
+    this.displayNotAvailable = false;
+    this.deleteNA.emit();
+
+  }
+
+  
+
+  getTimeDifference(timestamp1: string, timestamp2: string): string {
+    let returnString = '';
+    const date1 = new Date(timestamp1);
+    const date2 = new Date(timestamp2);
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+
+    const minutesDiff = Math.floor((timeDiff / (1000 * 60)) % 60);
+    const hoursDiff = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+    let timeDiffStr = "";
+
+  if (daysDiff === 1) {
+    timeDiffStr += "1 day, ";
+  } else if (daysDiff > 1) {
+    timeDiffStr += `${daysDiff} days, `;
+  }
+
+  if (hoursDiff === 1) {
+    timeDiffStr += "1 hour, ";
+  } else if (hoursDiff > 1) {
+    timeDiffStr += `${hoursDiff} hours, `;
+  }
+
+  if (minutesDiff === 1) {
+    timeDiffStr += "1 minute";
+  } else if (minutesDiff > 1) {
+    timeDiffStr += `${minutesDiff} minutes`;
+  }
+
+  if (timeDiffStr.endsWith(", ")) {
+    timeDiffStr = timeDiffStr.slice(0, -2);
+  }
+
+  if (timeDiffStr.indexOf(", ") !== -1) {
+    const lastCommaIndex = timeDiffStr.lastIndexOf(", ");
+    timeDiffStr = timeDiffStr.slice(0, lastCommaIndex) + " and " + timeDiffStr.slice(lastCommaIndex + 2);
+  }
+
+  return timeDiffStr;
+
+   
   }
 
 
