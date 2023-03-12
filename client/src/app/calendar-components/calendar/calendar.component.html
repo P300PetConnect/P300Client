@@ -290,7 +290,7 @@
                       </div>
                       <div class="col-4">
                           <h5 class="text-decoration-underline">{{s.ServiceTitle}}</h5>
-                          <small>{{s.OrderDate| date: 'dd-MM-yyyy'}}</small>
+                          <small>{{s.OrderStartDate}}</small>
           
                       </div>
                       
@@ -309,6 +309,12 @@
                       <p>{{s.Line_2}}, {{s.County}}</p>
                      
                     </div>
+                    <div class="d-flex justify-content-between">
+               
+                      <p>{{s.OrderStartDate}} - {{s.OrderEndDate}}</p>
+                     
+                    </div>
+
 
                   </div>
                   <div class="col">

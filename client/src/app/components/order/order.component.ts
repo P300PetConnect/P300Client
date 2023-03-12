@@ -220,22 +220,22 @@ add(event: MatChipInputEvent): void {
 
   console.log(this.AddOrder.value);
 
-  // this.db.addOrder(this.AddOrder).subscribe({
-  //   next: order => {
-  //     console.log(JSON.stringify(order) + 'order added');
-  //     this.message = "list added";
-  //      },
-  //   error: (err) => this.message = err
-  // });
-  // console.log('myfomr', this.AddOrder); 
+  this.db.addOrder(this.AddOrder).subscribe({
+    next: order => {
+      console.log(JSON.stringify(order) + 'order added');
+      this.message = "list added";
+       },
+    error: (err) => this.message = err
+  });
+  console.log('myfomr', this.AddOrder); 
 
 
-  // this._router.routeReuseStrategy. shouldReuseRoute = () => false;
-  // this._router.onSameUrlNavigation = 'reload';
+  this._router.routeReuseStrategy. shouldReuseRoute = () => false;
+  this._router.onSameUrlNavigation = 'reload';
 
-  //   this._router.navigate(['/orders']);
-  //  //reload screen 
-  //  this.dialog.closeAll();
+    this._router.navigate(['/orders']);
+   //reload screen 
+   this.dialog.closeAll();
 
 }
 
