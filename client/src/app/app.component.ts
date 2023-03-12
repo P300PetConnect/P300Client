@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import { ModalConfig } from './components/interfaces/modal.config';
+import { ModalConfig } from './interfaces/modal.config';
 //import Amplify from 'aws-amplify';
 //import awsExports from 'src/aws-exports';
 import { Router } from '@angular/router';
 import { LoaderService } from './components/service/loader.service';
 import { UserService } from './components/service/user.service';
 import { PetService } from './components/service/pet.service';
-import { IPet } from './components/interfaces/form';
+import { IPet } from './interfaces/form';
 // import { AuthenticatorService } from '@aws-amplify/ui-angular';
 // import Amplify from 'aws-amplify';
 // import awsExports from 'src/aws-exports';
@@ -21,7 +21,7 @@ import { IPet } from './components/interfaces/form';
 export class AppComponent {
   isAutenticated: boolean; 
   public petDetails:IPet[]; 
-  petOwner: import("../app/components/interfaces/users").IPetOwner;
+  petOwner: import("./interfaces/users").IPetOwner;
 
   constructor(public _authenticator: AuthenticatorService,private _petService:PetService, private _userService: UserService,public router: Router, public loaderService: LoaderService, public authenticator: AuthenticatorService) {
     if(_authenticator){

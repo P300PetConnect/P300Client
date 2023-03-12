@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { catchError, Observable, tap, throwError } from 'rxjs'
-import { IUser } from "../interfaces/form";
+import { IUser } from "../../interfaces/form";
 import { environment } from "src/environments/environment";
-import { IPetOwner, IPetSitter } from "../interfaces/users";
+import { IPetOwner, IPetSitter } from "../../interfaces/users";
 import { userInfo } from "os";
 import { FormGroup } from "@angular/forms";
 import { concatMap, map } from 'rxjs/operators';

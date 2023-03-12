@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IPet } from '../interfaces/form';
+import { IPet } from '../../interfaces/form';
 
 @Component({
   selector: 'app-pet-card-view',

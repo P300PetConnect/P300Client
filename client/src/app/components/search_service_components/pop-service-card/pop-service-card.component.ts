@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
-import { ServiceInterface } from 'src/app/Interfaces/service-interface';
+import { SearchServiceService } from 'src/app/service/search-service.service';
+import { ServiceInterface } from 'src/app/interfaces/service-interface';
 
 @Component({
   selector: 'app-pop-service-card',

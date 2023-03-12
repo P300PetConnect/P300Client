@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 //import awsExports from 'src/aws-exports';
 import { UserService } from '../service/user.service';
-import { IUser } from '../interfaces/form';
+import { IUser } from '../../interfaces/form';
 import { NavComponent } from '../nav/nav.component';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { IPetOwner, IPetSitter } from '../../interfaces/users';
 import {NavigationService} from '../../components/nav/NavigationService'
 
 

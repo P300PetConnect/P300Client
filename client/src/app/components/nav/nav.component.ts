@@ -2,14 +2,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/components/service/user.service';
-import { IUser, IPet} from 'src/app/components/interfaces/form';
+import { IUser, IPet} from 'src/app/interfaces/form';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { IPetOwner, IPetSitter } from '../../interfaces/users';
 import { NavigationService } from './NavigationService';
 
 @Component({

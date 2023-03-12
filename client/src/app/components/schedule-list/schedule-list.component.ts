@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IOrderList } from '../interfaces/order';
+import { IOrderList } from '../../interfaces/order';
 
 @Component({
   selector: 'app-schedule-list',

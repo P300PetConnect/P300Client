@@ -1,10 +1,10 @@
 import { Component, OnInit,Inject } from '@angular/core';
 // import { Loader } from '@googlemaps/js-api-loader';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Post } from 'src/app/model/post';
+import { Post } from 'src/app/interfaces/post';
 import { DataService } from '../../service/data.service';
 import Swal from 'sweetalert2';
-import { IUser, IPet } from 'src/app/components/interfaces/form';
+import { IUser, IPet } from 'src/app/interfaces/form';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 
 

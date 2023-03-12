@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PaymentComponent } from '../payment/payment.component';
-import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
+import { PaymentComponent } from '../../components/payment/payment.component';
+import { PetSitterServiceComponent } from '../../components/pet-sitter-service/pet-sitter-service.component';
 
 @Component({
   selector: 'app-message-alert',

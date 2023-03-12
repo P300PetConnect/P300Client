@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RdsUserServices } from 'src/app/Interfaces/rds-user-services';
-import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
+import { RdsUserServices } from 'src/app/interfaces/rds-user-services';
+import { SearchServiceService } from 'src/app/service/search-service.service';
 
 @Component({
   selector: 'app-search-results',

@@ -5,11 +5,11 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable, startWith } from 'rxjs';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MessageAlertComponent } from '../message-alert/message-alert.component';
+import { MessageAlertComponent } from '../../shared-components/message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Data } from '@angular/router';
-import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
+import { SearchServiceService } from 'src/app/service/search-service.service';
 
 @Component({
   selector: 'app-pet-sitter-service',

@@ -5,7 +5,7 @@ import { ConnectContactLens } from 'aws-sdk';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
-import { IPetOwner } from '../interfaces/users';
+import { IPetOwner } from '../../interfaces/users';
 import { OrderComponent } from '../order/order.component';
 import { PetService } from '../service/pet.service';
 import { UserService } from '../service/user.service';
@@ -25,8 +25,8 @@ export class ChatPageComponent implements OnInit {
   petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
   petOwner: any;
 
-  petDetails: import("../interfaces/form").IPet[];
-  petOwner2: import("../interfaces/form").IUser;
+  petDetails: import("../../interfaces/form").IPet[];
+  petOwner2: import("../../interfaces/form").IUser;
   petOwnerEmail: any;
 
   constructor(

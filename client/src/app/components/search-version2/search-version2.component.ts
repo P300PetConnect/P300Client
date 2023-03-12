@@ -2,9 +2,9 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import { RdsUserServices } from 'src/app/Interfaces/rds-user-services';
-import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
-import { IPet } from '../interfaces/form';
+import { RdsUserServices } from 'src/app/interfaces/rds-user-services';
+import { SearchServiceService } from 'src/app/service/search-service.service';
+import { IPet } from '../../interfaces/form';
 import { PetService } from '../service/pet.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PetComponent } from '../pet/pet.component';
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UserService } from '../service/user.service';
-import { IPetOwner } from '../interfaces/users';
+import { IPetOwner } from '../../interfaces/users';
 import { ConsoleLogger } from '@aws-amplify/core';
 
 interface serviceCategory {
