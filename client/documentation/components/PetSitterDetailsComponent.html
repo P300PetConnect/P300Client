@@ -1,0 +1,3364 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  PetSitterDetailsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/pet-sitter-details/pet-sitter-details.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-pet-sitter-details</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./pet-sitter-details.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./pet-sitter-details.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#apiKey" >apiKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#authenticator" >authenticator</a>
+                            </li>
+                            <li>
+                                <a href="#averageRoundStars" >averageRoundStars</a>
+                            </li>
+                            <li>
+                                <a href="#chatName1" >chatName1</a>
+                            </li>
+                            <li>
+                                <a href="#chatName2" >chatName2</a>
+                            </li>
+                            <li>
+                                <a href="#chatOwnerId" >chatOwnerId</a>
+                            </li>
+                            <li>
+                                <a href="#chatSitterId" >chatSitterId</a>
+                            </li>
+                            <li>
+                                <a href="#chatUser1Img" >chatUser1Img</a>
+                            </li>
+                            <li>
+                                <a href="#chatUser2Img" >chatUser2Img</a>
+                            </li>
+                            <li>
+                                <a href="#chatUserPetOwner" >chatUserPetOwner</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#client" >client</a>
+                            </li>
+                            <li>
+                                <a href="#componentFlag" >componentFlag</a>
+                            </li>
+                            <li>
+                                <a href="#dateClass" >dateClass</a>
+                            </li>
+                            <li>
+                                <a href="#dateFilter" >dateFilter</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#DATES_TO_DISABLE" >DATES_TO_DISABLE</a>
+                            </li>
+                            <li>
+                                <a href="#datesToGray" >datesToGray</a>
+                            </li>
+                            <li>
+                                <a href="#email" >email</a>
+                            </li>
+                            <li>
+                                <a href="#isPetOwner" >isPetOwner</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#isReadOnly" >isReadOnly</a>
+                            </li>
+                            <li>
+                                <a href="#isSelected" >isSelected</a>
+                            </li>
+                            <li>
+                                <a href="#isShow" >isShow</a>
+                            </li>
+                            <li>
+                                <a href="#message" >message</a>
+                            </li>
+                            <li>
+                                <a href="#myFilter" >myFilter</a>
+                            </li>
+                            <li>
+                                <a href="#notAvailble" >notAvailble</a>
+                            </li>
+                            <li>
+                                <a href="#orders" >orders</a>
+                            </li>
+                            <li>
+                                <a href="#panelOpenState" >panelOpenState</a>
+                            </li>
+                            <li>
+                                <a href="#panelOpenState2" >panelOpenState2</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#pet" >pet</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#petDetails" >petDetails</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#petOwner" >petOwner</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#petSitter" >petSitter</a>
+                            </li>
+                            <li>
+                                <a href="#picker" >picker</a>
+                            </li>
+                            <li>
+                                <a href="#picKeyWords" >picKeyWords</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#r" >r</a>
+                            </li>
+                            <li>
+                                <a href="#reviews" >reviews</a>
+                            </li>
+                            <li>
+                                <a href="#selected" >selected</a>
+                            </li>
+                            <li>
+                                <a href="#serviceList" >serviceList</a>
+                            </li>
+                            <li>
+                                <a href="#shouldDisableDate" >shouldDisableDate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#user" >user</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#user1Token" >user1Token</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#user2Token" >user2Token</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#userDetails" >userDetails</a>
+                            </li>
+                            <li>
+                                <a href="#userID" >userID</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#GetnotAvailable" >GetnotAvailable</a>
+                            </li>
+                            <li>
+                                <a href="#GetOrders" >GetOrders</a>
+                            </li>
+                            <li>
+                                <a href="#getPetSitter" >getPetSitter</a>
+                            </li>
+                            <li>
+                                <a href="#getReviews" >getReviews</a>
+                            </li>
+                            <li>
+                                <a href="#getServices" >getServices</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#num" >num</a>
+                            </li>
+                            <li>
+                                <a href="#onCreate" >onCreate</a>
+                            </li>
+                            <li>
+                                <a href="#onCreateOrder" >onCreateOrder</a>
+                            </li>
+                            <li>
+                                <a href="#onCreatePet" >onCreatePet</a>
+                            </li>
+                            <li>
+                                <a href="#onCreateService" >onCreateService</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#startChatChannel" >startChatChannel</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, _petService: <a href="../injectables/PetService.html" target="_self">PetService</a>, authenticator: AuthenticatorService, dialog: MatDialog, renderer: <a href="https://angular.io/api/core/Renderer2" target="_blank">Renderer2</a>, review: <a href="../injectables/ReviewService.html" target="_self">ReviewService</a>, r: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, service: <a href="../injectables/SearchServiceService.html" target="_self">SearchServiceService</a>, _order: <a href="../injectables/OrderService.html" target="_self">OrderService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, dateAdapter: DateAdapter<Date>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:106</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_petService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PetService.html" target="_self" >PetService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authenticator</td>
+                                                  
+                                                        <td>
+                                                                    <code>AuthenticatorService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>renderer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/Renderer2" target="_blank" >Renderer2</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>review</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ReviewService.html" target="_self" >ReviewService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>r</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SearchServiceService.html" target="_self" >SearchServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_order</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OrderService.html" target="_self" >OrderService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dateAdapter</td>
+                                                  
+                                                        <td>
+                                                                    <code>DateAdapter&lt;Date&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetnotAvailable"></a>
+                    <span class="name">
+                        <span ><b>GetnotAvailable</b></span>
+                        <a href="#GetnotAvailable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>GetnotAvailable(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="265"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:265</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GetOrders"></a>
+                    <span class="name">
+                        <span ><b>GetOrders</b></span>
+                        <a href="#GetOrders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>GetOrders(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="256"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:256</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPetSitter"></a>
+                    <span class="name">
+                        <span ><b>getPetSitter</b></span>
+                        <a href="#getPetSitter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPetSitter(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:185</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReviews"></a>
+                    <span class="name">
+                        <span ><b>getReviews</b></span>
+                        <a href="#getReviews"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getReviews(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="230"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:230</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getServices"></a>
+                    <span class="name">
+                        <span ><b>getServices</b></span>
+                        <a href="#getServices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getServices(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:241</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="num"></a>
+                    <span class="name">
+                        <span ><b>num</b></span>
+                        <a href="#num"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>num(n: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="274"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:274</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>n</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Array&lt;number&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCreate"></a>
+                    <span class="name">
+                        <span ><b>onCreate</b></span>
+                        <a href="#onCreate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCreate()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="204"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:204</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCreateOrder"></a>
+                    <span class="name">
+                        <span ><b>onCreateOrder</b></span>
+                        <a href="#onCreateOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCreateOrder()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="175"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:175</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCreatePet"></a>
+                    <span class="name">
+                        <span ><b>onCreatePet</b></span>
+                        <a href="#onCreatePet"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCreatePet()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="213"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:213</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCreateService"></a>
+                    <span class="name">
+                        <span ><b>onCreateService</b></span>
+                        <a href="#onCreateService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCreateService()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:221</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startChatChannel"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>startChatChannel</b></span>
+                        <a href="#startChatChannel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>startChatChannel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="280"
+                            class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:280</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="apiKey"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>apiKey</b></span>
+                        <a href="#apiKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.stream.key</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authenticator"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>authenticator</b></span>
+                        <a href="#authenticator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>AuthenticatorService</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="averageRoundStars"></a>
+                    <span class="name">
+                        <span ><b>averageRoundStars</b></span>
+                        <a href="#averageRoundStars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chatName1"></a>
+                    <span class="name">
+                        <span ><b>chatName1</b></span>
+                        <a href="#chatName1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.chatUserPetOwner.name</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chatName2"></a>
+                    <span class="name">
+                        <span ><b>chatName2</b></span>
+                        <a href="#chatName2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chatOwnerId"></a>
+                    <span class="name">
+                        <span ><b>chatOwnerId</b></span>
+                        <a href="#chatOwnerId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.chatUserPetOwner.chatUserName</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chatSitterId"></a>
+                    <span class="name">
+                        <span ><b>chatSitterId</b></span>
+                        <a href="#chatSitterId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chatUser1Img"></a>
+                    <span class="name">
+                        <span ><b>chatUser1Img</b></span>
+                        <a href="#chatUser1Img"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.chatUserPetOwner.profilePicUrl</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chatUser2Img"></a>
+                    <span class="name">
+                        <span ><b>chatUser2Img</b></span>
+                        <a href="#chatUser2Img"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chatUserPetOwner"></a>
+                    <span class="name">
+                        <span ><b>chatUserPetOwner</b></span>
+                        <a href="#chatUserPetOwner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>JSON.parse(this.userDetails)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="client"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>client</b></span>
+                        <a href="#client"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>StreamChat</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="componentFlag"></a>
+                    <span class="name">
+                        <span ><b>componentFlag</b></span>
+                        <a href="#componentFlag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;searchProfile&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dateClass"></a>
+                    <span class="name">
+                        <span ><b>dateClass</b></span>
+                        <a href="#dateClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatCalendarCellClassFunction&lt;Date&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dateFilter"></a>
+                    <span class="name">
+                        <span ><b>dateFilter</b></span>
+                        <a href="#dateFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DATES_TO_DISABLE"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>DATES_TO_DISABLE</b></span>
+                        <a href="#DATES_TO_DISABLE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Date[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    new Date(&#x27;2023-03-10&#x27;), // March 10th, 2023
+    new Date(&#x27;2023-03-15&#x27;), // March 15th, 2023
+    new Date(&#x27;2023-03-20&#x27;)  // March 20th, 2023
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="320" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:320</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datesToGray"></a>
+                    <span class="name">
+                        <span ><b>datesToGray</b></span>
+                        <a href="#datesToGray"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Date[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="email"></a>
+                    <span class="name">
+                        <span ><b>email</b></span>
+                        <a href="#email"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isPetOwner"></a>
+                    <span class="name">
+                        <span ><b>isPetOwner</b></span>
+                        <a href="#isPetOwner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isReadOnly"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>isReadOnly</b></span>
+                        <a href="#isReadOnly"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSelected"></a>
+                    <span class="name">
+                        <span ><b>isSelected</b></span>
+                        <a href="#isSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isShow"></a>
+                    <span class="name">
+                        <span ><b>isShow</b></span>
+                        <a href="#isShow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="message"></a>
+                    <span class="name">
+                        <span ><b>message</b></span>
+                        <a href="#message"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="myFilter"></a>
+                    <span class="name">
+                        <span ><b>myFilter</b></span>
+                        <a href="#myFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="notAvailble"></a>
+                    <span class="name">
+                        <span ><b>notAvailble</b></span>
+                        <a href="#notAvailble"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/INotAvailable.html" target="_self" >INotAvailable[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orders"></a>
+                    <span class="name">
+                        <span ><b>orders</b></span>
+                        <a href="#orders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IOrderList[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="panelOpenState"></a>
+                    <span class="name">
+                        <span ><b>panelOpenState</b></span>
+                        <a href="#panelOpenState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="panelOpenState2"></a>
+                    <span class="name">
+                        <span ><b>panelOpenState2</b></span>
+                        <a href="#panelOpenState2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pet"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>pet</b></span>
+                        <a href="#pet"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IPet.html" target="_self" >IPet</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="petDetails"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>petDetails</b></span>
+                        <a href="#petDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IPet[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="petOwner"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>petOwner</b></span>
+                        <a href="#petOwner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IPetOwner.html" target="_self" >IPetOwner</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="petSitter"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>petSitter</b></span>
+                        <a href="#petSitter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IPetSitterID.html" target="_self" >IPetSitterID</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="picker"></a>
+                    <span class="name">
+                        <span ><b>picker</b></span>
+                        <a href="#picker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;picker&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="picKeyWords"></a>
+                    <span class="name">
+                        <span ><b>picKeyWords</b></span>
+                        <a href="#picKeyWords"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&quot;Feed&quot;, &quot;Walk&quot;, &quot;Sitting&quot;,&quot;Grooming&quot;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="r"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>r</b></span>
+                        <a href="#r"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reviews"></a>
+                    <span class="name">
+                        <span ><b>reviews</b></span>
+                        <a href="#reviews"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Review.html" target="_self" >Review[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected"></a>
+                    <span class="name">
+                        <span ><b>selected</b></span>
+                        <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Date | null</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="serviceList"></a>
+                    <span class="name">
+                        <span ><b>serviceList</b></span>
+                        <a href="#serviceList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ServiceInterface.html" target="_self" >ServiceInterface[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="shouldDisableDate"></a>
+                    <span class="name">
+                        <span ><b>shouldDisableDate</b></span>
+                        <a href="#shouldDisableDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="326" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:326</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IUser.html" target="_self" >IUser</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user1Token"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>user1Token</b></span>
+                        <a href="#user1Token"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.chatUserPetOwner.chatToken</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user2Token"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>user2Token</b></span>
+                        <a href="#user2Token"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userDetails"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>userDetails</b></span>
+                        <a href="#userDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>localStorage.getItem(&#x27;PetConnectUser&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userID"></a>
+                    <span class="name">
+                        <span ><b>userID</b></span>
+                        <a href="#userID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/pet-sitter-details/pet-sitter-details.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, Renderer2} from &#x27;@angular/core&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { UserService } from &#x27;../../service/user.service&#x27;;
+import { IUser, IPet} from &#x27;src/app/interfaces/form&#x27;;
+import { AuthenticatorService } from &#x27;@aws-amplify/ui-angular&#x27;;
+import { MatDialog, MatDialogConfig } from &#x27;@angular/material/dialog&#x27;;
+import { SharedFormComponent } from &#x27;src/app/components/shared-form/shared-form.component&#x27;;
+import {MatTabsModule} from &#x27;@angular/material/tabs&#x27;;
+import { PetComponent } from &#x27;../pet/pet.component&#x27;;
+import { PetSitterServiceComponent } from &#x27;../pet-sitter-service/pet-sitter-service.component&#x27;;
+import { IPetOwner, IPetSitter, IPetSitterID } from &#x27;../../interfaces/users&#x27;;
+import { PetService } from &#x27;../../service/pet.service&#x27;;
+import { MatCalendarCellClassFunction, MatCalendarCellCssClasses } from &#x27;@angular/material/datepicker&#x27;;
+import { OrderComponent } from &#x27;../order/order.component&#x27;;
+import { Review } from &#x27;src/app/components/ReviewInterfaces/review&#x27;;
+import { ReviewService } from &#x27;src/app/components/Review-services/review.service&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { SearchServiceService } from &#x27;src/app/service/search-service.service&#x27;;
+import { ServiceInterface } from &#x27;src/app/interfaces/service-interface&#x27;;
+import { OrderService } from &#x27;../../service/order.service&#x27;;
+import { INotAvailable, IOrderList } from &#x27;../../interfaces/order&#x27;;
+import { StreamChat, ChannelData, UserResponse, TokenProvider, UserFromToken } from &#x27;stream-chat&#x27;;
+import { environment } from &#x27;src/environments/environment&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { DateAdapter } from &#x27;@angular/material/core&#x27;;
+
+
+@Component({
+  selector: &#x27;app-pet-sitter-details&#x27;,
+  templateUrl: &#x27;./pet-sitter-details.component.html&#x27;,
+  styleUrls: [&#x27;./pet-sitter-details.component.scss&#x27;]
+})
+export class PetSitterDetailsComponent implements OnInit {
+  panelOpenState &#x3D; false;
+  panelOpenState2 &#x3D; false; 
+  public user: IUser; 
+  public pet:IPet;
+  isReadOnly?:boolean &#x3D; false; 
+  isSelected:boolean &#x3D; false; 
+  isShow:boolean; 
+  isPetOwner:boolean &#x3D; false; 
+  public petOwner: IPetOwner; 
+  public petSitter: IPetSitterID; 
+  public petDetails:IPet[]; 
+  selected: Date | null;
+  reviews:Review[] &#x3D; [];
+  serviceList:ServiceInterface[] &#x3D; [];
+  message: any;
+  email: string;
+  userID: string;
+
+  averageRoundStars: number;
+
+  orders:IOrderList[] &#x3D; [];
+  datesToGray : Date[] &#x3D; [];
+  notAvailble:INotAvailable[] &#x3D; [];
+  componentFlag &#x3D; &quot;searchProfile&quot;;
+
+
+  //start chat channel
+  private readonly userDetails &#x3D; localStorage.getItem(&#x27;PetConnectUser&#x27;);
+  chatUserPetOwner &#x3D; JSON.parse(this.userDetails);
+  private readonly apiKey &#x3D; environment.stream.key;
+  private user1Token &#x3D; this.chatUserPetOwner.chatToken; // the token for pet owner
+  private user2Token &#x3D; &#x27;&#x27;; // the token for pet sitter
+  chatOwnerId &#x3D; this.chatUserPetOwner.chatUserName;
+  chatSitterId &#x3D; &#x27;&#x27;;
+  chatName1 &#x3D; this.chatUserPetOwner.name;
+  chatName2 &#x3D; &#x27;&#x27;;
+  chatUser1Img &#x3D; this.chatUserPetOwner.profilePicUrl;
+  chatUser2Img &#x3D; &#x27;&#x27;;
+  private client: StreamChat;
+
+
+
+  //weird 0 on data being returned, refactor get method in this class, get method in service
+  
+  // make sure all other gets are working 
+
+
+  // array of key words to check for images// 
+  picKeyWords: string[] &#x3D; [&quot;Feed&quot;, &quot;Walk&quot;, &quot;Sitting&quot;,&quot;Grooming&quot;] 
+
+
+  dateFilter: (date: Date | null) &#x3D;&gt; boolean &#x3D;
+  (date: Date | null) &#x3D;&gt; {
+    if (!date) {
+      return false;
+    }
+    const day &#x3D; date.getDay();
+    return day &#x3D;&#x3D; 1; // 1 means monday, 0 means sunday, etc.
+  };
+
+  
+  dateClass: MatCalendarCellClassFunction&lt;Date&gt; &#x3D; (cellDate, view) &#x3D;&gt; {
+    var date &#x3D; cellDate.getDate();
+    console.log(date);
+    
+    // if (view &#x3D;&#x3D; &#x27;month&#x27;) {
+        return &#x27;highlightCard&#x27;;
+    // }
+  }
+
+
+
+  @ViewChild(&#x27;picker&#x27;) picker:ElementRef;
+
+  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
+    private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute,
+     private service: SearchServiceService,private _order: OrderService, private router: Router
+     ,private readonly dateAdapter: DateAdapter&lt;Date&gt;) {
+
+      this.client &#x3D; new StreamChat(this.apiKey);
+
+  //   this._userService.get_user().subscribe((res: IUser) &#x3D;&gt; {
+  //     this.user&#x3D; res; 
+
+  //     console.log(this.user.emailAddress)
+  //   })
+   }
+
+   myFilter &#x3D; (d: Date | null): boolean &#x3D;&gt; {
+    const day &#x3D; (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !&#x3D;&#x3D; 0 &amp;&amp; day !&#x3D;&#x3D; 6;
+  };
+  
+  ngOnInit(): void {
+
+    console.log(this.selected); 
+   
+    this.userID &#x3D; this.r.snapshot.paramMap.get(&#x27;id&#x27;);
+    //get users services
+    this.getServices(Number(this.userID));
+    this.getPetSitter(Number(this.userID));
+    this.GetOrders(Number(this.userID));
+    this.GetnotAvailable(Number(this.userID));
+  
+
+    console.log(this.petSitter);
+ 
+    console.log(&#x27;picker&#x27;, this.picker);
+
+  
+
+  this.pet &#x3D; {
+    &quot;name&quot;: &quot;Lucy&quot;,
+    &quot;description&quot;: &quot;She snores when sleeps&quot;,
+    &quot;petImageUrl&quot;: &quot;https://img.freepik.com/free-photo/pug-dog-isolated-white-background_2829-11416.jpg?w&#x3D;2000&quot;,
+    &quot;dob&quot;: &quot;2018-03-21&quot;,
+    &quot;petType&quot;:&quot;Dog&quot;,
+    &quot;petBreed&quot;: &quot;Pug&quot;,
+    &quot;PetSize&quot;: &quot;Small&quot;, 
+    &quot;createdDate&quot;:&quot;12/09/2022&quot;, 
+  }
+
+   
+  }
+
+
+//getpet owner 
+// getPetOwner(){
+//   this._userService.get_petowner(&quot;joannasmith@gmail.com&quot;).subscribe(
+//     petOwner&#x3D;&gt;{
+//       this.petOwner &#x3D; petOwner;
+//       console.log(petOwner)
+//     }); 
+//     return false; 
+//   }
+
+
+// this.dialogRef2 &#x3D; this.dialog.open(MessageAlertComponent, {data:{ order: this.order}
+
+
+onCreateOrder(){
+  // this._userService.initializeFormGroup(); 
+  const dialogConfig &#x3D; new MatDialogConfig(); 
+  dialogConfig.disableClose &#x3D; false; 
+  dialogConfig.autoFocus &#x3D; true; 
+  dialogConfig.width &#x3D; &quot;60%&quot;;
+  this.dialog.open(OrderComponent, {data:{petSitter:this.petSitter, serviceList:this.serviceList}}); 
+
+}
+
+  getPetSitter(id: number){
+    this._userService.get_petsitter_ID(id).subscribe(
+      petSitter&#x3D;&gt;{
+        this.petSitter &#x3D; petSitter[0];
+        console.log(&#x27;favorite sitter&#x27;, petSitter)
+        //rounded average to print stars on profile view
+        this.averageRoundStars &#x3D; Math.floor(this.petSitter.ReviewsTotal / this.petSitter.NumReviews);
+        this.user2Token &#x3D; petSitter[0].ChatToken;
+        this.chatSitterId &#x3D; petSitter[0].ChatUserName;
+        this.chatUser2Img &#x3D; petSitter[0].profilePicUrl;
+        this.chatName2 &#x3D; petSitter[0].name;
+      }); 
+      
+      return false; 
+    }
+
+//get pets 
+
+  
+  onCreate(){
+    // this._userService.initializeFormGroup(); 
+    const dialogConfig &#x3D; new MatDialogConfig(); 
+    dialogConfig.disableClose &#x3D; false; 
+    dialogConfig.autoFocus &#x3D; true; 
+    dialogConfig.width &#x3D; &quot;60%&quot;;
+    this.dialog.open(SharedFormComponent, dialogConfig); 
+
+  }
+  onCreatePet(){
+    // this._userService.initializeFormGroup(); 
+    const dialogConfig &#x3D; new MatDialogConfig(); 
+    dialogConfig.disableClose &#x3D; false; 
+    dialogConfig.autoFocus &#x3D; true; 
+    dialogConfig.width &#x3D; &quot;60%&quot;;
+    this.dialog.open(PetComponent, dialogConfig)
+  }
+  onCreateService(){
+    const dialogConfig &#x3D; new MatDialogConfig(); 
+    dialogConfig.disableClose &#x3D; false; 
+    dialogConfig.autoFocus &#x3D; false; 
+    dialogConfig.width &#x3D; &quot;80%&quot;;
+    dialogConfig.height &#x3D; &quot;93%&quot;;
+    this.dialog.open(PetSitterServiceComponent, dialogConfig)
+  }
+
+  getReviews(id: number):boolean
+  {
+    
+    this.review.getReviews(id).subscribe({
+      next: (value: Review[] )&#x3D;&gt; this.reviews &#x3D; value,
+      complete: () &#x3D;&gt; console.log(&#x27;Review service finished &#x27; +  JSON.stringify((this.reviews))),
+      error: (mess) &#x3D;&gt; this.message &#x3D; mess
+    })
+    return false;
+  }
+
+  getServices(id: number): void {
+    this.service.getOtherServices(id).subscribe({
+      next: (value: ServiceInterface[]) &#x3D;&gt; {
+        this.serviceList &#x3D; value;
+      },
+      error: (error: any) &#x3D;&gt; {
+        this.message &#x3D; error;
+      },
+      complete: () &#x3D;&gt; {
+        console.log(&#x27;service finished &#x27;, (this.service));
+      }
+    });
+  }
+  
+
+  GetOrders(id: number)
+  {
+    this._order.getOrdersList(id).subscribe({
+      next: (value: IOrderList[] )&#x3D;&gt;this.orders &#x3D; value,
+      complete: () &#x3D;&gt; console.log(&#x27;Order service finished &#x27; +  JSON.stringify((this.orders))),
+      error: (mess) &#x3D;&gt; this.message &#x3D; mess
+    })
+  }
+
+  GetnotAvailable(id: number)
+  {
+    this._order.getNotAvailable(id).subscribe({
+      next: (value: INotAvailable[] )&#x3D;&gt;this.notAvailble &#x3D; value,
+      complete: () &#x3D;&gt; console.log(&#x27;not available service finished &#x27; +  JSON.stringify((this.notAvailble))),
+      error: (mess) &#x3D;&gt; this.message &#x3D; mess
+    })
+  }
+
+  num(n: number): Array&lt;number&gt; {
+    //alert(n);
+    return Array(n);
+  }
+
+  //create new chat
+  async startChatChannel() {
+    const user1Id &#x3D;  this.chatOwnerId;//pet owner chatUserName
+    const user2Id &#x3D; this.chatSitterId;//pet sitter chatUserName
+    // const user2Id &#x3D; {
+    //   id: this.chatSitterId,//pet sitter chatUserName
+    //   name: this.chatName2,
+    //   image: this.chatUser2Img
+    // };
+
+    const userTokenProvider: TokenProvider &#x3D; async () &#x3D;&gt; {
+      return this.user1Token;
+    };
+
+    await this.client.connectUser(
+      { id: user1Id, name: this.chatName1, image: this.chatUser1Img },
+      userTokenProvider,
+    );
+
+    // const userTokenProvider2: TokenProvider &#x3D; async () &#x3D;&gt; {
+    //   return this.user2Token;
+    // };
+    
+    // await this.client.connectUser(
+    //   { id: user2Id, name: this.chatName2, image: this.chatUser2Img },
+    //   userTokenProvider2,
+    // );
+
+    const channelData: ChannelData &#x3D; {
+      members: [user1Id, user2Id],
+      name: &#x27;my-new-channel&#x27;,
+      created_by_id: user1Id
+    };
+
+    const channel &#x3D; this.client.channel(&#x27;messaging&#x27;, channelData);
+
+    await channel.create();
+
+    this.router.navigate([&#x27;/chat&#x27;]);
+    console.log(channel);
+  }
+  private readonly DATES_TO_DISABLE: Date[] &#x3D; [
+    new Date(&#x27;2023-03-10&#x27;), // March 10th, 2023
+    new Date(&#x27;2023-03-15&#x27;), // March 15th, 2023
+    new Date(&#x27;2023-03-20&#x27;)  // March 20th, 2023
+  ];
+
+  shouldDisableDate &#x3D; (date: Date): boolean &#x3D;&gt; {
+    // Check if the date is selected
+    if (this.DATES_TO_DISABLE.some(selectedDate &#x3D;&gt;
+      this.dateAdapter.compareDate(date, selectedDate) &#x3D;&#x3D;&#x3D; 0
+    )) {
+      return false;
+    }
+  
+    // Otherwise, enable the date
+    return true;
+  }
+
+
+  
+
+}
+/**
+ *
+ *  getPetDetails(){
+  this._petService.get_petdetails(&quot;joannasmith@gmail.com&quot;).subscribe(
+    petDetails&#x3D;&gt;{
+      this.petDetails &#x3D; petDetails; 
+      console.log(petDetails)
+    }); 
+    return false; 
+}
+
+ */
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;tab-content&quot;&gt;
+  &lt;div class&#x3D;&quot;container mt-5&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col-lg-4 col-md-12 col-sm-12 col-12&quot;&gt;
+        &lt;div class&#x3D;&quot;card mb-3&quot;&gt;
+          &lt;div class&#x3D;&quot;card-header d-flex justify-content-between&quot;&gt;
+            &lt;h5 class&#x3D;&quot;card-title mb-0&quot;&gt;Pet Sitter&lt;/h5&gt;
+            &lt;i class&#x3D;&quot;bi bi-heart&quot;&gt; save&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-body text-center pb-0 &quot;&gt;
+            &lt;img src&#x3D;{{petSitter?.Profile_Pic_URL}} alt&#x3D;&quot;Stacie Hall&quot; class&#x3D;&quot;img-fluid rounded-circle mb-2&quot; width&#x3D;&quot;128&quot;
+              height&#x3D;&quot;128&quot;&gt;
+            &lt;h5 class&#x3D;&quot;card-title mb-0&quot;&gt;{{petSitter?.Name}} {{petSitter?.Surname}}&lt;/h5&gt;
+            &lt;div class&#x3D;&quot;text-muted&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;mt-3&quot;&gt;
+              &lt;div class&#x3D;&quot;h-100&quot;&gt;
+                &lt;!-- &lt;span *ngFor&#x3D;&quot;let _ of [].constructor((petSitter?.reviewsTotal / petSitter?.numReviews) | number:&#x27;1.0-0&#x27;)&quot; class&#x3D;&quot;bi bi-star-fill&quot;&gt;&lt;/span&gt; --&gt;
+                &lt;span *ngFor&#x3D;&quot;let _ of [].constructor(averageRoundStars)&quot; class&#x3D;&quot;bi bi-star-fill&quot;&gt;&lt;/span&gt;
+                &lt;span class&#x3D;&quot;review my-auto pl-2&quot;&gt;&lt;u&gt;({{petSitter?.NumReviews}})&lt;/u&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr class&#x3D;&quot;my-0&quot;&gt;
+          &lt;div class&#x3D;&quot;card-body&quot;&gt;
+            &lt;div class&#x3D;&quot;row p-2&quot;&gt;
+              &lt;button mat-flat-button class&#x3D;&quot;search-btn&quot; (click)&#x3D;&quot;startChatChannel()&quot;&gt;Start Chat&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;row p-2&quot;&gt;
+              &lt;button mat-flat-button class&#x3D;&quot;order-btn&quot; (click)&#x3D;&quot;onCreateOrder()&quot;&gt;Create Order&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;row details&quot;&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-hourglass-split&quot;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col&quot;&gt;
+                  &lt;span&gt;Response time: &lt;b&gt;17 minutes&lt;/b&gt;&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-chat-square-text&quot;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col&quot;&gt;
+                  &lt;span&gt;Response rate: &lt;b&gt;98%&lt;/b&gt;&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;petSitter?.CancellationPolicy&quot;&gt;
+                &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-x-octagon&quot;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col&quot;&gt;
+                  &lt;span&gt;Cancellation policy: &lt;a class&#x3D;&quot;primary-link&quot;&gt;{{petSitter?.CancellationPolicy}}&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;row pt-4&quot;&gt;
+                &lt;hr&gt;
+                &lt;h4&gt;My place&lt;/h4&gt;
+
+                &lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;petSitter?.HouseType&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                    &lt;span class&#x3D;&quot;material-symbols-outlined&quot;&gt;
+                      cottage
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col&quot;&gt;
+                    &lt;span&gt;Living in a &lt;b&gt;{{petSitter?.HouseType}}&lt;/b&gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;petSitter?.HouseDetails&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                    &lt;span class&#x3D;&quot;material-symbols-outlined&quot;&gt;
+                      smoke_free
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col&quot;&gt;
+                    &lt;span&gt;&lt;b&gt; &lt;/b&gt;{{petSitter?.HouseDetails}} &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;petSitter?.PetsInHome&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                    &lt;span class&#x3D;&quot;material-symbols-outlined md-18&quot;&gt;
+                      sound_detection_dog_barking
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col&quot;&gt;
+                    &lt;span&gt;&lt;b&gt; &lt;/b&gt; {{petSitter?.PetsInHome}} &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;petSitter?.Children&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                    &lt;span class&#x3D;&quot;material-symbols-outlined &quot;&gt;
+                      child_care
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col&quot;&gt;
+                    &lt;span&gt;{{petSitter?.Children}}&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;col-lg-8 col-md-12 col-sm-12 col-12&quot;&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-lg-6 col-md-12 col-sm-12 col-12&quot;&gt;
+            &lt;div class&#x3D;&quot;mb-5 mt-4&quot;&gt;
+              &lt;h4&gt;Services:&lt;/h4&gt;
+              &lt;mat-accordion class&#x3D;&quot;pt-4&quot;&gt;
+                &lt;mat-expansion-panel *ngFor&#x3D;&quot;let s of serviceList&quot; (opened)&#x3D;&quot;panelOpenState &#x3D; true&quot;
+                  (closed)&#x3D;&quot;panelOpenState &#x3D; false&quot;&gt;
+                  &lt;mat-expansion-panel-header class&#x3D;&quot;pt-5 pb-5&quot;&gt;
+                    &lt;mat-panel-title&gt;
+                      &lt;picture class&#x3D;&quot;align-initial pr-3&quot; *ngIf&#x3D;&quot;s.ServiceTitle.includes(picKeyWords[1])&quot;&gt;
+                        &lt;img src&#x3D;&quot;../../../assets/images/home/walk-selected.svg&quot; alt&#x3D;&quot;Creche&quot; class&#x3D;&quot;img-fluid&quot;&gt;
+                      &lt;/picture&gt;
+                      &lt;picture class&#x3D;&quot;align-initial pr-3&quot; *ngIf&#x3D;&quot;s.ServiceTitle.includes(picKeyWords[0])&quot;&gt;
+                        &lt;img src&#x3D;&quot;../../../assets/images/home/petsitting-selected.svg&quot; alt&#x3D;&quot;Creche&quot; class&#x3D;&quot;img-fluid&quot;&gt;
+                      &lt;/picture&gt;
+                      &lt;picture class&#x3D;&quot;align-initial pr-3&quot; *ngIf&#x3D;&quot;s.ServiceTitle.includes(picKeyWords[3])&quot;&gt;
+                        &lt;img src&#x3D;&quot;../../../assets/images/home/daycare-selected.svg&quot; alt&#x3D;&quot;Creche&quot; class&#x3D;&quot;img-fluid&quot;&gt;
+                      &lt;/picture&gt;
+                      &lt;picture class&#x3D;&quot;align-initial pr-3&quot; *ngIf&#x3D;&quot;s.ServiceTitle.includes(picKeyWords[2])&quot;&gt;
+                        &lt;img src&#x3D;&quot;../../../assets/images/home/daycare-selected.svg&quot; alt&#x3D;&quot;Creche&quot; class&#x3D;&quot;img-fluid&quot;&gt;
+                      &lt;/picture&gt;
+                      &lt;span class&#x3D;&quot;align-middle nav-title&quot;&gt;&lt;strong
+                          class&#x3D;&quot;d-inline-block d-md-inline title&quot;&gt;{{s.ServiceTitle}}&lt;/strong&gt;
+                        &lt;br&gt;&lt;/span&gt;
+                    &lt;/mat-panel-title&gt;
+                    &lt;mat-panel-description&gt;
+                      Starting price: € 15.00
+                    &lt;/mat-panel-description&gt;
+                  &lt;/mat-expansion-panel-header&gt;
+                  &lt;p n&gt;{{petSitter?.ProfileDesc}}&lt;/p&gt;
+                &lt;/mat-expansion-panel&gt;
+
+                
+                  &lt;/mat-accordion&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;row pt-3&quot;&gt;
+
+                  &lt;h4&gt;I usually take care of:&lt;/h4&gt;
+                  &lt;p *ngIf&#x3D;&quot;petSitter?.UsualPets&quot;&gt;Needs to be matched to images {{petSitter?.UsualPets}}&lt;/p&gt;
+                  &lt;img src&#x3D;&quot;../../../assets/images/Screenshot 2022-12-06 at 00.49.44.png&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:26rem;&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;row pt-4&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                    &lt;span class&#x3D;&quot;material-symbols-outlined&quot;&gt;
+                      pets
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col&quot; *ngIf&#x3D;&quot;petSitter?.UsualPetsDetail1&quot;&gt;
+                    &lt;span&gt;{{petSitter?.UsualPetsDetail1}}&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;row&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                    &lt;span class&#x3D;&quot;material-symbols-outlined&quot;&gt;
+                      pets
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col&quot; *ngIf&#x3D;&quot;petSitter?.UsualPetsDetail2&quot;&gt;
+                    &lt;span&gt;{{petSitter?.UsualPetsDetail2}}&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;row&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-1&quot;&gt;
+                    &lt;span class&#x3D;&quot;material-symbols-outlined&quot;&gt;
+                      pets
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col&quot; &gt;
+                    &lt;span&gt;List of breed I don&#x27;t take care of: Link&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-6&quot;&gt;
+
+                &lt;div class&#x3D;&quot;row pb-4 pt-4&quot;&gt;
+                  &lt;h4&gt;I am not available on:&lt;/h4&gt;
+                  &lt;mat-card class&#x3D;&quot;demo-inline-calendar-card&quot; &gt;
+                    &lt;!-- &lt;app-calendar [orders] &#x3D; &quot;orders&quot; [notAvailble] &#x3D; &quot;notAvailble&quot; [componentFlag] &#x3D; &quot;componentFlag&quot; &gt;&lt;/app-calendar&gt; --&gt;
+                    &lt;!-- &lt;mat-calendar [dateFilter]&#x3D;&quot;shouldDisableDate&quot;&gt;&lt;/mat-calendar&gt; --&gt;
+
+                    &lt;mat-calendar [dateFilter]&#x3D;&quot;shouldDisableDate&quot;&gt;
+                      &lt;mat-calendar-header&gt;&lt;/mat-calendar-header&gt;
+                      &lt;mat-calendar-content  *matCalendarBody&gt;
+                        &lt;ng-template matCalendarCellTemplate let-date&gt;
+                          {{ date.getDate() }}
+                        &lt;/ng-template&gt;
+                      &lt;/mat-calendar-content&gt;
+                    &lt;/mat-calendar&gt;
+                  &lt;/mat-card&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;hr&gt;
+            &lt;div class&#x3D;&quot;mt-5&quot;&gt;
+              &lt;mat-tab-group animationDuration&#x3D;&quot;0ms&quot;&gt;
+                &lt;mat-tab label&#x3D;&quot;Description&quot;&gt;
+                  &lt;p class&#x3D;&quot;p-4&quot; *ngIf&#x3D;&quot;petSitter?.ProfileDesc&quot;&gt;{{petSitter?.ProfileDesc}}&lt;/p&gt;
+                &lt;/mat-tab&gt;
+
+                &lt;mat-tab label&#x3D;&quot;Reviews&quot;&gt;
+                  &lt;ng-template mat-tab-label&gt;
+                    &lt;span (click)&#x3D;&quot;getReviews(petSitter?.UserID)&quot;&gt;Reviews&lt;/span&gt;
+                  &lt;/ng-template&gt;
+                  &lt;div *ngFor&#x3D;&quot;let r of reviews&quot;&gt;
+                    &lt;app-review [review]&#x3D;&quot;r&quot;&gt;&lt;/app-review&gt;
+                  &lt;/div&gt;
+                &lt;/mat-tab&gt;
+
+                &lt;mat-tab label&#x3D;&quot;Gallery&quot;&gt;
+                &lt;/mat-tab&gt;
+
+              &lt;/mat-tab-group&gt;
+            &lt;/div&gt;
+            &lt;hr&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- &lt;link href&#x3D;&quot;https://fonts.googleapis.com/icon?family&#x3D;Material+Icons&quot; rel&#x3D;&quot;stylesheet&quot;&gt; --&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./pet-sitter-details.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import url(&#x27;https://fonts.googleapis.com/css?family&#x3D;Muli:200,300,400,600&#x27;);
+
+.bg {
+    background: #ccc5d2;
+}
+
+.bg2 {
+    background-color: #e2dde6;
+}
+
+.bg3 {
+    background-color: #e2dde6;
+}
+
+li {
+    display: inline;
+}
+
+.skills li i {
+    color: #62646a;
+    display: inline-block;
+    border-radius: 15px;
+    min-width: 40px;
+    text-align: center;
+    padding: 5px 12px;
+    margin: 0 10px 10px 0;
+    border: 1px solid #e4e5e7;
+    cursor: pointer;
+    -webkit-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out;
+    text-decoration: none;
+    text-decoration-line: none;
+}
+
+ul {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+
+// ul{
+//     display: block;
+//     list-style-type: disc;
+//     margin-block-start: 1em;
+//     margin-block-end: 1em;
+//     margin-inline-start: 0px;
+//     margin-inline-end: 0px;
+//     padding-inline-start: 40px;
+// }
+
+.text-description {
+    font-size: 0.9rem;
+}
+
+.skills {
+    background: white;
+    width: 27rem;
+    padding: 1.3rem;
+    margin-top: 1rem;
+    border-radius: 0.3rem;
+
+    h1 {
+        font-size: 1.25rem
+    }
+}
+
+@media (min-width: 1200px) {
+    .container-fluid {
+        max-width: 1550px;
+    }
+}
+
+.profile-icons {
+    margin-right: 1rem !important;
+
+}
+
+@media (min-width: 1200px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1250px;
+    }
+}
+
+//test
+
+body {
+    background: #DCDCDC;
+    margin-top: 20px;
+}
+
+.card-box {
+    padding: 20px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+
+.social-links li a {
+    border-radius: 50%;
+    color: rgba(121, 121, 121, .8);
+    display: inline-block;
+    height: 30px;
+    line-height: 27px;
+    border: 2px solid rgba(121, 121, 121, .5);
+    text-align: center;
+    width: 30px
+}
+
+.social-links li a:hover {
+    color: #797979;
+    border: 2px solid #797979
+}
+
+.thumb-lg {
+    height: 88px;
+    width: 88px;
+}
+
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.text-pink {
+    color: #ff679b !important;
+}
+
+.btn-rounded {
+    border-radius: 2em;
+}
+
+.text-muted {
+    color: #98a6ad !important;
+}
+
+h4 {
+    line-height: 22px;
+    font-size: 18px;
+}
+
+.card-inner {
+    margin-left: 4rem;
+}
+
+.bi-plus-circle-fill {
+
+    font-size: 48px;
+    font-weight: 400;
+
+}
+
+.card {
+    cursor: pointer;
+}
+
+.search-btn {
+    // width: 10rem;
+    height: 3.2rem;
+    // margin-top: 0.3rem;
+    background-color: #17a2b8 !important;
+    color: white;
+    font-size: 1.2rem;
+
+}
+
+.order-btn {
+    // width: 10rem;
+    height: 3.2rem;
+    // margin-top: 0.3rem;
+    background-color: #6CBC00 !important;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.details {
+    font-size: 1rem;
+    padding: 12px;
+    cursor: auto;
+}
+
+b {
+    color: rgba(51, 59, 65, 0.753);
+}
+
+.review-time {
+    font-size: 0.9rem;
+}
+
+.bi-star-fill {
+    padding: 0.2rem;
+    font-size: 1.3rem;
+    color: orange;
+}
+
+.review {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.primary-link {
+    color: #028177 !important;
+    text-decoration: underline;
+    font-weight: 700;
+    cursor: pointer;
+    font-style: italic;
+}
+
+// .mat-card:not([class*&#x3D;mat-elevation-z]) {
+//     // box-shadow: none; 
+
+// }
+.mat-card {
+    padding: 0px !important;
+    margin-top: 0px !important;
+}
+
+.first-item {
+    &amp;:hover {
+        border: 1px solid #487BA5;
+        background-color: white;
+    }
+}
+
+.first-item.active {
+    background-color: #487BA5;
+    color: white !important;
+}
+
+.second-item {
+    // &amp;:hover {
+    border: 1px solid #338F90;
+    //   border-bottom: none;
+    //   background-color: #338F90;
+    //   color: white !important;
+
+    // }
+}
+
+.fourth-item {
+    border: 1px solid #E58A86;
+
+}
+
+.material-symbols-outlined {
+    font-weight: 50 !important;
+    font-size: 1.2rem;
+
+}
+
+
+::ng-deep .available .mat-calendar-body-cell-content {
+    background-color: rgba(14, 152, 5, 0.25);
+}
+
+.selected-date {
+    background-color: yellow;
+  }</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="tab-content">  <div class="container mt-5">    <div class="row">      <div class="col-lg-4 col-md-12 col-sm-12 col-12">        <div class="card mb-3">          <div class="card-header d-flex justify-content-between">            <h5 class="card-title mb-0">Pet Sitter</h5>            <i class="bi bi-heart"> save</i>          </div>          <div class="card-body text-center pb-0 ">            <img src={{petSitter?.Profile_Pic_URL}} alt="Stacie Hall" class="img-fluid rounded-circle mb-2" width="128"              height="128">            <h5 class="card-title mb-0">{{petSitter?.Name}} {{petSitter?.Surname}}</h5>            <div class="text-muted">            </div>            <div class="mt-3">              <div class="h-100">                <!-- <span *ngFor="let _ of [].constructor((petSitter?.reviewsTotal / petSitter?.numReviews) | number:\'1.0-0\')" class="bi bi-star-fill"></span> -->                <span *ngFor="let _ of [].constructor(averageRoundStars)" class="bi bi-star-fill"></span>                <span class="review my-auto pl-2"><u>({{petSitter?.NumReviews}})</u></span>              </div>            </div>          </div>          <hr class="my-0">          <div class="card-body">            <div class="row p-2">              <button mat-flat-button class="search-btn" (click)="startChatChannel()">Start Chat</button>            </div>            <div class="row p-2">              <button mat-flat-button class="order-btn" (click)="onCreateOrder()">Create Order</button>            </div>            <div class="row details">              <div class="row">                <div class="col-1">                  <i class="bi bi-hourglass-split"></i>                </div>                <div class="col">                  <span>Response time: <b>17 minutes</b></span>                </div>              </div>              <div class="row">                <div class="col-1">                  <i class="bi bi-chat-square-text"></i>                </div>                <div class="col">                  <span>Response rate: <b>98%</b></span>                </div>              </div>              <div class="row" *ngIf="petSitter?.CancellationPolicy">                <div class="col-1">                  <i class="bi bi-x-octagon"></i>                </div>                <div class="col">                  <span>Cancellation policy: <a class="primary-link">{{petSitter?.CancellationPolicy}}</a></span>                </div>              </div>              <div class="row pt-4">                <hr>                <h4>My place</h4>                <div class="row" *ngIf="petSitter?.HouseType">                  <div class="col-1">                    <span class="material-symbols-outlined">                      cottage                    </span>                  </div>                  <div class="col">                    <span>Living in a <b>{{petSitter?.HouseType}}</b></span>                  </div>                </div>                <div class="row" *ngIf="petSitter?.HouseDetails">                  <div class="col-1">                    <span class="material-symbols-outlined">                      smoke_free                    </span>                  </div>                  <div class="col">                    <span><b> </b>{{petSitter?.HouseDetails}} </span>                  </div>                </div>                <div class="row" *ngIf="petSitter?.PetsInHome">                  <div class="col-1">                    <span class="material-symbols-outlined md-18">                      sound_detection_dog_barking                    </span>                  </div>                  <div class="col">                    <span><b> </b> {{petSitter?.PetsInHome}} </span>                  </div>                </div>                <div class="row" *ngIf="petSitter?.Children">                  <div class="col-1">                    <span class="material-symbols-outlined ">                      child_care                    </span>                  </div>                  <div class="col">                    <span>{{petSitter?.Children}}</span>                  </div>                </div>              </div>            </div>          </div>        </div>      </div>      <div class="col-lg-8 col-md-12 col-sm-12 col-12">        <div class="row">          <div class="col-lg-6 col-md-12 col-sm-12 col-12">            <div class="mb-5 mt-4">              <h4>Services:</h4>              <mat-accordion class="pt-4">                <mat-expansion-panel *ngFor="let s of serviceList" (opened)="panelOpenState = true"                  (closed)="panelOpenState = false">                  <mat-expansion-panel-header class="pt-5 pb-5">                    <mat-panel-title>                      <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">                        <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">                      </picture>                      <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">                        <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">                      </picture>                      <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">                        <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">                      </picture>                      <picture class="align-initial pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">                        <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">                      </picture>                      <span class="align-middle nav-title"><strong                          class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</strong>                        <br></span>                    </mat-panel-title>                    <mat-panel-description>                      Starting price: € 15.00                    </mat-panel-description>                  </mat-expansion-panel-header>                  <p n>{{petSitter?.ProfileDesc}}</p>                </mat-expansion-panel>                                  </mat-accordion>                </div>                <div class="row pt-3">                  <h4>I usually take care of:</h4>                  <p *ngIf="petSitter?.UsualPets">Needs to be matched to images {{petSitter?.UsualPets}}</p>                  <img src="../../../assets/images/Screenshot 2022-12-06 at 00.49.44.png" alt="" style="width:26rem;">                </div>                <div class="row pt-4">                  <div class="col-1">                    <span class="material-symbols-outlined">                      pets                    </span>                  </div>                  <div class="col" *ngIf="petSitter?.UsualPetsDetail1">                    <span>{{petSitter?.UsualPetsDetail1}}</span>                  </div>                </div>                <div class="row">                  <div class="col-1">                    <span class="material-symbols-outlined">                      pets                    </span>                  </div>                  <div class="col" *ngIf="petSitter?.UsualPetsDetail2">                    <span>{{petSitter?.UsualPetsDetail2}}</span>                  </div>                </div>                <div class="row">                  <div class="col-1">                    <span class="material-symbols-outlined">                      pets                    </span>                  </div>                  <div class="col" >                    <span>List of breed I don\'t take care of: Link</span>                  </div>                </div>              </div>              <div class="col-6">                <div class="row pb-4 pt-4">                  <h4>I am not available on:</h4>                  <mat-card class="demo-inline-calendar-card" >                    <!-- <app-calendar [orders] = "orders" [notAvailble] = "notAvailble" [componentFlag] = "componentFlag" ></app-calendar> -->                    <!-- <mat-calendar [dateFilter]="shouldDisableDate"></mat-calendar> -->                    <mat-calendar [dateFilter]="shouldDisableDate">                      <mat-calendar-header></mat-calendar-header>                      <mat-calendar-content  *matCalendarBody>                        <ng-template matCalendarCellTemplate let-date>                          {{ date.getDate() }}                        </ng-template>                      </mat-calendar-content>                    </mat-calendar>                  </mat-card>                </div>              </div>          <div class="col-12">            <hr>            <div class="mt-5">              <mat-tab-group animationDuration="0ms">                <mat-tab label="Description">                  <p class="p-4" *ngIf="petSitter?.ProfileDesc">{{petSitter?.ProfileDesc}}</p>                </mat-tab>                <mat-tab label="Reviews">                  <ng-template mat-tab-label>                    <span (click)="getReviews(petSitter?.UserID)">Reviews</span>                  </ng-template>                  <div *ngFor="let r of reviews">                    <app-review [review]="r"></app-review>                  </div>                </mat-tab>                <mat-tab label="Gallery">                </mat-tab>              </mat-tab-group>            </div>            <hr>          </div>        </div>      </div>    </div>  </div></div><!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --></div>'
+    var COMPONENTS = [{'name': 'AddPostComponent', 'selector': 'app-add-post'},{'name': 'AlertmsgComponent', 'selector': 'app-alertmsg'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BottomInfoComponent', 'selector': 'app-bottom-info'},{'name': 'BrowseRouteComponent', 'selector': 'app-browse-route'},{'name': 'CalendarComponent', 'selector': 'app-calendar'},{'name': 'ChatPageComponent', 'selector': 'app-chat-page'},{'name': 'CommentSectionComponent', 'selector': 'app-comment-section'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumWallComponent', 'selector': 'app-forum-wall'},{'name': 'InitialPageComponent', 'selector': 'app-initial-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManageOrdersComponent', 'selector': 'app-manage-orders'},{'name': 'MapPlannerComponent', 'selector': 'app-map-planner'},{'name': 'MessageAlertComponent', 'selector': 'app-message-alert'},{'name': 'MessageInputComponent', 'selector': 'app-message-input'},{'name': 'ModalComponent', 'selector': 'app-modal'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NotAvailableFormComponent', 'selector': 'app-not-available-form'},{'name': 'OrderComponent', 'selector': 'app-order'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'PetCardViewComponent', 'selector': 'app-pet-card-view'},{'name': 'PetComponent', 'selector': 'app-pet'},{'name': 'PetOwnerProfileDetailsComponent', 'selector': 'app-pet-owner-profile-details'},{'name': 'PetSitterDetailsComponent', 'selector': 'app-pet-sitter-details'},{'name': 'PetSitterServiceComponent', 'selector': 'app-pet-sitter-service'},{'name': 'PopServiceCardComponent', 'selector': 'app-pop-service-card'},{'name': 'PostComponent', 'selector': 'app-post'},{'name': 'RecognitionComponent', 'selector': 'app-recognition'},{'name': 'ReviewComponent', 'selector': 'app-review'},{'name': 'ReviewFormComponent', 'selector': 'app-review-form'},{'name': 'ScheduleListComponent', 'selector': 'app-schedule-list'},{'name': 'SearchContainerComponent', 'selector': 'app-search-container'},{'name': 'SearchpositivekeywordsComponent', 'selector': 'app-search-pet-service'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SearchSitterServicesComponent', 'selector': 'app-search-sitter-services'},{'name': 'SearchVersion2Component', 'selector': 'app-search-version2'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SharedFormComponent', 'selector': 'app-shared-form'},{'name': 'TrackerOrderComponent', 'selector': 'app-tracker-order'},{'name': 'UploadImageComponent', 'selector': 'app-upload-image'},{'name': 'UserformComponent', 'selector': 'app-userform'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PetSitterDetailsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PetSitterDetailsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

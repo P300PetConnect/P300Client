@@ -1,0 +1,1117 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >DataService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/components/forum-services/data.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#handleError" >handleError</a>
+                            </li>
+                            <li>
+                                <a href="#postId" >postId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ChangeComValue" >ChangeComValue</a>
+                            </li>
+                            <li>
+                                <a href="#ChangeValue" >ChangeValue</a>
+                            </li>
+                            <li>
+                                <a href="#getBoardDetails" >getBoardDetails</a>
+                            </li>
+                            <li>
+                                <a href="#getComments" >getComments</a>
+                            </li>
+                            <li>
+                                <a href="#getForumData" >getForumData</a>
+                            </li>
+                            <li>
+                                <a href="#PushCommentsToDB" >PushCommentsToDB</a>
+                            </li>
+                            <li>
+                                <a href="#PushPost" >PushPost</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#PushPostWithImage" >PushPostWithImage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/forum-services/data.service.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ChangeComValue"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>ChangeComValue</b></span>
+                        <a href="#ChangeComValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ChangeComValue(item: <a href="../classes/CommentItem.html" target="_self">CommentItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">src/app/components/forum-services/data.service.ts:142</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../classes/CommentItem.html" target="_self" >CommentItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ChangeValue"></a>
+                    <span class="name">
+                        <span ><b>ChangeValue</b></span>
+                        <a href="#ChangeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ChangeValue(Item: <a href="../interfaces/Post.html" target="_self">PostItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/app/components/forum-services/data.service.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Item</td>
+                                    <td>
+                                                <code><a href="../interfaces/Post.html" target="_self" >PostItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBoardDetails"></a>
+                    <span class="name">
+                        <span ><b>getBoardDetails</b></span>
+                        <a href="#getBoardDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBoardDetails(r: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/components/forum-services/data.service.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/BoardInterface.html" target="_self" >Observable&lt;BoardInterface&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getComments"></a>
+                    <span class="name">
+                        <span ><b>getComments</b></span>
+                        <a href="#getComments"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getComments(postID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/app/components/forum-services/data.service.ts:107</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>postID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/CommentInterface.html" target="_self" >Observable&lt;CommentInterface&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getForumData"></a>
+                    <span class="name">
+                        <span ><b>getForumData</b></span>
+                        <a href="#getForumData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getForumData(r: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/components/forum-services/data.service.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>r</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;PostInterface&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PushCommentsToDB"></a>
+                    <span class="name">
+                        <span ><b>PushCommentsToDB</b></span>
+                        <a href="#PushCommentsToDB"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>PushCommentsToDB(commentItem: <a href="../classes/CommentItem.html" target="_self">CommentItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/components/forum-services/data.service.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>commentItem</td>
+                                    <td>
+                                                <code><a href="../classes/CommentItem.html" target="_self" >CommentItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PushPost"></a>
+                    <span class="name">
+                        <span ><b>PushPost</b></span>
+                        <a href="#PushPost"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>PushPost(Item: <a href="../interfaces/Post.html" target="_self">PostItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">src/app/components/forum-services/data.service.ts:76</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Item</td>
+                                    <td>
+                                                <code><a href="../interfaces/Post.html" target="_self" >PostItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PushPostWithImage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>PushPostWithImage</b></span>
+                        <a href="#PushPostWithImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>PushPostWithImage(item: <a href="../interfaces/Post.html" target="_self">PostItem</a>, file: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="162"
+                            class="link-to-prism">src/app/components/forum-services/data.service.ts:162</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="../interfaces/Post.html" target="_self" >PostItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>file</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleError"></a>
+                    <span class="name">
+                        <span ><b>handleError</b></span>
+                        <a href="#handleError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/forum-services/data.service.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="postId"></a>
+                    <span class="name">
+                        <span ><b>postId</b></span>
+                        <a href="#postId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/forum-services/data.service.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { JsonPipe } from &#x27;@angular/common&#x27;;
+import { HttpClient, HttpErrorResponse, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { from, Observable, throwError } from &#x27;rxjs&#x27;;
+import { catchError, retry,tap,map } from &#x27;rxjs/operators&#x27;;
+import { CommentInterface, CommentItem } from &#x27;../forum-interfaces/comment-interface&#x27;;
+import { PostItem, PostInterface } from &#x27;../forum-interfaces/post-interface&#x27;;
+import { BoardInterface } from &#x27;../forum-interfaces/board-interface&#x27;;
+
+
+
+
+
+
+
+
+
+/*
+Number passed back to get method to be used as query string to get board posts.
+board numbers: 
+
+0: All Posts 
+1: General
+2: Pet Help
+3: Walking Routes,
+4: Questions for Pet Connect
+5: Customer Reviews 
+
+
+Notes for tomorrow
+- the get all method has to be changed to return the same data structure as the other method
+- update after post and comment
+- add images to S3 
+
+*/
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class DataService {
+  postId;
+  handleError: any;
+
+  constructor(private http: HttpClient){}
+  getBoardDetails(r: string) : Observable&lt;BoardInterface&gt; {
+    return this.http.get&lt;BoardInterface&gt;(&#x27;https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/board&#x27;+ &quot;?boardID&#x3D;&quot;+ r)
+    .pipe(
+      tap(data &#x3D;&gt; console.log(&#x27;Forum/error&#x27; + JSON.stringify(data))
+    )
+   
+    );
+}
+
+  getForumData(r: string) : Observable&lt;PostInterface&gt; {
+    let url&#x3D; &#x27;&#x27;;
+    let urlAll &#x3D; &#x27;https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/all&#x27;
+    let urlBoard &#x3D; &#x27;https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/new/boardposts&#x27; + &#x27;?BoardID&#x3D;&#x27;+ r;
+    
+          if(r &#x3D;&#x3D; &quot;0&quot;)
+          {
+          url &#x3D; urlAll
+          }
+          else
+          {
+          url &#x3D; urlBoard
+          }
+
+    return this.http.get&lt;PostInterface&gt;(url)
+    .pipe(
+      tap(data &#x3D;&gt; console.log(&#x27;Forum/error&#x27; + JSON.stringify(data))
+    )
+    );
+}
+
+    PushPost(Item : PostItem) : Observable&lt;unknown&gt;
+    {
+      const bodyj &#x3D; (JSON.stringify(Item));
+      return this.http.post&lt;any&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post&#x27;, bodyj)
+      .pipe(
+        catchError(this.handleError)
+      )
+     
+      // this.http.post&lt;any&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post&#x27;, bodyj).subscribe(data &#x3D;&gt; {
+      // this.postId &#x3D; data.id;
+   //  })
+
+    }
+
+      // this.http.post&lt;any&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post&#x27;, bodyj).subscribe(data &#x3D;&gt; {
+      // this.postId &#x3D; data.id;
+   // })
+    PushCommentsToDB(commentItem : CommentItem): Observable&lt;unknown&gt;
+    {
+     
+      const bodyj &#x3D; (JSON.stringify(commentItem));
+
+      return this.http.post&lt;any&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/comment&#x27;, bodyj)
+      .pipe(
+        catchError(this.handleError)
+      )
+    
+     
+
+    }
+
+    getComments(postID: string) : Observable&lt;CommentInterface&gt; {
+ 
+      return this.http.get&lt;CommentInterface&gt;(&#x27;https://5nxguu0vhi.execute-api.eu-west-1.amazonaws.com/Forum-GetComments&#x27;+&quot;?postID&#x3D;&quot; + postID)
+      .pipe(
+        tap(data &#x3D;&gt; console.log(&#x27;Forum/error&#x27; + JSON.stringify(data))
+      ),
+      // catchError(this.handleError)
+    
+      );
+  }
+
+    // temp workaround dynamo type issue // 
+    ChangeValue(Item : PostItem)
+    {
+
+      var params &#x3D; {
+        
+            &quot;PostID&quot;: Item.PostID,
+            &quot;PostTitle&quot;: Item.PostTitle,
+            &quot;BoardID&quot;: Item.BoardID,
+            &quot;User&quot;: Item.User,
+            &quot;Content&quot;: Item.Content,
+            &quot;Date&quot;: Item.Date,
+            &quot;DisplayComments&quot;: Item.DisplayComments,
+            &quot;VoteCount&quot;: Item.VoteCount,
+            &quot;imageProfileUrl&quot;:Item.imageProfileUrl
+  //
+        }
+        
+      const bodyj &#x3D; (JSON.stringify(Item));
+      this.http.put&lt;any&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/update&#x27;, params).subscribe(data &#x3D;&gt; {
+      this.postId &#x3D; data.id;
+     })
+    }
+
+    public ChangeComValue(item: CommentItem)
+    {
+      var params &#x3D; {
+        
+        &quot;postID&quot;: item.postID,
+        &quot;commentID&quot;: item.commentID,
+        &quot;user&quot;: item.user,
+        &quot;comment&quot;: item.comment,
+       // &quot;DisplayComments&quot;: com,
+        &quot;voteCount&quot;: item.voteCount
+//
+    }
+    
+      this.http.put&lt;any&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/com/comment&#x27;, params).subscribe(data &#x3D;&gt; {
+      this.postId &#x3D; data.id;
+     })
+      
+
+    }
+
+    public PushPostWithImage(item: PostItem, file: any)
+    {
+     // let test &#x3D; environment
+     // const contentType &#x3D; ;
+
+     const formData &#x3D; new FormData();
+    formData.append(&#x27;image&#x27;, file);
+
+      const params &#x3D; {
+        Bucket: &#x27;forum-images-petconnect&#x27;,
+        Key:  file.name,
+        Body: formData,
+        ACL: &#x27;public-read&#x27;,
+        ContentType: file.type
+    }
+    console.log(params);
+
+    this.http.post(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/test_post/image&#x27;, params)
+     .subscribe(   
+    res &#x3D;&gt; {
+        // handle success            
+        //reset file input
+        console.log(res);
+    
+     },
+     err &#x3D;&gt; {
+       console.log(err);
+     }        
+    );
+  }
+    
+   
+}
+
+
+  //working
+    //   this.http.post&lt;any&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/post&#x27;, { PostID: &#x27;23123123&#x27;, PostTitle : &#x27;Testing&#x27;, Content: &#x27;Is this working&#x27;, Date: &quot;25/10/22&quot;, DisplayComments: false, VoteCount: 0}).subscribe(data &#x3D;&gt; {
+    //     this.postId &#x3D; data.id;
+    // })
+
+    /*
+     DisplayCommentsSection(Item : PostItem)
+    {      alert(JSON.stringify(Item));
+      const bodyj &#x3D; (JSON.stringify(Item));
+      this.http.put&lt;any&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/new/update&#x27;, bodyj).subscribe(data &#x3D;&gt; {
+      this.postId &#x3D; data.id;
+     })
+    }
+     */
+ /* 
+   
+*/
+
+    //works before adding boards 
+    /*
+    getForumData(r: number) : Observable&lt;PostInterface&gt; {
+    return this.http.get&lt;PostInterface&gt;(&#x27;https://4pms4upawl.execute-api.eu-west-1.amazonaws.com/Test&#x27;)
+    .pipe(
+      tap(data &#x3D;&gt; console.log(&#x27;Forum/error&#x27; + JSON.stringify(data))
+    ),
+    // catchError(this.handleError)
+  
+    );
+}
+    */
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'DataService-1.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

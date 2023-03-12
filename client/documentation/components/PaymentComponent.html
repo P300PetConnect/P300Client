@@ -1,0 +1,1758 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  PaymentComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/payment/payment.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-payment</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./payment.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./payment.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#actionToBtn" >actionToBtn</a>
+                            </li>
+                            <li>
+                                <a href="#btn2" >btn2</a>
+                            </li>
+                            <li>
+                                <a href="#btnclass" >btnclass</a>
+                            </li>
+                            <li>
+                                <a href="#btnclass2" >btnclass2</a>
+                            </li>
+                            <li>
+                                <a href="#btnText" >btnText</a>
+                            </li>
+                            <li>
+                                <a href="#btnText2" >btnText2</a>
+                            </li>
+                            <li>
+                                <a href="#cardTitle" >cardTitle</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#dialogRef2" >dialogRef2</a>
+                            </li>
+                            <li>
+                                <a href="#message" >message</a>
+                            </li>
+                            <li>
+                                <a href="#orderStatus" >orderStatus</a>
+                            </li>
+                            <li>
+                                <a href="#paymentHandler" >paymentHandler</a>
+                            </li>
+                            <li>
+                                <a href="#stepper" >stepper</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#CanceledStatus" >CanceledStatus</a>
+                            </li>
+                            <li>
+                                <a href="#checkCurrentStatus" >checkCurrentStatus</a>
+                            </li>
+                            <li>
+                                <a href="#Completed" >Completed</a>
+                            </li>
+                            <li>
+                                <a href="#confirmedStatus" >confirmedStatus</a>
+                            </li>
+                            <li>
+                                <a href="#confirmPayment" >confirmPayment</a>
+                            </li>
+                            <li>
+                                <a href="#invokeStripe" >invokeStripe</a>
+                            </li>
+                            <li>
+                                <a href="#makePayment" >makePayment</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onCancel" >onCancel</a>
+                            </li>
+                            <li>
+                                <a href="#onCreateReview" >onCreateReview</a>
+                            </li>
+                            <li>
+                                <a href="#PaymentManagement" >PaymentManagement</a>
+                            </li>
+                            <li>
+                                <a href="#PendentStatus" >PendentStatus</a>
+                            </li>
+                            <li>
+                                <a href="#SecondBtnPayment" >SecondBtnPayment</a>
+                            </li>
+                            <li>
+                                <a href="#updatePaymentStatus" >updatePaymentStatus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#order" >order</a>
+                            </li>
+                            <li>
+                                <a href="#orderStatusUpdated" >orderStatusUpdated</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, dialog: MatDialog, emailService: <a href="../injectables/EmailService.html" target="_self">EmailService</a>, _httpOrder: <a href="../injectables/OrderService.html" target="_self">OrderService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/payment/payment.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>emailService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/EmailService.html" target="_self" >EmailService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_httpOrder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OrderService.html" target="_self" >OrderService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="order"></a>
+                        <b>order</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>IOrder | undefined</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/payment/payment.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="orderStatusUpdated"></a>
+                        <b>orderStatusUpdated</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/payment/payment.component.ts:34</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CanceledStatus"></a>
+                    <span class="name">
+                        <span ><b>CanceledStatus</b></span>
+                        <a href="#CanceledStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>CanceledStatus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="175"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:175</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkCurrentStatus"></a>
+                    <span class="name">
+                        <span ><b>checkCurrentStatus</b></span>
+                        <a href="#checkCurrentStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkCurrentStatus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Completed"></a>
+                    <span class="name">
+                        <span ><b>Completed</b></span>
+                        <a href="#Completed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Completed()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmedStatus"></a>
+                    <span class="name">
+                        <span ><b>confirmedStatus</b></span>
+                        <a href="#confirmedStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmedStatus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmPayment"></a>
+                    <span class="name">
+                        <span ><b>confirmPayment</b></span>
+                        <a href="#confirmPayment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmPayment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="invokeStripe"></a>
+                    <span class="name">
+                        <span ><b>invokeStripe</b></span>
+                        <a href="#invokeStripe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>invokeStripe()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:111</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="makePayment"></a>
+                    <span class="name">
+                        <span ><b>makePayment</b></span>
+                        <a href="#makePayment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>makePayment(amount: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, doAction: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>amount</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>doAction</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCancel"></a>
+                    <span class="name">
+                        <span ><b>onCancel</b></span>
+                        <a href="#onCancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCancel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCreateReview"></a>
+                    <span class="name">
+                        <span ><b>onCreateReview</b></span>
+                        <a href="#onCreateReview"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCreateReview()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PaymentManagement"></a>
+                    <span class="name">
+                        <span ><b>PaymentManagement</b></span>
+                        <a href="#PaymentManagement"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>PaymentManagement()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:202</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PendentStatus"></a>
+                    <span class="name">
+                        <span ><b>PendentStatus</b></span>
+                        <a href="#PendentStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>PendentStatus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:187</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SecondBtnPayment"></a>
+                    <span class="name">
+                        <span ><b>SecondBtnPayment</b></span>
+                        <a href="#SecondBtnPayment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>SecondBtnPayment(amount: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, doAction: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:66</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>amount</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>doAction</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePaymentStatus"></a>
+                    <span class="name">
+                        <span ><b>updatePaymentStatus</b></span>
+                        <a href="#updatePaymentStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePaymentStatus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">src/app/components/payment/payment.component.ts:131</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actionToBtn"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>actionToBtn</b></span>
+                        <a href="#actionToBtn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Confirm&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/payment/payment.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="btn2"></a>
+                    <span class="name">
+                        <span ><b>btn2</b></span>
+                        <a href="#btn2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;btn2&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/payment/payment.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="btnclass"></a>
+                    <span class="name">
+                        <span ><b>btnclass</b></span>
+                        <a href="#btnclass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;success&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/payment/payment.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="btnclass2"></a>
+                    <span class="name">
+                        <span ><b>btnclass2</b></span>
+                        <a href="#btnclass2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/payment/payment.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="btnText"></a>
+                    <span class="name">
+                        <span ><b>btnText</b></span>
+                        <a href="#btnText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Complete&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/payment/payment.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="btnText2"></a>
+                    <span class="name">
+                        <span ><b>btnText2</b></span>
+                        <a href="#btnText2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;Revision&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/payment/payment.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cardTitle"></a>
+                    <span class="name">
+                        <span ><b>cardTitle</b></span>
+                        <a href="#cardTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;Make the payment to confirm your order!&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/payment/payment.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialogRef2"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>dialogRef2</b></span>
+                        <a href="#dialogRef2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/MessageAlertComponent.html" target="_self" >MatDialogRef&lt;MessageAlertComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/payment/payment.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="message"></a>
+                    <span class="name">
+                        <span ><b>message</b></span>
+                        <a href="#message"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/payment/payment.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orderStatus"></a>
+                    <span class="name">
+                        <span ><b>orderStatus</b></span>
+                        <a href="#orderStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/payment/payment.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paymentHandler"></a>
+                    <span class="name">
+                        <span ><b>paymentHandler</b></span>
+                        <a href="#paymentHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/payment/payment.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stepper"></a>
+                    <span class="name">
+                        <span ><b>stepper</b></span>
+                        <a href="#stepper"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatStepper</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;stepper&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/payment/payment.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Component, ElementRef, Input, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { IOrder } from &#x27;../../interfaces/form&#x27;;
+import { EOrderStatus, EPaymentStatus } from &#x27;../../interfaces/order&#x27;;
+import { MatDialog, MatDialogConfig, MatDialogRef } from &#x27;@angular/material/dialog&#x27;;
+import { MessageAlertComponent } from &#x27;../../shared-components/message-alert/message-alert.component&#x27;;
+import { MatStepper } from &#x27;@angular/material/stepper&#x27;;
+import { OrderService } from &#x27;../../service/order.service&#x27;;
+import { EmailService } from &#x27;../../service/email.service&#x27;;
+import { C } from &#x27;@angular/cdk/keycodes&#x27;;
+
+@Component({
+  selector: &#x27;app-payment&#x27;,
+  templateUrl: &#x27;./payment.component.html&#x27;,
+  styleUrls: [&#x27;./payment.component.scss&#x27;], 
+
+})
+export class PaymentComponent implements OnInit {  
+  btnclass: string&#x3D;&quot;success&quot;;
+  btnText: string&#x3D;&#x27;Complete&#x27;;
+  actionToBtn?: string &#x3D; &#x27;Confirm&#x27;;
+  btnText2: string &#x3D; &quot;Revision&quot;
+  cardTitle:string&#x3D;&quot;Make the payment to confirm your order!&quot;
+
+  message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; };
+  private dialogRef2?: MatDialogRef&lt;MessageAlertComponent&gt;
+  btnclass2: string;
+  orderStatus: string&#x3D;&#x27;&#x27;;
+
+  constructor(private _http: HttpClient, private dialog:MatDialog, private emailService: EmailService, private _httpOrder:OrderService) { }
+  paymentHandler: any &#x3D; null;
+  @Input() order:IOrder | undefined;
+  @ViewChild(&#x27;btn2&#x27;) btn2: ElementRef;
+  @Input() orderStatusUpdated: string; 
+
+  @ViewChild(&#x27;stepper&#x27;)
+  stepper: MatStepper;
+
+  ngOnInit() {
+
+    this.invokeStripe();
+    this.checkCurrentStatus(); 
+
+  }
+
+  checkCurrentStatus(){
+    console.log(&#x27;check status&#x27;, this.order); 
+
+    if(this.order.Status&#x3D;&#x3D;EOrderStatus.Processing){
+      this.confirmedStatus(); 
+    }
+    else if(this.order.Status&#x3D;&#x3D;EOrderStatus.Canceled){
+      this.CanceledStatus(); 
+    }
+    else if(this.order.Status&#x3D;&#x3D;EOrderStatus.Pendent){
+      this.PendentStatus(); 
+    }
+    else if(this.order.Status&#x3D;&#x3D;EOrderStatus.Completed){
+      this.Completed(); 
+    }
+    else if(this.order.Status&#x3D;&#x3D;EOrderStatus.Review){
+      this.confirmedStatus(); 
+    }
+  }
+
+  SecondBtnPayment(amount: any, doAction:string) {
+    if(this.order.Status &#x3D;&#x3D; EOrderStatus.Completed){
+      this.onCreateReview(); 
+    }
+  }
+  onCreateReview(){
+
+  }
+  makePayment(amount: any, doAction:string) {
+    if(doAction&#x3D;&#x3D;&#x27;Confirm&#x27;){
+        const paymentHandler &#x3D; (&lt;any&gt;window).StripeCheckout.configure({
+      key: &#x27;pk_test_51MWB7YAoSiviOVuvgwBp0jfYUIN2ype1syfcNPSMq6jIxJeCAnMCfwB1ddbez4r5zo4sSOStblgpJ2gWJmbjG6bO00oC3DWa5K&#x27;,
+      locale: &#x27;auto&#x27;,
+      token: function (stripeToken: any) {
+        // console.log(stripeToken); //payment done
+      },
+    });
+    paymentHandler.open({
+      name: &#x27;PetConnect&#x27;,
+      description: amount,
+      amount: amount * 100,
+    });
+    this.updatePaymentStatus(); 
+    }
+    else if(doAction&#x3D;&#x3D;&#x27;Cancel&#x27;){
+      console.log(&#x27;Cancel&#x27;)
+      this.onCancel(); 
+    }
+    this.confirmPayment(); 
+  }
+
+  confirmPayment() {
+    this.order.PaymentStatus &#x3D; EPaymentStatus.Confirmed; 
+    this.order.Status &#x3D; EOrderStatus.Processing; 
+    this.cardTitle&#x3D;&quot;Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy&quot;; 
+    this.btnclass&#x3D;&quot;danger&quot;;
+    this.btnText &#x3D; &#x27;Cancel&#x27;;
+    this.actionToBtn &#x3D; &quot;Cancel&quot;;
+
+    //send confirm order email
+    this.emailService.sendOrderConfirmedEmail().subscribe(
+      data &#x3D;&gt; console.log(&#x27;Confirmation Email Sent!&#x27;, data),
+      error &#x3D;&gt; console.log(&#x27;Error Sending Email!&#x27;, error)
+    );
+  }
+  invokeStripe() {
+    if (!window.document.getElementById(&#x27;stripe-script&#x27;)) {
+      const script &#x3D; window.document.createElement(&#x27;script&#x27;);
+      script.id &#x3D; &#x27;stripe-script&#x27;;
+      script.type &#x3D; &#x27;text/javascript&#x27;;
+      script.src &#x3D; &#x27;https://checkout.stripe.com/checkout.js&#x27;;
+      script.onload &#x3D; () &#x3D;&gt; {
+        this.paymentHandler &#x3D; (&lt;any&gt;window).StripeCheckout.configure({
+          key: &#x27;pk_test_51MWB7YAoSiviOVuvgwBp0jfYUIN2ype1syfcNPSMq6jIxJeCAnMCfwB1ddbez4r5zo4sSOStblgpJ2gWJmbjG6bO00oC3DWa5K&#x27;,
+          locale: &#x27;auto&#x27;,
+          token: function (stripeToken: any) {
+            alert(&#x27;Payment has been successfull!&#x27;);
+            console.log(stripeToken); //payment done
+
+          },
+        });
+      };
+      window.document.body.appendChild(script);
+    }
+  }
+  updatePaymentStatus(){
+    this.order.PaymentStatus &#x3D; EPaymentStatus.Confirmed; 
+    this.order.Status &#x3D; EOrderStatus.Processing; 
+    console.log(&#x27;the order&#x27;,this.order); 
+    this._http.put(&#x27;https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev&#x27;,this.order).subscribe(data &#x3D;&gt; {
+      console.log(&#x27;my data&#x27;,data);
+    });
+  }
+
+  onCancel(){
+    
+    this.message&#x3D;{
+      taskName:&#x27;yesCancel&#x27;,
+      title:&#x27;Are you sure to Cancel this Order? &#x27;, 
+      subtitle:&#x27;If you cancel this event,it will be permanently cancelled.&#x27;, 
+      btntext1:&#x27;Yes, cancel&#x27;, 
+      btntext2:&#x27;No, dont cancel&#x27;}
+
+    const dialogConfig &#x3D; new MatDialogConfig(); 
+    dialogConfig.disableClose &#x3D; true; 
+    dialogConfig.autoFocus &#x3D; false; 
+    dialogConfig.width &#x3D; &quot;40%&quot;;
+    dialogConfig.height &#x3D; &quot;31%&quot;;
+    this.dialogRef2 &#x3D; this.dialog.open(MessageAlertComponent, {data:{ order: this.order, message: this.message}
+    }); 
+    this.dialogRef2.afterClosed().subscribe(result&#x3D;&gt;{
+      if(result.option&#x3D;&#x3D;&#x27;yesCancel&#x27;){
+        if (this.order) {
+          this.order.Status &#x3D; EOrderStatus.Canceled; 
+          this.order.PaymentStatus &#x3D; EPaymentStatus.Refounded; 
+          console.log(&#x27;my roder&#x27;, this.order)
+          this._http.put(&#x27;https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev&#x27;,this.order).subscribe(data &#x3D;&gt; {
+            console.log(&#x27;my data&#x27;,data);
+          });
+        } 
+      }
+      else{
+        this.dialogRef2?.close(); 
+      }
+    this.CanceledStatus(); 
+    })
+  }
+
+
+  CanceledStatus(){
+    this.btnclass&#x3D;&quot;btn-secondary disabled&quot;;
+    this.btnText&#x3D;&#x27;Order Canceled&#x27;;
+    this.actionToBtn &#x3D; &#x27;&#x27;;
+    this.cardTitle&#x3D;&quot;This order was canceled, this card will be removed in 7 days&quot;
+  }
+  confirmedStatus(){
+    this.cardTitle&#x3D;&quot;Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy&quot;; 
+     this.btnclass&#x3D;&quot;danger&quot;;
+        this.btnText &#x3D; &#x27;Cancel&#x27;;
+        this.actionToBtn &#x3D; &quot;Cancel&quot;; 
+  }
+  PendentStatus(){
+    this.cardTitle&#x3D;&quot;Make payment to confirm your order&quot;; 
+    this.btnclass&#x3D;&quot;success&quot;;
+    this.btnclass2&#x3D;&quot;info&quot;
+    this.btnText &#x3D; &#x27;Make Payment&#x27;;
+    this.actionToBtn &#x3D; &quot;Confirm&quot;; 
+  }
+  Completed(){
+    this.cardTitle&#x3D;&quot;Thanks! Please tell me more about your experience, giving a review&quot;; 
+    this.btnclass&#x3D;&quot;success&quot;;
+    this.btnclass2&#x3D;&quot;info&quot;;
+    this.btnText &#x3D; &#x27;Order again&#x27;;
+    this.btnText2&#x3D; &#x27;Give Review&#x27;
+    this.actionToBtn &#x3D; &quot;GiveReview&quot;; 
+  }
+  PaymentManagement(){
+    if(this.order?.PaymentStatus&#x3D;&#x3D;&#x27;Confirmad&#x27;){
+     
+    }
+  }
+  
+}
+
+
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;d-flex justify-content-end &quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12 mb-2&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;card&quot; style&#x3D;&quot;width: 40rem;&quot;&gt;
+            &lt;div class&#x3D;&quot;card-body&quot;&gt;
+              &lt;h5 class&#x3D;&quot;card-title&quot;&gt;Hi &amp;#9996;&lt;/h5&gt;
+              &lt;p class&#x3D;&quot;card-text pt-2&quot;&gt;{{cardTitle}}&lt;/p&gt;
+              &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-6 text-muted&quot;&gt;
+                  Total price
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-6&quot;&gt;
+                  {{order?.Price}}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-6 text-muted&quot;&gt;
+                  Order from
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-6&quot;&gt;
+                  {{order?.Name}} {{order?.Surname}}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-6 text-muted&quot;&gt;
+                  Order Ref       
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-6&quot;&gt;
+                  #00{{order?.OrderID}}         
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;mt-2&quot;&gt;
+                &lt;button (click)&#x3D;&quot;makePayment(order?.Price, this.actionToBtn)&quot; class&#x3D;&quot;btn btn-{{btnclass}} btn-block&quot;&gt;{{btnText}}&lt;/button&gt;
+                &lt;button *ngIf&#x3D;&quot;order.Status!&#x3D;&#x27;Canceled&#x27;&amp;&amp; order.Status!&#x3D;&#x27;Processing&#x27;&quot; #btn2  (click)&#x3D;&quot;SecondBtnPayment(order?.Price, this.actionToBtn)&quot; class&#x3D;&quot;btn btn-{{btnclass2}} btn-block&quot;&gt;{{btnText2}}&lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+    &lt;/div&gt;
+      &lt;!-- &lt;p&gt;{{cardTitle}}&lt;/p&gt;
+      &lt;button (click)&#x3D;&quot;makePayment(order?.Price)&quot; class&#x3D;&quot;btn btn-{{btnclass}} btn-block&quot;&gt;{{btnText}}&lt;/button&gt; --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./payment.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex justify-content-end ">  <div class="container">    <div class="col-12 mb-2">      <div class="row">        <div class="card" style="width: 40rem;">            <div class="card-body">              <h5 class="card-title">Hi &#9996;</h5>              <p class="card-text pt-2">{{cardTitle}}</p>              <div class="row">                <div class="col-6 text-muted">                  Total price                </div>                <div class="col-6">                  {{order?.Price}}                </div>                <div class="col-6 text-muted">                  Order from                </div>                <div class="col-6">                  {{order?.Name}} {{order?.Surname}}                </div>                <div class="col-6 text-muted">                  Order Ref                       </div>                <div class="col-6">                  #00{{order?.OrderID}}                         </div>              </div>              <div class="mt-2">                <button (click)="makePayment(order?.Price, this.actionToBtn)" class="btn btn-{{btnclass}} btn-block">{{btnText}}</button>                <button *ngIf="order.Status!=\'Canceled\'&& order.Status!=\'Processing\'" #btn2  (click)="SecondBtnPayment(order?.Price, this.actionToBtn)" class="btn btn-{{btnclass2}} btn-block">{{btnText2}}</button>              </div>            </div>          </div>    </div>      <!-- <p>{{cardTitle}}</p>      <button (click)="makePayment(order?.Price)" class="btn btn-{{btnclass}} btn-block">{{btnText}}</button> -->    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AddPostComponent', 'selector': 'app-add-post'},{'name': 'AlertmsgComponent', 'selector': 'app-alertmsg'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BottomInfoComponent', 'selector': 'app-bottom-info'},{'name': 'BrowseRouteComponent', 'selector': 'app-browse-route'},{'name': 'CalendarComponent', 'selector': 'app-calendar'},{'name': 'ChatPageComponent', 'selector': 'app-chat-page'},{'name': 'CommentSectionComponent', 'selector': 'app-comment-section'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForumWallComponent', 'selector': 'app-forum-wall'},{'name': 'InitialPageComponent', 'selector': 'app-initial-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ManageOrdersComponent', 'selector': 'app-manage-orders'},{'name': 'MapPlannerComponent', 'selector': 'app-map-planner'},{'name': 'MessageAlertComponent', 'selector': 'app-message-alert'},{'name': 'MessageInputComponent', 'selector': 'app-message-input'},{'name': 'ModalComponent', 'selector': 'app-modal'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NotAvailableFormComponent', 'selector': 'app-not-available-form'},{'name': 'OrderComponent', 'selector': 'app-order'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'PetCardViewComponent', 'selector': 'app-pet-card-view'},{'name': 'PetComponent', 'selector': 'app-pet'},{'name': 'PetOwnerProfileDetailsComponent', 'selector': 'app-pet-owner-profile-details'},{'name': 'PetSitterDetailsComponent', 'selector': 'app-pet-sitter-details'},{'name': 'PetSitterServiceComponent', 'selector': 'app-pet-sitter-service'},{'name': 'PopServiceCardComponent', 'selector': 'app-pop-service-card'},{'name': 'PostComponent', 'selector': 'app-post'},{'name': 'RecognitionComponent', 'selector': 'app-recognition'},{'name': 'ReviewComponent', 'selector': 'app-review'},{'name': 'ReviewFormComponent', 'selector': 'app-review-form'},{'name': 'ScheduleListComponent', 'selector': 'app-schedule-list'},{'name': 'SearchContainerComponent', 'selector': 'app-search-container'},{'name': 'SearchpositivekeywordsComponent', 'selector': 'app-search-pet-service'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SearchSitterServicesComponent', 'selector': 'app-search-sitter-services'},{'name': 'SearchVersion2Component', 'selector': 'app-search-version2'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SharedFormComponent', 'selector': 'app-shared-form'},{'name': 'TrackerOrderComponent', 'selector': 'app-tracker-order'},{'name': 'UploadImageComponent', 'selector': 'app-upload-image'},{'name': 'UserformComponent', 'selector': 'app-userform'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PaymentComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PaymentComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
