@@ -190,7 +190,7 @@
 
                     <mat-calendar [dateFilter]="shouldDisableDate">
                       <mat-calendar-header></mat-calendar-header>
-                      <mat-calendar-content [ngClass]="shouldApplyClass" *matCalendarBody>
+                      <mat-calendar-content  *matCalendarBody>
                         <ng-template matCalendarCellTemplate let-date>
                           {{ date.getDate() }}
                         </ng-template>
