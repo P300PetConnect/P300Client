@@ -14,7 +14,7 @@ import { ReviewService } from 'src/app/components/Review-services/review.service
 import { Review } from 'src/app/components/ReviewInterfaces/review';
 import { OrderComponent } from '../order/order.component';
 import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
-import { ServiceInterface } from 'src/app/Interfaces/search_service_interfaces/service-interface';
+import { ServiceInterface } from 'src/app/Interfaces/service-interface';
 import { INotAvailable, IOrderList } from '../interfaces/order';
 import { OrderService } from '../service/order.service';
 import { ActivatedRoute } from '@angular/router';

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { RdsUserServices } from 'src/app/Interfaces/search_service_interfaces/rds-user-services';
+import { RdsUserServices } from 'src/app/Interfaces/rds-user-services';
 import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';

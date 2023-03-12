@@ -16,7 +16,7 @@ import { Review } from 'src/app/components/ReviewInterfaces/review';
 import { ReviewService } from 'src/app/components/Review-services/review.service';
 import { ActivatedRoute } from '@angular/router';
 import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
-import { ServiceInterface } from 'src/app/Interfaces/search_service_interfaces/service-interface';
+import { ServiceInterface } from 'src/app/Interfaces/service-interface';
 import { OrderService } from '../service/order.service';
 import { INotAvailable, IOrderList } from '../interfaces/order';
 import { StreamChat, ChannelData, UserResponse, TokenProvider, UserFromToken } from 'stream-chat';

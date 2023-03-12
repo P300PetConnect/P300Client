@@ -2,7 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import { RdsUserServices } from 'src/app/Interfaces/search_service_interfaces/rds-user-services';
+import { RdsUserServices } from 'src/app/Interfaces/rds-user-services';
 import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
 import { IPet } from '../interfaces/form';
 import { PetService } from '../service/pet.service';
