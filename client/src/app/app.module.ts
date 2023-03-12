@@ -195,8 +195,8 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService, CognitoGuard, UserService, EmailService, SocketService],
-    AuthenticatorService, CognitoGuard, UserService, EmailService, SocketService, CognitoGuard, UserService,
+    AuthenticatorService, CognitoGuard, UserService, EmailService, SocketService,
+     CognitoGuard, UserService, EmailService, SocketService, CognitoGuard, UserService,
     // DayService, 
     // WeekService, 
     // WorkWeekService, 
