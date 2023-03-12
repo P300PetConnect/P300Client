@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { PostItem } from 'src/app/forum-interfaces/post-interface';
-import { DataService } from 'src/app/forum-services/data.service';
+import { PostItem } from 'src/app/components/forum-interfaces/post-interface';
+import { DataService } from 'src/app/components/forum-services/data.service';
 
 import { EventEmitter } from '@angular/core';
 //   <button class="btn btn-secondary" *ngIf="selectedFiles"  (click)="AddPostWithImage(title.value, content.value, video.value, form, image)">Upload</button>

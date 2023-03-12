@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
-import { RdsUserServices } from '../search_service_interfaces/rds-user-services';
-import { ServiceInterface } from '../search_service_interfaces/service-interface';
+import { RdsUserServices } from '../../Interfaces/search_service_interfaces/rds-user-services';
+import { ServiceInterface } from '../../Interfaces/search_service_interfaces/service-interface';
 
 @Injectable({
   providedIn: 'root'

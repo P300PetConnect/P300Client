@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { DataService } from 'src/app/forum-services/data.service';
+import { DataService } from 'src/app/components/forum-services/data.service';
 import { PostItem, PostInterface } from '../../forum-interfaces/post-interface';
-import { BoardInterface } from 'src/app/forum-interfaces/board-interface';
+import { BoardInterface } from 'src/app/components/forum-interfaces/board-interface';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddPostComponent } from '../add-post/add-post.component';
 

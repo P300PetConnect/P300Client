@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostItem } from 'src/app/forum-interfaces/post-interface';
-import { DataService } from 'src/app/forum-services/data.service';
+import { PostItem } from 'src/app/components/forum-interfaces/post-interface';
+import { DataService } from 'src/app/components/forum-services/data.service';
 
 @Component({
   selector: 'app-post',

@@ -9,7 +9,7 @@ import { MessageAlertComponent } from '../message-alert/message-alert.component'
 import { MatStepper } from '@angular/material/stepper';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Data } from '@angular/router';
-import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { SearchServiceService } from 'src/app/service/search_service_services/search-service.service';
 
 @Component({
   selector: 'app-pet-sitter-service',

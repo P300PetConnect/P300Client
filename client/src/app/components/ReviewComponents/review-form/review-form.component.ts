@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TestScheduler } from 'rxjs/testing';
-import { ReviewService } from 'src/app/Review-services/review.service';
+import { ReviewService } from 'src/app/components/Review-services/review.service';
 
 @Component({
   selector: 'app-review-form',

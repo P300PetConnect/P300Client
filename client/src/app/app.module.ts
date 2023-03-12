@@ -46,10 +46,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
-import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
-import { AddPostComponent } from './forum-components/add-post/add-post.component';
-import { PostComponent } from './forum-components/post/post.component';
-import { CommentSectionComponent } from './forum-components/comment-section/comment-section.component';
+import { ForumWallComponent } from './components/forum-components/forum-wall/forum-wall.component';
+import { AddPostComponent } from './components/forum-components/add-post/add-post.component';
+import { PostComponent } from './components/forum-components/post/post.component';
+import { CommentSectionComponent } from './components/forum-components/comment-section/comment-section.component';
 import { SharedFormComponent } from './components/shared-form/shared-form.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PetComponent } from './components/pet/pet.component';
@@ -78,19 +78,19 @@ import { AgmDirectionModule } from 'agm-direction';
 //     userPoolWebCliendId:'1kvja59f1tthl9chrrjn59pgou', 
 //     AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
 
-import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
-import { PopServiceCardComponent } from './search_service_components/pop-service-card/pop-service-card.component';
-import { BottomInfoComponent } from './search_service_components/bottom-info/bottom-info.component';
-import { SearchResultsComponent } from './search_service_components/search-results/search-results.component';
-import { CalendarComponent } from './calendar-components/calendar/calendar.component';
-import { ChunkPipe } from './calender-pipe/chunk.pipe';
+import { SearchContainerComponent } from './components/search_service_components/search-container/search-container.component';
+import { PopServiceCardComponent } from './components/search_service_components/pop-service-card/pop-service-card.component';
+import { BottomInfoComponent } from './components/search_service_components/bottom-info/bottom-info.component';
+import { SearchResultsComponent } from './components/search_service_components/search-results/search-results.component';
+import { CalendarComponent } from './components/calendar-components/calendar/calendar.component';
+import { ChunkPipe } from './components/calender-pipe/chunk.pipe';
 import { SearchVersion2Component } from './components/search-version2/search-version2.component';
 import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
 import { SearchSitterServicesComponent } from './components/search-sitter-services/search-sitter-services.component';
 
 import { OrderComponent } from './components/order/order.component';
-import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.component';
-import { ReviewComponent } from './ReviewComponents/review/review.component';
+import { ReviewFormComponent } from './components/ReviewComponents/review-form/review-form.component';
+import { ReviewComponent } from './components/ReviewComponents/review/review.component';
 import { InterceptorService } from './components/service/interceptor.service';
 import { ChatPageComponent } from './components/chat-page/chat-page.component';
 import { MessageInputComponent } from './components/message-input/message-input.component';
@@ -98,8 +98,8 @@ import { ManageOrdersComponent } from './components/manage-orders/manage-orders.
 import { PaymentComponent } from './components/payment/payment.component';
 import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
 import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
-import { MapPlannerComponent } from './map-planner/map-planner.component';
-import { BrowseRouteComponent } from './browse-route/browse-route.component';
+import { MapPlannerComponent } from './components/map-planner/map-planner.component';
+import { BrowseRouteComponent } from './components/browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
 import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
 import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';

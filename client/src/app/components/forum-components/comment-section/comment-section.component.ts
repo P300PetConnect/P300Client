@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DataService } from 'src/app/forum-services/data.service';
-import { CommentItem, CommentInterface } from 'src/app/forum-interfaces/comment-interface';
+import { DataService } from 'src/app/components/forum-services/data.service';
+import { CommentItem, CommentInterface } from 'src/app/components/forum-interfaces/comment-interface';
 import { NgForm } from '@angular/forms';
 
 @Component({
