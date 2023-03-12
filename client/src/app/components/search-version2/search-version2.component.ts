@@ -9,7 +9,7 @@ import { PetService } from '../service/pet.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PetComponent } from '../pet/pet.component';
 import { MapsAPILoader } from '@agm/core';
-import { GeocodingService } from '../geocoding.service';
+import { GeocodingService } from '../../service/geocoding.service';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
