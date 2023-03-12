@@ -64,8 +64,10 @@ export class CalendarComponent implements OnInit {
   }
 
   isObjectInArray(value: string): boolean {
-   //tests to see if date is in list array
-    return this.orders.some(obj => obj.formatted_date === value);
+
+    return this.orders.some(obj => 
+      new Date(obj.OrderStartDate).toDateString() ===  new Date(value).toDateString()
+      );
   }
 
   isObjectInArray2(value: string): boolean {
@@ -137,18 +139,28 @@ export class CalendarComponent implements OnInit {
   setValues(value: string)
   {
     //gets date from clicked on event, matches it to the order list
-    value = this.datePipe.transform(new Date(value), 'dd MMM yyyy');
+    value = new Date(value).toDateString();
+
+  
+
+    console.log("Heeeeeeeere"+JSON.stringify(this.orders))
+ 
     for(var i = 0; i < this.orders.length; i++)
     {
+      let d =  new Date(this.orders[i].OrderStartDate).toDateString();
 
-      if(this.orders[i].formatted_date == value)
+      if(d == value)
       {
         //sets selected order in temp object so we can render the details out on screen
         this.selectedOrders.push(this.orders[i]);
       }
     }
-    
-    console.log(JSON.stringify(this.selectedOrders));
+    if(this.selectedOrders.length > 1)
+    {
+      this.selectedOrders.sort((a, b) => new Date(a.OrderStartDate).getTime() - new Date(b.OrderStartDate).getTime());
+
+    }
+ 
     this.displayEvent = true;
    
   }

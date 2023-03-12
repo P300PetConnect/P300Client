@@ -44,6 +44,8 @@ export enum EOrderStatus {
     UserTitle: string;
     servicedes: string;
     formatted_date: string;
+    OrderStartDate: string;
+    OrderEndDate: string;
     
   }
   export interface INotAvailable {
