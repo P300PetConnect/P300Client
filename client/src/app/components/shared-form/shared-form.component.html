@@ -1,6 +1,6 @@
 <div class="tab-content">
   <div class="tab-pane fade show active" id="account" role="tabpanel">
-    <div class="card p-0 mb-3">
+    <div class="card mb-3">
       <div class="card-header">
         <div class="card-actions float-end">
           <div class="dropdown position-relative">
@@ -12,145 +12,138 @@
         <h5 class="card-title mb-0">Private info</h5>
       </div>
       <div class="card-body">
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form-group">
-          <div class="row">
-            <div class="col-lg-8 col-md-12 col-sm-12 col-12 mb-3">
+        <mat-tab-group animationDuration="0ms" disableScrolling="true">
+          <mat-tab label="Personal Info">
+            <form [formGroup]="userForm" (ngSubmit) = "onSubmit()" class="form-group">
               <div class="row">
-                <div class="col-6 mb-3">
-                  <label for="name" class="form-label">First name</label>
-                  <input type="text" [ngModel]="user?.name" class="form-control" id="name" formControlName="name"
-                    placeholder="First name" />
+                <div class="mb-3 col-8">
+                  <div class="row mt-3">
+                    <div class="col-6  mb-3 ">
+                       <label for="name"  class="form-label">First name</label>
+                    <input type="text"  [ngModel]="user?.name" class="form-control" id="name" formControlName="name"  placeholder="First name">
+                    </div>
+                    <div class="col-6 mb-3">
+                      <label for="surname"  class="form-label">Last name</label>
+                      <input type="text" [ngModel]="user?.surname"  class="form-control" id="surname"  formControlName="surname" placeholder="Last name">
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="emailAddress" class="form-label">Email</label>
+                      <input type="text" readonly [value]="user?.emailAddress"  class="form-control" id="emailAddress" formControlName="emailAddress">
+                    </div>
+                    <div class="col-12">
+                       <div class="mb-3">
+                       <label for="line1" class="form-label">Address - Line1</label>
+                       <input type="text" class="form-control" id="line1"  [value]="user?.line1" formControlName="line1" >
+                     </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-6 mb-3">
-                  <label for="surname" class="form-label">Last name</label>
-                  <input type="text" [ngModel]="user?.surname" class="form-control" id="surname"
-                    formControlName="surname" placeholder="Last name" />
-                </div>
-                <div class="col-12 mb-3">
-                  <label for="emailAddress" class="form-label">Email</label>
-                  <input type="text" readonly [value]="user?.emailAddress" class="form-control" id="emailAddress"
-                    formControlName="emailAddress" />
-                </div>
-                <div class="col-12">
-                  <div class="mb-3">
-                    <label for="line1" class="form-label">Address - Line1</label>
-                    <input type="text" class="form-control" id="line1" [value]="user?.line1" formControlName="line1" />
+                <div class="mb-3 col-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="text-center">
+                        <img alt="frank" *ngIf="authenticator?.user?.attributes?.name=='Father'" src="{{user?.profilePicUrl}}" class="rounded-circle img-responsive mt-2"
+                          width="128" height="128">
+                          <img alt="frank" *ngIf="authenticator?.user?.attributes?.name=='Joanna'" src="https://qph.cf2.quoracdn.net/main-qimg-b0cdc0f7a6da0c3a05750b2431450e8b-lq" class="rounded-circle img-responsive mt-2"
+                          width="128" height="128">
+                        <div class="mt-2">
+                          <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
+                        </div>
+                        <small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
-              <div class="text-center">
-                <img alt="frank" *ngIf="authenticator?.user?.attributes?.name == 'Father'"
-                  src="https://i.guim.co.uk/img/media/831ce4428aa017e2d4c9f883be27baeef95ef894/312_237_6076_3644/master/6076.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=e0508d322f18a9230080d1edfd8a5315"
-                  class="rounded-circle img-responsive mt-2" width="128" height="128" />
-                <img alt="frank" *ngIf="authenticator?.user?.attributes?.name == 'Joanna'"
-                  src="https://qph.cf2.quoracdn.net/main-qimg-b0cdc0f7a6da0c3a05750b2431450e8b-lq"
-                  class="rounded-circle img-responsive mt-2" width="128" height="128" />
-                <div class="mt-2">
-                  <span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
-                </div>
-                <small>For best results, use an image at least 128px by 128px in
-                  .jpg format</small>
+              <div class="mb-3">
+                <label for="line2" class="form-label">Addres - Line 2</label>
+                <input type="text"   class="form-control" id="line2" [value]="user?.line2" formControlName="line2"  placeholder="{{user?.line2}}">
               </div>
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label for="town" class="form-label">Town</label>
+                  <input type="text"  class="form-control" id="town" [value]="user?.city" formControlName="town"  placeholder="{{user?.city}}">
+                </div>
+                <div class="mb-3 col-md-4">
+                  <label for="county" class="form-label">County</label>
+                  <select id="county"  class="form-control">
+                    <option>Choose...</option>
+                    <option selected=""type="text"  class="form-control"  [value]="user?.county" id="county" formControlName="county">Sligo</option>
+                  </select>
+                </div>
+                <div class="mb-3 col-md-2">
+                  <label for="zipCode" class="form-label">Zip</label>
+                  <input type="text" [value]="user?.zipCode" class="form-control" formControlName="zipCode" id="zipCode">
+                </div>
+              </div>
+              <button type="submit"   class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+              </form>
+        
+          </mat-tab>
+          <mat-tab label="Profile info">
+        <form  [formGroup]="profileDetails" (ngSubmit) = "SubmitProfileDetail()">
+          <div class="row mt-3">
+            <div class="mb-3 col-md-6">
+              <label for="desc" class="form-label">Profile Description</label>
+              <textarea name="desc" id="desc" cols="70" rows="3" formControlName="ProfileDesc"></textarea>
             </div>
+          
+          </div>  
+          <div class="row mt-3">
+            <div class="mb-3 col-md-4">
+              
+              <label for="can" class="form-label">Cancellation Policy</label>
+              <input type="text" class="form-control" formControlName="CancellationPolicy" id="can">
+            
+            </div>
+         
+            <div class="mb-3 col-md-4">
+              <label for="children" class="form-label">Children in Home</label>
+              <input type="text"  class="form-control" formControlName="Children" id="children">
+            </div>
+           
+            <div class="mb-3 col-md-4">
+              <label for="htype" class="form-label">House Type</label>
+              <input type="text"  class="form-control" formControlName="HouseType" id="houseType">
+            </div>
+          </div>  
+          <div class="row mt-3">
+            <div class="mb-3 col-md-4">
+              <label for="houseDetails" class="form-label">House Details</label>
+              <input type="text" class="form-control" formControlName="HouseDetails" id="houseDetails">
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="petsInHome" class="form-label">Pets In Home</label>
+              <input type="text" class="form-control" formControlName="PetsInHome" id="petsInHome">
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="usualPets" class="form-label">Usual Pets</label>
+              <input type="text" class="form-control" formControlName="UsualPets" id="usualPets">
+            </div>
+         
           </div>
-          <div class="mb-3">
-            <label for="line2" class="form-label">Addres - Line 2</label>
-            <input type="text" class="form-control" id="line2" [value]="user?.line2" formControlName="line2"
-              placeholder="{{ user?.line2 }}" />
-          </div>
-          <div class="row">
-            <div class="col-lg-6 col-md-4 col-12 mb-3">
-              <label for="town" class="form-label">Town</label>
-              <input type="text" class="form-control" id="town" [value]="user?.city" formControlName="town"
-                placeholder="{{ user?.city }}" />
+          <div class="row mt-3">
+            <div class="mb-3 col-md-4">
+              <label for="condition1" class="form-label">Condition 1</label>
+              <input type="text" class="form-control" formControlName="UsualPetsDetail1" id="condition1">
             </div>
-            <div class="col-lg-4 col-md-4 col-12 mb-3">
-              <label for="county" class="form-label">County</label>
-              <select id="county" class="form-control">
-                <option>Choose...</option>
-                <option selected="" type="text" class="form-control" [value]="user?.county" id="county"
-                  formControlName="county">
-                  Sligo
-                </option>
-              </select>
+            <div class="mb-3 col-md-4">
+              <label for="condition2" class="form-label">Condition 2</label>
+              <input type="text" class="form-control" formControlName="UsualPetsDetail2" id="condition2">
             </div>
-            <div class="col-lg-2 col-md-4 col-12 mb-3">
-              <label for="zipCode" class="form-label">Zip</label>
-              <input type="text" [value]="user?.zipCode" class="form-control" formControlName="zipCode" id="zipCode" />
+            <div class="mb-3 col-md-4">
+              <label for="condition3" class="form-label">Condition 3</label>
+              <input type="text" class="form-control" formControlName="UsualPetsDetail3" id="condition3">
             </div>
-          </div>
-          <button type="submit" class="btn btn-primary" (click)="onSubmit()">
-            Save changes
-          </button>
-        </form>
+         
+          </div>         
+  
+          <button type="submit"   class="btn btn-primary" (click)="SubmitProfileDetail()">Save changes</button>
+          </form>
+      
+          </mat-tab>
+          </mat-tab-group>
+  
+      
       </div>
     </div>
-
-    <!-- 
-      <div class="col-8">
-        <div class="row">
-          <div class="card" *ngIf="!isSelected">
-            <div class="card-header">
-              <div class="card-actions float-end">
-                <div class="dropdown position-relative">
-                  <a href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" class="">
-                    <i class="bi bi-pencil-square"></i>
-                  </a>
-                </div>
-              </div>
-           
-              <div class="mb-3 col-md-4">
-                <label for="children" class="form-label">Children in Home</label>
-                <input type="text"  class="form-control" formControlName="Children" id="children">
-              </div>
-             
-              <div class="mb-3 col-md-4">
-                <label for="htype" class="form-label">House Type</label>
-                <input type="text"  class="form-control" formControlName="HouseType" id="houseType">
-              </div>
-            </div>  
-            <div class="row mt-3">
-              <div class="mb-3 col-md-4">
-                <label for="houseDetails" class="form-label">House Details</label>
-                <input type="text" class="form-control" formControlName="HouseDetails" id="houseDetails">
-              </div>
-              <div class="mb-3 col-md-4">
-                <label for="petsInHome" class="form-label">Pets In Home</label>
-                <input type="text" class="form-control" formControlName="PetsInHome" id="petsInHome">
-              </div>
-              <div class="mb-3 col-md-4">
-                <label for="usualPets" class="form-label">Usual Pets</label>
-                <input type="text" class="form-control" formControlName="UsualPets" id="usualPets">
-              </div>
-           
-            </div>
-            <div class="row mt-3">
-              <div class="mb-3 col-md-4">
-                <label for="condition1" class="form-label">Condition 1</label>
-                <input type="text" class="form-control" formControlName="UsualPetsDetail1" id="condition1">
-              </div>
-              <div class="mb-3 col-md-4">
-                <label for="condition2" class="form-label">Condition 2</label>
-                <input type="text" class="form-control" formControlName="UsualPetsDetail2" id="condition2">
-              </div>
-              <div class="mb-3 col-md-4">
-                <label for="condition3" class="form-label">Condition 3</label>
-                <input type="text" class="form-control" formControlName="UsualPetsDetail3" id="condition3">
-              </div>
-           
-            </div>         
-    
-            <button type="submit"   class="btn btn-primary" (click)="SubmitProfileDetail()">Save changes</button>
-            </form>
-        
-            </mat-tab>
-            </mat-tab-group>
-    
-        
-        </div>
-        
-      </div> -->
-  </div>
-</div>

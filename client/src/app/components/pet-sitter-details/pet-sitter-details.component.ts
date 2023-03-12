@@ -99,6 +99,7 @@ export class PetSitterDetailsComponent implements OnInit {
     // if (view == 'month') {
         return 'highlightCard';
     // }
+  }
 
 
 
