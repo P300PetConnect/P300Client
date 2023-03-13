@@ -106,7 +106,6 @@ import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-
 import { EmailService } from './service/email.service';
 import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
 const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnswyJACAdgPdcdX4rsSq6k";
-// import { Cal2Component } from './components/cal2/cal2.component';
 // import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 
 @NgModule({
@@ -128,7 +127,6 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
     ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent, TrackerOrderComponent
     ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, 
-    // Cal2Component
   ],
   imports: [
     
