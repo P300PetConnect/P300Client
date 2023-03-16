@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TestScheduler } from 'rxjs/testing';
 import { ReviewService } from 'src/app/components/Review-services/review.service';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-review-form',
@@ -25,14 +26,14 @@ export class ReviewFormComponent implements OnInit {
   });
 
       
-  constructor(private db: ReviewService) { }
+  constructor(private db: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
 
   ngOnInit(): void {
  
 
- 
+ console.log(this.data); 
   }
 
   onSubmit()
