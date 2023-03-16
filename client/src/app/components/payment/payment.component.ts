@@ -42,7 +42,7 @@ export class PaymentComponent implements OnInit {
   stepper: MatStepper;
 
   ngOnInit() {
-    this.userGroup =  JSON.parse(localStorage.getItem('userGroup')); 
+    this.userGroup =  localStorage.getItem('userGroup'); 
     this.invokeStripe();
     this.checkCurrentPaymentStatus(); 
     this.checkCurrentOrderStatus(); 
@@ -51,7 +51,7 @@ export class PaymentComponent implements OnInit {
 
   checkCurrentPaymentStatus(){
     console.log('check status', this.order); 
-    this.userGroup =  JSON.parse(localStorage.getItem('userGroup')); 
+    this.userGroup =  localStorage.getItem('userGroup'); 
 //Pendent Payment Status
     if(this.order?.PaymentStatus==EPaymentStatus.Pendent){
 

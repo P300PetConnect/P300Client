@@ -18,7 +18,7 @@ import { UserService } from '../../service/user.service';
 })
 export class ManageOrdersComponent implements OnInit {
   @Output() onCreate: EventEmitter<any> = new EventEmitter<any>();
-  orders:IOrder[]=[]; 
+  orders:any[]=[]; 
   clients: any = {}; 
   petOwners: any;
   errorMessage: any;
