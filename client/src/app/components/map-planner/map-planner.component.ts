@@ -348,9 +348,22 @@ export class MapPlannerComponent implements OnInit {
 
 
   shareTheRoute(post: Post) {
-    // shareRoute(post.startPoint, post.endPoint, post.routeName, post.email);
-    copyRouteID(post._id);
-    Swal.fire('Route ID Copied to Cliboard!');
+    shareRoute(post.startPoint, post.endPoint, post.routeName, post.email);
+    //copyRouteID(post._id);
+   // Swal.fire('Route ID Copied to Cliboard!');
+
+  }
+
+  shareTheRouteFromFloat() {
+    let inputRouteName = document.getElementById('RouteName') as HTMLInputElement | null;
+    let inputstartPoint = document.getElementById('from') as HTMLInputElement | null;
+    let inputToPoint = document.getElementById('to') as HTMLInputElement | null;
+
+
+    console.log(inputstartPoint+ " " +inputToPoint );
+    //shareRoute( document.getElementById('from',), document.getElementById('to',), "", this.authenticator?.user?.attributes?.email);
+    copyRouteID(inputstartPoint, inputToPoint, inputRouteName, this.authenticator?.user?.attributes?.email);
+    Swal.fire('Route Copied to Cliboard!');
 
   }
 
