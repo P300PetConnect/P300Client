@@ -1,0 +1,33 @@
+######
+PUT https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "PetSitterID": 36,
+    "PetOwnerID": 3,
+    "OrderDate": "2023-03-16T00:00:00.000Z",
+    "OrderDescription": "Looking after of friendly and playful 2-year-old cat for 3 days while they are away. The cat needs to be fed twice a day and their litter box needs to be cleaned regularly. The cat is well-behaved and doesn't require any special attention or medication.\n",
+    "OrderID": 122,
+    "ServiceID": 50,
+    "Price": "$50.00",
+    "PaymentStatus": "Test",
+    "Status": "Test",
+    "CreatedBy": null,
+    "FlagReadPetSitter": null,
+    "FlagReadPetOwner": null,
+    "OrderSlots": null,
+    "OrderStartDate": "Fri, 24  Mar 2023 13:27:00 GMT",
+    "OrderEndDate": "Fri, 31 Mar 2023 14:29:00 GMT",
+    "UserID": 43,
+    "Name": "Mike",
+    "Surname": "O'Sullivan",
+    "Profile_Pic_URL": "https://petconnect-profile-pictures.s3.eu-west-1.amazonaws.com/pexels-andrea-piacquadio-3785077.jpg",
+    "EmailAddress": "fatherted@gmail.com",
+    "Description": "cat-sitting services for clients who need someone to take care of their feline friends while they are away. The cats will be provided with food, water, and a clean litter box, and will be given plenty of love and attention during the visit.\n",
+    "ServiceImgUrl": null,
+    "ServiceTitle": "Cat Sitting",
+    "DateCreated": "2023-02-01T00:00:00.000Z",
+    "Skills": null,
+    "UserTitle": "Flexable Cat sitting service",
+    "StartingPrice": "30.00"
+}

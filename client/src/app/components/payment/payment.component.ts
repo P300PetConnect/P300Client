@@ -8,6 +8,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { OrderService } from '../../service/order.service';
 import { EmailService } from '../../service/email.service';
 import { C } from '@angular/cdk/keycodes';
+import { iif } from 'rxjs';
 
 @Component({
   selector: 'app-payment',
@@ -74,18 +75,36 @@ export class PaymentComponent implements OnInit {
   }
        
   checkCurrentOrderStatus(){
-    if(this.order.Status==EOrderStatus.Completed){
+    if(this.order?.Status==EOrderStatus.Completed){
       this.orderStatusMessage = 'This order has been '+this.order.Status; 
     }
-    if(this.order.Status==EOrderStatus.Processing){
-
-const OrderStartDate = this.order?.OrderStartDate;
+    if(this.order?.Status==EOrderStatus.Processing){
+      const OrderStartDate = this.order?.OrderStartDate;
       if(OrderStartDate){
         const timeDiff = this.calculateTimeDifference(OrderStartDate);
         console.log('difference of time', timeDiff);
         this.orderStatusMessage = timeDiff;
       }
     }
+    if(this.order?.Status==EOrderStatus.Executing){
+      if(this.userGroup=='PetSitter'){
+        this.orderStatusMessage = 'You Started Executing the order'; 
+      }
+      else{
+        this.orderStatusMessage = 'Pet Sitter Started Executing the order'; 
+      }
+    }
+
+    if(this.order?.Status==EOrderStatus.Completed){
+
+      if(this.userGroup == 'PetOwner'){
+
+      }
+      else{
+        this.paymentStatusMessage = "Awaiting review from Pet Owner."; 
+      }
+    }
+
   }
  
   calculateTimeDifference(OrderStartDate: string): string {
@@ -172,7 +191,7 @@ const OrderStartDate = this.order?.OrderStartDate;
     this.order.PaymentStatus = EPaymentStatus.Confirmed; 
     this.order.Status = EOrderStatus.Processing; 
     console.log('the order',this.order); 
-    this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',this.order).subscribe(data => {
+    this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev/',this.order).subscribe(data => {
       console.log('my data',data);
     });
   }
@@ -199,7 +218,7 @@ const OrderStartDate = this.order?.OrderStartDate;
           this.order.Status = EOrderStatus.Canceled; 
           this.order.PaymentStatus = EPaymentStatus.Refounded; 
           console.log('my roder', this.order)
-          this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',this.order).subscribe(data => {
+          this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev/',this.order).subscribe(data => {
             console.log('my data',data);
           });
         } 
