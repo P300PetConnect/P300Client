@@ -16,7 +16,7 @@ import { UserService } from '../../service/user.service';
   styleUrls: ['./chat-page.component.scss']
 })
 export class ChatPageComponent implements OnInit {
-  group = JSON.parse(localStorage.getItem('userGroup'));
+  group = localStorage.getItem('userGroup');
   userDetails = localStorage.getItem('PetConnectUser');
   chatName = JSON.parse(this.userDetails);
   members: any[] = [];
