@@ -17,7 +17,7 @@ export const environment = {
   userPoolId: 'eu-west-1_dkqFlijuX',
   clientId: '1kvja59f1tthl9chrrjn59pgou',
   production: false,
-  stream: { key: 'a584yba4xs7f'},
+  stream: { key: 'dfrmjwsp2372'},
   // GOOGLE_MAPS_API_KEY: 'AIzaSyCz-Nu0ku-0DJEe5iPt13RTq0QVpiz45AY',
   // region: 'eu-central-1',
   // identityPoolId: 'eu-west-1:632c2f15-6b41-44b0-9d26-539386e90e4d',
