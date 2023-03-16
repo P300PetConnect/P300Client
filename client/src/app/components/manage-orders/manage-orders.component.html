@@ -52,8 +52,8 @@
                      
                         <div class="row pl-5 pt-3">
                             <div class="col-6 text-justify card-text">
-                                <h5>Order Description Customised</h5>
-                                <p>{{o.OrderDescription}}</p>
+                                <h5 *ngIf="o.OrderDescription!='undefined'">Order Description Customised</h5>
+                                <p *ngIf="o.OrderDescription!='undefined'">{{o.OrderDescription}}</p>
                                 
                                 <h5>More about the service offered</h5>
                                 <p>{{o.Description}}</p>
