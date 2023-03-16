@@ -539,27 +539,51 @@ function getReverseGeocodingData2(lat, lng) {
 document.getElementById("mkRoute").addEventListener("click", showMakeRoute);
 
 function showMakeRoute() {
+
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.color="black";
+
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.color="black";
+
   document.getElementById("mkRoute").getElementsByTagName("a")[0].className = "nav-link active";
   document.getElementById("GenRoute").getElementsByTagName("a")[0].className = "nav-link";
   document.getElementById("FavRoute").getElementsByTagName("a")[0].className = "nav-link";
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.backgroundColor="#17a2b8";
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.color="white";
 
   document.getElementById("formm").style.display = "block";
   document.getElementById("formmG").style.display = "none";
   document.getElementById("routesBoxes").style.display = "none"
   document.getElementById("output").style.display = "none";
 
+ 
+
 }
 
 document.getElementById("GenRoute").addEventListener("click", showGenRoute);
 
 function showGenRoute() {
+
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.color="black";
+
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.color="black";
+
   document.getElementById("mkRoute").getElementsByTagName("a")[0].className = "nav-link";
   document.getElementById("GenRoute").getElementsByTagName("a")[0].className = "nav-link active";
   document.getElementById("FavRoute").getElementsByTagName("a")[0].className = "nav-link";
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.backgroundColor="#17a2b8";
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.color="white";
+
   document.getElementById("formmG").style.display = "block";
   document.getElementById("formm").style.display = "none";
   document.getElementById("output").style.display = "none";
   document.getElementById("routesBoxes").style.display = "none";
+
+ 
+
 
 }
 
@@ -567,13 +591,24 @@ function showGenRoute() {
 document.getElementById("FavRoute").addEventListener("click", showFavRoute);
 
 function showFavRoute() {
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.color="black";
+
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.color="black";
+
   document.getElementById("mkRoute").getElementsByTagName("a")[0].className = "nav-link";
   document.getElementById("GenRoute").getElementsByTagName("a")[0].className = "nav-link";
-  document.getElementById("FavRoute").getElementsByTagName("a")[0].className = "nav-link active";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].className = "nav-link  active";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.backgroundColor="#17a2b8";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.color="white";
+  // 17a2b8
   document.getElementById("output").style.display = "none";
   document.getElementById("formmG").style.display = "none";
   document.getElementById("formm").style.display = "none";
   document.getElementById("routesBoxes").style.display = "block"
+
+ 
 
 
 }
