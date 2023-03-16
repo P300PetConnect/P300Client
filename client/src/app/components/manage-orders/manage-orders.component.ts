@@ -50,9 +50,9 @@ export class ManageOrdersComponent implements OnInit {
        localStorage.setItem('userGroup', JSON.stringify(this.userGroup));
 
     this.getOrders(); 
-
    }
 
+ 
    async getOrders(){
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
     
@@ -66,10 +66,6 @@ export class ManageOrdersComponent implements OnInit {
           console.log('test', this.orders); 
           console.log(this.petSitter)
           console.log('pets itter id ', this.petSitter?.petSitterId); 
-
-
-        // }); 
-        // return false; 
     }
     else if(this.userGroup =="PetOwner"){
 
@@ -88,20 +84,22 @@ export class ManageOrdersComponent implements OnInit {
         this.orders = orders;
         console.log('Pet Owner ID', this.petOwner?.petOwnerId); 
       }
-      
     }
-    
 }
 
-startWorking(order:IOrder){
-  this.orderSelected = order; 
+startWorking(order:IOrder){ 
   this.petsitterisworking=true; 
-  //Change the order status
-  this.updatePaymentStatus(EOrderStatus.Executing); 
+  order.Status = EOrderStatus.Executing; 
+  console.log('the order',order); 
+  this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',order).subscribe(data => {
+    console.log('my data',data);
+  });
 
 }
-updatePaymentStatus(status: EOrderStatus){
+
+updateOrderStatus(status: EOrderStatus){
   this.orderSelected.Status = status; 
+  this.petsitterisworking=true; 
   console.log('the order', this.orderSelected); 
   this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev', this.orderSelected).subscribe(data => {
     console.log('my data',data);
@@ -109,11 +107,10 @@ updatePaymentStatus(status: EOrderStatus){
 }
 
 finishWorking(order:IOrder){
-  this.orderSelected = order; 
   this.petsitterisworking=false; 
-  this.updatePaymentStatus(EOrderStatus.Completed); 
-  this.updateStatus.emit('Completed');
-
+  order.Status = EOrderStatus.Completed; 
+  this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',order).subscribe(data => {
+  });
 }
   // async getOrders() {
   //   //IF Pet Sitter
