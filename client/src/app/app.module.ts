@@ -62,7 +62,6 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 // import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
 // import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 
-
 import { AgmCoreModule } from "@agm/core";
 import { SocketService } from './service/socket.service';
 import { AgmDirectionModule } from 'agm-direction';

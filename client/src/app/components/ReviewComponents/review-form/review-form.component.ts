@@ -15,6 +15,11 @@ export class ReviewFormComponent implements OnInit {
   stars: number[] = [1,2,3,4,5];
   message: any;
   selected = 1;
+  starRating = 0;
+
+    value: number | null = 2;
+
+    currentRate = 3.14;
 
    // add order number when integrated
    addReview : FormGroup = new FormGroup({
@@ -24,26 +29,26 @@ export class ReviewFormComponent implements OnInit {
     content: new FormControl('', [Validators.required]),
   
   });
+  order: any;
 
       
-  constructor(private db: ReviewService, @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-
+  constructor(private db: ReviewService,  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
- 
+   this.order = this.data?.order; 
+   console.log(this.order); 
+  }
 
- console.log(this.data); 
+  onRateChange(rate: number) {
+    this.starRating = rate;
   }
 
   onSubmit()
 {
-      //submits review to be added to DB
-    //will get subject and creator ID's when integrated
-
-  this.addReview.controls['subID'].setValue(43);
-  this.addReview.controls['creatorID'].setValue(70);
-  this.addReview.controls['rating'].setValue(this.selected);
+  this.addReview.controls['subID'].setValue(this.order?.UserID);
+  this.addReview.controls['creatorID'].setValue(9);
+  this.addReview.controls['rating'].setValue(this.starRating);
+  // this.addReview.controls['orderID'].setValue(this.order?.OrderID); 
  
   this.db.addReview(this.addReview).subscribe({
     next: review => {

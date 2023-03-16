@@ -135,14 +135,12 @@ export class PaymentComponent implements OnInit {
   
   
 
-  SecondBtnPayment(amount: any, doAction:string) {
-    if(this.order.Status == EOrderStatus.Completed){
-      this.onCreateReview(); 
-    }
-  }
-  onCreateReview(){
+  // SecondBtnPayment(amount: any, doAction:string) {
+  //   if(this.order.Status == EOrderStatus.Completed){
+  //     this.onCreateReview(); 
+  //   }
+  // }
 
-  }
   makePayment(amount: any, doAction:string) {
     if(doAction=='Confirm'){
         const paymentHandler = (<any>window).StripeCheckout.configure({
@@ -260,7 +258,7 @@ changeOrderStatus( btnclass:string, btnclass2:string, btnText2:string, btnText:s
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
-    dialogConfig.width = "60%";
+    dialogConfig.width = "70%";
     this.dialog.open(ReviewFormComponent, {data:{order}}); 
   
   }
