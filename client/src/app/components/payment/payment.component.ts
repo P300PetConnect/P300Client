@@ -22,8 +22,8 @@ export class PaymentComponent implements OnInit {
   btnText2: string; 
   cardTitle:string; 
   userGroup: string;  
-  paymentMessage: string; 
-  confirmedMessage: string; 
+  orderStatusMessage: string; 
+  paymentStatusMessage:string; 
 
   message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; };
   private dialogRef2?: MatDialogRef<MessageAlertComponent>
@@ -40,39 +40,80 @@ export class PaymentComponent implements OnInit {
   stepper: MatStepper;
 
   ngOnInit() {
-    this.invokeStripe();
-    this.checkCurrentStatus(); 
     this.userGroup =  JSON.parse(localStorage.getItem('userGroup')); 
+    this.invokeStripe();
+    this.checkCurrentPaymentStatus(); 
+    this.checkCurrentOrderStatus(); 
 
   }
 
-  checkCurrentStatus(){
+  checkCurrentPaymentStatus(){
     console.log('check status', this.order); 
-
-    if(this.order.Status==EOrderStatus.Processing){
-      // this.confirmedStatus(); 
-    }
-    else if(this.order.Status==EOrderStatus.Canceled){
-      // this.CanceledStatus(); 
-    }
-    else if(this.order.Status==EOrderStatus.Pendent){
-      this.userGroup =  JSON.parse(localStorage.getItem('userGroup')); 
+    this.userGroup =  JSON.parse(localStorage.getItem('userGroup')); 
+//Pendent Payment Status
+    if(this.order?.PaymentStatus==EPaymentStatus.Pendent){
 
       if(this.userGroup == 'PetOwner'){
         this.changeOrderStatus("success","info","Edit Order", "Make Payment","Confirm","Make payment to confirm your order"); 
       }
       else{
-        this.paymentMessage = "Awaiting payment from Pet Owner."; 
+        this.paymentStatusMessage = "Awaiting payment from Pet Owner."; 
       }
+    }
 
-    }
-    else if(this.order.Status==EOrderStatus.Completed){
-      // this.Completed(); 
-    }
-    else if(this.order.Status==EOrderStatus.Review){
-      // this.confirmedStatus(); 
+
+    // Payment Confirmed Message 
+    if(this.order?.PaymentStatus==EPaymentStatus.Confirmed){
+      if(this.userGroup=='PetOwner'){
+        this.paymentStatusMessage = 'Your payment has been '+this.order?.PaymentStatus; 
+      }
+      else{
+        this.paymentStatusMessage = 'Pet Owner payment has been '+this.order?.PaymentStatus; 
+      }
     }
   }
+       
+  checkCurrentOrderStatus(){
+    if(this.order.Status==EOrderStatus.Completed){
+      this.orderStatusMessage = 'This order has been '+this.order.Status; 
+    }
+    if(this.order.Status==EOrderStatus.Processing){
+
+const OrderStartDate = this.order?.OrderStartDate;
+      if(OrderStartDate){
+        const timeDiff = this.calculateTimeDifference(OrderStartDate);
+        console.log('difference of time', timeDiff);
+        this.orderStatusMessage = timeDiff;
+      }
+    }
+  }
+ 
+  calculateTimeDifference(OrderStartDate: string): string {
+    // Convert OrderStartDate string to Date object
+    const startDate = new Date(OrderStartDate);
+  
+    // Calculate the time difference between now and the OrderStartDate
+    const timeDiff = startDate.getTime() - Date.now();
+    if (timeDiff <= 0) {
+      return "This order is starting late.";
+    }
+  
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  
+    // Build the output string
+    let output = "";
+    if (days > 0) {
+      output += `${days} day${days > 1 ? "s" : ""} `;
+    }
+    output += `${hours} hour${hours > 1 ? "s" : ""}`;
+  
+    return `This order starts in ${output}`;
+  }
+  
+  
+  
+  
 
   SecondBtnPayment(amount: any, doAction:string) {
     if(this.order.Status == EOrderStatus.Completed){
@@ -99,13 +140,10 @@ export class PaymentComponent implements OnInit {
     }
   }
   confirmpayment(stripeToken: any) {
-    // Add your code here to confirm the payment
     console.log(' // Add your code here to confirm the payment', stripeToken); 
-    // this.changeOrderStatus("success","info","Edit Order", "Done","Confirm","Payment Done"); 
-    //Update Payment Status
+    this.paymentStatusMessage = 'Your payment has been confirmed'; 
+
     this.updatePaymentStatus(); 
-    // Thenk you, Payment confirmed - Display the message - Payment confirmed 
-    this.confirmedMessage = 'Thenk you, Payment confirmed'; 
     }
 
   invokeStripe() {
@@ -186,19 +224,10 @@ changeOrderStatus( btnclass:string, btnclass2:string, btnText2:string, btnText:s
   //   this.actionToBtn = '';
   //   this.cardTitle="This order was canceled, this card will be removed in 7 days"
   // }
-  // confirmedStatus(){
-  //   this.cardTitle="Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy"; 
-  //    this.btnclass="danger";
-  //       this.btnText = 'Cancel';
-  //       this.actionToBtn = "Cancel"; 
-  // }
-  // PendentStatus(){
-  //   this.cardTitle="Make payment to confirm your order"; 
-  //   this.btnclass="success";
-  //   this.btnclass2="info"
-  //   this.btnText = 'Make Payment';
-  //   this.actionToBtn = "Confirm"; 
-  // }
+  confirmedStatus(orderStatusMessage:string){
+          this.orderStatusMessage = orderStatusMessage; 
+  }
+
   // Completed(){
   //   this.cardTitle="Thanks! Please tell me more about your experience, giving a review"; 
   //   this.btnclass="success";

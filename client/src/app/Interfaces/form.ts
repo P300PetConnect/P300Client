@@ -25,7 +25,6 @@ export interface IOrder{
      OrderID:string, 
      PetSitterID: string, 
      PetOwnerID: string,
-     OrderDate:string,
      OrderDescription: string, 
      Status: string, 
      ServiceID: string, 
@@ -36,6 +35,7 @@ export interface IOrder{
      Surname:string, 
      Profile_Pic_URL:string, 
      EmailAddress:string, 
+     OrderStartDate: string,
 }
 
 export enum Iform{
