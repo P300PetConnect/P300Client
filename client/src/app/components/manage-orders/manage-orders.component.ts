@@ -47,6 +47,7 @@ export class ManageOrdersComponent implements OnInit {
 
        this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
        this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+       localStorage.setItem('userGroup', JSON.stringify(this.userGroup));
 
     this.getOrders(); 
 
@@ -54,6 +55,7 @@ export class ManageOrdersComponent implements OnInit {
 
    async getOrders(){
     this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
+    
     if(this.userGroup =="PetSitter"){
       // this._httpUser.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
         // async petSitter=>{
