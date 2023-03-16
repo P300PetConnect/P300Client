@@ -9,21 +9,21 @@
           who have a pet
         </h6>
         <div class="row g-0 g-md-0 g-lg-3 gy-0 tab">
-          <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-2 mb-md-0">
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-2 mb-md-0 InitBtnsL">
             <a role="tab" class="nav-item nav-link first-item" [class.active]="isActive" (click)="setSelected(1)">
               <img src="../../../assets/images/home/boarding-selected.svg" alt="Accommodation"
                 class="icon img-fluid mr-1 mr-md-2" />
               <span class="nav-title"> Sit </span>
             </a>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-2 mb-md-0">
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-2 mb-md-0 InitBtnsR">
             <a role="tab" class="nav-item nav-link fourth-item" [class.active]="fourthIsActive"
               (click)="setSelected(4)">
               <img src="../../../assets/images/home/walk-selected.svg" alt="Walk" class="icon img-fluid mr-1 mr-md-2" />
               <span class="nav-title">Walk </span>
             </a>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6 InitBtnsL ">
             <a role="tab" class="nav-item nav-link second-item" [class.active]="secondIsActive"
               (click)="setSelected(2)">
               <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche"
@@ -31,7 +31,7 @@
               <span class="nav-title"> Groom </span>
             </a>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6  InitBtnsR">
             <a role="tab" class="nav-item nav-link third-item" [class.active]="thirdIsActive" (click)="setSelected(3)">
               <img src="../../../assets/images/home/petsitting-selected.svg" alt="Home Sitter"
                 class="icon img-fluid mr-1 mr-md-2" />
@@ -39,7 +39,7 @@
             </a>
           </div>
         </div>
-        <div class="pt-4 user-search md-inline-form">
+        <div class="pt-4 user-search md-inline-form ">
           <div class="row">
             <mat-form-field class="col-lg-4 col-md-6 col-sm-6 col-12" appearance="outline">
               <mat-label>Where would you like the service?</mat-label>
@@ -82,7 +82,7 @@
     </div>
   </section>
   <section class="container mt-5">
-    <h1 class="text-center mb-3 pb-3">See more details of our services</h1>
+    <h1 class="text-center mb-3 pb-3" id="seeMoreServices">See more details of our services</h1>
     <div class="row justify-content-between">
       <div class="col-lg-6 col-md-7 mt-4 services">
         <div class="row">
@@ -167,7 +167,7 @@
     </div>
   </section>
 
-  <section class="container-fluid invitation mt-5 p-3 p-sm-4 p-md-5">
+  <section id="onemillionSection" class="container-fluid invitation mt-5 p-3 p-sm-4 p-md-5">
     <div class="row">
       <div class="col-md-12">
         <h3 class="text-center">

@@ -229,13 +229,92 @@
   }
 }
 
+
+
+//  Making buttons margin equal with bottom and sides margins
+.InitBtnsL{
+  // Small devices (landscape phones, 576px and up)
+  @media (max-width: 576px) {
+padding-right: 0.5rem;
+padding-left: -1rem;
+  }
+
+}
+//  Making buttons margin equal with bottom and sides margins
+
+.InitBtnsR{
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+padding-right: -1rem;
+padding-left: 0rem;
+}
+
+
+
+}
+
+.home-search-box h1{
+@media (max-width: 576px) {
+font-size: 1.7rem;
+    }
+
+}
+
+.home-search-box h4{
+@media (max-width: 576px) {
+font-size: 1.3rem;
+    }
+
+}
+
+
+
 .search-btn {
   width: 8rem;
   height: 3.2rem;
   margin-top: 0.3rem;
   background-color: #17a2b8 !important;
   color: white;
+
+  @media (max-width: 576px) {
+    height: 3.2rem;
+    margin-top: 0.3rem;
+    background-color: #17a2b8 !important;
+    color: white;
+    width: -webkit-fill-available;
+
+         }
 }
+
+
+.nav-item {
+  @media (max-width: 576px) {
+     height: 3rem;
+          }
+ }
+
+ .home-search-box .icon[_ngcontent-epk-c299]{
+  @media (max-width: 576px) {
+    width: 32px;
+    height: 29px;
+         }
+ }
+
+ #seeMoreServices{
+  @media (max-width: 576px) {
+   font-size: 1.7rem;
+         }
+ }
+
+ #onemillionSection{
+  @media (max-width: 576px) {
+   display: none;
+          }
+ }
+
+
+
+//  End of working on responsiveness fixes
 
 .second-item {
   &:hover {
@@ -360,3 +439,5 @@ h1 {
   // };
   
 }
+
+
