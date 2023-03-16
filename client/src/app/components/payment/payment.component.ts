@@ -142,8 +142,10 @@ const OrderStartDate = this.order?.OrderStartDate;
   confirmpayment(stripeToken: any) {
     console.log(' // Add your code here to confirm the payment', stripeToken); 
     this.paymentStatusMessage = 'Your payment has been confirmed'; 
-
     this.updatePaymentStatus(); 
+    this.checkCurrentPaymentStatus(); 
+    this.checkCurrentOrderStatus(); 
+
     }
 
   invokeStripe() {
@@ -158,7 +160,7 @@ const OrderStartDate = this.order?.OrderStartDate;
           locale: 'auto',
           token: function (stripeToken: any) {
             alert('Payment has been successfull!');
-            console.log(stripeToken); //payment done
+            console.log(stripeToken); 
 
           },
         });
@@ -216,14 +218,6 @@ changeOrderStatus( btnclass:string, btnclass2:string, btnText2:string, btnText:s
     this.btnText2 = btnText2; 
     this.actionToBtn = actionToBtn; 
 }
-
-
-  // CanceledStatus(){
-  //   this.btnclass="btn-secondary disabled";
-  //   this.btnText='Order Canceled';
-  //   this.actionToBtn = '';
-  //   this.cardTitle="This order was canceled, this card will be removed in 7 days"
-  // }
   confirmedStatus(orderStatusMessage:string){
           this.orderStatusMessage = orderStatusMessage; 
   }
