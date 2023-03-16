@@ -11,7 +11,7 @@ export class InterceptorService implements HttpInterceptor {
   constructor(public loaderService: LoaderService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url.includes('5nxguu0vhi')) { // exclude requests for forum requests
+    if (req.url.includes('5nxguu0vhi') || (req.url.includes('856hqzp4v5'))) { // excluded requests from loading
       return next.handle(req);
     }
     this.loaderService.isLoading.next(true);
