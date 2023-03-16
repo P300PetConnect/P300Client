@@ -79,7 +79,7 @@ export class UserProfileComponent implements OnInit {
   
   ngOnInit(): void {
 
-
+    this.userGroup = JSON.parse(localStorage.getItem('userGroup'));
     console.log('view only',this.viewonly); 
     this.PetOwnerOrderEmail = this.route.snapshot.params['id'];
     console.log('view only',this.viewonly, 'route', this.PetOwnerOrderEmail ); 
