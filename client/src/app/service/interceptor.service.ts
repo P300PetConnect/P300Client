@@ -11,10 +11,14 @@ export class InterceptorService implements HttpInterceptor {
   constructor(public loaderService: LoaderService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url.includes('5nxguu0vhi') || (req.url.includes('856hqzp4v5'))) { // excluded requests from loading
+    if (req.url.includes('5nxguu0vhi')
+      || req.url.includes('dw8reoypi6')
+      || req.url.includes('kxewd44z5k')
+      || req.url.includes('856hqzp4v5')
+      || req.url.includes('0r68frdpq4')) { // excluded requests from loading
       return next.handle(req);
     }
-    this.loaderService.isLoading.next(true);
+    this.loaderService.isLoading.next(false);
     return next.handle(req).pipe(
       finalize(
         () => {
