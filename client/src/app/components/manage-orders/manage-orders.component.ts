@@ -47,7 +47,7 @@ export class ManageOrdersComponent implements OnInit {
 
        this.petOwner = JSON.parse(localStorage.getItem('PetOwner')); 
        this.petSitter = JSON.parse(localStorage.getItem('PetSitter')); 
-       localStorage.setItem('userGroup', JSON.stringify(this.userGroup));
+       localStorage.setItem('userGroup', this.userGroup);
 
     this.getOrders(); 
    }
