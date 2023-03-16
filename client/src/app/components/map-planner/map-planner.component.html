@@ -63,7 +63,7 @@
 
                 <div class="form-group row">
                   <label for="from" class="col-xs-3 control-label"><i onclick="GetCurrentLocationForInputG()"
-                      class="far fa-dot-circle"></i> <label style="margin-left:3%;" for="from">
+                      class="bi bi-geo-fill"></i> <label style="margin-left:3%;" for="from">
                       From</label></label>
                   <div class="col-xs-6">
                     <input type="text" id="from" placeholder="Origin" class="form-control" [(ngModel)]="startPoint">
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="to" class="col-xs-3 control-label"><i class="fas fa-map-marker-alt"></i> <label
+                  <label for="to" class="col-xs-3 control-label"><i class="bi bi-pin-map-fill"></i> <label
                       style="margin-left:3%;" for="from"> To</label></label>
                   <div class="col-xs-6">
                     <input type="text" name="to" id="to" placeholder="Destination" class="form-control"
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="to" class="col-xs-3 control-label"><i class="fas fa-map-marker-alt"></i> <label
+                  <label for="to" class="col-xs-3 control-label"><i class="bi bi-menu-app"></i> <label
                       style="margin-left:3%;" for="RouteName"> Route Name</label></label>
                   <div class="col-xs-6">
                     <input type="text" name="RouteName" id="RouteName" placeholder="Route Name" class="form-control"
@@ -91,17 +91,17 @@
 
                 <div style="margin-top: 0rem; margin-bottom:1rem;margin-right: 2rem;"
                   class="col-xs-offset-2 col-xs-10 row">
-                  <div class="col-lg-5 col-sm-12">
+                  <div class="col-lg-12 col-sm-12">
 
 
                     <button class="btn btn-info btn-lg col-sm-12 " (click)="onClickcalcRoute()"><i
-                        class="fas fa-map-signs ">Preview
+                        class="bi bi-bezier2">&nbsp; Preview
                         Route</i></button>
                   </div>
                   <!-- <div class="col-lg-2"></div> -->
-                  <div class="col-lg-4 col-sm-12">
+                  <div class="col-lg-12 col-sm-12">
                     <button style="margin-right: 1rem;" class="btn btn-info btn-lg  col-sm-12 mt-2 mb-2" (click)="createPostSave()"><i
-                        class="fas fa-map-signs">Save
+                        class="bi bi-bookmark-heart">&nbsp; Save
                         Route</i></button>
                   </div>
 
@@ -209,4 +209,38 @@
     </div>
   </main>
   <!-- page-content" -->
+</div>
+
+
+<!-- Floating action button -->
+<div class="fab-wrapper">
+  <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
+  <label class="fab" for="fabCheckbox">
+    <span class="fab-dots fab-dots-1"></span>
+    <span class="fab-dots fab-dots-2"></span>
+    <span class="fab-dots fab-dots-3"></span>
+  </label>
+  <div class="fab-wheel">
+    <a (click)="showSideBard()"  class="fab-action fab-action-1">
+      <!-- <i class="bi bi-send"></i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-square" viewBox="0 0 16 16">
+          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+        </svg>
+    </a>
+    <a (click)="shareTheRouteFromFloat()" class="fab-action fab-action-2">
+      <!-- <i class="fas fa-book"></i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+        <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+      </svg>
+    </a>
+        <a class="fab-action fab-action-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-signpost-2" viewBox="0 0 16 16">
+              <path d="M7 1.414V2H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h5v1H2.5a1 1 0 0 0-.8.4L.725 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4H7v5h2v-5h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H9V6h4.5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.3 2.4a1 1 0 0 0-.8-.4H9v-.586a1 1 0 0 0-2 0zM13.5 3l.75 1-.75 1H2V3h11.5zm.5 5v2H2.5l-.75-1 .75-1H14z"/>
+            </svg>
+    </a>
+    
+  </div>
 </div>
