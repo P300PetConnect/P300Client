@@ -29,9 +29,10 @@
               <div class="mt-2">
                 <button *ngIf="order?.PaymentStatus==='Pendent'"(click)="makePayment(order?.Price, this.actionToBtn)" class="btn btn-{{btnclass}} btn-block">{{btnText}}</button>
                 <button *ngIf="order.Status!='Canceled'&& order.Status!='Processing'" #btn2  (click)="SecondBtnPayment(order?.Price, this.actionToBtn)" class="btn btn-{{btnclass2}} btn-block">{{btnText2}}</button>
-                <button  mat-raised-button color="primary" *ngIf="order.Status=='Completed'" #btn3  (click)="sendReview(order)" class="btn-block">Give Order Review</button>
+                <button  mat-raised-button color="primary" *ngIf="order.Status=='Completed'" #btn3  (click)="createReview(order)" class="btn-block">Give Order Review</button>
                 <p *ngIf="order.Status!='Completed'" >{{paymentStatusMessage}}</p>
                 <p *ngIf="order?.PaymentStatus!='Pendent'" class="pt-3">{{orderStatusMessage}}</p>
+
             <hr>
           </div>
             </div>

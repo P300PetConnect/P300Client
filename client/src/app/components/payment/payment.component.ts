@@ -9,6 +9,7 @@ import { OrderService } from '../../service/order.service';
 import { EmailService } from '../../service/email.service';
 import { C } from '@angular/cdk/keycodes';
 import { iif } from 'rxjs';
+import { ReviewFormComponent } from '../ReviewComponents/review-form/review-form.component';
 
 @Component({
   selector: 'app-payment',
@@ -253,6 +254,15 @@ changeOrderStatus( btnclass:string, btnclass2:string, btnText2:string, btnText:s
     if(this.order?.PaymentStatus=='Confirmad'){
      
     }
+  }
+
+  createReview(order:IOrder){
+    const dialogConfig = new MatDialogConfig(); 
+    dialogConfig.disableClose = false; 
+    dialogConfig.autoFocus = true; 
+    dialogConfig.width = "60%";
+    this.dialog.open(ReviewFormComponent, {data:{order}}); 
+  
   }
   
 }
