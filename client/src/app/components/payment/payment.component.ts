@@ -16,11 +16,14 @@ import { C } from '@angular/cdk/keycodes';
 
 })
 export class PaymentComponent implements OnInit {  
-  btnclass: string="success";
-  btnText: string='Complete';
-  actionToBtn?: string = 'Confirm';
-  btnText2: string = "Revision"
-  cardTitle:string="Make the payment to confirm your order!"
+  btnclass: string;
+  btnText: string;
+  actionToBtn?: string;
+  btnText2: string; 
+  cardTitle:string; 
+  userGroup: string;  
+  paymentMessage: string; 
+  confirmedMessage: string; 
 
   message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; };
   private dialogRef2?: MatDialogRef<MessageAlertComponent>
@@ -37,9 +40,9 @@ export class PaymentComponent implements OnInit {
   stepper: MatStepper;
 
   ngOnInit() {
-
     this.invokeStripe();
     this.checkCurrentStatus(); 
+    this.userGroup =  JSON.parse(localStorage.getItem('userGroup')); 
 
   }
 
@@ -47,19 +50,27 @@ export class PaymentComponent implements OnInit {
     console.log('check status', this.order); 
 
     if(this.order.Status==EOrderStatus.Processing){
-      this.confirmedStatus(); 
+      // this.confirmedStatus(); 
     }
     else if(this.order.Status==EOrderStatus.Canceled){
-      this.CanceledStatus(); 
+      // this.CanceledStatus(); 
     }
     else if(this.order.Status==EOrderStatus.Pendent){
-      this.PendentStatus(); 
+      this.userGroup =  JSON.parse(localStorage.getItem('userGroup')); 
+
+      if(this.userGroup == 'PetOwner'){
+        this.changeOrderStatus("success","info","Edit Order", "Make Payment","Confirm","Make payment to confirm your order"); 
+      }
+      else{
+        this.paymentMessage = "Awaiting payment from Pet Owner."; 
+      }
+
     }
     else if(this.order.Status==EOrderStatus.Completed){
-      this.Completed(); 
+      // this.Completed(); 
     }
     else if(this.order.Status==EOrderStatus.Review){
-      this.confirmedStatus(); 
+      // this.confirmedStatus(); 
     }
   }
 
@@ -76,8 +87,8 @@ export class PaymentComponent implements OnInit {
         const paymentHandler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51MWB7YAoSiviOVuvgwBp0jfYUIN2ype1syfcNPSMq6jIxJeCAnMCfwB1ddbez4r5zo4sSOStblgpJ2gWJmbjG6bO00oC3DWa5K',
       locale: 'auto',
-      token: function (stripeToken: any) {
-        // console.log(stripeToken); //payment done
+      token: (stripeToken: any) => {
+        this.confirmpayment(stripeToken);
       },
     });
     paymentHandler.open({
@@ -85,29 +96,18 @@ export class PaymentComponent implements OnInit {
       description: amount,
       amount: amount * 100,
     });
+    }
+  }
+  confirmpayment(stripeToken: any) {
+    // Add your code here to confirm the payment
+    console.log(' // Add your code here to confirm the payment', stripeToken); 
+    // this.changeOrderStatus("success","info","Edit Order", "Done","Confirm","Payment Done"); 
+    //Update Payment Status
     this.updatePaymentStatus(); 
+    // Thenk you, Payment confirmed - Display the message - Payment confirmed 
+    this.confirmedMessage = 'Thenk you, Payment confirmed'; 
     }
-    else if(doAction=='Cancel'){
-      console.log('Cancel')
-      this.onCancel(); 
-    }
-    this.confirmPayment(); 
-  }
 
-  confirmPayment() {
-    this.order.PaymentStatus = EPaymentStatus.Confirmed; 
-    this.order.Status = EOrderStatus.Processing; 
-    this.cardTitle="Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy"; 
-    this.btnclass="danger";
-    this.btnText = 'Cancel';
-    this.actionToBtn = "Cancel";
-
-    //send confirm order email
-    this.emailService.sendOrderConfirmedEmail().subscribe(
-      data => console.log('Confirmation Email Sent!', data),
-      error => console.log('Error Sending Email!', error)
-    );
-  }
   invokeStripe() {
     if (!window.document.getElementById('stripe-script')) {
       const script = window.document.createElement('script');
@@ -167,38 +167,46 @@ export class PaymentComponent implements OnInit {
       else{
         this.dialogRef2?.close(); 
       }
-    this.CanceledStatus(); 
     })
   }
 
+changeOrderStatus( btnclass:string, btnclass2:string, btnText2:string, btnText:string, actionToBtn:string,cardTitle:string){
+  this.cardTitle=cardTitle; 
+    this.btnclass=btnclass; 
+    this.btnclass2=btnclass2; 
+    this.btnText = btnText; 
+    this.btnText2 = btnText2; 
+    this.actionToBtn = actionToBtn; 
+}
 
-  CanceledStatus(){
-    this.btnclass="btn-secondary disabled";
-    this.btnText='Order Canceled';
-    this.actionToBtn = '';
-    this.cardTitle="This order was canceled, this card will be removed in 7 days"
-  }
-  confirmedStatus(){
-    this.cardTitle="Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy"; 
-     this.btnclass="danger";
-        this.btnText = 'Cancel';
-        this.actionToBtn = "Cancel"; 
-  }
-  PendentStatus(){
-    this.cardTitle="Make payment to confirm your order"; 
-    this.btnclass="success";
-    this.btnclass2="info"
-    this.btnText = 'Make Payment';
-    this.actionToBtn = "Confirm"; 
-  }
-  Completed(){
-    this.cardTitle="Thanks! Please tell me more about your experience, giving a review"; 
-    this.btnclass="success";
-    this.btnclass2="info";
-    this.btnText = 'Order again';
-    this.btnText2= 'Give Review'
-    this.actionToBtn = "GiveReview"; 
-  }
+
+  // CanceledStatus(){
+  //   this.btnclass="btn-secondary disabled";
+  //   this.btnText='Order Canceled';
+  //   this.actionToBtn = '';
+  //   this.cardTitle="This order was canceled, this card will be removed in 7 days"
+  // }
+  // confirmedStatus(){
+  //   this.cardTitle="Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy"; 
+  //    this.btnclass="danger";
+  //       this.btnText = 'Cancel';
+  //       this.actionToBtn = "Cancel"; 
+  // }
+  // PendentStatus(){
+  //   this.cardTitle="Make payment to confirm your order"; 
+  //   this.btnclass="success";
+  //   this.btnclass2="info"
+  //   this.btnText = 'Make Payment';
+  //   this.actionToBtn = "Confirm"; 
+  // }
+  // Completed(){
+  //   this.cardTitle="Thanks! Please tell me more about your experience, giving a review"; 
+  //   this.btnclass="success";
+  //   this.btnclass2="info";
+  //   this.btnText = 'Order again';
+  //   this.btnText2= 'Give Review'
+  //   this.actionToBtn = "GiveReview"; 
+  // }
   PaymentManagement(){
     if(this.order?.PaymentStatus=='Confirmad'){
      
