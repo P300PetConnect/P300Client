@@ -2081,7 +2081,7 @@
 		});
 
 		// Autoresize the height of the carousel when window is resized
-		// When carousel has images, the height is dependent on the width
+		// When carousel has images, the height is dePending on the width
 		// and should also change on resize
 		$(window).resize(function() {
 			if (refThis._core.settings.autoHeight) {
@@ -2630,7 +2630,7 @@
 		this._call = null;
 
 		/**
-		 * Depending on the state of the plugin, this variable contains either
+		 * DePending on the state of the plugin, this variable contains either
 		 * the start time of the timer or the current timer value if it's
 		 * paused. Since we start in a paused state we initialize the timer
 		 * value.

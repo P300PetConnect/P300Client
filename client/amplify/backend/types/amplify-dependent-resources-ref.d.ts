@@ -1,4 +1,4 @@
-export type AmplifyDependentResourcesAttributes = {
+export type AmplifyDePendingResourcesAttributes = {
     "auth": {
         "client194825ed": {
             "IdentityPoolId": "string",

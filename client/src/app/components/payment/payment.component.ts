@@ -53,8 +53,8 @@ export class PaymentComponent implements OnInit {
   checkCurrentPaymentStatus(){
     console.log('check status', this.order); 
     this.userGroup =  localStorage.getItem('userGroup'); 
-//Pendent Payment Status
-    if(this.order?.PaymentStatus==EPaymentStatus.Pendent){
+//Pending Payment Status
+    if(this.order?.PaymentStatus==EPaymentStatus.Pending){
 
       if(this.userGroup == 'PetOwner'){
         this.changeOrderStatus("success","info","Edit Order", "Make Payment","Confirm","Make payment to confirm your order"); 

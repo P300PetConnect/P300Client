@@ -1,5 +1,5 @@
 export enum EOrderStatus {
-    Pendent = 'Pendent',
+    Pending = 'Pending',
     Processing = 'Processing',
     Review = 'Review',
     Canceled = 'Canceled', 
@@ -8,7 +8,7 @@ export enum EOrderStatus {
   }
   
   export enum EPaymentStatus{
-    Pendent = 'Pendent',
+    Pending = 'Pending',
     Declined = 'Declined', 
     Confirmed = 'Confirmed', 
     Refounded = 'Refounded', 

@@ -2787,7 +2787,7 @@ $.widget( "ui.autocomplete", {
 	},
 
 	requestIndex: 0,
-	pending: 0,
+	Pending: 0,
 
 	_create: function() {
 		// Some browsers only repeat keydown events, not keypress events,
@@ -3162,7 +3162,7 @@ $.widget( "ui.autocomplete", {
 	},
 
 	_search: function( value ) {
-		this.pending++;
+		this.Pending++;
 		this.element.addClass( "ui-autocomplete-loading" );
 		this.cancelSearch = false;
 
@@ -3177,8 +3177,8 @@ $.widget( "ui.autocomplete", {
 				this.__response( content );
 			}
 
-			this.pending--;
-			if ( !this.pending ) {
+			this.Pending--;
+			if ( !this.Pending ) {
 				this.element.removeClass( "ui-autocomplete-loading" );
 			}
 		}, this );

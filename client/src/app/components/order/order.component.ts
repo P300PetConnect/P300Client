@@ -181,8 +181,8 @@ add(event: MatChipInputEvent): void {
   this.AddOrder.controls['ServiceID'].setValue(this.serviceSelected[0]?.ServiceID);
   this.AddOrder.controls['PetSitterID'].setValue(this.serviceSelected[0]?.PetSitterID);
   this.AddOrder.controls['PetOwnerID'].setValue(3);
-  this.AddOrder.controls['Status'].setValue(EOrderStatus.Pendent); 
-  this.AddOrder.controls['PaymentStatus'].setValue(EPaymentStatus.Pendent); 
+  this.AddOrder.controls['Status'].setValue(EOrderStatus.Pending); 
+  this.AddOrder.controls['PaymentStatus'].setValue(EPaymentStatus.Pending); 
   this.AddOrder.controls['PetSelected'].setValue(this.petSelected[0]?.petId);
   if(this.userGroup== eUserGroup.PetOwner){
     console.log('it is a pet owner'); 
