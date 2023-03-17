@@ -86,6 +86,7 @@ import { ChunkPipe } from './components/calender-pipe/chunk.pipe';
 import { SearchVersion2Component } from './components/search-version2/search-version2.component';
 import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
 import { SearchSitterServicesComponent } from './components/search-sitter-services/search-sitter-services.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { OrderComponent } from './components/order/order.component';
 import { ReviewFormComponent } from './components/ReviewComponents/review-form/review-form.component';
@@ -105,6 +106,7 @@ import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-
 import { EmailService } from './service/email.service';
 import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
 import { ActionMessageComponent } from './components/action-message/action-message.component';
+import { OrderProcessingMessagesComponent } from './components/order-processing-messages/order-processing-messages.component';
 const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnswyJACAdgPdcdX4rsSq6k";
 // import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 
@@ -125,7 +127,7 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
-    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent, TrackerOrderComponent, ActionMessageComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent, TrackerOrderComponent, ActionMessageComponent, OrderProcessingMessagesComponent
   ],
   imports: [
     
@@ -135,6 +137,7 @@ const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnsw
     MatSlideToggleModule,
     MatButtonModule,
     NgbAlertModule,
+    MatCheckboxModule,
     HttpClientModule,
     MatChipsModule,
     MatGoogleMapsAutocompleteModule,

@@ -10,6 +10,8 @@ import { IPetOwner, IPetSitter } from '../../interfaces/users';
 import { OrderComponent } from '../order/order.component';
 import { OrderService } from '../../service/order.service';
 import { UserService } from '../../service/user.service';
+import { MessageAlertComponent } from 'src/app/shared-components/message-alert/message-alert.component';
+import { OrderProcessingMessagesComponent } from '../order-processing-messages/order-processing-messages.component';
 
 @Component({
   selector: 'app-manage-orders',
@@ -29,6 +31,8 @@ export class ManageOrdersComponent implements OnInit {
   petsitterisworking: boolean = false;
   orderSelected: IOrder;
   @Output() updateStatus = new EventEmitter<string>();
+  starts: any;
+  message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; subtitle1: string; subtitle2: string; subtitle3: string;};
 
   constructor(private _http: HttpClient, private _httpOrder:OrderService,private dialog:MatDialog,  private _router: Router,public authenticator: AuthenticatorService, private _httpUser: UserService) {
     Auth.currentAuthenticatedUser()
@@ -88,14 +92,49 @@ export class ManageOrdersComponent implements OnInit {
 }
 
 startWorking(order:IOrder){ 
+  if(order?.Status=='Executing'){
+    this.finishWorking(order); 
+  }
+  else{
+    this.onStartAgreed(order); 
+  }
+}
+
+onStartAgreed(order:IOrder){
+  const message={
+  taskName:'yesCancel',
+  title:'Before Start Order', 
+  subtitle:'We are ready to go!', 
+  btntext1:'Yes, cancel', 
+  btntext2:'No, dont cancel', 
+  subtitle1:'The Pet is here with me', 
+  subtitle2:'We are ready to go!', 
+  subtitle3:'I agree with all policy!'
+
+}
+  const dialogConfig = new MatDialogConfig(); 
+  dialogConfig.disableClose = true; 
+  dialogConfig.autoFocus = false; 
+  dialogConfig.width = "30%";
+  dialogConfig.height = "40%";
+  // const dialogRef = this.dialog.open(OrderProcessingMessagesComponent, dialogConfig); 
+  const dialogRef  = this.dialog.open(OrderProcessingMessagesComponent, {data:{ order: order, message: message}})
+
+  dialogRef.componentInstance.startorderdata.subscribe((data) => {
+    console.log(data);
+    this.starts = data;
+    if(this.starts==true){
   this.petsitterisworking=true; 
   order.Status = EOrderStatus.Executing; 
   console.log('the order',order); 
   this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',order).subscribe(data => {
     console.log('my data',data);
   });
-
+    }
+});
 }
+
+
 
 updateOrderStatus(status: EOrderStatus){
   this.orderSelected.Status = status; 
@@ -107,10 +146,38 @@ updateOrderStatus(status: EOrderStatus){
 }
 
 finishWorking(order:IOrder){
-  this.petsitterisworking=false; 
-  order.Status = EOrderStatus.Completed; 
-  this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',order).subscribe(data => {
-  });
+  this.onFinishAgreed(order); 
+}
+onFinishAgreed(order:IOrder){
+  const message={
+    taskName:'yesCancel',
+    title:'Before Finish the Order', 
+    subtitle:'Finish it!', 
+    btntext1:'Yes, cancel', 
+    btntext2:'No, dont cancel', 
+    subtitle1:'The Pet with the pet owner', 
+    subtitle2:'He is happy!', 
+    subtitle3:'I agree with all policy!'
+  
+  }
+  const dialogConfig = new MatDialogConfig(); 
+  dialogConfig.disableClose = true; 
+  dialogConfig.autoFocus = false; 
+  dialogConfig.width = "30%";
+  dialogConfig.height = "40%";
+  // const dialogRef = this.dialog.open(OrderProcessingMessagesComponent, dialogConfig); 
+  const dialogRef  = this.dialog.open(OrderProcessingMessagesComponent, {data:{ order: order, message: message}})
+
+  dialogRef.componentInstance.startorderdata.subscribe((data) => {
+    console.log(data);
+    this.starts = data;
+    if(this.starts==true){
+      this.petsitterisworking=false; 
+      order.Status = EOrderStatus.Completed; 
+      this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',order).subscribe(data => {
+      });
+    }
+});
 }
   // async getOrders() {
   //   //IF Pet Sitter
@@ -139,3 +206,34 @@ finishWorking(order:IOrder){
     }
   }
 }
+
+
+// this.message={
+//   taskName:'yesCancel',
+//   title:'Are you sure to Cancel this Order? ', 
+//   subtitle:'If you cancel this event,it will be permanently cancelled.', 
+//   btntext1:'Yes, cancel', 
+//   btntext2:'No, dont cancel'}
+
+// const dialogConfig = new MatDialogConfig(); 
+// dialogConfig.disableClose = true; 
+// dialogConfig.autoFocus = false; 
+// dialogConfig.width = "40%";
+// dialogConfig.height = "31%";
+// this.dialogRef2 = this.dialog.open(MessageAlertComponent, {data:{ order: this.order, message: this.message}
+// }); 
+// this.dialogRef2.afterClosed().subscribe(result=>{
+//   if(result.option=='yesCancel'){
+//     if (this.order) {
+//       this.order.Status = EOrderStatus.Canceled; 
+//       this.order.PaymentStatus = EPaymentStatus.Refounded; 
+//       console.log('my roder', this.order)
+//       this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev/',this.order).subscribe(data => {
+//         console.log('my data',data);
+//       });
+//     } 
+//   }
+//   else{
+//     this.dialogRef2?.close(); 
+//   }
+// })
