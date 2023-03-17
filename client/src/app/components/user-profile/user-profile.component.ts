@@ -243,8 +243,8 @@ async getReviews()
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = false; 
-    dialogConfig.width = "80%";
-    dialogConfig.height = "93%";
+    dialogConfig.width = "70%";
+    dialogConfig.height = "70%";
     dialogConfig.data = {myObjectHolder: this.petSitter.petSitterId} ;
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
