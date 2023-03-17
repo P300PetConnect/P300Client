@@ -23,6 +23,7 @@ import { StreamChat, ChannelData, UserResponse, TokenProvider, UserFromToken } f
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { DateAdapter } from '@angular/material/core';
+import { EmailService } from 'src/app/service/email.service';
 
 
 @Component({
@@ -105,7 +106,7 @@ export class PetSitterDetailsComponent implements OnInit {
 
   @ViewChild('picker') picker:ElementRef;
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
+  constructor(private _userService: UserService, private _petService:PetService, private emailService: EmailService, public authenticator: AuthenticatorService, 
     private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute,
      private service: SearchServiceService,private _order: OrderService, private router: Router
      ,private readonly dateAdapter: DateAdapter<Date>) {
@@ -280,6 +281,10 @@ onCreateOrder(){
   async startChatChannel() {
     const user1Id =  this.chatOwnerId;//pet owner chatUserName
     const user2Id = this.chatSitterId;//pet sitter chatUserName
+    this.emailService.sendStartChatMessageEmail().subscribe(
+      data => console.log('Email Sent!', data),
+      error => console.log('Error Sending Email!', error)
+    );
     // const user2Id = {
     //   id: this.chatSitterId,//pet sitter chatUserName
     //   name: this.chatName2,
