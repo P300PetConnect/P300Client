@@ -1,3 +1,4 @@
+<div *ngIf="!DisplayMessage">
 <div class="row g-0">
   <div class="col-6 d-flex justify-content-start">
     <button *ngIf="this.stepper.selectedIndex!=0" class="btn btn-outline-secondary" (click)="onBack(stepper)">&#60; Edit
@@ -195,6 +196,7 @@
             <div class="col-md-6 col-12 d-flex justify-content-end">
               <button mat-button class="btn btn-primary" (click)="onSubmit()" mat-button matStepperNext
                 type="submit">Send the Order</button>
+
             </div>
           </div>
         </div>
@@ -202,6 +204,11 @@
     </mat-step>
   </mat-stepper>
 </form>
+</div>
+<div *ngIf="DisplayMessage">
+  <app-action-message [title]="'Order Created!'"></app-action-message>
+ </div>
+ 
 <!-- 
 
 <div class="tab-content">

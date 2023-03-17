@@ -72,6 +72,7 @@ selectedCategories: any;
   serviceSelected: any;
   petSelected: any;
   petDetails: any;
+  DisplayMessage: boolean=false;
   
   constructor(private _petService:PetService, public emailService: EmailService, private _formBuilder: FormBuilder,private _httpUser:UserService ,private dialog:MatDialog, private db: OrderService,private _router: Router,
     public authenticator: AuthenticatorService, @Inject(MAT_DIALOG_DATA) public data: any) { 
@@ -235,8 +236,8 @@ add(event: MatChipInputEvent): void {
 
     this._router.navigate(['/orders']);
    //reload screen 
-   this.dialog.closeAll();
-
+   this.DisplayMessage = true; 
+  //  this.dialog.closeAll();
 }
 
 onClose(){

@@ -67,6 +67,8 @@ export class ReviewFormComponent implements OnInit {
 
 this.UpdateReview();
 this.DisplayMessage = true; 
+this.reviewData.emit(true);
+
 
 }
 
@@ -93,7 +95,6 @@ close()
 }
 
 onClose(){
-  this.reviewData.emit(true);
   this.dialogRef.close(); 
 }
 

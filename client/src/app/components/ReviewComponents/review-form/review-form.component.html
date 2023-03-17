@@ -1,12 +1,13 @@
 
+
+<div style="text-align: center; width:20rem;" *ngIf="!DisplayMessage">
+
 <div class="d-flex justify-content-end">
   <a>
     <i class="bi bi-x-lg" (click)="onClose()"></i>
   </a>
 </div>
 
-
-<div style="text-align: center; width:20rem;" *ngIf="!DisplayMessage">
   <img src="{{data?.order?.Profile_Pic_URL}}" class="img-profile mt-3">
 <h6>{{data?.order?.Name}} {{data?.order?.Surname}}</h6>
 <form class="form-horizontal" [formGroup]="addReview" (ngSubmit) = "onSubmit()">
@@ -29,5 +30,5 @@
   </form>
 </div>
 <div *ngIf="DisplayMessage">
- <app-action-message></app-action-message>
+ <app-action-message [title]="'Review Created!'"></app-action-message>
 </div>
