@@ -105,7 +105,7 @@ startWorking(order:IOrder){
 onStartAgreed(order:IOrder){
   const message={
   taskName:'yesCancel',
-  title:'Confirm:', 
+  title:'Start Order', 
   subtitle:'Yes, start it', 
   btntext1:'No, cancel', 
   btntext2:'Start order', 
@@ -156,7 +156,7 @@ finishWorking(order:IOrder){
 onFinishAgreed(order:IOrder){
   const message={
     taskName:'yesCancel',
-    title:'Confirm', 
+    title:'Finish Order', 
     subtitle:'Order Completed!', 
     btntext1:'No, cancel', 
     btntext2:'Yes, order finished',  
