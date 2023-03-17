@@ -27,7 +27,7 @@ export class PaymentComponent implements OnInit {
   orderStatusMessage: string; 
   paymentStatusMessage:string; 
 
-  message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; };
+  message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; subtitle1: string; subtitle2: string; subtitle3: string;};
   private dialogRef2?: MatDialogRef<MessageAlertComponent>
   btnclass2: string;
   orderStatus: string='';
@@ -203,7 +203,11 @@ export class PaymentComponent implements OnInit {
       title:'Are you sure to Cancel this Order? ', 
       subtitle:'If you cancel this event,it will be permanently cancelled.', 
       btntext1:'Yes, cancel', 
-      btntext2:'No, dont cancel'}
+      btntext2:'No, dont cancel',
+      subtitle1: 'string',
+      subtitle2: 'string',
+      subtitle3: 'string',
+    }
 
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = true; 
