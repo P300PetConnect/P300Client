@@ -31,6 +31,7 @@ export class PaymentComponent implements OnInit {
   private dialogRef2?: MatDialogRef<MessageAlertComponent>
   btnclass2: string;
   orderStatus: string='';
+  DontShowButton: boolean = false;
 
   constructor(private _http: HttpClient, private dialog:MatDialog, private emailService: EmailService, private _httpOrder:OrderService) { }
   paymentHandler: any = null;
@@ -259,8 +260,13 @@ changeOrderStatus( btnclass:string, btnclass2:string, btnText2:string, btnText:s
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "70%";
-    this.dialog.open(ReviewFormComponent, {data:{order}}); 
-  
+    const dialogRef =  this.dialog.open(ReviewFormComponent, {data:{order}}); 
+
+    dialogRef.componentInstance.reviewData.subscribe((data) => {
+        console.log(data);
+        this.DontShowButton = data; 
+        // handle the emitted data here
+    });
   }
   
 }

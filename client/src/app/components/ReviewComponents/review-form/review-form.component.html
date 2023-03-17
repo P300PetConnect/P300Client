@@ -1,4 +1,12 @@
-<div style="text-align: center; width:20rem;" >
+
+<div class="d-flex justify-content-end">
+  <a>
+    <i class="bi bi-x-lg" (click)="onClose()"></i>
+  </a>
+</div>
+
+
+<div style="text-align: center; width:20rem;" *ngIf="!DisplayMessage">
   <img src="{{data?.order?.Profile_Pic_URL}}" class="img-profile mt-3">
 <h6>{{data?.order?.Name}} {{data?.order?.Surname}}</h6>
 <form class="form-horizontal" [formGroup]="addReview" (ngSubmit) = "onSubmit()">
@@ -13,9 +21,13 @@
       </div>
     <div class="form-group">
         <div class = "row justify-content-center px-5">
-                <button type="submit" class="btn btn-success">Submit</button>
+                <!-- <button  class="btn btn-success"></button> -->
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+
         </div>
     </div>
   </form>
 </div>
-
+<div *ngIf="DisplayMessage">
+ <app-action-message></app-action-message>
+</div>

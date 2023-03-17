@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TestScheduler } from 'rxjs/testing';
 import { ReviewService } from 'src/app/components/Review-services/review.service';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-review-form',
@@ -12,6 +13,9 @@ import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/d
 export class ReviewFormComponent implements OnInit {
 
   @Output() closeForm = new EventEmitter<Boolean>();
+  @Output() reviewShow = new EventEmitter<Boolean>();
+  @Output() reviewData = new EventEmitter<any>();
+
   stars: number[] = [1,2,3,4,5];
   message: any;
   selected = 1;
@@ -30,9 +34,10 @@ export class ReviewFormComponent implements OnInit {
   
   });
   order: any;
+  DisplayMessage: boolean = false;
 
       
-  constructor(private db: ReviewService,  @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(private db: ReviewService,  @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef:MatDialogRef<ReviewFormComponent>) { }
 
   ngOnInit(): void {
    this.order = this.data?.order; 
@@ -61,6 +66,8 @@ export class ReviewFormComponent implements OnInit {
   });
 
 this.UpdateReview();
+this.DisplayMessage = true; 
+
 }
 
 UpdateReview()
@@ -85,8 +92,9 @@ close()
   this.closeForm.emit();
 }
 
-
-
-
+onClose(){
+  this.reviewData.emit(true);
+  this.dialogRef.close(); 
+}
 
 }
