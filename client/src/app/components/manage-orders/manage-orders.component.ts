@@ -105,13 +105,13 @@ startWorking(order:IOrder){
 onStartAgreed(order:IOrder){
   const message={
   taskName:'yesCancel',
-  title:'Before Start Order', 
+  title:'Confirm:', 
   subtitle:'Yes, start it', 
-  btntext1:'No, dont start', 
+  btntext1:'No, cancel', 
   btntext2:'Start order', 
   subtitle1:'The Pet is here with me', 
   subtitle2:'We are ready to go!', 
-  subtitle3:'I agree with all policy!'
+  subtitle3:'I agree with terms and conditions'
 
 }
   const dialogConfig = new MatDialogConfig(); 
