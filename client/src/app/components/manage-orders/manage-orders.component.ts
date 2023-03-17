@@ -32,6 +32,8 @@ export class ManageOrdersComponent implements OnInit {
   orderSelected: IOrder;
   @Output() updateStatus = new EventEmitter<string>();
   starts: any;
+  DisplayMessage: boolean=false;
+
   message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; subtitle1: string; subtitle2: string; subtitle3: string;};
 
   constructor(private _http: HttpClient, private _httpOrder:OrderService,private dialog:MatDialog,  private _router: Router,public authenticator: AuthenticatorService, private _httpUser: UserService) {
@@ -104,9 +106,9 @@ onStartAgreed(order:IOrder){
   const message={
   taskName:'yesCancel',
   title:'Before Start Order', 
-  subtitle:'We are ready to go!', 
-  btntext1:'Yes, cancel', 
-  btntext2:'No, dont cancel', 
+  subtitle:'Yes, start it', 
+  btntext1:'No, dont start', 
+  btntext2:'Start order', 
   subtitle1:'The Pet is here with me', 
   subtitle2:'We are ready to go!', 
   subtitle3:'I agree with all policy!'
@@ -130,8 +132,11 @@ onStartAgreed(order:IOrder){
   this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',order).subscribe(data => {
     console.log('my data',data);
   });
+  this.DisplayMessage = true; 
+
     }
 });
+
 }
 
 
@@ -152,9 +157,9 @@ onFinishAgreed(order:IOrder){
   const message={
     taskName:'yesCancel',
     title:'Before Finish the Order', 
-    subtitle:'Finish it!', 
-    btntext1:'Yes, cancel', 
-    btntext2:'No, dont cancel', 
+    subtitle:'Order Completed!', 
+    btntext1:'No, dont finisht it', 
+    btntext2:'Yes, order finished',  
     subtitle1:'The Pet with the pet owner', 
     subtitle2:'He is happy!', 
     subtitle3:'I agree with all policy!'
@@ -178,6 +183,8 @@ onFinishAgreed(order:IOrder){
       });
     }
 });
+this.DisplayMessage = true; 
+
 }
   // async getOrders() {
   //   //IF Pet Sitter

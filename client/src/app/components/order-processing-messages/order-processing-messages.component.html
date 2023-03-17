@@ -1,31 +1,37 @@
+<div *ngIf="!DisplayMessage"> 
 <div class="row">
     <div class="col-12 d-flex justify-content-end">
         <div><i class="bi bi-x-lg" (click)="doNotCancel()"></i></div>
     </div>
   <div class="text-center align-middle pt-4 pb-3">
     <h3>Note: </h3>
-    <p>Before Start Order</p>
+    <p>{{data?.message?.title}}</p>
 
 <div class="row">
     <div class="col-12 justify-content-start">
-        <mat-checkbox class="example-margin">The Pet is here with me</mat-checkbox>
+        <mat-checkbox class="example-margin">{{data?.message?.subtitle1}}</mat-checkbox>
     </div>
     <div class="col-12">
-        <mat-checkbox class="example-margin">We are ready to go!</mat-checkbox>
+        <mat-checkbox class="example-margin">{{data?.message?.subtitle2}}</mat-checkbox>
     </div>
     <div class="col-12">
-        <mat-checkbox class="example-margin">I agree with all policy!</mat-checkbox>
+        <mat-checkbox class="example-margin">{{data?.message?.subtitle3}}</mat-checkbox>
 
     </div>
 </div>
     <div class="row pt-4 align-middle">
         <div class="col-6  d-flex justify-content-end">
-            <button type="button" class="btn btn-secondary w-75" (click)="onCancel()">No, dont start</button>
+            <button type="button" class="btn btn-secondary w-75" (click)="onCancel()">{{data?.message?.btntext1}}</button>
         </div>
         <div class="col-6  d-flex justify-content-start">
-            <button type="button" class="btn btn-primary w-75"(click)="doNotCancel()">Yes, Let's start it</button>
+            <button type="button" class="btn btn-primary w-75"(click)="doNotCancel()">{{data?.message?.btntext2}}</button>
         </div>
     </div>
 </div>
 </div>
+</div>
+<div *ngIf="DisplayMessage">
+    <app-action-message [title]="subtitle"></app-action-message>
+   </div>
+   
 
