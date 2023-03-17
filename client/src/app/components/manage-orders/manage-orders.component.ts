@@ -156,13 +156,13 @@ finishWorking(order:IOrder){
 onFinishAgreed(order:IOrder){
   const message={
     taskName:'yesCancel',
-    title:'Before Finish the Order', 
+    title:'Confirm', 
     subtitle:'Order Completed!', 
-    btntext1:'No, dont finisht it', 
+    btntext1:'No, cancel', 
     btntext2:'Yes, order finished',  
-    subtitle1:'The Pet with the pet owner', 
-    subtitle2:'He is happy!', 
-    subtitle3:'I agree with all policy!'
+    subtitle1:'The pet is returned', 
+    // subtitle2:'', 
+    subtitle3:'I agree with terms and conditions'
   
   }
   const dialogConfig = new MatDialogConfig(); 
