@@ -10,6 +10,7 @@ import { EmailService } from '../../service/email.service';
 import { C } from '@angular/cdk/keycodes';
 import { iif } from 'rxjs';
 import { ReviewFormComponent } from '../ReviewComponents/review-form/review-form.component';
+import {calculateTimeDifference} from './calculetime'; 
 
 @Component({
   selector: 'app-payment',
@@ -83,7 +84,7 @@ export class PaymentComponent implements OnInit {
     if(this.order?.Status==EOrderStatus.Processing){
       const OrderStartDate = this.order?.OrderStartDate;
       if(OrderStartDate){
-        const timeDiff = this.calculateTimeDifference(OrderStartDate);
+        const timeDiff = calculateTimeDifference(OrderStartDate);
         console.log('difference of time', timeDiff);
         this.orderStatusMessage = timeDiff;
       }
@@ -109,29 +110,7 @@ export class PaymentComponent implements OnInit {
 
   }
  
-  calculateTimeDifference(OrderStartDate: string): string {
-    // Convert OrderStartDate string to Date object
-    const startDate = new Date(OrderStartDate);
-  
-    // Calculate the time difference between now and the OrderStartDate
-    const timeDiff = startDate.getTime() - Date.now();
-    if (timeDiff <= 0) {
-      return "This order is starting late.";
-    }
-  
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  
-    // Build the output string
-    let output = "";
-    if (days > 0) {
-      output += `${days} day${days > 1 ? "s" : ""} `;
-    }
-    output += `${hours} hour${hours > 1 ? "s" : ""}`;
-  
-    return `This order starts in ${output}`;
-  }
-  
+
   
   
   
@@ -274,6 +253,7 @@ changeOrderStatus( btnclass:string, btnclass2:string, btnText2:string, btnText:s
   }
   
 }
+
 
 
 
