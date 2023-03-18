@@ -19,6 +19,14 @@
 	margin-right: 5px;
 }
 
+.active{
+	border-bottom: 2px solid #027D95; 
+}
+.navbar-nav .nav-link:hover {
+	color: #fff; /* text color */
+	background-color: #dbdde1; /* background color */
+  }  
+
 .navbar {
 	color: #fff;
 	background: #ffff !important;
