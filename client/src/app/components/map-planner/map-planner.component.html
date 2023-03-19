@@ -211,6 +211,32 @@
   <!-- page-content" -->
 </div>
 
+<!-- Mode update route -->
+<div class="modal" [class.show]="isOpen">
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="routeNameed">Route Name</label>
+        <input type="email" class="form-control" id="routeNameed" aria-describedby="emailHelp" [ngModelOptions]="{standalone: true}" placeholder="Enter email" [(ngModel)]="routeName">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="fromed">From</label>
+        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="fromed" placeholder="start" [(ngModel)]="startPoint">
+      </div>
+
+      <div class="form-group">
+        <label for="toEd">To</label>
+        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="toEd" placeholder="destination" [(ngModel)]="endPoint">
+      </div>
+      <button (click)="toggleClose()">close</button>
+      <button class="btn btn-primary" (click)="updatePost()">Submit</button>
+    </form>
+      <!-- Your form fields here -->
+      
+ 
+  </div>
+</div>
 
 <!-- Floating action button -->
 <div class="fab-wrapper">
@@ -244,3 +270,7 @@
     
   </div>
 </div>
+
+
+
+
