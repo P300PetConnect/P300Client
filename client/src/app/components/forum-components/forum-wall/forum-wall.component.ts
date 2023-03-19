@@ -95,7 +95,7 @@ export class ForumWallComponent implements OnInit {
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = true; 
-    dialogConfig.width = "50%";
+    dialogConfig.width = "30%";
     dialogConfig.height= "50%"; 
 
     this.dialog.open(AddPostComponent, dialogConfig)
