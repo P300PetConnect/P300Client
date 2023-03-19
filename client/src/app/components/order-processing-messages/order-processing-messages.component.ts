@@ -48,6 +48,8 @@ onCancel(){
   if ((this.data.message.taskName = 'yesCancel')) {
     this.dialogRef.close({ option: 'yesCancel' });
   }
-
+}
+onClose(){
+  this.dialogRef.close(); 
 }
 }
