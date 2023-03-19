@@ -17,6 +17,7 @@ export class ForumWallComponent implements OnInit {
   posts?: any;
   boards?: any;
   post: any;
+  userData: any;
 
   errorMessage:any;
 
@@ -39,6 +40,9 @@ export class ForumWallComponent implements OnInit {
       "downVote": false
 
     };
+
+    this.userData = JSON.parse(localStorage.getItem("PetConnectUser"));
+
 
     this.GetBoardDetails('0');
     
@@ -83,6 +87,7 @@ export class ForumWallComponent implements OnInit {
   RefreshPosts(board: string)
   {
     this.GetForumPosts(board);
+    this.showAddPost = false;
 
   }
   toggleAddPost(){

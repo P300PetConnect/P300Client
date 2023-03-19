@@ -14,13 +14,15 @@
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>
-      <div style="text-align: center; margin-top: 10%;">
+      <!-- <div style="text-align: center; margin-top: 10%;">
         <p>Attach Media</p>
         <img src="../../../assets/images/downArrow.png" *ngIf="!addMedia" (click)="ToggleAddMedia()" style="width: 5%;"
           alt="">
         <img src="../../../assets/images/Uparrow.png" *ngIf="addMedia" (click)="ToggleAddMedia()" style="width: 5%;"
           alt="">
-      </div>
+      </div> -->
+      <button class="btn btn-secondary" *ngIf="!selectedFiles"
+      (click)="AddPostNoImage(title.value, content.value)">Upload</button>
 
 
       <div *ngIf="addMedia" class="mediaContainer">
@@ -46,8 +48,7 @@
         <div style="text-align: center;">
           <button class="btn btn-secondary" *ngIf="selectedFiles"
             (click)="AddPostWithImage(title.value, content.value, video.value, form, image)">Upload</button>
-          <button class="btn btn-secondary" *ngIf="!selectedFiles"
-            (click)="AddPostNoImage(title.value, content.value, video.value, form)">Upload</button>
+    
 
         </div>
       </div>
