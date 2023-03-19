@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { PostItem } from 'src/app/components/forum-interfaces/post-interface';
 import { DataService } from 'src/app/components/forum-services/data.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { EventEmitter } from '@angular/core';
 //   <button class="btn btn-secondary" *ngIf="selectedFiles"  (click)="AddPostWithImage(title.value, content.value, video.value, form, image)">Upload</button>
@@ -11,7 +12,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class AddPostComponent implements OnInit {
 
-  constructor(private _forumPosts : DataService) { }
+  constructor(private _forumPosts : DataService, public dialogRef:MatDialogRef<AddPostComponent>) { }
 
   @Input() parent: any;
   @Input()  boards?: any;
@@ -108,6 +109,12 @@ message: any
   this.GetForumPosts.emit(n);
 
 }
+
+
+onClose(){
+  this.dialogRef.close(); 
+}
+
 
 }
 
