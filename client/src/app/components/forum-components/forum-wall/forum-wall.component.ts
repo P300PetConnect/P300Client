@@ -17,6 +17,7 @@ export class ForumWallComponent implements OnInit {
   posts?: any;
   boards?: any;
   post: any;
+  userData: any;
 
   errorMessage:any;
 
@@ -40,12 +41,15 @@ export class ForumWallComponent implements OnInit {
 
     };
 
+    this.userData = JSON.parse(localStorage.getItem("PetConnectUser"));
+
+
     this.GetBoardDetails('0');
     
   }
   SetTabIndex(event)
   {
-    //alert(typeof(event.index))
+   alert(event.index);
    this.GetBoardDetails(event.index);
 
   }
@@ -83,6 +87,7 @@ export class ForumWallComponent implements OnInit {
   RefreshPosts(board: string)
   {
     this.GetForumPosts(board);
+    this.showAddPost = false;
 
   }
   toggleAddPost(){
@@ -98,7 +103,13 @@ export class ForumWallComponent implements OnInit {
     dialogConfig.width = "30%";
     dialogConfig.height= "50%"; 
 
-    this.dialog.open(AddPostComponent, dialogConfig)
+    const dialogRef =this.dialog.open(AddPostComponent, dialogConfig)
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Dialog was closed');
+      this.RefreshPosts("0");
+      this.showAddPost = false;
+    });
   }
 
 
