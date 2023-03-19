@@ -1,7 +1,43 @@
-<div class=" d-flex justify-content-center formContain">
-  <div class="col-6">
+<div class=" d-flex justify-content-center formContain mt-5">
+  <!-- <div class="col-6"> -->
     <form #form>
-      <div class="form-group">
+      <div class="row pt-2">
+        <div class="col-12">
+          <h6>Post Title</h6>
+          <p>
+            Please insert the title of this post</p>
+        </div>
+        <div class="col-12" class="form-group">
+          <div class="row">
+               <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input type="tile" #title matInput id="title" placeholder="">
+              </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h6>Post Content</h6>
+          <p>
+          Please insert here content, dont user low level words like fuck or something like that</p>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <mat-form-field hintLabel="Max 400 characters" appearance="outline">
+              <mat-label>Insert post content</mat-label>
+              <textarea matInput #content  maxlength="400" 
+              placeholder="I will..."
+              placeholder="service title" formControlName="firstCtrl" required></textarea>
+              <mat-hint align="end">{{content.value.length}}/400</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+
+      
+      <!-- <div class="form-group">
         <label for="title">Post Title</label>
         <input type="tile" class="form-control" placeholder="Enter Title" #title>
 
@@ -50,8 +86,8 @@
             (click)="AddPostNoImage(title.value, content.value, video.value, form)">Upload</button>
 
         </div>
-      </div>
+      </div> -->
 
     </form>
-  </div>
+  <!-- </div> -->
 </div>
