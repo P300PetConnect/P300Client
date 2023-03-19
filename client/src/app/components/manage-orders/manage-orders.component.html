@@ -67,7 +67,7 @@
                                 <!-- <button *ngIf="userGroup==='PetSitter' && o.Status =='Processing'" (click)="startWorking()">Start Order</button> -->
                    
 
-                                <div *ngIf="o.ServiceTitle=='Dog Walk' && o.Status=='Executing'" class="pt-4">
+                                <div *ngIf="o.ServiceTitle=='Dog Walk' && (o.Status=='Executing' ||  o.Status=='Completed')" class="pt-4">
                                     <app-tracker-order></app-tracker-order>
                                 </div>
                             </div>
