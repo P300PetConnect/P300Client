@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 // import { Loader } from '@googlemaps/js-api-loader';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Post } from 'src/app/interfaces/post';
@@ -251,6 +251,7 @@ export class MapPlannerComponent implements OnInit {
 
   onClickshowMakeRoute() {
     showMakeRoute();
+   
   }
 
   onClickshowFavRoute() {
@@ -262,6 +263,7 @@ export class MapPlannerComponent implements OnInit {
 
   onClickcalcRoute() {
     calcRoute();
+    this.hideSideBard();
   }
 
 
@@ -355,14 +357,15 @@ export class MapPlannerComponent implements OnInit {
   }
 
   shareTheRouteFromFloat() {
-    let inputRouteName = document.getElementById('RouteName') as HTMLInputElement | null;
-    let inputstartPoint = document.getElementById('from') as HTMLInputElement | null;
-    let inputToPoint = document.getElementById('to') as HTMLInputElement | null;
+    
+    // let inputRouteName = document.getElementById('RouteName') as HTMLInputElement | null;
+    // let inputstartPoint = document.getElementById('from') as HTMLInputElement | null;
+    // let inputToPoint = document.getElementById('to') as HTMLInputElement | null;
 
-
-    console.log(inputstartPoint+ " " +inputToPoint );
+console.log();
+    console.log(this.startPoint );
     //shareRoute( document.getElementById('from',), document.getElementById('to',), "", this.authenticator?.user?.attributes?.email);
-    copyRouteID(inputstartPoint, inputToPoint, inputRouteName, this.authenticator?.user?.attributes?.email);
+    // copyRouteID(inputstartPoint, inputToPoint, inputRouteName, this.authenticator?.user?.attributes?.email);
     Swal.fire('Route Copied to Cliboard!');
 
   }
@@ -380,5 +383,16 @@ export class MapPlannerComponent implements OnInit {
     document.getElementById("sidebar").style.display = "none";
   }
 
+
+
+  // getGoogleMapsLink(origin: string, destination: string): string {
+  //   const url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving&dir_action=navigate&key=${apiKey}`;
+  //   return encodeURI(url);
+  // }
+
+  directTogooleMaps(){
+
+    // window.open(this.getGoogleMapsLink(), '_blank');
+  }
  
 }
