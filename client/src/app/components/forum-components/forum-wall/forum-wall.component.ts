@@ -49,7 +49,7 @@ export class ForumWallComponent implements OnInit {
   }
   SetTabIndex(event)
   {
-   alert(event.index);
+  
    this.GetBoardDetails(event.index);
 
   }

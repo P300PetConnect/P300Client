@@ -27,54 +27,49 @@ message: any
 
   //localPost?: PostItem;
   imageSrc: string = '';
+  userData: any;
   
   ngOnInit(): void {
+
+    this.userData = JSON.parse(localStorage.getItem("PetConnectUser"));
+    console.log(this.userData);
    
   }
 
-  public AddPostNoImage(title: string, content: string,  form: HTMLFormElement, imageUserProfile:string)
+ 
+  public AddPostNoImage(title: string, content: string)
   {
+
   
     // need board id here, passed back from wall as input
-    let id = this.boards[0][0].boardID;
+   // let id = this.boards[0][0].boardID;
     
-   
+    // <img src="{{ userData?.profilePicUrl}}">
+    // {{userData?.name}}    {{userData?.surname}}
     const now = new Date().toDateString();
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-     this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 ,imageUserProfile);
-     
+
+  
+
+     this.tempPostItem = new PostItem
+     (this.makeRandom(12,possible), title,"0", this.userData.name + this.userData.surname, content, now ,false,
+       this.userData.profilePicUrl, 0)
+   
+       
     
      this._forumPosts.PushPost(this.tempPostItem)
      .subscribe({
-      next: book => {
-        console.log(JSON.stringify(book) + 'post added');
+      next: post => {
+        console.log(JSON.stringify(post) + 'post added');
         this.message = "post added";
-        this.RefreshPosts(id);     
+        this.RefreshPosts("0");  
+        this.onClose();   
          },
       error: (err) => this.message = err
     });;
     
  
      
-  }
-
-  AddPostWithImage(title: string, content: string, video:string, form: HTMLFormElement, image:HTMLImageElement, imageUserProfile:string) {
-    
-
-    // need codition here for video link length
-    let id = this.boards[0][0].boardID;
-
-    const now = new Date().toDateString();
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-     this.tempPostItem = new PostItem(this.makeRandom(12,possible), title, id, "N/A", content, now ,true ,0 , imageUserProfile);
-
-     const file = this.selectedFiles;
-
-     this._forumPosts.PushPostWithImage(this.tempPostItem, file);
-     
-    // Buy image is not resetting after upload!!
-    //image.src = "";
-    return false;
   }
 
   public makeRandom(lengthOfCode: number, possible: string) {
