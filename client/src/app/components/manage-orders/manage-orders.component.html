@@ -24,7 +24,7 @@
                          <th></th>
                         <th></th>
                   
-                        <th>DATE</th>
+                        <th>DATE CREATED</th>
                         <th>DUE ON</th>
                         <th>PAYMENT STATUS</th>
                         <th>TOTAL</th>
@@ -35,12 +35,12 @@
         <tr  data-toggle="collapse" data-toggle="collapse" [attr.data-target]=" '#' + orders[i]?.Name +''+ orders[i]?.OrderID"  class="accordion-toggle">
             <td><button class="btn btn-default btn-xs"><i class="bi bi-eye"></i></button></td>
             <td><img src="{{orders[i]?.Profile_Pic_URL}}" class="img-profile" width="65px" alt=""></td>
-            <td (click)="GetPetOwnerDetails(o.UserID, o.EmailAddress)">{{o.Name}} {{o.Surname}}</td>
+            <td class="lkname" (click)="GetPetOwnerDetails(o.UserID, o.EmailAddress)">{{o.Name}} {{o.Surname}}</td>
             <td></td>
             <td>{{o?.ServiceTitle}}</td>
             <td></td>
             <td>{{o?.OrderDate | date}}</td>
-            <td>{{o?.OrderDate | date}}</td>
+            <td>{{o?.OrderStartDate | date}}</td>
             <td><span class="badge {{o.PaymentStatus}}">{{o.PaymentStatus}}</span></td>
             <td *ngIf="o?.PaymentStatus!='Refounded'">{{o?.Price }}</td>
             <td *ngIf="o?.PaymentStatus=='Refounded'"><s>{{o?.Price }}</s></td>
