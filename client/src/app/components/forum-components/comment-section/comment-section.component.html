@@ -1,13 +1,20 @@
 <div>
   <form #myForm="ngForm" class="commentFooter">
-    <div class="commentForm mx-4">
+    <!-- <div class="commentForm mx-4">
       <div class="form-group mt-4">
         <textarea type="content" class="form-control" placeholder="Comment" #comment></textarea>
       </div>
       <div class="form-group">
-        <button class="btn btn-secondary px-5" (click)="PushComment(comment.value, myForm); comment.value = ''">
-          Post
-        </button>
+        <button mat-raised-button color="primary" class="btn btn-secondary px-5" (click)="PushComment(comment.value, myForm); comment.value = ''">Post</button>
+      </div>
+    </div> -->
+
+    <div class="commentForm mx-4">
+      <div class="form-group mt-4">
+        <textarea type="content" class="form-control" placeholder="Comment" #comment (input)="commentText = comment.value; updateButtonState()"></textarea>
+      </div>
+      <div class="form-group">
+        <button mat-raised-button color="primary"  (click)="PushComment(commentText, myForm); commentText = ''" [disabled]="isButtonDisabled">Post</button>
       </div>
     </div>
   </form>

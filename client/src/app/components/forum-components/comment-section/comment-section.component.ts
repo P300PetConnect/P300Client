@@ -15,6 +15,9 @@ export class CommentSectionComponent implements OnInit {
 
   commentData = [] as any;
   newVoteCount?: number;
+  commentText: string = '';
+  isButtonDisabled: boolean = true;
+
 
   test?: any;
   comments?:any
@@ -83,6 +86,14 @@ export class CommentSectionComponent implements OnInit {
     this._forumPosts.ChangeComValue(item);
     
   }
+  updateButtonState() {
+    this.isButtonDisabled = this.commentText.trim().length === 0;
+    this.isButtonDisabled = !this.commentText;
+    console.log(this.isButtonDisabled); 
+    console.log(this.commentText); 
+
+  }
+  
 
   /* 
   public AddVote(id:string,voteCount:number)
