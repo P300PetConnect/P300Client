@@ -67,11 +67,11 @@
       <!-- <button class="btn btn-secondary" *ngIf="!selectedFiles"
       (click)="AddPostNoImage(title.value, content.value)">Upload</button> -->
 <div class="row">
-<div class="col-5">
+<div class="col-4">
 
 </div>
-<div class="col-5">
-  <button mat-raised-button color="primary" *ngIf="!selectedFiles"  (click)="AddPostNoImage(title.value, content.value); commentText = ''" [disabled]="isButtonDisabled">Post</button>
+<div class="col-5 pt-3">
+  <button mat-raised-button color="primary" *ngIf="!selectedFiles"  (click)="AddPostNoImage(title.value, content.value); commentText = ''" [disabled]="isButtonDisabled"  style="width: 100%;">Post</button>
 
 </div>
 <div class="col-2">
