@@ -33,6 +33,7 @@
             <mat-form-field hintLabel="Max 400 characters" appearance="outline">
               <mat-label>Say something</mat-label>
               <textarea matInput #content  maxlength="400" 
+              (input)="commentText = content.value; updateButtonState()"
               placeholder="I will..."
               placeholder="service title" formControlName="firstCtrl" required></textarea>
               <mat-hint align="end">{{content.value.length}}/400</mat-hint>
@@ -63,8 +64,20 @@
         <img src="../../../assets/images/Uparrow.png" *ngIf="addMedia" (click)="ToggleAddMedia()" style="width: 5%;"
           alt="">
       </div> -->
-      <button class="btn btn-secondary" *ngIf="!selectedFiles"
-      (click)="AddPostNoImage(title.value, content.value)">Upload</button>
+      <!-- <button class="btn btn-secondary" *ngIf="!selectedFiles"
+      (click)="AddPostNoImage(title.value, content.value)">Upload</button> -->
+<div class="row">
+<div class="col-5">
+
+</div>
+<div class="col-5">
+  <button mat-raised-button color="primary" *ngIf="!selectedFiles"  (click)="AddPostNoImage(title.value, content.value); commentText = ''" [disabled]="isButtonDisabled">Post</button>
+
+</div>
+<div class="col-2">
+
+</div>
+</div>
 
 
       <div *ngIf="addMedia" class="mediaContainer">
@@ -93,7 +106,7 @@
     
 
         </div>
-      </div> -->
+      </div> 
 
     </form>
   <!-- </div> -->
