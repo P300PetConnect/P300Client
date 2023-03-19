@@ -19,8 +19,9 @@ export class CommentItem
     comment: string;
     voteCount: number;
     datePost: string;
+    imageURL: string;
    
-    constructor( postID:string, commentID: string, user: string, comment: string, voteCount: number, datePost: string)
+    constructor( postID:string, commentID: string, user: string, comment: string, voteCount: number, datePost: string,imageURL: string)
     {
       
         this.postID = postID;
@@ -29,5 +30,7 @@ export class CommentItem
         this.comment = comment;
         this.voteCount = voteCount;
         this.datePost = datePost;
+        this.imageURL= imageURL
+
     }
 }

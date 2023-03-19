@@ -4,6 +4,7 @@ import { DataService } from 'src/app/forum-services/data.service';
 
 import { EventEmitter } from '@angular/core';
 import { NavigationService } from 'src/app/components/nav/NavigationService';
+import { MatDialogRef } from '@angular/material/dialog';
 //   <button class="btn btn-secondary" *ngIf="selectedFiles"  (click)="AddPostWithImage(title.value, content.value, video.value, form, image)">Upload</button>
 @Component({
   selector: 'app-add-post',
@@ -12,7 +13,7 @@ import { NavigationService } from 'src/app/components/nav/NavigationService';
 })
 export class AddPostComponent implements OnInit {
 
-  constructor(private _forumPosts : DataService,private navigationService: NavigationService) { }
+  constructor(private _forumPosts : DataService,private navigationService: NavigationService,public dialogRef: MatDialogRef<AddPostComponent>) { }
 
   @Input() parent: any;
   @Input()  boards?: any;
@@ -60,19 +61,25 @@ message: any
      (this.makeRandom(12,possible), title,"0", this.userData.name + this.userData.surname, content, now ,false,
        this.userData.profilePicUrl, 0)
    
+       
     
      this._forumPosts.PushPost(this.tempPostItem)
      .subscribe({
       next: post => {
         console.log(JSON.stringify(post) + 'post added');
         this.message = "post added";
-        this.RefreshPosts("0");     
+        this.RefreshPosts("0");  
+        this.closeDialog();   
          },
       error: (err) => this.message = err
     });;
     
  
      
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
   // AddPostWithImage(title: string, content: string, video:string, form: HTMLFormElement, image:HTMLImageElement, imageUserProfile:string) {

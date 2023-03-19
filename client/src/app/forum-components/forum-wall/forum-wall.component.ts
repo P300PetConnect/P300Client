@@ -49,7 +49,7 @@ export class ForumWallComponent implements OnInit {
   }
   SetTabIndex(event)
   {
-    //alert(typeof(event.index))
+   alert(event.index);
    this.GetBoardDetails(event.index);
 
   }
@@ -102,7 +102,13 @@ export class ForumWallComponent implements OnInit {
     dialogConfig.autoFocus = true; 
     dialogConfig.width = "60%";
 
-    this.dialog.open(AddPostComponent, dialogConfig)
+    const dialogRef =this.dialog.open(AddPostComponent, dialogConfig)
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Dialog was closed');
+      this.RefreshPosts("0");
+      this.showAddPost = false;
+    });
   }
 
 

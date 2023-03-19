@@ -20,10 +20,12 @@ export class CommentSectionComponent implements OnInit {
   comments?:any
   errorMessage: any;
   message: any;
+  userData: any
   constructor(private _forumPosts : DataService) { }
 
   ngOnInit(): void {
     this.GetForumPosts();
+    this.userData = JSON.parse(localStorage.getItem("PetConnectUser"));
   }
 
   GetForumPosts(): boolean{
@@ -43,10 +45,12 @@ export class CommentSectionComponent implements OnInit {
 
   PushComment(comment:string, form: NgForm)
   {
+
+
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
     const now = new Date().toDateString();
     //issue with the date string here, not showing in db
-    const commentItem = new CommentItem(this.docID, this.makeRandom(12,possible), "N/A",comment,0,now)
+    const commentItem = new CommentItem(this.docID, this.makeRandom(12,possible), this.userData.name + this.userData.surname ,comment,0,now,this.userData.profilePicUrl )
     
     this._forumPosts.PushCommentsToDB(commentItem)
     .subscribe({
