@@ -133,7 +133,10 @@ ngAfterViewInit(): void {
 
   // tslint:disable-next-line: use-life-cycle-interface
   ngOnInit() {
-    this.getLocation2(); 
+    if(this.userGroup=='PetSitter'){
+      this.getLocation2(); 
+    }
+
     // this.origin = { lat: 33.60297801899009, lng: 71.25951402963865 };
     // this.destination = { lat: 33.59931642884097, lng: 71.35169618906248 };
     // this.map.getLocation().subscribe((data) => {
