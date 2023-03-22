@@ -18,7 +18,8 @@ export class AddPostComponent implements OnInit {
   @Input()  boards?: any;
   // tried to call get post method from child after new post created, did not work
   @Output() GetForumPosts = new EventEmitter<string>();
-
+  commentText: string = '';
+  isButtonDisabled: boolean = true;
   selectedFiles!: any;
   tempPostItem!: PostItem;
   addMedia = false;
@@ -109,6 +110,14 @@ message: any
 onClose(){
   this.dialogRef.close(); 
 }
+updateButtonState() {
+  this.isButtonDisabled = this.commentText.trim().length === 0;
+  this.isButtonDisabled = !this.commentText;
+  console.log(this.isButtonDisabled); 
+  console.log(this.commentText); 
+
+}
+
 
 
 }

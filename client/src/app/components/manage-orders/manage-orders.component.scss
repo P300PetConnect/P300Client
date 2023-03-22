@@ -60,3 +60,9 @@ table{
 b{
     color: gray;
 }
+.lkname:hover {
+    text-decoration: underline;
+    cursor: pointer; /* optional: change the cursor to a pointer when hovered over */
+    color: #28A745 !important;
+  }
+  
