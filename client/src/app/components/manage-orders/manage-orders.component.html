@@ -68,7 +68,7 @@
                    
 
                                 <div *ngIf="o.ServiceTitle=='Dog Walk' && (o.Status=='Executing' ||  o.Status=='Completed')" class="pt-4">
-                                    <app-tracker-order></app-tracker-order>
+                                    <app-tracker-order [order]="orders[i]"></app-tracker-order>
                                 </div>
                             </div>
                             <div class="col-6 d-flex justify-content-end">

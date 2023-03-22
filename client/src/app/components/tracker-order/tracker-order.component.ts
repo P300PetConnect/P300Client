@@ -1,9 +1,10 @@
 
 
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { MapsService } from "../../service/maps.service";
 import { SocketService } from "../../service/socket.service";
 import { MapsAPILoader } from '@agm/core';
+import { IOrder } from "src/app/interfaces/form";
 // declare var google: any;
 @Component({
   selector: 'app-tracker-order',
@@ -13,11 +14,14 @@ import { MapsAPILoader } from '@agm/core';
 export class TrackerOrderComponent implements OnInit, AfterViewInit  {
   userGroup: string = localStorage.getItem('userGroup'); 
 
+  @Input() order:IOrder; 
+
   start_end_mark = [];
 
   latlng = [
     
   ];
+  currentDate: Date;
 
   // @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
 
@@ -141,6 +145,7 @@ ngAfterViewInit(): void {
     //   this.city = data.city;
     //   this.ip = data.ip;
     // });
+    console.log('Order', this.order); 
     this.socketService.onNewMessage().subscribe((result:any)=>{
       console.log('result', result);
       this.pushRealTime(result?.coordinates)
@@ -207,7 +212,8 @@ ngAfterViewInit(): void {
     this.arr.push($event.coords);
     console.log('$event.coords ==>', $event.coords);
     console.log('this.arr ===>', this.arr);
-    let obj = { "orderId" : "1", "userId" : "2", "coordinates": [$event.coords.lat,$event.coords.lng] };
+    this.currentDate = new Date()
+    let obj = { "orderId" : this.order?.OrderID, "coordinates": [$event.coords.lat,$event.coords.lng] };
     this.socketService.sendMessage(obj);
     // this.pushRealTime(obj.coordinates);
     // this.markers.push({
