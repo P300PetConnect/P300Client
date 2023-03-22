@@ -8,7 +8,7 @@ import { Post } from '../interfaces/post';
 })
 export class DataService {
 
-  url : string = 'http://localhost:3000/post'
+  url : string = 'https://api.npoint.io/a694e384168ce4755fae'
   constructor(private http : HttpClient) { }
 
   // get all post

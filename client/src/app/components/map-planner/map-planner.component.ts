@@ -75,27 +75,6 @@ export class MapPlannerComponent implements OnInit {
 
 
 
-  // initMap(): void {
-  //   map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-  //     center: { lat: -34.397, lng: 150.644 },
-  //     zoom: 8,
-  //   });
-  // }
-  // ngOnInit(): void {
-  //   //#region  Atlas variables
-  //   this._id = '';
-  //   this.email = this.authenticator?.user?.attributes?.email;
-  //   this.routeName = '';
-  //   this.startPoint = '';
-  //   this.endPoint = '';
-  //   this.allPosts = [];
-  //   this.allPosts = [];
-  //   this.getAllPost();
-  //   //#endregion
-  //   SettingMap();
-  //   Gen2OnLoadDo();
-
-  // } //End of ngOnInit
 
   //#region  CRUD Atlas
   getAllPost() {
@@ -116,7 +95,7 @@ export class MapPlannerComponent implements OnInit {
           }
         }
         this.allPosts = this.onwerPosts;
-        console.log(this.allPosts);
+        // console.log(this.allPosts);
         this.getArray2();
       },
       (err) => {
@@ -132,8 +111,8 @@ export class MapPlannerComponent implements OnInit {
     this.dataService.getPostById(post._id).subscribe(
       (res) => {
         post = res;
-        console.log("GetPostById");
-        console.log(post);
+        // console.log("GetPostById");
+        // console.log(post);
       },
       (err) => {
         console.log(err);
@@ -170,23 +149,6 @@ export class MapPlannerComponent implements OnInit {
     })
 
 
-    //  Start
-    // if (
-    //   window.confirm('Are you sure you want to delete post with id :' + post._id)
-    // ) {
-    //   this.dataService.deletePostById(post._id).subscribe(
-    //     (res) => {
-    //       this.onwerPosts = [];
-    //       location.reload() ;
-    //       window.location.href = '#FavRoute';
-    //       this.getAllPost();
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //     }
-    //   );
-    // }
-    // End
   }
 
   createPost() {
@@ -243,10 +205,6 @@ export class MapPlannerComponent implements OnInit {
     // move();
     showGenRoute();
 
-    // this.snackBar.open("Generate a route",'',{
-    //   duration:3000,
-    //   verticalPosition:'top'
-    // })
   }
 
   onClickshowMakeRoute() {
@@ -361,14 +319,24 @@ export class MapPlannerComponent implements OnInit {
     // let inputRouteName = document.getElementById('RouteName') as HTMLInputElement | null;
     // let inputstartPoint = document.getElementById('from') as HTMLInputElement | null;
     // let inputToPoint = document.getElementById('to') as HTMLInputElement | null;
+    let inputStartName = document.getElementById('from') as HTMLInputElement | null;
+let start=inputStartName.value;
+// console.log(inputStartName.value);
+// console.log(this.endPoint);
 
-console.log();
-    console.log(this.startPoint );
-    //shareRoute( document.getElementById('from',), document.getElementById('to',), "", this.authenticator?.user?.attributes?.email);
+let link ='https://www.google.com/maps/dir/'+`${inputStartName.value}`+'/'+`${this.endPoint}`;
+
+let text="Hello I shared with my favourite route find link below " + "\n link to get directions "+ link;
+    // shareRoute( start, this.endPoint, "", this.authenticator?.user?.attributes?.email);
     // copyRouteID(inputstartPoint, inputToPoint, inputRouteName, this.authenticator?.user?.attributes?.email);
+    navigator.clipboard.writeText(text);
+
+    // copyRouteID("text");
+
     Swal.fire('Route Copied to Cliboard!');
 
   }
+
 
 
 
@@ -391,8 +359,13 @@ console.log();
   // }
 
   directTogooleMaps(){
+    let inputStartName = document.getElementById('from') as HTMLInputElement | null;
 
-    // window.open(this.getGoogleMapsLink(), '_blank');
+// console.log(inputStartName.value);
+// console.log(this.endPoint);
+
+window.open('https://www.google.com/maps/dir/'+`${inputStartName.value}`+'/'+`${this.endPoint}`);
   }
+
  
 }
