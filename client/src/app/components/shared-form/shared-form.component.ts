@@ -125,6 +125,8 @@ return false;
   SubmitProfileDetail()
   {
     this.profileDetails.controls.UserID.setValue(this.user.id)
+
+    alert(this.user.id);
    
 
     this._userService.UpdateProfileDetails(this.profileDetails);

@@ -85,7 +85,7 @@
           <div class="row mt-3">
             <div class="mb-3 col-md-6">
               <label for="desc" class="form-label">Profile Description</label>
-              <textarea name="desc" id="desc" cols="70" rows="3" formControlName="ProfileDesc"></textarea>
+              <textarea name="desc" id="desc" cols="70" rows="3" formControlName="ProfileDesc" [value]="user?.profileDesc"></textarea>
             </div>
           
           </div>  
@@ -93,47 +93,47 @@
             <div class="mb-3 col-md-4">
               
               <label for="can" class="form-label">Cancellation Policy</label>
-              <input type="text" class="form-control" formControlName="CancellationPolicy" id="can">
+              <input type="text" class="form-control" formControlName="CancellationPolicy" id="can" [value]="user?.cancellationPolicy" >
             
             </div>
          
             <div class="mb-3 col-md-4">
               <label for="children" class="form-label">Children in Home</label>
-              <input type="text"  class="form-control" formControlName="Children" id="children">
+              <input type="text"  class="form-control" formControlName="Children" id="children" [value]="user?.children">
             </div>
            
             <div class="mb-3 col-md-4">
               <label for="htype" class="form-label">House Type</label>
-              <input type="text"  class="form-control" formControlName="HouseType" id="houseType">
+              <input type="text"  class="form-control" formControlName="HouseType" id="houseType"  [value]="user?.houseType">
             </div>
           </div>  
           <div class="row mt-3">
             <div class="mb-3 col-md-4">
               <label for="houseDetails" class="form-label">House Details</label>
-              <input type="text" class="form-control" formControlName="HouseDetails" id="houseDetails">
+              <input type="text" class="form-control" formControlName="HouseDetails" id="houseDetails" [value]="user?.houseDetails">
             </div>
             <div class="mb-3 col-md-4">
               <label for="petsInHome" class="form-label">Pets In Home</label>
-              <input type="text" class="form-control" formControlName="PetsInHome" id="petsInHome">
+              <input type="text" class="form-control" formControlName="PetsInHome" id="petsInHome" [value]="user?.petsInHome">
             </div>
             <div class="mb-3 col-md-4">
               <label for="usualPets" class="form-label">Usual Pets</label>
-              <input type="text" class="form-control" formControlName="UsualPets" id="usualPets">
+              <input type="text" class="form-control" formControlName="UsualPets" id="usualPets" [value]="user?.usualPets">
             </div>
          
           </div>
           <div class="row mt-3">
             <div class="mb-3 col-md-4">
               <label for="condition1" class="form-label">Condition 1</label>
-              <input type="text" class="form-control" formControlName="UsualPetsDetail1" id="condition1">
+              <input type="text" class="form-control" formControlName="UsualPetsDetail1" id="condition1" [value]="user?.usualPetsDetail1">
             </div>
             <div class="mb-3 col-md-4">
               <label for="condition2" class="form-label">Condition 2</label>
-              <input type="text" class="form-control" formControlName="UsualPetsDetail2" id="condition2">
+              <input type="text" class="form-control" formControlName="UsualPetsDetail2" id="condition2" [value]="user?.usualPetsDetail2">
             </div>
             <div class="mb-3 col-md-4">
               <label for="condition3" class="form-label">Condition 3</label>
-              <input type="text" class="form-control" formControlName="UsualPetsDetail3" id="condition3">
+              <input type="text" class="form-control" formControlName="UsualPetsDetail3" id="condition3" [value]="user?.usualPetsDetail3">
             </div>
          
           </div>         

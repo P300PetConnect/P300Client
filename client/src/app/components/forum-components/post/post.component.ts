@@ -21,14 +21,16 @@ export class PostComponent implements OnInit {
   {
    
     item.VoteCount +=1;
-    this._forumPosts.ChangeValue(item);
+  //  this._forumPosts.ChangeValue(item);
   
 
   }
   public RemoveVote(item: PostItem)
   {
+    
+    //console.log(item);
     item.VoteCount -=1;
-    this._forumPosts.ChangeValue(item);
+    //this._forumPosts.ChangeValue(item);
   }
   DisplayComments( item: PostItem)
   {
@@ -44,10 +46,15 @@ export class PostComponent implements OnInit {
 
     }
 
-    this._forumPosts.ChangeValue(item);
+   // this._forumPosts.ChangeValue(item);
     
   }
 
 
 
 }
+
+
+
+
+

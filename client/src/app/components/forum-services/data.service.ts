@@ -118,6 +118,7 @@ export class DataService {
     // temp workaround dynamo type issue // 
     ChangeValue(Item : PostItem)
     {
+      console.log(Item);
 
       var params = {
         
@@ -129,7 +130,7 @@ export class DataService {
             "Date": Item.Date,
             "DisplayComments": Item.DisplayComments,
             "VoteCount": Item.VoteCount,
-           //"imageProfileUrl":Item.imageProfileUrl
+            "UserProfileImage":Item.UserProfileImage
   //
         }
         
