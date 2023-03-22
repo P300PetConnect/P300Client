@@ -133,7 +133,7 @@ ngAfterViewInit(): void {
 
   // tslint:disable-next-line: use-life-cycle-interface
   ngOnInit() {
-
+    this.getLocation2(); 
     // this.origin = { lat: 33.60297801899009, lng: 71.25951402963865 };
     // this.destination = { lat: 33.59931642884097, lng: 71.35169618906248 };
     // this.map.getLocation().subscribe((data) => {
@@ -222,6 +222,23 @@ ngAfterViewInit(): void {
     //   draggable: true
     // });
   }
+  mapClicked2(position: any) {
+    this.lat  = position.coords.latitude;
+    this.lng  = position.coords.longitude;
+    this.arr.push(position.coords);
+    console.log('$event.coords ==>',position.coords);
+    console.log('this.arr ===>', this.arr);
+    this.currentDate = new Date()
+    let obj = { "orderId" : this.order?.OrderID, "coordinates": [position.coords.latitude,position.coords.longitude] };
+    this.socketService.sendMessage(obj);
+    // this.pushRealTime(obj.coordinates);
+    // this.markers.push({
+    //   lat: $event.coords.lat,
+    //   lng: $event.coords.lng,
+    //   draggable: true
+    // });
+  }
+
 
   pushRealTime(coordinates: any){
     this.latlng.push(coordinates);    
@@ -257,4 +274,26 @@ ngAfterViewInit(): void {
   onPolyPathChange(event: any) {
     console.log('Polyline path changed: ', event);
   }
+
+  getLocation2() {
+    // Check if the geolocation API is supported by the browser
+    if (navigator.geolocation) {
+      // Set an interval to get the location every 10 seconds
+      setInterval(() => {
+        // Call the getCurrentPosition method to get the current location
+        navigator.geolocation.getCurrentPosition((position) => {
+          // Log the latitude and longitude to the console
+          console.log("Latitude: " + position.coords.latitude);
+          // console.log("Longitude: " + position.coords.longitude);
+          this.mapClicked2(position)
+      
+        });
+      }, 10000);
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }
+
+  
+
 }
