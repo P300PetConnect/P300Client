@@ -260,10 +260,7 @@ export class MapPlannerComponent implements OnInit {
       document.getElementById(`${editId}`)!.addEventListener('click', () => this.toggle(post));
 
       //Share route
-      document.getElementById(`${shareId}`)!.addEventListener('click', () => this.shareTheRoute(post));
-
-      //document.getElementById(`${shareId}`)!.style.backgroundColor = "Blue";
-
+      document.getElementById(`${shareId}`)!.addEventListener('click', () => this.shareTheRouteFromFloat());
 
     }
 
@@ -309,16 +306,12 @@ export class MapPlannerComponent implements OnInit {
 
   shareTheRoute(post: Post) {
     shareRoute(post.startPoint, post.endPoint, post.routeName, post.email);
-    //copyRouteID(post._id);
-   // Swal.fire('Route ID Copied to Cliboard!');
+
 
   }
 
   shareTheRouteFromFloat() {
-    
-    // let inputRouteName = document.getElementById('RouteName') as HTMLInputElement | null;
-    // let inputstartPoint = document.getElementById('from') as HTMLInputElement | null;
-    // let inputToPoint = document.getElementById('to') as HTMLInputElement | null;
+
     let inputStartName = document.getElementById('from') as HTMLInputElement | null;
 let start=inputStartName.value;
 // console.log(inputStartName.value);
