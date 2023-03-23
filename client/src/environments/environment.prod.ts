@@ -12,7 +12,7 @@ export const environment = {
   // clientId: '1kvja59f1tthl9chrrjn59pgou'
   GOOGLE_MAPS_API_KEY: 'AIzaSyCz-Nu0ku-0DJEe5iPt13RTq0QVpiz45AY',
   // production: true,
-  SERVER_URL: 'http://localhost:3000', 
+  SERVER_URL: 'http://108.129.8.254', 
   region: 'eu-west-1',
   identityPoolId: 'eu-west-1:632c2f15-6b41-44b0-9d26-539386e90e4d',
   userPoolId: 'eu-west-1_dkqFlijuX',

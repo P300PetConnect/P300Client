@@ -8,7 +8,7 @@ export class SocketService {
   private socket: Socket;
 
   constructor(private http:HttpClient) {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('ws://108.129.8.254');
   }
 
   // EMITTER example
