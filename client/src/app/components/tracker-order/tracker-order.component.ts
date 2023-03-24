@@ -16,6 +16,7 @@ export class TrackerOrderComponent implements OnInit, AfterViewInit  {
 
   @Input() order:IOrder; 
 
+  dontDisplay = true; 
   start_end_mark = [];
 
   latlng = [

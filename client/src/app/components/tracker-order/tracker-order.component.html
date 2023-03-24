@@ -2,7 +2,7 @@
 <h2>Your city is: {{ city }}, with calling code: {{ calling_code }}</h2>
 <p>Your coordinates are: latitude: {{ lat }}, longitude: {{ lng }}</p> -->
 
-<div class="pinboard"  *ngIf="userGroup!='PetOwner'">
+<div class="pinboard"  *ngIf="!dontDisplay">
   <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="zoom" (mapClick)="mapClicked($event)">
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map>
