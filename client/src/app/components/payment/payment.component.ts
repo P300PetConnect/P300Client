@@ -1,11 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { IOrder } from '../interfaces/form';
-import { EOrderStatus, EPaymentStatus } from '../interfaces/order';
+import { IOrder } from '../../interfaces/form';
+import { EOrderStatus, EPaymentStatus } from '../../interfaces/order';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { MessageAlertComponent } from '../message-alert/message-alert.component';
+import { MessageAlertComponent } from '../../shared-components/message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
-import { OrderService } from '../service/order.service';
+import { OrderService } from '../../service/order.service';
+import { EmailService } from '../../service/email.service';
+import { C } from '@angular/cdk/keycodes';
+import { iif } from 'rxjs';
+import { ReviewFormComponent } from '../ReviewComponents/review-form/review-form.component';
 
 @Component({
   selector: 'app-payment',
@@ -13,66 +17,138 @@ import { OrderService } from '../service/order.service';
   styleUrls: ['./payment.component.scss'], 
 
 })
-export class PaymentComponent implements OnInit {
-  
-  btnclass: string="success";
-  btnText: string='Make payment';
-  actionToBtn?: string = 'Confirm';
-  btnText2: string = "Revision"
-  cardTitle:string="Make the payment to confirm your order!"
-  message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; };
+export class PaymentComponent implements OnInit {  
+  btnclass: string;
+  btnText: string;
+  actionToBtn?: string;
+  btnText2: string; 
+  cardTitle:string; 
+  userGroup: string;  
+  orderStatusMessage: string; 
+  paymentStatusMessage:string; 
+
+  message: { taskName: string; title: string; subtitle: string; btntext1: string; btntext2: string; subtitle1: string; subtitle2: string; subtitle3: string;};
   private dialogRef2?: MatDialogRef<MessageAlertComponent>
   btnclass2: string;
+  orderStatus: string='';
+  DontShowButton: boolean = false;
 
-  constructor(private _http: HttpClient, private dialog:MatDialog, private _httpOrder:OrderService) { }
+  constructor(private _http: HttpClient, private dialog:MatDialog, private emailService: EmailService, private _httpOrder:OrderService) { }
   paymentHandler: any = null;
   @Input() order:IOrder | undefined;
   @ViewChild('btn2') btn2: ElementRef;
+  @Input() orderStatusUpdated: string; 
 
   @ViewChild('stepper')
   stepper: MatStepper;
 
   ngOnInit() {
-
+    this.userGroup =  localStorage.getItem('userGroup'); 
     this.invokeStripe();
-    this.checkCurrentStatus()
+    this.checkCurrentPaymentStatus(); 
+    this.checkCurrentOrderStatus(); 
+
   }
 
-  checkCurrentStatus(){
+  checkCurrentPaymentStatus(){
     console.log('check status', this.order); 
+    this.userGroup =  localStorage.getItem('userGroup'); 
+//Pending Payment Status
+    if(this.order?.PaymentStatus==EPaymentStatus.Pending){
 
-    if(this.order.Status==EOrderStatus.Processing){
-      this.confirmedStatus(); 
+      if(this.userGroup == 'PetOwner'){
+        this.changeOrderStatus("success","info","Edit Order", "Make Payment","Confirm","Make payment to confirm your order"); 
+      }
+      else{
+        this.paymentStatusMessage = "Awaiting payment from Pet Owner."; 
+      }
     }
-    else if(this.order.Status==EOrderStatus.Canceled){
-      this.CanceledStatus(); 
-    }
-    else if(this.order.Status==EOrderStatus.Pendent){
-      this.PendentStatus(); 
-    }
-    else if(this.order.Status==EOrderStatus.Delivered){
-      this.Delivered(); 
-    }
-    else if(this.order.Status==EOrderStatus.Review){
-      this.confirmedStatus(); 
+
+
+    // Payment Confirmed Message 
+    if(this.order?.PaymentStatus==EPaymentStatus.Confirmed){
+      if(this.userGroup=='PetOwner'){
+        this.paymentStatusMessage = 'Your payment has been '+this.order?.PaymentStatus; 
+      }
+      else{
+        this.paymentStatusMessage = 'Pet Owner payment has been '+this.order?.PaymentStatus; 
+      }
     }
   }
-
-  SecondBtnPayment(amount: any, doAction:string) {
-    if(this.order.Status == EOrderStatus.Delivered){
-      this.onCreateReview(); 
+       
+  checkCurrentOrderStatus(){
+    if(this.order?.Status==EOrderStatus.Completed){
+      this.orderStatusMessage = 'This order has been '+this.order.Status; 
     }
-  }
-  onCreateReview(){
+    if(this.order?.Status==EOrderStatus.Processing){
+      const OrderStartDate = this.order?.OrderStartDate;
+      if(OrderStartDate){
+        const timeDiff = this.calculateTimeDifference(OrderStartDate);
+        console.log('difference of time', timeDiff);
+        this.orderStatusMessage = timeDiff;
+      }
+    }
+    if(this.order?.Status==EOrderStatus.Executing){
+      if(this.userGroup=='PetSitter'){
+        this.orderStatusMessage = 'You Started Executing the order'; 
+      }
+      else{
+        this.orderStatusMessage = 'Pet Sitter Started Executing the order'; 
+      }
+    }
+
+    if(this.order?.Status==EOrderStatus.Completed){
+
+      if(this.userGroup == 'PetOwner'){
+
+      }
+      else{
+        this.paymentStatusMessage = "Awaiting review from Pet Owner."; 
+      }
+    }
 
   }
+ 
+  calculateTimeDifference(OrderStartDate: string): string {
+    // Convert OrderStartDate string to Date object
+    const startDate = new Date(OrderStartDate);
+  
+    // Calculate the time difference between now and the OrderStartDate
+    const timeDiff = startDate.getTime() - Date.now();
+    if (timeDiff <= 0) {
+      return "This order is starting late.";
+    }
+  
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  
+    // Build the output string
+    let output = "";
+    if (days > 0) {
+      output += `${days} day${days > 1 ? "s" : ""} `;
+    }
+    output += `${hours} hour${hours > 1 ? "s" : ""}`;
+  
+    return `This order starts in ${output}`;
+  }
+  
+  
+  
+  
+
+  // SecondBtnPayment(amount: any, doAction:string) {
+  //   if(this.order.Status == EOrderStatus.Completed){
+  //     this.onCreateReview(); 
+  //   }
+  // }
+
   makePayment(amount: any, doAction:string) {
     if(doAction=='Confirm'){
         const paymentHandler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51MWB7YAoSiviOVuvgwBp0jfYUIN2ype1syfcNPSMq6jIxJeCAnMCfwB1ddbez4r5zo4sSOStblgpJ2gWJmbjG6bO00oC3DWa5K',
       locale: 'auto',
-      token: function (stripeToken: any) {
-        // console.log(stripeToken); //payment done
+      token: (stripeToken: any) => {
+        this.confirmpayment(stripeToken);
       },
     });
     paymentHandler.open({
@@ -80,24 +156,17 @@ export class PaymentComponent implements OnInit {
       description: amount,
       amount: amount * 100,
     });
+    }
+  }
+  confirmpayment(stripeToken: any) {
+    console.log(' // Add your code here to confirm the payment', stripeToken); 
+    this.paymentStatusMessage = 'Your payment has been confirmed'; 
     this.updatePaymentStatus(); 
-    }
-    else if(doAction=='Cancel'){
-      console.log('Cancel')
-      this.onCancel(); 
-    }
-    this.confirmPayment(); 
-  }
+    this.checkCurrentPaymentStatus(); 
+    this.checkCurrentOrderStatus(); 
 
-  confirmPayment() {
-    this.order.PaymentStatus = EPaymentStatus.Confirmed; 
-    this.order.Status = EOrderStatus.Processing; 
-    this.cardTitle="Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy"; 
-    this.btnclass="danger";
-    this.btnText = 'Cancel';
-    this.actionToBtn = "Cancel"; 
+    }
 
-  }
   invokeStripe() {
     if (!window.document.getElementById('stripe-script')) {
       const script = window.document.createElement('script');
@@ -110,7 +179,7 @@ export class PaymentComponent implements OnInit {
           locale: 'auto',
           token: function (stripeToken: any) {
             alert('Payment has been successfull!');
-            console.log(stripeToken); //payment done
+            console.log(stripeToken); 
 
           },
         });
@@ -121,7 +190,8 @@ export class PaymentComponent implements OnInit {
   updatePaymentStatus(){
     this.order.PaymentStatus = EPaymentStatus.Confirmed; 
     this.order.Status = EOrderStatus.Processing; 
-    this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',this.order).subscribe(data => {
+    console.log('the order',this.order); 
+    this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev/',this.order).subscribe(data => {
       console.log('my data',data);
     });
   }
@@ -133,7 +203,11 @@ export class PaymentComponent implements OnInit {
       title:'Are you sure to Cancel this Order? ', 
       subtitle:'If you cancel this event,it will be permanently cancelled.', 
       btntext1:'Yes, cancel', 
-      btntext2:'No, dont cancel'}
+      btntext2:'No, dont cancel',
+      subtitle1: 'string',
+      subtitle2: 'string',
+      subtitle3: 'string',
+    }
 
     const dialogConfig = new MatDialogConfig(); 
     dialogConfig.disableClose = true; 
@@ -148,7 +222,7 @@ export class PaymentComponent implements OnInit {
           this.order.Status = EOrderStatus.Canceled; 
           this.order.PaymentStatus = EPaymentStatus.Refounded; 
           console.log('my roder', this.order)
-          this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev',this.order).subscribe(data => {
+          this._http.put('https://72r8qqly5b.execute-api.eu-west-1.amazonaws.com/dev/',this.order).subscribe(data => {
             console.log('my data',data);
           });
         } 
@@ -156,44 +230,52 @@ export class PaymentComponent implements OnInit {
       else{
         this.dialogRef2?.close(); 
       }
-    this.CanceledStatus(); 
     })
   }
 
+changeOrderStatus( btnclass:string, btnclass2:string, btnText2:string, btnText:string, actionToBtn:string,cardTitle:string){
+  this.cardTitle=cardTitle; 
+    this.btnclass=btnclass; 
+    this.btnclass2=btnclass2; 
+    this.btnText = btnText; 
+    this.btnText2 = btnText2; 
+    this.actionToBtn = actionToBtn; 
+}
+  confirmedStatus(orderStatusMessage:string){
+          this.orderStatusMessage = orderStatusMessage; 
+  }
 
-  CanceledStatus(){
-    this.btnclass="btn-secondary disabled";
-    this.btnText='Order Canceled';
-    this.actionToBtn = '';
-    this.cardTitle="This order was canceled, this card will be removed in 7 days"
-  }
-  confirmedStatus(){
-    this.cardTitle="Cancellation is allowed with full refound up to 24 house before your due, please check our Refound Policy"; 
-     this.btnclass="danger";
-        this.btnText = 'Cancel';
-        this.actionToBtn = "Cancel"; 
-  }
-  PendentStatus(){
-    this.cardTitle="Make payment to confirm your order"; 
-    this.btnclass="success";
-    this.btnclass2="info"
-    this.btnText = 'Confirm Order';
-    this.actionToBtn = "Confirm"; 
-  }
-  Delivered(){
-    this.cardTitle="Thanks! Please tell me more about your experience, giving a review"; 
-    this.btnclass="success";
-    this.btnclass2="info";
-    this.btnText = 'Order again';
-    this.btnText2= 'Give Review'
-    this.actionToBtn = "GiveReview"; 
-  }
+  // Completed(){
+  //   this.cardTitle="Thanks! Please tell me more about your experience, giving a review"; 
+  //   this.btnclass="success";
+  //   this.btnclass2="info";
+  //   this.btnText = 'Order again';
+  //   this.btnText2= 'Give Review'
+  //   this.actionToBtn = "GiveReview"; 
+  // }
   PaymentManagement(){
     if(this.order?.PaymentStatus=='Confirmad'){
      
     }
   }
 
+  createReview(order:IOrder){
+    const dialogConfig = new MatDialogConfig(); 
+    dialogConfig.disableClose = false; 
+    dialogConfig.autoFocus = true; 
+    dialogConfig.width = "70%";
+    const dialogRef =  this.dialog.open(ReviewFormComponent, {data:{order}}); 
+
+    dialogRef.componentInstance.reviewData.subscribe((data) => {
+        console.log(data);
+        this.DontShowButton = data; 
+        // handle the emitted data here
+    });
+  }
+  
 }
+
+
+
 
 

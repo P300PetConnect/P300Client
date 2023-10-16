@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Post } from '../model/post';
+import { Post } from '../interfaces/post';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  url : string = 'http://localhost:3000/post'
+  url : string = 'https://api.npoint.io/21ff73458844c90acf04'
   constructor(private http : HttpClient) { }
 
   // get all post

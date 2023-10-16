@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { StreamChatModule, StreamAutocompleteTextareaModule } from 'stream-chat-angular';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
-import {AgmCoreModule} from '@agm/core';
 import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports'
@@ -22,9 +21,9 @@ import { LoginComponent } from './components/login/login.component';
 import { InitialPageComponent } from './components/initial-page/initial-page.component';
 import { UserformComponent } from './components/userform/userform.component';
 import { CognitoGuard } from './cognito.guard';
-import { UserService } from './components/service/user.service';
+import { UserService } from '../app/service/user.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AlertmsgComponent } from './components/alertmsg/alertmsg.component';  
+import { AlertmsgComponent } from './shared-components/alertmsg/alertmsg.component';  
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { environment} from '../environments/environment'; 
@@ -47,20 +46,25 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
-import { ForumWallComponent } from './forum-components/forum-wall/forum-wall.component';
-import { AddPostComponent } from './forum-components/add-post/add-post.component';
-import { PostComponent } from './forum-components/post/post.component';
-import { CommentSectionComponent } from './forum-components/comment-section/comment-section.component';
+import { ForumWallComponent } from './components/forum-components/forum-wall/forum-wall.component';
+import { AddPostComponent } from './components/forum-components/add-post/add-post.component';
+import { PostComponent } from './components/forum-components/post/post.component';
+import { CommentSectionComponent } from './components/forum-components/comment-section/comment-section.component';
 import { SharedFormComponent } from './components/shared-form/shared-form.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PetComponent } from './components/pet/pet.component';
 import { PetSitterServiceComponent } from './components/pet-sitter-service/pet-sitter-service.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
-import { MessageAlertComponent } from './components/message-alert/message-alert.component';
+import { MessageAlertComponent } from './shared-components/message-alert/message-alert.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+// import { DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
+// import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 
+import { AgmCoreModule } from "@agm/core";
+import { SocketService } from './service/socket.service';
+import { AgmDirectionModule } from 'agm-direction';
 
 // import { MdInputModule } from '@angular/material';
 
@@ -73,33 +77,42 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 //     userPoolWebCliendId:'1kvja59f1tthl9chrrjn59pgou', 
 //     AuthenticatorFlowType:'ALLOW_USER_PASSWORD_AUTH'
 
-
-import { SearchContainerComponent } from './search_service_components/search-container/search-container.component';
-import { PopServiceCardComponent } from './search_service_components/pop-service-card/pop-service-card.component';
-import { BottomInfoComponent } from './search_service_components/bottom-info/bottom-info.component';
-import { SearchResultsComponent } from './search_service_components/search-results/search-results.component';
-import { CalendarComponent } from './calendar-components/calendar/calendar.component';
-import { ChunkPipe } from './calender-pipe/chunk.pipe';
+import { SearchContainerComponent } from './components/search_service_components/search-container/search-container.component';
+import { PopServiceCardComponent } from './components/search_service_components/pop-service-card/pop-service-card.component';
+import { BottomInfoComponent } from './components/search_service_components/bottom-info/bottom-info.component';
+import { SearchResultsComponent } from './components/search_service_components/search-results/search-results.component';
+import { CalendarComponent } from './components/calendar-components/calendar.component';
+import { ChunkPipe } from './components/calender-pipe/chunk.pipe';
 import { SearchVersion2Component } from './components/search-version2/search-version2.component';
 import { PetSitterDetailsComponent } from './components/pet-sitter-details/pet-sitter-details.component';
 import { SearchSitterServicesComponent } from './components/search-sitter-services/search-sitter-services.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { OrderComponent } from './components/order/order.component';
-import { ReviewFormComponent } from './ReviewComponents/review-form/review-form.component';
-import { ReviewComponent } from './ReviewComponents/review/review.component';
-import { InterceptorService } from './components/service/interceptor.service';
+import { ReviewFormComponent } from './components/ReviewComponents/review-form/review-form.component';
+import { ReviewComponent } from './components/ReviewComponents/review/review.component';
+import { InterceptorService } from '../app/service/interceptor.service';
 import { ChatPageComponent } from './components/chat-page/chat-page.component';
-import { MessageInputComponent } from './components/message-input/message-input.component';
+import { MessageInputComponent } from './shared-components/message-input/message-input.component';
 import { ManageOrdersComponent } from './components/manage-orders/manage-orders.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ScheduleListComponent } from './components/schedule-list/schedule-list.component';
 import { NotAvailableFormComponent } from './components/not-available-form/not-available-form.component';
-import { MapPlannerComponent } from './map-planner/map-planner.component';
-import { BrowseRouteComponent } from './browse-route/browse-route.component';
+import { MapPlannerComponent } from './components/map-planner/map-planner.component';
+import { BrowseRouteComponent } from './components/browse-route/browse-route.component';
 import { RecognitionComponent } from './components/recognition/recognition.component';
+import { PetCardViewComponent } from './components/pet-card-view/pet-card-view.component';
+import { PetOwnerProfileDetailsComponent } from './components/pet-owner-profile-details/pet-owner-profile-details.component';
+import { EmailService } from './service/email.service';
+import { TrackerOrderComponent } from './components/tracker-order/tracker-order.component';
+import { ActionMessageComponent } from './components/action-message/action-message.component';
+import { OrderProcessingMessagesComponent } from './components/order-processing-messages/order-processing-messages.component';
+const apiKey = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD20Wdm1Ys8bnswyJACAdgPdcdX4rsSq6k";
+// import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     NavComponent,
     FooterComponent,
@@ -114,14 +127,17 @@ import { RecognitionComponent } from './components/recognition/recognition.compo
     AlertmsgComponent, ManageOrdersComponent,PaymentComponent,
     DialogComponent, UploadImageComponent, SearchpositivekeywordsComponent, SharedFormComponent, SettingsComponent, PetComponent, 
     PetSitterServiceComponent, MessageAlertComponent, SearchContainerComponent, PopServiceCardComponent,SearchContainerComponent,BottomInfoComponent,SearchResultsComponent, CalendarComponent, ChunkPipe, SearchVersion2Component, PetSitterDetailsComponent, SearchSitterServicesComponent, ReviewFormComponent, ReviewComponent, OrderComponent, ChatPageComponent, MessageInputComponent, ScheduleListComponent, NotAvailableFormComponent
-    ,MapPlannerComponent, BrowseRouteComponent, RecognitionComponent
+    ,MapPlannerComponent, BrowseRouteComponent, PetCardViewComponent, RecognitionComponent, PetOwnerProfileDetailsComponent, TrackerOrderComponent, ActionMessageComponent, OrderProcessingMessagesComponent
   ],
   imports: [
+    
     BrowserModule,
+    AgmDirectionModule,
     NgbPaginationModule, 
     MatSlideToggleModule,
     MatButtonModule,
     NgbAlertModule,
+    MatCheckboxModule,
     HttpClientModule,
     MatChipsModule,
     MatGoogleMapsAutocompleteModule,
@@ -135,6 +151,8 @@ import { RecognitionComponent } from './components/recognition/recognition.compo
     MatInputModule,
     MatFormFieldModule,
     MatExpansionModule,
+    // ScheduleModule,
+    
     //Ng2TelInputModule,
     MatGoogleMapsAutocompleteModule,
     MatListModule,
@@ -145,6 +163,12 @@ import { RecognitionComponent } from './components/recognition/recognition.compo
     MatMenuModule, 
     MatDialogModule,
     MatStepperModule,
+    BrowserModule,  
+      BrowserAnimationsModule,  
+      MatSliderModule, 
+      FormsModule,  
+      ReactiveFormsModule,
+
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -152,24 +176,38 @@ import { RecognitionComponent } from './components/recognition/recognition.compo
             deps: [HttpClient]
         }, 
     }),
+    AgmCoreModule.forRoot({
+      apiKey: apiKey,
+    }),
     StreamChatModule,
     StreamAutocompleteTextareaModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
     FormsModule,
     AmplifyAuthenticatorModule,
-    NgbModule, 
+    NgbModule,
+    NgbModule,
 
-    AgmCoreModule.forRoot({
-      apiKey: environment.GOOGLE_MAPS_API_KEY,
-      libraries: ['places']
-    }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: environment.GOOGLE_MAPS_API_KEY,
+    //   libraries: ['places', 'geometry']
+    // }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    AuthenticatorService, CognitoGuard, UserService],
+    AuthenticatorService, CognitoGuard, UserService, EmailService, SocketService,
+     CognitoGuard, UserService, EmailService, SocketService, CognitoGuard, UserService,
+    // DayService, 
+    // WeekService, 
+    // WorkWeekService, 
+    // MonthService,
+    // AgendaService,
+    // MonthAgendaService
+  ],
   bootstrap: [AppComponent], 
-  entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent], 
+  entryComponents:[SharedFormComponent, PetComponent, PetSitterServiceComponent, MessageAlertComponent],   
+  schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
+
 })
 export class AppModule { }
 // required for AOT compilation

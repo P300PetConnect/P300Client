@@ -1,0 +1,37 @@
+<div *ngIf="!DisplayMessage"> 
+<div class="row">
+    <div class="col-12 d-flex justify-content-end">
+        <div><i class="bi bi-x-lg" (click)="onClose()"></i></div>
+    </div>
+  <div class="text-center align-middle pt-4 pb-3">
+     <!-- <h3>Note: </h3> -->
+    <p>{{data?.message?.title}}</p> 
+
+<div class="row">
+    <div class="col-12 justify-content-start">
+        <!-- <mat-checkbox class="example-margin">{{data?.message?.subtitle1}}</mat-checkbox> -->
+    </div>
+    <div class="col-12">
+        <!-- <mat-checkbox class="example-margin">{{data?.message?.subtitle2}}</mat-checkbox> -->
+    </div>
+    <div class="col-12">
+        <mat-checkbox class="example-margin">{{data?.message?.subtitle3}}</mat-checkbox>
+
+    </div>
+</div>
+    <div class="row pt-4 align-middle">
+        <div class="col-6  d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary w-100" (click)="onCancel()">{{data?.message?.btntext1}}</button>
+        </div>
+        <div class="col-6  d-flex justify-content-start">
+            <button type="button" class="btn btn-primary w-100"(click)="doNotCancel()">{{data?.message?.btntext2}}</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div *ngIf="DisplayMessage">
+    <app-action-message [title]="subtitle"></app-action-message>
+   </div>
+   
+

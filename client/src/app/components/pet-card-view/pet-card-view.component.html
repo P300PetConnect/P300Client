@@ -1,0 +1,14 @@
+<div class="card mb-2">
+    <div class="card-body row">
+        <div class="col-3">
+            <td><img src="{{pet?.petImageUrl}}" 
+              class="img-profile"></td>
+        </div>
+      <div class="col-6">
+        {{pet?.name}}
+      </div>
+      <div class="col-3">
+        <mat-slide-toggle (change)="selectPet()"></mat-slide-toggle>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,25 @@
+<div class="container pt-5 p-0">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+
+        <div class="col-md-2 col-2">
+          <img src="{{review?.Profile_Pic_URL}}" class="img-fluid rounded-circle mb-2" />
+        </div>
+
+        <div class="col-md-10 col-10">
+          <div class="mb-2">
+            <a class="text-left" href=""><strong>{{review.Name + ' ' + review.Surname}}</strong></a>
+            <span *ngFor="let n of numSequence(review.ReviewRating)" class=" float-right bi bi-star-fill"></span>
+          </div>
+          <p class="p-0">
+            {{review.ReviewContent}}
+          </p>
+          <div class="text-right">
+            <a class="review-time text-secondary text-right">{{review.ReviewDate | date:'mediumDate'}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

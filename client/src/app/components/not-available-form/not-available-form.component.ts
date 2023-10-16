@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { INotAvailable, IOrderList } from '../interfaces/order';
+import { INotAvailable, IOrderList } from '../../interfaces/order';
 import { DatePipe } from '@angular/common';
-import { OrderService } from '../service/order.service';
+import { OrderService } from '../../service/order.service';
 
 @Component({
   selector: 'app-not-available-form',

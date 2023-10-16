@@ -19,6 +19,14 @@
 	margin-right: 5px;
 }
 
+.active{
+	border-bottom: 2px solid #027D95; 
+}
+.navbar-nav .nav-link:hover {
+	color: #fff; /* text color */
+	background-color: #dbdde1; /* background color */
+  }  
+
 .navbar {
 	color: #fff;
 	background: #ffff !important;
@@ -34,7 +42,7 @@
 	margin-right: 10px;
 }
 .navbar .navbar-brand {
-	color: #17a2b8 !important;
+	color: #4dd4d5 !important;
 	// color: #525357!important;
 	// color: #525357!important;
 	padding-left: 0;
@@ -286,4 +294,8 @@
 
 .container{
 	max-width: 1200px;
+}
+
+.navbar-toggler{
+	background-color: #4dd4d5;
 }

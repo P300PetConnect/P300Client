@@ -1,6 +1,6 @@
-<div class="container-xxl pt-5">
-  <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'joannasmith@gmail.com' ">
-    <div class="col-lg-4 col-sm-12 col-md-4 ">
+<div class="container-xxl mt-5 overflow-hidden">
+  <div class="row" *ngIf="(userGroup=='PetOwner' && !viewonly) || (userGroup=='PetSitter' && viewonly)">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
       <div class="row">
         <div class="col-12">
           <div class="tab-content">
@@ -27,7 +27,7 @@
                       {{petOwner?.county}}</a>
                   </ul>
                   <div class="row text-center d-flex justify-content-center">
-                    <div class="btn btn-outline-info w-50" (click)="onCreate()">
+                    <div *ngIf="!viewonly" class="btn btn-outline-info w-50" (click)="onCreate()">
                       Edit Profile
                     </div>
                   </div>
@@ -41,11 +41,11 @@
       </div>
     </div>
 
-    <div class="col-lg-8 pl-5 col-sm-12 col-md-8 ">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-12">
       <mat-tab-group animationDuration="0ms">
         <mat-tab label="Active Pets">
           <div class="row">
-            <div class="col-lg-4 mt-4">
+            <div class="col-lg-4 mt-4"  *ngIf="!viewonly">
               <div class="card p-4" (click)="onCreatePet()">
                 <div class="text-center card-body">
                   <div class="member-card">
@@ -96,9 +96,9 @@
           </div>
         </mat-tab>
 
-        <mat-tab label="Draft">
+        <mat-tab label="Draft" *ngIf="!viewonly">
           <div class="row pt-4">
-            <div class="col-4">
+            <div class="col-md-4">
               <div class="card">
                 <div class="text-center card-body">
                   <div class="member-card">
@@ -145,9 +145,8 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="authenticator?.user?.attributes?.email== 'fatherted@gmail.com'">
-
-    <div class="col-lg-4">
+  <div class="row" *ngIf="userGroup== 'PetSitter' && !viewonly">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
       <div class="row">
         <div class="col-12">
           <div class="tab-content">
@@ -183,7 +182,7 @@
                       {{petSitter?.county}} </a>
                   </ul>
                   <div class="row text-center d-flex justify-content-center">
-                    <div class="btn btn-outline-info w-50" (click)="onCreate()">
+                    <div  class="btn btn-outline-info w-50" (click)="onCreate()">
                       Edit Profile
                     </div>
 
@@ -204,7 +203,7 @@
 
 
 
-    <div class="col-lg-8 pl-5">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-12">
       <mat-tab-group animationDuration="0ms">
         <!-- <mat-tab label="Schedule">
                 <div *ngFor="let o of orders">
@@ -213,8 +212,12 @@
                 </div>
               </mat-tab> -->
         <mat-tab label="Schedule">
-          <div>
-            <app-calendar [orders]="orders" [notAvailble]="notAvailble" [componentFlag]="componentFlag"></app-calendar>
+          <div *ngIf="notAvailableComplete && orderComplete">
+           
+            <!-- <app-cal2 [orders]="orders" [notAvailble]="notAvailble"></app-cal2> -->
+           <app-calendar [orders]="orders" [notAvailble]="notAvailble" [componentFlag]="componentFlag" (deleteNA)=" refreshNA()"></app-calendar>
+
+       
           </div>
         </mat-tab>
 
@@ -223,9 +226,9 @@
           <ng-template mat-tab-label>
             Active service
           </ng-template>
-          <div class="row pt-4 container">
+          <div class="row mt-4 container-fluid">
             <div class="col-lg-4">
-              <div class="card p-4" (click)="onCreateService()">
+              <div class="card p-4 mb-4 mb-md-0" (click)="onCreateService()">
                 <div class="text-center card-body">
 
                   <div class="member-card">
@@ -238,27 +241,67 @@
 
 
             <div class="col-lg-4 " *ngFor="let s of serviceList">
-              <div class="card p-4 mb-4">
+              <div class="card p-2 mb-4">
                 <div class="text-center card-body">
                   <div class="member-card">
-                    <span class="align-middle nav-title"><strong
-                        class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</strong>
-                      <br></span>
-                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
-                      <img src="../../../assets/images/home/walk-selected.svg" alt="Creche" class="img-fluid">
-                    </picture>
-                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
-                      <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" class="img-fluid">
-                    </picture>
-                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
-                      <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                    </picture>
-                    <picture class="align-middle pr-3" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
-                      <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" class="img-fluid">
-                    </picture>
-                    <div>
-                      <p>{{s.Description | slice:0:35}}</p>
+                    <div class = "row">
+                  
+                      <div class = "col-12 text-center">
+                        <h6>{{s.UserTitle}}</h6>
+
+                      </div>
                     </div>
+                    <hr style="color: black;">
+                    <div class = "row align-items-center">
+                      <div class = "col-2">
+                        <picture class=" pr-1 mr-2" *ngIf="s.ServiceTitle.includes(picKeyWords[1])">
+                          <img src="../../../assets/images/home/walk-selected.svg" alt="Creche">
+                        </picture>
+                        <picture class="align-middle pr-1 mr-2" *ngIf="s.ServiceTitle.includes(picKeyWords[0])">
+                          <img src="../../../assets/images/home/petsitting-selected.svg" alt="Creche" >
+                        </picture>
+                        <picture class="align-middle pr-1 mr-2" *ngIf="s.ServiceTitle.includes(picKeyWords[3])">
+                          <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" >
+                        </picture>
+                        <picture class="align-middle pr-1 mr-2" *ngIf="s.ServiceTitle.includes(picKeyWords[2])">
+                          <img src="../../../assets/images/home/boarding-selected.svg" alt="Creche" >
+                        </picture>
+
+                      </div>
+                      <div class = "col-10">
+                        <span class="align-middle nav-title"><h6
+                          class="d-inline-block d-md-inline title">{{s.ServiceTitle}}</h6>
+                        <br></span>
+                      </div>
+                     
+                    
+
+                    </div>
+                    <div class = "row">
+                     <p>€{{s.StartingPrice}}</p>
+
+                    </div>
+                  
+           
+                   
+                 
+                    <div *ngIf = "s.ShowMore == null || s.ShowMore == false" >
+                      <i class="bi bi-arrow-down-circle-fill text-secondary" (click) = "s.ShowMore =! s.ShowMore"></i>
+                    
+                    </div>
+                    <div *ngIf = "s.ShowMore == true" >
+                 
+                      <i class="bi bi-arrow-up-circle-fill text-secondary" (click) = "s.ShowMore =! s.ShowMore"></i>
+                    </div>
+                  
+                    <div *ngIf="s.ShowMore">
+                      <p><small>{{s.Description}}</small></p>
+                      <div class = "row px-5">
+                        <button class = "btn btn-danger btn-sm" (click) = "DeleteService(s.ServiceID)">Delete Service</button> 
+
+                      </div>
+                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -313,7 +356,7 @@
         <!-- <mat-tab label="Set Preferences">
       
               </mat-tab> -->
-        <mat-tab label="New Posts">
+        <!-- <mat-tab label="New Posts">
           <mat-tab-group mat-stretch-tabs class="pt-3">
             <mat-tab label="Pet Help">
               <div class="background">
@@ -342,7 +385,7 @@
                         <p><small>laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
                             distinctio</small></p>
                       </div>
-                      <div class="post" style="margin-top: 2%;">
+                      <div class="post" >
                         <h6>Thu Dec 08 2022</h6>
                         <p><small>maiores alias consequatur aut perferendis doloribus asperiores repella</small></p>
                       </div>
@@ -428,7 +471,7 @@
 
             </mat-tab>
           </mat-tab-group>
-        </mat-tab>
+        </mat-tab> -->
         <mat-tab label="Set Availability">
           <ng-template mat-tab-label>Set Availability
           </ng-template>

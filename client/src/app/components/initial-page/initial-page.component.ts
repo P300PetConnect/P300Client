@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
@@ -88,7 +88,6 @@ images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
       this.thirdIsActive=false; 
       this.fourthIsActive = false; 
       this.sleepOver = false; 
-
       this.service = 'Grooming'
 }
 else if(id==3){
@@ -102,7 +101,6 @@ else if(id==4){
   this.secondIsActive=false;
   this.thirdIsActive=false; 
   this.fourthIsActive = true; 
-
   this.service = 'Walk'
 }
   }

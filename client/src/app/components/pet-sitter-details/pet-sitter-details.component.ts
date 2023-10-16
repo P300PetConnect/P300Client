@@ -1,27 +1,29 @@
 import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, Renderer2} from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserService } from 'src/app/components/service/user.service';
-import { IUser, IPet} from 'src/app/components/interfaces/form';
+import { UserService } from '../../service/user.service';
+import { IUser, IPet} from 'src/app/interfaces/form';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SharedFormComponent } from 'src/app/components/shared-form/shared-form.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PetComponent } from '../pet/pet.component';
 import { PetSitterServiceComponent } from '../pet-sitter-service/pet-sitter-service.component';
-import { IPetOwner, IPetSitter, IPetSitterID } from '../interfaces/users';
-import { PetService } from '../service/pet.service';
-import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { IPetOwner, IPetSitter, IPetSitterID } from '../../interfaces/users';
+import { PetService } from '../../service/pet.service';
+import { MatCalendarCellClassFunction, MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { OrderComponent } from '../order/order.component';
-import { Review } from 'src/app/ReviewInterfaces/review';
-import { ReviewService } from 'src/app/Review-services/review.service';
+import { Review } from 'src/app/components/ReviewInterfaces/review';
+import { ReviewService } from 'src/app/components/Review-services/review.service';
 import { ActivatedRoute } from '@angular/router';
-import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
-import { ServiceInterface } from 'src/app/search_service_interfaces/service-interface';
-import { OrderService } from '../service/order.service';
-import { INotAvailable, IOrderList } from '../interfaces/order';
-import { StreamChat, ChannelData, UserResponse, TokenProvider } from 'stream-chat';
+import { SearchServiceService } from 'src/app/service/search-service.service';
+import { ServiceInterface } from 'src/app/interfaces/service-interface';
+import { OrderService } from '../../service/order.service';
+import { INotAvailable, IOrderList } from '../../interfaces/order';
+import { StreamChat, ChannelData, UserResponse, TokenProvider, UserFromToken } from 'stream-chat';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { DateAdapter } from '@angular/material/core';
+import { EmailService } from 'src/app/service/email.service';
 
 
 @Component({
@@ -51,15 +53,26 @@ export class PetSitterDetailsComponent implements OnInit {
   averageRoundStars: number;
 
   orders:IOrderList[] = [];
+  datesToGray : Date[] = [];
   notAvailble:INotAvailable[] = [];
   componentFlag = "searchProfile";
 
 
   //start chat channel
+  private readonly userDetails = localStorage.getItem('PetConnectUser');
+  chatUserPetOwner = JSON.parse(this.userDetails);
   private readonly apiKey = environment.stream.key;
-  private readonly user1Token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiam9hbm5hc21pdGhAZ21haWwifQ.m0LLSTgdE_iW9Xb_L8y8Z7x7nmXfsmuChE2k8LaoTHU'; // the token for pet owner
-  private readonly user2Token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiam9uZXNAZ21haWwifQ.CIVYsvWnafp9nm0cDmI40jmYuD1Nf6u4dWe-2pKk0GM'; // the token for pet sitter
+  private user1Token = this.chatUserPetOwner.chatToken; // the token for pet owner
+  private user2Token = ''; // the token for pet sitter
+  chatOwnerId = this.chatUserPetOwner.chatUserName;
+  chatSitterId = '';
+  chatName1 = this.chatUserPetOwner.name;
+  chatName2 = '';
+  chatUser1Img = this.chatUserPetOwner.profilePicUrl;
+  chatUser2Img = '';
   private client: StreamChat;
+
+
 
   //weird 0 on data being returned, refactor get method in this class, get method in service
   
@@ -81,28 +94,24 @@ export class PetSitterDetailsComponent implements OnInit {
 
   
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-
     var date = cellDate.getDate();
-
-    console.log(date); 
-
+    console.log(date);
+    
     // if (view == 'month') {
         return 'highlightCard';
     // }
+  }
 
-    // return "";
-}
 
 
   @ViewChild('picker') picker:ElementRef;
 
-  constructor(private _userService: UserService, private _petService:PetService, public authenticator: AuthenticatorService, 
+  constructor(private _userService: UserService, private _petService:PetService, private emailService: EmailService, public authenticator: AuthenticatorService, 
     private dialog:MatDialog, private renderer: Renderer2,  private review:ReviewService,public r : ActivatedRoute,
-     private service: SearchServiceService,private _order: OrderService, private router: Router) {
+     private service: SearchServiceService,private _order: OrderService, private router: Router
+     ,private readonly dateAdapter: DateAdapter<Date>) {
 
       this.client = new StreamChat(this.apiKey);
-
-
 
   //   this._userService.get_user().subscribe((res: IUser) => {
   //     this.user= res; 
@@ -127,10 +136,13 @@ export class PetSitterDetailsComponent implements OnInit {
     this.getPetSitter(Number(this.userID));
     this.GetOrders(Number(this.userID));
     this.GetnotAvailable(Number(this.userID));
+  
 
     console.log(this.petSitter);
  
-    console.log('picker', this.picker); 
+    console.log('picker', this.picker);
+
+  
 
   this.pet = {
     "name": "Lucy",
@@ -157,13 +169,17 @@ export class PetSitterDetailsComponent implements OnInit {
 //     return false; 
 //   }
 
+
+// this.dialogRef2 = this.dialog.open(MessageAlertComponent, {data:{ order: this.order}
+
+
 onCreateOrder(){
   // this._userService.initializeFormGroup(); 
   const dialogConfig = new MatDialogConfig(); 
   dialogConfig.disableClose = false; 
   dialogConfig.autoFocus = true; 
   dialogConfig.width = "60%";
-  this.dialog.open(OrderComponent, dialogConfig); 
+  this.dialog.open(OrderComponent, {data:{petSitter:this.petSitter, serviceList:this.serviceList}}); 
 
 }
 
@@ -171,10 +187,13 @@ onCreateOrder(){
     this._userService.get_petsitter_ID(id).subscribe(
       petSitter=>{
         this.petSitter = petSitter[0];
-        console.log(petSitter)
+        console.log('favorite sitter', petSitter)
         //rounded average to print stars on profile view
         this.averageRoundStars = Math.floor(this.petSitter.ReviewsTotal / this.petSitter.NumReviews);
-      
+        this.user2Token = petSitter[0].ChatToken;
+        this.chatSitterId = petSitter[0].ChatUserName;
+        this.chatUser2Img = petSitter[0].profilePicUrl;
+        this.chatName2 = petSitter[0].name;
       }); 
       
       return false; 
@@ -205,7 +224,7 @@ onCreateOrder(){
     dialogConfig.disableClose = false; 
     dialogConfig.autoFocus = false; 
     dialogConfig.width = "80%";
-     dialogConfig.height = "93%";
+    dialogConfig.height = "93%";
     this.dialog.open(PetSitterServiceComponent, dialogConfig)
   }
 
@@ -220,16 +239,20 @@ onCreateOrder(){
     return false;
   }
 
-  getServices(id: number): boolean
-  {
+  getServices(id: number): void {
     this.service.getOtherServices(id).subscribe({
-      next: (value: ServiceInterface[] )=> this.serviceList = value,
-      complete: () => console.log('Services finished ' +  JSON.stringify((this.service))),
-      error: (mess) => this.message = mess
-    })
-    return false;
-
+      next: (value: ServiceInterface[]) => {
+        this.serviceList = value;
+      },
+      error: (error: any) => {
+        this.message = error;
+      },
+      complete: () => {
+        console.log('service finished ', (this.service));
+      }
+    });
   }
+  
 
   GetOrders(id: number)
   {
@@ -256,22 +279,40 @@ onCreateOrder(){
 
   //create new chat
   async startChatChannel() {
-    const user1Id = 'joannasmith@gmail'; //pet owner chatUserName
-    const user2Id = 'jones@gmail';//pet sitter chatUserName
+    const user1Id =  this.chatOwnerId;//pet owner chatUserName
+    const user2Id = this.chatSitterId;//pet sitter chatUserName
+    this.emailService.sendStartChatMessageEmail().subscribe(
+      data => console.log('Email Sent!', data),
+      error => console.log('Error Sending Email!', error)
+    );
+    // const user2Id = {
+    //   id: this.chatSitterId,//pet sitter chatUserName
+    //   name: this.chatName2,
+    //   image: this.chatUser2Img
+    // };
 
     const userTokenProvider: TokenProvider = async () => {
       return this.user1Token;
     };
 
     await this.client.connectUser(
-      { id: user1Id },
+      { id: user1Id, name: this.chatName1, image: this.chatUser1Img },
       userTokenProvider,
     );
+
+    // const userTokenProvider2: TokenProvider = async () => {
+    //   return this.user2Token;
+    // };
+    
+    // await this.client.connectUser(
+    //   { id: user2Id, name: this.chatName2, image: this.chatUser2Img },
+    //   userTokenProvider2,
+    // );
 
     const channelData: ChannelData = {
       members: [user1Id, user2Id],
       name: 'my-new-channel',
-      created_by_id: user1Id,
+      created_by_id: user1Id
     };
 
     const channel = this.client.channel('messaging', channelData);
@@ -281,6 +322,26 @@ onCreateOrder(){
     this.router.navigate(['/chat']);
     console.log(channel);
   }
+  private readonly DATES_TO_DISABLE: Date[] = [
+    new Date('2023-03-10'), // March 10th, 2023
+    new Date('2023-03-15'), // March 15th, 2023
+    new Date('2023-03-20')  // March 20th, 2023
+  ];
+
+  shouldDisableDate = (date: Date): boolean => {
+    // Check if the date is selected
+    if (this.DATES_TO_DISABLE.some(selectedDate =>
+      this.dateAdapter.compareDate(date, selectedDate) === 0
+    )) {
+      return false;
+    }
+  
+    // Otherwise, enable the date
+    return true;
+  }
+
+
+  
 
 }
 /**

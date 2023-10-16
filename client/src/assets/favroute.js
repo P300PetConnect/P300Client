@@ -36,9 +36,11 @@ function getArray(arr1, arr2, IdArray) {
 
       console.log("Start from grt info: " + start);
       var directionsService = new google.maps.DirectionsService();
+  
       var request = {
         origin: start,
         destination: end,
+     
         travelMode: google.maps.DirectionsTravelMode["WALKING"],
         unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 
@@ -70,28 +72,28 @@ function getArray(arr1, arr2, IdArray) {
   <div onclick="ShowRoute('${start}', '${end}')" class="card-body">
     <div class="container">
       <div class="row align-items-start">
-        <div class="col">
+        <div class="col-lg-6">
           <div class="card-body">
             <h5 class="card-title">${response.routes[0].legs[0].distance.text}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Distance</h6>
 
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg-6">
           <div class="card-body">
             <h5 class="card-title">${response.routes[0].legs[0].duration.text}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Duration</h6>
 
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg-6">
           <div class="card-body">
             <h5 class="card-title">${ExpectedCalories.toFixed(2)}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Expected Calories Burned</h6>
 
           </div>
         </div>
-        <div class="col">
+        <div class="col-lg-6">
           <div class="card-body">
             <h5 class="card-title">${numOFSteps.toFixed(2)}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Steps</h6>
@@ -147,15 +149,21 @@ function getArray(arr1, arr2, IdArray) {
 
       //This function will draw the line
       drawRoute(start, end, "WALKING", animate = true, color = '#e53935');
-      drawRoute2(end, start, "WALKING", animate = true, color = '#07e672');
+      drawRoute2(end, start, "DRIVING", animate = true, color = '#07e672');
     }
 
 
     function drawRoute(start, end, method, animate = true, color = '#e53935') {
       var directionsService = new google.maps.DirectionsService();
+      var waypoints = [
+        {location: start},
+        {location: end}
+       
+      ];
       var request = {
         origin: start,
         destination: end,
+        waypoints: waypoints,
         travelMode: google.maps.DirectionsTravelMode[method],
         unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 
@@ -270,9 +278,14 @@ function getArray(arr1, arr2, IdArray) {
     }
     function drawRoute2(start, end, method, animate = true, color = '#e53935') {
       var directionsService = new google.maps.DirectionsService();
+      var waypoints = [
+        {location: end}
+    
+      ];
       var request = {
         origin: start,
         destination: end,
+        waypoints: waypoints,
         travelMode: google.maps.DirectionsTravelMode[method],
         unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 

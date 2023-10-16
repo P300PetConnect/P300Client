@@ -15,14 +15,18 @@ $prefix: "mo-";
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/root";
 
+// @import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+// @import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+// @import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+// @import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+// @import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+// @import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+// @import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+// @import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+// @import '../node_modules/@syncfusion/ej2-angular-schedule/styles/material.css';
+
 // Optional components
-@import "../node_modules/bootstrap/scss/utilities";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/containers";
-@import "../node_modules/bootstrap/scss/grid";
-@import "../node_modules/bootstrap/scss/helpers";
-@import "../node_modules/bootstrap/scss/utilities/api";
-@import "~bootstrap/dist/css/bootstrap.min.css";
+
 
 
 // @import "../node_modules/bootstrap/scss/variables";

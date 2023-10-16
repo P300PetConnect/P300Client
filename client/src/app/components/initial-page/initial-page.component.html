@@ -1,276 +1,368 @@
 <div class="home-section">
-  <section>
-    <div class="main-container">
-      <div class="home-searchbox">
-        <div class="row text-center">
-          <div class="col-2"></div>
-          <div class="col-8 pt-4 bg-white home-search-box">
-            <h1>Just the best for your pet</h1>
-            <h4>Find the service that best meets your needs</h4>
-            <h6 class="p-3 mt-3">We are + than 30.000 pet minders who facilitate the routine of those who have a pet
-            </h6>
-            <div class="row  text-left">
-              <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link first-item nav-host nav nav-primary" [class.active]="isActive" (click)="setSelected(1)">
-                  <picture class="align-initial">
-                    <img src="../../../assets/images/home/boarding-selected.svg" alt="Accommodation" class="img-fluid">
-                  </picture>
-                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Sit</strong>
-                    <br></span>
-                </a>
-              </div>
-              <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link fourth-item nav-host" [class.active]="fourthIsActive" (click)="setSelected(4)">
-                  <picture class="align-initial">
-                    <img src="../../../assets/images/home/walk-selected.svg" alt="Walk" class="img-fluid"></picture>
-                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Walk</strong>
-                    <br></span>
-                </a>
-              </div>
-              <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link second-item nav-host" [class.active]="secondIsActive" (click)="setSelected(2)">
-                  <picture class="align-initial">
-                    <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche" class="img-fluid">
-                  </picture>
-                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Groom</strong>
-                    <br></span>
-                </a>
-              </div>
-              <div class="col-sm-3 col-md-3">
-                <a role="tab" class="nav-item nav-link third-item nav-host" [class.active]="thirdIsActive" (click)="setSelected(3)">
-                  <picture class="align-initial">
-                    <img src="../../../assets/images/home/petsitting-selected.svg" alt="Home Sitter" class="img-fluid">
-                  </picture>
-                  <span class="align-middle nav-title"><strong class="d-inline-block d-md-inline title">Feed</strong>
-                    <br></span>
-                </a>
-              </div>
-  
-            </div>
-            <div class=" pt-4 user-search md-inline-form">
-              <div class="row">
-                <mat-form-field class="col-lg-4" appearance="outline">
-                  <mat-label>Where would you like the service?</mat-label>
-                  <input matInput placeholder="N. Street " #location>
-                </mat-form-field>
+  <section class="main-container container-fluid">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9 col-md-10 col-11 pt-4 bg-white home-search-box">
+        <h1>Just the best for your pet</h1>
+        <h4>Find the service that best meets your needs</h4>
+        <h6 class="p-3 mt-3">
+          We are + than 30.000 pet minders who facilitate the routine of those
+          who have a pet
+        </h6>
+        <div class="row g-0 g-md-0 g-lg-3 gy-0 tab">
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-2 mb-md-0 InitBtnsL">
+            <a role="tab" class="nav-item nav-link first-item" [class.active]="isActive" (click)="setSelected(1)">
+              <img src="../../../assets/images/home/boarding-selected.svg" alt="Accommodation"
+                class="icon img-fluid mr-1 mr-md-2" />
+              <span class="nav-title"> Sit </span>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-2 mb-md-0 InitBtnsR">
+            <a role="tab" class="nav-item nav-link fourth-item" [class.active]="fourthIsActive"
+              (click)="setSelected(4)">
+              <img src="../../../assets/images/home/walk-selected.svg" alt="Walk" class="icon img-fluid mr-1 mr-md-2" />
+              <span class="nav-title">Walk </span>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6 InitBtnsL ">
+            <a role="tab" class="nav-item nav-link second-item" [class.active]="secondIsActive"
+              (click)="setSelected(2)">
+              <img src="../../../assets/images/home/daycare-selected.svg" alt="Creche"
+                class="icon img-fluid mr-1 mr-md-2" />
+              <span class="nav-title"> Groom </span>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6  InitBtnsR">
+            <a role="tab" class="nav-item nav-link third-item" [class.active]="thirdIsActive" (click)="setSelected(3)">
+              <img src="../../../assets/images/home/petsitting-selected.svg" alt="Home Sitter"
+                class="icon img-fluid mr-1 mr-md-2" />
+              <span class="nav-title"> Feed </span>
+            </a>
+          </div>
+        </div>
+        <div class="pt-4 user-search md-inline-form ">
+          <div class="row">
+            <mat-form-field class="col-lg-4 col-md-6 col-sm-6 col-12" appearance="outline">
+              <mat-label>Where would you like the service?</mat-label>
+              <input matInput placeholder="N. Street " #location />
+            </mat-form-field>
 
-                <!-- Just add *ngIf="isActive" to control the calendar types -->
+            <mat-form-field class="col-lg-3 col-md-6 col-sm-6 col-12 col-sx-12" appearance="outline">
+              <mat-label>When?</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate matInput placeholder="Start date" />
+                <input matEndDate matInput placeholder="End date" />
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
 
-                <mat-form-field class="col-lg-3 col-sx-12"  appearance="outline">
-                  <mat-label>When?</mat-label>
-                  <mat-date-range-input [rangePicker]="picker">
-                    <input matStartDate matInput placeholder="Start date">
-                    <input matEndDate matInput placeholder="End date">
-                  </mat-date-range-input>
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-date-range-picker #picker></mat-date-range-picker>
-                </mat-form-field>
-                <!-- <mat-form-field class="col-3" appearance="outline"> -->
-                  <mat-form-field class="col-lg-3" appearance="outline">
-                    <mat-label>Pet Type</mat-label>
-                    <mat-select [formControl]="category" multiple (selectionChange)="changePet($event.value)">
-                      <mat-select-trigger>
-                        {{petCategory[0].viewValue || ''}}
-                        <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
-                          (+{{(category.value?.length || 0) - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
-                        </span>
-                      </mat-select-trigger>
-                      <mat-option *ngFor="let category of petCategory" [value]="category">{{category.viewValue}}</mat-option>
-                    </mat-select>
-                  </mat-form-field>
+            <mat-form-field class="col-lg-3 col-md-6 col-sm-6 col-12" appearance="outline">
+              <mat-label>Pet Type</mat-label>
+              <mat-select [formControl]="category" multiple (selectionChange)="changePet($event.value)">
+                <mat-select-trigger>
+                  {{ petCategory[0].viewValue || "" }}
+                  <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
+                    (+{{ (category.value?.length || 0) - 1 }}
+                    {{ category.value?.length === 2 ? "other" : "others" }})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let category of petCategory" [value]="category">{{ category.viewValue
+                  }}</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-                  <!-- <mat-label>Size of your pet</mat-label>
-                  <mat-select [formControl]="petsize" multiple>
-                    <mat-select-trigger>
-                      {{petsize.value?.[0] || ''}}
-                      <span *ngIf="(petsize.value?.length || 0) > 1" class="example-additional-selection">
-                        (+{{(petsize.value?.length || 0) - 1}} {{petsize.value?.length === 2 ? 'other' : 'others'}})
-                      </span>
-                    </mat-select-trigger>
-                    <mat-option *ngFor="let petsize of petsizeList" [value]="petsize">{{petsize}}</mat-option>
-                  </mat-select> -->
-                <!-- </mat-form-field> -->
-                <div class="col-2">
-                  <button mat-flat-button class="search-btn" (click)="SearchService(location.value)">Search Service</button>
-                </div>
-              </div>
-
+            <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+              <button mat-flat-button class="search-btn" (click)="SearchService(location.value)">
+                Search Service
+              </button>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
   <section class="container mt-5">
-    <div class="row">
-      <h1 class="text-center mb-3 pb-3">See more details of our services</h1>
-      <div class="row">
-        <div class="col-lg-6 mt-4 services">
-          <div class="row">
-            <div class="col-lg-2">
-              <img class="icon-sleepover" src="../../../assets/images/home/boarding-selected.svg" alt="">
-            </div>
-            <div class="col-lg-10">
-              <div class="row">
-                <div class="col-12">
-                  <h6>Sitting &nbsp; <a class="link-more">see more ></a></h6>
-                </div>
-                <div class="col-12 service-description">
-                  <p>A trusted pet minder hosts your puppy for one night or more</p>
-                </div>
-              </div>
-              
-            </div>
+    <h1 class="text-center mb-3 pb-3" id="seeMoreServices">See more details of our services</h1>
+    <div class="row justify-content-between">
+      <div class="col-lg-6 col-md-7 mt-4 services">
+        <div class="row">
+          <div class="col-lg-2 col-md-3 col-3">
+            <img class="w-100 img-fluid icon-sleepover" src="../../../assets/images/home/boarding-selected.svg"
+              alt="" />
           </div>
-          <div class="row mt-4">
-            <div class="col-lg-2">
-              <img class="icon-sleepover" src="../../../assets/images/home/walk-selected.svg" alt="">
-            </div>
-            <div class="col-lg-10">
-              <div class="row">
-                <div class="col-12">
-                  <h6>Walking &nbsp;<a class="link-more">see more ></a></h6>
-                </div>
-                <div class="col-12 service-description">
-                  <p>30 to 60 min or 2 to 5 km  walks for your dog to burn off energy</p>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-10 col-md-9 col-9">
+            <h6>Sit &nbsp; <a class="link-more">see more ></a></h6>
+            <p class="service-description">
+              A trusted pet minder hosts your puppy for one night or more
+            </p>
           </div>
-          <div class="row mt-4">
-            <div class="col-lg-2">
-              <img class="icon-sleepover" src="../../../assets/images/home/daycare-selected.svg" alt="">
-            </div>
-            <div class="col-lg-10">
-              <div class="row">
-                <div class="col-12">
-                  <h6>Grooming &nbsp; <a class="link-more">see more ></a></h6>
-                </div>
-                <div class="col-12 service-description">
-                  <p>Pet gromming services in your local area</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col-lg-2">
-              <img class="icon-sleepover" src="../../../assets/images/home/petsitting-selected.svg" alt="">
-            </div>
-            <div class="col-lg-10">
-              <div class="row">
-                <div class="col-12">
-                  <h6>Just feed<a class="link-more"> &nbsp;  see more ></a></h6>
-                </div>
-                <div class="col-12 service-description">
-                  <p>A Minder comes to your house to take care of your pet for feed and change water.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
-        <div class="col-1">
+        <div class="row mt-4">
+          <div class="col-lg-2 col-md-3 col-3">
+            <img class="w-100 img-fluid icon-sleepover" src="../../../assets/images/home/walk-selected.svg" alt="" />
+          </div>
+          <div class="col-lg-10 col-md-9 col-9">
+            <h6>Walk &nbsp;<a class="link-more">see more ></a></h6>
+            <p class="service-description">
+              30 to 60 min or 2 to 5 km walks for your dog to burn off energy
+            </p>
+          </div>
         </div>
-        <div class="col-md-5 xs-col-12">
-          <section class="card-bullets pt-5">
-            <div class="card-bullets-header">
-              <img data-src="../../../assets/images/home/medal-01.svg" alt="Icon Security" class="ls-is-cached lazyloaded"
-                src="../../../assets/images/home/medal-01.svg">
-              <p class="card-strong"><strong>98% of reviews are 5 stars</strong></p>
-            </div>
-            <ul class="list-bullets p-2">
-              <li>
-                <p><i class="bi bi-check-lg pr-2"></i><b> Tracking map</b> companion during your pete during the walk</p>
-              </li>
-              <li>
-                <p><i class="bi bi-check-lg pr-2"></i><b>Secure payment</b> by PetConnect<a href="/garantia-veterinaria" title="Garantia Veterinária"
-                    target="_blank"> see more details about our refund policies</a></p>
-              </li>
-              <li>
-                <p><i class="bi bi-check-lg pr-2"></i><b> Photos and news</b> for you to accompany your puppy wherever you are</p>
-              </li>
-            </ul>
-          </section>
-
+        <div class="row mt-4">
+          <div class="col-lg-2 col-md-3 col-3">
+            <img class="w-100 img-fluid icon-sleepover" src="../../../assets/images/home/daycare-selected.svg" alt="" />
+          </div>
+          <div class="col-lg-10 col-md-9 col-9">
+            <h6>Groom &nbsp; <a class="link-more">see more ></a></h6>
+            <p class="service-description">
+              Fun and attention during the day at a Minder's house
+            </p>
+          </div>
         </div>
+        <div class="row mt-4">
+          <div class="col-lg-2 col-md-3 col-3">
+            <img class="w-100 img-fluid icon-sleepover" src="../../../assets/images/home/petsitting-selected.svg"
+              alt="" />
+          </div>
+          <div class="col-lg-10 col-md-9 col-9">
+            <h6>Feed<a class="link-more"> &nbsp; see more ></a></h6>
+            <p class="service-description">
+              A Minder comes to your house to take care of your pet for feed and
+              change water.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-md-5 xs-col-12">
+        <section class="card-bullets pt-5">
+          <div class="card-bullets-header">
+            <img data-src="../../../assets/images/home/medal-01.svg" alt="Icon Security" class="ls-is-cached lazyloaded"
+              src="../../../assets/images/home/medal-01.svg" />
+            <p class="card-strong">
+              <strong>98% of reviews are 5 stars</strong>
+            </p>
+          </div>
+          <ul class="list-bullets p-2">
+            <li>
+              <p>
+                <i class="bi bi-check-lg pr-2"></i><b> Tracking map</b> companion during your pete during the walk
+              </p>
+            </li>
+            <li>
+              <p>
+                <i class="bi bi-check-lg pr-2"></i><b>Secure payment</b> by
+                PetConnect<a href="/garantia-veterinaria" title="Garantia Veterinária" target="_blank">
+                  see more details about our refund policies</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <i class="bi bi-check-lg pr-2"></i><b> Photos and news</b> for
+                you to accompany your puppy wherever you are
+              </p>
+            </li>
+          </ul>
+        </section>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container-fluid invitation">
-      <div class="row">
-        <h3>+ than 1 million pets are already part of the PetConnect family</h3>
-        <h5>Create your account and bring your pet too! We can't wait to meet you
+  <section id="onemillionSection" class="container-fluid invitation mt-5 p-3 p-sm-4 p-md-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center">
+          + than 1 million pets are already part of the PetConnect family
+        </h3>
+        <h5 class="text-center">
+          Create your account and bring your pet too! We can't wait to meet you
         </h5>
       </div>
     </div>
   </section>
 </div>
 
+<section class="home-testimonial py-5">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <div>
+        <h3 class="text-center">What our users say about us</h3>
+        <h2 class="text-center">PetConnect Sitters are 5 stars</h2>
 
-
-<section class="home-testimonial">
-  <div class="">
-      <div class="row d-flex justify-content-center testimonial-pos">
-          <div class="col-md-12 pt-4 d-flex justify-content-center">
-              <h3>What our users say about us</h3>
-          </div>
-          <div class="col-md-12 d-flex justify-content-center">
-              <h2>PetConnect Sitters are 5 stars</h2>
-          </div>
-
-          <div class="h-100  d-flex justify-content-center">
-            <span class="bi bi-star-fill"></span>
-            <span class="bi bi-star-fill"></span>
-            <span class="bi bi-star-fill"></span>
-            <span class="bi bi-star-fill"></span>
-            <span class="bi bi-star-fill"></span>
-            <span class="review my-auto pl-2"></span>
+        <div class="h-100 d-flex justify-content-center">
+          <span class="bi bi-star-fill"></span>
+          <span class="bi bi-star-fill"></span>
+          <span class="bi bi-star-fill"></span>
+          <span class="bi bi-star-fill"></span>
+          <span class="bi bi-star-fill"></span>
+          <span class="review my-auto pl-2"></span>
         </div>
-          
-
       </div>
-      <section class="home-testimonial-bottom">
-          <div class="container testimonial-inner">
-              <div class="row d-flex justify-content-center">
-                  <div class="col-md-4 style-3">
-                      <div class="tour-item ">
-                          <div class="tour-desc bg-white">
-                              <div class="tour-text color-grey-3 text-center">&ldquo;I needed to make a last minute trip and I'm glad I managed to find a reliable person through the platform.&rdquo;</div>
-                              <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://images.pexels.com/photos/6625914/pexels-photo-6625914.jpeg" alt=""></div>
-                              <div class="link-name d-flex justify-content-center">Aoife MacCool</div>
-                              <div class="link-position d-flex justify-content-center">using PetConnect for 1 year</div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-4 style-3">
-                      <div class="tour-item ">
-                          <div class="tour-desc bg-white">
-                              <div class="tour-text color-grey-3 text-center">&ldquo;Fred is loving walking every morning, I highly recommend the platform, the refound policies make me feel safe.&rdquo;</div>
-                              <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""></div>
-                              <div class="link-name d-flex justify-content-center">Ciara MacNice</div>
-                              <div class="link-position d-flex justify-content-center">using PetConnect for 2 years</div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-4 style-3">
-                      <div class="tour-item ">
-                          <div class="tour-desc bg-white">
-                              <div class="tour-text color-grey-3 text-center">&ldquo;I needed to make a last minute trip and I'm glad I managed to find a reliable person through the platform.&rdquo;</div>
-                              <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://images.pexels.com/photos/4946604/pexels-photo-4946604.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""></div>
-                              <div class="link-name d-flex justify-content-center">Aisling MacLove</div>
-                              <div class="link-position d-flex justify-content-center">using PetConnect for 6 months</div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-</div>
-</section>
-</div>
-</section>
+    </div>
+    <div class="home-testimonial-bottom mt-5">
+     <!-- tring to add testimonial here -->
+<div class="my-5 text-center container">
 
+  <div class="row d-flex align-items-center">
+     <div class="col-1 d-flex align-items-center justify-content-center">
+        <a href="#carouselExampleIndicators" role="button" data-slide="prev">
+           <div class="carousel-nav-icon" >
+              <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink">
+                 <path fill="white" d="m88.6,121.3c0.8,0.8 1.8,1.2 2.9,1.2s2.1-0.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8,0l-54,53.9c-1.6,1.6-1.6,4.2 0,5.8l54,53.9z"/>
+              </svg>
+           </div>
+        </a>
+     </div>
+     <div class="col-10">
+        <!--Start carousel-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+           <div class="carousel-inner">
+              <div class="carousel-item active">
+                 <div class="row">
+                  <div class="testimonial mb-4 mb-md-3 mb-lg-0 style-3 col-12 col-md d-flex align-items-center justify-content-center">
+                    <div class="tour-desc text-dark bg-white">
+                      <div class="tour-text text-dark text-center mb-2">
+                        &ldquo;I needed to make a last minute trip and I'm glad I
+                        managed to find a reliable person through the platform.&rdquo;
+                      </div>
+                      <div class="d-flex justify-content-center pt-2 pb-2">
+                        <img class="tm-people" src="https://media.vogue.co.uk/photos/5f997c3dde77fb3653343b1f/master/pass/20200914_173254.jpg"
+                          alt="" />
+                      </div>
+                      <div class="link-name d-flex justify-content-center font-weight-bold">
+                        Aisling O'Sullivan
+                      </div>
+                      <div class="link-position d-flex justify-content-center">
+                        using PetConnect for 6 months
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Testimonial 2 -->
+                  <div  class="testimonial mb-4 mb-md-3 mb-lg-0 style-3 col-12 col-md d-flex align-items-center justify-content-center">
+                    <div class="tour-desc text-dark bg-white">
+                      <div class="tour-text text-dark text-center mb-2">
+                        &ldquo; my cat gets depressed when I am away for work,
+                         I am happy I can now hire someone to stay with my cat.&rdquo;
+                      </div>
+                      <div class="d-flex justify-content-center pt-2 pb-2">
+                        <img class="tm-people" src="https://media.cnn.com/api/v1/images/stellar/prod/221010113806-01-cat-love-affection-stock.jpg?c=original"
+                          alt="" />
+                      </div>
+                      <div class="link-name d-flex justify-content-center font-weight-bold">
+                        Kate MaDermott
+                      </div>
+                      <div class="link-position d-flex justify-content-center">
+                        using PetConnect for 1 year
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Testimonial 3 -->
+                  <div  class="testimonial mb-4 mb-md-3 mb-lg-0 style-3 col-12 col-md d-flex align-items-center justify-content-center">
+                    <div class="tour-desc text-dark bg-white">
+                      <div class="tour-text text-dark text-center mb-2">
+                        &ldquo;I always feel bad leaving my dog alone for hours,
+                        but thanks to PetConnect my dog will never be alone now.&rdquo;
+                      </div>
+                      <div class="d-flex justify-content-center pt-2 pb-2">
+                        <img class="tm-people" src="https://www.gannett-cdn.com/presto/2020/09/25/USAT/f4d10bd0-7f11-413f-9d69-c67d8e7d7f03-Arif_Zahir.jpg"
+                          alt="" />
+                      </div>
+                      <div class="link-name d-flex justify-content-center font-weight-bold">
+                        Austin McBroom
+                      </div>
+                      <div class="link-position d-flex justify-content-center">
+                        using PetConnect for 3 months
+                      </div>
+                    </div>
+                  </div>
+
+                 </div>
+              </div>
+              <div class="carousel-item ">
+                 <div class="row">
+                  <div class="testimonial mb-4 mb-md-3 mb-lg-0 style-3 col-12 col-md d-flex align-items-center justify-content-center">
+                    <div class="tour-desc text-dark bg-white">
+                      <div class="tour-text text-dark text-center mb-2">
+                        &ldquo;Depression is not only in human, my dog gets depressed and sad too
+                        thanks to PetConnect a really reliable website.&rdquo;
+                      </div>
+                      <div class="d-flex justify-content-center pt-2 pb-2">
+                        <img class="tm-people" src="https://www.shutterstock.com/image-photo/photo-handsome-happy-young-caucasian-260nw-1115156849.jpg"
+                          alt="" />
+                      </div>
+                      <div class="link-name d-flex justify-content-center font-weight-bold">
+                        David Wilson
+                      </div>
+                      <div class="link-position d-flex justify-content-center">
+                        using PetConnect for 8 months
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Testimonial 2 -->
+                  <div  class="testimonial mb-4 mb-md-3 mb-lg-0 style-3 col-12 col-md d-flex align-items-center justify-content-center">
+                    <div class="tour-desc text-dark bg-white">
+                      <div class="tour-text text-dark text-center mb-2">
+                        &ldquo;PetConnect big thank to you for creating a nice solution to help pets to not be alone, I
+                        strongly encourage people to use the platform.&rdquo;
+                      </div>
+                      <div class="d-flex justify-content-center pt-2 pb-2">
+                        <img class="tm-people" src="https://media.istockphoto.com/id/534457350/photo/beautiful-irish-girl-on-st-patricks-day-dublin-ireland.jpg?b=1&s=170667a&w=0&k=20&c=l2pQRv1ngZrh827zPUKP8YqKTBXPdUjF9qF0fWgO95w="
+                          alt="" />
+                      </div>
+                      <div class="link-name d-flex justify-content-center font-weight-bold">
+                        Eve O'Connor
+                      </div>
+                      <div class="link-position d-flex justify-content-center">
+                        using PetConnect for 1 year
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Testimonial 3 -->
+                  <div  class="testimonial mb-4 mb-md-3 mb-lg-0 style-3 col-12 col-md d-flex align-items-center justify-content-center">
+                    <div class="tour-desc text-dark bg-white">
+                      <div class="tour-text text-dark text-center mb-2">
+                        &ldquo; I no longer afraid to leave my cats when I am traveling,
+                        PetConnect helped me make sure they always fine when i am away.&rdquo;
+                      </div>
+                      <div class="d-flex justify-content-center pt-2 pb-2">
+                        <img class="tm-people" src="https://i.pinimg.com/736x/9f/99/7b/9f997bb40d74de21bdf4f4562bcdac76.jpg"
+                          alt="" />
+                      </div>
+                      <div class="link-name d-flex justify-content-center font-weight-bold">
+                        Loren Grey
+                      </div>
+                      <div class="link-position d-flex justify-content-center">
+                        using PetConnect for 5 months
+                      </div>
+                    </div>
+                  </div>
+
+                  
+
+                 
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!--End carousel-->
+     </div>
+     <div class="col-1 d-flex align-items-center justify-content-center"><a  href="#carouselExampleIndicators" data-slide="next">
+        <div class="carousel-nav-icon">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <path fill="white" d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"/>
+           </svg>
+        </div>
+        </a>
+     </div>
+  </div>
+</div>
+<!-- End of tring to add testimonial here -->
+
+    </div>
+  </div>
+</section>
 
 
 

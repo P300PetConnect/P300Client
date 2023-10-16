@@ -1,0 +1,135 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from 'src/app/components/forum-services/data.service';
+import { CommentItem, CommentInterface } from 'src/app/components/forum-interfaces/comment-interface';
+import { NgForm } from '@angular/forms';
+
+@Component({
+  selector: 'app-comment-section',
+  templateUrl: './comment-section.component.html',
+  styleUrls: ['./comment-section.component.scss']
+})
+export class CommentSectionComponent implements OnInit {
+
+  @Input() docID!: string;
+  @Input() postData = [] as any;
+
+  commentData = [] as any;
+  newVoteCount?: number;
+  commentText: string = '';
+  isButtonDisabled: boolean = true;
+
+
+  test?: any;
+  comments?:any
+  errorMessage: any;
+  message: any;
+  userData: any
+  constructor(private _forumPosts : DataService) { }
+
+  ngOnInit(): void {
+    this.GetForumPosts();
+    this.userData = JSON.parse(localStorage.getItem("PetConnectUser"));
+  }
+
+  GetForumPosts(): boolean{
+    
+    this._forumPosts.getComments(this.docID).subscribe(
+      (      results: CommentInterface) => {
+        this.comments= ( Array.of(JSON.parse(JSON.stringify(results)))) ;
+        //console.log(this.test)
+        this.comments = JSON.parse(JSON.stringify(this.comments[0]));
+        
+      },
+      (      error: any) => this.errorMessage = <any>error
+    );
+    console.log(this.comments);
+    return false;
+  }
+
+  PushComment(comment:string, form: NgForm)
+  {
+
+
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    const now = new Date().toDateString();
+    //issue with the date string here, not showing in db
+    const commentItem = new CommentItem(this.docID, this.makeRandom(12,possible), this.userData.name + this.userData.surname ,comment,0,now,this.userData.profilePicUrl )
+    
+    this._forumPosts.PushCommentsToDB(commentItem)
+    .subscribe({
+      next: com => {
+        console.log(JSON.stringify(com) + 'added');
+        this.message = "Comment added";
+         this.GetForumPosts();     
+           },
+      error: (err) => this.message = err
+    });;
+
+   
+
+  }
+
+  public makeRandom(lengthOfCode: number, possible: string) {
+    let text = "";
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
+  }
+
+  public AddVote(item: CommentItem)
+  {
+    item.voteCount+= 1;
+    this._forumPosts.ChangeComValue(item);
+    
+  }
+
+  public RemoveVote(item: CommentItem)
+  {
+    item.voteCount-= 1;
+    this._forumPosts.ChangeComValue(item);
+    
+  }
+  updateButtonState() {
+    this.isButtonDisabled = this.commentText.trim().length === 0;
+    this.isButtonDisabled = !this.commentText;
+    console.log(this.isButtonDisabled); 
+    console.log(this.commentText); 
+
+  }
+  
+
+  /* 
+  public AddVote(id:string,voteCount:number)
+  {
+    this.newVoteCount = voteCount+1;
+    this.dataService.ChangeVotes(id, this.newVoteCount);
+
+  }
+  public RemoveVote(id:string, voteCount:number)
+  {
+    this.newVoteCount = voteCount-1;
+    this.dataService.ChangeVotes(id,this.newVoteCount);
+  }
+  */
+
+}
+
+
+
+// PushComment(comment:string, form: NgForm)
+//   {
+//     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+//     const now = new Date().toDateString();
+//     //issue with the date string here, not showing in db
+//     const commentItem = new CommentItem(this.docID, this.makeRandom(12,possible), "N/A",comment,0,now)
+    
+//     this._forumPosts.PushCommentsToDB(commentItem);
+
+//     // refreshing comments after 200 miliseconds 
+//     setTimeout(() => {
+//       this.GetForumPosts()
+//    }, 200);
+//     return false;
+
+//   }

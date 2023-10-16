@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import * as AWS from 'aws-sdk';
+//import * as AWS from 'aws-sdk';
 
 @Component({
   selector: 'app-recognition',
@@ -11,17 +11,21 @@ export class RecognitionComponent implements OnInit {
 
   public uploadedImageUrl: string;
 
-  s3 = new AWS.S3({
-    region: '',
-    accessKeyId: '',
-    secretAccessKey: ''
-  });
+  // s3 = new AWS.S3({
+  //   region: '',
+  //   accessKeyId: '',
+  //   secretAccessKey: ''
+  // });
 
-  rekognition = new AWS.Rekognition({
-    region: '',
-    accessKeyId: '',
-    secretAccessKey: ''
-  });
+  s3 = {}
+  rekognition = {}
+
+
+  // rekognition = new AWS.Rekognition({
+  //   region: '',
+  //   accessKeyId: '',
+  //   secretAccessKey: ''
+  // });
 
   constructor(private http: HttpClient) { }
 
@@ -29,46 +33,46 @@ export class RecognitionComponent implements OnInit {
   }
 
   async uploadImage(file: File) {
-    const params = {
-      Bucket: 'petimagesp300',
-      Key: file.name,
-      Body: file,
-      ACL: 'public-read'
-    };
-    try {
-      const response = await this.s3.upload(params).promise();
-      console.log('File uploaded successfully:', response.Location);
-      this.uploadedImageUrl = response.Location;
-    } catch (error) {
-      console.error('Error uploading file:', error);
-    }
+    // const params = {
+    //   Bucket: 'petimagesp300',
+    //   Key: file.name,
+    //   Body: file,
+    //   ACL: 'public-read'
+    // };
+    // try {
+    //   const response = await this.s3.upload(params).promise();
+    //   console.log('File uploaded successfully:', response.Location);
+    //   this.uploadedImageUrl = response.Location;
+    // } catch (error) {
+    //   console.error('Error uploading file:', error);
+    // }
   }
 
   async recognizeImage() {
-    const params = {
-      CollectionId: 'pet-collection',
-      Image: {
-        S3Object: {
-          Bucket: 'petimagesp300',
-          Name: this.uploadedImageUrl.split('/').pop()
-        }
-      }
-    };
+    // const params = {
+    //   CollectionId: 'pet-collection',
+    //   Image: {
+    //     S3Object: {
+    //       Bucket: 'petimagesp300',
+    //       Name: this.uploadedImageUrl.split('/').pop()
+    //     }
+    //   }
+    // };
   
-    try {
-      const result = await this.rekognition.searchFacesByImage(params).promise();
-      console.log(result);
-      if (result.FaceMatches.length > 0) {
-        const metadata = result.FaceMatches[0].Face.ExternalImageId;
-        console.log('Metadata:', metadata);
-        // you can store the metadata in a variable or display it to the user
-      } else {
-        console.log('No face matches found.');
-        // handle case where no matches are found
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   const result = await this.rekognition.searchFacesByImage(params).promise();
+    //   console.log(result);
+    //   if (result.FaceMatches.length > 0) {
+    //     const metadata = result.FaceMatches[0].Face.ExternalImageId;
+    //     console.log('Metadata:', metadata);
+    //     // you can store the metadata in a variable or display it to the user
+    //   } else {
+    //     console.log('No face matches found.');
+    //     // handle case where no matches are found
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    // }
   }
 }
 

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
-import { IPetOwner, IPetSitter } from '../interfaces/users';
+import { IPetOwner, IPetSitter } from '../../interfaces/users';
 
 
 @Component({
@@ -19,21 +19,45 @@ export class SharedFormComponent implements OnInit {
     userForm : FormGroup = new FormGroup({
     name: new FormControl (''),
     surname: new FormControl (''),
-    // dob: new FormControl(''),
-    // profilePicUrl: new FormControl(''),
-    // mobileNumber: new FormControl(''),
-    // emailAddress: new FormControl(''),
-    // petOwnerId: new FormControl(''),
-    // line1: new FormControl(''),
-    // line2: new FormControl(''),
-    // city: new FormControl(''),
-    // county: new FormControl(''),
-    // zipCode: new FormControl(''),
-    // country: new FormControl('')
+    dob: new FormControl(''),
+    profilePicUrl: new FormControl(''),
+    mobileNumber: new FormControl(''),
+    emailAddress: new FormControl(''),
+    petOwnerId: new FormControl(''),
+    line1: new FormControl(''),
+    line2: new FormControl(''),
+    city: new FormControl(''),
+    county: new FormControl(''),
+    zipCode: new FormControl(''),
+    country: new FormControl(''),
+    town: new FormControl(''),
+ 
   })
 
+  profileDetails : FormGroup = new FormGroup({
+    UserID: new FormControl (0),
+    CancellationPolicy: new FormControl (''),
+    ProfileDesc: new FormControl (''),
+    HouseType: new FormControl(''),
+    HouseDetails: new FormControl(''),
+    PetsInHome: new FormControl(''),
+    Children: new FormControl(''),
+    UsualPets: new FormControl(''),
+    UsualPetsDetail1: new FormControl(''),
+    UsualPetsDetail2: new FormControl(''),
+    UsualPetsDetail3: new FormControl(''),
 
-  constructor(public dialogRef:MatDialogRef<SharedFormComponent>, private _userService:UserService, public authenticator: AuthenticatorService) { }
+    
+  
+
+  })
+
+  userGroup = '';
+  message: any;
+
+
+  constructor(public dialogRef:MatDialogRef<SharedFormComponent>, private _userService:UserService, 
+    public authenticator: AuthenticatorService, _user: UserService) { }
 
   isSelected:boolean = false; 
   isShow:boolean; 
@@ -42,11 +66,12 @@ export class SharedFormComponent implements OnInit {
   public user: any;
   
   ngOnInit(): void {
-    if(this.authenticator?.user?.attributes?.email=="joannasmith@gmail.com"){
+    this.userGroup = localStorage.getItem('userGroup');
+    if(this.authenticator?.user?.attributes?.email && this.userGroup=='PetOwner') {
       console.log('test carai')
       this.getPetOwner(); 
       }
-      else if(this.authenticator?.user?.attributes?.email=="fatherted@gmail.com"){
+      else if(this.authenticator?.user?.attributes?.email && this.userGroup=='PetSitter') {
 
       this.getPetSitter(); 
       }
@@ -55,7 +80,7 @@ export class SharedFormComponent implements OnInit {
 
   // TO DO - Remove it and pass data from the user profile 
   getPetSitter(){
-    this._userService.get_petsitter("fatherted@gmail.com").subscribe(
+    this._userService.get_petsitter(this.authenticator?.user?.attributes?.email).subscribe(
       petSitter=>{
         this.user = petSitter;
         console.log(this.user)
@@ -66,7 +91,7 @@ export class SharedFormComponent implements OnInit {
 
 //getpet owner 
 getPetOwner(){
-  this._userService.get_petowner("joannasmith@gmail.com").subscribe(
+  this._userService.get_petowner(this.authenticator?.user?.attributes?.email).subscribe(
     petOwner=>{
       this.user = petOwner;
       console.log(petOwner)
@@ -96,7 +121,28 @@ return false;
     // this._userService.initializeFormGroup(); 
     this.dialogRef.close(); 
   }
+  
+  SubmitProfileDetail()
+  {
+    this.profileDetails.controls.UserID.setValue(this.user.id)
 
+    alert(this.user.id);
+   
+
+    this._userService.UpdateProfileDetails(this.profileDetails);
+
+    this._userService.UpdateProfileDetails(this.profileDetails).subscribe({
+      next: details => {
+        console.log(JSON.stringify(details) + 'details updated');
+        this.message = "details updated";
+       
+        //resets array
+        ;
+       
+         },
+      error: (err) => this.message = err
+    });
+  }
 
 
 

@@ -1,0 +1,246 @@
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" (click)="showSideBard()">
+    <i class="bi bi-list" style="color: white;"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">Route Planner</a>
+        <div id="close-sidebar" (click)="hideSideBard()">
+          <i class="bi bi-x-square"></i>
+        </div>
+      </div>
+      <!-- <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+              alt="User picture">
+          </div>
+          <div class="user-info">
+            <span class="user-name">Jhon
+              <strong>Smith</strong>
+            </span>
+            <span class="user-role">Administrator</span>
+            <span class="user-status">
+              <i class="fa fa-circle"></i>
+              <span>Online</span>
+            </span>
+          </div>
+        </div> -->
+      <!-- sidebar-header  -->
+      <!-- <div class="sidebar-search">
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control search-menu" placeholder="Search...">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul class="list-unstyled">
+          <li class="header-menu">
+            <!-- <span>Map Planner</span> -->
+            <div id="createRouteController" class="col-lg-12 ">
+              <ul style="margin-bottom: 0rem;" class="nav nav-pills nav-fill">
+                <li id="mkRoute" class="nav-item">
+                  <a (click)="onClickshowMakeRoute()" style="background-color:#17a2b8 ; color: white;" class="nav-link active" aria-current="page">Create
+                    Route</a>
+                </li>
+                <li id="GenRoute" class="nav-item">
+                  <a (click)="onClickshowGenRoute()" class="nav-link">Generate Route</a>
+                </li>
+                <li id="FavRoute" class="nav-item">
+                  <a (click)="onClickshowFavRoute()" class="nav-link">My Routes</a>
+                </li>
+              </ul>
+
+              <!-- Form for Making routes  -->
+              <form id="formm" class="form-horizontal ">
+
+                <div class="form-group row">
+                  <label for="from" class="col-xs-3 control-label"><i onclick="GetCurrentLocationForInputG()"
+                      class="bi bi-geo-fill"></i> <label style="margin-left:3%;" for="from">
+                      From</label></label>
+                  <div class="col-xs-6">
+                    <input type="text" id="from" placeholder="Origin" class="form-control" [(ngModel)]="startPoint">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="to" class="col-xs-3 control-label"><i class="bi bi-pin-map-fill"></i> <label
+                      style="margin-left:3%;" for="from"> To</label></label>
+                  <div class="col-xs-6">
+                    <input type="text" name="to" id="to" placeholder="Destination" class="form-control"
+                      [(ngModel)]="endPoint">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="to" class="col-xs-3 control-label"><i class="bi bi-menu-app"></i> <label
+                      style="margin-left:3%;" for="RouteName"> Route Name</label></label>
+                  <div class="col-xs-6">
+                    <input type="text" name="RouteName" id="RouteName" placeholder="Route Name" class="form-control"
+                      [(ngModel)]="routeName">
+                  </div>
+                </div>
+
+
+                <div style="margin-top: 0rem; margin-bottom:1rem;margin-right: 2rem;"
+                  class="col-xs-offset-2 col-xs-10 row">
+                  <div class="col-lg-12 col-sm-12">
+
+
+                    <button class="btn btn-info btn-lg col-sm-12 " (click)="onClickcalcRoute()"><i
+                        class="bi bi-bezier2">&nbsp; Preview
+                        Route</i></button>
+                  </div>
+                  <!-- <div class="col-lg-2"></div> -->
+                  <div class="col-lg-12 col-sm-12">
+                    <button style="margin-right: 1rem;" class="btn btn-info btn-lg  col-sm-12 mt-2 mb-2" (click)="createPostSave()"><i
+                        class="bi bi-bookmark-heart">&nbsp; Save
+                        Route</i></button>
+                  </div>
+
+                </div>
+                <!-- End of adding the list of routes -->
+
+
+              </form>
+              <!-- Form for generating routes -->
+              <form id="formmG" style="display: none;" class="form-horizontal ">
+
+                <div class="form-group row">
+
+                  <label for="fromG" class="col-xs-4 control-label"><i onclick="GetCurrentLocationForInput()"
+                      class="bi bi-geo-fill"></i> <label style="margin-left:3%;" for="from"> Starting
+                      Point</label></label>
+                  <div class="col-xs-4">
+                    <input type="text" id="fromG" placeholder="Origin" class="form-control">
+
+                  </div>
+                </div>
+
+                <div class="form-group row">
+
+                  <label for="DistanceG" class="col-xs-4 control-label"><i class="bi bi-signpost"></i>
+                    <label style="margin-left:3%;" for="from">Distance</label></label>
+                  <div class="col-xs-4">
+                    <input type="text" id="DistanceG" placeholder="Distance" class="form-control">
+                  </div>
+
+                </div>
+                <!-- Progress bar -->
+                <div id="Progress_Status">
+                  <div id="myprogressBar"></div>
+                </div>
+
+
+
+                <div class="col-xs-offset-2 col-xs-10 mb-2">
+                  <button class="btn btn-info btn-lg " onclick="GenerateRoutes();"><i class="fas fa-map-signs"> Generate
+                      Routes</i></button>
+                </div>
+
+                <div id="routesBox2">
+                  <div class="accordion" id="accordionExample2">
+
+
+                  </div>
+                </div>
+              </form>
+              <div style="display: none;" id="routesBoxes">
+                <h3 style="color: black;" (click)="getArray2()">Faviourite routes</h3>
+
+
+                <div id="routesBox">
+                  <div class="accordion" id="accordionExampleFav">
+
+
+
+                  </div>
+                </div>
+
+                <!-- End of trying to add the data from atlas -->
+              </div>
+              <!-- End of form for generating form  -->
+
+              <div id="output">
+
+              </div>
+
+            </div>
+          </li>
+
+
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a>
+    </div>
+  </nav>
+  <!-- sidebar-wrapper  -->
+
+
+  <!-- The content appearse here -->
+  <main id="map" class="page-content">
+    <div class="container-fluid">
+
+    </div>
+  </main>
+  <!-- page-content" -->
+</div>
+
+
+<!-- Floating action button -->
+<div class="fab-wrapper">
+  <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
+  <label class="fab" for="fabCheckbox">
+    <span class="fab-dots fab-dots-1"></span>
+    <span class="fab-dots fab-dots-2"></span>
+    <span class="fab-dots fab-dots-3"></span>
+  </label>
+  <div class="fab-wheel">
+    <a (click)="showSideBard()"  class="fab-action fab-action-1">
+      <!-- <i class="bi bi-send"></i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil-square" viewBox="0 0 16 16">
+          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+        </svg>
+    </a>
+    <a (click)="shareTheRouteFromFloat()" class="fab-action fab-action-2">
+      <!-- <i class="fas fa-book"></i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+        <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+      </svg>
+    </a>
+        <a (click)="directTogooleMaps()" class="fab-action fab-action-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-signpost-2" viewBox="0 0 16 16">
+              <path d="M7 1.414V2H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h5v1H2.5a1 1 0 0 0-.8.4L.725 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4H7v5h2v-5h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H9V6h4.5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.3 2.4a1 1 0 0 0-.8-.4H9v-.586a1 1 0 0 0-2 0zM13.5 3l.75 1-.75 1H2V3h11.5zm.5 5v2H2.5l-.75-1 .75-1H14z"/>
+            </svg>
+    </a>
+    
+  </div>
+</div>

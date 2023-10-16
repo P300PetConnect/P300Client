@@ -1,0 +1,81 @@
+<div class="test">
+  <hr />
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-9 col-md-8 col-12">
+        <div class="card bg-white mb-2">
+          <div class="card-body d-flex">
+            <img
+              src="{{userData.profilePicUrl}}"
+              class="img-fluid img-profile" />
+            <textarea (click)="onCreate()" class="form-control create-post-area" [formControlName]="'text'"
+              placeholder="Create Post"></textarea>
+          </div>
+        </div>
+        <hr />
+        <div class="bg-white">
+          <mat-tab-group animationDuration="0ms" mat-stretch-tabs (selectedTabChange)="SetTabIndex($event)">
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon mr-1">rocket</mat-icon>
+                <span>Best</span>
+              </ng-template>
+              <div>
+                <div class="pt-3"></div>
+              </div>
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon mr-1">local_fire_department</mat-icon>
+                <span>Hot</span>
+              </ng-template>
+              <div style="padding: 0 6%">
+                <div class="">
+                  <div *ngFor="let b of boards" class="pt-3"></div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon mr-1">arrow_upward</mat-icon>
+                <span>Top</span>
+              </ng-template>
+              <div style="padding: 0 6%">
+                <div class="">
+                  <div *ngFor="let b of boards" class="pt-3"></div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon mr-1">today</mat-icon>
+                <span class="btn-tab">Today</span>
+              </ng-template>
+              <div *ngFor="let b of boards" class="pt-3"></div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+
+        <div *ngFor="let d of posts[0]" class="poststest">
+          <app-post [post]="d"></app-post>
+        </div>
+        <hr />
+      </div>
+      <div class="col-lg-3 col-md-4 col-12">
+        <aside class="card card-body bg-white sidebar">
+          <img class="img-fluid w-100" src="https://www.redditstatic.com/desktop2x/img/id-cards/home-banner@2x.png" />
+          <div class="text-center">
+            <h6 class="text-center">Advertisement here</h6>
+            <button class="btn btn-primary w-100 btnCreatePost">
+              Space for ads
+            </button>
+            <button class="btn btn-outline-primary w-100 btnCreateSubreddit">
+              Create Topic
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>

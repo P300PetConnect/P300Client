@@ -5,11 +5,11 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { map, Observable, startWith } from 'rxjs';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MessageAlertComponent } from '../message-alert/message-alert.component';
+import { MessageAlertComponent } from '../../shared-components/message-alert/message-alert.component';
 import { MatStepper } from '@angular/material/stepper';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Data } from '@angular/router';
-import { SearchServiceService } from 'src/app/search_service_services/search-service.service';
+import { SearchServiceService } from 'src/app/service/search-service.service';
 
 @Component({
   selector: 'app-pet-sitter-service',
@@ -140,12 +140,14 @@ add(event: MatChipInputEvent): void {
 		}
 	}
 
-  AddService(key1: string, key2: string, des: string )
+  AddService(title: string, petType: string, service: string, des: string, price: string )
   {
-    this._service.AddService(this.id, key1, key2, des).subscribe({
+    alert(petType + service)
+    this._service.AddService(this.id, title, petType, service, des, price).subscribe({
       next: ser => {
         console.log(JSON.stringify(ser) + 'service added');
         this.message = "service added";
+        this.onClose();
           
          },
       error: (err) => this.message = err

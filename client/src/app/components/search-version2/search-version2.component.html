@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-4 user-search md-inline-form">
     <div class="row">
-      <div class="col-2">
+      <div class="col-md-2">
         <mat-form-field appearance="outline">
             <mat-label>Service</mat-label>
             <mat-select [(value)]="service" #selectedService>
@@ -26,12 +26,12 @@
           </mat-form-field>
           </div>
       
-            <mat-form-field class="col-3" appearance="outline" *ngIf="location == '' ">
+            <mat-form-field class="col-md-3" appearance="outline" *ngIf="location == '' ">
               <mat-label>Insert your location</mat-label>
               <input matInput placeholder="N. Street " #selectedLocation (change)="setLocation(selectedLocation.Value)">
             </mat-form-field>
         
-            <mat-form-field class="col-3" appearance="outline" *ngIf="location != '' ">
+            <mat-form-field class="col-md-3" appearance="outline" *ngIf="location != '' ">
               <mat-label>Insert your location</mat-label>
               <input matInput placeholder="N. Street " value="{{location}}" #selectedLocation (change)="setLocation(selectedLocation.value)">
             </mat-form-field>
@@ -48,7 +48,7 @@
       </mat-form-field>
       
 
-      <mat-form-field class="col-3 col-sx-12" appearance="outline">
+      <mat-form-field class="col-md-3 col-sx-12" appearance="outline">
         <mat-label>Dates</mat-label>
         <mat-date-range-input [rangePicker]="picker">
           <input matStartDate matInput placeholder="Start date">
@@ -58,7 +58,7 @@
         <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
       
-      <mat-form-field class="col-2" appearance="outline">
+      <mat-form-field class="col-md-2" appearance="outline">
         <mat-label>Pet Type</mat-label>
         <mat-select [(value)]="pet" #selectedPet>
           <mat-option>None</mat-option>
@@ -66,7 +66,7 @@
           <mat-option value="Cat">Cat</mat-option>
         </mat-select>
       </mat-form-field>
-      <div class="col-2">
+      <div class="col-md-2">
         <button mat-flat-button class="search-btn" (click)="newSearchRequest(selectedPet.value,selectedService.value)">Search Service</button>
       </div>
     </div>
@@ -74,15 +74,14 @@
    
 
   </div>  
-  <div class="mt-2" *ngIf="userServices.length > 0">
-     <h5 >{{userServices.length}}  pet minders were found </h5> 
+  <div class="mt-2 d-md-block" *ngIf="userServices.length > 0">
+     <h5 >{{userServices.length}}  pet sitters were found </h5> 
   </div>
-  <!-- <button class="btn btn-primary" (click)="reviewForm = true">Test Review Form</button> -->
   <div class="row pt-4 pb-4">
-    <div class="col-10">
+    <div class="col-md-10">
         <mat-slide-toggle (change)="changed()">Show map</mat-slide-toggle>
     </div>
-    <div class="col-2 d-flex justify-content-end">
+    <div class="col-md-2 d-flex justify-content-end">
         <div class="btn-group">
             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Sort by
@@ -98,12 +97,66 @@
     </div>
   </div>
   <div class="row">
-        <div class="col-4">
-            <div *ngIf="isMapsDisplay">
-                <agm-map [latitude]="lat" [longitude]="lng">
-                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                  </agm-map>
-            </div>
+        <div class="col-md-4">
+          <div *ngIf="isMapsDisplay">
+            <!-- <div>
+              <agm-map  [latitude]="lat[0]"   [longitude]="lng[0]" [zoom]="9">
+                <agm-marker  *ngFor="let l of lat;let indexOfelement=index;"  [latitude]="lat[indexOfelement]" [longitude]="lng[indexOfelement]"
+                [label]="'PetConnect'"
+                [iconUrl]="iconUrl"
+                > -->
+<!-- 
+    <agm-info-window>
+      <strong>{{m.content}}</strong>
+    </agm-info-window> -->
+
+    <!-- <agm-overlay
+      [visible]="false"
+      [draggable]="true"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+    >
+      <i
+        class="fas fa-map-marker-alt"
+        [style.color]="m.color"
+        style="font-size: 25px"
+      ></i>
+    </agm-overlay> -->
+                <!-- </agm-marker>
+              </agm-map>
+            </div> -->
+<agm-map
+  [latitude]="lat[0]"
+  [longitude]="lng[0]"
+  [zoom] = 12
+  >
+  <agm-marker
+    *ngFor="let m of markers; let i = index"
+    (markerClick)="clickedMarker(m.label, i)"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [label]="m.label"
+    [markerDraggable]="m.draggable"
+    [iconUrl]="m.iconUrl"
+    [animation]="'BOUNCE'"
+    (dragEnd)="markerDragEnd(m, $event)"
+  >
+
+    <agm-info-window>
+      <strong>{{m.content}}</strong>
+    </agm-info-window>
+
+    <agm-overlay
+      [visible]="false"
+      [draggable]="true"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+    >
+    <i class="bi bi-geo-alt"></i>
+    </agm-overlay>
+  </agm-marker>
+</agm-map>
+         </div>
           <div class="row"  *ngIf="!isMapsDisplay">
                 <div class="col-md-12 col-xl-12">
                   <div class="card mb-3">
@@ -114,7 +167,17 @@
                       </h5>
                       <hr>
                     <div class="row text-left">
-                        <p>Pet Type Select: Dog</p>
+                 
+        <div *ngIf="petDetails"> 
+          <p>for which pet is this service?</p>
+            <div  *ngFor="let pet of petDetails">
+              <app-pet-card-view [pet]="pet"></app-pet-card-view>
+              </div>
+            </div>
+            <div class="col-12 pb-2">
+              <button class="btn btn-outline-secondary w-100 " (click)="AddNewPet()">Add a new Pet</button>
+             </div>
+            <div>
                         <mat-form-field appearance="outline">
                             <mat-label>Dog's Breed</mat-label>
                             <mat-select>
@@ -123,7 +186,7 @@
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
-        
+                        
                         <mat-form-field appearance="outline">
                             <mat-label>Size of your Dog</mat-label>
                             <mat-select [formControl]="petsize" multiple>
@@ -136,35 +199,41 @@
                             <mat-option *ngFor="let petsize of petsizeList" [value]="petsize">{{petsize}}</mat-option>
                             </mat-select>
                         </mat-form-field>
+
+                        <div class="text-muted text-left">
+                          <hr>
+                          <h5>Tell me more about your Pet</h5>
+                          <div class="row pt-4">
+                              <p>How long does your dog need to walk?</p>
+                              <div class="col-6 d-flex justify-content-end">
+                               <button class="btn btn-outline-secondary w-75 ">30 minutes</button>
+                              </div>
+                              <div class="col-6  d-flex justify-content-start">
+                                  <button class="btn btn-outline-secondary w-75">60 minutes</button>
+                              </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                         
+                              <p>Is your pet neutered?</p>
+                              <div class="col-6 d-flex justify-content-end">
+                               <button class="btn btn-outline-secondary w-75 ">Yes</button>
+                              </div>
+                              <div class="col-6  d-flex justify-content-start">
+                                  <button class="btn btn-outline-secondary w-75">No</button>
+                              </div>
+                          </div>
+                          <hr>
+                              <h5>Special care</h5>
+                              <mat-slide-toggle>oral medication</mat-slide-toggle>
+                              <mat-slide-toggle>medicine in injection</mat-slide-toggle>     
+                          <hr>
+                      </div>
+
                     </div>
-                    <hr>
-                      <div class="text-muted text-left">
-                        <h5>Tell me more about your Dog</h5>
-                        <div class="row pt-4">
-                            <p>What is your pet's gender?</p>
-                            <div class="col-6 d-flex justify-content-end">
-                             <button class="btn btn-outline-secondary w-75 ">Male</button>
-                            </div>
-                            <div class="col-6  d-flex justify-content-start">
-                                <button class="btn btn-outline-secondary w-75">Female</button>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <p>Is your pet neutered?</p>
-                            <div class="col-6 d-flex justify-content-end">
-                             <button class="btn btn-outline-secondary w-75 ">Yes</button>
-                            </div>
-                            <div class="col-6  d-flex justify-content-start">
-                                <button class="btn btn-outline-secondary w-75">No</button>
-                            </div>
-                        </div>
-                        <hr>
-                            <h5>Special care</h5>
-                            <mat-slide-toggle>oral medication</mat-slide-toggle>
-                            <mat-slide-toggle>medicine in injection</mat-slide-toggle>     
-                        <hr>
-                    </div>
+
+                     
+                  </div>
                     </div>
                   </div>
                 </div>
@@ -174,7 +243,7 @@
 
             
 
-            <div class="col-8 pl-3" *ngIf="userServices.length > 0">
+            <div class="col-md-8 pl-3" *ngIf="userServices.length > 0">
                    <div class="row" *ngFor="let p of userServices" >
                     <app-search-sitter-services  [service] = "p" ></app-search-sitter-services >
                   </div>

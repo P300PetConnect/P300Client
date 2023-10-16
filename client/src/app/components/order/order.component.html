@@ -1,79 +1,77 @@
-
-  <div class="row">
-    <div class="col-6 d-flex justify-content-start">
-    <button *ngIf="this.stepper.selectedIndex!=0" class="btn btn-outline-secondary" (click)="onBack(stepper)">&#60; Edit Order</button>
-    </div>
-    <div class="col-6 d-flex justify-content-end">
-      <i class="bi bi-x-lg" (click)="onCancel()"></i>
-    </div>
+<div *ngIf="!DisplayMessage">
+<div class="row g-0">
+  <div class="col-6 d-flex justify-content-start">
+    <button *ngIf="this.stepper.selectedIndex!=0" class="btn btn-outline-secondary" (click)="onBack(stepper)">&#60; Edit
+      Order</button>
   </div>
-  <form [formGroup]="AddOrder" class="form-group">
+  <div class="col-6 d-flex justify-content-end">
+    <i class="bi bi-x-lg" (click)="onCancel()"></i>
+  </div>
+</div>
+<form [formGroup]="AddOrder" class="form-group">
 
-<mat-stepper linear #stepper>
-  <mat-step [stepControl]="AddOrder">
+  <mat-stepper linear #stepper>
+    <mat-step [stepControl]="AddOrder">
       <ng-template matStepLabel>Create Order</ng-template>
-      <div class="container pt-4">
-                <div class="row pt-2">
-          <div class="col-4">
+      <div class="container-fluid px-0 mt-4">
+        <div class="row g-0 mt-2">
+          <div class="col-lg-12 col-md-12 col-12">
+            <p>The pet will be collect on: 4 Elm's Park - Sligo</p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12">
             <h6>Category</h6>
             <p>
               Choose the category and sub-category most suitable for your Service.</p>
           </div>
-          <div class="col-8">
+          <div class="col-lg-8 col-md-8 col-12">
             <div class="row">
-              <div class="col-6 p-0">
+              <div class="col-md-6 col-sm-12 col-12 p-0">
                 <mat-form-field class="col-12" appearance="outline">
                   <mat-label>Select the service for this order:</mat-label>
-                  <mat-select  id="service" formControlName="service" 
-                   multiple (selectionChange)="changePet($event.value)">
+                  <mat-select id="service" #service multiple (selectionChange)="changeService($event?.value)">
                     <mat-select-trigger>
-                      {{serviceCategory[0].viewValue || ''}}
+                      {{selectedCategories || ''}}
                       <span *ngIf="(service.value?.length || 0) > 1" class="example-additional-selection">
                         (+{{(service.value?.length || 0) - 1}} {{service.value?.length === 2 ? 'other' : 'others'}})
                       </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let service of serviceCategory" [value]="service.viewValue"
-                    >{{service.viewValue}}</mat-option>
+                    <mat-option *ngFor="let service of serviceCategory" [value]="service">{{service?.ServiceTitle}} -
+                      Price: {{service?.StartingPrice}}€</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div class="col-6 p-0">
+              <div class="col-md-6 col-sm-12 col-12 p-0">
                 <mat-form-field class="col-12" appearance="outline">
                   <mat-label>Select the pet this order is for:</mat-label>
-                  <mat-select 
-                  
-                  id="category" formControlName="category" 
-
-                  multiple (selectionChange)="changePet($event.value)">
+                  <mat-select id="category" #category multiple (selectionChange)="changePet($event.value)">
                     <mat-select-trigger>
-                      {{petCategory[0].viewValue || ''}}
+                      {{selectedPet || ''}}
                       <span *ngIf="(category.value?.length || 0) > 1" class="example-additional-selection">
                         (+{{(category.value?.length || 0) - 1}} {{category.value?.length === 2 ? 'other' : 'others'}})
                       </span>
                     </mat-select-trigger>
-                    <mat-option *ngFor="let category of petCategory" [value]="category.viewValue">{{category.viewValue}}</mat-option>
+                    <mat-option *ngFor="let category of petCategory" [value]="category">{{category?.name}}</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-4">
+        <div class="row g-0">
+          <div class="col-lg-4 col-md-4 col-12">
             <h6>Order Description</h6>
             <p>Briefly describe your service, here the pet owner can see more details of what you're offering</p>
           </div>
-          <div class="col-8">
+          <div class="col-lg-8 col-md-8 col-12">
             <div class="row">
               <mat-form-field hintLabel="Max 300 characters" appearance="outline">
-                <mat-label for="Description">Insert any extra order information</mat-label>
-                <textarea matInput #textarea  maxlength="300" 
-                id="name" type="text" formControlName="name" class="form-control"
-                placeholder="I will..."
-                placeholder="service title" formControlName="firstCtrl" required
-                type="text" class="form-control" #Description id="Description" formControlName="Description" class="Description">
-              
-              
+                <mat-label for="OrderDescription">Insert any extra order information</mat-label>
+                <textarea matInput #textarea maxlength="300" id="name" type="text" formControlName="name"
+                  class="form-control" placeholder="I will..." placeholder="service title" formControlName="firstCtrl"
+                  required type="text" class="form-control" #OrderDescription id="OrderDescription" formControlName="OrderDescription"
+                  class="OrderDescription">
+
+
               </textarea>
                 <mat-hint align="end">{{textarea.value.length}}/300</mat-hint>
               </mat-form-field>
@@ -82,12 +80,12 @@
         </div>
 
       <div class="row pt-2">
-            <div class="col-4">
+            <div class="col-md-4">
               <h6>Order Price</h6>
               <p>
                 Please insert the final price of the product offered, our </p>
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
               <div class="row">
                    <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Price Charged - € EUR </mat-label>
@@ -95,74 +93,122 @@
                   </mat-form-field>
               </div>
             </div>
-            <div class="col-3 p-0">
-              <mat-form-field class="col-12 col-sx-12"  appearance="outline">
-                <mat-label for="OrderDate">Date of the service </mat-label>
-                <input matInput [matDatepicker]="picker"  id="OrderDate" formControlName="OrderDate">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker
-                ></mat-datepicker>
-              </mat-form-field>
+            
+          </div>
+          <div class="row pt-2">
+            <div class="col-md-4">
+              <h6>Order Dates</h6>
+              <p>
+                Please insert the start and end date of the service </p>
+            </div>
+            <div class="col-md-3">
+              <div class="row">
+                <!-- <mat-form-field class="col-12 col-sx-12"  appearance="outline">
+                  <mat-label for="OrderStartDate">Start Date of the service </mat-label>
+                  <input matInput [matDatepicker]="picker"  id="OrderStartDate" formControlName="OrderStartDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker 
+                  ></mat-datepicker>
+                  
+                </mat-form-field>
+                <mat-form-field class="col-12 col-sx-12"  appearance="outline">
+                  <mat-label for="OrderEndDate">End Date of the service </mat-label>
+                  <input matInput [matDatepicker]="picker2"  id="OrderEndDate" formControlName="OrderEndDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2
+                  ></mat-datepicker>
+                </mat-form-field> -->
+
+                <mat-form-field>
+                  <mat-label>Order Start Time</mat-label>
+                  <input matInput [matDatepicker]="startDatepicker"  formControlName="OrderStartDate" >
+                  <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
+                  <mat-datepicker #startDatepicker></mat-datepicker>
+                  <input matInput type="time" placeholder="Time" formControlName="StartTime">
+                </mat-form-field>
+
+               
+                
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class = "row align-items-center">
+                <mat-form-field>
+                  <mat-label>Order End Time</mat-label>
+                  <input matInput [matDatepicker]="endDatepicker"  formControlName="OrderEndDate">
+                  <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>
+                  <mat-datepicker #endDatepicker></mat-datepicker>
+                  <input matInput type="time" placeholder="Time" formControlName="EndTime">
+                </mat-form-field>
+            </div>
             </div>
           </div>
         <div class="row pt-4">
-          <div class="col-6">
+          <div class="col-md-6">
             <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
             <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
-      
+
           </div>
-          <div class="col-6 d-flex justify-content-end">
-            <button mat-button class="btn btn-primary" mat-button matStepperNext >Save & Continue</button>
+          <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-end">
+            <button mat-button class="btn btn-primary" mat-button matStepperNext (click)="seeform()">Save &
+              Continue</button>
           </div>
         </div>
       </div>
-  
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>View Order</ng-template>
-          <div class="container pt-2">
-<div class="row">
-  <h5>Order to 'Pet Owners name here'</h5> 
-</div>
-   <div class="row pt-3">
-    <div class="col-6">
-      <h6>Description</h6>
-    </div>
-    <div class="col-6">
-      <p>{{Description.value}}</p>
-    </div>
-    <div class="col-6">
-      <h6>Price:</h6>
-    </div>
-    <div class="col-6">
-      <p>{{price.value}}</p>
-    </div>
-    <div class="col-6">
-      <h6>Service:</h6>
-    </div>
-    <div class="col-6">
-      <p>Walk</p>
-    </div>
-    <div class="col-6">
-      <h6>Pets</h6>
-    </div>
-    <div class="col-6">
-      <p>Bob</p>
-    </div>
-      <div class="row pt-4">
-        <div class="col-6">
-          <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
-          <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
+
+    </mat-step>
+    <mat-step class="px-0">
+      <ng-template matStepLabel>View Order</ng-template>
+      <div class="container-fluid px-0 mt-4">
+        <div class="row">
+          <h5>Order to 'Pet Owners name here'</h5>
         </div>
-        <div class="col-6 d-flex justify-content-end">
-          <button mat-button class="btn btn-primary" (click)="onSubmit()" mat-button matStepperNext type="submit">Send the Order</button>
+        <div class="row pt-3">
+          <div class="col-md-6 col-12">
+            <h6>Description</h6>
+          </div>
+          <div class="col-md-6 col-12">
+            <p>{{OrderDescription.value}}</p>
+          </div>
+          <div class="col-md-6 col-12">
+            <h6>Price:</h6>
+          </div>
+          <div class="col-md-6 col-12">
+            <p>{{price.value}}</p>
+          </div>
+          <div class="col-md-6 col-12">
+            <h6>Service:</h6>
+          </div>
+          <div class="col-md-6 col-12">
+            <p>{{this.selectedCategories}}</p>
+          </div>
+          <div class="col-md-6 col-12">
+            <h6>Pets</h6>
+          </div>
+          <div class="col-md-6 col-12">
+            <p>{{this.selectedPet}}</p>
+          </div>
+          <div class="row pt-4">
+            <div class="col-md-6 col-12">
+              <button class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+              <button type="button" class="btn btn-outline-info ml-2">Save Draft</button>
+            </div>
+            <div class="col-md-6 col-12 d-flex justify-content-end">
+              <button mat-button class="btn btn-primary" (click)="onSubmit()" mat-button matStepperNext
+                type="submit">Send the Order</button>
+
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-</div>
-  </mat-step>
-</mat-stepper>
+    </mat-step>
+  </mat-stepper>
 </form>
+</div>
+<div *ngIf="DisplayMessage">
+  <app-action-message [title]="'Order Created!'"></app-action-message>
+ </div>
+ 
 <!-- 
 
 <div class="tab-content">

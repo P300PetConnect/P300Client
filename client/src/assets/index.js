@@ -68,7 +68,7 @@ function calcRoute() {
   console.log("start Point : " + startPoint);
   //This function will draw the line
   drawRoute(startPoint, endPoint, "WALKING", animate = true, color = '#e53935');
-  drawRoute2(endPoint, startPoint, "WALKING", animate = true, color = '#07e672');
+  drawRoute2(endPoint, startPoint, "DRIVING", animate = true, color = '#07e672');
 
 }
 //#endregion
@@ -93,9 +93,15 @@ var allRouteMarkers = [];//Save all route markers for later to clear
 
 function drawRoute(start, end, method, animate = true, color = '#e53935') {
   var directionsService1 = new google.maps.DirectionsService();
+  var waypoints = [
+    {location: start},
+    {location: end}
+   
+  ];
   var request = {
     origin: start,
     destination: end,
+    waypoints: waypoints,
     travelMode: google.maps.DirectionsTravelMode[method],
     unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 
@@ -223,9 +229,14 @@ function drawRoute(start, end, method, animate = true, color = '#e53935') {
 }
 function drawRoute2(start, end, method, animate = true, color = '#e53935') {
   var directionsService = new google.maps.DirectionsService();
+  var waypoints = [
+    {location: end}
+
+  ];
   var request = {
     origin: start,
     destination: end,
+    waypoints: waypoints,
     travelMode: google.maps.DirectionsTravelMode[method],
     unitSystem: google.maps.UnitSystem.METRIC //KM and Meters
 
@@ -528,27 +539,51 @@ function getReverseGeocodingData2(lat, lng) {
 document.getElementById("mkRoute").addEventListener("click", showMakeRoute);
 
 function showMakeRoute() {
+
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.color="black";
+
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.color="black";
+
   document.getElementById("mkRoute").getElementsByTagName("a")[0].className = "nav-link active";
   document.getElementById("GenRoute").getElementsByTagName("a")[0].className = "nav-link";
   document.getElementById("FavRoute").getElementsByTagName("a")[0].className = "nav-link";
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.backgroundColor="#17a2b8";
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.color="white";
 
   document.getElementById("formm").style.display = "block";
   document.getElementById("formmG").style.display = "none";
   document.getElementById("routesBoxes").style.display = "none"
   document.getElementById("output").style.display = "none";
 
+ 
+
 }
 
 document.getElementById("GenRoute").addEventListener("click", showGenRoute);
 
 function showGenRoute() {
+
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.color="black";
+
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.color="black";
+
   document.getElementById("mkRoute").getElementsByTagName("a")[0].className = "nav-link";
   document.getElementById("GenRoute").getElementsByTagName("a")[0].className = "nav-link active";
   document.getElementById("FavRoute").getElementsByTagName("a")[0].className = "nav-link";
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.backgroundColor="#17a2b8";
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.color="white";
+
   document.getElementById("formmG").style.display = "block";
   document.getElementById("formm").style.display = "none";
   document.getElementById("output").style.display = "none";
   document.getElementById("routesBoxes").style.display = "none";
+
+ 
+
 
 }
 
@@ -556,13 +591,24 @@ function showGenRoute() {
 document.getElementById("FavRoute").addEventListener("click", showFavRoute);
 
 function showFavRoute() {
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("GenRoute").getElementsByTagName("a")[0].style.color="black";
+
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.backgroundColor="whitesmoke";
+  document.getElementById("mkRoute").getElementsByTagName("a")[0].style.color="black";
+
   document.getElementById("mkRoute").getElementsByTagName("a")[0].className = "nav-link";
   document.getElementById("GenRoute").getElementsByTagName("a")[0].className = "nav-link";
-  document.getElementById("FavRoute").getElementsByTagName("a")[0].className = "nav-link active";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].className = "nav-link  active";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.backgroundColor="#17a2b8";
+  document.getElementById("FavRoute").getElementsByTagName("a")[0].style.color="white";
+  // 17a2b8
   document.getElementById("output").style.display = "none";
   document.getElementById("formmG").style.display = "none";
   document.getElementById("formm").style.display = "none";
   document.getElementById("routesBoxes").style.display = "block"
+
+ 
 
 
 }

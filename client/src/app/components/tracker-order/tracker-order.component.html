@@ -1,0 +1,54 @@
+<!-- <h1>Your country: {{ country }}</h1>
+<h2>Your city is: {{ city }}, with calling code: {{ calling_code }}</h2>
+<p>Your coordinates are: latitude: {{ lat }}, longitude: {{ lng }}</p> -->
+
+<div class="pinboard"  *ngIf="!dontDisplay">
+  <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="zoom" (mapClick)="mapClicked($event)">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+  <!-- </div>  -->
+  <!-- <div class="pinboard">
+
+   https://www.npmjs.com/package/agm-direction -->
+  <!-- <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="zoom" >
+    <agm-direction 
+    [origin]="origin" 
+    [destination]="destination"
+  >
+  </agm-direction>
+  </agm-map> -->
+
+
+  <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" (mapClick)="mapClicked($event)"> -->
+    <!-- <agm-direction [origin]="origin" [destination]="destination" [waypoints]="waypoints"></agm-direction> -->
+    <!-- <agm-polyline [strokeColor]="'blue'" [strokeWeight]="3" [editable]="true"
+                    [paths]="polylinePaths" (polyPathChange)="onPolyPathChange($event)">
+      </agm-polyline> -->
+  <!-- </agm-map> -->
+ </div> 
+<!-- <div #mapContainer class="map" id="map"></div> -->
+<!-- +92 333 9056736 -->
+
+<div class="col-md-12 pt-4" >
+  <p>Nice! Billy was collected, you can see here where he is walking now</p>
+  <agm-map [latitude]="54.2627" [longitude]="-8.4734"  [zoom]="zoom+3" 
+ [mapTypeControl]='true'     
+  [fitBounds]="false">
+      <!-- <agm-marker *ngFor="let coordinate of start_end_mark; let i=index"
+      [latitude]="coordinate[0]"
+      [longitude]="coordinate[1]" [agmFitBounds]="true"></agm-marker> -->
+      <agm-polyline [visible]="true" [strokeWeight]="3" [strokeColor]="'#4DD4D5'">
+            <agm-polyline-point
+            *ngFor="let coordinate of latlng; let i=index"
+            [latitude]="coordinate[0]"
+            [longitude]="coordinate[1]">
+
+</agm-polyline-point>
+</agm-polyline>
+    </agm-map>
+</div>
+
+
+<!-- [mapTypeId]="'hybrid'" -->
+
+
